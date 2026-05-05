@@ -1,0 +1,4 @@
+/* Custom height utility: 400px = 25rem (Figma card reference height) */
+.height-featured {
+  height: 25rem;
+}

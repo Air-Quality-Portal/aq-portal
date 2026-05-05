@@ -1,0 +1,50 @@
+import type { HeaderProps } from "@tinacms-portal/blocks";
+import Image from "next/image";
+
+const MOCK_NAV_ITEM_WITH_DROPDOWN_1 = [
+  {
+    label: "Explore By Need",
+    subItems: [
+      { label: "Prepare", href: "/prepare" },
+      { label: "Respond", href: "/respond" },
+      { label: "Recover", href: "/recover" },
+      { label: "Build Resilience", href: "/build-resilience" },
+    ],
+  },
+];
+
+const MOCK_NAV_ITEM_WITH_DROPDOWN_2 = [
+  {
+    label: "Explore Data",
+    subItems: [
+      { label: "Data Gallery", href: "/data-gallery" },
+      { label: "Data Visualization", href: "/data-visualization" },
+      { label: "Data Processing", href: "/data-processing" },
+    ],
+  },
+];
+const MOCK_NAV_ITEM_WITH_DROPDOWN_3 = [
+  {
+    label: "Resources and Learning",
+    subItems: [
+      { label: "Training", href: "/training" },
+      { label: "News, Event & Stories", href: "/news-event-stories" },
+      { label: "Projects", href: "/projects" },
+      { label: "Documents", href: "/documents" },
+    ],
+  },
+];
+
+export const MOCK_HEADER_PROPS: HeaderProps = {
+  portalDetails: {
+    logo: <Image src="/img/logo-header.png" alt="Disasters.gov" width={148} height={52} />,
+    url: "/",
+  },
+  navItems: [
+    { label: "About us", href: "/about-us" },
+    ...MOCK_NAV_ITEM_WITH_DROPDOWN_1,
+    ...MOCK_NAV_ITEM_WITH_DROPDOWN_2,
+    ...MOCK_NAV_ITEM_WITH_DROPDOWN_3,
+  ],
+  currentPath: "/prepare",
+};

@@ -1,0 +1,32 @@
+{
+  "name": "disasters-portal",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "mv node_modules/@tinacms-portal/blocks node_modules/@tinacms-portal/blocks-monorepo 2>/dev/null; ln -sf blocks-monorepo/packages/blocks node_modules/@tinacms-portal/blocks",
+    "dev": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"next dev\"",
+    "build": "tinacms build && next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.8",
+    "@fontsource/dm-mono": "^5.2.7",
+    "@tanstack/react-query": "^5.99.0",
+    "@tinacms-portal/blocks": "github:NASA-IMPACT/tinacms-portal-monorepo.git#feat/setup-github-library",
+    "@trussworks/react-uswds": "^11.0.0",
+    "@uswds/uswds": "^3.13.0",
+    "maplibre-gl": "^5.23.0",
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-map-gl": "^8.1.1",
+    "tinacms": "^3.6.1"
+  },
+  "devDependencies": {
+    "@tinacms/cli": "^2.1.9",
+    "@types/node": "^20.19.37",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "5.9.3"
+  }
+}
