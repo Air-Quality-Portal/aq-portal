@@ -1,4 +1,4 @@
-import type { HeaderProps } from "@tinacms-portal/blocks";
+import type { HeaderProps } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
 const MOCK_NAV_ITEM_WITH_DROPDOWN_1 = [

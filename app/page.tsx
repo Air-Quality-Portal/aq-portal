@@ -1,4 +1,4 @@
-import { CardSimple } from "@tinacms-portal/blocks";
+import { CardSimple } from "@teamimpact/veda-ui-blocks";
 import {
   MOCK_CARD_NEWS_EVENTS_FEATURED,
   MOCK_CARD_NEWS_EVENTS_RESILIENCE,

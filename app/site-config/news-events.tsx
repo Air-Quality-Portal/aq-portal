@@ -1,5 +1,5 @@
-import type { CardSimpleProps } from "@tinacms-portal/blocks";
-import { Tag } from "@tinacms-portal/blocks";
+import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
+import { Tag } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
 type CardWithId = CardSimpleProps & { id: string };

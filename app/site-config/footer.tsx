@@ -1,4 +1,4 @@
-import type { FooterProps } from "@tinacms-portal/blocks";
+import type { FooterProps } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
 const primaryNavItems: FooterProps["primaryNavItems"] = [
