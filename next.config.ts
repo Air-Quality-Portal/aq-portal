@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Silence webpack config error - fonts are served from /public
   turbopack: {},
 };
 
