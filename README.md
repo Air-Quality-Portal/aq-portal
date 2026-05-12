@@ -1,6 +1,6 @@
 # Disasters Portal
 
-Built with Next.js, TinaCMS, USWDS, and `@tinacms-portal/blocks`.
+Built with Next.js, TinaCMS, USWDS, and `@teamimpact/veda-ui-blocks`.
 
 ## Setup
 
@@ -13,7 +13,7 @@ Open <http://localhost:3000>
 
 ## How It Works
 
-Consumes `@tinacms-portal/blocks` via git dependency (`github:NASA-IMPACT/tinacms-portal-monorepo.git#feat/setup-github-library`). The blocks package builds on install via `prepare` script, and a postinstall hook symlinks to the nested package location.
+Consumes `@teamimpact/veda-ui-blocks` from npm. Imports `disasters.css` for theming — fonts are bundled in the compiled CSS, no separate imports needed.
 
 ## CMS
 
