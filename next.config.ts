@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  turbopack: {},
+  turbopack: {
+    root: __dirname,
+  },
 };
 
 // biome-ignore lint/style/noDefaultExport: Next.js configuration files must use default export
