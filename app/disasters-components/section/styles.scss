@@ -1,0 +1,15 @@
+.full-bleed-bg {
+  position: relative;
+}
+
+.full-bleed-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background-color: inherit; /* or hardcode your color */
+  z-index: -1;
+}

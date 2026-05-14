@@ -40,3 +40,7 @@ a {
     color-scheme: dark;
   }
 }
+/* When a section is the first on the page it should not have top padding that is handled by the layout page*/
+main > section:first-child {
+  padding-top: 0 !important;
+}
