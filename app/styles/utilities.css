@@ -1,8 +1,8 @@
 :root {
-  --theme-respond: #C91B6E;
-  --theme-build: #1D9950;
-  --theme-prepare: #F67E09;
-  --theme-recover: #4F6FAE;
+  --theme-respond: #c91b6e;
+  --theme-build: #1d9950;
+  --theme-prepare: #f67e09;
+  --theme-recover: #4f6fae;
 }
 
 /* Custom height utility: 400px = 25rem (Figma card reference height) */
