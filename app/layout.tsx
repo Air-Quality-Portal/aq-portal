@@ -1,14 +1,12 @@
-import { Banner, Footer, Header } from "@teamimpact/veda-ui-blocks";
 import type { Metadata } from "next";
-
+import { Banner, Footer, Header } from "@teamimpact/veda-ui-blocks";
 import "@teamimpact/veda-ui-blocks/disasters.css";
-import "./styles/utilities.css";
-import "./globals.css";
+
 import { MOCK_FOOTER_PROPS } from "./site-config/footer";
 import { MOCK_HEADER_PROPS } from "./site-config/header";
 
 export const metadata: Metadata = {
-  title: "Sample App",
+  title: "Disasters portal",
   description: "Disasters portal",
 };
 

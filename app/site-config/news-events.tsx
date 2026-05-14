@@ -21,7 +21,6 @@ export const MOCK_CARD_NEWS_EVENTS_FEATURED: CardWithId = {
       EVENT
     </Tag>
   ),
-  showOverlay: true,
 };
 
 export const MOCK_CARD_NEWS_EVENTS_RESILIENCE: CardWithId = {
@@ -41,7 +40,6 @@ export const MOCK_CARD_NEWS_EVENTS_RESILIENCE: CardWithId = {
       STORY
     </Tag>
   ),
-  showOverlay: true,
 };
 
 export const MOCK_CARD_NEWS_EVENTS_RESPONSE_MAPPER: CardWithId = {
@@ -61,7 +59,6 @@ export const MOCK_CARD_NEWS_EVENTS_RESPONSE_MAPPER: CardWithId = {
       NEWS
     </Tag>
   ),
-  showOverlay: true,
 };
 
 export const MOCK_CARD_NEWS_EVENTS_TORNADO: CardWithId = {
@@ -81,5 +78,4 @@ export const MOCK_CARD_NEWS_EVENTS_TORNADO: CardWithId = {
       STORY
     </Tag>
   ),
-  showOverlay: true,
 };

@@ -21,7 +21,6 @@ export const MOCK_CARD_RESOURCES_LEARNING_PREPARE: CardWithId = {
       PREPARE
     </Tag>
   ),
-  showOverlay: true,
 };
 
 export const MOCK_CARD_RESOURCES_LEARNING_RESPOND: CardWithId = {
@@ -41,7 +40,6 @@ export const MOCK_CARD_RESOURCES_LEARNING_RESPOND: CardWithId = {
       RESPOND
     </Tag>
   ),
-  showOverlay: true,
 };
 
 export const MOCK_CARD_RESOURCES_LEARNING_RECOVER: CardWithId = {
@@ -61,7 +59,6 @@ export const MOCK_CARD_RESOURCES_LEARNING_RECOVER: CardWithId = {
       RECOVER
     </Tag>
   ),
-  showOverlay: true,
 };
 
 export const MOCK_CARD_RESOURCES_LEARNING_RESILIENCE: CardWithId = {
@@ -81,5 +78,4 @@ export const MOCK_CARD_RESOURCES_LEARNING_RESILIENCE: CardWithId = {
       BUILD RESILIENCE
     </Tag>
   ),
-  showOverlay: true,
 };
