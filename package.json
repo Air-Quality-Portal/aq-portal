@@ -8,9 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "biome check .",
-    "lint:ci": "biome ci . && prettier \"**/*.scss\" --check",
+    "lint:ci": "biome ci . && prettier \"**/*.scss\" --check --no-error-on-unmatched-pattern",
     "typecheck": "tsc --noEmit",
-    "format": "biome format --write . && prettier \"**/*.scss\" --write",
+    "format": "biome format --write . && prettier \"**/*.scss\" --write --no-error-on-unmatched-pattern",
     "prepare": "lefthook install"
   },
   "dependencies": {
