@@ -16,7 +16,6 @@ import {
   MOCK_CARD_RESOURCES_LEARNING_RESPOND,
 } from "./site-config/resources-learning";
 
-// biome-ignore lint/style/noDefaultExport: Page components in Next.js must use default export
 export default function Home() {
   return (
     <>
