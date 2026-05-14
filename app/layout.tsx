@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { Banner, Footer, Header } from "@teamimpact/veda-ui-blocks";
+import type { Metadata } from "next";
 import "@teamimpact/veda-ui-blocks/disasters.css";
 
 import { MOCK_FOOTER_PROPS } from "./site-config/footer";
@@ -10,7 +10,6 @@ export const metadata: Metadata = {
   description: "Disasters portal",
 };
 
-// biome-ignore lint/style/noDefaultExport: RootLayout components in Next.js must use default export
 export default function RootLayout({
   children,
 }: Readonly<{
