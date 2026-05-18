@@ -1,3 +1,3 @@
 export * from "./section";
-export * from "./sectionHeader";
+export * from "./sectionHeading";
 export * from "./themeTags";

@@ -1,4 +1,4 @@
-import { Section, SectionHeader, ThemeTag } from "@/app/disastersComponents";
+import { Section, SectionHeading, ThemeTag } from "@/app/disastersComponents";
 
 // biome-ignore lint/style/noDefaultExport: Next.js requires default export for pages
 export default function CatalogPage() {
@@ -11,39 +11,36 @@ export default function CatalogPage() {
 
       {/* Section — must be top-level, not inside a grid-container */}
       <div className="grid-container margin-bottom-2">
-        <h2 className="font-sans-xl text-base-dark border-bottom-2px border-base-light padding-bottom-2 margin-bottom-1">
+        <SectionHeading className="font-sans-xl text-base-dark border-bottom-2px border-base-light padding-bottom-2 margin-bottom-1">
           Section
-        </h2>
+        </SectionHeading>
+
         <p className="font-sans-xs text-base margin-bottom-0">Default</p>
       </div>
       <Section>
-        <SectionHeader>Example Section Headline</SectionHeader>
-        <p>Section content goes here.</p>
-      </Section>
-      <Section>
-        <SectionHeader>Example Section Headline</SectionHeader>
+        <SectionHeading>Example Section Headline</SectionHeading>
         <p>Section content goes here.</p>
       </Section>
       <div className="grid-container margin-top-4 margin-bottom-2">
         <p className="font-sans-xs text-base margin-bottom-0">greyBackground=true</p>
       </div>
       <Section bgColor="base-lightest">
-        <SectionHeader>Example Section Headline</SectionHeader>
+        <SectionHeading>Example Section Headline</SectionHeading>
         <p>Section content with grey background.</p>
       </Section>
 
-      {/* SectionHeader */}
+      {/* SectionHeading */}
       <div className="grid-container padding-y-6">
-        <h2 className="font-sans-xl text-base-dark border-bottom-2px border-base-light padding-bottom-2 margin-bottom-4">
-          SectionHeader
-        </h2>
-        <SectionHeader>Example Section Headline</SectionHeader>
-        <SectionHeader>Another Headline</SectionHeader>
+        <SectionHeading className="font-sans-xl text-base-dark border-bottom-2px border-base-light padding-bottom-2 margin-bottom-1">
+          SectionHeading
+        </SectionHeading>
+        <SectionHeading>Example Section Headline</SectionHeading>
+        <SectionHeading>Another Headline</SectionHeading>
 
         {/* ThemeTag */}
-        <h2 className="font-sans-xl text-base-dark border-bottom-2px border-base-light padding-bottom-2 margin-top-6 margin-bottom-4">
+        <SectionHeading className="font-sans-xl text-base-dark border-bottom-2px border-base-light padding-bottom-2 margin-bottom-1">
           ThemeTag
-        </h2>
+        </SectionHeading>
         <div className="display-flex flex-wrap grid-gap-2">
           <div>
             <p className="font-sans-xs text-base margin-bottom-1">respond</p>
