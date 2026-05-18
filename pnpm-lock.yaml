@@ -8,12 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@fontsource-variable/inter':
-        specifier: ^5.2.8
-        version: 5.2.8
-      '@fontsource/dm-mono':
-        specifier: ^5.2.7
-        version: 5.2.7
       '@tanstack/react-query':
         specifier: ^5.99.0
         version: 5.100.9(react@19.2.3)
