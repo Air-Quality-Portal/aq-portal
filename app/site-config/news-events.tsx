@@ -4,18 +4,56 @@ import Image from "next/image";
 
 type CardWithId = CardSimpleProps & { id: string };
 
-export const MOCK_CARD_NEWS_EVENTS_FEATURED: CardWithId = {
-  id: "card-news-featured",
-  title: "U.S. Winter Storm January 2026",
+export const MOCK_CARD_NEWS_EVENTS_ESTIMATING_LOSS_RECOVERY: CardWithId = {
+  id: "card-news-estimating-loss-recovery",
+  title: "When Every Dollar Counts: Estimating Loss to Speed Recovery",
   image: (
     <Image
-      src="/img/news-events/winter-storm.webp"
-      alt="Satellite imagery of U.S. winter storm system with snow and cloud cover"
+      src="/img/news-events/estimating-loss-recovery.webp"
+      alt="Community recovery efforts in Mayfield after disaster, showing rebuilding in progress"
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
     />
   ),
-  url: "/news/winter-storm-2026",
+  url: "/news/estimating-loss-recovery",
+  tag: (
+    <Tag color="white" textColor="#0D313D">
+      STORY
+    </Tag>
+  ),
+};
+
+export const MOCK_CARD_NEWS_EVENTS_FINDING_FLOODS: CardWithId = {
+  id: "card-news-finding-floods",
+  title: "Finding the Floods",
+  image: (
+    <Image
+      src="/img/news-events/finding-floods.webp"
+      alt="Flooded river in Kerrville, Texas showing significant flood waters"
+      fill
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+    />
+  ),
+  url: "/news/finding-floods",
+  tag: (
+    <Tag color="white" textColor="#0D313D">
+      STORY
+    </Tag>
+  ),
+};
+
+export const MOCK_CARD_NEWS_EVENTS_TYPHOON_SINLAKU: CardWithId = {
+  id: "card-news-typhoon-sinlaku",
+  title: "Typhoon Sinlaku April 2026",
+  image: (
+    <Image
+      src="/img/news-events/typhoon-sinlaku-2026.webp"
+      alt="Satellite worldview imagery of Typhoon Sinlaku from April 2026"
+      fill
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+    />
+  ),
+  url: "/news/typhoon-sinlaku-2026",
   tag: (
     <Tag color="white" textColor="#0D313D">
       EVENT
@@ -23,59 +61,21 @@ export const MOCK_CARD_NEWS_EVENTS_FEATURED: CardWithId = {
   ),
 };
 
-export const MOCK_CARD_NEWS_EVENTS_RESILIENCE: CardWithId = {
-  id: "card-news-resilience",
-  title: "Building Resilience in Coastal Communities with NASA Earth Science",
+export const MOCK_CARD_NEWS_EVENTS_PORTAL_TEST: CardWithId = {
+  id: "card-news-portal-test",
+  title: "Help Test the New NASA Disasters PORTAL",
   image: (
     <Image
-      src="/img/news-events/building-resilience.webp"
-      alt="Hurricane damage in coastal community with destroyed buildings and debris"
+      src="/img/news-events/help-test-portal.webp"
+      alt="NASA Disasters Portal team members at a field event"
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
     />
   ),
-  url: "/news/building-resilience",
-  tag: (
-    <Tag color="white" textColor="#0D313D">
-      STORY
-    </Tag>
-  ),
-};
-
-export const MOCK_CARD_NEWS_EVENTS_RESPONSE_MAPPER: CardWithId = {
-  id: "card-news-response-mapper",
-  title: "Become a NASA Response Mapper: Help Strengthen Hurricane Response from the Ground Up",
-  image: (
-    <Image
-      src="/img/news-events/response-mapper.webp"
-      alt="NASA Response Mapper helping with emergency disaster response operations"
-      fill
-      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-    />
-  ),
-  url: "/news/nasa-response-mapper",
+  url: "/news/help-test-portal",
   tag: (
     <Tag color="white" textColor="#0D313D">
       NEWS
-    </Tag>
-  ),
-};
-
-export const MOCK_CARD_NEWS_EVENTS_TORNADO: CardWithId = {
-  id: "card-news-tornado",
-  title: "Tracking Tornadoes from Space",
-  image: (
-    <Image
-      src="/img/news-events/tracking-tornadoes.webp"
-      alt="Community damage from tornado disaster showing destroyed buildings and landscape"
-      fill
-      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-    />
-  ),
-  url: "/news/tracking-tornadoes",
-  tag: (
-    <Tag color="white" textColor="#0D313D">
-      STORY
     </Tag>
   ),
 };
