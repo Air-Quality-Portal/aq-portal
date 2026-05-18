@@ -3,12 +3,7 @@ import { Card, CardSimple } from "@teamimpact/veda-ui-blocks";
 import { STYLE_CARDSIMPLE_HEIGHT, STYLE_HOME_MASTHEAD_HEIGHT } from "./site-config/constants";
 import { MOCK_CARD_HOMEPAGE_HERO } from "./site-config/home-card-hero";
 import { MOCK_CARD_FEATURED_LETSCONNECT } from "./site-config/home-cardfeatured-lets_connect";
-import {
-  MOCK_CARD_NEWS_EVENTS_ESTIMATING_LOSS_RECOVERY,
-  MOCK_CARD_NEWS_EVENTS_FINDING_FLOODS,
-  MOCK_CARD_NEWS_EVENTS_PORTAL_TEST,
-  MOCK_CARD_NEWS_EVENTS_TYPHOON_SINLAKU,
-} from "./site-config/news-events";
+import { NEWS_EVENTS_CARDS } from "./site-config/news-events";
 import {
   MOCK_CARD_RESOURCES_LEARNING_PREPARE,
   MOCK_CARD_RESOURCES_LEARNING_RECOVER,
@@ -28,19 +23,19 @@ export default function Home() {
           <div className="grid-row grid-gap-2 margin-bottom-neg-2">
             {/* Feature card: full-width → desktop: 2 of 4 cols */}
             <div className="grid-col-12 desktop:grid-col-6 margin-bottom-2 height-mobile">
-              <CardSimple {...MOCK_CARD_NEWS_EVENTS_ESTIMATING_LOSS_RECOVERY} />
+              <CardSimple {...NEWS_EVENTS_CARDS[0]} />
             </div>
             {/* Regular card: full-width → tablet: half → desktop: 1 of 4 cols */}
             <div className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 height-mobile">
-              <CardSimple {...MOCK_CARD_NEWS_EVENTS_FINDING_FLOODS} />
+              <CardSimple {...NEWS_EVENTS_CARDS[1]} />
             </div>
             {/* Stacked half-height cards: full-width → tablet: half → desktop: 1 of 4 cols */}
             <div className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 display-flex flex-column height-mobile">
               <div className="flex-1 margin-bottom-2">
-                <CardSimple {...MOCK_CARD_NEWS_EVENTS_TYPHOON_SINLAKU} size="compact" />
+                <CardSimple {...NEWS_EVENTS_CARDS[2]} size="compact" />
               </div>
               <div className="flex-1">
-                <CardSimple {...MOCK_CARD_NEWS_EVENTS_PORTAL_TEST} size="compact" />
+                <CardSimple {...NEWS_EVENTS_CARDS[3]} size="compact" />
               </div>
             </div>
           </div>
