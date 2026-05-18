@@ -25,7 +25,7 @@ const MOCK_NAV_ITEM_WITH_DROPDOWN_2 = [
 ];
 const MOCK_NAV_ITEM_WITH_DROPDOWN_3 = [
   {
-    label: "Resources and Learning",
+    label: "Resources & Learning",
     subItems: [
       { label: "Training", href: "/training" },
       { label: "News, Event & Stories", href: "/news-event-stories" },
@@ -41,7 +41,7 @@ export const MOCK_HEADER_PROPS: HeaderProps = {
     url: "/",
   },
   navItems: [
-    { label: "About us", href: "/about-us" },
+    { label: "About us", href: "/about" },
     ...MOCK_NAV_ITEM_WITH_DROPDOWN_1,
     ...MOCK_NAV_ITEM_WITH_DROPDOWN_2,
     ...MOCK_NAV_ITEM_WITH_DROPDOWN_3,
