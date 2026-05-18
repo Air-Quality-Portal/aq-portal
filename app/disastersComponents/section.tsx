@@ -1,6 +1,6 @@
-import React, { type PropsWithChildren, type ReactNode } from "react";
+import type { ComponentProps, PropsWithChildren, ReactNode } from "react";
 
-type SectionProps = React.ComponentProps<"section"> & {
+type SectionProps = ComponentProps<"section"> & {
   heading?: ReactNode;
   anchorId?: ReactNode;
   bgColor?: "base-lightest";
