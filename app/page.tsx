@@ -9,12 +9,7 @@ import {
   MOCK_CARD_NEWS_EVENTS_RESPONSE_MAPPER,
   MOCK_CARD_NEWS_EVENTS_TORNADO,
 } from "./site-config/news-events";
-import {
-  MOCK_CARD_RESOURCES_LEARNING_PREPARE,
-  MOCK_CARD_RESOURCES_LEARNING_RECOVER,
-  MOCK_CARD_RESOURCES_LEARNING_RESILIENCE,
-  MOCK_CARD_RESOURCES_LEARNING_RESPOND,
-} from "./site-config/resources-learning";
+import { RESOURCES_LEARNING_CARDS } from "./site-config/resources-learning";
 
 export default function Home() {
   return (
@@ -59,12 +54,7 @@ export default function Home() {
         <div className="grid-container grid-gap-3">
           <h2 className="margin-bottom-8 font-heading-2xl">Resources & Learning</h2>
           <div className="grid-row grid-gap-2 margin-bottom-6">
-            {[
-              MOCK_CARD_RESOURCES_LEARNING_PREPARE,
-              MOCK_CARD_RESOURCES_LEARNING_RESPOND,
-              MOCK_CARD_RESOURCES_LEARNING_RECOVER,
-              MOCK_CARD_RESOURCES_LEARNING_RESILIENCE,
-            ].map((props) => (
+            {RESOURCES_LEARNING_CARDS.map((props) => (
               <div
                 key={props.id}
                 className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2"
