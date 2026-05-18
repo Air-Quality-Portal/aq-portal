@@ -1,8 +1,6 @@
 import type { ComponentProps, PropsWithChildren, ReactNode } from "react";
 
 type SectionProps = ComponentProps<"section"> & {
-  heading?: ReactNode;
-  anchorId?: ReactNode;
   bgColor?: "base-lightest";
 };
 

@@ -1,14 +1,9 @@
 import type { ComponentProps, ReactNode } from "react";
 
-export const SectionHeading = ({
-  children,
-  className,
-  anchorId,
-  ...props
-}: ComponentProps<"h2"> & { anchorId?: ReactNode }) => {
+export const SectionHeading = ({ children, className, id, ...props }: ComponentProps<"h2">) => {
   return (
     <h2
-      id={anchorId ? (typeof anchorId === "string" ? anchorId : undefined) : undefined}
+      id={id}
       className={`font-sans-2xl padding-bottom-2 margin-0 ${className ? ` ${className}` : ""}`}
       {...props}
     >
