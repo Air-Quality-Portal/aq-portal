@@ -47,19 +47,27 @@ export default function CatalogPage() {
         <div className="display-flex flex-wrap grid-gap-2">
           <div>
             <p className="font-sans-xs text-base margin-bottom-1">respond</p>
-            <ThemeTag theme="respond" />
+            <div className="blocks-card-simple__tag">
+              <ThemeTag theme="respond" />
+            </div>
           </div>
           <div>
             <p className="font-sans-xs text-base margin-bottom-1">build</p>
-            <ThemeTag theme="build" />
+            <div className="blocks-card-simple__tag">
+              <ThemeTag theme="build" />
+            </div>
           </div>
           <div>
-            <p className="font-sans-xs text-base margin-bottom-1">prepare</p>
-            <ThemeTag theme="prepare" />
+            <p className="font-sans-xs text-base margin-bottom-1">prepare</p>{" "}
+            <div className="blocks-card-simple__tag">
+              <ThemeTag theme="prepare" />
+            </div>
           </div>
           <div>
-            <p className="font-sans-xs text-base margin-bottom-1">recover</p>
-            <ThemeTag theme="recover" />
+            <p className="font-sans-xs text-base margin-bottom-1">recover</p>{" "}
+            <div className="blocks-card-simple__tag">
+              <ThemeTag theme="recover" />
+            </div>
           </div>
         </div>
       </div>
