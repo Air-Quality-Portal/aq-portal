@@ -1,6 +1,6 @@
 import type { ComponentProps, PropsWithChildren } from "react";
 
-type SectionProps = ComponentProps<"section"> & {
+export type SectionProps = ComponentProps<"section"> & {
   bgColor?: "base-lightest";
 };
 
