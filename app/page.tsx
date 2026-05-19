@@ -4,7 +4,7 @@ import { SectionCardMosaic } from "@/app/components";
 
 import { STYLE_CARDSIMPLE_HEIGHT, STYLE_HOME_MASTHEAD_HEIGHT } from "./site-config/constants";
 import { MOCK_CARD_HOMEPAGE_HERO } from "./site-config/home/home-card-hero";
-import { MOCK_CARD_FEATURED_LETSCONNECT } from "./site-config/home/home-cardfeatured-lets_connect";
+import { MOCK_CARD_LETSCONNECT } from "./site-config/home/home-card-lets_connect";
 import { NEWS_EVENTS_CARDS } from "./site-config/home/home-cardmosaicsection-news-events";
 import {
   MOCK_CARD_RESOURCES_LEARNING_PREPARE,
@@ -51,7 +51,7 @@ export default function Home() {
             ))}
           </div>
           <div className="grid-row">
-            <Card {...MOCK_CARD_FEATURED_LETSCONNECT} />
+            <Card {...MOCK_CARD_LETSCONNECT} />
           </div>
         </div>
       </section>
