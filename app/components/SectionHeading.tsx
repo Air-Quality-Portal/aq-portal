@@ -1,8 +1,8 @@
 import Link from "next/link";
 import type { ComponentProps } from "react";
 
-type SectionHeadingProps = ComponentProps<"h2"> & {
-  href?: string;
+export type SectionHeadingProps = ComponentProps<"h2"> & {
+  href?: ComponentProps<typeof Link>["href"];
 };
 
 export const SectionHeading = ({ href, children, className, ...props }: SectionHeadingProps) => {
