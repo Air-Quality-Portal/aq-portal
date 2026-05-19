@@ -1,5 +1,11 @@
-import { ComingSoonPage } from "../components/ComingSoon";
+import { PageStatus } from "@/app/components/PageStatus";
 
 export default function DataProcessingPage() {
-  return <ComingSoonPage />;
+  return (
+    <PageStatus
+      label="Data Processing"
+      heading="Under development"
+      description="The page you're looking for is under development."
+    />
+  );
 }

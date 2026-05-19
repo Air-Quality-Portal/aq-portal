@@ -1,13 +1,13 @@
 import Link from "next/link";
 
-interface PageMessageProps {
+interface PageStatusProps {
   label?: string;
   heading: string;
   description?: string;
 }
 
 /** Centered page message with optional label, heading, description, and home link. */
-export function PageMessage({ label, heading, description }: PageMessageProps) {
+export function PageStatus({ label, heading, description }: PageStatusProps) {
   return (
     <div className="flex-1 display-flex flex-column flex-align-center flex-justify-center text-center padding-y-6 padding-x-4">
       {label && <p className="font-heading-3xl text-bold margin-bottom-1">{label}</p>}

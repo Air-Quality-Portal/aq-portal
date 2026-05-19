@@ -1,5 +1,11 @@
-import { ComingSoonPage } from "../components/ComingSoon";
+import { PageStatus } from "@/app/components/PageStatus";
 
 export default function NewsEventsCollectionPage() {
-  return <ComingSoonPage />;
+  return (
+    <PageStatus
+      label="News & Events Collection"
+      heading="Under development"
+      description="The page you're looking for is under development."
+    />
+  );
 }
