@@ -2,14 +2,12 @@ import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import { CardSimple } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
 
-import { Section } from "./Section";
-import { SectionHeading } from "./SectionHeading";
-
-type CardWithId = CardSimpleProps & { id: string };
+import { Section, SectionHeading } from "@/app/components/";
+import type { IterableItemWithId } from "@/app/components/types";
 
 type CardMosaicSectionProps = {
   sectionHeading?: ReactNode;
-  cards: CardWithId[];
+  cards: IterableItemWithId<CardSimpleProps>[];
 };
 
 /**

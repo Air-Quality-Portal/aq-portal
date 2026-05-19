@@ -1,6 +1,6 @@
 import { Card, CardSimple } from "@teamimpact/veda-ui-blocks";
 
-import { CardMosaicSection } from "./components";
+import { CardMosaicSection } from "@/app/components";
 
 import { STYLE_CARDSIMPLE_HEIGHT, STYLE_HOME_MASTHEAD_HEIGHT } from "./site-config/constants";
 import { MOCK_CARD_HOMEPAGE_HERO } from "./site-config/home-card-hero";

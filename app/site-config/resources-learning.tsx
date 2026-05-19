@@ -1,10 +1,9 @@
 import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import { Tag } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
+import type { IterableItemWithId } from "@/app/components/types";
 
-type CardWithId = CardSimpleProps & { id: string };
-
-export const MOCK_CARD_RESOURCES_LEARNING_PREPARE: CardWithId = {
+export const MOCK_CARD_RESOURCES_LEARNING_PREPARE: IterableItemWithId<CardSimpleProps> = {
   id: "card-prepare",
   title: "Tools You Can Use: Mapping Flood Impacts",
   image: (
@@ -23,7 +22,7 @@ export const MOCK_CARD_RESOURCES_LEARNING_PREPARE: CardWithId = {
   ),
 };
 
-export const MOCK_CARD_RESOURCES_LEARNING_RESPOND: CardWithId = {
+export const MOCK_CARD_RESOURCES_LEARNING_RESPOND: IterableItemWithId<CardSimpleProps> = {
   id: "card-respond",
   title: "Become a NASA Response Mapper: Help Strengthen Hurricane Response from the Ground Up",
   image: (
@@ -42,7 +41,7 @@ export const MOCK_CARD_RESOURCES_LEARNING_RESPOND: CardWithId = {
   ),
 };
 
-export const MOCK_CARD_RESOURCES_LEARNING_RECOVER: CardWithId = {
+export const MOCK_CARD_RESOURCES_LEARNING_RECOVER: IterableItemWithId<CardSimpleProps> = {
   id: "card-recover",
   title: "Imagery for the January 2025 Southern California Wildfires",
   image: (
@@ -61,7 +60,7 @@ export const MOCK_CARD_RESOURCES_LEARNING_RECOVER: CardWithId = {
   ),
 };
 
-export const MOCK_CARD_RESOURCES_LEARNING_RESILIENCE: CardWithId = {
+export const MOCK_CARD_RESOURCES_LEARNING_RESILIENCE: IterableItemWithId<CardSimpleProps> = {
   id: "card-resilience",
   title: "Building Resilience in Coastal Communities with NASA Earth Science",
   image: (

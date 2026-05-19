@@ -1,11 +1,10 @@
 import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import { Tag } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-
-type CardWithId = CardSimpleProps & { id: string };
+import type { IterableItemWithId } from "@/app/components/types";
 
 // Layout order: [0] featured, [1] regular, [2] compact top, [3] compact bottom
-export const NEWS_EVENTS_CARDS: CardWithId[] = [
+export const NEWS_EVENTS_CARDS: IterableItemWithId<CardSimpleProps>[] = [
   {
     id: "card-news-estimating-loss-recovery",
     title: "When Every Dollar Counts: Estimating Loss to Speed Recovery",
