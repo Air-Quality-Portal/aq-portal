@@ -3,9 +3,9 @@ import { Card, CardSimple } from "@teamimpact/veda-ui-blocks";
 import { CardMosaicSection } from "@/app/components";
 
 import { STYLE_CARDSIMPLE_HEIGHT, STYLE_HOME_MASTHEAD_HEIGHT } from "./site-config/constants";
-import { MOCK_CARD_HOMEPAGE_HERO } from "./site-config/home-card-hero";
-import { MOCK_CARD_FEATURED_LETSCONNECT } from "./site-config/home-cardfeatured-lets_connect";
-import { NEWS_EVENTS_CARDS } from "./site-config/news-events";
+import { MOCK_CARD_HOMEPAGE_HERO } from "./site-config/home/home-card-hero";
+import { MOCK_CARD_FEATURED_LETSCONNECT } from "./site-config/home/home-cardfeatured-lets_connect";
+import { NEWS_EVENTS_CARDS } from "./site-config/home/home-cardmosaicsection-news-events";
 import {
   MOCK_CARD_RESOURCES_LEARNING_PREPARE,
   MOCK_CARD_RESOURCES_LEARNING_RECOVER,
