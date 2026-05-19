@@ -1,15 +1,11 @@
-import { Card, CardSimple } from "@teamimpact/veda-ui-blocks";
+import { Card } from "@teamimpact/veda-ui-blocks";
 
-import { CardSimpleSection } from "./components";
+import { CardSimpleSection, SectionCardMosaic } from "@/app/components";
+
 import { STYLE_HOME_MASTHEAD_HEIGHT } from "./site-config/constants";
-import { MOCK_CARD_HOMEPAGE_HERO } from "./site-config/home-card-hero";
-import { MOCK_CARD_FEATURED_LETSCONNECT } from "./site-config/home-cardfeatured-lets_connect";
-import {
-  MOCK_CARD_NEWS_EVENTS_FEATURED,
-  MOCK_CARD_NEWS_EVENTS_RESILIENCE,
-  MOCK_CARD_NEWS_EVENTS_RESPONSE_MAPPER,
-  MOCK_CARD_NEWS_EVENTS_TORNADO,
-} from "./site-config/news-events";
+import { MOCK_CARD_HOMEPAGE_HERO } from "./site-config/home/home-card-hero";
+import { MOCK_CARD_LETSCONNECT } from "./site-config/home/home-card-lets_connect";
+import { NEWS_EVENTS_CARDS } from "./site-config/home/home-cardmosaicsection-news-events";
 import { RESOURCES_LEARNING_CARDS } from "./site-config/resources-learning";
 
 export default function Home() {
@@ -18,30 +14,7 @@ export default function Home() {
       <div className="display-flex" style={{ minHeight: STYLE_HOME_MASTHEAD_HEIGHT }}>
         <Card {...MOCK_CARD_HOMEPAGE_HERO} />
       </div>
-      <section className="padding-top-7">
-        <div className="grid-container">
-          <h2 className="margin-bottom-8 font-heading-2xl">News & Events</h2>
-          <div className="grid-row grid-gap-2 margin-bottom-neg-2">
-            {/* Feature card: full-width → desktop: 2 of 4 cols */}
-            <div className="grid-col-12 desktop:grid-col-6 margin-bottom-2 height-mobile">
-              <CardSimple {...MOCK_CARD_NEWS_EVENTS_FEATURED} />
-            </div>
-            {/* Regular card: full-width → tablet: half → desktop: 1 of 4 cols */}
-            <div className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 height-mobile">
-              <CardSimple {...MOCK_CARD_NEWS_EVENTS_RESILIENCE} />
-            </div>
-            {/* Stacked half-height cards: full-width → tablet: half → desktop: 1 of 4 cols */}
-            <div className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 display-flex flex-column height-mobile">
-              <div className="flex-1 margin-bottom-2">
-                <CardSimple {...MOCK_CARD_NEWS_EVENTS_RESPONSE_MAPPER} size="compact" />
-              </div>
-              <div className="flex-1">
-                <CardSimple {...MOCK_CARD_NEWS_EVENTS_TORNADO} size="compact" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <SectionCardMosaic sectionHeading="News & Events" cards={NEWS_EVENTS_CARDS} />
       {/* Data Visualization */}
       <section className="padding-y-7">
         <div className="grid-container">
@@ -49,14 +22,13 @@ export default function Home() {
           <p>TODO: Map block</p>
         </div>
       </section>
-
       <CardSimpleSection
         sectionHeading="Resources & Learning"
         cards={RESOURCES_LEARNING_CARDS}
         bgColor="base-lightest"
       >
         <div className="grid-row">
-          <Card {...MOCK_CARD_FEATURED_LETSCONNECT} />
+          <Card {...MOCK_CARD_LETSCONNECT} />
         </div>
       </CardSimpleSection>
     </>
