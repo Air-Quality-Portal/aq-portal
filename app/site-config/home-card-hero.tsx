@@ -1,5 +1,4 @@
 import { CardCTA, type CardProps } from "@teamimpact/veda-ui-blocks";
-import Image from "next/image";
 
 const MOCK_FEATURE_CTACARDS_PROPS = [
   {
@@ -43,12 +42,14 @@ const MOCK_FEATURE_CTACARDS_SECTION = (
 
 export const MOCK_CARD_HOMEPAGE_HERO: CardProps = {
   image: (
-    <Image
-      alt="Earth from space"
-      src="/img/home/home-card-hero.webp"
-      fill
-      style={{ objectFit: "cover" }}
-      preload={true}
+    <video
+      src="/img/home/home-card-hero-video.mp4"
+      poster="/img/home/home-card-hero-poster.webp"
+      autoPlay
+      muted
+      loop
+      playsInline
+      style={{ objectFit: "cover", width: "100%", height: "100%" }}
     />
   ),
   title: <h1 className="font-heading-3xl text-bold text-white margin-0">Disasters PORTAL</h1>,
