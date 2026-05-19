@@ -1,20 +1,20 @@
 import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import { CardSimple } from "@teamimpact/veda-ui-blocks";
-import type { ReactNode } from "react";
+import type { PropsWithChildren, ReactNode } from "react";
 
 import { Section, SectionHeading } from "@/app/components/";
 import type { IterableItemWithId } from "@/app/components/types";
 
-type SectionCardMosaicProps = {
+type SectionCardMosaicProps = PropsWithChildren<{
   sectionHeading?: ReactNode;
   cards: IterableItemWithId<CardSimpleProps>[];
-};
+}>;
 
 /**
  * Mosaic grid: [0] featured (2 cols), [1] regular (1 col), [2–3] compact stacked (1 col).
  * Expects exactly 4 cards.
  */
-export const SectionCardMosaic = ({ sectionHeading, cards }: SectionCardMosaicProps) => {
+export const SectionCardMosaic = ({ sectionHeading, cards, children }: SectionCardMosaicProps) => {
   return (
     <Section>
       {sectionHeading && <SectionHeading>{sectionHeading}</SectionHeading>}
@@ -37,6 +37,7 @@ export const SectionCardMosaic = ({ sectionHeading, cards }: SectionCardMosaicPr
           </div>
         </div>
       </div>
+      {children}
     </Section>
   );
 };
