@@ -38,11 +38,11 @@ export default function CatalogPage() {
         </code>
       </Section>
       <Section bgColor="base-lightest">
-        <SectionHeading>Section Headline</SectionHeading>
+        <SectionHeading href="/">Section Headline</SectionHeading>
         <p>Section content with grey background.</p>
         <code className="bg-base-lighter font-code-xs">
           {`<Section bgColor="base-lightest">
-              <SectionHeading>Example Section Headline</SectionHeading>
+              <SectionHeading href="/">Example Section Headline</SectionHeading>
               <p>
                 Lorem ipsum dolor sit amet...
               </p>
