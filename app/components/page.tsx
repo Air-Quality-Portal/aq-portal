@@ -1,6 +1,6 @@
 import { Section, SectionHeading, ThemeTag } from "@/app/components/";
 
-export default function CatalogPage() {
+export default function ComponentsPage() {
   return (
     <>
       <Section>
