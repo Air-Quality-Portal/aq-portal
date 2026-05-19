@@ -8,7 +8,7 @@ const MOCK_NAV_ITEM_WITH_DROPDOWN_1 = [
       { label: "Prepare", href: "/prepare" },
       { label: "Respond", href: "/respond" },
       { label: "Recover", href: "/recover" },
-      { label: "Build Resilience", href: "/build-resilience" },
+      { label: "Build Resilience", href: "/resilience" },
     ],
   },
 ];
@@ -18,7 +18,11 @@ const MOCK_NAV_ITEM_WITH_DROPDOWN_2 = [
     label: "Explore Data",
     subItems: [
       { label: "Data Gallery", href: "/data-gallery" },
-      { label: "Data Visualization", href: "/data-visualization" },
+      {
+        label: "Data Visualization",
+        href: "https://data-visualization.disasters.openveda.cloud/",
+        isExternal: true,
+      },
       { label: "Data Processing", href: "/data-processing" },
     ],
   },
@@ -28,9 +32,7 @@ const MOCK_NAV_ITEM_WITH_DROPDOWN_3 = [
     label: "Resources & Learning",
     subItems: [
       { label: "Training", href: "/training" },
-      { label: "News, Event & Stories", href: "/news-event-stories" },
-      { label: "Projects", href: "/projects" },
-      { label: "Documents", href: "/documents" },
+      { label: "News, Events & Stories", href: "/news-events" },
     ],
   },
 ];
@@ -46,5 +48,4 @@ export const MOCK_HEADER_PROPS: HeaderProps = {
     ...MOCK_NAV_ITEM_WITH_DROPDOWN_2,
     ...MOCK_NAV_ITEM_WITH_DROPDOWN_3,
   ],
-  currentPath: "/prepare",
 };
