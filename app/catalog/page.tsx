@@ -1,4 +1,4 @@
-import { Section, SectionHeading, ThemeTag } from "@/app/disastersComponents";
+import { Section, SectionHeading, ThemeTag } from "@/app/components/";
 
 export default function CatalogPage() {
   return (

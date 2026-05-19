@@ -1,9 +1,8 @@
-import type { ComponentProps, ReactNode } from "react";
+import type { ComponentProps } from "react";
 
-export const SectionHeading = ({ children, className, id, ...props }: ComponentProps<"h2">) => {
+export const SectionHeading = ({ children, className, ...props }: ComponentProps<"h2">) => {
   return (
     <h2
-      id={id}
       className={`font-sans-2xl padding-bottom-2 margin-0 ${className ? ` ${className}` : ""}`}
       {...props}
     >

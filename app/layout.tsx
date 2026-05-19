@@ -21,7 +21,6 @@ export default function RootLayout({
         <Banner />
         <Header {...MOCK_HEADER_PROPS} />
         <main className="flex-1">{children}</main>
-
         <Footer {...MOCK_FOOTER_PROPS} />
       </body>
     </html>
