@@ -19,7 +19,7 @@ import {
 export default function Home() {
   return (
     <>
-      <div className="display-flex" style={{ minHeight: STYLE_HOME_MASTHEAD_HEIGHT }}>
+      <div className="home-hero display-flex" style={{ minHeight: STYLE_HOME_MASTHEAD_HEIGHT }}>
         <Card {...MOCK_CARD_HOMEPAGE_HERO} />
       </div>
       <section className="padding-top-7">

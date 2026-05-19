@@ -1,4 +1,5 @@
 import { CardCTA, type CardProps } from "@teamimpact/veda-ui-blocks";
+import Image from "next/image";
 
 const MOCK_FEATURE_CTACARDS_PROPS = [
   {
@@ -52,12 +53,25 @@ export const MOCK_CARD_HOMEPAGE_HERO: CardProps = {
       style={{ objectFit: "cover", width: "100%", height: "100%" }}
     />
   ),
-  title: <h1 className="font-heading-3xl text-bold text-white margin-0">Disasters PORTAL</h1>,
-  description: "Empowering disaster insights with actionable Earth science information.",
-  callToAction: {
-    label: "Learn About Us",
-    href: "/link",
-  },
+  title: (
+    <div className="grid-row grid-gap-4 flex-align-center">
+      <div className="grid-col-12 tablet:grid-col-auto">
+        <Image src="/img/logo-emblem.svg" alt="" aria-hidden width={177} height={182} />
+      </div>
+      <div className="grid-col-12 tablet:grid-col-fill">
+        <h1 className="font-heading-3xl text-bold text-white margin-0 margin-bottom-2">
+          Disasters PORTAL
+        </h1>
+        <p className="text-white margin-0 margin-bottom-4 measure-4">
+          A geospatial collaboration and learning portal translating NASA Earth science into
+          actionable insights for disaster decision-making.
+        </p>
+        <a href="/about" className="usa-button">
+          Learn About Us
+        </a>
+      </div>
+    </div>
+  ),
   colorMode: "brand",
   isMastHead: true,
   children: MOCK_FEATURE_CTACARDS_SECTION,
