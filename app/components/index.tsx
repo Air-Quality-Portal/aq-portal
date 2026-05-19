@@ -1,3 +1,3 @@
-export { Section } from "./Section1";
-export { SectionHeading } from "./SectionHeading1";
-export { ThemeTag } from "./ThemeTag1";
+export { Section } from "./Section";
+export { SectionHeading } from "./SectionHeading";
+export { ThemeTag } from "./ThemeTag";
