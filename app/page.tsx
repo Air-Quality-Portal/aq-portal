@@ -1,6 +1,6 @@
 import { Card } from "@teamimpact/veda-ui-blocks";
 
-import { CardSimpleSection, SectionCardMosaic } from "@/app/components";
+import { CardSimpleSection, SectionCardSimpleMosaic } from "@/app/components";
 
 import { STYLE_HOME_MASTHEAD_HEIGHT } from "./site-config/constants";
 import { MOCK_CARD_HOMEPAGE_HERO } from "./site-config/home/home-card-hero";
@@ -14,7 +14,7 @@ export default function Home() {
       <div className="display-flex" style={{ minHeight: STYLE_HOME_MASTHEAD_HEIGHT }}>
         <Card {...MOCK_CARD_HOMEPAGE_HERO} />
       </div>
-      <SectionCardMosaic sectionHeading="News & Events" cards={NEWS_EVENTS_CARDS} />
+      <SectionCardSimpleMosaic sectionHeading="News & Events" cards={NEWS_EVENTS_CARDS} />
       {/* Data Visualization */}
       <section className="padding-y-7">
         <div className="grid-container">
