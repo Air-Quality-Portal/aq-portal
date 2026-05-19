@@ -44,12 +44,13 @@ export const MOCK_CARD_HOMEPAGE_HERO: CardProps = {
   image: (
     <video
       src="/img/home/home-card-hero-video.mp4"
+      aria-hidden="true"
+      tabIndex={-1}
       poster="/img/home/home-card-hero-poster.webp"
       autoPlay
       muted
       loop
       playsInline
-      style={{ objectFit: "cover", width: "100%", height: "100%" }}
     />
   ),
   title: <h1 className="font-heading-3xl text-bold text-white margin-0">Disasters PORTAL</h1>,
