@@ -1,5 +1,5 @@
 import { ComingSoonPage } from "../../components/ComingSoon";
 
-export default function DatasetPage() {
+export default function DatasetItemPage() {
   return <ComingSoonPage />;
 }

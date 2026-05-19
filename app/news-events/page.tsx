@@ -1,5 +1,5 @@
 import { ComingSoonPage } from "../components/ComingSoon";
 
-export default function NewsEventsPage() {
+export default function NewsEventsCollectionPage() {
   return <ComingSoonPage />;
 }
