@@ -17,10 +17,10 @@ export const RESOURCES_LEARNING_CARDS: CardWithId[] = [
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
       />
     ),
-    url: "/resources/eo-building-exposure-data",
+    url: "/training/eo-building-exposure-data",
     tag: (
-      <Tag color="#F67E09" textColor="#0D313D">
-        PREPARE
+      <Tag color="#4F6FAE" textColor="white">
+        RECOVER
       </Tag>
     ),
   },
@@ -35,7 +35,7 @@ export const RESOURCES_LEARNING_CARDS: CardWithId[] = [
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
       />
     ),
-    url: "/resources/lifelines-wildfire-workflow",
+    url: "/training/lifelines-wildfire-workflow",
     tag: (
       <Tag color="#C91B6E" textColor="white">
         RESPOND
@@ -55,8 +55,8 @@ export const RESOURCES_LEARNING_CARDS: CardWithId[] = [
     ),
     url: "https://www.earthdata.nasa.gov/learn/trainings/fundamentals-remote-sensing",
     tag: (
-      <Tag color="#4F6FAE" textColor="white">
-        RECOVER
+      <Tag color="#F67E09" textColor="#0D313D">
+        PREPARE
       </Tag>
     ),
   },
@@ -73,8 +73,8 @@ export const RESOURCES_LEARNING_CARDS: CardWithId[] = [
     ),
     url: "https://www.earthdata.nasa.gov/learn/trainings/introduction-synthetic-aperture-radar-sar-its-applications",
     tag: (
-      <Tag color="#1D9950" textColor="white">
-        BUILD RESILIENCE
+      <Tag color="#F67E09" textColor="#0D313D">
+        PREPARE
       </Tag>
     ),
   },
