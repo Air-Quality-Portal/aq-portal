@@ -29,9 +29,9 @@ export default function Recover() {
         <Card {...MOCK_CARD_RECOVER_HERO} />
       </div>
 
-      {/* News & Events / Stories of Impact */}
+      {/* Stories of Impact */}
       <Section>
-        <SectionHeading>News & Events</SectionHeading>
+        <SectionHeading>Stories of Impact</SectionHeading>
         <div className="grid-row grid-gap-2 margin-bottom-neg-2">
           {/* Feature card: full-width → desktop: 2 of 4 cols */}
           <div className="grid-col-12 desktop:grid-col-6 margin-bottom-2 height-mobile">

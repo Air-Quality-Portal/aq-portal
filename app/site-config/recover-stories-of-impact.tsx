@@ -7,26 +7,11 @@ type CardWithId = CardSimpleProps & { id: string };
 
 export const MOCK_CARD_RECOVER_STORY_1: CardWithId = {
   id: "card-recover-story-1",
-  title: "Assessing Disaster Impacts with Satellite Imagery",
+  title: "When Every Dollar Counts: Estimating Loss to Speed Recovery",
   image: (
     <Image
-      src="/img/recover/stories-of-impact/story-1.webp"
-      alt="Satellite view of disaster-impacted area showing damage assessment"
-      fill
-      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
-    />
-  ),
-  url: "#",
-  tag: <ThemeTag theme="recover" />,
-};
-
-export const MOCK_CARD_RECOVER_STORY_2: CardWithId = {
-  id: "card-recover-story-2",
-  title: "Supporting Community Rebuilding Efforts",
-  image: (
-    <Image
-      src="/img/recover/stories-of-impact/story-2.webp"
-      alt="Community members engaged in rebuilding and recovery activities"
+      src="/img/recover/stories-of-impact/when-every-dollar-counts.webp"
+      alt="Post-disaster aerial imagery used to estimate economic losses and accelerate recovery funding decisions"
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
     />
@@ -35,13 +20,28 @@ export const MOCK_CARD_RECOVER_STORY_2: CardWithId = {
   tag: <ThemeTag theme="recover" />,
 };
 
-export const MOCK_CARD_RECOVER_STORY_3: CardWithId = {
-  id: "card-recover-story-3",
-  title: "Monitoring Environmental Recovery",
+export const MOCK_CARD_RECOVER_STORY_2: CardWithId = {
+  id: "card-recover-story-2",
+  title: "Clearing the Way: Debris Mapping for Faster Recovery",
   image: (
     <Image
-      src="/img/recover/stories-of-impact/story-3.webp"
-      alt="Environmental landscape showing signs of recovery and restoration"
+      src="/img/recover/stories-of-impact/clearing-way-debris-mapping.webp"
+      alt="Aerial view of tornado-damaged neighborhoods used to map debris and prioritize recovery operations"
+      fill
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
+    />
+  ),
+  url: "#",
+  tag: <ThemeTag theme="recover" />,
+};
+
+export const MOCK_CARD_RECOVER_STORY_3: CardWithId = {
+  id: "card-recover-story-3",
+  title: "Mapping Oil Spills from Space to Protect Communities",
+  image: (
+    <Image
+      src="/img/recover/stories-of-impact/mapping-oil-spills-space.webp"
+      alt="Satellite-detected oil patterns on the ocean surface used to guide spill response and coastal recovery planning"
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
     />
@@ -52,11 +52,11 @@ export const MOCK_CARD_RECOVER_STORY_3: CardWithId = {
 
 export const MOCK_CARD_RECOVER_STORY_4: CardWithId = {
   id: "card-recover-story-4",
-  title: "Planning for Resilient Futures",
+  title: "Identifying Infrastructure Risks from Space to Guide Hurricane Recovery",
   image: (
     <Image
-      src="/img/recover/stories-of-impact/story-3.webp"
-      alt="Community planning meeting with maps and recovery strategy documents"
+      src="/img/recover/stories-of-impact/identifying-infrastructure-risks.webp"
+      alt="Night view of Miami infrastructure used to assess critical assets and hurricane recovery risks"
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
     />
