@@ -63,8 +63,7 @@ export const MOCK_CARD_HOMEPAGE_HERO: CardProps = {
           Disasters PORTAL
         </h1>
         <p className="text-white margin-0 margin-bottom-4 measure-4">
-          A geospatial collaboration and learning portal translating NASA Earth science into
-          actionable insights for disaster decision-making.
+          Empowering disaster insights with actionable Earth science information
         </p>
         <a href="/about" className="usa-button">
           Learn About Us
