@@ -1,3 +1,4 @@
+export { CardSimpleSection } from "./CardSimpleSection";
 export { HeaderWithCurrentPath } from "./HeaderWithCurrentPath";
 export { PageStatus } from "./PageStatus";
 export { Section } from "./Section";

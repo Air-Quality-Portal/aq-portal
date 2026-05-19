@@ -1,6 +1,7 @@
 import { Card, CardSimple } from "@teamimpact/veda-ui-blocks";
 
-import { STYLE_CARDSIMPLE_HEIGHT, STYLE_HOME_MASTHEAD_HEIGHT } from "./site-config/constants";
+import { CardSimpleSection } from "./components";
+import { STYLE_HOME_MASTHEAD_HEIGHT } from "./site-config/constants";
 import { MOCK_CARD_HOMEPAGE_HERO } from "./site-config/home-card-hero";
 import { MOCK_CARD_FEATURED_LETSCONNECT } from "./site-config/home-cardfeatured-lets_connect";
 import {
@@ -49,28 +50,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Resources & Learning */}
-      <section className="bg-base-lightest padding-y-7">
-        <div className="grid-container grid-gap-3">
-          <h2 className="margin-bottom-8 font-heading-2xl">Resources & Learning</h2>
-          <div className="grid-row grid-gap-2 margin-bottom-6">
-            {RESOURCES_LEARNING_CARDS.map((props) => (
-              <div
-                key={props.id}
-                className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2"
-                style={{
-                  height: STYLE_CARDSIMPLE_HEIGHT,
-                }}
-              >
-                <CardSimple {...props} />
-              </div>
-            ))}
-          </div>
-          <div className="grid-row">
-            <Card {...MOCK_CARD_FEATURED_LETSCONNECT} />
-          </div>
+      <CardSimpleSection
+        sectionHeading="Resources & Learning"
+        cards={RESOURCES_LEARNING_CARDS}
+        bgColor="base-lightest"
+      >
+        <div className="grid-row">
+          <Card {...MOCK_CARD_FEATURED_LETSCONNECT} />
         </div>
-      </section>
+      </CardSimpleSection>
     </>
   );
 }
