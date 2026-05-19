@@ -5,17 +5,17 @@ import { Section, SectionHeading, type SectionProps } from "@/app/components";
 import type { IterableItemWithId } from "@/app/components/types";
 import { STYLE_CARDSIMPLE_HEIGHT } from "../site-config/constants";
 
-type CardSimpleSectionProps = SectionProps & {
+type SectionCardSimpleProps = SectionProps & {
   sectionHeading?: ReactNode;
   cards: IterableItemWithId<CardSimpleProps>[];
 };
 
-export const CardSimpleSection = ({
+export const SectionCardSimple = ({
   sectionHeading,
   cards,
   bgColor,
   children,
-}: CardSimpleSectionProps) => {
+}: SectionCardSimpleProps) => {
   return (
     <Section bgColor={bgColor}>
       {sectionHeading && <SectionHeading>{sectionHeading}</SectionHeading>}

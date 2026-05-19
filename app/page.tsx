@@ -1,6 +1,6 @@
 import { Card } from "@teamimpact/veda-ui-blocks";
 
-import { CardSimpleSection, SectionCardSimpleMosaic } from "@/app/components";
+import { SectionCardSimple, SectionCardSimpleMosaic } from "@/app/components";
 
 import { STYLE_HOME_MASTHEAD_HEIGHT } from "./site-config/constants";
 import { MOCK_CARD_HOMEPAGE_HERO } from "./site-config/home/home-card-hero";
@@ -22,7 +22,7 @@ export default function Home() {
           <p>TODO: Map block</p>
         </div>
       </section>
-      <CardSimpleSection
+      <SectionCardSimple
         sectionHeading="Resources & Learning"
         cards={RESOURCES_LEARNING_CARDS}
         bgColor="base-lightest"
@@ -30,7 +30,7 @@ export default function Home() {
         <div className="grid-row">
           <Card {...MOCK_CARD_LETSCONNECT} />
         </div>
-      </CardSimpleSection>
+      </SectionCardSimple>
     </>
   );
 }
