@@ -1,4 +1,4 @@
-import { PageStatus } from "@/app/components/PageStatus";
+import { PageStatus } from "@/app/components/";
 
 export default function NewsEventsItemPage() {
   <PageStatus
