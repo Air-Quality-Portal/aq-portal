@@ -1,9 +1,12 @@
 import { PageStatus } from "@/app/components/";
 
-export default function NewsEventsItemPage() {
-  <PageStatus
-    label="News & Event Item"
-    heading="Under development"
-    description="The page you're looking for is under development."
-  />;
+export default async function NewsEventsItemPage(props: PageProps<"/news-events/[id]">) {
+  const { id } = await props.params;
+  return (
+    <PageStatus
+      label={`News & Event Item: ${id}`}
+      heading="Under development"
+      description="The page you're looking for is under development."
+    />
+  );
 }
