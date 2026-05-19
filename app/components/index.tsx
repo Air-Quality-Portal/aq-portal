@@ -1,3 +1,4 @@
+export { CardCarouselSection } from "./CardCarouselSection";
 export { HeaderWithCurrentPath } from "./HeaderWithCurrentPath";
 export { PageStatus } from "./PageStatus";
 export { Section } from "./Section";
