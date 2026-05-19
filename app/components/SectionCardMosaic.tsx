@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 import { Section, SectionHeading } from "@/app/components/";
 import type { IterableItemWithId } from "@/app/components/types";
 
-type CardMosaicSectionProps = {
+type SectionCardMosaicProps = {
   sectionHeading?: ReactNode;
   cards: IterableItemWithId<CardSimpleProps>[];
 };
@@ -14,7 +14,7 @@ type CardMosaicSectionProps = {
  * Mosaic grid: [0] featured (2 cols), [1] regular (1 col), [2–3] compact stacked (1 col).
  * Expects exactly 4 cards.
  */
-export const CardMosaicSection = ({ sectionHeading, cards }: CardMosaicSectionProps) => {
+export const SectionCardMosaic = ({ sectionHeading, cards }: SectionCardMosaicProps) => {
   return (
     <Section>
       {sectionHeading && <SectionHeading>{sectionHeading}</SectionHeading>}
