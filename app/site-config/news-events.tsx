@@ -1,8 +1,7 @@
 import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import { Tag } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-
-type CardWithId = CardSimpleProps & { id: string };
+import type { CardWithId } from "../components/types";
 
 export const MOCK_CARD_NEWS_EVENTS_FEATURED: CardWithId = {
   id: "card-news-featured",

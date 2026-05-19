@@ -1,8 +1,7 @@
 import { Card, type CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
 import { SectionHeading } from "./SectionHeading";
-
-type CardWithId = CardSimpleProps & { id: string };
+import type { CardWithId } from "./types";
 
 type CardCarouselSection = {
   sectionHeading?: ReactNode;
