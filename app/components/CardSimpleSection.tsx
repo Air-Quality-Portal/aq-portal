@@ -1,18 +1,13 @@
 import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import { CardSimple } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
-
+import { Section, SectionHeading, type SectionProps } from "@/app/components";
+import type { IterableItemWithId } from "@/app/components/types";
 import { STYLE_CARDSIMPLE_HEIGHT } from "../site-config/constants";
-import { Section } from "./Section";
-import { SectionHeading } from "./SectionHeading";
 
-type CardWithId = CardSimpleProps & { id: string };
-
-type CardSimpleSectionProps = {
+type CardSimpleSectionProps = SectionProps & {
   sectionHeading?: ReactNode;
-  cards: CardWithId[];
-  bgColor?: "base-lightest";
-  children?: ReactNode;
+  cards: IterableItemWithId<CardSimpleProps>[];
 };
 
 export const CardSimpleSection = ({
