@@ -29,8 +29,6 @@ const MOCK_NAV_ITEM_WITH_DROPDOWN_3 = [
     subItems: [
       { label: "Training", href: "/training" },
       { label: "News, Events & Stories", href: "/news-events" },
-      { label: "Projects", href: "/projects" },
-      { label: "Documents", href: "/documents" },
     ],
   },
 ];

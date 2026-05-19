@@ -10,7 +10,6 @@ const primaryNavItems: FooterProps["primaryNavItems"] = [
 
 const secondaryNavItems: FooterProps["secondaryNavItems"] = [
   { label: "Image Use Policy", href: "https://www.nasa.gov/accessibility/", isExternal: true },
-  { label: "Site Map", href: "/sitemap" },
   {
     label: "Privacy policy",
     href: "https://www.nasa.gov/nasa-web-privacy-policy-and-important-notices/",
