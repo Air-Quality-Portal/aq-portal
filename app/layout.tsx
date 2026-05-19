@@ -2,7 +2,7 @@ import { Banner, Footer } from "@teamimpact/veda-ui-blocks";
 import type { Metadata } from "next";
 import "@teamimpact/veda-ui-blocks/disasters.css";
 
-import { HeaderWithCurrentPath } from "./components/HeaderWithCurrentPath";
+import { HeaderWithCurrentPath } from "@/app/components";
 import { MOCK_FOOTER_PROPS } from "./site-config/footer";
 
 export const metadata: Metadata = {
