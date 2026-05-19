@@ -5,8 +5,8 @@ import { CardSimpleSection, SectionCardMosaic } from "@/app/components";
 import { STYLE_HOME_MASTHEAD_HEIGHT } from "./site-config/constants";
 import { MOCK_CARD_HOMEPAGE_HERO } from "./site-config/home/home-card-hero";
 import { MOCK_CARD_LETSCONNECT } from "./site-config/home/home-card-lets_connect";
-import { NEWS_EVENTS_CARDS } from "./site-config/home/home-cardmosaicsection-news-events";
-import { RESOURCES_LEARNING_CARDS } from "./site-config/resources-learning";
+import { NEWS_EVENTS_CARDS } from "./site-config/home/home-sectioncardmosaic-news-events";
+import { RESOURCES_LEARNING_CARDS } from "./site-config/home/home-sectioncardsimple-resources-learning";
 
 export default function Home() {
   return (
