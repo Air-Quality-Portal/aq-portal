@@ -1,6 +1,6 @@
-/** 
-* Adds logo to home page masthead on large views
-*/
+/**
+ * Adds logo to home page masthead on large views
+ */
 .home-card-masthead {
   @media (min-width: 640px) {
     .blocks-card__content-container:before {
