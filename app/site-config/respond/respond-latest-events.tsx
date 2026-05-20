@@ -14,7 +14,7 @@ export const MOCK_CARD_TYPHOON_SINLAKU_APRIL_2026: IterableItemWithId<CardSimple
       height={120}
     />
   ),
-  url: "#",
+  url: "/events/typhoon-sinlaku-april-2026",
   tag: (
     <Tag color="white" textColor="#c91b6e">
       ACTIVE
@@ -32,7 +32,7 @@ export const MOCK_CARD_US_WINTER_STORM_JAN_2026: IterableItemWithId<CardSimplePr
       height={120}
     />
   ),
-  url: "#",
+  url: "/events/us-winter-storm-jan-2026",
 };
 
 export const MOCK_CARD_TEXAS_FLOODS_JULY_2025: IterableItemWithId<CardSimpleProps> = {
@@ -46,7 +46,7 @@ export const MOCK_CARD_TEXAS_FLOODS_JULY_2025: IterableItemWithId<CardSimpleProp
       height={120}
     />
   ),
-  url: "#",
+  url: "/events/texas-floods-july-2025",
 };
 
 export const MOCK_CARD_SOUTHERN_CALIFORNIA_FIRES_JAN_2025: IterableItemWithId<CardSimpleProps> = {
@@ -60,5 +60,5 @@ export const MOCK_CARD_SOUTHERN_CALIFORNIA_FIRES_JAN_2025: IterableItemWithId<Ca
       height={120}
     />
   ),
-  url: "#",
+  url: "/events/southern-california-fires-jan-2025",
 };

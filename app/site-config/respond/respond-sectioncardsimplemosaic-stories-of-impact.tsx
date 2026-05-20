@@ -15,7 +15,7 @@ export const MOCK_CARD_FINDING_THE_FLOODS: CardWithId = {
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
     />
   ),
-  url: "#",
+  url: "/stories/finding-the-floods",
   tag: <ThemeTag theme="respond" />,
 };
 export const MOCK_CARD_TRACKING_TORNADOE: CardWithId = {
@@ -29,7 +29,7 @@ export const MOCK_CARD_TRACKING_TORNADOE: CardWithId = {
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
     />
   ),
-  url: "#",
+  url: "/stories/tracking-tornadoes-from-space",
   tag: <ThemeTag theme="respond" />,
 };
 
@@ -44,7 +44,7 @@ export const MOCK_CARD_BEYOND_FLAMES: CardWithId = {
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
     />
   ),
-  url: "#",
+  url: "/stories/seeing-beyond-the-flames-mapping-wildfire-impacts-in-southern-california",
   tag: <ThemeTag theme="respond" />,
 };
 
@@ -59,6 +59,6 @@ export const MOCK_CARD_HURRICANE_HELENE: CardWithId = {
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
     />
   ),
-  url: "#",
+  url: "/stories/supporting-communities-in-the-wake-of-hurricane-helene",
   tag: <ThemeTag theme="respond" />,
 };
