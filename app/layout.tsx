@@ -17,10 +17,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="display-flex flex-column minh-viewport">
+      <body
+        className="minh-viewport"
+        style={{
+          display: "grid",
+          gridTemplateRows: "auto auto 1fr auto" /* banner, header, main, footer */,
+        }}
+      >
         <Banner />
         <HeaderWithCurrentPath />
-        <main className="flex-1 display-flex flex-column">{children}</main>
+        <main>{children}</main>
         <Footer {...MOCK_FOOTER_PROPS} />
       </body>
     </html>

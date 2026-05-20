@@ -30,6 +30,7 @@ export default function Home() {
         sectionHeading="Resources & Learning"
         cards={RESOURCES_LEARNING_CARDS}
         bgColor="base-lightest"
+        className="margin-bottom-neg-7"
       >
         <div className="grid-row">
           <Card {...MOCK_CARD_LETSCONNECT} />
