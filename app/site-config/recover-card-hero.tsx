@@ -4,8 +4,8 @@ import Image from "next/image";
 export const MOCK_CARD_RECOVER_HERO: CardProps = {
   image: (
     <Image
-      alt="Disaster recovery - rebuilding communities"
-      src="/img/recover/hero/recover-hero.webp"
+      alt="Aerial view of debris removal operations in Mayfield, Kentucky after severe storm damage"
+      src="/img/recover/hero/debris-removal-mayfield.webp"
       fill
       style={{ objectFit: "cover" }}
       preload={true}
