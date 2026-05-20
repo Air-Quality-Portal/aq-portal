@@ -9,12 +9,12 @@ export const RESPOND_CARD_RESOURCES_LEARNING_NASA_LIFELINES: IterableItemWithId<
   image: (
     <Image
       src="/img/repond/resources-learning/LifelinesCoverImage.webp"
-      alt="Coastal area with turquoise water and green land"
+      alt="Satellite image of an active wildfire, showing bright red hotspots and a large plume of gray smoke spreading across a landscape of green forested hills and dry terrain, with a small urban area visible in the upper left"
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
     />
   ),
-  url: "/resources/mapping-flood-impacts",
+  url: "/training/",
   tag: <ThemeTag theme="respond" />,
 };
 export const RESPOND_CARD_RESOURCES_LEARNING_FUNDAMENTALS_OF_REMOTE_SENSING: IterableItemWithId<CardSimpleProps> =
@@ -24,7 +24,7 @@ export const RESPOND_CARD_RESOURCES_LEARNING_FUNDAMENTALS_OF_REMOTE_SENSING: Ite
     image: (
       <Image
         src="/img/repond/resources-learning/NISAR.webp"
-        alt="Coastal area with turquoise water and green land"
+        alt="Artist's rendering of the NISAR satellite in orbit, featuring a large circular radar antenna dish and extended solar panels, with Earth's surface and atmosphere visible in the background."
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
       />
@@ -39,7 +39,7 @@ export const RESPOND_CARD_RESOURCES_LEARNING_INTRODUCTION_TO_SAR: IterableItemWi
     image: (
       <Image
         src="/img/repond/resources-learning/HydroSAR_Memphis_April2025.webp"
-        alt="Coastal area with turquoise water and green land"
+        alt="HydroSAR flood map of the Memphis, Tennessee area from April 2025, showing water extent detected by radar satellite data overlaid in bright blue on a grayscale landscape, with extensive flooding visible along the Mississippi River and surrounding floodplains."
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
       />
@@ -54,7 +54,7 @@ export const RESPOND_CARD_RESOURCES_LEARNING_USING_EARTH_OBSERVATIONS: IterableI
     image: (
       <Image
         src="/img/repond/resources-learning/Planet_LAFires_Altadena.webp"
-        alt="Coastal area with turquoise water and green land"
+        alt="Planet satellite image of the Altadena area after the LA fires, showing a dense urban grid at the base of the San Gabriel Mountains, with a large darkened burn scar visible across the foothills and into the residential neighborhoods."
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
       />
