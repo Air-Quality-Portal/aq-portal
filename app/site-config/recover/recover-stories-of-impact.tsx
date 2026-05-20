@@ -1,6 +1,5 @@
 import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-
 import { ThemeTag } from "@/app/components";
 
 type CardWithId = CardSimpleProps & { id: string };

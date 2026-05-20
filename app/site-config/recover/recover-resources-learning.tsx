@@ -1,11 +1,9 @@
 import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-
 import { ThemeTag } from "@/app/components";
+import type { IterableItemWithId } from "@/app/components/types";
 
-type CardWithId = CardSimpleProps & { id: string };
-
-export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_1: CardWithId = {
+export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_1: IterableItemWithId<CardSimpleProps> = {
   id: "card-resources-learning-recover-1",
   title: "Understanding EO-based Building Exposure for Disaster Recovery",
   image: (
@@ -16,11 +14,11 @@ export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_1: CardWithId = {
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
     />
   ),
-  url: "/resources/damage-assessment",
+  url: "/training/",
   tag: <ThemeTag theme="recover" />,
 };
 
-export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_2: CardWithId = {
+export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_2: IterableItemWithId<CardSimpleProps> = {
   id: "card-resources-learning-recover-2",
   title: "Fundamentals of Remote Sensing",
   image: (
@@ -31,11 +29,11 @@ export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_2: CardWithId = {
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
     />
   ),
-  url: "/resources/resilience-planning",
+  url: "https://www.earthdata.nasa.gov/learn/trainings/fundamentals-remote-sensing",
   tag: <ThemeTag theme="recover" />,
 };
 
-export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_3: CardWithId = {
+export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_3: IterableItemWithId<CardSimpleProps> = {
   id: "card-resources-learning-recover-3",
   title: "Introduction to SAR and its Applications",
   image: (
@@ -46,11 +44,11 @@ export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_3: CardWithId = {
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
     />
   ),
-  url: "/resources/environmental-recovery",
+  url: "https://www.earthdata.nasa.gov/learn/trainings/introduction-synthetic-aperture-radar-sar-its-applications",
   tag: <ThemeTag theme="recover" />,
 };
 
-export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_4: CardWithId = {
+export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_4: IterableItemWithId<CardSimpleProps> = {
   id: "card-resources-learning-recover-4",
   title: "Using Earth Observations for Pre- and Post-Fire Monitoring",
   image: (
@@ -61,6 +59,13 @@ export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_4: CardWithId = {
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
     />
   ),
-  url: "/resources/building-back-better",
+  url: "https://www.earthdata.nasa.gov/learn/trainings/using-earth-observations-for-pre-and-post-fire-monitoring",
   tag: <ThemeTag theme="recover" />,
 };
+
+export const MOCK_RECOVER_CARD_RESOURCE_LEARNING = [
+  MOCK_CARD_RECOVER_RESOURCES_LEARNING_1,
+  MOCK_CARD_RECOVER_RESOURCES_LEARNING_2,
+  MOCK_CARD_RECOVER_RESOURCES_LEARNING_3,
+  MOCK_CARD_RECOVER_RESOURCES_LEARNING_4,
+];

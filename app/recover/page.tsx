@@ -1,31 +1,24 @@
 import { Card, CardMini, CardSimple } from "@teamimpact/veda-ui-blocks";
-
 import { Section, SectionHeading } from "@/app/components";
-import { STYLE_CARDSIMPLE_HEIGHT, STYLE_THEME_MASTHEAD_HEIGHT } from "@/app/site-config/constants";
-import { MOCK_CARD_RECOVER_HERO } from "@/app/site-config/recover-card-hero";
+import { MOCK_CARD_RECOVER_HERO } from "@/app/site-config/recover/recover-card-hero";
 import {
   MOCK_CARD_RECOVER_LATEST_EVENT_1,
   MOCK_CARD_RECOVER_LATEST_EVENT_2,
   MOCK_CARD_RECOVER_LATEST_EVENT_3,
   MOCK_CARD_RECOVER_LATEST_EVENT_4,
-} from "@/app/site-config/recover-latest-events";
-import {
-  MOCK_CARD_RECOVER_RESOURCES_LEARNING_1,
-  MOCK_CARD_RECOVER_RESOURCES_LEARNING_2,
-  MOCK_CARD_RECOVER_RESOURCES_LEARNING_3,
-  MOCK_CARD_RECOVER_RESOURCES_LEARNING_4,
-} from "@/app/site-config/recover-resources-learning";
+} from "@/app/site-config/recover/recover-latest-events";
+import { MOCK_RECOVER_CARD_RESOURCE_LEARNING } from "@/app/site-config/recover/recover-resources-learning";
 import {
   MOCK_CARD_RECOVER_STORY_1,
   MOCK_CARD_RECOVER_STORY_2,
   MOCK_CARD_RECOVER_STORY_3,
   MOCK_CARD_RECOVER_STORY_4,
-} from "@/app/site-config/recover-stories-of-impact";
+} from "@/app/site-config/recover/recover-stories-of-impact";
 
 export default function Recover() {
   return (
     <>
-      <div className="display-flex" style={{ minHeight: STYLE_THEME_MASTHEAD_HEIGHT }}>
+      <div className="display-flex" style={{ minHeight: "484px" }}>
         <Card {...MOCK_CARD_RECOVER_HERO} />
       </div>
 
@@ -88,18 +81,11 @@ export default function Recover() {
       <Section>
         <SectionHeading>Resources & Learning</SectionHeading>
         <div className="grid-row grid-gap-2 margin-bottom-6">
-          {[
-            MOCK_CARD_RECOVER_RESOURCES_LEARNING_1,
-            MOCK_CARD_RECOVER_RESOURCES_LEARNING_2,
-            MOCK_CARD_RECOVER_RESOURCES_LEARNING_3,
-            MOCK_CARD_RECOVER_RESOURCES_LEARNING_4,
-          ].map(({ id, ...cardProps }) => (
+          {MOCK_RECOVER_CARD_RESOURCE_LEARNING.map((cardProps) => (
             <div
-              key={id}
+              key={cardProps.id}
               className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2"
-              style={{
-                height: STYLE_CARDSIMPLE_HEIGHT,
-              }}
+              style={{ minHeight: "484px" }}
             >
               <CardSimple {...cardProps} />
             </div>
