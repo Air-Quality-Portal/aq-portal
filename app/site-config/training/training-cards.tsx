@@ -17,6 +17,10 @@ export const TRAINING_CARDS: IterableItemWithId<CardDetailedProps>[] = [
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
       />
     ),
+    callToAction: {
+      href: "/training/eo-building-exposure-data",
+      label: "View Training",
+    },
   },
   {
     id: "lifelines-wildfire-workflow",
@@ -31,5 +35,9 @@ export const TRAINING_CARDS: IterableItemWithId<CardDetailedProps>[] = [
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
       />
     ),
+    callToAction: {
+      href: "/training/lifelines-wildfire-workflow",
+      label: "View Training",
+    },
   },
 ];
