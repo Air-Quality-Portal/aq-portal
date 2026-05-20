@@ -1,11 +1,11 @@
-import { PageStatus } from "@/app/components/";
+import { Card } from "@teamimpact/veda-ui-blocks";
+
+import { TRAINING_CARD_MASTHEAD } from "@/app/site-config/training/training-card-masthead";
 
 export default function TrainingCollectionPage() {
   return (
-    <PageStatus
-      label="Trainings Collection"
-      heading="Under development"
-      description="The page you're looking for is under development."
-    />
+    <div className="display-flex minh-masthead">
+      <Card {...TRAINING_CARD_MASTHEAD} />
+    </div>
   );
 }
