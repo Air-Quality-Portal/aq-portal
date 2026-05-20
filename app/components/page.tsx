@@ -1,10 +1,17 @@
-import { Section, SectionHeading, ThemeTag } from "@/app/components/";
+import {
+  Section,
+  SectionCardSimple,
+  SectionCardSimpleMosaic,
+  SectionHeading,
+  ThemeTag,
+} from "@/app/components/";
+import { NEWS_EVENTS_CARDS } from "../site-config/home/home-sectioncardmosaic-news-events";
 
 export default function ComponentsPage() {
   return (
     <>
       <Section>
-        <SectionHeading>Section & Section Heading</SectionHeading>
+        <SectionHeading>Section Component & SectionHeading Component</SectionHeading>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eleifend nibh velit, a
           eleifend nunc egestas ac. Duis laoreet maximus magna quis tempus. Integer placerat orci
@@ -38,7 +45,7 @@ export default function ComponentsPage() {
         </code>
       </Section>
       <Section bgColor="base-lightest">
-        <SectionHeading href="/">Section Headline</SectionHeading>
+        <SectionHeading href="/">Section with bgColor and SectionHeading Component</SectionHeading>
         <p>Section content with grey background.</p>
         <code className="bg-base-lighter font-code-xs">
           {`<Section bgColor="base-lightest">
@@ -49,6 +56,37 @@ export default function ComponentsPage() {
             </Section>`}
         </code>
       </Section>
+
+      <SectionCardSimpleMosaic
+        sectionHeading="SectionCardSimpleMosaic Component"
+        cards={NEWS_EVENTS_CARDS}
+      >
+        <p>Lorem ipsum dolor sit amet...</p>
+        <code className="bg-base-lighter font-code-xs">
+          {`<SectionCardSimpleMosaic
+              sectionHeading="SectionCardSimpleMosaic Component"
+              cards={NEWS_EVENTS_CARDS}
+            >
+              <p>
+                Lorem ipsum dolor sit amet...
+              </p>
+            </SectionCardSimpleMosaic>`}
+        </code>
+      </SectionCardSimpleMosaic>
+
+      <SectionCardSimple sectionHeading="SectionCardSimple Component" cards={NEWS_EVENTS_CARDS}>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <code className="bg-base-lighter font-code-xs">
+          {`<SectionCardSimple
+              sectionHeading="SectionCardSimple Component"
+              cards={NEWS_EVENTS_CARDS}
+            >
+              <p>
+                Lorem ipsum dolor sit amet...
+              </p>
+            </SectionCardSimple>`}
+        </code>
+      </SectionCardSimple>
 
       <Section>
         <SectionHeading>ThemeTag</SectionHeading>

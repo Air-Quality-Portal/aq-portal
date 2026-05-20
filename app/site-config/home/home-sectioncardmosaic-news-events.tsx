@@ -4,7 +4,12 @@ import Image from "next/image";
 import type { IterableItemWithId } from "@/app/components/types";
 
 // Layout order: [0] featured, [1] regular, [2] compact top, [3] compact bottom
-export const NEWS_EVENTS_CARDS: IterableItemWithId<CardSimpleProps>[] = [
+export const NEWS_EVENTS_CARDS: [
+  IterableItemWithId<CardSimpleProps>,
+  IterableItemWithId<CardSimpleProps>,
+  IterableItemWithId<CardSimpleProps>,
+  IterableItemWithId<CardSimpleProps>,
+] = [
   {
     id: "card-news-estimating-loss-recovery",
     title: "When Every Dollar Counts: Estimating Loss to Speed Recovery",

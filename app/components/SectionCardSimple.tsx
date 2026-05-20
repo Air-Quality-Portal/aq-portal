@@ -6,7 +6,12 @@ import type { IterableItemWithId } from "@/app/components/types";
 
 type SectionCardSimpleProps = SectionProps & {
   sectionHeading?: ReactNode;
-  cards: IterableItemWithId<CardSimpleProps>[];
+  cards: [
+    IterableItemWithId<CardSimpleProps>,
+    IterableItemWithId<CardSimpleProps>,
+    IterableItemWithId<CardSimpleProps>,
+    IterableItemWithId<CardSimpleProps>,
+  ];
 };
 
 export const SectionCardSimple = ({

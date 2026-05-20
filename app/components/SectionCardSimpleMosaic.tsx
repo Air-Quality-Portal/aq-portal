@@ -1,5 +1,4 @@
-import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
-import { CardSimple } from "@teamimpact/veda-ui-blocks";
+import { CardSimple, type CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
 
 import { Section, SectionHeading, type SectionProps } from "@/app/components/";
@@ -7,7 +6,12 @@ import type { IterableItemWithId } from "@/app/components/types";
 
 type SectionCardSimpleMosaicProps = SectionProps & {
   sectionHeading?: ReactNode;
-  cards: IterableItemWithId<CardSimpleProps>[];
+  cards: [
+    IterableItemWithId<CardSimpleProps>,
+    IterableItemWithId<CardSimpleProps>,
+    IterableItemWithId<CardSimpleProps>,
+    IterableItemWithId<CardSimpleProps>,
+  ];
 };
 
 /**
@@ -24,15 +28,15 @@ export const SectionCardSimpleMosaic = ({
       {sectionHeading && <SectionHeading>{sectionHeading}</SectionHeading>}
       <div className="grid-row grid-gap-2 margin-bottom-neg-2">
         {/* Featured card: full-width → desktop: 2 of 4 cols */}
-        <div className="grid-col-12 desktop:grid-col-6 margin-bottom-2 height-mobile">
+        <div className="grid-col-12 desktop:grid-col-6 margin-bottom-2 height-card-md">
           <CardSimple {...cards[0]} />
         </div>
         {/* Regular card: full-width → tablet: half → desktop: 1 of 4 cols */}
-        <div className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 height-mobile">
+        <div className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 height-card-md">
           <CardSimple {...cards[1]} />
         </div>
         {/* Stacked half-height cards: full-width → tablet: half → desktop: 1 of 4 cols */}
-        <div className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 display-flex flex-column height-mobile">
+        <div className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 display-flex flex-column height-card-md">
           <div className="flex-1 margin-bottom-2">
             <CardSimple {...cards[2]} size="compact" />
           </div>

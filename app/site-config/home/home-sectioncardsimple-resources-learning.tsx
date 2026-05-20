@@ -3,7 +3,12 @@ import { Tag } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import type { IterableItemWithId } from "@/app/components/types";
 
-export const RESOURCES_LEARNING_CARDS: IterableItemWithId<CardSimpleProps>[] = [
+export const RESOURCES_LEARNING_CARDS: [
+  IterableItemWithId<CardSimpleProps>,
+  IterableItemWithId<CardSimpleProps>,
+  IterableItemWithId<CardSimpleProps>,
+  IterableItemWithId<CardSimpleProps>,
+] = [
   {
     id: "card-eo-building-exposure-data",
     title:
