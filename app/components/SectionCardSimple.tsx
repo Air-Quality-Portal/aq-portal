@@ -3,7 +3,6 @@ import { CardSimple } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
 import { Section, SectionHeading, type SectionProps } from "@/app/components";
 import type { IterableItemWithId } from "@/app/components/types";
-import { STYLE_CARDSIMPLE_HEIGHT } from "../site-config/constants";
 
 type SectionCardSimpleProps = SectionProps & {
   sectionHeading?: ReactNode;
@@ -23,8 +22,7 @@ export const SectionCardSimple = ({
         {cards.map((props) => (
           <div
             key={props.id}
-            className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2"
-            style={{ height: STYLE_CARDSIMPLE_HEIGHT }}
+            className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 height-card-md"
           >
             <CardSimple {...props} />
           </div>

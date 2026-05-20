@@ -40,7 +40,7 @@ const MOCK_FEATURE_CTACARDS_SECTION = (
   </div>
 );
 
-export const MOCK_CARD_HOMEPAGE_HERO: CardProps = {
+export const MOCK_CARD_MASTHEAD: CardProps = {
   image: (
     <video
       src="/img/home/home-card-hero-video.mp4"
@@ -57,7 +57,7 @@ export const MOCK_CARD_HOMEPAGE_HERO: CardProps = {
   description: "Empowering disaster insights with actionable Earth science information.",
   callToAction: {
     label: "Learn About Us",
-    href: "/link",
+    href: "/about",
   },
   colorMode: "brand",
   isMastHead: true,
