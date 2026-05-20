@@ -9,8 +9,9 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
       return (
         <div className="margin-bottom-4">
           {block.heading && <h2 className="font-heading-xl margin-bottom-2">{block.heading}</h2>}
-          {block.paragraphs.map((p) => (
-            <p key={p} className="margin-bottom-2">
+          {block.paragraphs.map((p, i) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
+            <p key={i} className="margin-bottom-2">
               {p}
             </p>
           ))}
@@ -22,8 +23,9 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
         <div className="margin-bottom-4">
           {block.heading && <h2 className="font-heading-xl margin-bottom-2">{block.heading}</h2>}
           <ul className="usa-list">
-            {block.items.map((item) => (
-              <li key={item}>{item}</li>
+            {block.items.map((item, i) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
+              <li key={i}>{item}</li>
             ))}
           </ul>
         </div>
@@ -31,11 +33,11 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
 
     case "note":
       return (
-        <blockquote className="usa-alert usa-alert--info usa-alert--slim margin-bottom-4">
+        <div role="note" className="usa-alert usa-alert--info usa-alert--slim margin-bottom-4">
           <div className="usa-alert__body">
             <p className="usa-alert__text">{block.text}</p>
           </div>
-        </blockquote>
+        </div>
       );
 
     case "cta":
@@ -48,8 +50,8 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
       );
 
     case "slider": {
-      const cards: IterableItemWithId<CardProps>[] = block.images.map((img, i) => ({
-        id: `slider-${i}`,
+      const cards: IterableItemWithId<CardProps>[] = block.images.map((img) => ({
+        id: img.src,
         image: (
           <Image
             src={img.src}
@@ -75,8 +77,9 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
             className="margin-bottom-3"
           />
           <h2 className="font-heading-xl margin-bottom-2">{block.heading}</h2>
-          {block.paragraphs.map((p) => (
-            <p key={p} className="margin-bottom-2">
+          {block.paragraphs.map((p, i) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
+            <p key={i} className="margin-bottom-2">
               {p}
             </p>
           ))}
