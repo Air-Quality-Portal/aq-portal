@@ -7,11 +7,11 @@ type CardWithId = CardSimpleProps & { id: string };
 
 export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_1: CardWithId = {
   id: "card-resources-learning-recover-1",
-  title: "Rapid Damage Assessment Techniques Using Earth Observations",
+  title: "Understanding EO-based Building Exposure for Disaster Recovery",
   image: (
     <Image
-      src="/img/recover/resources-learning/resource-1.webp"
-      alt="Educational content on damage assessment methodologies using satellite data"
+      src="/img/recover/resources-learning/understanding-building-exposure.webp"
+      alt="Building exposure map of Los Angeles used to assess recovery risk and infrastructure vulnerability"
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
     />
@@ -22,11 +22,11 @@ export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_1: CardWithId = {
 
 export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_2: CardWithId = {
   id: "card-resources-learning-recover-2",
-  title: "Community Resilience Planning with NASA Data",
+  title: "Fundamentals of Remote Sensing",
   image: (
     <Image
-      src="/img/recover/resources-learning/resource-2.webp"
-      alt="Framework and tools for community-based resilience planning"
+      src="/img/recover/resources-learning/fundamentals-remote-sensing.webp"
+      alt="NISAR satellite mission imagery supporting foundational remote sensing learning"
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
     />
@@ -37,11 +37,11 @@ export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_2: CardWithId = {
 
 export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_3: CardWithId = {
   id: "card-resources-learning-recover-3",
-  title: "Environmental Recovery Monitoring Strategies",
+  title: "Introduction to SAR and its Applications",
   image: (
     <Image
-      src="/img/recover/resources-learning/resource-3.webp"
-      alt="Methods for tracking environmental recovery using remote sensing"
+      src="/img/recover/resources-learning/introduction-sar-applications.webp"
+      alt="HydroSAR map of Memphis used to demonstrate synthetic aperture radar applications"
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
     />
@@ -52,11 +52,11 @@ export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_3: CardWithId = {
 
 export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_4: CardWithId = {
   id: "card-resources-learning-recover-4",
-  title: "Building Back Better: Science-Informed Reconstruction",
+  title: "Using Earth Observations for Pre- and Post-Fire Monitoring",
   image: (
     <Image
-      src="/img/recover/resources-learning/resource-4.webp"
-      alt="Guidance on integrating scientific data into reconstruction and rebuilding"
+      src="/img/recover/resources-learning/pre-post-fire-monitoring.webp"
+      alt="Planet imagery of Los Angeles fire impacts used for pre-fire and post-fire recovery monitoring"
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
     />
