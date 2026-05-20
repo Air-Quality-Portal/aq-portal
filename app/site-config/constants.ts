@@ -1,5 +1,3 @@
-export const STYLE_CARDSIMPLE_HEIGHT = "400px";
-export const STYLE_HOME_MASTHEAD_HEIGHT = "655px";
 export const CONTENT_THEMES = {
   respond: {
     label: "respond",

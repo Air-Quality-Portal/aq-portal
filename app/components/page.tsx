@@ -1,10 +1,66 @@
-import { Section, SectionHeading, ThemeTag } from "@/app/components/";
+import { Tag } from "@teamimpact/veda-ui-blocks";
+import Image from "next/image";
+import {
+  Section,
+  SectionCardCarousel,
+  type SectionCardCarouselProps,
+  SectionCardSimple,
+  SectionCardSimpleMosaic,
+  SectionHeading,
+  ThemeTag,
+} from "@/app/components/";
+import { NEWS_EVENTS_CARDS } from "../site-config/home/home-sectioncardmosaic-news-events";
+
+const MOCK_CARDS: SectionCardCarouselProps["cards"] = [
+  {
+    id: "card1",
+    tag: <Tag variant="outline">Tag</Tag>,
+    title: "Finding the Floods",
+    description:
+      "Description text goes here. This is a longer description to show how the component handles more text.",
+    callToAction: {
+      label: "Call to action",
+      href: "/link",
+    },
+    image: (
+      <Image
+        src="/img/home/news-events-finding-floods.webp"
+        alt="Flooded river in Kerrville, Texas showing significant flood waters"
+        fill
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+      />
+    ),
+    imagePosition: "cover",
+    colorMode: "dark",
+  },
+  {
+    id: "card2",
+    tag: <Tag variant="outline">Tag</Tag>,
+    title: "Typhoon Sinlaku April 2026",
+    description:
+      "Description text goes here. This is a longer description to show how the component handles more text.",
+    callToAction: {
+      label: "Call to action",
+      href: "/link",
+    },
+    image: (
+      <Image
+        src="/img/home/news-events-typhoon-sinlaku-2026.webp"
+        alt="Satellite worldview imagery of Typhoon Sinlaku from April 2026"
+        fill
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+      />
+    ),
+    imagePosition: "cover",
+    colorMode: "dark",
+  },
+];
 
 export default function ComponentsPage() {
   return (
     <>
       <Section>
-        <SectionHeading>Section & Section Heading</SectionHeading>
+        <SectionHeading>Section Component & SectionHeading Component</SectionHeading>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eleifend nibh velit, a
           eleifend nunc egestas ac. Duis laoreet maximus magna quis tempus. Integer placerat orci
@@ -38,7 +94,7 @@ export default function ComponentsPage() {
         </code>
       </Section>
       <Section bgColor="base-lightest">
-        <SectionHeading href="/">Section Headline</SectionHeading>
+        <SectionHeading href="/">Section with bgColor and SectionHeading Component</SectionHeading>
         <p>Section content with grey background.</p>
         <code className="bg-base-lighter font-code-xs">
           {`<Section bgColor="base-lightest">
@@ -49,6 +105,51 @@ export default function ComponentsPage() {
             </Section>`}
         </code>
       </Section>
+
+      <SectionCardSimpleMosaic
+        sectionHeading="SectionCardSimpleMosaic Component"
+        cards={NEWS_EVENTS_CARDS}
+      >
+        <p>Lorem ipsum dolor sit amet...</p>
+        <code className="bg-base-lighter font-code-xs">
+          {`<SectionCardSimpleMosaic
+              sectionHeading="SectionCardSimpleMosaic Component"
+              cards={NEWS_EVENTS_CARDS}
+            >
+              <p>
+                Lorem ipsum dolor sit amet...
+              </p>
+            </SectionCardSimpleMosaic>`}
+        </code>
+      </SectionCardSimpleMosaic>
+
+      <SectionCardSimple sectionHeading="SectionCardSimple Component" cards={NEWS_EVENTS_CARDS}>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <code className="bg-base-lighter font-code-xs">
+          {`<SectionCardSimple
+              sectionHeading="SectionCardSimple Component"
+              cards={NEWS_EVENTS_CARDS}
+            >
+              <p>
+                Lorem ipsum dolor sit amet...
+              </p>
+            </SectionCardSimple>`}
+        </code>
+      </SectionCardSimple>
+
+      <SectionCardCarousel sectionHeading="SectionCardCarousel Component" cards={MOCK_CARDS}>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <code className="bg-base-lighter font-code-xs">
+          {`<SectionCardCarousel
+              sectionHeading="SectionCardCarousel Component"
+              cards={NEWS_EVENTS_CARDS}
+            >
+              <p>
+                Lorem ipsum dolor sit amet...
+              </p>
+            </SectionCardCarousel>`}
+        </code>
+      </SectionCardCarousel>
 
       <Section>
         <SectionHeading>ThemeTag</SectionHeading>
