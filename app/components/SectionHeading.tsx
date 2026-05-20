@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ComponentProps } from "react";
 
-type SectionHeadingProps = ComponentProps<"h2"> & {
+export type SectionHeadingProps = ComponentProps<"h2"> & {
   href?: ComponentProps<typeof Link>["href"];
 };
 
