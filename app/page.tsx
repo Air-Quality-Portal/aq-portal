@@ -1,6 +1,11 @@
 import { Card } from "@teamimpact/veda-ui-blocks";
 
-import { SectionCardSimple, SectionCardSimpleMosaic } from "@/app/components";
+import {
+  Section,
+  SectionCardSimple,
+  SectionCardSimpleMosaic,
+  SectionHeading,
+} from "@/app/components";
 
 import "./styles/home.css";
 
@@ -17,12 +22,10 @@ export default function Home() {
       </div>
       <SectionCardSimpleMosaic sectionHeading="News & Events" cards={NEWS_EVENTS_CARDS} />
       {/* Data Visualization */}
-      <section className="padding-y-7">
-        <div className="grid-container">
-          <h2 className="margin-bottom-8 font-heading-2xl">Data Visualization</h2>
-          <p>TODO: Map block</p>
-        </div>
-      </section>
+      <Section>
+        <SectionHeading>Data Visualization</SectionHeading>
+        <p>TODO: Map block</p>
+      </Section>
       <SectionCardSimple
         sectionHeading="Resources & Learning"
         cards={RESOURCES_LEARNING_CARDS}
