@@ -17,4 +17,18 @@ export const TRAINING_CARDS: (CardDetailedProps & { id: string })[] = [
       />
     ),
   },
+  {
+    id: "lifelines-wildfire-workflow",
+    title: "NASA Lifelines Data Studio: Wildfire Early Warning Workflow",
+    description:
+      "This module offers a guided, browser-based approach to wildfire early warning using free NASA satellite data. Leveraging FIRMS active fire detections, users will identify fire locations, map risk zones, and assess impacts on population and infrastructure.",
+    image: (
+      <Image
+        src="/img/resources-learning-lifelines-wildfire-workflow.webp"
+        alt="NASA Lifelines Data Studio cover image showing wildfire data workflow"
+        fill
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+      />
+    ),
+  },
 ];

@@ -27,7 +27,7 @@ export const RESOURCES_LEARNING_CARDS: SectionCardSimpleProps["cards"] = [
     title: "NASA Lifelines Data Studio: Wildfire Early Warning Workflow",
     image: (
       <Image
-        src="/img/home/resources-learning-lifelines-wildfire-workflow.webp"
+        src="/img/resources-learning-lifelines-wildfire-workflow.webp"
         alt="NASA Lifelines Data Studio cover image showing wildfire data workflow"
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
