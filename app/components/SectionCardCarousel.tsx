@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { SectionHeading } from "./SectionHeading";
 import type { IterableItemWithId } from "./types";
 
-type SectionCardCarouselProps = {
+export type SectionCardCarouselProps = {
   sectionHeading?: ReactNode;
   cards: IterableItemWithId<CardSimpleProps>[];
 };

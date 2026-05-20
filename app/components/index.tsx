@@ -1,7 +1,8 @@
 export { HeaderWithCurrentPath } from "./HeaderWithCurrentPath";
 export { PageStatus } from "./PageStatus";
-export { Section } from "./Section";
-export { SectionCardCarousel } from "./SectionCardCarousel";
-export { SectionCardMosaic } from "./SectionCardMosaic";
-export { SectionHeading } from "./SectionHeading";
+export { Section, type SectionProps } from "./Section";
+export { SectionCardCarousel, type SectionCardCarouselProps } from "./SectionCardCarousel";
+export { SectionCardSimple } from "./SectionCardSimple";
+export { SectionCardSimpleMosaic } from "./SectionCardSimpleMosaic";
+export { SectionHeading, type SectionHeadingProps } from "./SectionHeading";
 export { ThemeTag } from "./ThemeTag";
