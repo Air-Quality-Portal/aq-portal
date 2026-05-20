@@ -1,0 +1,18 @@
+/** 
+* Adds logo to home page masthead on large views
+*/
+.home-card-masthead {
+  @media (min-width: 640px) {
+    .blocks-card__content-container:before {
+      content: "";
+      background-image: url("/img/logo-emblem.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      float: left;
+      height: 100%;
+      width: 175px;
+      margin-right: 36px;
+    }
+  }
+}
