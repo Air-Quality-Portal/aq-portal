@@ -1,8 +1,10 @@
 import type { CardProps } from "@teamimpact/veda-ui-blocks";
 import { Tag } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
+import type { IterableItemWithId } from "../../components/types";
 
-export const MOCK_DATA_STORY_HURRICANE_MILTON: CardProps = {
+export const MOCK_DATA_STORY_HURRICANE_MILTON: IterableItemWithId<CardProps> = {
+  id: "hurricane-milton-2024",
   title: "Hurricane Milton - October 2024",
   image: (
     <Image
@@ -24,7 +26,8 @@ export const MOCK_DATA_STORY_HURRICANE_MILTON: CardProps = {
     </Tag>
   ),
 };
-export const MOCK_DATA_STORY_HURRICANE_HELENE: CardProps = {
+export const MOCK_DATA_STORY_HURRICANE_HELENE: IterableItemWithId<CardProps> = {
+  id: "hurricane-helene-2024",
   title: "Hurricane Helene - September 2024",
   image: (
     <Image
@@ -47,3 +50,8 @@ export const MOCK_DATA_STORY_HURRICANE_HELENE: CardProps = {
     </Tag>
   ),
 };
+
+export const MOCK_RESPOND_DATA_STORIES = [
+  MOCK_DATA_STORY_HURRICANE_MILTON,
+  MOCK_DATA_STORY_HURRICANE_HELENE,
+];

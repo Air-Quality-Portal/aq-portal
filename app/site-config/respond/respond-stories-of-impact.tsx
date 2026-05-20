@@ -1,6 +1,7 @@
 import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import { Tag } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
+import { ThemeTag } from "../../components";
 
 type CardWithId = CardSimpleProps & { id: string };
 
@@ -16,11 +17,7 @@ export const MOCK_CARD_FINDING_THE_FLOODS: CardWithId = {
     />
   ),
   url: "#",
-  tag: (
-    <Tag color="#c91b6e" textColor="white">
-      RESPOND
-    </Tag>
-  ),
+  tag: <ThemeTag theme="respond" />,
 };
 export const MOCK_CARD_TRACKING_TORNADOE: CardWithId = {
   id: "card-news-featured",
@@ -34,11 +31,7 @@ export const MOCK_CARD_TRACKING_TORNADOE: CardWithId = {
     />
   ),
   url: "#",
-  tag: (
-    <Tag color="#c91b6e" textColor="white">
-      RESPOND
-    </Tag>
-  ),
+  tag: <ThemeTag theme="respond" />,
 };
 
 export const MOCK_CARD_BEYOND_FLAMES: CardWithId = {
@@ -53,11 +46,7 @@ export const MOCK_CARD_BEYOND_FLAMES: CardWithId = {
     />
   ),
   url: "#",
-  tag: (
-    <Tag color="#c91b6e" textColor="white">
-      RESPOND
-    </Tag>
-  ),
+  tag: <ThemeTag theme="respond" />,
 };
 
 export const MOCK_CARD_HURRICANE_HELENE: CardWithId = {
@@ -72,9 +61,5 @@ export const MOCK_CARD_HURRICANE_HELENE: CardWithId = {
     />
   ),
   url: "#",
-  tag: (
-    <Tag color="#c91b6e" textColor="white">
-      RESPOND
-    </Tag>
-  ),
+  tag: <ThemeTag theme="respond" />,
 };

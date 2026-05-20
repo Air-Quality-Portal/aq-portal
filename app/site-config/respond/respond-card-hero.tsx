@@ -17,7 +17,6 @@ export const MOCK_CARD_RESPOND_HERO: CardProps = {
     </h1>
   ),
   subtitle: "Support real-time decisions with timely insights.",
-
   colorMode: "brand",
   isMastHead: true,
 };
