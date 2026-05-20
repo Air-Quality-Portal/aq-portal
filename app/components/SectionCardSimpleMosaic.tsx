@@ -22,9 +22,10 @@ export const SectionCardSimpleMosaic = ({
   sectionHeading,
   cards,
   children,
+  ...sectionProps
 }: SectionCardSimpleMosaicProps) => {
   return (
-    <Section>
+    <Section {...sectionProps}>
       {sectionHeading && <SectionHeading>{sectionHeading}</SectionHeading>}
       <div className="grid-row grid-gap-2 margin-bottom-neg-2">
         {/* Featured card: full-width → desktop: 2 of 4 cols */}
