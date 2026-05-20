@@ -12,17 +12,6 @@ export const lifelinesWildfireWorkflow: TrainingContent = {
   },
   description:
     "This module offers a guided, browser-based approach to wildfire early warning using free NASA satellite data.",
-  lessonMaterials: [
-    {
-      label: "Wildfire Early Warning Module (Google Colab)",
-      href: "https://colab.research.google.com/github/seamusgeraty/wildfire-early-warning/blob/main/Wildfire_Early_Warning_Module.ipynb",
-    },
-  ],
-  additionalResources: [
-    { label: "NASA Lifelines Data Studios", href: "https://nasalifelines.org/data-studios/" },
-    { label: "NASA Lifelines", href: "https://nasalifelines.org/" },
-    { label: "NASA FIRMS", href: "https://firms.modaps.eosdis.nasa.gov/map/" },
-  ],
   body: [
     {
       type: "text",
@@ -83,10 +72,11 @@ export const lifelinesWildfireWorkflow: TrainingContent = {
       paragraphs: [
         "This module was developed by NASA Lifelines, a NASA Disasters initiative that connects NASA Earth observation data and expertise with the humanitarian community to support disaster preparedness, response, and resilience.",
         "NASA Lifelines Data Studios help humanitarians navigate openly available data and resources with a better understanding of exactly what they are looking for and how to use it.",
+        "Explore more training resources at NASA Lifelines Data Studios: ",
       ],
       links: [
         {
-          label: "Explore more training resources at NASA Lifelines Data Studios",
+          label: "https://nasalifelines.org/data-studios/",
           href: "https://nasalifelines.org/data-studios/",
         },
       ],

@@ -1,73 +1,103 @@
-import type { CardProps } from "@teamimpact/veda-ui-blocks";
+import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-import { SectionCardCarousel } from "@/app/components";
-import type { ContentBlock, IterableItemWithId } from "@/app/components/types";
+
+import { Section, SectionHeading } from "@/app/components";
+import type { ContentBlock } from "@/app/components/types";
 
 export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
   switch (block.type) {
     case "text":
       return (
-        <div className="margin-bottom-4">
-          {block.heading && <h2 className="font-heading-xl margin-bottom-2">{block.heading}</h2>}
+        <Section>
+          {block.heading &&
+            (block.headingLevel === "h3" ? (
+              <h3 className="font-sans-xl margin-bottom-1">{block.heading}</h3>
+            ) : (
+              <SectionHeading>{block.heading}</SectionHeading>
+            ))}
           {block.paragraphs.map((p, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-            <p key={i} className="margin-bottom-2">
-              {p}
-            </p>
+            <p key={i}>{p}</p>
           ))}
-        </div>
+        </Section>
       );
 
     case "list":
       return (
-        <div className="margin-bottom-4">
-          {block.heading && <h2 className="font-heading-xl margin-bottom-2">{block.heading}</h2>}
+        <Section>
+          {block.heading &&
+            (block.headingLevel === "h3" ? (
+              <h3 className="font-sans-xl margin-bottom-1">{block.heading}</h3>
+            ) : (
+              <SectionHeading>{block.heading}</SectionHeading>
+            ))}
           <ul className="usa-list">
             {block.items.map((item, i) => (
               // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
               <li key={i}>{item}</li>
             ))}
           </ul>
-        </div>
+        </Section>
       );
 
     case "note":
       return (
-        <div role="note" className="usa-alert usa-alert--info usa-alert--slim margin-bottom-4">
-          <div className="usa-alert__body">
-            <p className="usa-alert__text">{block.text}</p>
+        <Section>
+          <div role="note" className="usa-alert usa-alert--info usa-alert--slim margin-bottom-4">
+            <div className="usa-alert__body">
+              <p className="usa-alert__text">{block.text}</p>
+            </div>
           </div>
-        </div>
+        </Section>
       );
 
     case "cta":
       return (
-        <div className="margin-bottom-4">
-          <a href={block.href} className="usa-button" target="_blank" rel="noopener noreferrer">
+        <Section>
+          <Link href={block.href} variant="button">
             {block.label}
-          </a>
-        </div>
+          </Link>
+        </Section>
       );
 
-    case "slider": {
-      const cards: IterableItemWithId<CardProps>[] = block.images.map((img) => ({
-        id: img.src,
-        image: (
-          <Image
-            src={img.src}
-            alt={img.alt}
-            fill
-            sizes="(max-width: 640px) 100vw, 50vw"
-            style={{ objectFit: "cover" }}
-          />
-        ),
-      }));
-      return <SectionCardCarousel cards={cards} />;
-    }
+    case "slider":
+      return (
+        <Section>
+          <div className="grid-row grid-gap">
+            {block.images.map((img) => (
+              <div key={img.src} className="grid-col-12 tablet:grid-col-6">
+                <div className="position-relative height-card-lg">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </Section>
+      );
+
+    case "video":
+      return (
+        <Section>
+          {block.title && <h3 className="font-sans-xl margin-bottom-1">{block.title}</h3>}
+          {/* biome-ignore lint/a11y/useMediaCaption: captions not yet available for training videos */}
+          <video controls className="width-full display-block">
+            <source src={block.src} />
+          </video>
+          {block.caption && <p className="font-body-sm text-base margin-top-1">{block.caption}</p>}
+        </Section>
+      );
 
     case "about":
       return (
-        <div className="margin-bottom-4 padding-4 bg-base-lightest">
+        <Section>
+          <SectionHeading>{block.heading}</SectionHeading>
+
           <Image
             src={block.logo.src}
             alt={block.logo.alt}
@@ -76,7 +106,7 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
             style={{ height: "auto", maxWidth: "200px" }}
             className="margin-bottom-3"
           />
-          <h2 className="font-heading-xl margin-bottom-2">{block.heading}</h2>
+
           {block.paragraphs.map((p, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
             <p key={i} className="margin-bottom-2">
@@ -86,29 +116,25 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
           <ul className="usa-list usa-list--unstyled">
             {block.links.map((link) => (
               <li key={link.href}>
-                <a href={link.href} target="_blank" rel="noopener noreferrer">
-                  {link.label}
-                </a>
+                <Link href={link.href}>{link.label}</Link>
               </li>
             ))}
           </ul>
-        </div>
+        </Section>
       );
 
     case "links":
       return (
-        <div className="margin-bottom-4">
-          {block.heading && <h2 className="font-heading-xl margin-bottom-2">{block.heading}</h2>}
+        <Section>
+          {block.heading && <SectionHeading>{block.heading}</SectionHeading>}
           <ul className="usa-list usa-list--unstyled">
             {block.items.map((item) => (
               <li key={item.href} className="margin-bottom-1">
-                <a href={item.href} target="_blank" rel="noopener noreferrer">
-                  {item.label}
-                </a>
+                <Link href={item.href}>{item.label}</Link>
               </li>
             ))}
           </ul>
-        </div>
+        </Section>
       );
   }
 };

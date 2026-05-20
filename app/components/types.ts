@@ -5,11 +5,12 @@ export type IterableItemWithId<T> = T & { id: string };
 export type Theme = keyof typeof CONTENT_THEMES;
 
 export type ContentBlock =
-  | { type: "text"; heading?: string; paragraphs: string[] }
-  | { type: "list"; heading?: string; items: string[] }
+  | { type: "text"; heading?: string; headingLevel?: "h2" | "h3"; paragraphs: string[] }
+  | { type: "list"; heading?: string; headingLevel?: "h2" | "h3"; items: string[] }
   | { type: "note"; text: string }
   | { type: "cta"; label: string; href: string }
   | { type: "slider"; images: { src: string; alt: string }[] }
+  | { type: "video"; src: string; title?: string; caption?: string }
   | {
       type: "about";
       logo: { src: string; alt: string };
@@ -34,6 +35,4 @@ export type TrainingContent = {
   description: string;
   body: ContentBlock[];
   relatedContent?: string[];
-  lessonMaterials?: { label: string; href: string }[];
-  additionalResources?: { label: string; href: string }[];
 };
