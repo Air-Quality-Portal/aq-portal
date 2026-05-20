@@ -1,6 +1,6 @@
 import { Card } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-import { DATA_GALLERY_MASTHEAD } from "@/app/site-config/data-gallery/masthead";
+import { DATA_GALLERY_CARD_MASTHEAD } from "@/app/site-config/data-gallery/data-gallery-card-masthead";
 
 export default function DataGalleryPage() {
   return (
@@ -8,7 +8,7 @@ export default function DataGalleryPage() {
       <Card
         image={
           <Image
-            src={DATA_GALLERY_MASTHEAD.imageSrc}
+            src={DATA_GALLERY_CARD_MASTHEAD.imageSrc}
             alt=""
             aria-hidden="true"
             fill
@@ -18,10 +18,10 @@ export default function DataGalleryPage() {
         }
         title={
           <h1 className="font-mono-3xl text-bold text-white margin-0">
-            {DATA_GALLERY_MASTHEAD.title}
+            {DATA_GALLERY_CARD_MASTHEAD.title}
           </h1>
         }
-        description={DATA_GALLERY_MASTHEAD.description}
+        description={DATA_GALLERY_CARD_MASTHEAD.description}
         colorMode="brand"
         isMastHead
       />

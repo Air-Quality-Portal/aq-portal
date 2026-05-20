@@ -4,7 +4,7 @@ type MastheadConfig = {
   description: string;
 };
 
-export const DATA_GALLERY_MASTHEAD: MastheadConfig = {
+export const DATA_GALLERY_CARD_MASTHEAD: MastheadConfig = {
   imageSrc: "/img/data-gallery/masthead.webp",
   title: "DATA GALLERY",
   description:
