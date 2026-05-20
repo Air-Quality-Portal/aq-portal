@@ -9,7 +9,7 @@ export const MOCK_DATA_STORY_HURRICANE_MILTON: IterableItemWithId<CardProps> = {
   image: (
     <Image
       src="/img/respond/data-stories/ISS_Milton.webp"
-      alt="Satelite image of Hurricane Milton showing storm system over ocean with visible eye of the storm"
+      alt="Satellite image of Hurricane Milton showing storm system over ocean with visible eye of the storm"
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
     />
@@ -31,7 +31,7 @@ export const MOCK_DATA_STORY_HURRICANE_HELENE: IterableItemWithId<CardProps> = {
   title: "Hurricane Helene - September 2024",
   image: (
     <Image
-      src="/img/repond/data-stories/Helene_BlackMarbleBYK_Sept27_2024_NOAA20.webp"
+      src="/img/respond/data-stories/Helene_BlackMarbleBYK_Sept27_2024_NOAA20.webp"
       alt="Nighttime satellite image of Hurricane Helene captured by NOAA-20"
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"

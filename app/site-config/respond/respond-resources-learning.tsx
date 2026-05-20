@@ -8,7 +8,7 @@ export const RESPOND_CARD_RESOURCES_LEARNING_NASA_LIFELINES: IterableItemWithId<
   title: "NASA Lifelines Data Studio: Wildfire Early Warning Workflow",
   image: (
     <Image
-      src="/img/repond/resources-learning/LifelinesCoverImage.webp"
+      src="/img/home/resources-learning-lifelines-wildfire-workflow.webp"
       alt="Satellite image of an active wildfire, showing bright red hotspots and a large plume of gray smoke spreading across a landscape of green forested hills and dry terrain, with a small urban area visible in the upper left"
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -23,7 +23,7 @@ export const RESPOND_CARD_RESOURCES_LEARNING_FUNDAMENTALS_OF_REMOTE_SENSING: Ite
     title: "Fundamentals of Remote Sensing",
     image: (
       <Image
-        src="/img/repond/resources-learning/NISAR.webp"
+        src="/img/home/resources-learning-fundamentals-remote-sensing.webp"
         alt="Artist's rendering of the NISAR satellite in orbit, featuring a large circular radar antenna dish and extended solar panels, with Earth's surface and atmosphere visible in the background."
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -38,7 +38,7 @@ export const RESPOND_CARD_RESOURCES_LEARNING_INTRODUCTION_TO_SAR: IterableItemWi
     title: "Introduction to SAR and its Applications",
     image: (
       <Image
-        src="/img/repond/resources-learning/HydroSAR_Memphis_April2025.webp"
+        src="/img/home/resources-learning-introduction-to-sar.webp"
         alt="HydroSAR flood map of the Memphis, Tennessee area from April 2025, showing water extent detected by radar satellite data overlaid in bright blue on a grayscale landscape, with extensive flooding visible along the Mississippi River and surrounding floodplains."
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -53,7 +53,7 @@ export const RESPOND_CARD_RESOURCES_LEARNING_USING_EARTH_OBSERVATIONS: IterableI
     title: "Using Earth Observations for Pre- and Post-Fire Monitoring ",
     image: (
       <Image
-        src="/img/repond/resources-learning/Planet_LAFires_Altadena.webp"
+        src="/img/respond/resources-learning/Planet_LAFires_Altadena.webp"
         alt="Planet satellite image of the Altadena area after the LA fires, showing a dense urban grid at the base of the San Gabriel Mountains, with a large darkened burn scar visible across the foothills and into the residential neighborhoods."
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"

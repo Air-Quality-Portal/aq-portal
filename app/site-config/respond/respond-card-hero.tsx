@@ -5,7 +5,7 @@ export const MOCK_CARD_RESPOND_HERO: CardProps = {
   image: (
     <Image
       alt="Workers assessing LA fire debri"
-      src="/img/repond/LAfires-workers-debris.webp"
+      src="/img/respond/LAfires-workers-debris.webp"
       fill
       style={{ objectFit: "cover" }}
       preload={true}

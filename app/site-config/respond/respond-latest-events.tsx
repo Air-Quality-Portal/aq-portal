@@ -4,12 +4,12 @@ import Image from "next/image";
 import type { IterableItemWithId } from "@/app/components/types";
 
 export const MOCK_CARD_TYPHOON_SINLAKU_APRIL_2026: IterableItemWithId<CardSimpleProps> = {
-  id: "card-news-featured",
+  id: "card-typhoon-sinlaku-april-2026",
   title: "Typhoon Sinlaku April 2026",
   image: (
     <Image
-      src="/img/repond/latest-events/ISS_Milton.webp"
-      alt="Hurricane Helene satellite image showing storm system over ocean with visible eye of the storm"
+      src="/img/home/news-events-typhoon-sinlaku-2026.webp"
+      alt="Satellite view of Typhoon Sinlaku over the western Pacific Ocean, showing a large, well-defined spiral storm system with a dense white cloud mass and visible eye, surrounding several small island outlines."
       width={120}
       height={120}
     />
@@ -22,12 +22,12 @@ export const MOCK_CARD_TYPHOON_SINLAKU_APRIL_2026: IterableItemWithId<CardSimple
   ),
 };
 export const MOCK_CARD_US_WINTER_STORM_JAN_2026: IterableItemWithId<CardSimpleProps> = {
-  id: "card-news-featured",
+  id: "card-us-winter-storm-jan-2026",
   title: "U.S. Winter Storm Jan 2026",
   image: (
     <Image
-      src="/img/repond/latest-events/hazard-pattern-swirls.webp"
-      alt="Hurricane Helene satellite image showing storm system over ocean with visible eye of the storm"
+      src="/img/respond/latest-events/hazard-pattern-swirls.webp"
+      alt="Abstract graphic with flowing teal wave shapes and curved swirl accents on a dark teal background, creating a fluid, dynamic pattern."
       width={120}
       height={120}
     />
@@ -36,11 +36,11 @@ export const MOCK_CARD_US_WINTER_STORM_JAN_2026: IterableItemWithId<CardSimplePr
 };
 
 export const MOCK_CARD_TEXAS_FLOODS_JULY_2025: IterableItemWithId<CardSimpleProps> = {
-  id: "card-news-featured",
+  id: "card-texas-floods-july-2025",
   title: "Texas Floods July 2025",
   image: (
     <Image
-      src="/img/repond/latest-events/UAVSAR-Banner-Texas-Floods.webp"
+      src="/img/respond/latest-events/UAVSAR-Banner-Texas-Floods.webp"
       alt="Satlite imagery of texas floods showing flooded areas in blue and non-flooded areas in brown"
       width={120}
       height={120}
@@ -50,12 +50,12 @@ export const MOCK_CARD_TEXAS_FLOODS_JULY_2025: IterableItemWithId<CardSimpleProp
 };
 
 export const MOCK_CARD_SOUTHERN_CALIFORNIA_FIRES_JAN_2025: IterableItemWithId<CardSimpleProps> = {
-  id: "card-news-featured",
+  id: "card-southern-california-fires-jan-2025",
   title: "Southern California Fires Jan 2025",
   image: (
     <Image
-      src="/img/repond/latest-events/palisades_fire_s2_cir.webp"
-      alt="Hurricane Helene satellite image showing storm system over ocean with visible eye of the storm"
+      src="/img/respond/latest-events/palisades_fire_s2_cir.webp"
+      alt="False-color infrared satellite image of the Palisades Fire burn area along the Los Angeles coastline, showing a large gray-brown burn scar contrasting against bright red healthy vegetation, with the Pacific Ocean visible along the bottom edge."
       width={120}
       height={120}
     />
