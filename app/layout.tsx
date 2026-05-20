@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className="display-flex flex-column minh-viewport">
         <Banner />
         <HeaderWithCurrentPath />
-        <main className="flex-1 display-flex flex-column">{children}</main>
+        <main>{children}</main>
         <Footer {...MOCK_FOOTER_PROPS} />
       </body>
     </html>
