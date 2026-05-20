@@ -1,7 +1,8 @@
 import type { CardDetailedProps } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
+import type { IterableItemWithId } from "@/app/components/types";
 
-export const TRAINING_CARDS: (CardDetailedProps & { id: string })[] = [
+export const TRAINING_CARDS: IterableItemWithId<CardDetailedProps>[] = [
   {
     id: "eo-building-exposure-data",
     title:
