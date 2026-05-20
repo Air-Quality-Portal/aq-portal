@@ -20,11 +20,12 @@ import {
   MOCK_CARD_HURRICANE_HELENE,
   MOCK_CARD_TRACKING_TORNADOE,
 } from "../site-config/respond/respond-sectioncardsimplemosaic-stories-of-impact";
+import "@teamimpact/veda-ui-blocks/disasters.css";
 
 export default function respond() {
   return (
     <>
-      <div className="display-flex" style={{ minHeight: "484px" }}>
+      <div className="display-flex minh-masthead">
         <Card {...MOCK_CARD_RESPOND_HERO} />
       </div>
       {/* STORIES OF IMPACT */}
@@ -74,8 +75,7 @@ export default function respond() {
           {MOCK_RESPOND_CARD_RESOURCE_LEARNING.map((props) => (
             <div
               key={props.id}
-              className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2"
-              style={{ minHeight: "484px" }}
+              className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 minh-card-md"
             >
               <CardSimple {...props} />
             </div>
