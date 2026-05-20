@@ -6,7 +6,7 @@ import { ThemeTag } from "../../components";
 type CardWithId = CardSimpleProps & { id: string };
 
 export const MOCK_CARD_FINDING_THE_FLOODS: CardWithId = {
-  id: "card-news-featured",
+  id: "card-finding-the-floods",
   title: "Finding the Floods",
   image: (
     <Image
@@ -20,7 +20,7 @@ export const MOCK_CARD_FINDING_THE_FLOODS: CardWithId = {
   tag: <ThemeTag theme="respond" />,
 };
 export const MOCK_CARD_TRACKING_TORNADOE: CardWithId = {
-  id: "card-news-featured",
+  id: "card-tracking-tornadoes-from-space",
   title: "Tracking Tornadoes from Space",
   image: (
     <Image
@@ -35,7 +35,7 @@ export const MOCK_CARD_TRACKING_TORNADOE: CardWithId = {
 };
 
 export const MOCK_CARD_BEYOND_FLAMES: CardWithId = {
-  id: "card-news-featured",
+  id: "card-seeing-beyond-the-flames",
   title: "Seeing Beyond the Flames: Mapping Wildfire Impacts in Southern California",
   image: (
     <Image
@@ -50,7 +50,7 @@ export const MOCK_CARD_BEYOND_FLAMES: CardWithId = {
 };
 
 export const MOCK_CARD_HURRICANE_HELENE: CardWithId = {
-  id: "card-news-featured",
+  id: "card-supporting-communities-hurricane-helene",
   title: "Supporting Communities in the Wake of Hurricane Helene",
   image: (
     <Image
