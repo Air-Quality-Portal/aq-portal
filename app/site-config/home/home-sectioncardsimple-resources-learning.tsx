@@ -9,7 +9,7 @@ export const RESOURCES_LEARNING_CARDS: SectionCardSimpleProps["cards"] = [
       "Understanding EO-based Building Exposure Data: Application to Disaster Mitigation, Preparedness, Response and Recovery",
     image: (
       <Image
-        src="/img/home/resources-learning-eo-building-exposure-data.webp"
+        src="/img/resources-learning-eo-building-exposure-data.webp"
         alt="Los Angeles building exposure map showing building risk data across the city"
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
