@@ -1,14 +1,8 @@
-import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import { Tag } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-import type { IterableItemWithId } from "@/app/components/types";
+import type { SectionCardSimpleProps } from "@/app/components/SectionCardSimple";
 
-export const RESOURCES_LEARNING_CARDS: [
-  IterableItemWithId<CardSimpleProps>,
-  IterableItemWithId<CardSimpleProps>,
-  IterableItemWithId<CardSimpleProps>,
-  IterableItemWithId<CardSimpleProps>,
-] = [
+export const RESOURCES_LEARNING_CARDS: SectionCardSimpleProps["cards"] = [
   {
     id: "card-eo-building-exposure-data",
     title:
