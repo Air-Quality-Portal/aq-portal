@@ -1,4 +1,5 @@
 export { HeaderWithCurrentPath } from "./HeaderWithCurrentPath";
+export { PageMasthead, type PageMastheadProps } from "./PageMasthead";
 export { PageStatus } from "./PageStatus";
 export { Section, type SectionProps } from "./Section";
 export { SectionCardCarousel, type SectionCardCarouselProps } from "./SectionCardCarousel";
