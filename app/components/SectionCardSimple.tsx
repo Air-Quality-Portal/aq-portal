@@ -4,9 +4,14 @@ import type { ReactNode } from "react";
 import { Section, SectionHeading, type SectionProps } from "@/app/components";
 import type { IterableItemWithId } from "@/app/components/types";
 
-type SectionCardSimpleProps = SectionProps & {
+export type SectionCardSimpleProps = SectionProps & {
   sectionHeading?: ReactNode;
-  cards: IterableItemWithId<CardSimpleProps>[];
+  cards: [
+    IterableItemWithId<CardSimpleProps>,
+    IterableItemWithId<CardSimpleProps>,
+    IterableItemWithId<CardSimpleProps>,
+    IterableItemWithId<CardSimpleProps>,
+  ];
 };
 
 export const SectionCardSimple = ({
