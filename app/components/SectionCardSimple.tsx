@@ -17,11 +17,11 @@ export type SectionCardSimpleProps = SectionProps & {
 export const SectionCardSimple = ({
   sectionHeading,
   cards,
-  bgColor,
   children,
+  ...sectionProps
 }: SectionCardSimpleProps) => {
   return (
-    <Section bgColor={bgColor}>
+    <Section {...sectionProps}>
       {sectionHeading && <SectionHeading>{sectionHeading}</SectionHeading>}
       <div className="grid-row grid-gap-2 margin-bottom-6">
         {cards.map((props) => (
