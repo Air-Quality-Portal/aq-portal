@@ -8,7 +8,7 @@ export const MOCK_DATA_STORY_HURRICANE_MILTON: IterableItemWithId<CardProps> = {
   title: "Hurricane Milton - October 2024",
   image: (
     <Image
-      src="/img/repond/data-stories/ISS_Milton.webp"
+      src="/img/respond/data-stories/ISS_Milton.webp"
       alt="Satelite image of Hurricane Milton showing storm system over ocean with visible eye of the storm"
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
