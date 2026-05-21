@@ -1,4 +1,5 @@
 export { HeaderWithCurrentPath } from "./HeaderWithCurrentPath";
+export { ImageComparison } from "./ImageComparison";
 export { PageMasthead } from "./PageMasthead";
 export { PageStatus } from "./PageStatus";
 export { Section, type SectionProps } from "./Section";

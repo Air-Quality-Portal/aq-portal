@@ -37,16 +37,14 @@ export const lifelinesWildfireWorkflow: TrainingContent = {
     },
     {
       type: "slider",
-      images: [
-        {
-          src: "/img/training/lifelines-wildfire-workflow/slider-code.webp",
-          alt: "Code and markdown in the Google Colab environment",
-        },
-        {
-          src: "/img/training/lifelines-wildfire-workflow/slider-output.webp",
-          alt: "Polished PDF situation briefing with wildfire risk map and exposure figures",
-        },
-      ],
+      before: {
+        src: "/img/training/lifelines-wildfire-workflow/slider-code.webp",
+        alt: "Code and markdown in the Google Colab environment",
+      },
+      after: {
+        src: "/img/training/lifelines-wildfire-workflow/slider-output.webp",
+        alt: "Polished PDF situation briefing with wildfire risk map and exposure figures",
+      },
     },
     {
       type: "list",

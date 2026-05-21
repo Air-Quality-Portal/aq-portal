@@ -1,7 +1,7 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
-import { Section, SectionHeading } from "@/app/components";
+import { ImageComparison, Section, SectionHeading } from "@/app/components";
 import type { ContentBlock } from "@/app/site-config/types";
 
 export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
@@ -60,21 +60,11 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
     case "slider":
       return (
         <Section>
-          <div className="grid-row grid-gap">
-            {block.images.map((img) => (
-              <div key={img.src} className="grid-col-12 tablet:grid-col-6">
-                <div className="position-relative height-card-lg">
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, 50vw"
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+          <ImageComparison
+            before={block.before}
+            after={block.after}
+            sizes="(max-width: 1024px) 100vw, 768px"
+          />
         </Section>
       );
 
