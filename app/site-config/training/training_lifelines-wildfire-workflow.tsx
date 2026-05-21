@@ -15,7 +15,7 @@ export const lifelinesWildfireWorkflow: TrainingContent = {
   date: "2026-01-15",
   themes: ["respond", "prepare"],
   categories: ["fire"],
-  heroImage: {
+  mastheadImage: {
     src: "/img/training/lifelines-wildfire-workflow.webp",
     alt: "Satellite-derived wildfire data workflow showing fire detections and risk zones",
   },

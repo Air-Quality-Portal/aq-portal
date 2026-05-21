@@ -25,8 +25,8 @@ export default async function TrainingItemPage(props: PageProps<"/training/[id]"
         <Card
           image={
             <Image
-              src={training.heroImage.src}
-              alt={training.heroImage.alt}
+              src={training.mastheadImage.src}
+              alt={training.mastheadImage.alt}
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 1024px"

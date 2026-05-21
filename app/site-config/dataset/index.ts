@@ -10,7 +10,7 @@ export const DATASETS: DatasetContent[] = [
     thumbnailImage: { src: "/img/logo-emblem.svg", alt: "placeholder image" },
     themes: ["prepare"],
     categories: ["severewx", "flood", "tropical cyclone"],
-    heroImage: {
+    mastheadImage: {
       src: "/img/card-masthead.webp",
       alt: "",
     },

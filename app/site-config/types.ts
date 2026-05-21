@@ -21,41 +21,55 @@ export type ContentBlock =
   | { type: "video"; src: string; title?: string; caption?: string }
   | { type: "image"; src: string; alt: string; width: number; height: number; maxWidth?: string };
 
-export type TrainingContent = {
+export type MinimumCardContent = {
   id: string;
-  contentType: "training";
+  contentType: ContentType;
   title: string;
   thumbnailImage: {
     src: string;
     alt: string;
   };
-  date: string;
   themes: Theme[];
   categories: Category[];
-  heroImage: {
+  description?: string;
+  url?: string; // for external site content only otherwise id will be used (would be nice if we could use content-type as well - data-gallery breaks this pattern)
+};
+
+export type TrainingContent = Omit<MinimumCardContent, "contentType"> & {
+  contentType: "training";
+  date: string;
+  mastheadImage: {
     src: string;
     alt: string;
     caption?: string;
     attribution?: string;
   };
-  description: string;
   body: ContentBlock[];
   relatedContent?: string[];
 };
 
-export type DatasetContent = {
-  id: string;
+export type DatasetContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "dataset";
-  title: string;
-  description: string;
-  thumbnailImage: {
+  mastheadImage: {
     src: string;
     alt: string;
   };
-  themes: Theme[];
-  categories: Category[];
-  heroImage: {
+};
+
+export type NewsContent = Omit<MinimumCardContent, "contentType"> & {
+  contentType: "news";
+};
+
+export type StoryContent = Omit<MinimumCardContent, "contentType"> & {
+  contentType: "story";
+  mastheadImage: {
     src: string;
     alt: string;
+    caption?: string;
+    attribution?: string;
   };
+};
+
+export type EventContent = Omit<MinimumCardContent, "contentType"> & {
+  contentType: "event";
 };

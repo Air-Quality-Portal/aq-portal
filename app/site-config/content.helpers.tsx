@@ -1,4 +1,9 @@
-import { type CardDetailedProps, type CardProps, Tag } from "@teamimpact/veda-ui-blocks";
+import {
+  type CardDetailedProps,
+  type CardProps,
+  type CardSimpleProps,
+  Tag,
+} from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import type { Category, ContentType, Theme } from "./types";
 
@@ -95,5 +100,36 @@ export const makeCardDetailedImageLeftProps = ({
   image: <Image {...thumbnailImage} fill sizes="200px" />,
   imagePosition: "left",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
+  ...rest,
+});
+
+export type CardSimplePropsArgs = {
+  title: string;
+  thumbnailImage: {
+    alt: string;
+    src: string;
+  };
+  url: string;
+  tag?: Theme | ContentType | Category;
+  theme?: Theme;
+  [key: string]: unknown;
+};
+
+export const makeCardSimpleProps = ({
+  title,
+  thumbnailImage,
+  tag,
+  theme,
+  ...rest
+}: CardSimplePropsArgs): CardSimpleProps => ({
+  title,
+  image: (
+    <Image
+      {...thumbnailImage}
+      fill
+      sizes="(max-width: 640px) 100vw, (max-width: 1400px) 25vw, 350px"
+    />
+  ),
+  tag: tag ? makeSimpleTag(tag) : theme ? makeThemeTag(theme) : undefined,
   ...rest,
 });
