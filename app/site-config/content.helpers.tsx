@@ -5,6 +5,7 @@ import {
   Tag,
 } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
+import type { AppRoutes } from "@/.next/types/routes";
 import type { Category, ContentType, Theme } from "./types";
 
 const CONTENT_THEMES: Record<Theme, Record<string, unknown>> = {
@@ -27,6 +28,14 @@ const CONTENT_THEMES: Record<Theme, Record<string, unknown>> = {
     color: "accent-cool",
     textColor: "white",
   },
+};
+
+const CONTENT_TYPE_ROUTES: Record<ContentType, { route: AppRoutes; label: string }> = {
+  dataset: { route: "/data-gallery", label: "data" },
+  event: { route: "/events", label: "event" },
+  news: { route: "/news-events", label: "news" },
+  story: { route: "/stories", label: "story" },
+  training: { route: "/training", label: "training" },
 };
 
 export const makeSimpleTag = (tag: Theme | ContentType | Category) => (
@@ -68,17 +77,23 @@ export const makeCardMastHeadProps = ({ image, title, ...rest }: CardPropsArgs):
 });
 
 export type CardDetailedPropsArgs = {
+  id: string;
+  contentType: ContentType;
   thumbnailImage: {
     alt: string;
     src: string;
   };
   tags?: (Theme | ContentType | Category)[];
+  url?: string;
   [key: string]: unknown;
 };
 
 export const makeCardDetailedProps = ({
+  id,
+  contentType,
   thumbnailImage,
   tags,
+  url,
   ...rest
 }: CardDetailedPropsArgs): CardDetailedProps => ({
   image: (
@@ -89,17 +104,28 @@ export const makeCardDetailedProps = ({
     />
   ),
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
+  callToAction: {
+    href: url ? url : `/${CONTENT_TYPE_ROUTES[contentType].route}/${id}`,
+    label: `view ${CONTENT_TYPE_ROUTES[contentType].label}`,
+  },
   ...rest,
 });
 
 export const makeCardDetailedImageLeftProps = ({
+  id,
+  contentType,
   thumbnailImage,
   tags,
+  url,
   ...rest
 }: CardDetailedPropsArgs): CardDetailedProps => ({
   image: <Image {...thumbnailImage} fill sizes="200px" />,
   imagePosition: "left",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
+  callToAction: {
+    href: url ? url : `/${CONTENT_TYPE_ROUTES[contentType].route}/${id}`,
+    label: `view ${CONTENT_TYPE_ROUTES[contentType].label}`,
+  },
   ...rest,
 });
 

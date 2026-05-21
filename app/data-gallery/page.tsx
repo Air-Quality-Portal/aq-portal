@@ -15,8 +15,8 @@ export default function DataGalleryPage() {
               <CardDetailed
                 {...makeCardDetailedImageLeftProps({
                   ...card,
+                  id,
                   tags: [...categories, ...themes],
-                  callToAction: { href: `/data-gallery/${id}`, label: "View Data" },
                 })}
                 className="height-card-sm"
               />
