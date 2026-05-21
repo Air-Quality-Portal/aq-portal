@@ -80,7 +80,7 @@ export const makeCardDetailedProps = ({
     <Image
       {...thumbnailImage}
       fill
-      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+      sizes="(max-width: 640px) 100vw, (max-width: 1400px) 50vw, 700px"
     />
   ),
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
