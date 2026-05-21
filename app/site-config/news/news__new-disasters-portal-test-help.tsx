@@ -1,6 +1,6 @@
 import type { NewsContent } from "../types";
 
-export const STORY__ESTIMATING_LOSS_RECOVERY: NewsContent = {
+export const NEWS__NEW_DISASTERS_PORTAL_TEST_HELP: NewsContent = {
   id: "new-disasters-portal-test-help",
   contentType: "news",
   title: "Help Test the New NASA Disasters PORTAL",
