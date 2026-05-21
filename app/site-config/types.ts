@@ -9,11 +9,11 @@ export type Theme = "respond" | "build" | "prepare" | "recover";
 export type Category = "severewx" | "fire" | "heat" | "flood" | "tropical cyclone" | "earthquake";
 
 export type ContentBlock =
-  | { type: "text"; heading?: string; headingLevel?: "h2" | "h3"; paragraphs: ReactNode[] }
+  | { type: "text"; heading?: string; headingLevel?: "h2" | "h3" | "h4"; paragraphs: ReactNode[] }
   | {
       type: "list";
       heading?: string;
-      headingLevel?: "h2" | "h3";
+      headingLevel?: "h2" | "h3" | "h4";
       items: (string | { label: string; href: string })[];
     }
   | { type: "note"; text: string }

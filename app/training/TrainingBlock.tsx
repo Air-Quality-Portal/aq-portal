@@ -10,7 +10,9 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
       return (
         <Section>
           {block.heading &&
-            (block.headingLevel === "h3" ? (
+            (block.headingLevel === "h4" ? (
+              <h4 className="font-sans-lg margin-bottom-1">{block.heading}</h4>
+            ) : block.headingLevel === "h3" ? (
               <h3 className="font-sans-xl margin-bottom-1">{block.heading}</h3>
             ) : (
               <SectionHeading>{block.heading}</SectionHeading>
@@ -26,7 +28,9 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
       return (
         <Section>
           {block.heading &&
-            (block.headingLevel === "h3" ? (
+            (block.headingLevel === "h4" ? (
+              <h4 className="font-sans-lg margin-bottom-1">{block.heading}</h4>
+            ) : block.headingLevel === "h3" ? (
               <h3 className="font-sans-xl margin-bottom-1">{block.heading}</h3>
             ) : (
               <SectionHeading>{block.heading}</SectionHeading>
