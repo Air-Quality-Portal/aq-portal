@@ -11,9 +11,9 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
         <Section>
           {block.heading &&
             (block.headingLevel === "h4" ? (
-              <h4 className="font-sans-lg margin-bottom-1">{block.heading}</h4>
+              <h4 className="font-heading-lg margin-bottom-1">{block.heading}</h4>
             ) : block.headingLevel === "h3" ? (
-              <h3 className="font-sans-xl margin-bottom-1">{block.heading}</h3>
+              <h3 className="font-heading-xl margin-bottom-1">{block.heading}</h3>
             ) : (
               <SectionHeading>{block.heading}</SectionHeading>
             ))}
@@ -29,9 +29,9 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
         <Section>
           {block.heading &&
             (block.headingLevel === "h4" ? (
-              <h4 className="font-sans-lg margin-bottom-1">{block.heading}</h4>
+              <h4 className="font-heading-lg margin-bottom-1">{block.heading}</h4>
             ) : block.headingLevel === "h3" ? (
-              <h3 className="font-sans-xl margin-bottom-1">{block.heading}</h3>
+              <h3 className="font-heading-xl margin-bottom-1">{block.heading}</h3>
             ) : (
               <SectionHeading>{block.heading}</SectionHeading>
             ))}
@@ -75,7 +75,7 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
     case "video":
       return (
         <Section className="display-flex flex-justify-center flex-align-center">
-          {block.title && <h3 className="font-sans-xl margin-bottom-1">{block.title}</h3>}
+          {block.title && <h3 className="font-heading-xl margin-bottom-1">{block.title}</h3>}
           {/* biome-ignore lint/a11y/useMediaCaption: captions not yet available for training videos */}
           <video controls className="width-full display-block">
             <source src={block.src} />
