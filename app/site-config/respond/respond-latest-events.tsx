@@ -1,7 +1,7 @@
 import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import { Tag } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-import type { IterableItemWithId } from "@/app/components/types";
+import type { IterableItemWithId } from "@/app/site-config/types";
 
 export const MOCK_CARD_TYPHOON_SINLAKU_APRIL_2026: IterableItemWithId<CardSimpleProps> = {
   id: "card-typhoon-sinlaku-april-2026",

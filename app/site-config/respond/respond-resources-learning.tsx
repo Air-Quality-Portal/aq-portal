@@ -1,6 +1,6 @@
 import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-import type { IterableItemWithId } from "@/app/components/types";
+import type { IterableItemWithId } from "@/app/site-config/types";
 import { ThemeTag } from "../../components";
 
 export const RESPOND_CARD_RESOURCES_LEARNING_NASA_LIFELINES: IterableItemWithId<CardSimpleProps> = {

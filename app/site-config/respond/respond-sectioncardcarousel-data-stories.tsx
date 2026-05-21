@@ -1,7 +1,7 @@
 import type { CardProps } from "@teamimpact/veda-ui-blocks";
 import { Tag } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-import type { IterableItemWithId } from "../../components/types";
+import type { IterableItemWithId } from "@/app/site-config/types";
 
 export const MOCK_DATA_STORY_HURRICANE_MILTON: IterableItemWithId<CardProps> = {
   id: "hurricane-milton-2024",

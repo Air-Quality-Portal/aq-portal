@@ -1,6 +1,6 @@
 import type { CardMiniProps } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-import type { IterableItemWithId } from "@/app/components/types";
+import type { IterableItemWithId } from "@/app/site-config/types";
 import { ThemeTag } from "../../components";
 
 export const MOCK_CARD_FINDING_THE_FLOODS: IterableItemWithId<CardMiniProps> = {
