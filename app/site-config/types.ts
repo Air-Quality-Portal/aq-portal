@@ -38,38 +38,34 @@ export type MinimumCardContent = {
 export type TrainingContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "training";
   date: string;
-  mastheadImage: {
-    src: string;
-    alt: string;
-    caption?: string;
-    attribution?: string;
-  };
+  mastheadImage: MastheadImage;
   body: ContentBlock[];
   relatedContent?: string[];
 };
 
 export type DatasetContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "dataset";
-  mastheadImage: {
-    src: string;
-    alt: string;
-  };
+  mastheadImage: MastheadImage;
 };
 
 export type NewsContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "news";
+  mastheadImage: MastheadImage;
 };
 
 export type StoryContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "story";
-  mastheadImage: {
-    src: string;
-    alt: string;
-    caption?: string;
-    attribution?: string;
-  };
+  mastheadImage: MastheadImage;
 };
 
 export type EventContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "event";
+  mastheadImage: MastheadImage;
+};
+
+type MastheadImage = {
+  src: string;
+  alt: string;
+  caption?: string;
+  attribution?: string;
 };
