@@ -1,7 +1,7 @@
 import { CardDetailed } from "@teamimpact/veda-ui-blocks";
 import { PageMasthead } from "@/app/components";
 import { DATA_GALLERY_CARD_MASTHEAD } from "@/app/site-config/dataset/data-gallery-card-masthead";
-import { makeCardDetailedImageLeftProps } from "../components/content.helpers";
+import { makeCardDetailedImageLeftProps } from "../site-config/content.helpers";
 import { DATASETS } from "../site-config/dataset/datasets";
 
 export default function DataGalleryPage() {
