@@ -11,7 +11,7 @@ export const DATASETS: DatasetContent[] = [
     themes: ["prepare"],
     categories: ["severewx", "flood", "tropical cyclone"],
     heroImage: {
-      src: "/img/data-gallery/masthead.webp",
+      src: "/img/card-masthead.webp",
       alt: "",
     },
   },
