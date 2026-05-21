@@ -9,14 +9,14 @@ export const lifelinesWildfireWorkflow: TrainingContent = {
   description:
     "This module offers a guided, browser-based approach to wildfire early warning using free NASA satellite data.",
   thumbnailImage: {
-    src: "/img/resources-learning-lifelines-wildfire-workflow.webp",
+    src: "/img/training/lifelines-wildfire-workflow.webp",
     alt: "NASA Lifelines Data Studio cover image showing wildfire data workflow",
   },
   date: "2026-01-15",
-  themes: ["prepare", "respond"],
+  themes: ["respond", "prepare"],
   categories: ["fire"],
   heroImage: {
-    src: "/img/resources-learning-lifelines-wildfire-workflow.webp",
+    src: "/img/training/lifelines-wildfire-workflow.webp",
     alt: "Satellite-derived wildfire data workflow showing fire detections and risk zones",
   },
   body: [

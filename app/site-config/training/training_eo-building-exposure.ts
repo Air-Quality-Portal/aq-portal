@@ -8,14 +8,14 @@ export const eoBuildingExposure: TrainingContent = {
   description:
     "This module outlines the process of developing high-quality building exposure data and demonstrates how these datasets are strategically integrated into loss estimation to guide decision-making for emergency managers and planners.",
   thumbnailImage: {
-    src: "/img/resources-learning-eo-building-exposure-data.webp",
+    src: "/img/training/eo-building-exposure.webp",
     alt: "Los Angeles building exposure map showing building risk data across the city",
   },
   date: "2026-01-15",
-  themes: ["prepare", "respond", "recover", "build"],
+  themes: ["recover", "prepare", "respond", "build"],
   categories: ["earthquake", "tropical cyclone"],
   heroImage: {
-    src: "/img/resources-learning-eo-building-exposure-data.webp",
+    src: "/img/training/eo-building-exposure.webp",
     alt: "Los Angeles building exposure map showing building risk data across the city",
   },
   body: [
