@@ -3,12 +3,12 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { Section, ThemeTag } from "@/app/components";
-import { trainings } from "@/app/site-config/training";
+import { TRAININGS } from "@/app/site-config/training";
 import { TrainingBlock } from "@/app/training/TrainingBlock";
 
 export default async function TrainingItemPage(props: PageProps<"/training/[id]">) {
   const { id } = await props.params;
-  const training = trainings.find((t) => t.id === id);
+  const training = TRAININGS.find((t) => t.id === id);
 
   if (!training) notFound();
 
@@ -61,14 +61,14 @@ export default async function TrainingItemPage(props: PageProps<"/training/[id]"
                 </div>
               )}
 
-              {training.tags.length > 0 && (
+              {training.categories.length > 0 && (
                 <div className="margin-bottom-3">
                   <p className="text-bold font-body-sm margin-top-0 margin-bottom-2">Hazard</p>
                   <div className="display-flex flex-wrap">
-                    {training.tags.map((tag) => (
-                      <div key={tag} className="margin-right-1 margin-bottom-1">
+                    {training.categories.map((category) => (
+                      <div key={category} className="margin-right-1 margin-bottom-1">
                         <Tag color="primary-lighter" textColor="primary-dark">
-                          {tag}
+                          {category}
                         </Tag>
                       </div>
                     ))}

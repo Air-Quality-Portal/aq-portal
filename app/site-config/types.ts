@@ -4,7 +4,16 @@ export type ContentType = "story" | "dataset" | "training" | "event" | "news";
 
 export type Theme = "respond" | "build" | "prepare" | "recover";
 
-export type Category = "severewx" | "fire" | "heat" | "flood" | "tropical cyclone";
+export type Category =
+  | "severewx"
+  | "fire"
+  | "heat"
+  | "flood"
+  | "tropical cyclone"
+  | "early warning systems"
+  | "disaster risk reduction"
+  | "loss estimation"
+  | "building exposure";
 
 export type ContentBlock =
   | { type: "text"; heading?: string; headingLevel?: "h2" | "h3"; paragraphs: string[] }
@@ -24,10 +33,15 @@ export type ContentBlock =
 
 export type TrainingContent = {
   id: string;
+  contentType: "training";
   title: string;
+  thumbnailImage: {
+    src: string;
+    alt: string;
+  };
   date: string;
   themes: Theme[];
-  tags: string[];
+  categories: Category[];
   heroImage: {
     src: string;
     alt: string;
