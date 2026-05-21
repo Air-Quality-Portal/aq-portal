@@ -1,17 +1,4 @@
-import { Tag } from "@teamimpact/veda-ui-blocks";
-import { CONTENT_THEMES } from "@/app/site-config/constants";
+import { makeThemeTag } from "../site-config/content.helpers";
+import type { Theme } from "../site-config/types";
 
-type Theme = "respond" | "build" | "prepare" | "recover";
-
-type ThemeTagProps = {
-  theme: Theme;
-};
-
-export const ThemeTag = ({ theme }: ThemeTagProps) => {
-  const { label, className, bgColor } = CONTENT_THEMES[theme];
-  return (
-    <Tag variant="solid" color={bgColor} className={className}>
-      {label}
-    </Tag>
-  );
-};
+export const ThemeTag = ({ theme }: { theme: Theme }) => makeThemeTag(theme);
