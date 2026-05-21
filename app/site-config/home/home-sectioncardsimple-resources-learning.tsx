@@ -28,7 +28,7 @@ export const RESOURCES_LEARNING_CARDS: SectionCardSimpleProps["cards"] = [
     ),
     url: "https://www.earthdata.nasa.gov/learn/trainings/fundamentals-remote-sensing",
     tag: (
-      <Tag color="#F67E09" textColor="#0D313D">
+      <Tag color="accent-warm" textColor="primary-dark">
         PREPARE
       </Tag>
     ),
@@ -46,7 +46,7 @@ export const RESOURCES_LEARNING_CARDS: SectionCardSimpleProps["cards"] = [
     ),
     url: "https://www.earthdata.nasa.gov/learn/trainings/introduction-synthetic-aperture-radar-sar-its-applications",
     tag: (
-      <Tag color="#F67E09" textColor="#0D313D">
+      <Tag color="accent-warm" textColor="primary-dark">
         PREPARE
       </Tag>
     ),

@@ -20,7 +20,7 @@ const CONTENT_THEMES: Record<Theme, Record<string, unknown>> = {
   recover: {
     label: "recover",
     color: "accent-cool",
-    textColor: "text-white",
+    textColor: "white",
   },
 };
 

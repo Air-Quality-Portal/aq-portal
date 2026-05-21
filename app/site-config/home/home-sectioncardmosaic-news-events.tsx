@@ -16,11 +16,7 @@ export const NEWS_EVENTS_CARDS: SectionCardSimpleMosaicProps["cards"] = [
       />
     ),
     url: "/news/estimating-loss-recovery",
-    tag: (
-      <Tag color="white" textColor="#0D313D">
-        STORY
-      </Tag>
-    ),
+    tag: <Tag>STORY</Tag>,
   },
   {
     id: "card-news-finding-floods",
@@ -34,11 +30,7 @@ export const NEWS_EVENTS_CARDS: SectionCardSimpleMosaicProps["cards"] = [
       />
     ),
     url: "/news/finding-floods",
-    tag: (
-      <Tag color="white" textColor="#0D313D">
-        STORY
-      </Tag>
-    ),
+    tag: <Tag>STORY</Tag>,
   },
   {
     id: "card-news-typhoon-sinlaku",
@@ -52,11 +44,7 @@ export const NEWS_EVENTS_CARDS: SectionCardSimpleMosaicProps["cards"] = [
       />
     ),
     url: "/news/typhoon-sinlaku-2026",
-    tag: (
-      <Tag color="white" textColor="#0D313D">
-        EVENT
-      </Tag>
-    ),
+    tag: <Tag>EVENT</Tag>,
   },
   {
     id: "card-news-portal-test",
@@ -70,10 +58,6 @@ export const NEWS_EVENTS_CARDS: SectionCardSimpleMosaicProps["cards"] = [
       />
     ),
     url: "/news/help-test-portal",
-    tag: (
-      <Tag color="white" textColor="#0D313D">
-        NEWS
-      </Tag>
-    ),
+    tag: <Tag>NEWS</Tag>,
   },
 ];
