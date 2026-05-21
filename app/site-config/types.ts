@@ -4,16 +4,7 @@ export type ContentType = "story" | "dataset" | "training" | "event" | "news";
 
 export type Theme = "respond" | "build" | "prepare" | "recover";
 
-export type Category =
-  | "severewx"
-  | "fire"
-  | "heat"
-  | "flood"
-  | "tropical cyclone"
-  | "early warning systems"
-  | "disaster risk reduction"
-  | "loss estimation"
-  | "building exposure";
+export type Category = "severewx" | "fire" | "heat" | "flood" | "tropical cyclone" | "earthquake";
 
 export type ContentBlock =
   | { type: "text"; heading?: string; headingLevel?: "h2" | "h3"; paragraphs: string[] }

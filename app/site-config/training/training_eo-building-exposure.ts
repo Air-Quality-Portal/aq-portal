@@ -12,8 +12,8 @@ export const eoBuildingExposure: TrainingContent = {
     alt: "Los Angeles building exposure map showing building risk data across the city",
   },
   date: "2026-01-15",
-  themes: ["recover"],
-  categories: ["building exposure", "loss estimation", "disaster risk reduction"],
+  themes: ["prepare", "respond", "recover", "build"],
+  categories: ["earthquake", "tropical cyclone"],
   heroImage: {
     src: "/img/home/resources-learning-eo-building-exposure-data.webp",
     alt: "Los Angeles building exposure map showing building risk data across the city",

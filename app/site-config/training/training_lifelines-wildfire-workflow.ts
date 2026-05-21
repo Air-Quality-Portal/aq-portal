@@ -11,8 +11,8 @@ export const lifelinesWildfireWorkflow: TrainingContent = {
     alt: "NASA Lifelines Data Studio cover image showing wildfire data workflow",
   },
   date: "2026-01-15",
-  themes: ["prepare", "build"],
-  categories: ["early warning systems", "fire", "disaster risk reduction"],
+  themes: ["prepare", "respond"],
+  categories: ["fire"],
   heroImage: {
     src: "/img/home/resources-learning-lifelines-wildfire-workflow.webp",
     alt: "Satellite-derived wildfire data workflow showing fire detections and risk zones",
