@@ -1,4 +1,4 @@
-import type { IterableItemWithId } from "@/app/site-config/types";
+import type { Category, IterableItemWithId, Theme } from "@/app/site-config/types";
 
 type Dataset = {
   contentType: "dataset";
@@ -12,6 +12,8 @@ type Dataset = {
     href: string;
     label: string;
   };
+  themes: Theme[];
+  category: Category[];
 };
 
 export const DATASETS: IterableItemWithId<Dataset>[] = [
@@ -23,5 +25,7 @@ export const DATASETS: IterableItemWithId<Dataset>[] = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     image: { src: "/img/logo-emblem.svg", alt: "placeholder image" },
     callToAction: { href: "/data-gallery/lorem-ipsum-dolor", label: "View Data" },
+    themes: ["prepare"],
+    category: ["severewx", "flood", "tropical cyclone"],
   },
 ];
