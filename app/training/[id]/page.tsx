@@ -6,8 +6,8 @@ import { Section, ThemeTag } from "@/app/components";
 import { trainings } from "@/app/site-config/training";
 import { TrainingBlock } from "@/app/training/TrainingBlock";
 
-export default async function TrainingItemPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+export default async function TrainingItemPage(props: PageProps<"/training/[id]">) {
+  const { id } = await props.params;
   const training = trainings.find((t) => t.id === id);
 
   if (!training) notFound();
