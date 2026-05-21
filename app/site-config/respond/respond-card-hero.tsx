@@ -4,11 +4,11 @@ import Image from "next/image";
 export const MOCK_CARD_RESPOND_HERO: CardProps = {
   image: (
     <Image
-      alt="Workers assessing LA fire debri"
+      alt="Workers assessing LA fire debris"
       src="/img/respond/LAfires-workers-debris.webp"
       fill
       style={{ objectFit: "cover" }}
-      preload={true}
+      priority
     />
   ),
   title: (

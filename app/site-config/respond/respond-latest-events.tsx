@@ -41,7 +41,7 @@ export const MOCK_CARD_TEXAS_FLOODS_JULY_2025: IterableItemWithId<CardSimpleProp
   image: (
     <Image
       src="/img/respond/latest-events/UAVSAR-Banner-Texas-Floods.webp"
-      alt="Satlite imagery of texas floods showing flooded areas in blue and non-flooded areas in brown"
+      alt="Satellite imagery of texas floods showing flooded areas in blue and non-flooded areas in brown"
       width={120}
       height={120}
     />

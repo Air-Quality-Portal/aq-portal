@@ -10,7 +10,7 @@ export const MOCK_CARD_FINDING_THE_FLOODS: CardWithId = {
   image: (
     <Image
       src="/img/home/news-events-finding-floods.webp"
-      alt="Drone image of flooded river in Kerville, Texas with trees and buildings surrounded by floodwaters"
+      alt="Drone image of flooded river in Kerrville, Texas with trees and buildings surrounded by floodwaters"
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
     />
@@ -24,7 +24,7 @@ export const MOCK_CARD_TRACKING_TORNADOE: CardWithId = {
   image: (
     <Image
       src="/img/respond/stories-of-impact/Florrisant-Brunswick-and-Brookshire.webp"
-      alt="Drone of tornado debris in Florissant, Brunswick and Brookshire, Texas with damaged buildings and debris"
+      alt="Drone image of tornado debris in Florissant, Brunswick and Brookshire, Texas with damaged buildings and debris"
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
     />

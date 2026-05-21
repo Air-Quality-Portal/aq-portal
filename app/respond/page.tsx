@@ -20,9 +20,8 @@ import {
   MOCK_CARD_HURRICANE_HELENE,
   MOCK_CARD_TRACKING_TORNADOE,
 } from "../site-config/respond/respond-sectioncardsimplemosaic-stories-of-impact";
-import "@teamimpact/veda-ui-blocks/disasters.css";
 
-export default function respond() {
+export default function RespondPage() {
   return (
     <>
       <div className="display-flex minh-masthead">
@@ -69,7 +68,7 @@ export default function respond() {
       {/* Resource & Learning */}
 
       <Section>
-        <SectionHeading>Resource & Learning</SectionHeading>
+        <SectionHeading>Resources & Learning</SectionHeading>
 
         <div className="grid-row grid-gap-2 margin-bottom-6">
           {MOCK_RESPOND_CARD_RESOURCE_LEARNING.map((props) => (

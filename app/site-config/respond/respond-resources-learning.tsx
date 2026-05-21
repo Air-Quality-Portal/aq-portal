@@ -59,7 +59,7 @@ export const RESPOND_CARD_RESOURCES_LEARNING_USING_EARTH_OBSERVATIONS: IterableI
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
       />
     ),
-    url: "https://www.earthdata.nasa.gov/learn/trainings/using-earth-observations-pre-post-fire-monitoring ",
+    url: "https://www.earthdata.nasa.gov/learn/trainings/using-earth-observations-pre-post-fire-monitoring",
     tag: <ThemeTag theme="respond" />,
   };
 
