@@ -1,6 +1,9 @@
 import type { CardDetailedProps, CardProps } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
+export const makeContentTypeTags = () => {};
+export const makeThemeTypeTags = () => {};
+
 export type CardPropsArgs = {
   image: {
     alt: string;
@@ -37,5 +40,14 @@ export const makeCardDetailedProps = ({
   ...rest
 }: CardDetailedPropsArgs): CardDetailedProps => ({
   image: <Image {...image} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />,
+  ...rest,
+});
+
+export const makeCardDetailedImageLeftProps = ({
+  image,
+  ...rest
+}: CardDetailedPropsArgs): CardDetailedProps => ({
+  image: <Image {...image} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />,
+  imagePosition: "left",
   ...rest,
 });

@@ -1,30 +1,22 @@
-import { Card } from "@teamimpact/veda-ui-blocks";
-import Image from "next/image";
-import { DATA_GALLERY_CARD_MASTHEAD } from "@/app/site-config/data-gallery/data-gallery-card-masthead";
+import { CardDetailed } from "@teamimpact/veda-ui-blocks";
+import { PageMasthead } from "@/app/components";
+import { DATA_GALLERY_CARD_MASTHEAD } from "@/app/site-config/dataset/data-gallery-card-masthead";
+import { makeCardDetailedImageLeftProps } from "../components/content.helpers";
+import { DATASETS } from "../site-config/dataset/datasets";
 
 export default function DataGalleryPage() {
   return (
-    <div className="display-flex minh-masthead">
-      <Card
-        image={
-          <Image
-            src={DATA_GALLERY_CARD_MASTHEAD.imageSrc}
-            alt=""
-            aria-hidden="true"
-            fill
-            priority
-            sizes="100vw"
-          />
-        }
-        title={
-          <h1 className="font-mono-3xl text-bold text-white margin-0">
-            {DATA_GALLERY_CARD_MASTHEAD.title}
-          </h1>
-        }
-        description={DATA_GALLERY_CARD_MASTHEAD.description}
-        colorMode="brand"
-        isMastHead
-      />
-    </div>
+    <>
+      <PageMasthead {...DATA_GALLERY_CARD_MASTHEAD} />
+      <section className="grid-container padding-y-6">
+        <div className="grid-row grid-gap">
+          {DATASETS.map(({ id, ...card }) => (
+            <div key={id} className="grid-col-12">
+              <CardDetailed {...makeCardDetailedImageLeftProps(card)} className="height-card-sm" />
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
