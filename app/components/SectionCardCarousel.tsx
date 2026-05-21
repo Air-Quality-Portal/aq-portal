@@ -12,9 +12,10 @@ export const SectionCardCarousel = ({
   sectionHeading,
   cards,
   children,
+  ...sectionProps
 }: SectionCardCarouselProps) => {
   return (
-    <Section>
+    <Section {...sectionProps}>
       {sectionHeading && <SectionHeading>{sectionHeading}</SectionHeading>}
 
       <div className="grid-row grid-gap-2 margin-bottom-neg-2">
