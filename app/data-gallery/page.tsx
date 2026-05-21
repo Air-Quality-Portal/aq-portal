@@ -10,9 +10,12 @@ export default function DataGalleryPage() {
       <PageMasthead {...DATA_GALLERY_CARD_MASTHEAD} />
       <section className="grid-container padding-y-6">
         <div className="grid-row grid-gap">
-          {DATASETS.map(({ id, ...card }) => (
+          {DATASETS.map(({ id, categories, themes, ...card }) => (
             <div key={id} className="grid-col-12">
-              <CardDetailed {...makeCardDetailedImageLeftProps(card)} className="height-card-sm" />
+              <CardDetailed
+                {...makeCardDetailedImageLeftProps({ ...card, tags: [...categories, ...themes] })}
+                className="height-card-sm"
+              />
             </div>
           ))}
         </div>

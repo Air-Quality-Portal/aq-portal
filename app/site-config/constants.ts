@@ -1,22 +1,23 @@
-export const CONTENT_THEMES = {
+import type { Theme } from "./types";
+
+export const CONTENT_THEMES: Record<Theme, Record<string, unknown>> = {
   respond: {
     label: "respond",
-    className: "bg-secondary text-white",
-    bgColor: "#c91b6e",
+    color: "secondary",
+    textColor: "white",
   },
   build: {
     label: "build resilience",
-    className: "bg-success text-white",
-    bgColor: "#1d9950",
+    color: "success",
+    textColor: "white",
   },
   prepare: {
     label: "prepare",
-    className: "bg-accent-warm text-primary-dark",
-    bgColor: "#f67e09",
+    color: "accent-warm",
   },
   recover: {
     label: "recover",
-    className: "text-white",
-    bgColor: "#4f6fae",
+    color: "accent-cool",
+    textColor: "text-white",
   },
 } as const;

@@ -13,7 +13,7 @@ type Dataset = {
     label: string;
   };
   themes: Theme[];
-  category: Category[];
+  categories: Category[];
 };
 
 export const DATASETS: IterableItemWithId<Dataset>[] = [
@@ -26,6 +26,6 @@ export const DATASETS: IterableItemWithId<Dataset>[] = [
     image: { src: "/img/logo-emblem.svg", alt: "placeholder image" },
     callToAction: { href: "/data-gallery/lorem-ipsum-dolor", label: "View Data" },
     themes: ["prepare"],
-    category: ["severewx", "flood", "tropical cyclone"],
+    categories: ["severewx", "flood", "tropical cyclone"],
   },
 ];

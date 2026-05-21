@@ -1,8 +1,43 @@
-import type { CardDetailedProps, CardProps } from "@teamimpact/veda-ui-blocks";
+import { type CardDetailedProps, type CardProps, Tag } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
+import type { Category, ContentType, Theme } from "./types";
 
-export const makeContentTypeTags = () => {};
-export const makeThemeTypeTags = () => {};
+const CONTENT_THEMES: Record<Theme, Record<string, unknown>> = {
+  respond: {
+    label: "respond",
+    color: "secondary",
+    textColor: "white",
+  },
+  build: {
+    label: "build resilience",
+    color: "success",
+    textColor: "white",
+  },
+  prepare: {
+    label: "prepare",
+    color: "accent-warm",
+  },
+  recover: {
+    label: "recover",
+    color: "accent-cool",
+    textColor: "text-white",
+  },
+};
+
+export const makeSimpleTag = (tag: Theme | ContentType | Category) => (
+  <Tag variant="solid" color="primary-lighter">
+    {tag}
+  </Tag>
+);
+
+export const makeThemeTag = (tag: Theme) => {
+  const { label, ...rest } = CONTENT_THEMES[tag];
+  return (
+    <Tag variant="solid" {...rest}>
+      {tag}
+    </Tag>
+  );
+};
 
 export type CardPropsArgs = {
   image: {
@@ -32,22 +67,27 @@ export type CardDetailedPropsArgs = {
     alt: string;
     src: string;
   };
+  tags?: (Theme | ContentType | Category)[];
   [key: string]: unknown;
 };
 
 export const makeCardDetailedProps = ({
   image,
+  tags,
   ...rest
 }: CardDetailedPropsArgs): CardDetailedProps => ({
   image: <Image {...image} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />,
+  tags: (tags ?? []).map((t) => makeSimpleTag(t)),
   ...rest,
 });
 
 export const makeCardDetailedImageLeftProps = ({
   image,
+  tags,
   ...rest
 }: CardDetailedPropsArgs): CardDetailedProps => ({
   image: <Image {...image} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />,
   imagePosition: "left",
+  tags: (tags ?? []).map((t) => makeSimpleTag(t)),
   ...rest,
 });
