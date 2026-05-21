@@ -16,7 +16,7 @@ export const MOCK_CARD_TYPHOON_SINLAKU_APRIL_2026: IterableItemWithId<CardSimple
   ),
   url: "/events/typhoon-sinlaku-april-2026",
   tag: (
-    <Tag color="white" textColor="#c91b6e">
+    <Tag color="transparent" textColor="secondary">
       ACTIVE
     </Tag>
   ),

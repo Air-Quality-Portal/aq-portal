@@ -1,10 +1,9 @@
-import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
+import type { CardMiniProps } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
+import type { IterableItemWithId } from "@/app/components/types";
 import { ThemeTag } from "../../components";
 
-type CardWithId = CardSimpleProps & { id: string };
-
-export const MOCK_CARD_FINDING_THE_FLOODS: CardWithId = {
+export const MOCK_CARD_FINDING_THE_FLOODS: IterableItemWithId<CardMiniProps> = {
   id: "card-finding-the-floods",
   title: "Finding the Floods",
   image: (
@@ -18,7 +17,7 @@ export const MOCK_CARD_FINDING_THE_FLOODS: CardWithId = {
   url: "/stories/finding-the-floods",
   tag: <ThemeTag theme="respond" />,
 };
-export const MOCK_CARD_TRACKING_TORNADOE: CardWithId = {
+export const MOCK_CARD_TRACKING_TORNADO: IterableItemWithId<CardMiniProps> = {
   id: "card-tracking-tornadoes-from-space",
   title: "Tracking Tornadoes from Space",
   image: (
@@ -33,7 +32,7 @@ export const MOCK_CARD_TRACKING_TORNADOE: CardWithId = {
   tag: <ThemeTag theme="respond" />,
 };
 
-export const MOCK_CARD_BEYOND_FLAMES: CardWithId = {
+export const MOCK_CARD_BEYOND_FLAMES: IterableItemWithId<CardMiniProps> = {
   id: "card-seeing-beyond-the-flames",
   title: "Seeing Beyond the Flames: Mapping Wildfire Impacts in Southern California",
   image: (
@@ -48,7 +47,7 @@ export const MOCK_CARD_BEYOND_FLAMES: CardWithId = {
   tag: <ThemeTag theme="respond" />,
 };
 
-export const MOCK_CARD_HURRICANE_HELENE: CardWithId = {
+export const MOCK_CARD_HURRICANE_HELENE: IterableItemWithId<CardMiniProps> = {
   id: "card-supporting-communities-hurricane-helene",
   title: "Supporting Communities in the Wake of Hurricane Helene",
   image: (

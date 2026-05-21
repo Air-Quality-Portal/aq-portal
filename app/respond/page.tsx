@@ -18,7 +18,7 @@ import {
   MOCK_CARD_BEYOND_FLAMES,
   MOCK_CARD_FINDING_THE_FLOODS,
   MOCK_CARD_HURRICANE_HELENE,
-  MOCK_CARD_TRACKING_TORNADOE,
+  MOCK_CARD_TRACKING_TORNADO,
 } from "../site-config/respond/respond-sectioncardsimplemosaic-stories-of-impact";
 
 export default function RespondPage() {
@@ -32,7 +32,7 @@ export default function RespondPage() {
         sectionHeading="News & Events"
         cards={[
           MOCK_CARD_FINDING_THE_FLOODS,
-          MOCK_CARD_TRACKING_TORNADOE,
+          MOCK_CARD_TRACKING_TORNADO,
           MOCK_CARD_BEYOND_FLAMES,
           MOCK_CARD_HURRICANE_HELENE,
         ]}
