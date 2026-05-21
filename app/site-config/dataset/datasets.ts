@@ -5,7 +5,7 @@ type Dataset = {
   contentType: "dataset";
   title: string;
   description: string;
-  image: {
+  thumbnailImage: {
     src: string;
     alt: string;
   };
@@ -20,7 +20,7 @@ export const DATASETS: Dataset[] = [
     title: "Lorem ipsum dolor sit amet Lorem",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-    image: { src: "/img/logo-emblem.svg", alt: "placeholder image" },
+    thumbnailImage: { src: "/img/logo-emblem.svg", alt: "placeholder image" },
     themes: ["prepare"],
     categories: ["severewx", "flood", "tropical cyclone"],
   },

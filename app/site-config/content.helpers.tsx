@@ -63,7 +63,7 @@ export const makeCardMastHeadProps = ({ image, title, ...rest }: CardPropsArgs):
 });
 
 export type CardDetailedPropsArgs = {
-  image: {
+  thumbnailImage: {
     alt: string;
     src: string;
   };
@@ -72,21 +72,33 @@ export type CardDetailedPropsArgs = {
 };
 
 export const makeCardDetailedProps = ({
-  image,
+  thumbnailImage,
   tags,
   ...rest
 }: CardDetailedPropsArgs): CardDetailedProps => ({
-  image: <Image {...image} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />,
+  image: (
+    <Image
+      {...thumbnailImage}
+      fill
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+    />
+  ),
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
   ...rest,
 });
 
 export const makeCardDetailedImageLeftProps = ({
-  image,
+  thumbnailImage,
   tags,
   ...rest
 }: CardDetailedPropsArgs): CardDetailedProps => ({
-  image: <Image {...image} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />,
+  image: (
+    <Image
+      {...thumbnailImage}
+      fill
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+    />
+  ),
   imagePosition: "left",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
   ...rest,
