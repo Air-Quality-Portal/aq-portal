@@ -1,6 +1,6 @@
 import type { TrainingContent } from "@/app/site-config/types";
 
-export const eoBuildingExposure: TrainingContent = {
+export const TRAINING__EO_BUILDING_EXPOSURE: TrainingContent = {
   id: "eo-building-exposure",
   contentType: "training",
   title:

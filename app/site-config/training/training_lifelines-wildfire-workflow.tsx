@@ -2,7 +2,7 @@ import { Link } from "@teamimpact/veda-ui-blocks";
 
 import type { TrainingContent } from "@/app/site-config/types";
 
-export const lifelinesWildfireWorkflow: TrainingContent = {
+export const TRAINING__LIFELINES_WILDFIRE_WORKFLOW: TrainingContent = {
   id: "lifelines-wildfire-workflow",
   contentType: "training",
   title: "NASA Lifelines Data Studio: Wildfire Early Warning Workflow",

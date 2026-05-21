@@ -1,6 +1,6 @@
 import type { StoryContent } from "../types";
 
-export const NEWS_ESTIMATING_LOSS_RECOVERY: StoryContent = {
+export const STORY_ESTIMATING_LOSS_RECOVERY: StoryContent = {
   id: "card-news-estimating-loss-recovery",
   contentType: "story",
   title: "When Every Dollar Counts: Estimating Loss to Speed Recovery",

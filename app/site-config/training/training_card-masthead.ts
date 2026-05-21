@@ -1,4 +1,4 @@
-export const TRAINING_CARD_MASTHEAD = {
+export const TRAINING__CARD_MASTHEAD = {
   image: {
     alt: "",
     src: "/img/card-masthead.webp",
