@@ -12,7 +12,13 @@ export default function TrainingCollectionPage() {
         <div className="grid-row grid-gap">
           {TRAININGS.map(({ id, ...card }) => (
             <div key={id} className="grid-col-12 tablet:grid-col-6">
-              <CardDetailed {...makeCardDetailedProps(card)} className="height-card-lg" />
+              <CardDetailed
+                {...makeCardDetailedProps({
+                  ...card,
+                  callToAction: { href: `/training/${id}`, label: "View Training" },
+                })}
+                className="height-card-lg"
+              />
             </div>
           ))}
         </div>

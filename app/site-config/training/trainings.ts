@@ -1,6 +1,5 @@
-import type { IterableItemWithId } from "@/app/site-config/types";
-
 type Training = {
+  id: string;
   contentType: "training";
   title: string;
   description: string;
@@ -8,15 +7,11 @@ type Training = {
     src: string;
     alt: string;
   };
-  callToAction: {
-    href: string;
-    label: string;
-  };
 };
 
-export const TRAININGS: IterableItemWithId<Training>[] = [
+export const TRAININGS: Training[] = [
   {
-    id: "eo-building-exposure-data",
+    id: "eo-building-exposure",
     contentType: "training",
     title:
       "Understanding EO-based Building Exposure Data: Application to Disaster Mitigation, Preparedness, Response and Recovery",
@@ -25,10 +20,6 @@ export const TRAININGS: IterableItemWithId<Training>[] = [
     image: {
       src: "/img/resources-learning-eo-building-exposure-data.webp",
       alt: "Los Angeles building exposure map showing building risk data across the city",
-    },
-    callToAction: {
-      href: "/training/eo-building-exposure-data",
-      label: "View Training",
     },
   },
   {
@@ -40,10 +31,6 @@ export const TRAININGS: IterableItemWithId<Training>[] = [
     image: {
       src: "/img/resources-learning-lifelines-wildfire-workflow.webp",
       alt: "NASA Lifelines Data Studio cover image showing wildfire data workflow",
-    },
-    callToAction: {
-      href: "/training/lifelines-wildfire-workflow",
-      label: "View Training",
     },
   },
 ];

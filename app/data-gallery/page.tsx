@@ -13,7 +13,11 @@ export default function DataGalleryPage() {
           {DATASETS.map(({ id, categories, themes, ...card }) => (
             <div key={id} className="grid-col-12">
               <CardDetailed
-                {...makeCardDetailedImageLeftProps({ ...card, tags: [...categories, ...themes] })}
+                {...makeCardDetailedImageLeftProps({
+                  ...card,
+                  tags: [...categories, ...themes],
+                  callToAction: { href: `/data-gallery/${id}`, label: "View Data" },
+                })}
                 className="height-card-sm"
               />
             </div>
