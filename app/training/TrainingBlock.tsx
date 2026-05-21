@@ -76,10 +76,16 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
       return (
         <Section className="display-flex flex-justify-center flex-align-center">
           {block.title && <h3 className="font-heading-xl margin-bottom-1">{block.title}</h3>}
-          {/* biome-ignore lint/a11y/useMediaCaption: captions not yet available for training videos */}
-          <video controls className="width-full display-block">
-            <source src={block.src} />
-          </video>
+          {block.src ? (
+            <video controls className="width-full display-block">
+              <source src={block.src} />
+              <track kind="captions" />
+            </video>
+          ) : (
+            <div className="width-full bg-base-lightest display-flex flex-align-center flex-justify-center height-card padding-x-4">
+              <p className="text-base margin-0">Video coming soon</p>
+            </div>
+          )}
           {block.caption && <p className="font-body-sm text-base margin-top-1">{block.caption}</p>}
         </Section>
       );
