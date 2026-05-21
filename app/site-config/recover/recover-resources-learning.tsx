@@ -1,7 +1,7 @@
 import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import { ThemeTag } from "@/app/components";
-import type { IterableItemWithId } from "@/app/components/types";
+import type { IterableItemWithId } from "@/app/site-config/types";
 
 export const MOCK_CARD_RECOVER_RESOURCES_LEARNING_1: IterableItemWithId<CardSimpleProps> = {
   id: "card-resources-learning-recover-1",

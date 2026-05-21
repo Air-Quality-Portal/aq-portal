@@ -1,8 +1,9 @@
 import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import { ThemeTag } from "@/app/components";
+import type { IterableItemWithId } from "@/app/site-config/types";
 
-type CardWithId = CardSimpleProps & { id: string };
+type CardWithId = IterableItemWithId<CardSimpleProps>;
 
 export const MOCK_CARD_RECOVER_STORY_1: CardWithId = {
   id: "card-recover-story-1",

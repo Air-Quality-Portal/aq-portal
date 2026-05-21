@@ -1,5 +1,5 @@
 import { Card, CardMini, CardSimple } from "@teamimpact/veda-ui-blocks";
-import { Section, SectionHeading } from "@/app/components";
+import { Section, SectionCardSimpleMosaic, SectionHeading } from "@/app/components";
 import { MOCK_CARD_RECOVER_HERO } from "@/app/site-config/recover/recover-card-hero";
 import {
   MOCK_CARD_RECOVER_LATEST_EVENT_1,
@@ -14,40 +14,28 @@ import {
   MOCK_CARD_RECOVER_STORY_3,
   MOCK_CARD_RECOVER_STORY_4,
 } from "@/app/site-config/recover/recover-stories-of-impact";
+import "@teamimpact/veda-ui-blocks/disasters.css";
 
 export default function Recover() {
   return (
     <>
-      <div className="display-flex" style={{ minHeight: "484px" }}>
+      <div className="display-flex minh-masthead">
         <Card {...MOCK_CARD_RECOVER_HERO} />
       </div>
 
       {/* Stories of Impact */}
-      <Section>
-        <SectionHeading>Stories of Impact</SectionHeading>
-        <div className="grid-row grid-gap-2 margin-bottom-neg-2">
-          {/* Feature card: full-width → desktop: 2 of 4 cols */}
-          <div className="grid-col-12 desktop:grid-col-6 margin-bottom-2 height-mobile">
-            <CardSimple {...MOCK_CARD_RECOVER_STORY_1} />
-          </div>
-          {/* Regular card: full-width → tablet: half → desktop: 1 of 4 cols */}
-          <div className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 height-mobile">
-            <CardSimple {...MOCK_CARD_RECOVER_STORY_2} />
-          </div>
-          {/* Stacked half-height cards: full-width → tablet: half → desktop: 1 of 4 cols */}
-          <div className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 display-flex flex-column height-mobile">
-            <div className="flex-1 margin-bottom-2">
-              <CardSimple {...MOCK_CARD_RECOVER_STORY_3} size="compact" />
-            </div>
-            <div className="flex-1">
-              <CardSimple {...MOCK_CARD_RECOVER_STORY_4} size="compact" />
-            </div>
-          </div>
-        </div>
-      </Section>
+      <SectionCardSimpleMosaic
+        sectionHeading="Stories of Impact"
+        cards={[
+          MOCK_CARD_RECOVER_STORY_1,
+          MOCK_CARD_RECOVER_STORY_2,
+          MOCK_CARD_RECOVER_STORY_3,
+          MOCK_CARD_RECOVER_STORY_4,
+        ]}
+      />
 
       {/* Data Visualization */}
-      <section className="padding-y-7">
+      <section>
         <SectionHeading>Data Visualization</SectionHeading> <p>TODO: Map block</p>
       </section>
 
@@ -81,8 +69,7 @@ export default function Recover() {
           {MOCK_RECOVER_CARD_RESOURCE_LEARNING.map((cardProps) => (
             <div
               key={cardProps.id}
-              className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2"
-              style={{ minHeight: "484px" }}
+              className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 minh-card-md"
             >
               <CardSimple {...cardProps} />
             </div>
