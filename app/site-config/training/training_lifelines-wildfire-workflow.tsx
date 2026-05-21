@@ -1,3 +1,5 @@
+import { Link } from "@teamimpact/veda-ui-blocks";
+
 import type { TrainingContent } from "@/app/site-config/types";
 
 export const lifelinesWildfireWorkflow: TrainingContent = {
@@ -24,12 +26,14 @@ export const lifelinesWildfireWorkflow: TrainingContent = {
         "Wildfires are increasing in frequency and intensity across the globe, threatening communities, critical infrastructure, and ecosystems with little warning. Timely, data-driven information is essential for responders and decision-makers to protect lives and coordinate action before and during a wildfire.",
         "This training module introduces a near real-time approach to wildfire early warning built on freely available NASA satellite data. Using active fire detections from the NASA Fire Information for Resource Management System (FIRMS), the module walks users through identifying fire locations, delineating risk zones, and assessing exposure of populations and infrastructure — all within a guided, interactive environment requiring no software installation.",
         "Ready to set up your own Wildfire Early Warning Alert System?",
+        // biome-ignore lint/correctness/useJsxKeyInIterable: key applied by renderer
+        <Link
+          href="https://colab.research.google.com/github/seamusgeraty/wildfire-early-warning/blob/main/Wildfire_Early_Warning_Module.ipynb"
+          variant="button"
+        >
+          Wildfire Early Warning Module
+        </Link>,
       ],
-    },
-    {
-      type: "cta",
-      label: "Wildfire Early Warning Module",
-      href: "https://colab.research.google.com/github/seamusgeraty/wildfire-early-warning/blob/main/Wildfire_Early_Warning_Module.ipynb",
     },
     {
       type: "slider",
@@ -68,26 +72,30 @@ export const lifelinesWildfireWorkflow: TrainingContent = {
       text: "While the module is designed to minimize technical barriers, a basic understanding of GIS concepts is recommended for users in order to prepare their own data inputs (area of interest, building layer, population raster) or adapt the workflow for a specific operational context.",
     },
     {
-      type: "about",
-      logo: {
-        src: "/img/training/lifelines-wildfire-workflow/lifelines-logo-blue.webp",
-        alt: "NASA Lifelines logo",
-      },
+      type: "image",
+      src: "/img/training/lifelines-wildfire-workflow/lifelines-logo-blue.webp",
+      alt: "NASA Lifelines logo",
+      width: 1495,
+      height: 190,
+      maxWidth: "200px",
+    },
+    {
+      type: "text",
       heading: "About NASA Lifelines and Data Studios",
       paragraphs: [
         "This module was developed by NASA Lifelines, a NASA Disasters initiative that connects NASA Earth observation data and expertise with the humanitarian community to support disaster preparedness, response, and resilience.",
         "NASA Lifelines Data Studios help humanitarians navigate openly available data and resources with a better understanding of exactly what they are looking for and how to use it.",
-        "Explore more training resources at NASA Lifelines Data Studios: ",
-      ],
-      links: [
-        {
-          label: "https://nasalifelines.org/data-studios/",
-          href: "https://nasalifelines.org/data-studios/",
-        },
+        <>
+          Explore more training resources at NASA Lifelines Data Studios:{" "}
+          <Link href="https://nasalifelines.org/data-studios/">
+            https://nasalifelines.org/data-studios
+          </Link>
+          .
+        </>,
       ],
     },
     {
-      type: "links",
+      type: "list",
       heading: "Other Links",
       items: [
         { label: "NASA Lifelines", href: "https://nasalifelines.org/" },

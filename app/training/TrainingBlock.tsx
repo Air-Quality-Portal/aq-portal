@@ -32,10 +32,16 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
               <SectionHeading>{block.heading}</SectionHeading>
             ))}
           <ul className="usa-list">
-            {block.items.map((item, i) => (
-              // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-              <li key={i}>{item}</li>
-            ))}
+            {block.items.map((item, i) =>
+              typeof item === "string" ? (
+                // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
+                <li key={i}>{item}</li>
+              ) : (
+                <li key={item.href}>
+                  <Link href={item.href}>{item.label}</Link>
+                </li>
+              ),
+            )}
           </ul>
         </Section>
       );
@@ -48,15 +54,6 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
               <p className="usa-alert__text">{block.text}</p>
             </div>
           </div>
-        </Section>
-      );
-
-    case "cta":
-      return (
-        <Section>
-          <Link href={block.href} variant="button">
-            {block.label}
-          </Link>
         </Section>
       );
 
@@ -83,7 +80,7 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
 
     case "video":
       return (
-        <Section>
+        <Section className="display-flex flex-justify-center flex-align-center">
           {block.title && <h3 className="font-sans-xl margin-bottom-1">{block.title}</h3>}
           {/* biome-ignore lint/a11y/useMediaCaption: captions not yet available for training videos */}
           <video controls className="width-full display-block">
@@ -93,47 +90,16 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
         </Section>
       );
 
-    case "about":
+    case "image":
       return (
-        <Section>
-          <SectionHeading>{block.heading}</SectionHeading>
-
+        <Section className="display-flex flex-justify-center flex-align-center">
           <Image
-            src={block.logo.src}
-            alt={block.logo.alt}
-            width={1495}
-            height={190}
-            style={{ width: "200px", height: "auto" }}
-            className="margin-bottom-3"
+            src={block.src}
+            alt={block.alt}
+            width={block.width}
+            height={block.height}
+            style={{ width: block.maxWidth ?? "100%", height: "auto" }}
           />
-
-          {block.paragraphs.map((p, i) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-            <p key={i} className="margin-bottom-2">
-              {p}
-            </p>
-          ))}
-          <ul className="usa-list usa-list--unstyled">
-            {block.links.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href}>{link.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </Section>
-      );
-
-    case "links":
-      return (
-        <Section>
-          {block.heading && <SectionHeading>{block.heading}</SectionHeading>}
-          <ul className="usa-list usa-list--unstyled">
-            {block.items.map((item) => (
-              <li key={item.href} className="margin-bottom-1">
-                <Link href={item.href}>{item.label}</Link>
-              </li>
-            ))}
-          </ul>
         </Section>
       );
   }
