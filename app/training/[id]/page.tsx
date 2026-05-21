@@ -49,13 +49,15 @@ export default async function TrainingItemPage(props: PageProps<"/training/[id]"
           {/* Sidebar */}
 
           <div className="grid-col-12 desktop:grid-col-3">
-            <aside className="bg-base-lightest padding-4">
+            <aside className="bg-base-lightest padding-4 margin-bottom-4">
               {training.themes.length > 0 && (
                 <div className="margin-bottom-3">
                   <p className="text-bold font-body-sm margin-top-0 margin-bottom-2">Theme</p>
-                  <div className="display-flex flex-wrap">
+                  <div className="display-flex flex-wrap grid-gap-sm">
                     {training.themes.map((theme) => (
-                      <ThemeTag key={theme} theme={theme} />
+                      <div key={theme} className="margin-right-1 margin-bottom-1">
+                        <ThemeTag key={theme} theme={theme} />
+                      </div>
                     ))}
                   </div>
                 </div>
