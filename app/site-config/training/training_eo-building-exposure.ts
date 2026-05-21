@@ -15,7 +15,7 @@ export const eoBuildingExposure: TrainingContent = {
   themes: ["prepare", "respond", "recover", "build"],
   categories: ["earthquake", "tropical cyclone"],
   heroImage: {
-    src: "/img/home/resources-learning-eo-building-exposure-data.webp",
+    src: "/img/resources-learning-eo-building-exposure-data.webp",
     alt: "Los Angeles building exposure map showing building risk data across the city",
   },
   body: [

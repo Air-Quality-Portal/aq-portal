@@ -29,7 +29,7 @@ export default async function TrainingItemPage(props: PageProps<"/training/[id]"
               alt={training.heroImage.alt}
               fill
               priority
-              sizes="100vw"
+              sizes="(max-width: 1024px) 100vw, 1024px"
               style={{ objectFit: "cover" }}
             />
           }
@@ -47,7 +47,6 @@ export default async function TrainingItemPage(props: PageProps<"/training/[id]"
       <Section>
         <div className="grid-row grid-gap">
           {/* Sidebar */}
-
           <div className="grid-col-12 desktop:grid-col-3">
             <aside className="bg-base-lightest padding-4 margin-bottom-4">
               {training.themes.length > 0 && (

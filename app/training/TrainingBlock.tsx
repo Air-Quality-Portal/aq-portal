@@ -101,9 +101,9 @@ export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
           <Image
             src={block.logo.src}
             alt={block.logo.alt}
-            width={200}
-            height={50}
-            style={{ height: "auto", maxWidth: "200px" }}
+            width={1495}
+            height={190}
+            style={{ width: "200px", height: "auto" }}
             className="margin-bottom-3"
           />
 

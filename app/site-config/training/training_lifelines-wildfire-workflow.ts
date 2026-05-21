@@ -14,7 +14,7 @@ export const lifelinesWildfireWorkflow: TrainingContent = {
   themes: ["prepare", "respond"],
   categories: ["fire"],
   heroImage: {
-    src: "/img/home/resources-learning-lifelines-wildfire-workflow.webp",
+    src: "/img/resources-learning-lifelines-wildfire-workflow.webp",
     alt: "Satellite-derived wildfire data workflow showing fire detections and risk zones",
   },
   body: [
