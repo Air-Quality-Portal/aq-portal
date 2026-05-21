@@ -48,10 +48,7 @@ export default function Recover() {
 
       {/* Data Visualization */}
       <section className="padding-y-7">
-        <div className="grid-container">
-          <h2 className="margin-bottom-8 font-heading-2xl">Data Visualization</h2>
-          <p>TODO: Map block</p>
-        </div>
+        <SectionHeading>Data Visualization</SectionHeading> <p>TODO: Map block</p>
       </section>
 
       {/* Latest Events */}
