@@ -92,13 +92,7 @@ export const makeCardDetailedImageLeftProps = ({
   tags,
   ...rest
 }: CardDetailedPropsArgs): CardDetailedProps => ({
-  image: (
-    <Image
-      {...thumbnailImage}
-      fill
-      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-    />
-  ),
+  image: <Image {...thumbnailImage} fill sizes="200px" />,
   imagePosition: "left",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
   ...rest,
