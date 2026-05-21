@@ -1,63 +1,18 @@
-import { Tag } from "@teamimpact/veda-ui-blocks";
-import Image from "next/image";
-import type { SectionCardSimpleMosaicProps } from "@/app/components/SectionCardSimpleMosaic";
+import type { EventContent, NewsContent, StoryContent } from "@/app/site-config/types";
+import { EVENT__TYPHOON_SINLAKU_2026 } from "../event/event__typhoon-sinlaku-2026";
+import { NEWS__NEW_DISASTERS_PORTAL_TEST_HELP } from "../news/news__new-disasters-portal-test-help";
+import { STORY__ESTIMATING_LOSS_RECOVERY } from "../story/story__estimating-loss-recovery";
+import { STORY__FINDING_FLOODS } from "../story/story__finding-floods";
 
 // Layout order: [0] featured, [1] regular, [2] compact top, [3] compact bottom
-export const NEWS_EVENTS_CARDS: SectionCardSimpleMosaicProps["cards"] = [
-  {
-    id: "card-news-estimating-loss-recovery",
-    title: "When Every Dollar Counts: Estimating Loss to Speed Recovery",
-    image: (
-      <Image
-        src="/img/home/news-events-estimating-loss-recovery.webp"
-        alt="Community recovery efforts in Mayfield after disaster, showing rebuilding in progress"
-        fill
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
-      />
-    ),
-    url: "/news/estimating-loss-recovery",
-    tag: <Tag>STORY</Tag>,
-  },
-  {
-    id: "card-news-finding-floods",
-    title: "Finding the Floods",
-    image: (
-      <Image
-        src="/img/home/news-events-finding-floods.webp"
-        alt="Flooded river in Kerrville, Texas showing significant flood waters"
-        fill
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-      />
-    ),
-    url: "/news/finding-floods",
-    tag: <Tag>STORY</Tag>,
-  },
-  {
-    id: "card-news-typhoon-sinlaku",
-    title: "Typhoon Sinlaku April 2026",
-    image: (
-      <Image
-        src="/img/home/news-events-typhoon-sinlaku-2026.webp"
-        alt="Satellite worldview imagery of Typhoon Sinlaku from April 2026"
-        fill
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-      />
-    ),
-    url: "/news/typhoon-sinlaku-2026",
-    tag: <Tag>EVENT</Tag>,
-  },
-  {
-    id: "card-news-portal-test",
-    title: "Help Test the New NASA Disasters PORTAL",
-    image: (
-      <Image
-        src="/img/home/news-events-help-test-portal.webp"
-        alt="NASA Disasters Portal team members at a field event"
-        fill
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-      />
-    ),
-    url: "/news/help-test-portal",
-    tag: <Tag>NEWS</Tag>,
-  },
+export const NEWS_EVENTS_CARDS: [
+  NewsContent | StoryContent | EventContent,
+  NewsContent | StoryContent | EventContent,
+  NewsContent | StoryContent | EventContent,
+  NewsContent | StoryContent | EventContent,
+] = [
+  STORY__ESTIMATING_LOSS_RECOVERY,
+  STORY__FINDING_FLOODS,
+  EVENT__TYPHOON_SINLAKU_2026,
+  NEWS__NEW_DISASTERS_PORTAL_TEST_HELP,
 ];

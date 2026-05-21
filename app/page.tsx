@@ -9,10 +9,12 @@ import {
 
 import "./styles/home.css";
 
+import { makeCardSimpleProps } from "./site-config/content.helpers";
 import { MOCK_CARD_LETSCONNECT } from "./site-config/home/home-card-lets_connect";
 import { MOCK_CARD_MASTHEAD } from "./site-config/home/home-card-masthead";
 import { NEWS_EVENTS_CARDS } from "./site-config/home/home-sectioncardmosaic-news-events";
 import { RESOURCES_LEARNING_CARDS } from "./site-config/home/home-sectioncardsimple-resources-learning";
+import { typedMap } from "./site-config/typed.helpers";
 
 export default function Home() {
   return (
@@ -20,7 +22,10 @@ export default function Home() {
       <div className="home-card-masthead display-flex minh-card-xl">
         <Card {...MOCK_CARD_MASTHEAD} />
       </div>
-      <SectionCardSimpleMosaic sectionHeading="News & Events" cards={NEWS_EVENTS_CARDS} />
+      <SectionCardSimpleMosaic
+        sectionHeading="News & Events"
+        cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
+      />
       {/* Data Visualization */}
       <Section>
         <SectionHeading>Data Visualization</SectionHeading>

@@ -9,7 +9,9 @@ import {
   SectionHeading,
   ThemeTag,
 } from "@/app/components/";
+import { makeCardSimpleProps } from "../site-config/content.helpers";
 import { NEWS_EVENTS_CARDS } from "../site-config/home/home-sectioncardmosaic-news-events";
+import { typedMap } from "../site-config/typed.helpers";
 
 const MOCK_CARDS: SectionCardCarouselProps["cards"] = [
   {
@@ -108,13 +110,13 @@ export default function ComponentsPage() {
 
       <SectionCardSimpleMosaic
         sectionHeading="SectionCardSimpleMosaic Component"
-        cards={NEWS_EVENTS_CARDS}
+        cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
       >
         <p>Lorem ipsum dolor sit amet...</p>
         <code className="bg-base-lighter font-code-xs">
           {`<SectionCardSimpleMosaic
               sectionHeading="SectionCardSimpleMosaic Component"
-              cards={NEWS_EVENTS_CARDS}
+              cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
             >
               <p>
                 Lorem ipsum dolor sit amet...
@@ -123,12 +125,15 @@ export default function ComponentsPage() {
         </code>
       </SectionCardSimpleMosaic>
 
-      <SectionCardSimple sectionHeading="SectionCardSimple Component" cards={NEWS_EVENTS_CARDS}>
+      <SectionCardSimple
+        sectionHeading="SectionCardSimple Component"
+        cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
+      >
         <p>Lorem ipsum dolor sit amet...</p>
         <code className="bg-base-lighter font-code-xs">
           {`<SectionCardSimple
               sectionHeading="SectionCardSimple Component"
-              cards={NEWS_EVENTS_CARDS}
+              cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
             >
               <p>
                 Lorem ipsum dolor sit amet...

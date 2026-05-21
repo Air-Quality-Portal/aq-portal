@@ -6,7 +6,7 @@ import {
 } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import type { AppRoutes } from "@/.next/types/routes";
-import type { Category, ContentType, Theme } from "./types";
+import type { Category, ContentType, IterableItemWithId, Theme } from "./types";
 
 const CONTENT_THEMES: Record<Theme, Record<string, unknown>> = {
   respond: {
@@ -30,7 +30,7 @@ const CONTENT_THEMES: Record<Theme, Record<string, unknown>> = {
   },
 };
 
-const CONTENT_TYPE_ROUTES: Record<ContentType, { route: AppRoutes; label: string }> = {
+const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: string }> = {
   dataset: { route: "/data-gallery", label: "data" },
   event: { route: "/events", label: "event" },
   news: { route: "/news-events", label: "news" },
@@ -51,6 +51,11 @@ export const makeThemeTag = (tag: Theme) => {
       {tag}
     </Tag>
   );
+};
+
+export const makeContentTypeTag = (tag: ContentType) => {
+  const { label } = CONTENT_TYPES[tag];
+  return <Tag variant="solid">{label}</Tag>;
 };
 
 export type CardPropsArgs = {
@@ -95,7 +100,8 @@ export const makeCardDetailedProps = ({
   tags,
   url,
   ...rest
-}: CardDetailedPropsArgs): CardDetailedProps => ({
+}: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => ({
+  id,
   image: (
     <Image
       {...thumbnailImage}
@@ -105,8 +111,8 @@ export const makeCardDetailedProps = ({
   ),
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
   callToAction: {
-    href: url ? url : `/${CONTENT_TYPE_ROUTES[contentType].route}/${id}`,
-    label: `view ${CONTENT_TYPE_ROUTES[contentType].label}`,
+    href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
+    label: `view ${CONTENT_TYPES[contentType].label}`,
   },
   ...rest,
 });
@@ -118,36 +124,43 @@ export const makeCardDetailedImageLeftProps = ({
   tags,
   url,
   ...rest
-}: CardDetailedPropsArgs): CardDetailedProps => ({
+}: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => ({
+  id,
   image: <Image {...thumbnailImage} fill sizes="200px" />,
   imagePosition: "left",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
   callToAction: {
-    href: url ? url : `/${CONTENT_TYPE_ROUTES[contentType].route}/${id}`,
-    label: `view ${CONTENT_TYPE_ROUTES[contentType].label}`,
+    href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
+    label: `view ${CONTENT_TYPES[contentType].label}`,
   },
   ...rest,
 });
 
 export type CardSimplePropsArgs = {
+  id: string;
+  contentType: ContentType;
   title: string;
   thumbnailImage: {
     alt: string;
     src: string;
   };
-  url: string;
   tag?: Theme | ContentType | Category;
   theme?: Theme;
+  url?: string;
   [key: string]: unknown;
 };
 
 export const makeCardSimpleProps = ({
+  id,
+  contentType,
   title,
   thumbnailImage,
   tag,
   theme,
+  url,
   ...rest
-}: CardSimplePropsArgs): CardSimpleProps => ({
+}: CardSimplePropsArgs): IterableItemWithId<CardSimpleProps> => ({
+  id,
   title,
   image: (
     <Image
@@ -156,6 +169,7 @@ export const makeCardSimpleProps = ({
       sizes="(max-width: 640px) 100vw, (max-width: 1400px) 25vw, 350px"
     />
   ),
-  tag: tag ? makeSimpleTag(tag) : theme ? makeThemeTag(theme) : undefined,
+  tag: tag ? makeSimpleTag(tag) : theme ? makeThemeTag(theme) : makeContentTypeTag(contentType),
+  url: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
   ...rest,
 });
