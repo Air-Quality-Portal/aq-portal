@@ -1,4 +1,4 @@
-import type { IterableItemWithId } from "@/app/components/types";
+import type { IterableItemWithId } from "@/app/site-config/types";
 
 type Training = {
   contentType: "training";

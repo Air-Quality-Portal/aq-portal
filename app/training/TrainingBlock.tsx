@@ -2,7 +2,7 @@ import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
 import { Section, SectionHeading } from "@/app/components";
-import type { ContentBlock } from "@/app/components/types";
+import type { ContentBlock } from "@/app/site-config/types";
 
 export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
   switch (block.type) {

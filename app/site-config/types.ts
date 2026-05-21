@@ -1,8 +1,10 @@
-import type { CONTENT_THEMES } from "@/app/site-config/constants";
-
 export type IterableItemWithId<T> = T & { id: string };
 
-export type Theme = keyof typeof CONTENT_THEMES;
+export type ContentType = "story" | "dataset" | "training" | "event" | "news";
+
+export type Theme = "respond" | "build" | "prepare" | "recover";
+
+export type Category = "severewx" | "fire" | "heat" | "flood" | "tropical cyclone";
 
 export type ContentBlock =
   | { type: "text"; heading?: string; headingLevel?: "h2" | "h3"; paragraphs: string[] }

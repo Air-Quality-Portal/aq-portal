@@ -1,4 +1,4 @@
-import type { TrainingContent } from "@/app/components/types";
+import type { TrainingContent } from "@/app/site-config/types";
 
 export const lifelinesWildfireWorkflow: TrainingContent = {
   id: "lifelines-wildfire-workflow",
