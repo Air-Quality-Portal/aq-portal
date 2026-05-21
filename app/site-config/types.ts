@@ -52,3 +52,20 @@ export type TrainingContent = {
   body: ContentBlock[];
   relatedContent?: string[];
 };
+
+export type DatasetContent = {
+  id: string;
+  contentType: "dataset";
+  title: string;
+  description: string;
+  thumbnailImage: {
+    src: string;
+    alt: string;
+  };
+  themes: Theme[];
+  categories: Category[];
+  heroImage: {
+    src: string;
+    alt: string;
+  };
+};

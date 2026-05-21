@@ -1,19 +1,6 @@
-import type { Category, Theme } from "@/app/site-config/types";
+import type { DatasetContent } from "@/app/site-config/types";
 
-type Dataset = {
-  id: string;
-  contentType: "dataset";
-  title: string;
-  description: string;
-  thumbnailImage: {
-    src: string;
-    alt: string;
-  };
-  themes: Theme[];
-  categories: Category[];
-};
-
-export const DATASETS: Dataset[] = [
+export const DATASETS: DatasetContent[] = [
   {
     id: "lorem-ipsum-dolor",
     contentType: "dataset",
@@ -23,5 +10,9 @@ export const DATASETS: Dataset[] = [
     thumbnailImage: { src: "/img/logo-emblem.svg", alt: "placeholder image" },
     themes: ["prepare"],
     categories: ["severewx", "flood", "tropical cyclone"],
+    heroImage: {
+      src: "/img/data-gallery/masthead.webp",
+      alt: "",
+    },
   },
 ];
