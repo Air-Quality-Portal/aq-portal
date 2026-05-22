@@ -1,8 +1,12 @@
-import Link from "next/link";
+"use client";
+
+import { Link } from "@teamimpact/veda-ui-blocks";
+import NextLink from "next/link";
+
 import type { ComponentProps } from "react";
 
 export type SectionHeadingProps = ComponentProps<"h2"> & {
-  href?: ComponentProps<typeof Link>["href"];
+  href?: ComponentProps<typeof NextLink>["href"];
 };
 
 export const SectionHeading = ({ href, children, className, ...props }: SectionHeadingProps) => {
@@ -13,7 +17,9 @@ export const SectionHeading = ({ href, children, className, ...props }: SectionH
       </h2>
       {href && (
         // TODO: update once the veda-ui-blocks is updated to include the Link component
-        <Link href={href}>View All</Link>
+        <Link as={NextLink} href={href} variant="arrow" size="lg">
+          View All
+        </Link>
       )}
     </div>
   );
