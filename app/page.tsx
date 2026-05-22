@@ -23,7 +23,7 @@ export default function Home() {
         <Card {...MOCK_CARD_MASTHEAD} />
       </div>
       <SectionCardSimpleMosaic
-        sectionHeading="News & Events"
+        sectionHeading={<SectionHeading href="/news-events">News & Events</SectionHeading>}
         cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
       />
       {/* Data Visualization */}
@@ -32,10 +32,10 @@ export default function Home() {
         <p>TODO: Map block</p>
       </Section>
       <SectionCardSimple
-        sectionHeading="Resources & Learning"
+        sectionHeading={<SectionHeading href="/training">Resources & Learning</SectionHeading>}
         cards={typedMap(RESOURCES_LEARNING_CARDS, makeCardSimpleProps)}
         bgColor="base-lightest"
-        className="margin-bottom-neg-7"
+        className="margin-bottom-0"
       >
         <div className="grid-row">
           <Card {...MOCK_CARD_LETSCONNECT} />

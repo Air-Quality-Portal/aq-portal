@@ -1,7 +1,7 @@
 import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import { CardSimple } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
-import { Section, SectionHeading, type SectionProps } from "@/app/components";
+import { Section, type SectionProps } from "@/app/components";
 import type { IterableItemWithId } from "@/app/site-config/types";
 
 export type SectionCardSimpleProps = SectionProps & {
@@ -22,7 +22,7 @@ export const SectionCardSimple = ({
 }: SectionCardSimpleProps) => {
   return (
     <Section {...sectionProps}>
-      {sectionHeading && <SectionHeading>{sectionHeading}</SectionHeading>}
+      {sectionHeading && sectionHeading}
       <div className="grid-row grid-gap-2 margin-bottom-6">
         {cards.map((props) => (
           <div

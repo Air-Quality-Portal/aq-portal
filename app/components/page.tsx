@@ -109,7 +109,7 @@ export default function ComponentsPage() {
       </Section>
 
       <SectionCardSimpleMosaic
-        sectionHeading="SectionCardSimpleMosaic Component"
+        sectionHeading={<SectionHeading>SectionCardSimpleMosaic Component</SectionHeading>}
         cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
       >
         <p>Lorem ipsum dolor sit amet...</p>
@@ -126,13 +126,13 @@ export default function ComponentsPage() {
       </SectionCardSimpleMosaic>
 
       <SectionCardSimple
-        sectionHeading="SectionCardSimple Component"
+        sectionHeading={<SectionHeading>SectionCardSimple Component</SectionHeading>}
         cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
       >
         <p>Lorem ipsum dolor sit amet...</p>
         <code className="bg-base-lighter font-code-xs">
           {`<SectionCardSimple
-              sectionHeading="SectionCardSimple Component"
+              sectionHeading={<SectionHeading>SectionCardSimple Component</SectionHeading>}
               cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
             >
               <p>
@@ -142,11 +142,16 @@ export default function ComponentsPage() {
         </code>
       </SectionCardSimple>
 
-      <SectionCardCarousel sectionHeading="SectionCardCarousel Component" cards={MOCK_CARDS}>
+      <SectionCardCarousel
+        sectionHeading={
+          <SectionHeading href="/components">SectionCardCarousel Component</SectionHeading>
+        }
+        cards={MOCK_CARDS}
+      >
         <p>Lorem ipsum dolor sit amet...</p>
         <code className="bg-base-lighter font-code-xs">
           {`<SectionCardCarousel
-              sectionHeading="SectionCardCarousel Component"
+              sectionHeading={<SectionHeading>SectionCardCarousel Component</SectionHeading>}
               cards={NEWS_EVENTS_CARDS}
             >
               <p>
