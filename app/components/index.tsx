@@ -1,3 +1,4 @@
+export { ContentBlockRenderer } from "./ContentBlockRenderer";
 export { HeaderWithCurrentPath } from "./HeaderWithCurrentPath";
 export { ImageComparison } from "./ImageComparison";
 export { PageMasthead } from "./PageMasthead";

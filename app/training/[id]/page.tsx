@@ -2,9 +2,8 @@ import { Card, Tag } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import { Section, ThemeTag } from "@/app/components";
+import { ContentBlockRenderer, Section, ThemeTag } from "@/app/components";
 import { TRAININGS } from "@/app/site-config/training";
-import { TrainingBlock } from "@/app/training/TrainingBlock";
 
 export default async function TrainingItemPage(props: PageProps<"/training/[id]">) {
   const { id } = await props.params;
@@ -83,7 +82,7 @@ export default async function TrainingItemPage(props: PageProps<"/training/[id]"
           <div className="grid-col-12 desktop:grid-col-9 margin-top-neg-7">
             {training.body.map((block, i) => (
               // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
-              <TrainingBlock key={i} block={block} />
+              <ContentBlockRenderer key={i} block={block} />
             ))}
           </div>
         </div>
