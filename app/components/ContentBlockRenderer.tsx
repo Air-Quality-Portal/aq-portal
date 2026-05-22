@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ImageComparison, Section, SectionHeading } from "@/app/components";
 import type { ContentBlock } from "@/app/site-config/types";
 
-export const TrainingBlock = ({ block }: { block: ContentBlock }) => {
+export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
   switch (block.type) {
     case "text":
       return (
