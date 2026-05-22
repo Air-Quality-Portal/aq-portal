@@ -1,5 +1,14 @@
 import type { ReactNode } from "react";
 
+export type DateRange = { from: string; to: string };
+
+/** Raster layer config without dateRange — consumers add it when building the full layer config. */
+export type DatasetLayer = {
+  type: "raster";
+  collectionId: string;
+  tileMatrixSet?: "WebMercatorQuad" | "GDALWebMercatorQuad" | "WorldCRS84Quad";
+};
+
 export type IterableItemWithId<T> = T & { id: string };
 
 export type ContentType = "story" | "dataset" | "training" | "event" | "news";
@@ -50,6 +59,8 @@ export type TrainingContent = Omit<MinimumCardContent, "contentType"> & {
 export type DatasetContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "dataset";
   mastheadImage: MastheadImage;
+  layer?: DatasetLayer;
+  defaultDateRange?: DateRange;
 };
 
 export type NewsContent = Omit<MinimumCardContent, "contentType"> & {
