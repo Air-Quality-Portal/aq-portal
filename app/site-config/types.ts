@@ -33,7 +33,20 @@ export type ContentBlock =
   | { type: "note"; text: string }
   | { type: "slider"; before: { src: string; alt: string }; after: { src: string; alt: string } }
   | { type: "video"; src: string; title?: string; caption?: string }
-  | { type: "image"; src: string; alt: string; width: number; height: number; maxWidth?: string };
+  | { type: "image"; src: string; alt: string; width: number; height: number; maxWidth?: string }
+  | {
+      type: "stacSingleLayer";
+      stacLayer: StacLayer;
+    }
+  | {
+      type: "stacCompare";
+      baseMapStyle: StyleSpecification;
+      initialViewState: { longitude: number; latitude: number; zoom: number };
+      leftLayerConfig: { type: "raster"; collectionId: string; dateRange: DateRange };
+      rightLayerConfig: { type: "raster"; collectionId: string; dateRange: DateRange };
+      stacApiUrl?: string;
+      titilerBaseUrl?: string;
+    };
 
 export type MinimumCardContent = {
   id: string;
@@ -63,7 +76,6 @@ export type TrainingContent = Omit<MinimumCardContent, "contentType"> & {
 
 export type DatasetContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "dataset";
-  stacLayer?: StacLayer;
   body: ContentBlock[];
 };
 

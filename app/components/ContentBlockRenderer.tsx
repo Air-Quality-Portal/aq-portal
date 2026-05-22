@@ -1,37 +1,40 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
-import { ImageComparison, Section, SectionHeading } from "@/app/components";
+import { ImageComparison, SectionHeading } from "@/app/components";
 import type { ContentBlock } from "@/app/site-config/types";
+import { StacCompareBlock, StacSingleLayerBlock } from "./blocks";
 
 export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
   switch (block.type) {
     case "text":
       return (
-        <Section>
+        <div className="margin-bottom-4">
           {block.heading &&
             (block.headingLevel === "h4" ? (
               <h4 className="font-heading-lg margin-bottom-1">{block.heading}</h4>
             ) : block.headingLevel === "h3" ? (
-              <h3 className="font-heading-xl margin-bottom-1">{block.heading}</h3>
+              <h3 className="font-heading-lg margin-bottom-1">{block.heading}</h3>
             ) : (
               <SectionHeading>{block.heading}</SectionHeading>
             ))}
           {block.paragraphs.map((p, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-            <p key={i}>{p}</p>
+            <p key={i} className="margin-bottom-1">
+              {p}
+            </p>
           ))}
-        </Section>
+        </div>
       );
 
     case "list":
       return (
-        <Section>
+        <div className="margin-bottom-4">
           {block.heading &&
             (block.headingLevel === "h4" ? (
               <h4 className="font-heading-lg margin-bottom-1">{block.heading}</h4>
             ) : block.headingLevel === "h3" ? (
-              <h3 className="font-heading-xl margin-bottom-1">{block.heading}</h3>
+              <h3 className="font-heading-lg margin-bottom-1">{block.heading}</h3>
             ) : (
               <SectionHeading>{block.heading}</SectionHeading>
             ))}
@@ -47,34 +50,34 @@ export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
               ),
             )}
           </ul>
-        </Section>
+        </div>
       );
 
     case "note":
       return (
-        <Section>
-          <div role="note" className="usa-alert usa-alert--info usa-alert--slim margin-bottom-4">
+        <div className="margin-bottom-4">
+          <div role="note" className="usa-alert usa-alert--info usa-alert--slim">
             <div className="usa-alert__body">
               <p className="usa-alert__text">{block.text}</p>
             </div>
           </div>
-        </Section>
+        </div>
       );
 
     case "slider":
       return (
-        <Section>
+        <div className="margin-bottom-4">
           <ImageComparison
             before={block.before}
             after={block.after}
             sizes="(max-width: 1024px) 100vw, 768px"
           />
-        </Section>
+        </div>
       );
 
     case "video":
       return (
-        <Section className="display-flex flex-justify-center flex-align-center">
+        <div className="margin-bottom-4 display-flex flex-justify-center flex-align-center">
           {block.title && <h3 className="font-heading-xl margin-bottom-1">{block.title}</h3>}
           {block.src ? (
             <video controls className="width-full display-block">
@@ -87,12 +90,12 @@ export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
             </div>
           )}
           {block.caption && <p className="font-body-sm text-base margin-top-1">{block.caption}</p>}
-        </Section>
+        </div>
       );
 
     case "image":
       return (
-        <Section className="display-flex flex-justify-center flex-align-center">
+        <div className="margin-bottom-4 display-flex flex-justify-center flex-align-center">
           <Image
             src={block.src}
             alt={block.alt}
@@ -100,7 +103,11 @@ export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
             height={block.height}
             style={{ width: block.maxWidth ?? "100%", height: "auto" }}
           />
-        </Section>
+        </div>
       );
+    case "stacSingleLayer":
+      return <StacSingleLayerBlock block={block} />;
+    case "stacCompare":
+      return <StacCompareBlock block={block} />;
   }
 };

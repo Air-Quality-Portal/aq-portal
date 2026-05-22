@@ -1,6 +1,5 @@
+export * from "./blocks";
 export { ContentBlockRenderer } from "./ContentBlockRenderer";
-export { DatasetMap } from "./DatasetMap";
-export { DataVisualizationSection } from "./DataVisualizationSection";
 export { HeaderWithCurrentPath } from "./HeaderWithCurrentPath";
 export { ImageComparison } from "./ImageComparison";
 export { PageMasthead } from "./PageMasthead";

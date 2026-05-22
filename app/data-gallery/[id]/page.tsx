@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { DatasetMap, PageMasthead, Section } from "@/app/components";
+import { ContentBlockRenderer, PageMasthead, Section } from "@/app/components";
 import { DATASETS } from "@/app/site-config/dataset";
 import { DATA_GALLERY_CARD_MASTHEAD } from "@/app/site-config/dataset/data-gallery-card-masthead";
 import { DatasetSidebar } from "./DatasetSidebar";
@@ -11,7 +11,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
 
   if (!dataset) notFound();
 
-  const { title, description, themes, categories, stacLayer, body } = dataset;
+  const { title, description, themes, categories, body } = dataset;
 
   return (
     <>
@@ -27,33 +27,10 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
           </div>
           <div className="grid-col-12 desktop:grid-col-9">
             <h2 className="font-heading-xl margin-top-0 margin-bottom-2">Dataset Details</h2>
-            <div className="margin-bottom-4">
-              {body.map((block, blockIndex) => {
-                if (block.type === "text") {
-                  return (
-                    <div key={block.heading || `text-${blockIndex}`} className="margin-bottom-4">
-                      {block.heading && (
-                        <h3 className="font-heading-lg margin-bottom-1">{block.heading}</h3>
-                      )}
-                      {block.paragraphs.map((p) => (
-                        <p
-                          key={`${block.heading || blockIndex}-${String(p).slice(0, 20)}`}
-                          className="margin-bottom-1"
-                        >
-                          {p}
-                        </p>
-                      ))}
-                    </div>
-                  );
-                }
-                return null;
-              })}
-              {stacLayer && (
-                <div className="margin-top-6 margin-bottom-6">
-                  <DatasetMap stacLayer={stacLayer} />
-                </div>
-              )}
-            </div>
+            {body.map((block, index) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
+              <ContentBlockRenderer key={index} block={block} />
+            ))}
           </div>
         </div>
       </Section>
