@@ -1,6 +1,7 @@
 import { Card } from "@teamimpact/veda-ui-blocks";
 
 import {
+  DataVisualizationSection,
   Section,
   SectionCardSimple,
   SectionCardSimpleMosaic,
@@ -26,10 +27,9 @@ export default function Home() {
         sectionHeading={<SectionHeading href="/news-events">News & Events</SectionHeading>}
         cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
       />
-      {/* Data Visualization */}
       <Section>
         <SectionHeading>Data Visualization</SectionHeading>
-        <p>TODO: Map block</p>
+        <DataVisualizationSection />
       </Section>
       <SectionCardSimple
         sectionHeading={<SectionHeading href="/training">Resources & Learning</SectionHeading>}
