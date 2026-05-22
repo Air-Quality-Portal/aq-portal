@@ -12,9 +12,7 @@ export default function AboutPage() {
           <SectionHeading className="text-primary-dark">
             {ABOUT_PAGE_BODY.sectionHeading}
           </SectionHeading>
-          <p className="font-body-md text-primary-dark margin-top-0 margin-bottom-4">
-            {ABOUT_PAGE_BODY.missionParagraph}
-          </p>
+          <p className="margin-bottom-4">{ABOUT_PAGE_BODY.missionParagraph}</p>
           <div className="display-flex flex-column flex-gap-1 flex-align-start">
             {ABOUT_PAGE_BODY.ctas.map((cta, index) => (
               <a
