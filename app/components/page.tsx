@@ -9,7 +9,9 @@ import {
   SectionHeading,
   ThemeTag,
 } from "@/app/components/";
+import { makeCardSimpleProps } from "../site-config/content.helpers";
 import { NEWS_EVENTS_CARDS } from "../site-config/home/home-sectioncardmosaic-news-events";
+import { typedMap } from "../site-config/typed.helpers";
 
 const MOCK_CARDS: SectionCardCarouselProps["cards"] = [
   {
@@ -24,7 +26,7 @@ const MOCK_CARDS: SectionCardCarouselProps["cards"] = [
     },
     image: (
       <Image
-        src="/img/home/news-events-finding-floods.webp"
+        src="/img/story/finding-floods.webp"
         alt="Flooded river in Kerrville, Texas showing significant flood waters"
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -45,7 +47,7 @@ const MOCK_CARDS: SectionCardCarouselProps["cards"] = [
     },
     image: (
       <Image
-        src="/img/home/news-events-typhoon-sinlaku-2026.webp"
+        src="/img/event/typhoon-sinlaku-2026.webp"
         alt="Satellite worldview imagery of Typhoon Sinlaku from April 2026"
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -107,14 +109,14 @@ export default function ComponentsPage() {
       </Section>
 
       <SectionCardSimpleMosaic
-        sectionHeading="SectionCardSimpleMosaic Component"
-        cards={NEWS_EVENTS_CARDS}
+        sectionHeading={<SectionHeading>SectionCardSimpleMosaic Component</SectionHeading>}
+        cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
       >
         <p>Lorem ipsum dolor sit amet...</p>
         <code className="bg-base-lighter font-code-xs">
           {`<SectionCardSimpleMosaic
               sectionHeading="SectionCardSimpleMosaic Component"
-              cards={NEWS_EVENTS_CARDS}
+              cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
             >
               <p>
                 Lorem ipsum dolor sit amet...
@@ -123,12 +125,15 @@ export default function ComponentsPage() {
         </code>
       </SectionCardSimpleMosaic>
 
-      <SectionCardSimple sectionHeading="SectionCardSimple Component" cards={NEWS_EVENTS_CARDS}>
+      <SectionCardSimple
+        sectionHeading={<SectionHeading>SectionCardSimple Component</SectionHeading>}
+        cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
+      >
         <p>Lorem ipsum dolor sit amet...</p>
         <code className="bg-base-lighter font-code-xs">
           {`<SectionCardSimple
-              sectionHeading="SectionCardSimple Component"
-              cards={NEWS_EVENTS_CARDS}
+              sectionHeading={<SectionHeading>SectionCardSimple Component</SectionHeading>}
+              cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
             >
               <p>
                 Lorem ipsum dolor sit amet...
@@ -137,11 +142,16 @@ export default function ComponentsPage() {
         </code>
       </SectionCardSimple>
 
-      <SectionCardCarousel sectionHeading="SectionCardCarousel Component" cards={MOCK_CARDS}>
+      <SectionCardCarousel
+        sectionHeading={
+          <SectionHeading href="/components">SectionCardCarousel Component</SectionHeading>
+        }
+        cards={MOCK_CARDS}
+      >
         <p>Lorem ipsum dolor sit amet...</p>
         <code className="bg-base-lighter font-code-xs">
           {`<SectionCardCarousel
-              sectionHeading="SectionCardCarousel Component"
+              sectionHeading={<SectionHeading>SectionCardCarousel Component</SectionHeading>}
               cards={NEWS_EVENTS_CARDS}
             >
               <p>
