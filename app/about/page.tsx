@@ -1,3 +1,5 @@
+import { Link } from "@teamimpact/veda-ui-blocks";
+
 import { Section, SectionHeading } from "@/app/components";
 import { ABOUT_PAGE_BODY } from "@/app/site-config/about/about-page-content";
 
@@ -15,15 +17,17 @@ export default function AboutPage() {
           <p className="margin-bottom-4">{ABOUT_PAGE_BODY.missionParagraph}</p>
           <div className="display-flex flex-column flex-gap-1 flex-align-start">
             {ABOUT_PAGE_BODY.ctas.map((cta, index) => (
-              <a
+              <Link
                 key={`${cta.href}-${cta.label}`}
                 href={cta.href}
                 target={cta.target}
                 rel={cta.rel}
+                variant="text"
+                isExternal
                 className={`text-primary text-bold text-underline ${index < ABOUT_PAGE_BODY.ctas.length - 1 ? "margin-bottom-1" : ""}`}
               >
                 {cta.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
