@@ -34,7 +34,7 @@ const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: string }> = 
   dataset: { route: "/data-gallery", label: "data" },
   event: { route: "/events", label: "event" },
   news: { route: "/news-events", label: "news" },
-  story: { route: "/stories", label: "story" },
+  story: { route: "/stories", label: "story" }, // TODO: update to news-events
   training: { route: "/training", label: "training" },
 };
 
