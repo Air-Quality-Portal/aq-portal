@@ -10,10 +10,6 @@ export const DATASET__BLACKMARBLE_JUNE2026_COMPOSITE: DatasetContent = {
     src: "/img/logo-emblem.svg",
     alt: "Black Marble monthly composite nighttime lights",
   },
-  mastheadImage: {
-    src: "/img/card-masthead.webp",
-    alt: "Black Marble monthly composite nighttime lights over the southeastern United States",
-  },
   themes: ["prepare", "respond"],
   categories: ["tropical cyclone"],
   layer: {
