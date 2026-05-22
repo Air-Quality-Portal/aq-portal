@@ -29,7 +29,7 @@ export default function RespondPage() {
       </div>
       {/* STORIES OF IMPACT */}
       <SectionCardSimpleMosaic
-        sectionHeading="News & Events"
+        sectionHeading={<SectionHeading>News & Events</SectionHeading>}
         cards={[
           MOCK_CARD_FINDING_THE_FLOODS,
           MOCK_CARD_TRACKING_TORNADO,
@@ -64,7 +64,10 @@ export default function RespondPage() {
       </Section>
 
       {/* Data Stories */}
-      <SectionCardCarousel sectionHeading="Data Stories" cards={MOCK_RESPOND_DATA_STORIES} />
+      <SectionCardCarousel
+        sectionHeading={<SectionHeading>Data Stories</SectionHeading>}
+        cards={MOCK_RESPOND_DATA_STORIES}
+      />
       {/* Resource & Learning */}
 
       <Section>

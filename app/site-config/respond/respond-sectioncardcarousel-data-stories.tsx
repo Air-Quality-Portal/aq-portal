@@ -21,7 +21,7 @@ export const MOCK_DATA_STORY_HURRICANE_MILTON: IterableItemWithId<CardProps> = {
   colorMode: "dark",
   imagePosition: "cover",
   tag: (
-    <Tag color="white" textColor="#0D313D">
+    <Tag color="white" textColor="primary-dark">
       DATA STORY
     </Tag>
   ),
@@ -45,7 +45,7 @@ export const MOCK_DATA_STORY_HURRICANE_HELENE: IterableItemWithId<CardProps> = {
   colorMode: "dark",
   imagePosition: "cover",
   tag: (
-    <Tag color="white" textColor="#0D313D">
+    <Tag color="white" textColor="primary-dark">
       DATA STORY
     </Tag>
   ),
