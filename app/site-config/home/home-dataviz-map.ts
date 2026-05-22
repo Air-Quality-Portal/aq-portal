@@ -1,9 +1,8 @@
-import { NASA_BLUE_MARBLE_BASEMAP_STYLE } from "@teamimpact/veda-ui-blocks";
+import { BASEMAP_STYLES } from "@/app/site-config/map/basemap";
 
 export const DATAVIZ_MAP_CONFIG = {
-  stacApiUrl: "https://dev.disasters.openveda.cloud/api/stac",
-  titilerBaseUrl: "https://dev.disasters.openveda.cloud/api/raster",
-  baseMapStyle: NASA_BLUE_MARBLE_BASEMAP_STYLE,
+  baseMapStyle: BASEMAP_STYLES.nasaBlueMarble,
+  initialViewState: { longitude: -82.0, latitude: 33.5, zoom: 10 },
   leftLayer: {
     type: "raster" as const,
     collectionId: "blackmarble-june2026-composite",
@@ -14,5 +13,4 @@ export const DATAVIZ_MAP_CONFIG = {
     collectionId: "blackmarble-hd-daily-june2026",
     dateRange: { from: "2024-09-28", to: "2024-09-28" },
   },
-  initialViewState: { longitude: -82.0, latitude: 33.5, zoom: 10 },
 };

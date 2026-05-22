@@ -1,3 +1,4 @@
+import { DEFAULT_STAC_CONFIG } from "@/app/site-config/map";
 import type { DatasetContent } from "@/app/site-config/types";
 
 export const DATASET__BLACKMARBLE_JUNE2026_COMPOSITE: DatasetContent = {
@@ -12,11 +13,12 @@ export const DATASET__BLACKMARBLE_JUNE2026_COMPOSITE: DatasetContent = {
   },
   themes: ["prepare", "respond"],
   categories: ["tropical cyclone"],
-  layer: {
+  stacLayer: {
+    ...DEFAULT_STAC_CONFIG,
     type: "raster",
     collectionId: "blackmarble-june2026-composite",
+    dateRange: { from: "2024-08-01", to: "2024-08-31" },
   },
-  defaultDateRange: { from: "2024-08-01", to: "2024-08-31" },
   body: [
     {
       type: "text",
