@@ -11,7 +11,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
 
   if (!dataset) notFound();
 
-  const { title, description, themes, categories } = dataset;
+  const { title, description, themes, categories, body } = dataset;
 
   return (
     <>
@@ -20,16 +20,38 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
         title={title}
         description={description}
       />
-      <Section>
+      <div className="grid-container padding-x-2 desktop:padding-x-4 padding-y-4">
         <div className="grid-row grid-gap">
           <div className="grid-col-12 desktop:grid-col-3">
             <DatasetSidebar themes={themes} categories={categories} />
           </div>
           <div className="grid-col-12 desktop:grid-col-9">
-            <p className="font-body-lg">{description}</p>
+            <h2 className="font-heading-xl margin-bottom-2">Dataset Details</h2>
+            <div className="margin-bottom-4">
+              {body.map((block, blockIndex) => {
+                if (block.type === "text") {
+                  return (
+                    <div key={block.heading || `text-${blockIndex}`} className="margin-bottom-4">
+                      {block.heading && (
+                        <h3 className="font-heading-lg margin-bottom-1">{block.heading}</h3>
+                      )}
+                      {block.paragraphs.map((p) => (
+                        <p
+                          key={`${block.heading || blockIndex}-${String(p).slice(0, 20)}`}
+                          className="margin-bottom-1"
+                        >
+                          {p}
+                        </p>
+                      ))}
+                    </div>
+                  );
+                }
+                return null;
+              })}
+            </div>
           </div>
         </div>
-      </Section>
+      </div>
     </>
   );
 }

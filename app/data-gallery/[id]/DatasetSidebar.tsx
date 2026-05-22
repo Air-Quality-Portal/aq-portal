@@ -12,8 +12,23 @@ export function DatasetSidebar({
 }) {
   return (
     <aside className="bg-base-lightest padding-4 margin-bottom-4">
+      <div className="margin-bottom-3">
+        <button type="button" className="usa-button width-full">
+          View Data
+        </button>
+      </div>
+
+      <div className="margin-bottom-3 border-bottom border-base-lighter padding-bottom-3">
+        <div className="margin-bottom-2">
+          <p className="text-bold font-body-sm margin-top-0 margin-bottom-1">Type</p>
+          <Tag color="primary-lighter" textColor="primary-dark">
+            Dataset
+          </Tag>
+        </div>
+      </div>
+
       {themes.length > 0 && (
-        <div className="margin-bottom-3">
+        <div className="margin-bottom-3 border-bottom border-base-lighter padding-bottom-3">
           <p className="text-bold font-body-sm margin-top-0 margin-bottom-2">Theme</p>
           <div className="display-flex flex-wrap grid-gap-sm">
             {themes.map((theme) => (

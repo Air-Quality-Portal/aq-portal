@@ -60,6 +60,7 @@ export type DatasetContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "dataset";
   layer?: DatasetLayer;
   defaultDateRange?: DateRange;
+  body: ContentBlock[];
 };
 
 export type NewsContent = Omit<MinimumCardContent, "contentType"> & {

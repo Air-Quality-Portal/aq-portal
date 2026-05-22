@@ -17,4 +17,30 @@ export const DATASET__BLACKMARBLE_HD_DAILY_JUNE2026: DatasetContent = {
     collectionId: "blackmarble-hd-daily-june2026",
   },
   defaultDateRange: { from: "2024-09-28", to: "2024-09-28" },
+  body: [
+    {
+      type: "text",
+      heading: "Section One",
+      headingLevel: "h2",
+      paragraphs: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      ],
+    },
+    {
+      type: "text",
+      heading: "Section Two",
+      headingLevel: "h2",
+      paragraphs: [
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      ],
+    },
+    {
+      type: "text",
+      heading: "Section Three",
+      headingLevel: "h2",
+      paragraphs: [
+        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
+      ],
+    },
+  ],
 };
