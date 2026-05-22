@@ -20,13 +20,13 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
         title={title}
         description={description}
       />
-      <div className="grid-container padding-x-2 desktop:padding-x-4 padding-y-4">
+      <Section>
         <div className="grid-row grid-gap">
           <div className="grid-col-12 desktop:grid-col-3">
             <DatasetSidebar themes={themes} categories={categories} />
           </div>
           <div className="grid-col-12 desktop:grid-col-9">
-            <h2 className="font-heading-xl margin-bottom-2">Dataset Details</h2>
+            <h2 className="font-heading-xl margin-top-0 margin-bottom-2">Dataset Details</h2>
             <div className="margin-bottom-4">
               {body.map((block, blockIndex) => {
                 if (block.type === "text") {
@@ -51,7 +51,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
             </div>
           </div>
         </div>
-      </div>
+      </Section>
     </>
   );
 }
