@@ -23,7 +23,7 @@ export type ContentBlock =
   | { type: "image"; src: string; alt: string; width: number; height: number; maxWidth?: string }
   | {
       type: "card-simple";
-      heading?: string;
+      heading?: ReactNode;
       cards: IterableItemWithId<CardSimpleProps>[];
     };
 

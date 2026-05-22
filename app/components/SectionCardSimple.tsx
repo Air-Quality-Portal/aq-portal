@@ -17,12 +17,9 @@ export const SectionCardSimple = ({
   return (
     <Section {...sectionProps}>
       {sectionHeading && sectionHeading}
-      <div className="grid-row grid-gap-2 margin-bottom-6">
+      <div className="grid-row grid-gap-2 flex-no-wrap margin-bottom-6">
         {cards.map((props) => (
-          <div
-            key={props.id}
-            className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 height-card-md"
-          >
+          <div key={props.id} className="flex-1 margin-bottom-2 height-card-md">
             <CardSimple {...props} />
           </div>
         ))}

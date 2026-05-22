@@ -1,5 +1,6 @@
 import { Tag } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
+import { SectionHeading } from "@/app/components";
 import type { StoryContent } from "@/app/site-config/types";
 
 export const STORY__FINDING_FLOODS: StoryContent = {
@@ -29,7 +30,7 @@ export const STORY__FINDING_FLOODS: StoryContent = {
     {
       type: "image",
       src: "/img/story/kerville-texas_flood-debris.webp",
-      alt: "U.S. Air Force Master Sgt. Randy Mcknight inspects the flood debris in Kerrville, Texas, July 11, 2025. Credit: Photo by Zelideth Rodriguez, 502nd Air Base Wing",
+      alt: "U.S. Air Force Master Sgt. Randy McKnight inspects the flood debris in Kerrville, Texas, July 11, 2025. Credit: Photo by Zelideth Rodriguez, 502nd Air Base Wing",
       width: 1495,
       height: 1280,
     },
@@ -43,20 +44,20 @@ export const STORY__FINDING_FLOODS: StoryContent = {
     {
       type: "image",
       src: "/img/story/wb57-nosecone.webp",
-      alt: "U.S. Air Force Master Sgt. Randy Mcknight inspects the flood debris in Kerrville, Texas, July 11, 2025. Credit: Photo by Zelideth Rodriguez, 502nd Air Base Wing",
+      alt: "NASA's high-altitude WB-57 aircraft departed July 8, 2025, from Ellington Field in Houston, TX. The DyNAMITE instrument is seen here affixed to its nose. Credit: NASA",
       width: 1495,
       height: 1280,
     },
     {
       type: "text",
       paragraphs: [
-        "NASA's high-altitude WB-57 aircraft departed July 8, 2025, from Ellington Field in Houston, TX. The DyNAMITE instrument is seen here affixed to its nose. Credit: NASA NASA’s UAVSAR instrument tackled a different challenge: the region's dense tree canopy. UAVSAR uses L-band radar – a longer wavelength than most satellite synthetic aperture radar (SAR) systems – which can pass through vegetation to detect water pooled beneath the trees. While conventional radar see only treetops, UAVSAR returned a signal from the forest floor, revealing inundatio that would otherwise go unmeasured. Flying aboard a Gulfstream III out of NASA's Armstrong Flight Research Center, the instrument covered the Guadalupe, Sa Gabriel, and Colorado River basins publicly available observed flood maps of the disaster.",
+        "NASA's high-altitude WB-57 aircraft departed July 8, 2025, from Ellington Field in Houston, TX. The DyNAMITE instrument is seen here affixed to its nose. Credit: NASA NASA’s UAVSAR instrument tackled a different challenge: the region's dense tree canopy. UAVSAR uses L-band radar – a longer wavelength than most satellite synthetic aperture radar (SAR) systems – which can pass through vegetation to detect water pooled beneath the trees. While conventional radar see only treetops, UAVSAR returned a signal from the forest floor, revealing inundation that would otherwise go unmeasured. Flying aboard a Gulfstream III out of NASA's Armstrong Flight Research Center, the instrument covered the Guadalupe, San Gabriel, and Colorado River basins publicly available observed flood maps of the disaster.",
       ],
     },
     {
       type: "image",
       src: "/img/story/gis-texas-flooding-uavsar-austin.webp",
-      alt: "This map shows classifications that help identify flooded urban areas, croplands, vegetation, and open water using UAVSAR data collected during flights on July 9, 2025. The UAVSAR flights were coordinated by NASA’s Disasters Program, NASA’s Airborne Sciences Program, and NASA’s Jet Propulsion Laboratory, and flew out of NASA’s Armstrong Flight Research Center at Edwards Air Force Base in California. Credit: NASA ",
+      alt: "This map shows classifications that help identify flooded urban areas, croplands, vegetation, and open water using UAVSAR data collected during flights on July 9, 2025. The UAVSAR flights were coordinated by NASA’s Disasters Program, NASA’s Airborne Sciences Program, and NASA’s Jet Propulsion Laboratory, and flew out of NASA’s Armstrong Flight Research Center at Edwards Air Force Base in California. Credit: NASA",
       width: 1495,
       height: 1280,
     },
@@ -69,7 +70,7 @@ export const STORY__FINDING_FLOODS: StoryContent = {
     },
     {
       type: "card-simple",
-      heading: "Learning & Resources",
+      heading: <SectionHeading>Resources & Learning</SectionHeading>,
       cards: [
         {
           id: "card-fundamentals-remote-sensing",
@@ -82,7 +83,7 @@ export const STORY__FINDING_FLOODS: StoryContent = {
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             />
           ),
-          url: "https://www.earthdata.nasa.gov/learn/trainings/fundamentals-remote-sensing",
+          url: "#",
           tag: (
             <Tag color="white" textColor="primary-dark">
               EVENT
@@ -100,7 +101,7 @@ export const STORY__FINDING_FLOODS: StoryContent = {
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             />
           ),
-          url: "https://www.earthdata.nasa.gov/learn/trainings/introduction-synthetic-aperture-radar-sar-its-applications",
+          url: "#",
           tag: (
             <Tag color="white" textColor="primary-dark">
               DATA STORY

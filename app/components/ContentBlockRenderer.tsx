@@ -93,13 +93,16 @@ export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
     case "image":
       return (
         <Section className="display-flex flex-justify-center flex-align-center">
-          <Image
-            src={block.src}
-            alt={block.alt}
-            width={block.width}
-            height={block.height}
-            style={{ width: block.maxWidth ?? "100%", height: "auto" }}
-          />
+          <figcaption className="font-body-sm text-base margin-top-1">
+            <Image
+              src={block.src}
+              alt={block.alt}
+              width={block.width}
+              height={block.height}
+              style={{ width: block.maxWidth ?? "100%", height: "auto" }}
+            />
+            <div className="padding-top-2">{block.alt}</div>
+          </figcaption>
         </Section>
       );
     case "card-simple":
