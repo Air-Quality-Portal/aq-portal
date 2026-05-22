@@ -78,12 +78,12 @@ export const STORY__FINDING_FLOODS: StoryContent = {
           image: (
             <Image
               src="/img/story/uavsar-texas-floods.webp"
-              alt="NISAR satellite orbiting Earth"
+              alt="UAVSAR image showing the July 2025 Texas floods, with areas of inundation visible as bright colors along river corridors and under tree canopy in the region of interest"
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             />
           ),
-          url: "#",
+          url: "/events/texas-flooding-july-2025",
           tag: (
             <Tag color="white" textColor="primary-dark">
               EVENT
@@ -96,12 +96,12 @@ export const STORY__FINDING_FLOODS: StoryContent = {
           image: (
             <Image
               src="/img/story/imerg-texas-flooding.webp"
-              alt="HydroSAR flood mapping over Memphis, Tennessee"
+              alt="Radar image showing the July 2025 Texas floods, with areas of heavy precipitation"
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             />
           ),
-          url: "#",
+          url: "data-gallery/explore-Data-from-the-July-2025-Texas-Floods",
           tag: (
             <Tag color="white" textColor="primary-dark">
               DATA STORY
