@@ -126,7 +126,7 @@ export const makeCardDetailedImageLeftProps = ({
   ...rest
 }: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => ({
   id,
-  image: <Image {...thumbnailImage} fill sizes="200px" />,
+  image: <Image {...thumbnailImage} fill sizes="(max-width: 1400px) 100vw, 1400px" />,
   imagePosition: "left",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
   callToAction: {
@@ -162,13 +162,7 @@ export const makeCardSimpleProps = ({
 }: CardSimplePropsArgs): IterableItemWithId<CardSimpleProps> => ({
   id,
   title,
-  image: (
-    <Image
-      {...thumbnailImage}
-      fill
-      sizes="(max-width: 640px) 100vw, (max-width: 1400px) 25vw, 350px"
-    />
-  ),
+  image: <Image {...thumbnailImage} fill sizes="(max-width: 1400px) 100vw, 1400px" />,
   tag: tag // TODO update function to allow user to choose which tag should be rendered
     ? makeSimpleTag(tag)
     : themes?.[0]
