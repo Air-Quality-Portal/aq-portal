@@ -26,7 +26,7 @@ const MOCK_CARDS: SectionCardCarouselProps["cards"] = [
     },
     image: (
       <Image
-        src="/img/home/news-events-finding-floods.webp"
+        src="/img/story/finding-floods.webp"
         alt="Flooded river in Kerrville, Texas showing significant flood waters"
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -47,7 +47,7 @@ const MOCK_CARDS: SectionCardCarouselProps["cards"] = [
     },
     image: (
       <Image
-        src="/img/home/news-events-typhoon-sinlaku-2026.webp"
+        src="/img/event/typhoon-sinlaku-2026.webp"
         alt="Satellite worldview imagery of Typhoon Sinlaku from April 2026"
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"

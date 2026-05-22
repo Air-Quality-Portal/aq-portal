@@ -145,7 +145,7 @@ export type CardSimplePropsArgs = {
     src: string;
   };
   tag?: Theme | ContentType | Category;
-  theme?: Theme;
+  themes?: Theme[];
   url?: string;
   [key: string]: unknown;
 };
@@ -156,7 +156,7 @@ export const makeCardSimpleProps = ({
   title,
   thumbnailImage,
   tag,
-  theme,
+  themes,
   url,
   ...rest
 }: CardSimplePropsArgs): IterableItemWithId<CardSimpleProps> => ({
@@ -169,7 +169,11 @@ export const makeCardSimpleProps = ({
       sizes="(max-width: 640px) 100vw, (max-width: 1400px) 25vw, 350px"
     />
   ),
-  tag: tag ? makeSimpleTag(tag) : theme ? makeThemeTag(theme) : makeContentTypeTag(contentType),
+  tag: tag // TODO update function to allow user to choose which tag should be rendered
+    ? makeSimpleTag(tag)
+    : themes?.[0]
+      ? makeThemeTag(themes[0])
+      : makeContentTypeTag(contentType),
   url: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
   ...rest,
 });

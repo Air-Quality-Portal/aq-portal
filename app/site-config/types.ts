@@ -32,7 +32,11 @@ export type MinimumCardContent = {
   themes: Theme[];
   categories: Category[];
   description?: string;
-  url?: string; // for external site content only otherwise id will be used (would be nice if we could use content-type as well - data-gallery breaks this pattern)
+};
+
+export type TrainingContentExternal = Omit<MinimumCardContent, "contentType"> & {
+  contentType: "training";
+  url: string;
 };
 
 export type TrainingContent = Omit<MinimumCardContent, "contentType"> & {

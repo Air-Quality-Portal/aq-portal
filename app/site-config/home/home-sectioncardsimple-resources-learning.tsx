@@ -1,54 +1,17 @@
-import { Tag } from "@teamimpact/veda-ui-blocks";
-import Image from "next/image";
+import type { TrainingContent, TrainingContentExternal } from "@/app/site-config/types";
+import { TRAINING__EO_BUILDING_EXPOSURE } from "../training/training__eo-building-exposure";
+import { TRAINING__FUNDAMENTALS_REMOTE_SENSING } from "../training/training__fundamentals-remote-sensing";
+import { TRAINING__INTRODUCTION_TO_SAR } from "../training/training__introduction-to-sar";
+import { TRAINING__LIFELINES_WILDFIRE_WORKFLOW } from "../training/training__lifelines-wildfire-workflow";
 
-import type { SectionCardSimpleProps } from "@/app/components/SectionCardSimple";
-import { makeThemeTag } from "@/app/site-config/content.helpers";
-import { TRAININGS } from "@/app/site-config/training";
-
-const CARD_SIZES = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw";
-
-export const RESOURCES_LEARNING_CARDS: SectionCardSimpleProps["cards"] = [
-  ...TRAININGS.map((t) => ({
-    id: t.id,
-    title: t.title,
-    image: <Image src={t.thumbnailImage.src} alt={t.thumbnailImage.alt} fill sizes={CARD_SIZES} />,
-    url: `/training/${t.id}`,
-    tag: t.themes[0] ? makeThemeTag(t.themes[0]) : undefined,
-  })),
-  {
-    id: "card-fundamentals-remote-sensing",
-    title: "Fundamentals of Remote Sensing",
-    image: (
-      <Image
-        src="/img/home/resources-learning-fundamentals-remote-sensing.webp"
-        alt="NISAR satellite orbiting Earth"
-        fill
-        sizes={CARD_SIZES}
-      />
-    ),
-    url: "https://www.earthdata.nasa.gov/learn/trainings/fundamentals-remote-sensing",
-    tag: (
-      <Tag color="accent-warm" textColor="primary-dark">
-        PREPARE
-      </Tag>
-    ),
-  },
-  {
-    id: "card-introduction-to-sar",
-    title: "Introduction to SAR and its Applications",
-    image: (
-      <Image
-        src="/img/home/resources-learning-introduction-to-sar.webp"
-        alt="HydroSAR flood mapping over Memphis, Tennessee"
-        fill
-        sizes={CARD_SIZES}
-      />
-    ),
-    url: "https://www.earthdata.nasa.gov/learn/trainings/introduction-synthetic-aperture-radar-sar-its-applications",
-    tag: (
-      <Tag color="accent-warm" textColor="primary-dark">
-        PREPARE
-      </Tag>
-    ),
-  },
-] as SectionCardSimpleProps["cards"];
+export const RESOURCES_LEARNING_CARDS: [
+  TrainingContent | TrainingContentExternal,
+  TrainingContent | TrainingContentExternal,
+  TrainingContent | TrainingContentExternal,
+  TrainingContent | TrainingContentExternal,
+] = [
+  TRAINING__LIFELINES_WILDFIRE_WORKFLOW,
+  TRAINING__EO_BUILDING_EXPOSURE,
+  TRAINING__FUNDAMENTALS_REMOTE_SENSING,
+  TRAINING__INTRODUCTION_TO_SAR,
+];

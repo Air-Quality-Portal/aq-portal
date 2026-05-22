@@ -33,7 +33,7 @@ export default function Home() {
       </Section>
       <SectionCardSimple
         sectionHeading="Resources & Learning"
-        cards={RESOURCES_LEARNING_CARDS}
+        cards={typedMap(RESOURCES_LEARNING_CARDS, makeCardSimpleProps)}
         bgColor="base-lightest"
         className="margin-bottom-neg-7"
       >
