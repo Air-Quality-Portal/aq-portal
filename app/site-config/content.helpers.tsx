@@ -1,6 +1,12 @@
-import { type CardDetailedProps, type CardProps, Tag } from "@teamimpact/veda-ui-blocks";
+import {
+  type CardDetailedProps,
+  type CardProps,
+  type CardSimpleProps,
+  Tag,
+} from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-import type { Category, ContentType, Theme } from "./types";
+import type { AppRoutes } from "@/.next/types/routes";
+import type { Category, ContentType, IterableItemWithId, Theme } from "./types";
 
 const CONTENT_THEMES: Record<Theme, Record<string, unknown>> = {
   respond: {
@@ -20,8 +26,16 @@ const CONTENT_THEMES: Record<Theme, Record<string, unknown>> = {
   recover: {
     label: "recover",
     color: "accent-cool",
-    textColor: "text-white",
+    textColor: "white",
   },
+};
+
+const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: string }> = {
+  dataset: { route: "/data-gallery", label: "data" },
+  event: { route: "/events", label: "event" },
+  news: { route: "/news-events", label: "news" },
+  story: { route: "/stories", label: "story" },
+  training: { route: "/training", label: "training" },
 };
 
 export const makeSimpleTag = (tag: Theme | ContentType | Category) => (
@@ -37,6 +51,11 @@ export const makeThemeTag = (tag: Theme) => {
       {tag}
     </Tag>
   );
+};
+
+export const makeContentTypeTag = (tag: ContentType) => {
+  const { label } = CONTENT_TYPES[tag];
+  return <Tag variant="solid">{label}</Tag>;
 };
 
 export type CardPropsArgs = {
@@ -63,31 +82,92 @@ export const makeCardMastHeadProps = ({ image, title, ...rest }: CardPropsArgs):
 });
 
 export type CardDetailedPropsArgs = {
-  image: {
+  id: string;
+  contentType: ContentType;
+  thumbnailImage: {
     alt: string;
     src: string;
   };
   tags?: (Theme | ContentType | Category)[];
+  url?: string;
   [key: string]: unknown;
 };
 
 export const makeCardDetailedProps = ({
-  image,
+  id,
+  contentType,
+  thumbnailImage,
   tags,
+  url,
   ...rest
-}: CardDetailedPropsArgs): CardDetailedProps => ({
-  image: <Image {...image} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />,
+}: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => ({
+  id,
+  image: (
+    <Image
+      {...thumbnailImage}
+      fill
+      sizes="(max-width: 640px) 100vw, (max-width: 1400px) 50vw, 700px"
+    />
+  ),
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
+  callToAction: {
+    href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
+    label: `view ${CONTENT_TYPES[contentType].label}`,
+  },
   ...rest,
 });
 
 export const makeCardDetailedImageLeftProps = ({
-  image,
+  id,
+  contentType,
+  thumbnailImage,
   tags,
+  url,
   ...rest
-}: CardDetailedPropsArgs): CardDetailedProps => ({
-  image: <Image {...image} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />,
+}: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => ({
+  id,
+  image: <Image {...thumbnailImage} fill sizes="(max-width: 1400px) 100vw, 1400px" />,
   imagePosition: "left",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
+  callToAction: {
+    href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
+    label: `view ${CONTENT_TYPES[contentType].label}`,
+  },
+  ...rest,
+});
+
+export type CardSimplePropsArgs = {
+  id: string;
+  contentType: ContentType;
+  title: string;
+  thumbnailImage: {
+    alt: string;
+    src: string;
+  };
+  tag?: Theme | ContentType | Category;
+  themes?: Theme[];
+  url?: string;
+  [key: string]: unknown;
+};
+
+export const makeCardSimpleProps = ({
+  id,
+  contentType,
+  title,
+  thumbnailImage,
+  tag,
+  themes,
+  url,
+  ...rest
+}: CardSimplePropsArgs): IterableItemWithId<CardSimpleProps> => ({
+  id,
+  title,
+  image: <Image {...thumbnailImage} fill sizes="(max-width: 1400px) 100vw, 1400px" />,
+  tag: tag // TODO update function to allow user to choose which tag should be rendered
+    ? makeSimpleTag(tag)
+    : themes?.[0]
+      ? makeThemeTag(themes[0])
+      : makeContentTypeTag(contentType),
+  url: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
   ...rest,
 });
