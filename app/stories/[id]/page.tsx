@@ -1,119 +1,115 @@
-import { InPageNavigation } from "@trussworks/react-uswds";
+import { Card, Tag } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-import {
-  PageStatus,
-  Section,
-  SectionCardCarousel,
-  SectionCardSimple,
-  SectionHeading,
-} from "@/app/components/";
-import { STORIES_BY_ID } from "@/app/site-config/stories";
-import type {
-  InnerContentBlock,
-  StoryContentBlock,
-  StoryPageData,
-} from "@/app/site-config/stories/types";
+import { notFound } from "next/navigation";
+import { ContentBlockRenderer, Section, ThemeTag } from "@/app/components/";
+import { STORIES } from "@/app/site-config/story";
 
-/** Renders inner blocks — no <Section> wrapper, used inside a SectionContainerBlock */
-function InnerBlockRenderer({ block }: { block: InnerContentBlock }) {
-  if (block.component === "prose") {
-    return <div>{block.content}</div>;
-  }
+export default async function StoryItemTemplate(props: PageProps<"/stories/[id]">) {
+  const { id } = await props.params;
+  const story = STORIES.find((t) => t.id === id);
 
-  if (block.component === "image") {
-    return (
-      <figure className="margin-0">
-        <div className="position-relative height-card-lg">
-          <Image src={block.src} alt={block.alt} fill className="object-fit-cover" />
-        </div>
-        {block.caption && (
-          <figcaption className="font-body-xs text-base-dark margin-top-1">
-            {block.caption}
-          </figcaption>
-        )}
-      </figure>
-    );
-  }
+  if (!story) notFound();
 
-  if (block.component === "section-heading") {
-    return <SectionHeading>{block.text}</SectionHeading>;
-  }
-
-  return null;
-}
-
-/** Renders top-level story body blocks */
-function ContentBlockRenderer({ block }: { block: StoryContentBlock }) {
-  if (block.component === "section") {
-    return (
-      <Section bgColor={block.bgColor}>
-        {block.children.map((child, index) => (
-          // biome-ignore lint/suspicious/noArrayIndexKey: inner blocks have no stable key
-          <InnerBlockRenderer key={index} block={child} />
-        ))}
-      </Section>
-    );
-  }
-
-  if (block.component === "card-carousel") {
-    return <SectionCardCarousel sectionHeading={block.heading} cards={block.cards} />;
-  }
-
-  if (block.component === "card-simple") {
-    return <SectionCardSimple sectionHeading={block.heading} cards={block.cards} />;
-  }
-
-  return null;
-}
-
-function StoryBody({ story }: { story: StoryPageData }) {
-  if (!story.body?.length) return null;
+  const formattedDate =
+    story.date &&
+    new Date(story.date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
 
   return (
     <>
-      {story.body.map((block, index) => (
-        // biome-ignore lint/suspicious/noArrayIndexKey: content blocks have no stable key
-        <ContentBlockRenderer key={index} block={block} />
-      ))}
-    </>
-  );
-}
+      {/* Hero */}
 
-export default async function StoriesItemPage(props: PageProps<"/stories/[id]">) {
-  const { id } = await props.params;
-
-  const story = STORIES_BY_ID[id];
-
-  if (!story) {
-    return (
-      <PageStatus
-        label={`Stories Item: ${id}`}
-        heading="Under development"
-        description="The page you're looking for is under development."
-      />
-    );
-  }
-
-  return (
-    <div className="grid-container">
-      <div className="grid-row">
-        <aside className="grid-col-2">
-          {/* //THIS COMPONENT SHOULD BE ELEVATED to reusable  */}
-          <div></div>
-          <div className="usa-in-page-nav-container">
-            <InPageNavigation
-              contentSelector="#page-main-content"
-              headingElements={["h2"]}
-              content={<h3>On this page</h3>}
-              title="On this page"
+      <div className="display-flex minh-masthead">
+        <Card
+          tag={
+            story.date && (
+              <Tag color="primary-lighter" textColor="primary-dark">
+                Updated: {formattedDate}
+              </Tag>
+            )
+          }
+          colorMode="brand"
+          description={story.description}
+          image={
+            <Image
+              src={story.mastheadImage.src}
+              alt={story.mastheadImage.alt}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              style={{ objectFit: "cover" }}
             />
-          </div>
-        </aside>
-
-        <div id="page-main-content" className="grid-col-10">
-          <StoryBody story={story} />
-        </div>
+          }
+          imagePosition="cover"
+          isMastHead
+          title={
+            <h1 className="font-mono-3xl text-normal text-uppercase text-ls-3 text-white">
+              {story.title}
+            </h1>
+          }
+        />
       </div>
-    </div>
+
+      {/* Content */}
+      <Section>
+        <div className="grid-row grid-gap">
+          {/* Sidebar */}
+          <div className="grid-col-12 desktop:grid-col-3">
+            <aside className="bg-base-lightest padding-4 margin-bottom-4">
+              {story.contentType.length > 0 && (
+                <div className="margin-bottom-3">
+                  <p className="text-bold font-body-sm margin-top-0 margin-bottom-2">Type</p>
+                  <div className="display-flex flex-wrap grid-gap-sm">
+                    <div className="margin-right-1 margin-bottom-1">
+                      <Tag color="primary-lighter" textColor="primary-dark">
+                        {story.contentType}
+                      </Tag>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {story.themes.length > 0 && (
+                <div className="margin-bottom-3">
+                  <p className="text-bold font-body-sm margin-top-0 margin-bottom-2">Theme</p>
+                  <div className="display-flex flex-wrap grid-gap-sm">
+                    {story.themes.map((theme) => (
+                      <div key={theme} className="margin-right-1 margin-bottom-1">
+                        <ThemeTag key={theme} theme={theme} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {story.categories.length > 0 && (
+                <div className="margin-bottom-3">
+                  <p className="text-bold font-body-sm margin-top-0 margin-bottom-2">Hazard</p>
+                  <div className="display-flex flex-wrap">
+                    {story.categories.map((category) => (
+                      <div key={category} className="margin-right-1 margin-bottom-1">
+                        <Tag color="primary-lighter" textColor="primary-dark">
+                          {category}
+                        </Tag>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </aside>
+          </div>
+
+          {/* Main content */}
+          <div className="grid-col-12 desktop:grid-col-9 margin-top-neg-7">
+            {story.body.map((block, i) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
+              <ContentBlockRenderer key={i} block={block} />
+            ))}
+          </div>
+        </div>
+      </Section>
+    </>
   );
 }

@@ -1,3 +1,4 @@
+import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
 
 export type IterableItemWithId<T> = T & { id: string };
@@ -19,7 +20,12 @@ export type ContentBlock =
   | { type: "note"; text: string }
   | { type: "slider"; before: { src: string; alt: string }; after: { src: string; alt: string } }
   | { type: "video"; src: string; title?: string; caption?: string }
-  | { type: "image"; src: string; alt: string; width: number; height: number; maxWidth?: string };
+  | { type: "image"; src: string; alt: string; width: number; height: number; maxWidth?: string }
+  | {
+      type: "card-simple";
+      heading?: string;
+      cards: IterableItemWithId<CardSimpleProps>[];
+    };
 
 export type MinimumCardContent = {
   id: string;
@@ -59,7 +65,9 @@ export type NewsContent = Omit<MinimumCardContent, "contentType"> & {
 
 export type StoryContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "story";
+  date?: string;
   mastheadImage: MastheadImage;
+  body: ContentBlock[];
 };
 
 export type EventContent = Omit<MinimumCardContent, "contentType"> & {

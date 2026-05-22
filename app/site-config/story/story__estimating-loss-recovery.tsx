@@ -14,4 +14,5 @@ export const STORY__ESTIMATING_LOSS_RECOVERY: StoryContent = {
   },
   themes: [],
   categories: [],
+  body: [],
 };

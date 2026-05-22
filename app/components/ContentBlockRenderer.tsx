@@ -1,7 +1,7 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
-import { ImageComparison, Section, SectionHeading } from "@/app/components";
+import { ImageComparison, Section, SectionCardSimple, SectionHeading } from "@/app/components";
 import type { ContentBlock } from "@/app/site-config/types";
 
 export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
@@ -102,5 +102,7 @@ export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
           />
         </Section>
       );
+    case "card-simple":
+      return <SectionCardSimple cards={block.cards} sectionHeading={block.heading} />;
   }
 };
