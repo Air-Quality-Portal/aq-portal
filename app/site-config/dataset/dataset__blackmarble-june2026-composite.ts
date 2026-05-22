@@ -16,7 +16,7 @@ export const DATASET__BLACKMARBLE_JUNE2026_COMPOSITE: DatasetContent = {
     type: "raster",
     collectionId: "blackmarble-june2026-composite",
   },
-  defaultDateRange: { from: "2024-01-01", to: "2024-01-31" },
+  defaultDateRange: { from: "2024-08-01", to: "2024-08-31" },
   body: [
     {
       type: "text",

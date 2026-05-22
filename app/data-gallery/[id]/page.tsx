@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { PageMasthead, Section } from "@/app/components";
 import { DATASETS } from "@/app/site-config/dataset";
 import { DATA_GALLERY_CARD_MASTHEAD } from "@/app/site-config/dataset/data-gallery-card-masthead";
+import { DatasetMap } from "./DatasetMap";
 import { DatasetSidebar } from "./DatasetSidebar";
 
 export default async function DatasetItemPage(props: PageProps<"/data-gallery/[id]">) {
@@ -11,7 +12,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
 
   if (!dataset) notFound();
 
-  const { title, description, themes, categories, body } = dataset;
+  const { title, description, themes, categories, layer, defaultDateRange, body } = dataset;
 
   return (
     <>
@@ -48,6 +49,11 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
                 }
                 return null;
               })}
+              {layer && defaultDateRange && (
+                <div className="margin-top-6 margin-bottom-6">
+                  <DatasetMap layer={layer} dateRange={defaultDateRange} />
+                </div>
+              )}
             </div>
           </div>
         </div>
