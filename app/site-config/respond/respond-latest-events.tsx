@@ -8,7 +8,7 @@ export const MOCK_CARD_TYPHOON_SINLAKU_APRIL_2026: IterableItemWithId<CardMiniPr
   title: "Typhoon Sinlaku April 2026",
   image: (
     <Image
-      src="/img/home/news-events-typhoon-sinlaku-2026.webp"
+      src="/img/event/typhoon-sinlaku-2026.webp"
       alt="Satellite view of Typhoon Sinlaku over the western Pacific Ocean, showing a large, well-defined spiral storm system with a dense white cloud mass and visible eye, surrounding several small island outlines."
       width={120}
       height={120}

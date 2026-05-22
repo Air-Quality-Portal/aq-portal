@@ -8,13 +8,13 @@ export const MOCK_CARD_FINDING_THE_FLOODS: IterableItemWithId<CardSimpleProps> =
   title: "Finding the Floods",
   image: (
     <Image
-      src="/img/home/news-events-finding-floods.webp"
+      src="/img/story/finding-floods.webp"
       alt="Drone image of flooded river in Kerrville, Texas with trees and buildings surrounded by floodwaters"
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
     />
   ),
-  url: "/stories/finding-the-floods",
+  url: "/story/finding-floods",
   tag: <ThemeTag theme="respond" />,
 };
 export const MOCK_CARD_TRACKING_TORNADO: IterableItemWithId<CardSimpleProps> = {
