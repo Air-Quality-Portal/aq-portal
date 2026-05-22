@@ -1,7 +1,7 @@
 import { Card, type CardProps } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
-import { Section, SectionHeading, type SectionProps } from "@/app/components/";
-import type { IterableItemWithId } from "@/app/components/types";
+import { Section, type SectionProps } from "@/app/components/";
+import type { IterableItemWithId } from "@/app/site-config/types";
 
 export type SectionCardCarouselProps = SectionProps & {
   sectionHeading?: ReactNode;
@@ -16,7 +16,7 @@ export const SectionCardCarousel = ({
 }: SectionCardCarouselProps) => {
   return (
     <Section {...sectionProps}>
-      {sectionHeading && <SectionHeading>{sectionHeading}</SectionHeading>}
+      {sectionHeading && sectionHeading}
 
       <div className="grid-row grid-gap-2 margin-bottom-neg-2">
         {cards.map((card) => {

@@ -1,8 +1,8 @@
 import { CardSimple, type CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
 
-import { Section, SectionHeading, type SectionProps } from "@/app/components/";
-import type { IterableItemWithId } from "@/app/components/types";
+import { Section, type SectionProps } from "@/app/components/";
+import type { IterableItemWithId } from "@/app/site-config/types";
 
 export type SectionCardSimpleMosaicProps = SectionProps & {
   sectionHeading?: ReactNode;
@@ -26,7 +26,7 @@ export const SectionCardSimpleMosaic = ({
 }: SectionCardSimpleMosaicProps) => {
   return (
     <Section {...sectionProps}>
-      {sectionHeading && <SectionHeading>{sectionHeading}</SectionHeading>}
+      {sectionHeading && sectionHeading}
       <div className="grid-row grid-gap-2 margin-bottom-neg-2">
         {/* Featured card: full-width → desktop: 2 of 4 cols */}
         <div className="grid-col-12 desktop:grid-col-6 margin-bottom-2 height-card-md">
