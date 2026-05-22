@@ -1,6 +1,7 @@
 export { ContentBlockRenderer } from "./ContentBlockRenderer";
 export { HeaderWithCurrentPath } from "./HeaderWithCurrentPath";
 export { ImageComparison } from "./ImageComparison";
+export { LogoEmblem } from "./LogoEmblem";
 export { PageMasthead } from "./PageMasthead";
 export { PageStatus } from "./PageStatus";
 export { Section, type SectionProps } from "./Section";

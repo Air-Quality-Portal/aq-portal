@@ -1,20 +1,33 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
 
-import { Section, SectionHeading } from "@/app/components";
+import { LogoEmblem, Section, SectionHeading } from "@/app/components";
 import { ABOUT_PAGE_BODY } from "@/app/site-config/about/about-page-content";
 
 export default function AboutPage() {
   return (
     <Section>
       <div className="grid-row">
-        <div className="grid-col-12 desktop:grid-col-10 widescreen:grid-col-8 desktop:margin-left-1">
-          <h1 className="font-ui-3xl text-bold text-primary-dark line-height-sans-1 margin-bottom-3 maxw-mobile">
-            {ABOUT_PAGE_BODY.pageTitle}
-          </h1>
+        <div className="grid-col-12">
+          <div className="display-flex flex-row flex-align-start margin-bottom-2">
+            <div className="text-primary flex-shrink-0 margin-bottom-0 margin-right-3">
+              <LogoEmblem
+                width={ABOUT_PAGE_BODY.emblem.width}
+                height={ABOUT_PAGE_BODY.emblem.height}
+                ariaLabel={ABOUT_PAGE_BODY.emblem.ariaLabel}
+                className="display-block"
+              />
+            </div>
+            <h1
+              className="font-ui-3xl text-bold text-primary-dark line-height-sans-1 margin-0"
+              style={{ maxWidth: "23rem" }}
+            >
+              {ABOUT_PAGE_BODY.pageTitle}
+            </h1>
+          </div>
           <SectionHeading className="text-primary-dark">
             {ABOUT_PAGE_BODY.sectionHeading}
           </SectionHeading>
-          <p className="margin-bottom-4">{ABOUT_PAGE_BODY.missionParagraph}</p>
+          <p className="margin-top-0">{ABOUT_PAGE_BODY.missionParagraph}</p>
           <div className="display-flex flex-column flex-gap-1 flex-align-start">
             {ABOUT_PAGE_BODY.ctas.map((cta, index) => (
               <Link

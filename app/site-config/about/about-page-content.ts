@@ -6,6 +6,11 @@ export type AboutPageCTA = {
 };
 
 export type AboutPageBody = {
+  emblem: {
+    width: number;
+    height: number;
+    ariaLabel?: string;
+  };
   pageTitle: string;
   sectionHeading: string;
   missionParagraph: string;
@@ -13,6 +18,11 @@ export type AboutPageBody = {
 };
 
 export const ABOUT_PAGE_BODY: AboutPageBody = {
+  emblem: {
+    width: 134,
+    height: 138,
+    ariaLabel: "NASA Disasters Program emblem",
+  },
   pageTitle: "About the NASA Disasters Program",
   sectionHeading: "Advancing Science for Disaster Resilience",
   missionParagraph:
