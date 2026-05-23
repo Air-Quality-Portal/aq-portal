@@ -11,11 +11,11 @@ export default async function NewsEventsItemPage(props: PageProps<"/news-events/
 
   if (!story) notFound();
 
-  const { mastheadImage: image, title } = story;
+  const { mastheadImage, title } = story;
 
   return (
     <>
-      <PageMasthead {...{ image, title }} />
+      <PageMasthead {...{ mastheadImage, title }} />
 
       <Section className="margin-top-4 margin-bottom-0">
         <PageStatus

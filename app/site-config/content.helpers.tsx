@@ -8,7 +8,7 @@ import Image from "next/image";
 import type { AppRoutes } from "@/.next/types/routes";
 import type { Category, ContentType, IterableItemWithId, Theme } from "./types";
 
-const CONTENT_THEMES: Record<Theme, Record<string, unknown>> = {
+const CONTENT_THEMES: Record<Theme, { label: string; color: string; textColor?: string }> = {
   respond: {
     label: "respond",
     color: "secondary",
@@ -59,21 +59,30 @@ export const makeContentTypeTag = (tag: ContentType) => {
   return <Tag variant="solid">{label}</Tag>;
 };
 
-export type CardPropsArgs = {
-  image: {
+export type CardPropsArgs = Omit<CardProps, "title" | "image" | "colorMode" | "isMasthead"> & {
+  mastheadImage: {
     alt: string;
     src: string;
   };
-  title: string;
-  [key: string]: unknown;
+  title?: string;
+  theme?: Theme;
 };
 
-export const makeCardMastHeadProps = ({ image, title, ...rest }: CardPropsArgs): CardProps => ({
-  image: <Image {...image} sizes="100vw" fill priority />,
-  ...(title
+export const makeCardMastHeadProps = ({
+  mastheadImage,
+  title,
+  theme,
+  ...rest
+}: CardPropsArgs): CardProps => ({
+  image: <Image {...mastheadImage} sizes="100vw" fill priority />,
+  ...(title || theme
     ? {
         title: (
-          <h1 className="font-mono-3xl text-bold text-white text-uppercase margin-0">{title}</h1>
+          <h1
+            className={`font-mono-3xl text-normal text-white text-uppercase flex-align-self-start margin-0 ${theme ? `bg-${CONTENT_THEMES[theme].color} text-ls-3` : ""}`}
+          >
+            {title ?? theme}
+          </h1>
         ),
       }
     : {}),

@@ -1,5 +1,5 @@
 export const PAGE__CARD_MASTHEAD = {
-  image: {
+  mastheadImage: {
     alt: "",
     src: "/img/card-masthead.webp",
   },
