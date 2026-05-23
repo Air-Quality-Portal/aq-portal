@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { Section, type SectionProps } from "@/app/components";
 import type { IterableItemWithId } from "@/app/site-config/types";
 
-export type SectionCardSimpleProps = SectionProps & {
+type SectionCardSimpleProps = SectionProps & {
   sectionHeading?: ReactNode;
   cards: [
     IterableItemWithId<CardSimpleProps>,

@@ -59,7 +59,10 @@ export const makeContentTypeTag = (tag: ContentType) => {
   return <Tag variant="solid">{label}</Tag>;
 };
 
-export type CardPropsArgs = Omit<CardProps, "title" | "image" | "colorMode" | "isMasthead"> & {
+export type CardMastheadPropsArgs = Omit<
+  CardProps,
+  "title" | "image" | "colorMode" | "isMasthead"
+> & {
   mastheadImage: {
     alt: string;
     src: string;
@@ -73,7 +76,7 @@ export const makeCardMastHeadProps = ({
   title,
   theme,
   ...rest
-}: CardPropsArgs): CardProps => ({
+}: CardMastheadPropsArgs): CardProps => ({
   image: <Image {...mastheadImage} sizes="100vw" fill priority />,
   ...(title || theme
     ? {
@@ -91,7 +94,10 @@ export const makeCardMastHeadProps = ({
   ...rest,
 });
 
-export type CardDetailedPropsArgs = {
+export type CardDetailedPropsArgs = Omit<
+  CardDetailedProps,
+  "image" | "imagePosition" | "tags" | "callToAction"
+> & {
   id: string;
   contentType: ContentType;
   thumbnailImage: {
@@ -119,6 +125,7 @@ export const makeCardDetailedProps = ({
       sizes="(max-width: 640px) 100vw, (max-width: 1400px) 50vw, 700px"
     />
   ),
+  imagePosition: "top",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
@@ -146,10 +153,9 @@ export const makeCardDetailedImageLeftProps = ({
   ...rest,
 });
 
-export type CardSimplePropsArgs = {
+export type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExternal" | "url"> & {
   id: string;
   contentType: ContentType;
-  title: string;
   thumbnailImage: {
     alt: string;
     src: string;
@@ -163,7 +169,6 @@ export type CardSimplePropsArgs = {
 export const makeCardSimpleProps = ({
   id,
   contentType,
-  title,
   thumbnailImage,
   tag,
   themes,
@@ -171,7 +176,6 @@ export const makeCardSimpleProps = ({
   ...rest
 }: CardSimplePropsArgs): IterableItemWithId<CardSimpleProps> => ({
   id,
-  title,
   image: <Image {...thumbnailImage} fill sizes="(max-width: 1400px) 100vw, 1400px" />,
   tag: tag // TODO update function to allow user to choose which tag should be rendered
     ? makeSimpleTag(tag)
