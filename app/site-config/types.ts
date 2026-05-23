@@ -81,6 +81,14 @@ export type EventContent = Omit<MinimumCardContent, "contentType"> & {
   mastheadImage: MastheadImage;
 };
 
+export type ThemeContent = {
+  id: string;
+  title?: string;
+  subtitle: string;
+  mastheadImage: MastheadImage;
+  theme: Theme;
+};
+
 type MastheadImage = {
   src: string;
   alt: string;
