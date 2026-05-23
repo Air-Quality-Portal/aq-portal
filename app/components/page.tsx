@@ -1,62 +1,15 @@
-import { Tag } from "@teamimpact/veda-ui-blocks";
-import Image from "next/image";
 import {
   Section,
   SectionCardCarousel,
-  type SectionCardCarouselProps,
   SectionCardSimple,
   SectionCardSimpleMosaic,
   SectionHeading,
   ThemeTag,
 } from "@/app/components/";
-import { makeCardSimpleProps } from "../site-config/content.helpers";
+import { makeCardCarouselProps, makeCardSimpleProps } from "../site-config/content.helpers";
+import { DATASTORIES } from "../site-config/datastory";
 import { NEWS_EVENTS_CARDS } from "../site-config/home/home-sectioncardmosaic-news-events";
 import { typedMap } from "../site-config/typed.helpers";
-
-const MOCK_CARDS: SectionCardCarouselProps["cards"] = [
-  {
-    id: "card1",
-    tag: <Tag variant="outline">Tag</Tag>,
-    title: "Finding the Floods",
-    description:
-      "Description text goes here. This is a longer description to show how the component handles more text.",
-    callToAction: {
-      label: "Call to action",
-      href: "/link",
-    },
-    image: (
-      <Image
-        src="/img/story/finding-floods.webp"
-        alt="Flooded river in Kerrville, Texas showing significant flood waters"
-        fill
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-      />
-    ),
-    imagePosition: "cover",
-    colorMode: "dark",
-  },
-  {
-    id: "card2",
-    tag: <Tag variant="outline">Tag</Tag>,
-    title: "Typhoon Sinlaku April 2026",
-    description:
-      "Description text goes here. This is a longer description to show how the component handles more text.",
-    callToAction: {
-      label: "Call to action",
-      href: "/link",
-    },
-    image: (
-      <Image
-        src="/img/event/typhoon-sinlaku-2026.webp"
-        alt="Satellite worldview imagery of Typhoon Sinlaku from April 2026"
-        fill
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-      />
-    ),
-    imagePosition: "cover",
-    colorMode: "dark",
-  },
-];
 
 export default function ComponentsPage() {
   return (
@@ -146,7 +99,7 @@ export default function ComponentsPage() {
         sectionHeading={
           <SectionHeading href="/components">SectionCardCarousel Component</SectionHeading>
         }
-        cards={MOCK_CARDS}
+        cards={typedMap(DATASTORIES, makeCardCarouselProps)}
       >
         <p>Lorem ipsum dolor sit amet...</p>
         <code className="bg-base-lighter font-code-xs">

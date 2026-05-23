@@ -186,3 +186,48 @@ export const makeCardSimpleProps = ({
   isExternal: !!url,
   ...rest,
 });
+
+export type CardCarouselPropsArgs = Omit<
+  CardProps,
+  "image" | "imagePosition" | "tag" | "callToAction" | "colorMode"
+> & {
+  id: string;
+  contentType: ContentType;
+  thumbnailImage: {
+    alt: string;
+    src: string;
+  };
+  title: string;
+  description?: string;
+  url?: string;
+  [key: string]: unknown;
+};
+
+export const makeCardCarouselProps = ({
+  id,
+  contentType,
+  thumbnailImage,
+  title,
+  description,
+  url,
+  ...rest
+}: CardCarouselPropsArgs): IterableItemWithId<CardProps> => ({
+  id,
+  title,
+  description,
+  image: (
+    <Image
+      {...thumbnailImage}
+      fill
+      sizes="(max-width: 640px) 100vw, (max-width: 1400px) 50vw, 700px"
+    />
+  ),
+  tag: makeContentTypeTag(contentType),
+  callToAction: {
+    href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
+    label: `view ${CONTENT_TYPES[contentType].label}`,
+  },
+  imagePosition: "cover",
+  colorMode: "dark",
+  ...rest,
+});
