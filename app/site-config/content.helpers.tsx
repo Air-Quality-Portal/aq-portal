@@ -65,15 +65,25 @@ export type CardPropsArgs = {
     src: string;
   };
   title: string;
+  customTitleClasses?: string;
   [key: string]: unknown;
 };
 
-export const makeCardMastHeadProps = ({ image, title, ...rest }: CardPropsArgs): CardProps => ({
+export const makeCardMastHeadProps = ({
+  image,
+  title,
+  customTitleClasses,
+  ...rest
+}: CardPropsArgs): CardProps => ({
   image: <Image {...image} sizes="100vw" fill priority />,
   ...(title
     ? {
         title: (
-          <h1 className="font-mono-3xl text-bold text-white text-uppercase margin-0">{title}</h1>
+          <h1
+            className={`font-mono-3xl text-bold text-white text-uppercase margin-0 ${customTitleClasses}`}
+          >
+            {title}
+          </h1>
         ),
       }
     : {}),
