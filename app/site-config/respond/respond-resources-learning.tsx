@@ -50,7 +50,7 @@ export const RESPOND_CARD_RESOURCES_LEARNING_INTRODUCTION_TO_SAR: IterableItemWi
 export const RESPOND_CARD_RESOURCES_LEARNING_USING_EARTH_OBSERVATIONS: IterableItemWithId<CardSimpleProps> =
   {
     id: "card-resources-learning-using-earth-observations",
-    title: "Using Earth Observations for Pre- and Post-Fire Monitoring ",
+    title: "Using Earth Observations for Pre- and Post-Fire Monitoring",
     image: (
       <Image
         src="/img/respond/resources-learning/Planet_LAFires_Altadena.webp"
