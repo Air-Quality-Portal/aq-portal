@@ -80,14 +80,22 @@ export type EventContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "event";
   mastheadImage: MastheadImage;
   date: string;
-  overview: {
-    region?: string;
-    startDate?: string;
-    disastersType?: string;
-  };
+  overview: OverviewSection;
   body: ContentBlock[];
 };
 
+export type OverviewSection = {
+  region?: string;
+  startDate?: string;
+  disastersType?: string;
+  DhsAndFema?: link;
+  usGovtDoing?: link;
+};
+
+type link = {
+  text: string;
+  url: string;
+};
 type MastheadImage = {
   src: string;
   alt: string;

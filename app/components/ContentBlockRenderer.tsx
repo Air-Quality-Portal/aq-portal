@@ -8,16 +8,28 @@ type Props = {
   block: ContentBlock;
   /** When true, renders without Section wrapper (no grid-container or margin-y-7). Use inside existing layouts. */
   inline?: boolean;
+  sideBarPresent?: boolean;
 };
+const Wrapper = ({
+  inline,
+  sideBarPresent,
+  children,
+}: {
+  inline?: boolean;
+  children: React.ReactNode;
+  sideBarPresent?: boolean;
+}) =>
+  inline || !sideBarPresent ? (
+    <div className="margin-bottom-4">{children}</div>
+  ) : (
+    <Section>{children}</Section>
+  );
 
-const Wrapper = ({ inline, children }: { inline?: boolean; children: React.ReactNode }) =>
-  inline ? <div className="margin-bottom-4">{children}</div> : <Section>{children}</Section>;
-
-export const ContentBlockRenderer = ({ block, inline }: Props) => {
+export const ContentBlockRenderer = ({ block, inline, sideBarPresent }: Props) => {
   switch (block.type) {
     case "text":
       return (
-        <Wrapper inline={inline}>
+        <Wrapper inline={inline} sideBarPresent={sideBarPresent}>
           {block.heading &&
             (block.headingLevel === "h4" ? (
               <h4 className="font-heading-lg margin-bottom-1">{block.heading}</h4>
@@ -35,7 +47,7 @@ export const ContentBlockRenderer = ({ block, inline }: Props) => {
 
     case "list":
       return (
-        <Wrapper inline={inline}>
+        <Wrapper inline={inline} sideBarPresent={sideBarPresent}>
           {block.heading &&
             (block.headingLevel === "h4" ? (
               <h4 className="font-heading-lg margin-bottom-1">{block.heading}</h4>
@@ -61,7 +73,7 @@ export const ContentBlockRenderer = ({ block, inline }: Props) => {
 
     case "note":
       return (
-        <Wrapper inline={inline}>
+        <Wrapper inline={inline} sideBarPresent={sideBarPresent}>
           <div role="note" className="usa-alert usa-alert--info usa-alert--slim margin-bottom-4">
             <div className="usa-alert__body">
               <p className="usa-alert__text">{block.text}</p>
@@ -72,7 +84,7 @@ export const ContentBlockRenderer = ({ block, inline }: Props) => {
 
     case "slider":
       return (
-        <Wrapper inline={inline}>
+        <Wrapper inline={inline} sideBarPresent={sideBarPresent}>
           <ImageComparison
             before={block.before}
             after={block.after}
@@ -83,7 +95,7 @@ export const ContentBlockRenderer = ({ block, inline }: Props) => {
 
     case "video":
       return (
-        <Wrapper inline={inline}>
+        <Wrapper inline={inline} sideBarPresent={sideBarPresent}>
           {block.title && <h3 className="font-heading-xl margin-bottom-1">{block.title}</h3>}
           {block.src ? (
             <video controls className="width-full display-block">
@@ -101,7 +113,7 @@ export const ContentBlockRenderer = ({ block, inline }: Props) => {
 
     case "image":
       return (
-        <Wrapper inline={inline}>
+        <Wrapper inline={inline} sideBarPresent={sideBarPresent}>
           <Image
             src={block.src}
             alt={block.alt}

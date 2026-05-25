@@ -1,7 +1,13 @@
 import { Tag } from "@teamimpact/veda-ui-blocks";
 import { notFound } from "next/navigation";
 
-import { ContentBlockRenderer, PageMasthead, Section, ThemeTag } from "@/app/components";
+import {
+  ContentBlockRenderer,
+  OverviewBlock,
+  PageMasthead,
+  Section,
+  ThemeTag,
+} from "@/app/components";
 import { EVENTS } from "@/app/site-config/event";
 
 export default async function EventItemPage(props: PageProps<"/events/[id]">) {
@@ -10,7 +16,8 @@ export default async function EventItemPage(props: PageProps<"/events/[id]">) {
   const events = EVENTS.find((t) => t.id === id);
 
   if (!events) notFound();
-
+  //TO DO: this will need to account for inpage navigation once implements
+  const showSidebar = events.themes.length > 0 || events.categories.length > 0;
   return (
     <>
       {/* Hero */}
@@ -22,8 +29,8 @@ export default async function EventItemPage(props: PageProps<"/events/[id]">) {
       <Section>
         <div className="grid-row grid-gap">
           {/* Sidebar */}
-          {(events.themes.length > 0 || events.categories.length > 0) && (
-            <div className="grid-col-12 desktop:grid-col-3">
+          {showSidebar && (
+            <div className="grid-col-12 desktop:grid-col-3 padding-0">
               <aside className="bg-base-lightest padding-4 margin-bottom-4">
                 {events.themes.length > 0 && (
                   <div className="margin-bottom-3">
@@ -57,30 +64,11 @@ export default async function EventItemPage(props: PageProps<"/events/[id]">) {
           )}
 
           {/* Main content */}
-          <div className="grid-col-12 ">
-            <section className=" margin-y-7 ">
-              <div className="grid-container ">
-                <h2 className="font-sans-2xl">Overview</h2>
-
-                <div className="grid-row border-bottom border-top border-base-light padding-y-2">
-                  <div className="grid-col">
-                    <div className="font-body-md margin-bottom-1 text-semibold">Region</div>
-                    <span className="">{events.overview.region}</span>
-                  </div>
-                  <div className="grid-col">
-                    <div className="font-body-md margin-bottom-1 text-semibold">Start Date</div>
-                    <span className="  ">{events.overview.startDate}</span>
-                  </div>
-                  <div className="grid-col">
-                    <div className="font-body-md margin-bottom-1 text-semibold">Disaster Type</div>
-                    <span className="padding-t-1">{events.overview.disastersType}</span>
-                  </div>
-                </div>
-              </div>
-            </section>
+          <div className={!showSidebar ? "grid-col-12" : "grid-col-9"}>
+            <OverviewBlock {...events.overview} showSidebar={showSidebar} />
             {events.body.map((block, i) => (
               // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
-              <ContentBlockRenderer key={i} block={block} />
+              <ContentBlockRenderer key={i} block={block} sideBarPresent={showSidebar} />
             ))}
           </div>
         </div>
