@@ -79,7 +79,7 @@ export const makeCardMastHeadProps = ({
   ...rest
 }: CardMastheadPropsArgs): CardProps => ({
   image: <Image {...mastheadImage} sizes="100vw" fill preload={true} />,
-  ...(title
+  ...(title || theme
     ? {
         title: (
           <h1
