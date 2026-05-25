@@ -144,7 +144,7 @@ export const makeCardDetailedImageLeftProps = ({
   ...rest
 }: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => ({
   id,
-  image: <Image {...thumbnailImage} fill sizes="(max-width: 1400px) 100vw, 1400px" />,
+  image: <Image {...thumbnailImage} fill sizes="200px" />,
   imagePosition: "left",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
   callToAction: {
@@ -208,7 +208,7 @@ export const makeCardMiniProps = ({
   ...rest
 }: CardSimpleMiniArgs): IterableItemWithId<CardMiniProps> => ({
   id,
-  image: <Image {...thumbnailImage} width="98" height="108" />, // TODO: remove hard coded heightand width once card mini updates are incorporated into veda-ui-blocks
+  image: <Image {...thumbnailImage} fill sizes="200px" />,
   ...(tag
     ? {
         tag: (
