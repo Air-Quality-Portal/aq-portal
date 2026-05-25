@@ -12,6 +12,6 @@ export const EVENT__TEXAS_FLOODS_JULY_2025: EventContent = {
     src: "/img/event/texas-floods-july-2025.webp",
     alt: "UAVSAR data from July 2025 showing flooded regions around Lake Travis in Texas",
   },
-  themes: [],
-  categories: [],
+  themes: ["respond"],
+  categories: ["flood"],
 };

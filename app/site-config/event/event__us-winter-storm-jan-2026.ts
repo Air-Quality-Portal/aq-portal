@@ -12,6 +12,6 @@ export const EVENT__US_WINTER_STORM_EVENT_2026: EventContent = {
     src: "/img/event/us-winter-storm-jan-2026.webp",
     alt: "Satellite imagery shows the aftermath of a potent winter storm in late January 2026",
   },
-  themes: [],
-  categories: [],
+  themes: ["respond"],
+  categories: ["severewx"],
 };
