@@ -17,9 +17,7 @@ export default function AboutPage() {
                 className="display-block"
               />
             </div>
-            <h1 className="text-bold line-height-sans-1 margin-0" style={{ maxWidth: "23rem" }}>
-              {ABOUT_PAGE_BODY.pageTitle}
-            </h1>
+            <h1 className="text-bold line-height-sans-1 margin-0">{ABOUT_PAGE_BODY.pageTitle}</h1>
           </div>
           <SectionHeading className="text-primary-dark">
             {ABOUT_PAGE_BODY.sectionHeading}
