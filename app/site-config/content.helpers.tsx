@@ -146,26 +146,6 @@ export type DatasetCardPropsArgs = {
   [key: string]: unknown;
 };
 
-export const makeDatasetCardProps = ({
-  id,
-  thumbnailImage,
-  themes,
-  categories,
-  url,
-  contentType: _contentType,
-  ...rest
-}: DatasetCardPropsArgs): IterableItemWithId<CardDetailedProps> => ({
-  id,
-  image: <Image {...thumbnailImage} fill sizes="(max-width: 1400px) 100vw, 1400px" />,
-  imagePosition: "left",
-  tags: [...themes.map(makeThemeTag), ...categories.map(makeSimpleTag)],
-  callToAction: {
-    href: url ?? `/data-gallery/${id}`,
-    label: "view data",
-  },
-  ...rest,
-});
-
 export type CardSimplePropsArgs = {
   id: string;
   contentType: ContentType;
