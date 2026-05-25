@@ -1,8 +1,7 @@
-import { Card, Tag } from "@teamimpact/veda-ui-blocks";
-import Image from "next/image";
+import { Tag } from "@teamimpact/veda-ui-blocks";
 import { notFound } from "next/navigation";
 
-import { ContentBlockRenderer, Section, ThemeTag } from "@/app/components";
+import { ContentBlockRenderer, PageMasthead, Section, ThemeTag } from "@/app/components";
 import { EVENTS } from "@/app/site-config/event";
 
 export default async function EventItemPage(props: PageProps<"/events/[id]">) {
@@ -12,44 +11,10 @@ export default async function EventItemPage(props: PageProps<"/events/[id]">) {
 
   if (!events) notFound();
 
-  const formattedDate = new Date(events.date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-
   return (
     <>
       {/* Hero */}
-
-      <Card
-        tag={
-          events.date && (
-            <Tag color="primary-lighter" textColor="primary-dark">
-              Updated: {formattedDate}
-            </Tag>
-          )
-        }
-        colorMode="brand"
-        description={events.description}
-        image={
-          <Image
-            src={events.mastheadImage.src}
-            alt={events.mastheadImage.alt}
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 1024px"
-            style={{ objectFit: "cover" }}
-          />
-        }
-        imagePosition="cover"
-        isMastHead
-        title={
-          <h1 className="font-mono-3xl text-normal text-uppercase text-ls-3 text-white">
-            {events.title}
-          </h1>
-        }
-      />
+      <PageMasthead image={events.mastheadImage} {...events} />
 
       {/* Full-width title and date */}
 

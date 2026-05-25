@@ -66,10 +66,23 @@ export type CardPropsArgs = {
   };
   title: string;
   [key: string]: unknown;
+  date?: string;
 };
 
-export const makeCardMastHeadProps = ({ image, title, ...rest }: CardPropsArgs): CardProps => ({
-  image: <Image {...image} sizes="100vw" fill preload={true} />,
+const formattedDate = (date: string) =>
+  new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+export const makeCardMastHeadProps = ({
+  image,
+  title,
+  date,
+  ...rest
+}: CardPropsArgs): CardProps => ({
+  image: <Image {...image} sizes="100vw" fill />,
   ...(title
     ? {
         title: (
@@ -79,6 +92,11 @@ export const makeCardMastHeadProps = ({ image, title, ...rest }: CardPropsArgs):
     : {}),
   colorMode: "brand" as const,
   isMastHead: true,
+  tag: date ? (
+    <Tag color="primary-lighter" textColor="primary-dark">
+      Updated: {formattedDate(date)}
+    </Tag>
+  ) : undefined,
   ...rest,
 });
 
