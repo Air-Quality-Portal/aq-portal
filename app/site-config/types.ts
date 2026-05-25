@@ -65,6 +65,13 @@ export type StoryContent = Omit<MinimumCardContent, "contentType"> & {
 export type EventContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "event";
   mastheadImage: MastheadImage;
+  date: string;
+  overview: {
+    region?: string;
+    startDate?: string;
+    disastersType?: string;
+  };
+  body: ContentBlock[];
 };
 
 type MastheadImage = {
