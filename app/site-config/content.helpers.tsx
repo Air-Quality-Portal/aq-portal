@@ -1,5 +1,6 @@
 import {
   type CardDetailedProps,
+  type CardMiniProps,
   type CardProps,
   type CardSimpleProps,
   Tag,
@@ -184,6 +185,40 @@ export const makeCardSimpleProps = ({
       : makeContentTypeTag(contentType),
   url: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
   isExternal: !!url,
+  ...rest,
+});
+
+export type CardSimpleMiniArgs = Omit<CardMiniProps, "image" | "tag" | "url"> & {
+  id: string;
+  contentType: ContentType;
+  thumbnailImage: {
+    alt: string;
+    src: string;
+  };
+  tag?: string;
+  [key: string]: unknown;
+};
+
+export const makeCardMiniProps = ({
+  id,
+  contentType,
+  thumbnailImage,
+  tag,
+  themes,
+  ...rest
+}: CardSimpleMiniArgs): IterableItemWithId<CardMiniProps> => ({
+  id,
+  image: <Image {...thumbnailImage} width="98" height="108" />, // TODO: remove hard coded heightand width once card mini updates are incorporated into veda-ui-blocks
+  ...(tag
+    ? {
+        tag: (
+          <Tag variant="text" color="secondary">
+            {tag}
+          </Tag>
+        ),
+      }
+    : {}),
+  url: `${CONTENT_TYPES[contentType].route}/${id}`,
   ...rest,
 });
 
