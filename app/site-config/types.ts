@@ -37,6 +37,7 @@ export type MinimumCardContent = {
   thumbnailImage: {
     src: string;
     alt: string;
+    loadingEager?: boolean;
   };
   themes: Theme[];
   categories: Category[];
