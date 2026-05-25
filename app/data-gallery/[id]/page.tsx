@@ -11,7 +11,21 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
 
   if (!dataset) notFound();
 
-  const { title, description, themes, categories, body } = dataset;
+  const { title, description, themes, categories, body, relatedContent: relatedIds = [] } = dataset;
+
+  const relatedItems = relatedIds.flatMap((relId) => {
+    const rel = DATASETS.find((d) => d.id === relId);
+    if (!rel) return [];
+    return [
+      {
+        id: rel.id,
+        title: rel.title,
+        href: `/data-gallery/${rel.id}`,
+        themes: rel.themes,
+        contentType: rel.contentType,
+      },
+    ];
+  });
 
   return (
     <>
@@ -23,7 +37,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
       <Section>
         <div className="grid-row grid-gap">
           <div className="grid-col-12 desktop:grid-col-3">
-            <DatasetSidebar themes={themes} categories={categories} />
+            <DatasetSidebar themes={themes} categories={categories} relatedContent={relatedItems} />
           </div>
           <div className="grid-col-12 desktop:grid-col-9">
             <h2 className="font-heading-xl margin-top-0 margin-bottom-2">Dataset Details</h2>
