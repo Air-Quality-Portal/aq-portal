@@ -73,4 +73,4 @@ export const BASEMAP_STYLES = {
       },
     ],
   } satisfies StyleSpecification,
-} as const;
+};

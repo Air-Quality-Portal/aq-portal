@@ -54,7 +54,7 @@ export const makeThemeTag = (tag: Theme) => {
   );
 };
 
-export const makeContentTypeTag = (tag: ContentType) => {
+const makeContentTypeTag = (tag: ContentType) => {
   const { label } = CONTENT_TYPES[tag];
   return <Tag variant="solid">{label}</Tag>;
 };
@@ -77,7 +77,7 @@ export const makeCardMastHeadProps = ({ image, title, ...rest }: CardPropsArgs):
         ),
       }
     : {}),
-  colorMode: "brand" as const,
+  colorMode: "brand",
   isMastHead: true,
   ...rest,
 });
