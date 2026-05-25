@@ -1,7 +1,7 @@
 import { CardDetailed } from "@teamimpact/veda-ui-blocks";
 import { PageMasthead, Section } from "@/app/components";
 import { DATA_GALLERY_CARD_MASTHEAD } from "@/app/site-config/dataset/data-gallery-card-masthead";
-import { makeCardDetailedImageLeftProps } from "../site-config/content.helpers";
+import { makeDatasetCardProps } from "../site-config/content.helpers";
 import { DATASETS } from "../site-config/dataset";
 
 export default function DataGalleryPage() {
@@ -11,13 +11,9 @@ export default function DataGalleryPage() {
       <Section>
         <div className="grid-row grid-gap">
           {DATASETS.map(({ id, categories, themes, ...card }) => (
-            <div key={id} className="grid-col-12">
+            <div key={id} className="grid-col-12 margin-y-1 desktop:margin-y-2">
               <CardDetailed
-                {...makeCardDetailedImageLeftProps({
-                  ...card,
-                  id,
-                  tags: [...categories, ...themes],
-                })}
+                {...makeDatasetCardProps({ id, categories, themes, ...card })}
                 className="height-card-sm"
               />
             </div>

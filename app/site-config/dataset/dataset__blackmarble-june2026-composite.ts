@@ -8,7 +8,7 @@ export const DATASET__BLACKMARBLE_JUNE2026_COMPOSITE: DatasetContent = {
   description:
     "NASA Black Marble monthly composite of nighttime lights for January 2024. Provides a pre-event baseline for before/after disaster comparisons.",
   thumbnailImage: {
-    src: "/img/logo-emblem.svg",
+    src: "/img/datastory/hurricane-milton-october-2024.webp",
     alt: "Black Marble monthly composite nighttime lights",
   },
   themes: ["prepare", "respond"],
