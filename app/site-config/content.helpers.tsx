@@ -69,7 +69,7 @@ export type CardPropsArgs = {
 };
 
 export const makeCardMastHeadProps = ({ image, title, ...rest }: CardPropsArgs): CardProps => ({
-  image: <Image {...image} sizes="100vw" fill priority />,
+  image: <Image {...image} sizes="100vw" fill preload={true} />,
   ...(title
     ? {
         title: (
