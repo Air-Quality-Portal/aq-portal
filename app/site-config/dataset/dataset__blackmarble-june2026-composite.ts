@@ -13,7 +13,7 @@ export const DATASET__BLACKMARBLE_JUNE2026_COMPOSITE: DatasetContent = {
   },
   themes: ["prepare", "respond"],
   categories: ["tropical cyclone"],
-  relatedContent: ["blackmarble-hd-daily"],
+  relatedContent: ["blackmarble-hd-daily", "viirs-active-fire"],
   body: [
     {
       type: "text",

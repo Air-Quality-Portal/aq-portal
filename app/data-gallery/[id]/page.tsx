@@ -22,7 +22,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
         title: rel.title,
         href: `/data-gallery/${rel.id}`,
         themes: rel.themes,
-        contentType: rel.contentType,
+        categories: rel.categories,
       },
     ];
   });

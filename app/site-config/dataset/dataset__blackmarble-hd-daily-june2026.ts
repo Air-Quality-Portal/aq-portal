@@ -11,9 +11,9 @@ export const DATASET__BLACKMARBLE_HD_DAILY_JUNE2026: DatasetContent = {
     src: "/img/logo-emblem.svg",
     alt: "Black Marble HD daily nighttime lights",
   },
-  themes: ["respond"],
-  categories: ["tropical cyclone"],
-  relatedContent: ["blackmarble-composite"],
+  themes: ["respond", "prepare", "recover"],
+  categories: ["tropical cyclone", "flood", "fire"],
+  relatedContent: ["blackmarble-composite", "viirs-active-fire"],
   body: [
     {
       type: "text",
