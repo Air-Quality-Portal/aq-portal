@@ -8,7 +8,7 @@ export const DATASET__BLACKMARBLE_HD_DAILY_JUNE2026: DatasetContent = {
   description:
     "NASA Black Marble high-definition daily nighttime lights imagery captured during Hurricane Helene (September 28, 2024). Nighttime light anomalies reveal power outages and population displacement.",
   thumbnailImage: {
-    src: "/img/logo-emblem.svg",
+    src: "/img/datastory/hurricane-helene-september-2024.webp",
     alt: "Black Marble HD daily nighttime lights",
   },
   themes: ["respond", "prepare", "recover"],

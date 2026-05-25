@@ -8,7 +8,7 @@ export const DATASET__VIIRS_ACTIVE_FIRE: DatasetContent = {
   description:
     "NASA VIIRS (Visible Infrared Imaging Radiometer Suite) active fire detections derived from 375m thermal anomaly data. Near real-time fire locations for situational awareness and post-event impact assessment.",
   thumbnailImage: {
-    src: "/img/logo-emblem.svg",
+    src: "/img/training/eo-pre-post-fire-monitoring.webp",
     alt: "VIIRS active fire detection",
   },
   themes: ["respond", "prepare"],
