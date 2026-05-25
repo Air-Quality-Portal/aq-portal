@@ -17,10 +17,7 @@ export default function AboutPage() {
                 className="display-block"
               />
             </div>
-            <h1
-              className="font-ui-3xl text-bold text-primary-dark line-height-sans-1 margin-0"
-              style={{ maxWidth: "23rem" }}
-            >
+            <h1 className="text-bold line-height-sans-1 margin-0" style={{ maxWidth: "23rem" }}>
               {ABOUT_PAGE_BODY.pageTitle}
             </h1>
           </div>
@@ -28,7 +25,7 @@ export default function AboutPage() {
             {ABOUT_PAGE_BODY.sectionHeading}
           </SectionHeading>
           <p className="margin-top-0">{ABOUT_PAGE_BODY.missionParagraph}</p>
-          <div className="display-flex flex-column flex-gap-1 flex-align-start">
+          <div className="display-flex flex-column flex-align-start">
             {ABOUT_PAGE_BODY.ctas.map((cta, index) => (
               <Link
                 key={`${cta.href}-${cta.label}`}
@@ -37,7 +34,7 @@ export default function AboutPage() {
                 rel={cta.rel}
                 variant="text"
                 isExternal
-                className={`text-primary text-bold text-underline ${index < ABOUT_PAGE_BODY.ctas.length - 1 ? "margin-bottom-1" : ""}`}
+                className={index < ABOUT_PAGE_BODY.ctas.length - 1 ? "margin-bottom-1" : ""}
               >
                 {cta.label}
               </Link>
