@@ -10,7 +10,7 @@ export default function TrainingCollectionPage() {
       <PageMasthead {...PAGE__CARD_MASTHEAD} />
       <Section>
         <div className="grid-row grid-gap">
-          {[...TRAININGS, ...TRAININGS_EXTERNAL].map(({ id, categories, themes, ...card }) => (
+          {[...TRAININGS, ...TRAININGS_EXTERNAL].map(({ id, hazards, themes, ...card }) => (
             <div key={id} className="grid-col-12 tablet:grid-col-6 margin-y-1 desktop:margin-y-2">
               <CardDetailed
                 {...makeCardDetailedProps({ ...card, id })}

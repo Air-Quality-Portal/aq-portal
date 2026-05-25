@@ -9,7 +9,7 @@ export const DATASTORY__HURRICANE_MILTON_OCTOBER_2024: DataStoryContent = {
     alt: "Hurricane Milton in 2024 showing storm system over ocean with visible eye of the storm",
   },
   themes: [],
-  categories: [],
+  hazards: [],
   mastheadImage: {
     src: "/img/datastory/hurricane-milton-october-2024.webp",
     alt: "Hurricane Milton in 2024 showing storm system over ocean with visible eye of the storm",

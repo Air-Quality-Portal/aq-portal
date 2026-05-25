@@ -61,14 +61,14 @@ export default async function TrainingItemPage(props: PageProps<"/training/[id]"
                 </div>
               )}
 
-              {training.categories.length > 0 && (
+              {training.hazards.length > 0 && (
                 <div className="margin-bottom-3">
                   <p className="text-bold font-body-sm margin-top-0 margin-bottom-2">Hazard</p>
                   <div className="display-flex flex-wrap">
-                    {training.categories.map((category) => (
-                      <div key={category} className="margin-right-1 margin-bottom-1">
+                    {training.hazards.map((hazard) => (
+                      <div key={hazard} className="margin-right-1 margin-bottom-1">
                         <Tag color="primary-lighter" textColor="primary-dark">
-                          {category}
+                          {hazard}
                         </Tag>
                       </div>
                     ))}

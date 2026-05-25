@@ -13,7 +13,7 @@ export const TRAINING__EO_BUILDING_EXPOSURE: TrainingContent = {
   },
   date: "2026-01-15",
   themes: ["recover", "prepare", "respond", "build"],
-  categories: ["earthquake", "tropical cyclone"],
+  hazards: ["earthquake", "tropical cyclone"],
   mastheadImage: {
     src: "/img/training/eo-building-exposure.webp",
     alt: "Los Angeles building exposure map showing building risk data across the city",

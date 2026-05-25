@@ -6,7 +6,7 @@ import {
 } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import type { AppRoutes } from "@/.next/types/routes";
-import type { Category, ContentType, IterableItemWithId, Theme } from "./types";
+import type { ContentType, Hazard, IterableItemWithId, Theme } from "./types";
 
 const CONTENT_THEMES: Record<Theme, Record<string, unknown>> = {
   respond: {
@@ -39,7 +39,7 @@ const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: string }> = 
   training: { route: "/training", label: "training" },
 };
 
-export const makeSimpleTag = (tag: Theme | ContentType | Category) => (
+export const makeSimpleTag = (tag: Theme | ContentType | Hazard) => (
   <Tag variant="solid" color="primary-lighter">
     {tag}
   </Tag>
@@ -89,7 +89,7 @@ export type CardDetailedPropsArgs = {
     alt: string;
     src: string;
   };
-  tags?: (Theme | ContentType | Category)[];
+  tags?: (Theme | ContentType | Hazard)[];
   url?: string;
   [key: string]: unknown;
 };
@@ -145,7 +145,7 @@ export type CardSimplePropsArgs = {
     alt: string;
     src: string;
   };
-  tag?: Theme | ContentType | Category;
+  tag?: Theme | ContentType | Hazard;
   themes?: Theme[];
   url?: string;
   [key: string]: unknown;

@@ -13,5 +13,5 @@ export const NEWS__NEW_DISASTERS_PORTAL_TEST_HELP: NewsContent = {
     alt: "NASA Disasters Portal team members at a field event",
   },
   themes: [],
-  categories: [],
+  hazards: [],
 };

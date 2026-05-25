@@ -4,7 +4,7 @@ export type IterableItemWithId<T> = T & { id: string };
 
 export type Theme = "respond" | "build" | "prepare" | "recover";
 
-export type Category = "severewx" | "fire" | "heat" | "flood" | "tropical cyclone" | "earthquake";
+export type Hazard = "severewx" | "fire" | "heat" | "flood" | "tropical cyclone" | "earthquake";
 
 export type ContentBlock =
   | { type: "text"; heading?: string; headingLevel?: "h2" | "h3" | "h4"; paragraphs: ReactNode[] }
@@ -39,7 +39,7 @@ export type MinimumCardContent = {
     alt: string;
   };
   themes: Theme[];
-  categories: Category[];
+  hazards: Hazard[];
   description?: string;
 };
 

@@ -13,5 +13,5 @@ export const STORY__FINDING_FLOODS: StoryContent = {
     alt: "Flooded river in Kerrville, Texas showing significant flood waters",
   },
   themes: [],
-  categories: [],
+  hazards: [],
 };

@@ -10,5 +10,5 @@ export const TRAINING__EO_PRE_POST_FIRE_MONITORING: TrainingContentExternal = {
   },
   url: "https://www.earthdata.nasa.gov/learn/trainings/using-earth-observations-pre-post-fire-monitoring ",
   themes: [],
-  categories: [],
+  hazards: [],
 };

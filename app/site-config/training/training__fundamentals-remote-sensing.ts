@@ -10,5 +10,5 @@ export const TRAINING__FUNDAMENTALS_REMOTE_SENSING: TrainingContentExternal = {
   },
   url: "https://www.earthdata.nasa.gov/learn/trainings/fundamentals-remote-sensing",
   themes: ["prepare"],
-  categories: [],
+  hazards: [],
 };

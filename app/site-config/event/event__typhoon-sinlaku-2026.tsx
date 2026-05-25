@@ -13,5 +13,5 @@ export const EVENT__TYPHOON_SINLAKU_2026: EventContent = {
     alt: "Satellite worldview imagery of Typhoon Sinlaku from April 2026",
   },
   themes: [],
-  categories: [],
+  hazards: [],
 };
