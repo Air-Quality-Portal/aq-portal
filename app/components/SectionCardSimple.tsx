@@ -23,7 +23,7 @@ export const SectionCardSimple = ({
   return (
     <Section {...sectionProps}>
       {sectionHeading && sectionHeading}
-      <div className="grid-row grid-gap-2 margin-bottom-6">
+      <div className="grid-row grid-gap-2 margin-bottom-neg-2">
         {cards.map((props) => (
           <div
             key={props.id}
