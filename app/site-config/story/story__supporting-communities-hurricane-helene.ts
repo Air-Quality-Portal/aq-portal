@@ -1,6 +1,6 @@
 import type { StoryContent } from "../types";
 
-export const STORY__SEEING_BEYOND_FLAMES: StoryContent = {
+export const STORY__SUPPORTING_COMMUNITIES_HURRICANE_HELENE: StoryContent = {
   id: "supporting-communities-hurricane-helene",
   contentType: "story",
   title: "Supporting Communities in the Wake of Hurricane Helene",
