@@ -6,15 +6,21 @@ import {
   SectionHeading,
   ThemeTag,
 } from "@/app/components/";
-import {
-  makeCardCarouselProps,
-  makeCardMiniProps,
-  makeCardSimpleProps,
-} from "../site-config/content.helpers";
+import type { EventContent } from "@/app/site-config/types";
+import { makeCardCarouselProps, makeCardSimpleProps } from "../site-config/content.helpers";
 import { DATASTORIES } from "../site-config/datastory";
+import { EVENTS } from "../site-config/event";
+import { transformEventToCardMiniProps } from "../site-config/event/event.helpers";
 import { NEWS_EVENTS_CARDS } from "../site-config/home/home-sectioncardmosaic-news-events";
 import { typedMap } from "../site-config/typed.helpers";
 import { SectionCardMini } from "./SectionCardMini";
+
+const MOCK_EVENT_CARDS: [EventContent, EventContent, EventContent, EventContent] = [
+  EVENTS[0],
+  EVENTS[1],
+  EVENTS[2],
+  EVENTS[3],
+];
 
 export default function ComponentsPage() {
   return (
@@ -102,53 +108,13 @@ export default function ComponentsPage() {
 
       <SectionCardMini
         sectionHeading={<SectionHeading>SectionCardMini Component</SectionHeading>}
-        cards={typedMap(
-          [
-            {
-              id: "1",
-              contentType: "event",
-              thumbnailImage: {
-                src: "/img/story/estimating-loss-recovery.webp",
-                alt: "Community recovery efforts in Mayfield after disaster, showing rebuilding in progress",
-              },
-              title: "Some title",
-            },
-            {
-              id: "2",
-              contentType: "event",
-              thumbnailImage: {
-                src: "/img/story/estimating-loss-recovery.webp",
-                alt: "Community recovery efforts in Mayfield after disaster, showing rebuilding in progress",
-              },
-              title: "Some title",
-            },
-            {
-              id: "3",
-              contentType: "event",
-              thumbnailImage: {
-                src: "/img/story/estimating-loss-recovery.webp",
-                alt: "Community recovery efforts in Mayfield after disaster, showing rebuilding in progress",
-              },
-              title: "Some title",
-            },
-            {
-              id: "4",
-              contentType: "event",
-              thumbnailImage: {
-                src: "/img/story/estimating-loss-recovery.webp",
-                alt: "Community recovery efforts in Mayfield after disaster, showing rebuilding in progress",
-              },
-              title: "Some title",
-            },
-          ],
-          makeCardMiniProps,
-        )}
+        cards={typedMap(MOCK_EVENT_CARDS, transformEventToCardMiniProps)}
       >
         <p>Lorem ipsum dolor sit amet...</p>
         <code className="bg-base-lighter font-code-xs">
           {`<SectionCardMini
               sectionHeading={<SectionHeading>SectionCardMini Component</SectionHeading>}
-              cards={typedMap(NEWS_EVENTS_CARDS, makeCardMiniProps)}
+              cards={typedMap(MOCK_EVENT_CARDS, transformEventToCardMiniProps)}
             >
               <p>
                 Lorem ipsum dolor sit amet...
