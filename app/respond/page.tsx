@@ -1,5 +1,6 @@
-import { Card, CardMini, CardSimple } from "@teamimpact/veda-ui-blocks";
+import { CardMini, CardSimple } from "@teamimpact/veda-ui-blocks";
 import {
+  PageMasthead,
   Section,
   SectionCardCarousel,
   SectionCardSimpleMosaic,
@@ -24,9 +25,8 @@ import {
 export default function RespondPage() {
   return (
     <>
-      <div className="display-flex minh-masthead">
-        <Card {...MOCK_CARD_RESPOND_HERO} />
-      </div>
+      <PageMasthead {...MOCK_CARD_RESPOND_HERO} />
+
       {/* STORIES OF IMPACT */}
       <SectionCardSimpleMosaic
         sectionHeading={<SectionHeading>News & Events</SectionHeading>}
