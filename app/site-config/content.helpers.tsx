@@ -34,7 +34,8 @@ const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: string }> = 
   dataset: { route: "/data-gallery", label: "data" },
   event: { route: "/events", label: "event" },
   news: { route: "/news-events", label: "news" },
-  story: { route: "/stories", label: "story" },
+  story: { route: "/stories", label: "story" }, // TODO: update route to news-events
+  datastory: { route: "/stories", label: "data story" }, // TODO: update route to news-events
   training: { route: "/training", label: "training" },
 };
 
@@ -68,7 +69,7 @@ export type CardPropsArgs = {
 };
 
 export const makeCardMastHeadProps = ({ image, title, ...rest }: CardPropsArgs): CardProps => ({
-  image: <Image {...image} sizes="100vw" fill priority />,
+  image: <Image {...image} sizes="100vw" fill preload={true} />,
   ...(title
     ? {
         title: (
@@ -169,5 +170,6 @@ export const makeCardSimpleProps = ({
       ? makeThemeTag(themes[0])
       : makeContentTypeTag(contentType),
   url: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
+  isExternal: !!url,
   ...rest,
 });

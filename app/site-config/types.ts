@@ -2,8 +2,6 @@ import type { ReactNode } from "react";
 
 export type IterableItemWithId<T> = T & { id: string };
 
-export type ContentType = "story" | "dataset" | "training" | "event" | "news";
-
 export type Theme = "respond" | "build" | "prepare" | "recover";
 
 export type Category = "severewx" | "fire" | "heat" | "flood" | "tropical cyclone" | "earthquake";
@@ -20,6 +18,17 @@ export type ContentBlock =
   | { type: "slider"; before: { src: string; alt: string }; after: { src: string; alt: string } }
   | { type: "video"; src: string; title?: string; caption?: string }
   | { type: "image"; src: string; alt: string; width: number; height: number; maxWidth?: string };
+
+type Content =
+  | TrainingContent
+  | TrainingContentExternal
+  | DatasetContent
+  | DataStoryContent
+  | StoryContent
+  | NewsContent
+  | EventContent;
+
+export type ContentType = Content["contentType"];
 
 export type MinimumCardContent = {
   id: string;
@@ -59,6 +68,11 @@ export type NewsContent = Omit<MinimumCardContent, "contentType"> & {
 
 export type StoryContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "story";
+  mastheadImage: MastheadImage;
+};
+
+export type DataStoryContent = Omit<MinimumCardContent, "contentType"> & {
+  contentType: "datastory";
   mastheadImage: MastheadImage;
 };
 

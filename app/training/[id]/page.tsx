@@ -27,7 +27,7 @@ export default async function TrainingItemPage(props: PageProps<"/training/[id]"
               src={training.mastheadImage.src}
               alt={training.mastheadImage.alt}
               fill
-              priority
+              preload={true}
               sizes="(max-width: 1024px) 100vw, 1024px"
               style={{ objectFit: "cover" }}
             />
