@@ -26,7 +26,7 @@ export default function RecoverPage() {
     <>
       <PageMasthead {...makeCardMastHeadProps({ title, subtitle, theme, mastheadImage })} />
       <SectionCardSimpleMosaic
-        sectionHeading={<SectionHeading href="/news-events">News & Events</SectionHeading>}
+        sectionHeading={<SectionHeading href="/news-events">Stories of Impact</SectionHeading>}
         cards={typedMap(RECOVER_STORIES, makeCardSimpleProps)}
       />
       {/* Data Visualization */}
