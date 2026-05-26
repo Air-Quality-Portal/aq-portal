@@ -91,6 +91,15 @@ export type DataStoryContent = Omit<MinimumCardContent, "contentType"> & {
 export type EventContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "event";
   mastheadImage: MastheadImage;
+  isLatest?: boolean;
+};
+
+export type ThemeContent = {
+  id: string;
+  title?: string;
+  subtitle: string;
+  mastheadImage: MastheadImage;
+  theme: Theme;
 };
 
 type MastheadImage = {

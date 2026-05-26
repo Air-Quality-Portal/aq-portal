@@ -14,4 +14,5 @@ export const EVENT__TYPHOON_SINLAKU_2026: EventContent = {
   },
   themes: [],
   categories: [],
+  isLatest: true,
 };

@@ -5,7 +5,7 @@ import NextLink from "next/link";
 
 import type { ComponentProps } from "react";
 
-export type SectionHeadingProps = ComponentProps<"h2"> & {
+type SectionHeadingProps = ComponentProps<"h2"> & {
   href?: ComponentProps<typeof NextLink>["href"];
 };
 

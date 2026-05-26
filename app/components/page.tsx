@@ -1,61 +1,25 @@
-import { Tag } from "@teamimpact/veda-ui-blocks";
-import Image from "next/image";
 import {
   Section,
   SectionCardCarousel,
-  type SectionCardCarouselProps,
+  SectionCardMini,
   SectionCardSimple,
   SectionCardSimpleMosaic,
   SectionHeading,
   ThemeTag,
 } from "@/app/components/";
-import { makeCardSimpleProps } from "../site-config/content.helpers";
+import type { EventContent } from "@/app/site-config/types";
+import { makeCardCarouselProps, makeCardSimpleProps } from "../site-config/content.helpers";
+import { DATASTORIES } from "../site-config/datastory";
+import { EVENTS } from "../site-config/event";
+import { transformEventToCardMiniProps } from "../site-config/event/event.helpers";
 import { NEWS_EVENTS_CARDS } from "../site-config/home/home-sectioncardmosaic-news-events";
 import { typedMap } from "../site-config/typed.helpers";
 
-const MOCK_CARDS: SectionCardCarouselProps["cards"] = [
-  {
-    id: "card1",
-    tag: <Tag variant="outline">Tag</Tag>,
-    title: "Finding the Floods",
-    description:
-      "Description text goes here. This is a longer description to show how the component handles more text.",
-    callToAction: {
-      label: "Call to action",
-      href: "/link",
-    },
-    image: (
-      <Image
-        src="/img/story/finding-floods.webp"
-        alt="Flooded river in Kerrville, Texas showing significant flood waters"
-        fill
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-      />
-    ),
-    imagePosition: "cover",
-    colorMode: "dark",
-  },
-  {
-    id: "card2",
-    tag: <Tag variant="outline">Tag</Tag>,
-    title: "Typhoon Sinlaku April 2026",
-    description:
-      "Description text goes here. This is a longer description to show how the component handles more text.",
-    callToAction: {
-      label: "Call to action",
-      href: "/link",
-    },
-    image: (
-      <Image
-        src="/img/event/typhoon-sinlaku-2026.webp"
-        alt="Satellite worldview imagery of Typhoon Sinlaku from April 2026"
-        fill
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-      />
-    ),
-    imagePosition: "cover",
-    colorMode: "dark",
-  },
+const MOCK_EVENT_CARDS: [EventContent, EventContent, EventContent, EventContent] = [
+  EVENTS[0],
+  EVENTS[1],
+  EVENTS[2],
+  EVENTS[3],
 ];
 
 export default function ComponentsPage() {
@@ -142,11 +106,28 @@ export default function ComponentsPage() {
         </code>
       </SectionCardSimple>
 
+      <SectionCardMini
+        sectionHeading={<SectionHeading>SectionCardMini Component</SectionHeading>}
+        cards={typedMap(MOCK_EVENT_CARDS, transformEventToCardMiniProps)}
+      >
+        <p>Lorem ipsum dolor sit amet...</p>
+        <code className="bg-base-lighter font-code-xs">
+          {`<SectionCardMini
+              sectionHeading={<SectionHeading>SectionCardMini Component</SectionHeading>}
+              cards={typedMap(MOCK_EVENT_CARDS, transformEventToCardMiniProps)}
+            >
+              <p>
+                Lorem ipsum dolor sit amet...
+              </p>
+            </SectionCardMini>`}
+        </code>
+      </SectionCardMini>
+
       <SectionCardCarousel
         sectionHeading={
           <SectionHeading href="/components">SectionCardCarousel Component</SectionHeading>
         }
-        cards={MOCK_CARDS}
+        cards={typedMap(DATASTORIES, makeCardCarouselProps)}
       >
         <p>Lorem ipsum dolor sit amet...</p>
         <code className="bg-base-lighter font-code-xs">
