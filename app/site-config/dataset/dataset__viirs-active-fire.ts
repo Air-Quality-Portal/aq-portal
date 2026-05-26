@@ -25,6 +25,8 @@ export const DATASET__VIIRS_ACTIVE_FIRE: DatasetContent = {
     },
     {
       type: "stacSingleLayer",
+      heading: "VIIRS Active Fire Map",
+      headingLevel: "h3",
       stacLayer: {
         ...DEFAULT_STAC_CONFIG,
         type: "raster",

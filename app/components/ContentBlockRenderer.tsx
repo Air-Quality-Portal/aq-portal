@@ -5,6 +5,18 @@ import { ImageComparison, Section, SectionHeading } from "@/app/components";
 import type { ContentBlock } from "@/app/site-config/types";
 import { StacCompareBlock, StacSingleLayerBlock } from "./blocks";
 
+function ContentHeading({
+  heading,
+  headingLevel,
+}: {
+  heading: string;
+  headingLevel?: "h2" | "h3" | "h4";
+}) {
+  if (headingLevel === "h4") return <h4 className="font-heading-lg margin-bottom-1">{heading}</h4>;
+  if (headingLevel === "h3") return <h3 className="font-heading-lg margin-bottom-1">{heading}</h3>;
+  return <SectionHeading>{heading}</SectionHeading>;
+}
+
 export const ContentBlockRenderer = ({
   block,
   isMultiColumnLayout,
@@ -16,14 +28,9 @@ export const ContentBlockRenderer = ({
     case "text":
       return (
         <Section isMultiColumnLayout={isMultiColumnLayout}>
-          {block.heading &&
-            (block.headingLevel === "h4" ? (
-              <h4 className="font-heading-lg margin-bottom-1">{block.heading}</h4>
-            ) : block.headingLevel === "h3" ? (
-              <h3 className="font-heading-lg margin-bottom-1">{block.heading}</h3>
-            ) : (
-              <SectionHeading>{block.heading}</SectionHeading>
-            ))}
+          {block.heading && (
+            <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
+          )}
           {block.paragraphs.map((p, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
             <p key={i}>{p}</p>
@@ -34,14 +41,9 @@ export const ContentBlockRenderer = ({
     case "list":
       return (
         <Section isMultiColumnLayout={isMultiColumnLayout}>
-          {block.heading &&
-            (block.headingLevel === "h4" ? (
-              <h4 className="font-heading-lg margin-bottom-1">{block.heading}</h4>
-            ) : block.headingLevel === "h3" ? (
-              <h3 className="font-heading-lg margin-bottom-1">{block.heading}</h3>
-            ) : (
-              <SectionHeading>{block.heading}</SectionHeading>
-            ))}
+          {block.heading && (
+            <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
+          )}
           <ul className="usa-list">
             {block.items.map((item, i) =>
               typeof item === "string" ? (
@@ -113,12 +115,18 @@ export const ContentBlockRenderer = ({
     case "stacSingleLayer":
       return (
         <Section isMultiColumnLayout={isMultiColumnLayout}>
+          {block.heading && (
+            <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
+          )}
           <StacSingleLayerBlock block={block} />
         </Section>
       );
     case "stacCompare":
       return (
         <Section isMultiColumnLayout={isMultiColumnLayout}>
+          {block.heading && (
+            <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
+          )}
           <StacCompareBlock block={block} />
         </Section>
       );

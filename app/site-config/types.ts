@@ -21,10 +21,14 @@ export type ContentBlock =
   | { type: "image"; src: string; alt: string; width: number; height: number; maxWidth?: string }
   | {
       type: "stacSingleLayer";
+      heading?: string;
+      headingLevel?: "h2" | "h3" | "h4";
       stacLayer: StacLayer;
     }
   | {
       type: "stacCompare";
+      heading?: string;
+      headingLevel?: "h2" | "h3" | "h4";
       baseMapStyle: StyleSpecification;
       initialViewState: { longitude: number; latitude: number; zoom: number };
       leftLayerConfig: { type: "raster"; collectionId: string; dateRange: DateRange };

@@ -2,7 +2,6 @@ import { Card } from "@teamimpact/veda-ui-blocks";
 
 import {
   ContentBlockRenderer,
-  Section,
   SectionCardSimple,
   SectionCardSimpleMosaic,
   SectionHeading,
@@ -28,13 +27,10 @@ export default function Home() {
         sectionHeading={<SectionHeading href="/news-events">News & Events</SectionHeading>}
         cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
       />
-      <Section>
-        <SectionHeading>Data Visualization</SectionHeading>
-        {HOME_CONTENT.map((block, index) => (
-          // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-          <ContentBlockRenderer key={index} block={block} />
-        ))}
-      </Section>
+      {HOME_CONTENT.map((block, index) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
+        <ContentBlockRenderer key={index} block={block} />
+      ))}
       <SectionCardSimple
         sectionHeading={<SectionHeading href="/training">Resources & Learning</SectionHeading>}
         cards={typedMap(RESOURCES_LEARNING_CARDS, makeCardSimpleProps)}
