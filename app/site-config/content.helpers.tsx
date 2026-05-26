@@ -40,7 +40,7 @@ const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: string }> = 
 };
 
 export const makeSimpleTag = (tag: Theme | ContentType | Category) => (
-  <Tag variant="solid" color="primary-lighter">
+  <Tag key={tag} variant="solid" color="primary-lighter">
     {tag}
   </Tag>
 );
@@ -48,7 +48,7 @@ export const makeSimpleTag = (tag: Theme | ContentType | Category) => (
 export const makeThemeTag = (tag: Theme) => {
   const { label, ...rest } = CONTENT_THEMES[tag];
   return (
-    <Tag variant="solid" {...rest}>
+    <Tag key={tag} variant="solid" {...rest}>
       {tag}
     </Tag>
   );
@@ -56,7 +56,11 @@ export const makeThemeTag = (tag: Theme) => {
 
 const makeContentTypeTag = (tag: ContentType) => {
   const { label } = CONTENT_TYPES[tag];
-  return <Tag variant="solid">{label}</Tag>;
+  return (
+    <Tag key={label} variant="solid">
+      {label}
+    </Tag>
+  );
 };
 
 export type CardPropsArgs = {
