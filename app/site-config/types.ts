@@ -3,8 +3,6 @@ import type { ReactNode } from "react";
 
 export type IterableItemWithId<T> = T & { id: string };
 
-export type ContentType = "story" | "dataset" | "training" | "event" | "news";
-
 export type Theme = "respond" | "build" | "prepare" | "recover";
 
 export type Category = "severewx" | "fire" | "heat" | "flood" | "tropical cyclone" | "earthquake";
@@ -25,7 +23,19 @@ export type ContentBlock =
       type: "card-simple";
       heading?: ReactNode;
       cards: IterableItemWithId<CardSimpleProps>[];
-    };
+    }
+  | { type: "link"; label: string; href: string; target?: string; rel?: string };
+
+type Content =
+  | TrainingContent
+  | TrainingContentExternal
+  | DatasetContent
+  | DataStoryContent
+  | StoryContent
+  | NewsContent
+  | EventContent;
+
+export type ContentType = Content["contentType"];
 
 export type MinimumCardContent = {
   id: string;
@@ -67,7 +77,12 @@ export type StoryContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "story";
   date?: string;
   mastheadImage: MastheadImage;
-  body: ContentBlock[];
+  body?: ContentBlock[];
+};
+
+export type DataStoryContent = Omit<MinimumCardContent, "contentType"> & {
+  contentType: "datastory";
+  mastheadImage: MastheadImage;
 };
 
 export type EventContent = Omit<MinimumCardContent, "contentType"> & {

@@ -107,5 +107,20 @@ export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
       );
     case "card-simple":
       return <SectionCardSimple cards={block.cards} sectionHeading={block.heading} />;
+
+    case "link":
+      return (
+        <Section>
+          <Link
+            href={block.href}
+            target={block.target}
+            rel={block.rel}
+            variant="text"
+            isExternal={block.target === "_blank"}
+          >
+            {block.label}
+          </Link>
+        </Section>
+      );
   }
 };

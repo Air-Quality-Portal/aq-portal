@@ -103,10 +103,11 @@ export default async function StoryItemTemplate(props: PageProps<"/stories/[id]"
 
           {/* Main content */}
           <div className="grid-col-12 desktop:grid-col-9 margin-top-neg-7">
-            {story.body.map((block, i) => (
-              // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
-              <ContentBlockRenderer key={i} block={block} />
-            ))}
+            {story.body &&
+              story.body.map((block, i) => (
+                // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
+                <ContentBlockRenderer key={i} block={block} />
+              ))}
           </div>
         </div>
       </Section>
