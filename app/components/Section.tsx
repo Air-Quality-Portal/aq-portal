@@ -14,7 +14,7 @@ export const Section = ({
 }: PropsWithChildren<SectionProps>) => {
   return (
     <section
-      className={`${className ?? ""} margin-y-7 ${bgColor ? `bg-${bgColor} padding-y-7` : ""}}`}
+      className={`${className ?? ""} margin-y-7 ${bgColor ? `bg-${bgColor} padding-y-7` : ""}`}
       {...props}
     >
       <div className={`grid-container ${isMultiColumnLayout ? "padding-x-0" : ""}`}>{children}</div>
