@@ -1,10 +1,8 @@
-import { LogoEmblem, Section } from "@/app/components";
+import Image from "next/image";
+
+import { Section } from "@/app/components";
 import { ContentBlockRenderer } from "@/app/components/ContentBlockRenderer";
 import { ABOUT_PAGE_BODY } from "@/app/site-config/about/about__page";
-
-const EMBLEM_WIDTH = 134;
-const EMBLEM_HEIGHT = 138;
-const EMBLEM_ARIA_LABEL = "NASA Disasters Program emblem";
 
 export default function AboutPage() {
   return (
@@ -14,11 +12,12 @@ export default function AboutPage() {
         <div className="grid-row">
           <div className="grid-col-12">
             <div className="display-flex flex-row flex-align-center">
-              <div className="text-primary margin-right-3">
-                <LogoEmblem
-                  width={EMBLEM_WIDTH}
-                  height={EMBLEM_HEIGHT}
-                  ariaLabel={EMBLEM_ARIA_LABEL}
+              <div className="margin-right-3">
+                <Image
+                  src="/img/logo-emblem-primary.svg"
+                  alt="NASA Disasters Program emblem"
+                  width={134}
+                  height={138}
                   className="display-block"
                 />
               </div>
