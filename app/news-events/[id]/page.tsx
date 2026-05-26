@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { PageMasthead, PageStatus, Section } from "@/app/components/";
+import { makeCardMastHeadProps } from "@/app/site-config/content.helpers";
 import { DATASTORIES } from "@/app/site-config/datastory";
 import { NEWS } from "@/app/site-config/news";
 import { STORIES } from "@/app/site-config/story";
@@ -15,7 +16,7 @@ export default async function NewsEventsItemPage(props: PageProps<"/news-events/
 
   return (
     <>
-      <PageMasthead {...{ mastheadImage, title }} />
+      <PageMasthead {...makeCardMastHeadProps({ mastheadImage, title })} />
 
       <Section className="margin-top-4 margin-bottom-0">
         <PageStatus

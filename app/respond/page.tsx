@@ -1,4 +1,5 @@
 import { PageMasthead, PageStatus } from "@/app/components/";
+import { makeCardMastHeadProps } from "../site-config/content.helpers";
 import { RESPOND_CONTENT } from "../site-config/theme/theme__respond";
 
 export default function RespondPage() {
@@ -6,7 +7,7 @@ export default function RespondPage() {
 
   return (
     <>
-      <PageMasthead {...{ title, subtitle, theme, mastheadImage }} />
+      <PageMasthead {...makeCardMastHeadProps({ title, subtitle, theme, mastheadImage })} />
       <PageStatus
         label="Respond"
         heading="Under development"

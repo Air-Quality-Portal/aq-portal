@@ -60,10 +60,7 @@ export const makeContentTypeTag = (tag: ContentType) => {
   return <Tag variant="solid">{label}</Tag>;
 };
 
-export type CardMastheadPropsArgs = Omit<
-  CardProps,
-  "title" | "image" | "colorMode" | "isMasthead"
-> & {
+type CardMastheadPropsArgs = Omit<CardProps, "title" | "image" | "colorMode" | "isMasthead"> & {
   mastheadImage: {
     alt: string;
     src: string;
