@@ -137,15 +137,6 @@ export const makeCardDetailedImageLeftProps = ({
   ...rest,
 });
 
-export type DatasetCardPropsArgs = {
-  id: string;
-  thumbnailImage: { alt: string; src: string };
-  themes: Theme[];
-  categories: Category[];
-  url?: string;
-  [key: string]: unknown;
-};
-
 export type CardSimplePropsArgs = {
   id: string;
   contentType: ContentType;
