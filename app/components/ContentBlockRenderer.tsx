@@ -111,8 +111,16 @@ export const ContentBlockRenderer = ({
       );
 
     case "stacSingleLayer":
-      return <StacSingleLayerBlock block={block} />;
+      return (
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
+          <StacSingleLayerBlock block={block} />
+        </Section>
+      );
     case "stacCompare":
-      return <StacCompareBlock block={block} />;
+      return (
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
+          <StacCompareBlock block={block} />
+        </Section>
+      );
   }
 };

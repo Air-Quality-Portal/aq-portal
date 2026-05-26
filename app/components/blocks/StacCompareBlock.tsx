@@ -10,20 +10,18 @@ type StacCompareBlockProps = {
 
 export function StacCompareBlock({ block }: StacCompareBlockProps) {
   return (
-    <div className="margin-bottom-4">
-      <GeoConfigProvider
-        stacApiUrl={block.stacApiUrl ?? STAC_ENDPOINTS.stacApiUrl}
-        titilerBaseUrl={block.titilerBaseUrl ?? STAC_ENDPOINTS.titilerBaseUrl}
-      >
-        <div className="display-flex height-card-lg">
-          <StacCompareMap
-            baseMapStyle={block.baseMapStyle}
-            initialViewState={block.initialViewState}
-            leftLayerConfig={block.leftLayerConfig}
-            rightLayerConfig={block.rightLayerConfig}
-          />
-        </div>
-      </GeoConfigProvider>
-    </div>
+    <GeoConfigProvider
+      stacApiUrl={block.stacApiUrl ?? STAC_ENDPOINTS.stacApiUrl}
+      titilerBaseUrl={block.titilerBaseUrl ?? STAC_ENDPOINTS.titilerBaseUrl}
+    >
+      <div className="display-flex height-card-lg">
+        <StacCompareMap
+          baseMapStyle={block.baseMapStyle}
+          initialViewState={block.initialViewState}
+          leftLayerConfig={block.leftLayerConfig}
+          rightLayerConfig={block.rightLayerConfig}
+        />
+      </div>
+    </GeoConfigProvider>
   );
 }
