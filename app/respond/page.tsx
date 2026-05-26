@@ -6,10 +6,16 @@ import {
   SectionCardSimpleMosaic,
   SectionHeading,
 } from "@/app/components/";
-import { makeCardCarouselProps, makeCardSimpleProps } from "../site-config/content.helpers";
+import { SectionCardMini } from "../components/SectionCardMini";
+import {
+  makeCardCarouselProps,
+  makeCardMiniProps,
+  makeCardSimpleProps,
+} from "../site-config/content.helpers";
 import {
   RESPOND_CONTENT,
   RESPOND_DATASTORIES,
+  RESPOND_EVENTS,
   RESPOND_STORIES,
   RESPOND_TRAININGS,
 } from "../site-config/theme/theme__respond";
@@ -30,6 +36,10 @@ export default function RespondPage() {
         <SectionHeading>Data Visualization</SectionHeading>
         <p>TODO: Map block</p>
       </Section>
+      <SectionCardMini
+        sectionHeading={<SectionHeading href="/events">Latest Disaster Activations</SectionHeading>}
+        cards={typedMap(RESPOND_EVENTS, makeCardMiniProps)}
+      />
       <SectionCardSimple
         sectionHeading={<SectionHeading href="/training">Resources & Learning</SectionHeading>}
         cards={typedMap(RESPOND_TRAININGS, makeCardSimpleProps)}
