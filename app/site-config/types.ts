@@ -17,7 +17,8 @@ export type ContentBlock =
   | { type: "note"; text: string }
   | { type: "slider"; before: { src: string; alt: string }; after: { src: string; alt: string } }
   | { type: "video"; src: string; title?: string; caption?: string }
-  | { type: "image"; src: string; alt: string; width: number; height: number; maxWidth?: string };
+  | { type: "image"; src: string; alt: string; width: number; height: number; maxWidth?: string }
+  | { type: "link"; label: string; href: string; target?: string; rel?: string };
 
 type Content =
   | TrainingContent

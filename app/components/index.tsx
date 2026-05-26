@@ -5,6 +5,7 @@ export { PageMasthead } from "./PageMasthead";
 export { PageStatus } from "./PageStatus";
 export { Section, type SectionProps } from "./Section";
 export { SectionCardCarousel } from "./SectionCardCarousel";
+export { SectionCardMini } from "./SectionCardMini";
 export { SectionCardSimple } from "./SectionCardSimple";
 export { SectionCardSimpleMosaic } from "./SectionCardSimpleMosaic";
 export { SectionHeading } from "./SectionHeading";
