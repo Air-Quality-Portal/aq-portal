@@ -1,4 +1,4 @@
-import { BASEMAP_STYLES } from "@/app/site-config/map/basemap";
+import { BASEMAP_STYLES } from "@/app/site-config/map";
 import type { ContentBlock } from "@/app/site-config/types";
 
 export const HOME_CONTENT: ContentBlock[] = [
