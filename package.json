@@ -8,10 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "biome check .",
-    "lint:ci": "biome ci . && prettier \"**/*.scss\" --check --no-error-on-unmatched-pattern",
+    "lint:ci": "biome ci .",
     "pretypecheck": "next typegen",
     "typecheck": "tsc --noEmit",
-    "format": "biome format --write . && prettier \"**/*.scss\" --write --no-error-on-unmatched-pattern",
+    "format": "biome format --write .",
     "prepare": "lefthook install"
   },
   "dependencies": {
@@ -36,7 +36,6 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "lefthook": "^2.1.6",
-    "prettier": "3.8.1",
     "typescript": "5.9.3"
   }
 }
