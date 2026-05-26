@@ -43,7 +43,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
             <h2 className="font-heading-xl margin-top-0 margin-bottom-2">Dataset Details</h2>
             {body.map((block, index) => (
               // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-              <ContentBlockRenderer key={index} block={block} inline />
+              <ContentBlockRenderer key={index} block={block} isMultiColumnLayout />
             ))}
           </div>
         </div>

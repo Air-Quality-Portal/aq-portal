@@ -5,20 +5,17 @@ import { ImageComparison, Section, SectionHeading } from "@/app/components";
 import type { ContentBlock } from "@/app/site-config/types";
 import { StacCompareBlock, StacSingleLayerBlock } from "./blocks";
 
-type Props = {
+export const ContentBlockRenderer = ({
+  block,
+  isMultiColumnLayout,
+}: {
   block: ContentBlock;
-  /** When true, renders without Section wrapper (no grid-container or margin-y-7). Use inside existing layouts. */
-  inline?: boolean;
-};
-
-const Wrapper = ({ inline, children }: { inline?: boolean; children: React.ReactNode }) =>
-  inline ? <div className="margin-bottom-4">{children}</div> : <Section>{children}</Section>;
-
-export const ContentBlockRenderer = ({ block, inline }: Props) => {
+  isMultiColumnLayout?: boolean;
+}) => {
   switch (block.type) {
     case "text":
       return (
-        <Wrapper inline={inline}>
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
           {block.heading &&
             (block.headingLevel === "h4" ? (
               <h4 className="font-heading-lg margin-bottom-1">{block.heading}</h4>
@@ -31,12 +28,12 @@ export const ContentBlockRenderer = ({ block, inline }: Props) => {
             // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
             <p key={i}>{p}</p>
           ))}
-        </Wrapper>
+        </Section>
       );
 
     case "list":
       return (
-        <Wrapper inline={inline}>
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
           {block.heading &&
             (block.headingLevel === "h4" ? (
               <h4 className="font-heading-lg margin-bottom-1">{block.heading}</h4>
@@ -57,34 +54,34 @@ export const ContentBlockRenderer = ({ block, inline }: Props) => {
               ),
             )}
           </ul>
-        </Wrapper>
+        </Section>
       );
 
     case "note":
       return (
-        <Wrapper inline={inline}>
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
           <div role="note" className="usa-alert usa-alert--info usa-alert--slim margin-bottom-4">
             <div className="usa-alert__body">
               <p className="usa-alert__text">{block.text}</p>
             </div>
           </div>
-        </Wrapper>
+        </Section>
       );
 
     case "slider":
       return (
-        <Wrapper inline={inline}>
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
           <ImageComparison
             before={block.before}
             after={block.after}
             sizes="(max-width: 1024px) 100vw, 768px"
           />
-        </Wrapper>
+        </Section>
       );
 
     case "video":
       return (
-        <Wrapper inline={inline}>
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
           {block.title && <h3 className="font-heading-xl margin-bottom-1">{block.title}</h3>}
           {block.src ? (
             <video controls className="width-full display-block">
@@ -97,12 +94,12 @@ export const ContentBlockRenderer = ({ block, inline }: Props) => {
             </div>
           )}
           {block.caption && <p className="font-body-sm text-base margin-top-1">{block.caption}</p>}
-        </Wrapper>
+        </Section>
       );
 
     case "image":
       return (
-        <Wrapper inline={inline}>
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
           <Image
             src={block.src}
             alt={block.alt}
@@ -110,7 +107,7 @@ export const ContentBlockRenderer = ({ block, inline }: Props) => {
             height={block.height}
             style={{ width: block.maxWidth ?? "100%", height: "auto" }}
           />
-        </Wrapper>
+        </Section>
       );
 
     case "stacSingleLayer":
