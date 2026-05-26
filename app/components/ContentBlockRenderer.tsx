@@ -130,5 +130,19 @@ export const ContentBlockRenderer = ({
           <StacCompareBlock block={block} />
         </Section>
       );
+    case "link":
+      return (
+        <Section>
+          <Link
+            href={block.href}
+            target={block.target}
+            rel={block.rel}
+            variant="text"
+            isExternal={block.target === "_blank"}
+          >
+            {block.label}
+          </Link>
+        </Section>
+      );
   }
 };

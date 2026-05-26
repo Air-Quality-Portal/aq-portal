@@ -36,7 +36,8 @@ export type ContentBlock =
         type: "stacCompare";
         heading?: string;
         headingLevel?: "h2" | "h3" | "h4";
-      });
+      })
+  | { type: "link"; label: string; href: string; target?: string; rel?: string };
 
 type Content =
   | TrainingContent
