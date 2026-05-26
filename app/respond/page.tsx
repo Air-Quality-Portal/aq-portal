@@ -40,13 +40,13 @@ export default function RespondPage() {
         sectionHeading={<SectionHeading href="/events">Latest Disaster Activations</SectionHeading>}
         cards={typedMap(RESPOND_EVENTS, makeCardMiniProps)}
       />
-      <SectionCardSimple
-        sectionHeading={<SectionHeading href="/training">Resources & Learning</SectionHeading>}
-        cards={typedMap(RESPOND_TRAININGS, makeCardSimpleProps)}
-      />
       <SectionCardCarousel
         sectionHeading={<SectionHeading href="/stories">Data Stories</SectionHeading>}
         cards={typedMap(RESPOND_DATASTORIES, makeCardCarouselProps)}
+      />
+      <SectionCardSimple
+        sectionHeading={<SectionHeading href="/training">Resources & Learning</SectionHeading>}
+        cards={typedMap(RESPOND_TRAININGS, makeCardSimpleProps)}
       />
     </>
   );
