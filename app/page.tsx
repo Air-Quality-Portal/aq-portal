@@ -37,7 +37,7 @@ export default function Home() {
         bgColor="base-lightest"
         className="margin-bottom-0"
       >
-        <div className="grid-row">
+        <div className="grid-row margin-top-7">
           <Card {...MOCK_CARD_LETSCONNECT} />
         </div>
       </SectionCardSimple>
