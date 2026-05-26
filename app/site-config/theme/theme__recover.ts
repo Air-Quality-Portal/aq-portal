@@ -9,55 +9,46 @@ import type {
 } from "@/app/site-config/types";
 import { DATASTORY__HURRICANE_HELENE_SEPTEMBER_2024 } from "../datastory/datastory__hurricane-helene-september-2024";
 import { DATASTORY__HURRICANE_MILTON_OCTOBER_2024 } from "../datastory/datastory__hurricane-milton-october-2024";
-import { EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025 } from "../event/event__southern-california-fire-jan-2025";
-import { EVENT__TEXAS_FLOODS_JULY_2025 } from "../event/event__texas-floods-july-2025";
-import { EVENT__TYPHOON_SINLAKU_2026 } from "../event/event__typhoon-sinlaku-2026";
-import { EVENT__US_WINTER_STORM_EVENT_2026 } from "../event/event__us-winter-storm-jan-2026";
-import { STORY__FINDING_FLOODS } from "../story/story__finding-floods";
-import { STORY__SEEING_BEYOND_FLAMES } from "../story/story__seeing-beyond-flames";
-import { STORY__SUPPORTING_COMMUNITIES_HURRICANE_HELENE } from "../story/story__supporting-communities-hurricane-helene";
-import { STORY__TRACKING_TORNADOES_FROM_SPACE } from "../story/story__tracking-tornadoes-from-space";
+import { STORY__CLEARING_THE_WAY_DEBRIS_MAPPING } from "../story/story__clearing-the-way-debris-mapping";
+import { STORY__ESTIMATING_LOSS_RECOVERY } from "../story/story__estimating-loss-recovery";
+import { STORY__IDENTIFYING_INFRASTRUCTURE_RISKS_HURRICANE } from "../story/story__identifying-infrastructure-risks-hurricane";
+import { STORY__MAPPING_OIL_SPILLS_FROM_SPACE } from "../story/story__mapping_oil_spills_from_space";
 import { TRAINING__EO_BUILDING_EXPOSURE } from "../training/training__eo-building-exposure";
 import { TRAINING__FUNDAMENTALS_REMOTE_SENSING } from "../training/training__fundamentals-remote-sensing";
 import { TRAINING__INTRODUCTION_TO_SAR } from "../training/training__introduction-to-sar";
 import { TRAINING__LIFELINES_WILDFIRE_WORKFLOW } from "../training/training__lifelines-wildfire-workflow";
 
-export const RESPOND_CONTENT: ThemeContent = {
-  id: "respond",
-  mastheadImage: { alt: "", src: "/img/theme/respond-masthead.webp" },
-  subtitle: "Support real-time decisions with timely insights.",
-  theme: "respond",
+export const RECOVER_CONTENT: ThemeContent = {
+  id: "recover",
+  mastheadImage: {
+    alt: "Debris removal operations along 6th street in Mayfield, Kentucky, Feb. 8, 2022. The Louisville District was working under the direction of FEMA at the request of the state and local government to perform debris removal in Graves County. Credits: Katelyn Newton / U.S. Army Corps of Engineers, Louisville District.",
+    src: "/img/theme/recover-masthead.webp",
+  },
+  subtitle: "Assess impacts and rebuild stronger.",
+  theme: "recover",
 } as const;
 
 // TODO: these would be fetched based on content id
-export const RESPOND_STORIES: [
+export const RECOVER_STORIES: [
   NewsContent | StoryContent | EventContent,
   NewsContent | StoryContent | EventContent,
   NewsContent | StoryContent | EventContent,
   NewsContent | StoryContent | EventContent,
 ] = [
-  STORY__FINDING_FLOODS,
-  STORY__TRACKING_TORNADOES_FROM_SPACE,
-  STORY__SEEING_BEYOND_FLAMES,
-  STORY__SUPPORTING_COMMUNITIES_HURRICANE_HELENE,
+  STORY__ESTIMATING_LOSS_RECOVERY,
+  STORY__CLEARING_THE_WAY_DEBRIS_MAPPING,
+  STORY__MAPPING_OIL_SPILLS_FROM_SPACE,
+  STORY__IDENTIFYING_INFRASTRUCTURE_RISKS_HURRICANE,
 ];
 
 // TODO: these would be fetched based on content id
-export const RESPOND_EVENTS: [EventContent, EventContent, EventContent, EventContent] = [
-  EVENT__TYPHOON_SINLAKU_2026,
-  EVENT__US_WINTER_STORM_EVENT_2026,
-  EVENT__TEXAS_FLOODS_JULY_2025,
-  EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025,
-];
-
-// TODO: these would be fetched based on content id
-export const RESPOND_DATASTORIES: [DataStoryContent, DataStoryContent] = [
+export const RECOVER_DATASTORIES: [DataStoryContent, DataStoryContent] = [
   DATASTORY__HURRICANE_HELENE_SEPTEMBER_2024,
   DATASTORY__HURRICANE_MILTON_OCTOBER_2024,
 ];
 
 // TODO: these would be fetched based on content id
-export const RESPOND_TRAININGS: [
+export const RECOVER_TRAININGS: [
   TrainingContent | TrainingContentExternal,
   TrainingContent | TrainingContentExternal,
   TrainingContent | TrainingContentExternal,
