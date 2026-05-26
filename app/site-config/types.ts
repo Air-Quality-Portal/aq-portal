@@ -78,6 +78,7 @@ export type TrainingContent = Omit<MinimumCardContent, "contentType"> & {
 
 export type DatasetContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "dataset";
+  mastheadImage: MastheadImage;
   body: ContentBlock[];
   relatedContent?: string[];
 };

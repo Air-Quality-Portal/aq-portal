@@ -10,6 +10,10 @@ export const DATASET__BLACKMARBLE_JUNE2026_COMPOSITE: DatasetContent = {
     src: "/img/datastory/hurricane-milton-october-2024.webp",
     alt: "Black Marble monthly composite nighttime lights",
   },
+  mastheadImage: {
+    src: "/img/datastory/hurricane-milton-october-2024.webp",
+    alt: "Black Marble monthly composite nighttime lights",
+  },
   themes: ["prepare", "respond"],
   categories: ["tropical cyclone"],
   relatedContent: ["blackmarble-hd-daily", "viirs-active-fire"],

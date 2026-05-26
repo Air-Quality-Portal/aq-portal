@@ -10,6 +10,10 @@ export const DATASET__BLACKMARBLE_HD_DAILY_JUNE2026: DatasetContent = {
     src: "/img/datastory/hurricane-helene-september-2024.webp",
     alt: "Black Marble HD daily nighttime lights",
   },
+  mastheadImage: {
+    src: "/img/datastory/hurricane-helene-september-2024.webp",
+    alt: "Black Marble HD daily nighttime lights",
+  },
   themes: ["respond", "prepare", "recover"],
   categories: ["tropical cyclone", "flood", "fire"],
   relatedContent: ["blackmarble-composite", "viirs-active-fire"],

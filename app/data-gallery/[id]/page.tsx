@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 
 import { ContentBlockRenderer, PageMasthead, Section } from "@/app/components";
+import { makeCardMastHeadProps } from "@/app/site-config/content.helpers";
 import { DATASETS } from "@/app/site-config/dataset";
-import { DATA_GALLERY_CARD_MASTHEAD } from "@/app/site-config/dataset/data-gallery-card-masthead";
 import { DatasetSidebar } from "./DatasetSidebar";
 
 export default async function DatasetItemPage(props: PageProps<"/data-gallery/[id]">) {
@@ -11,7 +11,15 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
 
   if (!dataset) notFound();
 
-  const { title, description, themes, categories, body, relatedContent: relatedIds = [] } = dataset;
+  const {
+    title,
+    description,
+    mastheadImage,
+    themes,
+    categories,
+    body,
+    relatedContent: relatedIds = [],
+  } = dataset;
 
   const relatedItems = relatedIds.flatMap((relId) => {
     const rel = DATASETS.find((d) => d.id === relId);
@@ -29,11 +37,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
 
   return (
     <>
-      <PageMasthead
-        image={DATA_GALLERY_CARD_MASTHEAD.image}
-        title={title}
-        description={description}
-      />
+      <PageMasthead {...makeCardMastHeadProps({ mastheadImage, title, description })} />
       <Section>
         <div className="grid-row grid-gap">
           <div className="grid-col-12 desktop:grid-col-3">

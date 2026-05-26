@@ -10,6 +10,10 @@ export const DATASET__VIIRS_ACTIVE_FIRE: DatasetContent = {
     src: "/img/training/eo-pre-post-fire-monitoring.webp",
     alt: "VIIRS active fire detection",
   },
+  mastheadImage: {
+    src: "/img/training/eo-pre-post-fire-monitoring.webp",
+    alt: "VIIRS active fire detection",
+  },
   themes: ["respond", "prepare"],
   categories: ["fire"],
   relatedContent: ["blackmarble-hd-daily", "blackmarble-composite"],
