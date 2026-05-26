@@ -11,6 +11,7 @@ export default async function TrainingItemPage(props: PageProps<"/training/[id]"
 
   if (!training) notFound();
 
+  // TODO: move to content helpers
   const formattedDate = new Date(training.date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
