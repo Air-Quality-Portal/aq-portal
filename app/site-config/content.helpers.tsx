@@ -92,7 +92,7 @@ export const makeCardMastHeadProps = ({
   ...rest,
 });
 
-export type CardDetailedPropsArgs = Omit<
+type CardDetailedPropsArgs = Omit<
   CardDetailedProps,
   "image" | "imagePosition" | "tags" | "callToAction"
 > & {
@@ -151,7 +151,7 @@ export const makeCardDetailedImageLeftProps = ({
   ...rest,
 });
 
-export type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExternal" | "url"> & {
+type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExternal" | "url"> & {
   id: string;
   contentType: ContentType;
   thumbnailImage: {
@@ -185,7 +185,7 @@ export const makeCardSimpleProps = ({
   ...rest,
 });
 
-export type CardSimpleMiniArgs = Omit<CardMiniProps, "image" | "tag" | "url"> & {
+type CardSimpleMiniArgs = Omit<CardMiniProps, "image" | "tag" | "url"> & {
   id: string;
   contentType: ContentType;
   thumbnailImage: {
@@ -219,7 +219,7 @@ export const makeCardMiniProps = ({
   ...rest,
 });
 
-export type CardCarouselPropsArgs = Omit<
+type CardCarouselPropsArgs = Omit<
   CardProps,
   "image" | "imagePosition" | "tag" | "callToAction" | "colorMode"
 > & {
