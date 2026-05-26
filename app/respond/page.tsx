@@ -7,11 +7,8 @@ import {
   SectionHeading,
 } from "@/app/components/";
 import { SectionCardMini } from "../components/SectionCardMini";
-import {
-  makeCardCarouselProps,
-  makeCardMiniProps,
-  makeCardSimpleProps,
-} from "../site-config/content.helpers";
+import { makeCardCarouselProps, makeCardSimpleProps } from "../site-config/content.helpers";
+import { transformEventToCardMiniProps } from "../site-config/event/event.helpers";
 import {
   RESPOND_CONTENT,
   RESPOND_DATASTORIES,
@@ -38,7 +35,7 @@ export default function RespondPage() {
       </Section>
       <SectionCardMini
         sectionHeading={<SectionHeading href="/events">Latest Disaster Activations</SectionHeading>}
-        cards={typedMap(RESPOND_EVENTS, makeCardMiniProps)}
+        cards={typedMap(RESPOND_EVENTS, transformEventToCardMiniProps)}
       />
       <SectionCardCarousel
         sectionHeading={<SectionHeading href="/stories">Data Stories</SectionHeading>}
