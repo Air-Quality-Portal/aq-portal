@@ -6,7 +6,11 @@ import {
   SectionCardSimpleMosaic,
   SectionHeading,
 } from "@/app/components/";
-import { makeCardCarouselProps, makeCardSimpleProps } from "../site-config/content.helpers";
+import {
+  makeCardCarouselProps,
+  makeCardMastHeadProps,
+  makeCardSimpleProps,
+} from "../site-config/content.helpers";
 import {
   RECOVER_CONTENT,
   RECOVER_DATASTORIES,
@@ -20,7 +24,7 @@ export default function RecoverPage() {
 
   return (
     <>
-      <PageMasthead {...{ title, subtitle, theme, mastheadImage }} />
+      <PageMasthead {...makeCardMastHeadProps({ title, subtitle, theme, mastheadImage })} />
       <SectionCardSimpleMosaic
         sectionHeading={<SectionHeading href="/news-events">News & Events</SectionHeading>}
         cards={typedMap(RECOVER_STORIES, makeCardSimpleProps)}

@@ -7,7 +7,11 @@ import {
   SectionHeading,
 } from "@/app/components/";
 import { SectionCardMini } from "../components/SectionCardMini";
-import { makeCardCarouselProps, makeCardSimpleProps } from "../site-config/content.helpers";
+import {
+  makeCardCarouselProps,
+  makeCardMastHeadProps,
+  makeCardSimpleProps,
+} from "../site-config/content.helpers";
 import { transformEventToCardMiniProps } from "../site-config/event/event.helpers";
 import {
   RESPOND_CONTENT,
@@ -23,7 +27,7 @@ export default function RespondPage() {
 
   return (
     <>
-      <PageMasthead {...{ title, subtitle, theme, mastheadImage }} />
+      <PageMasthead {...makeCardMastHeadProps({ title, subtitle, theme, mastheadImage })} />
       <SectionCardSimpleMosaic
         sectionHeading={<SectionHeading href="/news-events">News & Events</SectionHeading>}
         cards={typedMap(RESPOND_STORIES, makeCardSimpleProps)}
