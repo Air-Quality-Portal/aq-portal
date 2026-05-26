@@ -1,7 +1,8 @@
 "use client";
 
 import { GeoConfigProvider, StacCompareMap } from "@teamimpact/veda-ui-blocks";
-import { STAC_ENDPOINTS } from "@/app/site-config/map";
+
+import { DEFAULT_STAC_CONFIG } from "@/app/site-config/map";
 import type { ContentBlock } from "@/app/site-config/types";
 
 type StacCompareBlockProps = {
@@ -9,17 +10,26 @@ type StacCompareBlockProps = {
 };
 
 export function StacCompareBlock({ block }: StacCompareBlockProps) {
+  const {
+    stacApiUrl,
+    titilerBaseUrl,
+    baseMapStyle,
+    initialViewState,
+    leftLayerConfig,
+    rightLayerConfig,
+  } = {
+    ...DEFAULT_STAC_CONFIG,
+    ...block,
+  };
+
   return (
-    <GeoConfigProvider
-      stacApiUrl={block.stacApiUrl ?? STAC_ENDPOINTS.stacApiUrl}
-      titilerBaseUrl={block.titilerBaseUrl ?? STAC_ENDPOINTS.titilerBaseUrl}
-    >
+    <GeoConfigProvider stacApiUrl={stacApiUrl} titilerBaseUrl={titilerBaseUrl}>
       <div className="display-flex height-card-lg">
         <StacCompareMap
-          baseMapStyle={block.baseMapStyle}
-          initialViewState={block.initialViewState}
-          leftLayerConfig={block.leftLayerConfig}
-          rightLayerConfig={block.rightLayerConfig}
+          baseMapStyle={baseMapStyle}
+          initialViewState={initialViewState}
+          leftLayerConfig={leftLayerConfig}
+          rightLayerConfig={rightLayerConfig}
         />
       </div>
     </GeoConfigProvider>

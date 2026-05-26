@@ -1,4 +1,3 @@
-import { DEFAULT_STAC_CONFIG } from "@/app/site-config/map";
 import type { DatasetContent } from "@/app/site-config/types";
 
 export const DATASET__VIIRS_ACTIVE_FIRE: DatasetContent = {
@@ -27,8 +26,7 @@ export const DATASET__VIIRS_ACTIVE_FIRE: DatasetContent = {
       type: "stacSingleLayer",
       heading: "VIIRS Active Fire Map",
       headingLevel: "h3",
-      stacLayer: {
-        ...DEFAULT_STAC_CONFIG,
+      layerConfig: {
         type: "raster",
         collectionId: "viirs-active-fire",
         dateRange: { from: "2024-09-28", to: "2024-09-28" },

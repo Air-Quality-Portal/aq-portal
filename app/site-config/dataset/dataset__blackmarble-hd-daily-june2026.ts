@@ -1,4 +1,3 @@
-import { DEFAULT_STAC_CONFIG } from "@/app/site-config/map";
 import type { DatasetContent } from "@/app/site-config/types";
 
 export const DATASET__BLACKMARBLE_HD_DAILY_JUNE2026: DatasetContent = {
@@ -25,8 +24,8 @@ export const DATASET__BLACKMARBLE_HD_DAILY_JUNE2026: DatasetContent = {
     },
     {
       type: "stacSingleLayer",
-      stacLayer: {
-        ...DEFAULT_STAC_CONFIG,
+      initialViewState: { longitude: -82.0, latitude: 33.5, zoom: 10 },
+      layerConfig: {
         type: "raster",
         collectionId: "blackmarble-hd-daily-june2026",
         dateRange: { from: "2024-09-28", to: "2024-09-28" },

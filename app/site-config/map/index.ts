@@ -75,13 +75,15 @@ export const BASEMAP_STYLES = {
   } satisfies StyleSpecification,
 };
 
-export const STAC_ENDPOINTS = {
+const STAC_ENDPOINTS = {
   stacApiUrl: "https://dev.disasters.openveda.cloud/api/stac",
   titilerBaseUrl: "https://dev.disasters.openveda.cloud/api/raster",
 };
 
+export const US_VIEW_STATE = { longitude: -98.0, latitude: 38.5, zoom: 4 };
+
 export const DEFAULT_STAC_CONFIG = {
   ...STAC_ENDPOINTS,
   baseMapStyle: BASEMAP_STYLES.nasaBlueMarble,
-  initialViewState: { longitude: -82.0, latitude: 33.5, zoom: 10 },
+  initialViewState: US_VIEW_STATE,
 };

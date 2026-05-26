@@ -1,11 +1,9 @@
-import { BASEMAP_STYLES } from "@/app/site-config/map";
 import type { ContentBlock } from "@/app/site-config/types";
 
 export const HOME_CONTENT: ContentBlock[] = [
   {
     type: "stacCompare",
     heading: "Data Visualization",
-    baseMapStyle: BASEMAP_STYLES.nasaBlueMarble,
     initialViewState: { longitude: -82.0, latitude: 33.5, zoom: 10 },
     leftLayerConfig: {
       type: "raster",

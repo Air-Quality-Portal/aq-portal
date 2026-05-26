@@ -1,4 +1,8 @@
-import type { StyleSpecification } from "maplibre-gl";
+import type {
+  GeoConfigProviderProps,
+  StacCompareMapProps,
+  StacSingleLayerMapProps,
+} from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
 
 export type IterableItemWithId<T> = T & { id: string };
@@ -6,6 +10,8 @@ export type IterableItemWithId<T> = T & { id: string };
 export type Theme = "respond" | "build" | "prepare" | "recover";
 
 export type Category = "severewx" | "fire" | "heat" | "flood" | "tropical cyclone" | "earthquake";
+
+type GeoConfig = Omit<GeoConfigProviderProps, "children">;
 
 export type ContentBlock =
   | { type: "text"; heading?: string; headingLevel?: "h2" | "h3" | "h4"; paragraphs: ReactNode[] }
@@ -19,23 +25,18 @@ export type ContentBlock =
   | { type: "slider"; before: { src: string; alt: string }; after: { src: string; alt: string } }
   | { type: "video"; src: string; title?: string; caption?: string }
   | { type: "image"; src: string; alt: string; width: number; height: number; maxWidth?: string }
-  | {
-      type: "stacSingleLayer";
-      heading?: string;
-      headingLevel?: "h2" | "h3" | "h4";
-      stacLayer: StacLayer;
-    }
-  | {
-      type: "stacCompare";
-      heading?: string;
-      headingLevel?: "h2" | "h3" | "h4";
-      baseMapStyle: StyleSpecification;
-      initialViewState: { longitude: number; latitude: number; zoom: number };
-      leftLayerConfig: { type: "raster"; collectionId: string; dateRange: DateRange };
-      rightLayerConfig: { type: "raster"; collectionId: string; dateRange: DateRange };
-      stacApiUrl?: string;
-      titilerBaseUrl?: string;
-    };
+  | (StacSingleLayerMapProps &
+      GeoConfig & {
+        type: "stacSingleLayer";
+        heading?: string;
+        headingLevel?: "h2" | "h3" | "h4";
+      })
+  | (StacCompareMapProps &
+      GeoConfig & {
+        type: "stacCompare";
+        heading?: string;
+        headingLevel?: "h2" | "h3" | "h4";
+      });
 
 type Content =
   | TrainingContent
@@ -105,17 +106,4 @@ type MastheadImage = {
   alt: string;
   caption?: string;
   attribution?: string;
-};
-
-type DateRange = { from: string; to: string };
-
-/** Raster layer config without dateRange — consumers add it when building the full layer config. */
-type StacLayer = {
-  type: "raster";
-  collectionId: string;
-  dateRange: DateRange;
-  stacApiUrl: string;
-  titilerBaseUrl: string;
-  baseMapStyle: StyleSpecification;
-  initialViewState: { longitude: number; latitude: number; zoom: number };
 };

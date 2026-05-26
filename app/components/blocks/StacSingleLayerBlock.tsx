@@ -1,6 +1,8 @@
 "use client";
 
 import { GeoConfigProvider, StacSingleLayerMap } from "@teamimpact/veda-ui-blocks";
+
+import { DEFAULT_STAC_CONFIG } from "@/app/site-config/map";
 import type { ContentBlock } from "@/app/site-config/types";
 
 type StacSingleLayerBlockProps = {
@@ -8,19 +10,18 @@ type StacSingleLayerBlockProps = {
 };
 
 export function StacSingleLayerBlock({ block }: StacSingleLayerBlockProps) {
-  const { stacLayer } = block;
+  const { stacApiUrl, titilerBaseUrl, baseMapStyle, initialViewState, layerConfig } = {
+    ...DEFAULT_STAC_CONFIG,
+    ...block,
+  };
 
   return (
-    <GeoConfigProvider stacApiUrl={stacLayer.stacApiUrl} titilerBaseUrl={stacLayer.titilerBaseUrl}>
+    <GeoConfigProvider stacApiUrl={stacApiUrl} titilerBaseUrl={titilerBaseUrl}>
       <div className="display-flex height-card-lg">
         <StacSingleLayerMap
-          baseMapStyle={stacLayer.baseMapStyle}
-          initialViewState={stacLayer.initialViewState}
-          layerConfig={{
-            type: stacLayer.type,
-            collectionId: stacLayer.collectionId,
-            dateRange: stacLayer.dateRange,
-          }}
+          baseMapStyle={baseMapStyle}
+          initialViewState={initialViewState}
+          layerConfig={layerConfig}
         />
       </div>
     </GeoConfigProvider>
