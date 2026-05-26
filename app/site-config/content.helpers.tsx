@@ -170,5 +170,6 @@ export const makeCardSimpleProps = ({
       ? makeThemeTag(themes[0])
       : makeContentTypeTag(contentType),
   url: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
+  isExternal: !!url,
   ...rest,
 });
