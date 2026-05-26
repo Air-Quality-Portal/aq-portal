@@ -1,8 +1,9 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-
-import { ImageComparison, Section, SectionCardSimple, SectionHeading } from "@/app/components";
+import { ImageComparison, Section, SectionCardCarousel, SectionHeading } from "@/app/components";
 import type { ContentBlock } from "@/app/site-config/types";
+import { makeCardSimpleProps } from "../site-config/content.helpers";
+import { typedMap } from "../site-config/typed.helpers";
 
 export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
   switch (block.type) {
@@ -105,9 +106,14 @@ export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
           </figcaption>
         </Section>
       );
-    case "card-simple":
-      return <SectionCardSimple cards={block.cards} sectionHeading={block.heading} />;
-
+    case "card-carousel":
+      return (
+        <SectionCardCarousel
+          cards={typedMap(block.cards, makeCardSimpleProps)}
+          sectionHeading={block.sectionHeading}
+          cardComponentType={block.cardComponentType}
+        />
+      );
     case "link":
       return (
         <Section>

@@ -4,10 +4,16 @@ import type { ReactNode } from "react";
 import { Section, type SectionProps } from "@/app/components";
 import type { IterableItemWithId } from "@/app/site-config/types";
 
-export type SectionCardSimpleProps = SectionProps & {
+type SectionCardSimpleProps = SectionProps & {
   sectionHeading?: ReactNode;
-  cards: IterableItemWithId<CardSimpleProps>[];
+  cards: [
+    IterableItemWithId<CardSimpleProps>,
+    IterableItemWithId<CardSimpleProps>,
+    IterableItemWithId<CardSimpleProps>,
+    IterableItemWithId<CardSimpleProps>,
+  ];
 };
+
 export const SectionCardSimple = ({
   sectionHeading,
   cards,
@@ -17,9 +23,12 @@ export const SectionCardSimple = ({
   return (
     <Section {...sectionProps}>
       {sectionHeading && sectionHeading}
-      <div className="grid-row grid-gap-2 flex-no-wrap margin-bottom-6">
+      <div className="grid-row grid-gap-2 margin-bottom-neg-2">
         {cards.map((props) => (
-          <div key={props.id} className="flex-1 margin-bottom-2 height-card-md">
+          <div
+            key={props.id}
+            className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 height-card-md"
+          >
             <CardSimple {...props} />
           </div>
         ))}

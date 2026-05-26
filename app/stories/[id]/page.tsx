@@ -1,7 +1,6 @@
-import { Card, Tag } from "@teamimpact/veda-ui-blocks";
-import Image from "next/image";
+import { Tag } from "@teamimpact/veda-ui-blocks";
 import { notFound } from "next/navigation";
-import { ContentBlockRenderer, Section, ThemeTag } from "@/app/components/";
+import { ContentBlockRenderer, PageMasthead, Section, ThemeTag } from "@/app/components/";
 import { STORIES } from "@/app/site-config/story";
 
 export default async function StoryItemTemplate(props: PageProps<"/stories/[id]">) {
@@ -21,37 +20,18 @@ export default async function StoryItemTemplate(props: PageProps<"/stories/[id]"
   return (
     <>
       {/* Hero */}
-
-      <div className="display-flex minh-masthead">
-        <Card
-          tag={
-            story.date && (
-              <Tag color="primary-lighter" textColor="primary-dark">
-                Updated: {formattedDate}
-              </Tag>
-            )
-          }
-          colorMode="brand"
-          description={story.description}
-          image={
-            <Image
-              src={story.mastheadImage.src}
-              alt={story.mastheadImage.alt}
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 1024px"
-              style={{ objectFit: "cover" }}
-            />
-          }
-          imagePosition="cover"
-          isMastHead
-          title={
-            <h1 className="font-mono-3xl text-normal text-uppercase text-ls-3 text-white">
-              {story.title}
-            </h1>
-          }
-        />
-      </div>
+      <PageMasthead
+        image={{ ...story.mastheadImage }}
+        title={story.title}
+        tag={
+          formattedDate && (
+            <Tag color="primary-lighter" textColor="primary-dark">
+              Updated: {formattedDate}
+            </Tag>
+          )
+        }
+        description={story.description}
+      />
 
       {/* Content */}
       <Section>
@@ -103,11 +83,10 @@ export default async function StoryItemTemplate(props: PageProps<"/stories/[id]"
 
           {/* Main content */}
           <div className="grid-col-12 desktop:grid-col-9 margin-top-neg-7">
-            {story.body &&
-              story.body.map((block, i) => (
-                // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
-                <ContentBlockRenderer key={i} block={block} />
-              ))}
+            {story.body?.map((block, i) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
+              <ContentBlockRenderer key={i} block={block} />
+            ))}
           </div>
         </div>
       </Section>

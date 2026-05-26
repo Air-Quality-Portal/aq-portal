@@ -1,5 +1,5 @@
-import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
+import type { CardSimplePropsArgs } from "./content.helpers";
 
 export type IterableItemWithId<T> = T & { id: string };
 
@@ -20,9 +20,12 @@ export type ContentBlock =
   | { type: "video"; src: string; title?: string; caption?: string }
   | { type: "image"; src: string; alt: string; width: number; height: number; maxWidth?: string }
   | {
-      type: "card-simple";
-      heading?: ReactNode;
-      cards: IterableItemWithId<CardSimpleProps>[];
+      type: "card-carousel";
+      sectionHeading?: ReactNode;
+      cards: IterableItemWithId<
+        CardSimplePropsArgs | TrainingContent | TrainingContentExternal | EventContent
+      >[];
+      cardComponentType?: "simple" | "carousel";
     }
   | { type: "link"; label: string; href: string; target?: string; rel?: string };
 
