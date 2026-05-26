@@ -38,7 +38,8 @@ export const STORY__FINDING_FLOODS: StoryContent = {
       type: "text",
       heading: "Flying Over the Floods",
       paragraphs: [
-        "NASA's response to the Texas floods relied on two advanced airborne instruments, each designed to see what other sensors couldn't. The WB-57 high-altitude aircraft, nose-mounted instrument called and infrared imagery. Through enough to identify individual river corridors. NASA streamed the flights were still in the moment when every new piece of information was critical.",
+        "NASA's response to the Texas floods relied on two advanced airborne instruments, each designed to see what other sensors couldn't.",
+        "The WB-57 high-altitude aircraft, operated by NASA’s Johnson Space Center, carries a nose-mounted instrument called [DyNAMITE](https://scifli.larc.nasa.gov/about/dynamite/) that collects 10-centimeter resolution visible and infrared imagery. Through gaps in the clouds, the WB-57 captured detail sharp enough to identify individual structures, debris fields, and flood boundaries along river corridors. NASA streamed live video feeds and imagery directly to responders as the flights were still in the air, providing coverage of the San Gabriel basin at a moment when every new piece of information was critical.",
       ],
     },
     {
@@ -52,7 +53,7 @@ export const STORY__FINDING_FLOODS: StoryContent = {
     {
       type: "text",
       paragraphs: [
-        "NASA's high-altitude WB-57 aircraft departed July 8, 2025, from Ellington Field in Houston, TX. The DyNAMITE instrument is seen here affixed to its nose. Credit: NASA NASA’s UAVSAR instrument tackled a different challenge: the region's dense tree canopy. UAVSAR uses L-band radar – a longer wavelength than most satellite synthetic aperture radar (SAR) systems – which can pass through vegetation to detect water pooled beneath the trees. While conventional radar see only treetops, UAVSAR returned a signal from the forest floor, revealing inundation that would otherwise go unmeasured. Flying aboard a Gulfstream III out of NASA's Armstrong Flight Research Center, the instrument covered the Guadalupe, San Gabriel, and Colorado River basins publicly available observed flood maps of the disaster.",
+        "NASA’s [UAVSAR](https://scifli.larc.nasa.gov/about/dynamite/) instrument tackled a different challenge: the region's dense tree canopy. UAVSAR uses L-band radar – a longer wavelength than most satellite synthetic aperture radar (SAR) systems – which can pass through vegetation to detect water pooled beneath the trees. While conventional radar sees only treetops, UAVSAR returned a signal from the forest floor, revealing inundation that would otherwise go unmeasured. Flying aboard a Gulfstream III out of NASA's Armstrong Flight Research Center, the instrument covered the Guadalupe, San Gabriel, and Colorado River basins across three days of flights, providing the first publicly available observed flood maps of the disaster.",
       ],
     },
     {
@@ -66,13 +67,16 @@ export const STORY__FINDING_FLOODS: StoryContent = {
       type: "text",
       heading: "From the Hill Country to Orbit",
       paragraphs: [
-        "The 2025 Texas floods showed how NASA's advanced instruments fill critical information gaps, and new orbital assets are extending these capabilities further than ever. NISAR, the joint NASA and ISRO synthetic aperture radar satellite that began delivering data in early 2026. What UAVSAR demonstrated over the Texas Hill Country – such as under-canopy flood detection, rapid turnaround, actionable data in an active emergency – is precisely what NISAR now provides routinely on a global scale. NASA also now has expanded access to high-resolution imagery from space. Through the Commercial Satellite Data Acquisition Program, the NASA Disasters Program can rapidly task commercial satellites to gather detailed imagery of active disasters. These data support a range of efforts – from building damage assessment and road disruption mapping to search and rescue operations – offering broad coverage across a variety of advanced sensors. Flash floods remain among the most difficult disasters to observe in real time. When cloud cover, dense vegetation, and fast-moving water converge, the gap between what responders can see and what they need to know can be life-threatening. The NASA right sensors, the right science, and the right partnerships.",
+        "The 2025 Texas floods showed how NASA's advanced instruments fill critical information gaps, and new orbital assets are extending these capabilities further than ever.",
+        "UAVSAR served as a direct scientific precursor to [NISAR](https://science.nasa.gov/mission/nisar/), the joint NASA and ISRO synthetic aperture radar satellite that began delivering data in early 2026. What UAVSAR demonstrated over the Texas Hill Country – such as under-canopy flood detection, rapid turnaround, actionable data in an active emergency – is precisely what NISAR now provides routinely on a global scale.",
+        "NASA also now has expanded access to high-resolution imagery from space. Through the [Commercial Satellite Data Acquisition Program](https://science.nasa.gov/earth-science/csda/), the NASA Disasters Program can rapidly task commercial satellites to gather detailed imagery of active disasters. These data support a range of efforts – from building damage assessment and road disruption mapping to search and rescue operations – offering broad coverage across a variety of advanced sensors.",
+        "Flash floods remain among the most difficult disasters to observe in real time. When cloud cover, dense vegetation, and fast-moving water converge, the gap between what responders can see and what they need to know can be life-threatening. The NASA Disasters Program works to close that gap with the right sensors, the right science, and the right partnerships.",
       ],
     },
 
     {
       type: "card-carousel",
-      sectionHeading: <SectionHeading>Resources & Learning</SectionHeading>,
+      sectionHeading: <SectionHeading>Learning & Resources</SectionHeading>,
       cards: [EVENT__TEXAS_FLOODS_JULY_2025, EVENT__US_WINTER_STORM_EVENT_2026],
       cardComponentType: "simple",
     },

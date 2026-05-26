@@ -1,6 +1,7 @@
 import { Tag } from "@teamimpact/veda-ui-blocks";
 import { notFound } from "next/navigation";
 import { ContentBlockRenderer, PageMasthead, Section, ThemeTag } from "@/app/components/";
+import { makeCardMastHeadProps } from "@/app/site-config/content.helpers";
 import { STORIES } from "@/app/site-config/story";
 
 export default async function StoryItemTemplate(props: PageProps<"/stories/[id]">) {
@@ -9,29 +10,10 @@ export default async function StoryItemTemplate(props: PageProps<"/stories/[id]"
 
   if (!story) notFound();
 
-  const formattedDate =
-    story.date &&
-    new Date(story.date).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-
   return (
     <>
       {/* Hero */}
-      <PageMasthead
-        image={{ ...story.mastheadImage }}
-        title={story.title}
-        tag={
-          formattedDate && (
-            <Tag color="primary-lighter" textColor="primary-dark">
-              Updated: {formattedDate}
-            </Tag>
-          )
-        }
-        description={story.description}
-      />
+      <PageMasthead {...makeCardMastHeadProps(story)} />
 
       {/* Content */}
       <Section>

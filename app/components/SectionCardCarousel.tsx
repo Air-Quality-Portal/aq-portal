@@ -16,6 +16,9 @@ export const SectionCardCarousel = ({
   cardComponentType,
   ...sectionProps
 }: SectionCardCarouselProps) => {
+  const simpleCards = cards as IterableItemWithId<CardSimpleProps>[];
+  const carouselCards = cards as IterableItemWithId<CardProps>[];
+
   const dynamicGridClassName = (cards: IterableItemWithId<CardProps | CardSimpleProps>[]) => {
     switch (cards.length) {
       case 1:
@@ -29,23 +32,19 @@ export const SectionCardCarousel = ({
     }
   };
 
-  const isCardSimpleProps = (
-    c: IterableItemWithId<CardProps | CardSimpleProps>,
-  ): c is IterableItemWithId<CardSimpleProps> => "url" in c;
-
   return (
     <Section {...sectionProps}>
       {sectionHeading && sectionHeading}
 
       <div className="grid-row grid-gap-2 margin-bottom-neg-2">
-        {cards.map((card) => {
+        {(cardComponentType === "simple" ? simpleCards : carouselCards).map((card) => {
           return (
             <div
               key={card.id}
               className={`grid-col-12 tablet:grid-col-6 ${dynamicGridClassName(cards)} margin-bottom-2 display-flex height-card-md`}
             >
-              {cardComponentType === "simple" && isCardSimpleProps(card) ? (
-                <CardSimple {...card} />
+              {cardComponentType === "simple" ? (
+                <CardSimple {...(card as IterableItemWithId<CardSimpleProps>)} />
               ) : (
                 <Card {...(card as IterableItemWithId<CardProps>)} />
               )}

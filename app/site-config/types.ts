@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import type { CardSimplePropsArgs } from "./content.helpers";
 
 export type IterableItemWithId<T> = T & { id: string };
 
@@ -22,9 +21,7 @@ export type ContentBlock =
   | {
       type: "card-carousel";
       sectionHeading?: ReactNode;
-      cards: IterableItemWithId<
-        CardSimplePropsArgs | TrainingContent | TrainingContentExternal | EventContent
-      >[];
+      cards: IterableItemWithId<Content>[];
       cardComponentType?: "simple" | "carousel";
     }
   | { type: "link"; label: string; href: string; target?: string; rel?: string };
