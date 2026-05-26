@@ -1,6 +1,7 @@
 import {
   Section,
   SectionCardCarousel,
+  SectionCardMini,
   SectionCardSimple,
   SectionCardSimpleMosaic,
   SectionHeading,
@@ -13,7 +14,6 @@ import { EVENTS } from "../site-config/event";
 import { transformEventToCardMiniProps } from "../site-config/event/event.helpers";
 import { NEWS_EVENTS_CARDS } from "../site-config/home/home-sectioncardmosaic-news-events";
 import { typedMap } from "../site-config/typed.helpers";
-import { SectionCardMini } from "./SectionCardMini";
 
 const MOCK_EVENT_CARDS: [EventContent, EventContent, EventContent, EventContent] = [
   EVENTS[0],
