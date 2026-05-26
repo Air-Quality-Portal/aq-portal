@@ -1,3 +1,8 @@
+import type {
+  GeoConfigProviderProps,
+  StacCompareMapProps,
+  StacSingleLayerMapProps,
+} from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
 
 export type IterableItemWithId<T> = T & { id: string };
@@ -5,6 +10,8 @@ export type IterableItemWithId<T> = T & { id: string };
 export type Theme = "respond" | "build" | "prepare" | "recover";
 
 export type Category = "severewx" | "fire" | "heat" | "flood" | "tropical cyclone" | "earthquake";
+
+type GeoConfig = Omit<GeoConfigProviderProps, "children">;
 
 export type ContentBlock =
   | { type: "text"; heading?: string; headingLevel?: "h2" | "h3" | "h4"; paragraphs: ReactNode[] }
@@ -24,6 +31,18 @@ export type ContentBlock =
       cards: IterableItemWithId<Content>[];
       cardComponentType?: "simple" | "carousel";
     }
+  | (StacSingleLayerMapProps &
+      GeoConfig & {
+        type: "stacSingleLayer";
+        heading?: string;
+        headingLevel?: "h2" | "h3" | "h4";
+      })
+  | (StacCompareMapProps &
+      GeoConfig & {
+        type: "stacCompare";
+        heading?: string;
+        headingLevel?: "h2" | "h3" | "h4";
+      })
   | { type: "link"; label: string; href: string; target?: string; rel?: string };
 
 type Content =
@@ -66,6 +85,8 @@ export type TrainingContent = Omit<MinimumCardContent, "contentType"> & {
 export type DatasetContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "dataset";
   mastheadImage: MastheadImage;
+  body: ContentBlock[];
+  relatedContent?: string[];
 };
 
 export type NewsContent = Omit<MinimumCardContent, "contentType"> & {
