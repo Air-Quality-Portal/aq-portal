@@ -1,19 +1,6 @@
 import type { StyleSpecification } from "maplibre-gl";
 import type { ReactNode } from "react";
 
-export type DateRange = { from: string; to: string };
-
-/** Raster layer config without dateRange — consumers add it when building the full layer config. */
-export type StacLayer = {
-  type: "raster";
-  collectionId: string;
-  dateRange: { from: string; to: string };
-  stacApiUrl: string;
-  titilerBaseUrl: string;
-  baseMapStyle: StyleSpecification;
-  initialViewState: { longitude: number; latitude: number; zoom: number };
-};
-
 export type IterableItemWithId<T> = T & { id: string };
 
 export type Theme = "respond" | "build" | "prepare" | "recover";
@@ -114,4 +101,17 @@ type MastheadImage = {
   alt: string;
   caption?: string;
   attribution?: string;
+};
+
+type DateRange = { from: string; to: string };
+
+/** Raster layer config without dateRange — consumers add it when building the full layer config. */
+type StacLayer = {
+  type: "raster";
+  collectionId: string;
+  dateRange: DateRange;
+  stacApiUrl: string;
+  titilerBaseUrl: string;
+  baseMapStyle: StyleSpecification;
+  initialViewState: { longitude: number; latitude: number; zoom: number };
 };
