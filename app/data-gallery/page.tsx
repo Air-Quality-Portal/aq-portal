@@ -13,13 +13,14 @@ export default function DataGalleryPage() {
       <PageMasthead {...makeCardMastHeadProps(DATA_GALLERY_CARD_MASTHEAD)} />
       <Section>
         <div className="grid-row grid-gap">
-          {DATASETS.map(({ id, categories, themes, ...card }) => (
-            <div key={id} className="grid-col-12">
+          {DATASETS.map(({ id, thumbnailImage, categories, themes, ...card }) => (
+            <div key={id} className="grid-col-12 margin-y-1 desktop:margin-y-2">
               <CardDetailed
                 {...makeCardDetailedImageLeftProps({
-                  ...card,
                   id,
+                  thumbnailImage,
                   tags: [...categories, ...themes],
+                  ...card,
                 })}
                 className="height-card-sm"
               />

@@ -83,7 +83,7 @@ export default async function TrainingItemPage(props: PageProps<"/training/[id]"
           <div className="grid-col-12 desktop:grid-col-9 margin-top-neg-7">
             {training.body.map((block, i) => (
               // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
-              <ContentBlockRenderer key={i} block={block} />
+              <ContentBlockRenderer key={i} block={block} isMultiColumnLayout />
             ))}
           </div>
         </div>
