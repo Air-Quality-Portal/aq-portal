@@ -151,7 +151,7 @@ export const makeCardDetailedImageLeftProps = ({
   ...rest,
 });
 
-type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExternal" | "url"> & {
+type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "url"> & {
   id: string;
   contentType: ContentType;
   thumbnailImage: {
@@ -181,7 +181,6 @@ export const makeCardSimpleProps = ({
       ? makeThemeTag(themes[0])
       : makeContentTypeTag(contentType),
   url: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
-  isExternal: !!url,
   ...rest,
 });
 

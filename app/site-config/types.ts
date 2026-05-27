@@ -7,12 +7,23 @@ export type Theme = "respond" | "build" | "prepare" | "recover";
 export type Category = "severewx" | "fire" | "heat" | "flood" | "tropical cyclone" | "earthquake";
 
 export type ContentBlock =
-  | { type: "text"; heading?: string; headingLevel?: "h2" | "h3" | "h4"; paragraphs: ReactNode[] }
+  | {
+      type: "text";
+      id?: string;
+      heading?: string;
+      headingLevel?: "h2" | "h3" | "h4";
+      paragraphs: ReactNode[];
+    }
   | {
       type: "list";
+      id?: string;
       heading?: string;
       headingLevel?: "h2" | "h3" | "h4";
       items: (string | { label: string; href: string })[];
+      paragraphs?: ReactNode[];
+      listStyle?: "default" | "metadata";
+      showDividerAfterHeading?: boolean;
+      showDividerAfterItems?: boolean;
     }
   | { type: "note"; text: string }
   | { type: "slider"; before: { src: string; alt: string }; after: { src: string; alt: string } }
@@ -80,8 +91,27 @@ export type DataStoryContent = Omit<MinimumCardContent, "contentType"> & {
 export type EventContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "event";
   mastheadImage: MastheadImage;
+  bannerImage?: MastheadImage;
+  date?: string;
+  overview?: {
+    region: string;
+    startDate: string;
+    disasterType: string;
+  };
+  body?: ContentBlock[];
+  storyOfImpact?: {
+    title: string;
+    description: string;
+    href: string;
+    ctaLabel: string;
+  };
+  sidebarNavigation?: Array<{ id: string; label: string }>;
+  resourcesLearning?: string[];
+  relatedContent?: string[];
   isLatest?: boolean;
 };
+
+export type DetailPageContent = StoryContent | DataStoryContent | NewsContent | EventContent;
 
 export type ThemeContent = {
   id: string;
