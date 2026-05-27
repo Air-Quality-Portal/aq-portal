@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "biome check .",
+    "lint:staged": "biome check",
     "lint:ci": "biome ci .",
     "pretypecheck": "next typegen",
     "typecheck": "tsc --noEmit",
