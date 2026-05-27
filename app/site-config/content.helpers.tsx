@@ -33,10 +33,10 @@ const CONTENT_THEMES: Record<Theme, { label: string; color: string; textColor?: 
 
 const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: string }> = {
   dataset: { route: "/data-gallery", label: "data" },
-  event: { route: "/events", label: "event" }, // TODO: update route to news-events once routes have been finalized
+  event: { route: "/news-events", label: "event" }, // TODO: update route to news-events once routes have been finalized
   news: { route: "/news-events", label: "news" },
-  story: { route: "/stories", label: "story" }, // TODO: update route to news-events once routes have been finalized
-  datastory: { route: "/stories", label: "data story" }, // TODO: update route to news-events once routes have been finalized
+  story: { route: "/news-events", label: "story" }, // TODO: update route to news-events once routes have been finalized
+  datastory: { route: "/news-events", label: "data story" }, // TODO: update route to news-events once routes have been finalized
   training: { route: "/training", label: "training" },
 };
 
