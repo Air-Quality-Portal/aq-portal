@@ -24,7 +24,7 @@ export default function NewsEventsCollectionPage() {
                   id,
                   thumbnailImage,
                   contentType,
-                  tags: [contentType, ...categories, ...themes],
+                  tags: [...themes, ...categories],
                   ...card,
                 })}
                 className="height-card-sm"
