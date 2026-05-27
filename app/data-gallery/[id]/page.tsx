@@ -21,6 +21,8 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
     relatedContent: relatedIds = [],
   } = dataset;
 
+  // TODO: Move to content helpers, and broaden to fit any content type use case
+  // Can related content be of a different content type?
   const relatedItems = relatedIds.flatMap((relId) => {
     const rel = DATASETS.find((d) => d.id === relId);
     if (!rel) return [];
