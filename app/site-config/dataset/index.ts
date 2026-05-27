@@ -1,10 +1,10 @@
 import type { DatasetContent } from "@/app/site-config/types";
-import { DATASET__BLACKMARBLE_HD_DAILY_JUNE2026 } from "./dataset__blackmarble-hd-daily-june2026";
-import { DATASET__BLACKMARBLE_JUNE2026_COMPOSITE } from "./dataset__blackmarble-june2026-composite";
-import { DATASET__VIIRS_ACTIVE_FIRE } from "./dataset__viirs-active-fire";
+import { DATASET__SENTINEL_2_COLOR_INFRARED } from "./dataset__sentinel-2-color-infrared";
+import { DATASET__SENTINEL_2_SWIR } from "./dataset__sentinel-2-swir";
+import { DATASET__SENTINEL_2_TRUE_COLOR } from "./dataset__sentinel-2-true-color";
 
 export const DATASETS: DatasetContent[] = [
-  DATASET__BLACKMARBLE_JUNE2026_COMPOSITE,
-  DATASET__BLACKMARBLE_HD_DAILY_JUNE2026,
-  DATASET__VIIRS_ACTIVE_FIRE,
+  DATASET__SENTINEL_2_TRUE_COLOR,
+  DATASET__SENTINEL_2_COLOR_INFRARED,
+  DATASET__SENTINEL_2_SWIR,
 ];
