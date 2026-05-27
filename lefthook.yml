@@ -1,12 +1,7 @@
 pre-commit:
   commands:
     check:
-      glob: "*.{ts,tsx,js,jsx,mts,json}"
-      run: pnpm exec biome check --write {staged_files}
-      stage_fixed: true
-    format-scss:
-      glob: "*.scss"
-      run: pnpm exec prettier --write {staged_files}
-      stage_fixed: true
+      glob: "*.{ts,tsx,js,jsx,json,css}"
+      run: pnpm lint:staged {staged_files}
     typecheck:
       run: pnpm typecheck

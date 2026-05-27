@@ -1,25 +1,25 @@
-import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
-import { CardSimple } from "@teamimpact/veda-ui-blocks";
+import type { CardMiniProps } from "@teamimpact/veda-ui-blocks";
+import { CardMini } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
 import { Section, type SectionProps } from "@/app/components";
 import type { IterableItemWithId } from "@/app/site-config/types";
 
-type SectionCardSimpleProps = SectionProps & {
+type SectionCardMiniProps = SectionProps & {
   sectionHeading?: ReactNode;
   cards: [
-    IterableItemWithId<CardSimpleProps>,
-    IterableItemWithId<CardSimpleProps>,
-    IterableItemWithId<CardSimpleProps>,
-    IterableItemWithId<CardSimpleProps>,
+    IterableItemWithId<CardMiniProps>,
+    IterableItemWithId<CardMiniProps>,
+    IterableItemWithId<CardMiniProps>,
+    IterableItemWithId<CardMiniProps>,
   ];
 };
 
-export const SectionCardSimple = ({
+export const SectionCardMini = ({
   sectionHeading,
   cards,
   children,
   ...sectionProps
-}: SectionCardSimpleProps) => {
+}: SectionCardMiniProps) => {
   return (
     <Section {...sectionProps}>
       {sectionHeading && sectionHeading}
@@ -27,9 +27,9 @@ export const SectionCardSimple = ({
         {cards.map((props) => (
           <div
             key={props.id}
-            className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 height-card-md"
+            className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 height-card-xs"
           >
-            <CardSimple {...props} />
+            <CardMini {...props} />
           </div>
         ))}
       </div>

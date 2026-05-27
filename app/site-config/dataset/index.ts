@@ -1,18 +1,10 @@
 import type { DatasetContent } from "@/app/site-config/types";
+import { DATASET__SENTINEL_2_COLOR_INFRARED } from "./dataset__sentinel-2-color-infrared";
+import { DATASET__SENTINEL_2_SWIR } from "./dataset__sentinel-2-swir";
+import { DATASET__SENTINEL_2_TRUE_COLOR } from "./dataset__sentinel-2-true-color";
 
 export const DATASETS: DatasetContent[] = [
-  {
-    id: "lorem-ipsum-dolor",
-    contentType: "dataset",
-    title: "Lorem ipsum dolor sit amet Lorem",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-    thumbnailImage: { src: "/img/logo-emblem.svg", alt: "placeholder image" },
-    themes: ["prepare"],
-    categories: ["severewx", "flood", "tropical cyclone"],
-    mastheadImage: {
-      src: "/img/card-masthead.webp",
-      alt: "",
-    },
-  },
+  DATASET__SENTINEL_2_TRUE_COLOR,
+  DATASET__SENTINEL_2_COLOR_INFRARED,
+  DATASET__SENTINEL_2_SWIR,
 ];
