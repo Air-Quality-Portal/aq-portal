@@ -1,58 +1,10 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-import type { ReactNode } from "react";
-import { ImageComparison, Section, SectionCardCarousel, SectionHeading } from "@/app/components";
+import { ImageComparison, Section, SectionCardSimple, SectionHeading } from "@/app/components";
 import type { ContentBlock } from "@/app/site-config/types";
-import { makeCardCarouselProps, makeCardSimpleProps } from "../site-config/content.helpers";
+import { makeCardSimpleProps } from "../site-config/content.helpers";
 import { typedMap } from "../site-config/typed.helpers";
 import { StacCompareBlock, StacSingleLayerBlock } from "./blocks";
-
-const MDX_LINK_PATTERN = /\[([^\]]+)\]\(([^)]+)\)/g;
-
-const renderParagraphWithMdxLinks = (paragraph: ReactNode) => {
-  if (typeof paragraph !== "string") {
-    return paragraph;
-  }
-
-  const parts: ReactNode[] = [];
-  let lastIndex = 0;
-  let match: RegExpExecArray | null = MDX_LINK_PATTERN.exec(paragraph);
-
-  while (match) {
-    const [fullMatch, label, href] = match;
-    const startIndex = match.index;
-    const endIndex = startIndex + fullMatch.length;
-
-    if (startIndex > lastIndex) {
-      parts.push(paragraph.slice(lastIndex, startIndex));
-    }
-
-    const isExternal = /^(?:https?:)?\/\//.test(href);
-    parts.push(
-      <Link
-        key={`${label}-${href}-${startIndex}`}
-        href={href}
-        variant="text"
-        isExternal={isExternal}
-      >
-        {label}
-      </Link>,
-    );
-
-    lastIndex = endIndex;
-    match = MDX_LINK_PATTERN.exec(paragraph);
-  }
-
-  if (lastIndex === 0) {
-    return paragraph;
-  }
-
-  if (lastIndex < paragraph.length) {
-    parts.push(paragraph.slice(lastIndex));
-  }
-
-  return parts;
-};
 
 function ContentHeading({
   heading,
@@ -82,7 +34,7 @@ export const ContentBlockRenderer = ({
           )}
           {block.paragraphs.map((p, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-            <p key={i}>{renderParagraphWithMdxLinks(p)}</p>
+            <p key={i}>{p}</p>
           ))}
         </Section>
       );
@@ -151,7 +103,7 @@ export const ContentBlockRenderer = ({
     case "image":
       return (
         <Section isMultiColumnLayout={isMultiColumnLayout}>
-          <figcaption className="font-body-sm text-base margin-top-1">
+          <figure>
             <Image
               src={block.src}
               alt={block.alt}
@@ -159,21 +111,17 @@ export const ContentBlockRenderer = ({
               height={block.height}
               style={{ width: block.maxWidth ?? "100%", height: "auto" }}
             />
-            <div className="padding-top-2">{block.alt}</div>
-          </figcaption>
+            <figcaption className="font-body-sm text-base margin-top-1padding-top-2">
+              {block.caption}
+            </figcaption>
+          </figure>
         </Section>
       );
-    case "card-carousel": {
-      const isSimpleCards = block.cardComponentType === "simple";
-      const mappedCards = isSimpleCards
-        ? typedMap(block.cards, makeCardSimpleProps)
-        : typedMap(block.cards, makeCardCarouselProps);
-
+    case "card-simple": {
       return (
-        <SectionCardCarousel
-          cards={mappedCards}
+        <SectionCardSimple
+          cards={typedMap(block.cards, makeCardSimpleProps)}
           sectionHeading={block.sectionHeading}
-          cardComponentType={isSimpleCards ? "simple" : "carousel"}
         />
       );
     }

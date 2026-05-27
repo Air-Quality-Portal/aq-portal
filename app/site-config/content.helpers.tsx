@@ -155,7 +155,7 @@ export const makeCardDetailedImageLeftProps = ({
   ...rest,
 });
 
-type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExternal" | "url"> & {
+export type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExternal" | "url"> & {
   id: string;
   contentType: ContentType;
   thumbnailImage: {

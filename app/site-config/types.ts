@@ -4,6 +4,7 @@ import type {
   StacSingleLayerMapProps,
 } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
+import type { CardSimplePropsArgs } from "./content.helpers";
 
 export type IterableItemWithId<T> = T & { id: string };
 
@@ -24,12 +25,19 @@ export type ContentBlock =
   | { type: "note"; text: string }
   | { type: "slider"; before: { src: string; alt: string }; after: { src: string; alt: string } }
   | { type: "video"; src: string; title?: string; caption?: string }
-  | { type: "image"; src: string; alt: string; width: number; height: number; maxWidth?: string }
   | {
-      type: "card-carousel";
+      type: "image";
+      src: string;
+      alt: string;
+      width: number;
+      height: number;
+      maxWidth?: string;
+      caption?: string;
+    }
+  | {
+      type: "card-simple";
       sectionHeading?: ReactNode;
-      cards: IterableItemWithId<Content>[];
-      cardComponentType?: "simple" | "carousel";
+      cards: IterableItemWithId<CardSimplePropsArgs>[];
     }
   | (StacSingleLayerMapProps &
       GeoConfig & {
@@ -110,6 +118,7 @@ export type EventContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "event";
   mastheadImage: MastheadImage;
   isLatest?: boolean;
+  url?: string;
 };
 
 export type ThemeContent = {
