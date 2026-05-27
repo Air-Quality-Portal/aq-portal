@@ -116,6 +116,7 @@ export type ThemeContent = {
   subtitle: string;
   mastheadImage: MastheadImage;
   theme: Theme;
+  body: ContentBlock[];
 };
 
 type MastheadImage = {

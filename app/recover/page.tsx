@@ -1,4 +1,5 @@
 import {
+  ContentBlockRenderer,
   PageMasthead,
   Section,
   SectionCardCarousel,
@@ -29,11 +30,10 @@ export default function RecoverPage() {
         sectionHeading={<SectionHeading href="/news-events">Stories of Impact</SectionHeading>}
         cards={typedMap(RECOVER_STORIES, makeCardSimpleProps)}
       />
-      {/* Data Visualization */}
-      <Section>
-        <SectionHeading>Data Visualization</SectionHeading>
-        <p>TODO: Map block</p>
-      </Section>
+      {RECOVER_CONTENT.body.map((block, index) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
+        <ContentBlockRenderer key={index} block={block} />
+      ))}
       <SectionCardCarousel
         sectionHeading={<SectionHeading href="/stories">Data Stories</SectionHeading>}
         cards={typedMap(RECOVER_DATASTORIES, makeCardCarouselProps)}

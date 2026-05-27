@@ -1,4 +1,5 @@
 import {
+  ContentBlockRenderer,
   PageMasthead,
   Section,
   SectionCardCarousel,
@@ -32,11 +33,10 @@ export default function RespondPage() {
         sectionHeading={<SectionHeading href="/news-events">Stories of Impact</SectionHeading>}
         cards={typedMap(RESPOND_STORIES, makeCardSimpleProps)}
       />
-      {/* Data Visualization */}
-      <Section>
-        <SectionHeading>Data Visualization</SectionHeading>
-        <p>TODO: Map block</p>
-      </Section>
+      {RESPOND_CONTENT.body.map((block, index) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
+        <ContentBlockRenderer key={index} block={block} />
+      ))}
       <SectionCardMini
         sectionHeading={<SectionHeading href="/events">Latest Disaster Activations</SectionHeading>}
         cards={typedMap(RESPOND_EVENTS, transformEventToCardMiniProps)}
