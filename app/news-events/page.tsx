@@ -8,16 +8,30 @@ import { DATASTORIES } from "@/app/site-config/datastory";
 import { NEWS } from "@/app/site-config/news";
 import { NEWS_EVENTS_CARD_MASTHEAD } from "@/app/site-config/news-events/news-events-card-masthead";
 import { STORIES } from "@/app/site-config/story";
+import type { ContentType } from "@/app/site-config/types";
+import { EVENTS } from "../site-config/event";
 
-export default function NewsEventsCollectionPage() {
-  const items = [...NEWS, ...STORIES, ...DATASTORIES];
+type FilterContentType = Extract<ContentType, "news" | "story" | "datastory" | "event">;
+const CONTENT_TYPE_FILTER_VALUES: FilterContentType[] = ["news", "story", "datastory", "event"];
+
+export default async function NewsEventsCollectionPage(props: PageProps<"/news-events">) {
+  const { contenttype = "" } = (await props.searchParams) ?? {};
+
+  const contentTypeFilter = CONTENT_TYPE_FILTER_VALUES.includes(contenttype as FilterContentType)
+    ? (contenttype as FilterContentType)
+    : null;
+
+  const allItems = [...NEWS, ...STORIES, ...DATASTORIES, ...EVENTS];
+  const filteredItems = contentTypeFilter
+    ? allItems.filter((item) => item.contentType === contentTypeFilter)
+    : allItems;
 
   return (
     <>
       <PageMasthead {...makeCardMastHeadProps(NEWS_EVENTS_CARD_MASTHEAD)} />
       <Section>
         <div className="grid-row grid-gap">
-          {items.map(({ id, thumbnailImage, contentType, categories, themes, ...card }) => (
+          {filteredItems.map(({ id, thumbnailImage, contentType, categories, themes, ...card }) => (
             <div key={id} className="grid-col-12 margin-y-1 desktop:margin-y-2">
               <CardDetailed
                 {...makeCardDetailedImageLeftProps({
