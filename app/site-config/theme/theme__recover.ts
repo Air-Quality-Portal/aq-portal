@@ -1,5 +1,4 @@
 import type {
-  ContentBlock,
   DataStoryContent,
   EventContent,
   NewsContent,

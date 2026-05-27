@@ -1,7 +1,6 @@
 import {
   ContentBlockRenderer,
   PageMasthead,
-  Section,
   SectionCardCarousel,
   SectionCardSimple,
   SectionCardSimpleMosaic,
