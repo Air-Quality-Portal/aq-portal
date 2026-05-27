@@ -84,7 +84,9 @@ export const ContentBlockRenderer = ({
     case "video":
       return (
         <Section isMultiColumnLayout={isMultiColumnLayout}>
-          {block.title && <h3 className="font-heading-xl margin-bottom-1">{block.title}</h3>}
+          {block.heading && (
+            <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
+          )}
           {block.src ? (
             <video controls className="width-full display-block">
               <source src={block.src} />
@@ -121,6 +123,7 @@ export const ContentBlockRenderer = ({
           <StacSingleLayerBlock block={block} />
         </Section>
       );
+
     case "stacCompare":
       return (
         <Section isMultiColumnLayout={isMultiColumnLayout}>
@@ -130,6 +133,7 @@ export const ContentBlockRenderer = ({
           <StacCompareBlock block={block} />
         </Section>
       );
+
     case "link":
       return (
         <Section>
