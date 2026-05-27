@@ -26,7 +26,9 @@ export default function RecoverPage() {
     <>
       <PageMasthead {...makeCardMastHeadProps({ title, subtitle, theme, mastheadImage })} />
       <SectionCardSimpleMosaic
-        sectionHeading={<SectionHeading href="/news-events">Stories of Impact</SectionHeading>}
+        sectionHeading={
+          <SectionHeading href="/news-events?contenttype=story">Stories of Impact</SectionHeading>
+        }
         cards={typedMap(RECOVER_STORIES, makeCardSimpleProps)}
       />
       {RECOVER_CONTENT.body.map((block, index) => (
@@ -34,7 +36,9 @@ export default function RecoverPage() {
         <ContentBlockRenderer key={index} block={block} />
       ))}
       <SectionCardCarousel
-        sectionHeading={<SectionHeading href="/stories">Data Stories</SectionHeading>}
+        sectionHeading={
+          <SectionHeading href="/news-events?contenttype=datastory">Data Stories</SectionHeading>
+        }
         cards={typedMap(RECOVER_DATASTORIES, makeCardCarouselProps)}
       />
       <SectionCardSimple

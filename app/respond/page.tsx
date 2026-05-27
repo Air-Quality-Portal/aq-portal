@@ -29,7 +29,9 @@ export default function RespondPage() {
     <>
       <PageMasthead {...makeCardMastHeadProps({ title, subtitle, theme, mastheadImage })} />
       <SectionCardSimpleMosaic
-        sectionHeading={<SectionHeading href="/news-events">Stories of Impact</SectionHeading>}
+        sectionHeading={
+          <SectionHeading href="/news-events?contenttype=story">Stories of Impact</SectionHeading>
+        }
         cards={typedMap(RESPOND_STORIES, makeCardSimpleProps)}
       />
       {RESPOND_CONTENT.body.map((block, index) => (
@@ -37,11 +39,17 @@ export default function RespondPage() {
         <ContentBlockRenderer key={index} block={block} />
       ))}
       <SectionCardMini
-        sectionHeading={<SectionHeading href="/events">Latest Disaster Activations</SectionHeading>}
+        sectionHeading={
+          <SectionHeading href="/news-events?contenttype=event">
+            Latest Disaster Activations
+          </SectionHeading>
+        }
         cards={typedMap(RESPOND_EVENTS, transformEventToCardMiniProps)}
       />
       <SectionCardCarousel
-        sectionHeading={<SectionHeading href="/stories">Data Stories</SectionHeading>}
+        sectionHeading={
+          <SectionHeading href="/news-events?contenttype=datastory">Data Stories</SectionHeading>
+        }
         cards={typedMap(RESPOND_DATASTORIES, makeCardCarouselProps)}
       />
       <SectionCardSimple
