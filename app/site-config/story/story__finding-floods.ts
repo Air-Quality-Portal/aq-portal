@@ -12,6 +12,6 @@ export const STORY__FINDING_FLOODS: StoryContent = {
     src: "/img/story/finding-floods.webp",
     alt: "Flooded river in Kerrville, Texas showing significant flood waters",
   },
-  themes: [],
-  categories: [],
+  themes: ["respond"],
+  categories: ["severewx", "flood"],
 };

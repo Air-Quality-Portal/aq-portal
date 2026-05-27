@@ -8,8 +8,8 @@ export const STORY__SEEING_BEYOND_FLAMES: StoryContent = {
     src: "/img/story/seeing-beyond-flames.webp",
     alt: "Satellite image of 2025 Eaton Fire in Southern California",
   },
-  themes: [],
-  categories: [],
+  themes: ["respond"],
+  categories: ["fire"],
   mastheadImage: {
     src: "/img/story/seeing-beyond-flames.webp",
     alt: "Satellite image of 2025 Eaton Fire in Southern California",

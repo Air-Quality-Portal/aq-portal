@@ -8,7 +8,7 @@ export const DATASTORY__HURRICANE_HELENE_SEPTEMBER_2024: DataStoryContent = {
     src: "/img/datastory/hurricane-helene-september-2024.webp",
     alt: "Nighttime satellite image of Hurricane Helene in 2024 captured by NOAA-20",
   },
-  themes: [],
+  themes: ["respond", "recover"],
   categories: [],
   mastheadImage: {
     src: "/img/datastory/hurricane-helene-september-2024.webp",
