@@ -136,7 +136,7 @@ export const ContentBlockRenderer = ({
         </Section>
       );
 
-    case "cardSimple":
+    case "sectionCardSimple":
       return (
         <SectionCardSimple
           isMultiColumnLayout={isMultiColumnLayout}

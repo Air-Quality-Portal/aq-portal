@@ -46,7 +46,12 @@ export type ContentBlock =
         heading?: string;
         headingLevel?: "h2" | "h3" | "h4";
       })
-  | { type: "cardSimple"; heading?: string; href?: GalleryRoute; cards: CardSimplePropsArgs[] };
+  | {
+      type: "sectionCardSimple";
+      heading?: string;
+      href?: GalleryRoute;
+      cards: CardSimplePropsArgs[];
+    };
 
 type Content =
   | TrainingContent
