@@ -1,30 +1,41 @@
 import { notFound } from "next/navigation";
-import { PageMasthead, PageStatus, Section } from "@/app/components/";
+import { ContentBlockRenderer, OverviewBlock, PageMasthead, Section } from "@/app/components";
+import { DatasetSidebar } from "@/app/data-gallery/[id]/DatasetSidebar";
 import { makeCardMastHeadProps } from "@/app/site-config/content.helpers";
-import { DATASTORIES } from "@/app/site-config/datastory";
 import { EVENTS } from "@/app/site-config/event";
-import { NEWS } from "@/app/site-config/news";
-import { STORIES } from "@/app/site-config/story";
 
-export default async function NewsEventsItemPage(props: PageProps<"/news-events/[id]">) {
+export default async function EventItemPage(props: PageProps<"/news-events/[id]">) {
   const { id } = await props.params;
 
-  const contentItem = [...STORIES, ...DATASTORIES, ...NEWS, ...EVENTS].find((s) => s.id === id);
+  const event = EVENTS.find((t) => t.id === id);
 
-  if (!contentItem) notFound();
-
-  const { mastheadImage, title } = contentItem;
+  if (!event) notFound();
+  //TO DO: this will need to account for inpage navigation once implements
+  const showSidebar = event.themes.length > 0 || event.categories.length > 0;
+  const { title, description, mastheadImage, themes, categories, body, date } = event;
 
   return (
     <>
-      <PageMasthead {...makeCardMastHeadProps({ mastheadImage, title })} />
+      {/* Hero */}
+      <PageMasthead {...makeCardMastHeadProps({ mastheadImage, title, description, date })} />
 
-      <Section className="margin-top-4 margin-bottom-0">
-        <PageStatus
-          label={`News, Data Story, or Story Item: ${id}`}
-          heading="Under development"
-          description="The page you're looking for is under development."
-        />
+      {/* Content */}
+      <Section>
+        <div className="grid-row grid-gap">
+          {/* Sidebar */}
+          {/* TO DO: DatasetSidebar will need to be elevated to a general sidebar component this will also be placement for the inpage navigation once ready*/}
+          <div className="grid-col-12 desktop:grid-col-3">
+            <DatasetSidebar themes={themes} categories={categories} />
+          </div>
+          {/* Main content */}
+          <div className={` ${showSidebar ? "grid-col-9" : "grid-col-12"}`}>
+            <OverviewBlock {...event.overview} />
+            {body?.map((block, i) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
+              <ContentBlockRenderer key={i} block={block} isMultiColumnLayout={showSidebar} />
+            ))}
+          </div>
+        </div>
       </Section>
     </>
   );
