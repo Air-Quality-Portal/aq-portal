@@ -27,12 +27,5 @@ export const EVENT__US_WINTER_STORM_2026: EventContent = {
         "A large winter storm impacted much of the continental U.S., bringing snow, ice, and subfreezing temperatures. NASA’s Disasters Program is sharing maps and data to support state and federal response agencies.",
       ],
     },
-    // ── PRODUCT GALLERY NEEDED ────────────────────────────────────────────────────────────
-
-    {
-      type: "text",
-      heading: "Product Gallery",
-      paragraphs: ["TO DO "],
-    },
   ],
 };
