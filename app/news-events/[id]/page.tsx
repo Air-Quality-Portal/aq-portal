@@ -23,15 +23,15 @@ const TRAINING_CONTENT = [...TRAININGS, ...TRAININGS_EXTERNAL];
 export default async function NewsEventsItemPage(props: PageProps<"/news-events/[id]">) {
   const { id } = await props.params;
 
-  const item = DETAIL_CONTENT.find((entry) => entry.id === id);
+  const contentItem = DETAIL_CONTENT.find((entry) => entry.id === id);
 
-  if (!item) notFound();
+  if (!contentItem) notFound();
 
-  const { mastheadImage, title } = item;
+  const { mastheadImage, title } = contentItem;
 
   const formattedDate =
-    item.contentType === "event" && item.date
-      ? new Date(item.date).toLocaleDateString("en-US", {
+    contentItem.contentType === "event" && contentItem.date
+      ? new Date(contentItem.date).toLocaleDateString("en-US", {
           year: "numeric",
           month: "long",
           day: "numeric",
@@ -40,62 +40,67 @@ export default async function NewsEventsItemPage(props: PageProps<"/news-events/
       : null;
 
   const resourcesCards =
-    item.contentType === "event"
-      ? (item.resourcesLearning ?? [])
+    contentItem.contentType === "event"
+      ? (contentItem.resourcesLearning ?? [])
           .map((trainingId) => TRAINING_CONTENT.find((training) => training.id === trainingId))
           .filter((training): training is (typeof TRAINING_CONTENT)[number] => !!training)
           .map((training) => makeCardSimpleProps(training))
       : [];
 
-  const hasEventDetails = item.contentType === "event" && !!item.body?.length;
-  const summaryText = item.contentType === "event" ? item.description : undefined;
-  const sidebarNavigation = item.contentType === "event" ? (item.sidebarNavigation ?? []) : [];
+  const hasEventDetails = contentItem.contentType === "event" && !!contentItem.body?.length;
+  const summaryText = contentItem.contentType === "event" ? contentItem.description : undefined;
+  const sidebarNavigation =
+    contentItem.contentType === "event" ? (contentItem.sidebarNavigation ?? []) : [];
   const defaultActiveSidebarId =
     sidebarNavigation.find((entry) => entry.id === "overview")?.id ?? sidebarNavigation[0]?.id;
   const mastheadProps = makeCardMastHeadProps(
-    hasEventDetails && item.contentType === "event" ? { mastheadImage } : { mastheadImage, title },
+    hasEventDetails && contentItem.contentType === "event"
+      ? { mastheadImage }
+      : { mastheadImage, title },
   );
 
   const storyOfImpactContentId =
-    item.contentType === "event" && item.storyOfImpact
-      ? item.relatedContent?.[0] || item.storyOfImpact.href.replace("/stories/", "")
+    contentItem.contentType === "event" && contentItem.storyOfImpact
+      ? contentItem.relatedContent?.[0] || contentItem.storyOfImpact.href.replace("/stories/", "")
       : undefined;
 
   const storyOfImpactContent =
-    item.contentType === "event" && storyOfImpactContentId
+    contentItem.contentType === "event" && storyOfImpactContentId
       ? STORIES.find((story) => story.id === storyOfImpactContentId)
       : undefined;
 
-  const storyOfImpactImage = storyOfImpactContent?.thumbnailImage ?? item.thumbnailImage;
+  const storyOfImpactImage = storyOfImpactContent?.thumbnailImage ?? contentItem.thumbnailImage;
 
   return (
     <>
       <div className="position-relative">
         <PageMasthead {...mastheadProps} />
 
-        {hasEventDetails && item.contentType === "event" && (formattedDate || summaryText) && (
-          <div className="position-absolute bottom-0 left-0 right-0 z-100 margin-bottom-4">
-            <div className="grid-container">
-              <div className="display-flex flex-wrap grid-gap-sm margin-bottom-2">
-                {formattedDate && (
-                  <Tag color="primary-lighter" textColor="primary-dark">
-                    Updated: {formattedDate}
-                  </Tag>
+        {hasEventDetails &&
+          contentItem.contentType === "event" &&
+          (formattedDate || summaryText) && (
+            <div className="position-absolute bottom-0 left-0 right-0 z-100 margin-bottom-4">
+              <div className="grid-container">
+                <div className="display-flex flex-wrap grid-gap-sm margin-bottom-2">
+                  {formattedDate && (
+                    <Tag color="primary-lighter" textColor="primary-dark">
+                      Updated: {formattedDate}
+                    </Tag>
+                  )}
+                </div>
+
+                <h1 className="font-mono-3xl text-normal text-white text-uppercase flex-align-self-start margin-bottom-2 margin-top-0">
+                  {title}
+                </h1>
+
+                {summaryText && (
+                  <p className="font-body-md text-white padding-2 margin-0 maxw-tablet-lg">
+                    {summaryText}
+                  </p>
                 )}
               </div>
-
-              <h1 className="font-mono-3xl text-normal text-white text-uppercase flex-align-self-start margin-bottom-2 margin-top-0">
-                {title}
-              </h1>
-
-              {summaryText && (
-                <p className="font-body-md text-white padding-2 margin-0 maxw-tablet-lg">
-                  {summaryText}
-                </p>
-              )}
             </div>
-          </div>
-        )}
+          )}
       </div>
 
       {!hasEventDetails && (
@@ -108,7 +113,7 @@ export default async function NewsEventsItemPage(props: PageProps<"/news-events/
         </Section>
       )}
 
-      {hasEventDetails && item.contentType === "event" && (
+      {hasEventDetails && contentItem.contentType === "event" && (
         <Section>
           <div className="grid-row grid-gap">
             <div className="grid-col-12 desktop:grid-col-3">
@@ -155,20 +160,20 @@ export default async function NewsEventsItemPage(props: PageProps<"/news-events/
             </div>
 
             <div className="grid-col-12 desktop:grid-col-9 margin-top-neg-7">
-              {item.body?.map((block, i) => (
+              {contentItem.body?.map((block, i) => (
                 // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
                 <div key={i}>
                   <ContentBlockRenderer block={block} />
 
-                  {"id" in block && block.id === "overview" && item.storyOfImpact && (
+                  {"id" in block && block.id === "overview" && contentItem.storyOfImpact && (
                     <section id="story-of-impact" className="margin-y-7">
                       <div className="grid-container">
                         <Card
-                          title={item.storyOfImpact.title}
-                          description={item.storyOfImpact.description}
+                          title={contentItem.storyOfImpact.title}
+                          description={contentItem.storyOfImpact.description}
                           callToAction={{
-                            href: item.storyOfImpact.href as Route,
-                            label: item.storyOfImpact.ctaLabel,
+                            href: contentItem.storyOfImpact.href as Route,
+                            label: contentItem.storyOfImpact.ctaLabel,
                           }}
                           image={
                             <Image

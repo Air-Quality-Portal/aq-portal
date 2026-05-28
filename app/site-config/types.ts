@@ -1,10 +1,27 @@
+import type {
+  GeoConfigProviderProps,
+  StacCompareMapProps,
+  StacSingleLayerMapProps,
+} from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
+import type { CardSimplePropsArgs } from "@/app/site-config/content.helpers";
 
 export type IterableItemWithId<T> = T & { id: string };
 
 export type Theme = "respond" | "build" | "prepare" | "recover";
 
-export type Category = "severewx" | "fire" | "heat" | "flood" | "tropical cyclone" | "earthquake";
+export type Category =
+  | "severewx"
+  | "fire"
+  | "heat"
+  | "flood"
+  | "tropical cyclone"
+  | "earthquake"
+  | "winter weather";
+
+export type GalleryRoute = "/data-gallery" | "/news-events" | "/training"; // TODO: update to be dynamic
+
+type GeoConfig = Omit<GeoConfigProviderProps, "children">;
 
 export type ContentBlock =
   | {
@@ -27,9 +44,32 @@ export type ContentBlock =
     }
   | { type: "note"; text: string }
   | { type: "slider"; before: { src: string; alt: string }; after: { src: string; alt: string } }
-  | { type: "video"; src: string; title?: string; caption?: string }
+  | {
+      type: "video";
+      src: string;
+      heading?: string;
+      headingLevel?: "h2" | "h3" | "h4";
+      caption?: string;
+    }
   | { type: "image"; src: string; alt: string; width: number; height: number; maxWidth?: string }
-  | { type: "link"; label: string; href: string; target?: string; rel?: string };
+  | (StacSingleLayerMapProps &
+      GeoConfig & {
+        type: "stacSingleLayer";
+        heading?: string;
+        headingLevel?: "h2" | "h3" | "h4";
+      })
+  | (StacCompareMapProps &
+      GeoConfig & {
+        type: "stacCompare";
+        heading?: string;
+        headingLevel?: "h2" | "h3" | "h4";
+      })
+  | {
+      type: "sectionCardSimple";
+      heading?: string;
+      href?: GalleryRoute;
+      cards: CardSimplePropsArgs[];
+    };
 
 type Content =
   | TrainingContent
@@ -71,6 +111,8 @@ export type TrainingContent = Omit<MinimumCardContent, "contentType"> & {
 export type DatasetContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "dataset";
   mastheadImage: MastheadImage;
+  body: ContentBlock[];
+  relatedContent?: string[];
 };
 
 export type NewsContent = Omit<MinimumCardContent, "contentType"> & {
@@ -93,11 +135,7 @@ export type EventContent = Omit<MinimumCardContent, "contentType"> & {
   mastheadImage: MastheadImage;
   bannerImage?: MastheadImage;
   date?: string;
-  overview?: {
-    region: string;
-    startDate: string;
-    disasterType: string;
-  };
+  overview?: OverviewSection;
   body?: ContentBlock[];
   storyOfImpact?: {
     title: string;
@@ -119,6 +157,7 @@ export type ThemeContent = {
   subtitle: string;
   mastheadImage: MastheadImage;
   theme: Theme;
+  body: ContentBlock[];
 };
 
 type MastheadImage = {
@@ -126,4 +165,12 @@ type MastheadImage = {
   alt: string;
   caption?: string;
   attribution?: string;
+};
+
+export type OverviewSection = {
+  region?: string;
+  startDate?: string;
+  disasterType?: string;
+  overviewLink1?: string;
+  overviewLink2?: string;
 };

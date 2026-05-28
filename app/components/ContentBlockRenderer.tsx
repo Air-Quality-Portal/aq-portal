@@ -1,26 +1,56 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
-import { ImageComparison, Section, SectionHeading } from "@/app/components";
+import { ImageComparison, Section, SectionCardSimple, SectionHeading } from "@/app/components";
+import { StacCompareBlock, StacSingleLayerBlock } from "@/app/components/blocks";
+import { makeCardSimpleProps } from "@/app/site-config/content.helpers";
+import { typedMap } from "@/app/site-config/typed.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
 
-export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
+function ContentHeading({
+  heading,
+  headingLevel,
+  id,
+}: {
+  heading: string;
+  headingLevel?: "h2" | "h3" | "h4";
+  id?: string;
+}) {
+  if (headingLevel === "h4") {
+    return (
+      <h4 id={id} className="font-heading-lg margin-bottom-1">
+        {heading}
+      </h4>
+    );
+  }
+  if (headingLevel === "h3") {
+    return (
+      <h3 id={id} className="font-heading-xl margin-bottom-1">
+        {heading}
+      </h3>
+    );
+  }
+  return <SectionHeading id={id}>{heading}</SectionHeading>;
+}
+
+export const ContentBlockRenderer = ({
+  block,
+  isMultiColumnLayout,
+}: {
+  block: ContentBlock;
+  isMultiColumnLayout?: boolean;
+}) => {
   switch (block.type) {
     case "text":
       return (
-        <Section>
-          {block.heading &&
-            (block.headingLevel === "h4" ? (
-              <h4 id={block.id} className="font-heading-lg margin-bottom-1">
-                {block.heading}
-              </h4>
-            ) : block.headingLevel === "h3" ? (
-              <h3 id={block.id} className="font-heading-xl margin-bottom-1">
-                {block.heading}
-              </h3>
-            ) : (
-              <SectionHeading id={block.id}>{block.heading}</SectionHeading>
-            ))}
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
+          {block.heading && (
+            <ContentHeading
+              heading={block.heading}
+              headingLevel={block.headingLevel}
+              id={block.id}
+            />
+          )}
           {block.paragraphs.map((p, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
             <p key={i}>{p}</p>
@@ -48,19 +78,14 @@ export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
           : [];
 
       return (
-        <Section>
-          {block.heading &&
-            (block.headingLevel === "h4" ? (
-              <h4 id={block.id} className="font-heading-lg margin-bottom-1">
-                {block.heading}
-              </h4>
-            ) : block.headingLevel === "h3" ? (
-              <h3 id={block.id} className="font-heading-xl margin-bottom-1">
-                {block.heading}
-              </h3>
-            ) : (
-              <SectionHeading id={block.id}>{block.heading}</SectionHeading>
-            ))}
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
+          {block.heading && (
+            <ContentHeading
+              heading={block.heading}
+              headingLevel={block.headingLevel}
+              id={block.id}
+            />
+          )}
           {block.showDividerAfterHeading && (
             <div className="border-bottom border-base-lighter margin-bottom-3" />
           )}
@@ -104,7 +129,7 @@ export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
 
     case "note":
       return (
-        <Section>
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
           <div role="note" className="usa-alert usa-alert--info usa-alert--slim margin-bottom-4">
             <div className="usa-alert__body">
               <p className="usa-alert__text">{block.text}</p>
@@ -115,7 +140,7 @@ export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
 
     case "slider":
       return (
-        <Section>
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
           <ImageComparison
             before={block.before}
             after={block.after}
@@ -126,8 +151,10 @@ export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
 
     case "video":
       return (
-        <Section className="display-flex flex-justify-center flex-align-center">
-          {block.title && <h3 className="font-heading-xl margin-bottom-1">{block.title}</h3>}
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
+          {block.heading && (
+            <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
+          )}
           {block.src ? (
             <video controls className="width-full display-block">
               <source src={block.src} />
@@ -144,7 +171,7 @@ export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
 
     case "image":
       return (
-        <Section className="display-flex flex-justify-center flex-align-center">
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
           <Image
             src={block.src}
             alt={block.alt}
@@ -155,19 +182,39 @@ export const ContentBlockRenderer = ({ block }: { block: ContentBlock }) => {
         </Section>
       );
 
-    case "link":
+    case "stacSingleLayer":
       return (
-        <Section>
-          <Link
-            href={block.href}
-            target={block.target}
-            rel={block.rel}
-            variant="text"
-            isExternal={block.target === "_blank"}
-          >
-            {block.label}
-          </Link>
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
+          {block.heading && (
+            <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
+          )}
+          <StacSingleLayerBlock block={block} />
         </Section>
+      );
+
+    case "stacCompare":
+      return (
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
+          {block.heading && (
+            <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
+          )}
+          <StacCompareBlock block={block} />
+        </Section>
+      );
+
+    case "sectionCardSimple":
+      return (
+        <SectionCardSimple
+          isMultiColumnLayout={isMultiColumnLayout}
+          sectionHeading={
+            block.heading && (
+              <SectionHeading {...(block.href ? { href: block.href } : {})}>
+                {block.heading}
+              </SectionHeading>
+            )
+          }
+          cards={typedMap(block.cards, makeCardSimpleProps)}
+        />
       );
   }
 };

@@ -1,5 +1,5 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
-
+import { Fragment } from "react/jsx-runtime";
 import type { TrainingContent } from "@/app/site-config/types";
 
 export const TRAINING__LIFELINES_WILDFIRE_WORKFLOW: TrainingContent = {
@@ -83,13 +83,13 @@ export const TRAINING__LIFELINES_WILDFIRE_WORKFLOW: TrainingContent = {
       paragraphs: [
         "This module was developed by NASA Lifelines, a NASA Disasters initiative that connects NASA Earth observation data and expertise with the humanitarian community to support disaster preparedness, response, and resilience.",
         "NASA Lifelines Data Studios help humanitarians navigate openly available data and resources with a better understanding of exactly what they are looking for and how to use it.",
-        <>
+        <Fragment key="https://nasalifelines.org/data-studios">
           Explore more training resources at NASA Lifelines Data Studios:{" "}
           <Link href="https://nasalifelines.org/data-studios/">
             https://nasalifelines.org/data-studios
           </Link>
           .
-        </>,
+        </Fragment>,
       ],
     },
     {

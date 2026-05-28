@@ -7,7 +7,7 @@ import {
 } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import type { AppRoutes } from "@/.next/types/routes";
-import type { Category, ContentType, IterableItemWithId, Theme } from "./types";
+import type { Category, ContentType, IterableItemWithId, Theme } from "@/app/site-config/types";
 
 const CONTENT_THEMES: Record<Theme, { label: string; color: string; textColor?: string }> = {
   respond: {
@@ -33,15 +33,15 @@ const CONTENT_THEMES: Record<Theme, { label: string; color: string; textColor?: 
 
 const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: string }> = {
   dataset: { route: "/data-gallery", label: "data" },
-  event: { route: "/events", label: "event" },
+  event: { route: "/news-events", label: "event" },
   news: { route: "/news-events", label: "news" },
-  story: { route: "/stories", label: "story" }, // TODO: update route to news-events
-  datastory: { route: "/stories", label: "data story" }, // TODO: update route to news-events
+  story: { route: "/news-events", label: "story" },
+  datastory: { route: "/news-events", label: "data story" },
   training: { route: "/training", label: "training" },
 };
 
 export const makeSimpleTag = (tag: Theme | ContentType | Category) => (
-  <Tag variant="solid" color="primary-lighter">
+  <Tag key={tag} variant="solid" color="primary-lighter">
     {tag}
   </Tag>
 );
@@ -49,15 +49,19 @@ export const makeSimpleTag = (tag: Theme | ContentType | Category) => (
 export const makeThemeTag = (tag: Theme) => {
   const { label, ...rest } = CONTENT_THEMES[tag];
   return (
-    <Tag variant="solid" {...rest}>
+    <Tag key={tag} variant="solid" {...rest}>
       {tag}
     </Tag>
   );
 };
 
-export const makeContentTypeTag = (tag: ContentType) => {
+const makeContentTypeTag = (tag: ContentType) => {
   const { label } = CONTENT_TYPES[tag];
-  return <Tag variant="solid">{label}</Tag>;
+  return (
+    <Tag key={label} variant="solid">
+      {label}
+    </Tag>
+  );
 };
 
 type CardMastheadPropsArgs = Omit<CardProps, "title" | "image" | "colorMode" | "isMasthead"> & {
@@ -87,7 +91,7 @@ export const makeCardMastHeadProps = ({
         ),
       }
     : {}),
-  colorMode: "brand" as const,
+  colorMode: "brand",
   isMastHead: true,
   ...rest,
 });
@@ -151,7 +155,7 @@ export const makeCardDetailedImageLeftProps = ({
   ...rest,
 });
 
-type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "url"> & {
+export type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExternal" | "url"> & {
   id: string;
   contentType: ContentType;
   thumbnailImage: {
