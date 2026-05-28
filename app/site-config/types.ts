@@ -10,7 +10,14 @@ export type IterableItemWithId<T> = T & { id: string };
 
 export type Theme = "respond" | "build" | "prepare" | "recover";
 
-export type Category = "severewx" | "fire" | "heat" | "flood" | "tropical cyclone" | "earthquake";
+export type Category =
+  | "severewx"
+  | "fire"
+  | "heat"
+  | "flood"
+  | "tropical cyclone"
+  | "earthquake"
+  | "winter weather";
 
 export type GalleryRoute = "/data-gallery" | "/news-events" | "/training"; // TODO: update to be dynamic
 
@@ -116,6 +123,9 @@ export type EventContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "event";
   mastheadImage: MastheadImage;
   isLatest?: boolean;
+  date?: string;
+  overview?: OverviewSection;
+  body?: ContentBlock[];
 };
 
 export type ThemeContent = {
@@ -132,4 +142,12 @@ type MastheadImage = {
   alt: string;
   caption?: string;
   attribution?: string;
+};
+
+export type OverviewSection = {
+  region?: string;
+  startDate?: string;
+  disastersType?: string;
+  overviewLink1?: string;
+  overviewLink2?: string;
 };

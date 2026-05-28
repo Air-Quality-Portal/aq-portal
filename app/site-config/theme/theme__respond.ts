@@ -12,7 +12,7 @@ import { DATASTORY__HURRICANE_MILTON_OCTOBER_2024 } from "../datastory/datastory
 import { EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025 } from "../event/event__southern-california-fire-jan-2025";
 import { EVENT__TEXAS_FLOODS_JULY_2025 } from "../event/event__texas-floods-july-2025";
 import { EVENT__TYPHOON_SINLAKU_2026 } from "../event/event__typhoon-sinlaku-2026";
-import { EVENT__US_WINTER_STORM_EVENT_2026 } from "../event/event__us-winter-storm-jan-2026";
+import { EVENT__US_WINTER_STORM_2026 } from "../event/event__us-winter-storm-jan-2026";
 import { STORY__FINDING_FLOODS } from "../story/story__finding-floods";
 import { STORY__SEEING_BEYOND_FLAMES } from "../story/story__seeing-beyond-flames";
 import { STORY__SUPPORTING_COMMUNITIES_HURRICANE_HELENE } from "../story/story__supporting-communities-hurricane-helene";
@@ -62,7 +62,7 @@ export const RESPOND_STORIES: [
 // TODO: these would be fetched based on content id
 export const RESPOND_EVENTS: EventContent[] = [
   EVENT__TYPHOON_SINLAKU_2026,
-  EVENT__US_WINTER_STORM_EVENT_2026,
+  EVENT__US_WINTER_STORM_2026,
   EVENT__TEXAS_FLOODS_JULY_2025,
   EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025,
 ];
