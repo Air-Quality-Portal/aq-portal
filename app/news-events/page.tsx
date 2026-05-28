@@ -6,7 +6,7 @@ import {
 } from "@/app/site-config/content.helpers";
 import { DATASTORIES } from "@/app/site-config/datastory";
 import { NEWS } from "@/app/site-config/news";
-import { NEWS_EVENTS_CARD_MASTHEAD } from "@/app/site-config/news-events/toplevel-page__card-masthead";
+import { NEWS_EVENTS_CARD_MASTHEAD } from "@/app/site-config/news-events/news-events-card-masthead";
 import { STORIES } from "@/app/site-config/story";
 import type { ContentType } from "@/app/site-config/types";
 import { EVENTS } from "../site-config/event";

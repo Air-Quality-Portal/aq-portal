@@ -1,7 +1,7 @@
 import { CardDetailed } from "@teamimpact/veda-ui-blocks";
 import { PageMasthead, Section } from "@/app/components";
 import { TRAININGS, TRAININGS_EXTERNAL } from "@/app/site-config/training";
-import { TRAINING_CARD_MASTHEAD } from "@/app/site-config/training/toplevel-page__card-masthead";
+import { TRAINING_CARD_MASTHEAD } from "@/app/site-config/training/training-card-masthead";
 import { makeCardDetailedProps, makeCardMastHeadProps } from "../site-config/content.helpers";
 
 export default function TrainingCollectionPage() {
