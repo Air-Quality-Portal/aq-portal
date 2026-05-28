@@ -3,15 +3,11 @@ import { CardMini } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
 import { Section, type SectionProps } from "@/app/components";
 import type { IterableItemWithId } from "@/app/site-config/types";
+import { getGridColumnClass } from "./component.helpers";
 
 type SectionCardMiniProps = SectionProps & {
   sectionHeading?: ReactNode;
-  cards: [
-    IterableItemWithId<CardMiniProps>,
-    IterableItemWithId<CardMiniProps>,
-    IterableItemWithId<CardMiniProps>,
-    IterableItemWithId<CardMiniProps>,
-  ];
+  cards: IterableItemWithId<CardMiniProps>[];
 };
 
 export const SectionCardMini = ({
@@ -20,15 +16,13 @@ export const SectionCardMini = ({
   children,
   ...sectionProps
 }: SectionCardMiniProps) => {
+  const gridColumnClass = getGridColumnClass(cards.length);
   return (
     <Section {...sectionProps}>
       {sectionHeading && sectionHeading}
       <div className="grid-row grid-gap-2 margin-bottom-neg-2">
         {cards.map((props) => (
-          <div
-            key={props.id}
-            className="grid-col-12 tablet:grid-col-6 desktop:grid-col-3 margin-bottom-2 height-card-xs"
-          >
+          <div key={props.id} className={`${gridColumnClass} margin-bottom-2 height-card-xs`}>
             <CardMini {...props} />
           </div>
         ))}

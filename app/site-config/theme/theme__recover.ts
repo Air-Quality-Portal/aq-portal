@@ -59,18 +59,13 @@ export const RECOVER_STORIES: [
 ];
 
 // TODO: these would be fetched based on content id
-export const RECOVER_DATASTORIES: [DataStoryContent, DataStoryContent] = [
+export const RECOVER_DATASTORIES: DataStoryContent[] = [
   DATASTORY__HURRICANE_HELENE_SEPTEMBER_2024,
   DATASTORY__HURRICANE_MILTON_OCTOBER_2024,
 ];
 
 // TODO: these would be fetched based on content id
-export const RECOVER_TRAININGS: [
-  TrainingContent | TrainingContentExternal,
-  TrainingContent | TrainingContentExternal,
-  TrainingContent | TrainingContentExternal,
-  TrainingContent | TrainingContentExternal,
-] = [
+export const RECOVER_TRAININGS: (TrainingContent | TrainingContentExternal)[] = [
   TRAINING__LIFELINES_WILDFIRE_WORKFLOW,
   TRAINING__EO_BUILDING_EXPOSURE,
   TRAINING__FUNDAMENTALS_REMOTE_SENSING,
