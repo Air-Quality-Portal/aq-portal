@@ -26,13 +26,9 @@ export const EVENT__TEXAS_FLOODS_JULY_2025: EventContent = {
   },
   body: [
     {
-      type: "list",
+      type: "text",
       id: "overview",
       heading: "Overview",
-      listStyle: "metadata",
-      showDividerAfterHeading: true,
-      showDividerAfterItems: true,
-      items: ["Region: Texas, North America", "Start Date: July 4, 2025", "Disaster Type: Floods"],
       paragraphs: [
         "Beginning July 4, 2025, torrential rainfall from the remnants of Tropical Storm Barry triggered catastrophic flooding across Texas Hill Country, particularly in Kerr County as the Guadalupe River rose rapidly. The floods caused significant loss of life, widespread property damage, power outages, and prompted hundreds of emergency rescues.",
         <>
@@ -48,33 +44,38 @@ export const EVENT__TEXAS_FLOODS_JULY_2025: EventContent = {
       ],
     },
     {
+      type: "sectionCardSimple",
+      heading: "Story of Impact",
+      cards: [
+        {
+          id: "finding-floods",
+          contentType: "story",
+          title: "Finding the Floods",
+          description:
+            "When flooding struck Texas Hill Country, NASA deployed two specialized aircraft to give responders a clearer picture.",
+          thumbnailImage: {
+            src: "/img/story/finding-floods.webp",
+            alt: "Flooded river in Kerrville, Texas showing significant flood waters",
+          },
+          themes: ["respond"],
+        },
+      ],
+    },
+    {
       type: "text",
       id: "explore-uavsar-flood-maps",
       heading: "Explore the UAVSAR Flood Maps",
       paragraphs: [
-        "TODO: Embedded interactive data visualization will be added when flood maps are ready.",
+        "An embedded interactive data visualization will be added when flood maps are ready.",
       ],
     },
     {
       type: "text",
       id: "product-gallery",
       heading: "Product Gallery",
-      paragraphs: ["TODO: Product gallery will be added when imagery products are ready."],
+      paragraphs: ["Product gallery content will be added when imagery products are ready."],
     },
   ],
-  sidebarNavigation: [
-    { id: "overview", label: "Overview" },
-    { id: "explore-uavsar-flood-maps", label: "Explore the UAVSAR Flood Maps" },
-    { id: "product-gallery", label: "Product Gallery" },
-    { id: "resources-learning", label: "Resources & Learning" },
-  ],
-  storyOfImpact: {
-    title: "Finding the Floods",
-    description:
-      "When flooding struck Texas Hill Country, NASA deployed two specialized aircraft to give responders a clearer picture.",
-    href: "/stories/finding-floods",
-    ctaLabel: "Learn More",
-  },
   resourcesLearning: ["fundamentals-remote-sensing", "introduction-to-sar", "eo-building-exposure"],
   relatedContent: ["finding-floods"],
   themes: ["respond"],
