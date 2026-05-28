@@ -13,8 +13,8 @@ export const EVENT__US_WINTER_STORM_2026: EventContent = {
     src: "/img/event/hazard-pattern-swirls.webp",
     alt: "Hazard pattern swirls in shades of blue",
   },
-  themes: [],
-  categories: [],
+  themes: ["respond"],
+  categories: ["winter weather"],
   overview: {
     region: "U.S., North America",
     startDate: "Jan. 23, 2026",
