@@ -37,10 +37,6 @@ export type ContentBlock =
       heading?: string;
       headingLevel?: "h2" | "h3" | "h4";
       items: (string | { label: string; href: string })[];
-      paragraphs?: ReactNode[];
-      listStyle?: "default" | "metadata";
-      showDividerAfterHeading?: boolean;
-      showDividerAfterItems?: boolean;
     }
   | { type: "note"; text: string }
   | { type: "slider"; before: { src: string; alt: string }; after: { src: string; alt: string } }
@@ -137,13 +133,6 @@ export type EventContent = Omit<MinimumCardContent, "contentType"> & {
   date?: string;
   overview?: OverviewSection;
   body?: ContentBlock[];
-  storyOfImpact?: {
-    title: string;
-    description: string;
-    href: string;
-    ctaLabel: string;
-  };
-  sidebarNavigation?: Array<{ id: string; label: string }>;
   resourcesLearning?: string[];
   relatedContent?: string[];
   isLatest?: boolean;

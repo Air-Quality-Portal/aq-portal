@@ -58,25 +58,7 @@ export const ContentBlockRenderer = ({
         </Section>
       );
 
-    case "list": {
-      const metadataDetails =
-        block.listStyle === "metadata"
-          ? block.items
-              .map((item) => {
-                if (typeof item !== "string") return null;
-
-                const separatorIndex = item.indexOf(":");
-                if (separatorIndex === -1) return null;
-
-                const label = item.slice(0, separatorIndex).trim();
-                const value = item.slice(separatorIndex + 1).trim();
-                if (!label || !value) return null;
-
-                return { label, value };
-              })
-              .filter((detail): detail is { label: string; value: string } => detail !== null)
-          : [];
-
+    case "list":
       return (
         <Section isMultiColumnLayout={isMultiColumnLayout}>
           {block.heading && (
@@ -86,46 +68,20 @@ export const ContentBlockRenderer = ({
               id={block.id}
             />
           )}
-          {block.showDividerAfterHeading && (
-            <div className="border-bottom border-base-lighter margin-bottom-3" />
-          )}
-          {metadataDetails.length > 0 ? (
-            <>
-              <dl className="grid-row grid-gap margin-y-0">
-                {metadataDetails.map((detail) => (
-                  <div key={detail.label} className="grid-col-4 margin-bottom-2">
-                    <dt className="text-uppercase text-base-dark font-sans-2xs margin-bottom-05 text-bold">
-                      {detail.label}
-                    </dt>
-                    <dd className="margin-0 font-body-md text-base-darkest">{detail.value}</dd>
-                  </div>
-                ))}
-              </dl>
-              {block.showDividerAfterItems && (
-                <div className="border-bottom border-base-lighter margin-bottom-3" />
-              )}
-            </>
-          ) : (
-            <ul className="usa-list">
-              {block.items.map((item, i) =>
-                typeof item === "string" ? (
-                  // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-                  <li key={i}>{item}</li>
-                ) : (
-                  <li key={item.href}>
-                    <Link href={item.href}>{item.label}</Link>
-                  </li>
-                ),
-              )}
-            </ul>
-          )}
-          {block.paragraphs?.map((paragraph, i) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-            <p key={i}>{paragraph}</p>
-          ))}
+          <ul className="usa-list">
+            {block.items.map((item, i) =>
+              typeof item === "string" ? (
+                // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
+                <li key={i}>{item}</li>
+              ) : (
+                <li key={item.href}>
+                  <Link href={item.href}>{item.label}</Link>
+                </li>
+              ),
+            )}
+          </ul>
         </Section>
       );
-    }
 
     case "note":
       return (

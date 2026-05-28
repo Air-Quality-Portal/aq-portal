@@ -1,6 +1,4 @@
-import { Card, CardSimple, Tag } from "@teamimpact/veda-ui-blocks";
-import type { Route } from "next";
-import Image from "next/image";
+import { CardSimple, Tag } from "@teamimpact/veda-ui-blocks";
 import { notFound } from "next/navigation";
 import {
   ContentBlockRenderer,
@@ -49,27 +47,11 @@ export default async function NewsEventsItemPage(props: PageProps<"/news-events/
 
   const hasEventDetails = contentItem.contentType === "event" && !!contentItem.body?.length;
   const summaryText = contentItem.contentType === "event" ? contentItem.description : undefined;
-  const sidebarNavigation =
-    contentItem.contentType === "event" ? (contentItem.sidebarNavigation ?? []) : [];
-  const defaultActiveSidebarId =
-    sidebarNavigation.find((entry) => entry.id === "overview")?.id ?? sidebarNavigation[0]?.id;
   const mastheadProps = makeCardMastHeadProps(
     hasEventDetails && contentItem.contentType === "event"
       ? { mastheadImage }
       : { mastheadImage, title },
   );
-
-  const storyOfImpactContentId =
-    contentItem.contentType === "event" && contentItem.storyOfImpact
-      ? contentItem.relatedContent?.[0] || contentItem.storyOfImpact.href.replace("/stories/", "")
-      : undefined;
-
-  const storyOfImpactContent =
-    contentItem.contentType === "event" && storyOfImpactContentId
-      ? STORIES.find((story) => story.id === storyOfImpactContentId)
-      : undefined;
-
-  const storyOfImpactImage = storyOfImpactContent?.thumbnailImage ?? contentItem.thumbnailImage;
 
   return (
     <>
@@ -120,43 +102,7 @@ export default async function NewsEventsItemPage(props: PageProps<"/news-events/
               <aside
                 className="bg-base-lightest padding-3 margin-bottom-4 position-sticky"
                 style={{ top: "68px" }}
-              >
-                {!!sidebarNavigation.length && (
-                  <nav aria-label="On this page">
-                    <h2 className="font-sans-2xs text-uppercase text-primary-dark text-bold margin-top-0 margin-bottom-2">
-                      On this page
-                    </h2>
-                    <ul className="usa-list usa-list--unstyled margin-0">
-                      {sidebarNavigation.map((entry) => {
-                        const isActive = entry.id === defaultActiveSidebarId;
-
-                        return (
-                          <li key={entry.id} className="margin-bottom-0 position-relative">
-                            <span
-                              aria-hidden="true"
-                              className={`position-absolute left-0 top-0 bottom-0 ${
-                                isActive ? "bg-primary-dark" : "bg-base-lighter"
-                              }`}
-                              style={{ width: isActive ? "3px" : "1px" }}
-                            />
-                            <a
-                              href={`#${entry.id}`}
-                              aria-current={isActive ? "location" : undefined}
-                              className={`display-block padding-y-05 padding-left-2 text-no-underline text-bold ${
-                                isActive
-                                  ? "text-primary-dark"
-                                  : "text-primary hover:text-primary-dark"
-                              }`}
-                            >
-                              {entry.label}
-                            </a>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </nav>
-                )}
-              </aside>
+              />
             </div>
 
             <div className="grid-col-12 desktop:grid-col-9 margin-top-neg-7">
@@ -164,31 +110,6 @@ export default async function NewsEventsItemPage(props: PageProps<"/news-events/
                 // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
                 <div key={i}>
                   <ContentBlockRenderer block={block} />
-
-                  {"id" in block && block.id === "overview" && contentItem.storyOfImpact && (
-                    <section id="story-of-impact" className="margin-y-7">
-                      <div className="grid-container">
-                        <Card
-                          title={contentItem.storyOfImpact.title}
-                          description={contentItem.storyOfImpact.description}
-                          callToAction={{
-                            href: contentItem.storyOfImpact.href as Route,
-                            label: contentItem.storyOfImpact.ctaLabel,
-                          }}
-                          image={
-                            <Image
-                              {...storyOfImpactImage}
-                              fill
-                              sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 600px"
-                            />
-                          }
-                          imagePosition="right"
-                          colorMode="light"
-                          className="height-card-sm"
-                        />
-                      </div>
-                    </section>
-                  )}
                 </div>
               ))}
 
