@@ -3,6 +3,7 @@ import type { DatasetContent } from "@/app/site-config/types";
 export const DATASET__SENTINEL_2_TRUE_COLOR: DatasetContent = {
   id: "sentinel-2-true-color",
   contentType: "dataset",
+  datasetUrl: "#",
   title: "Sentinel-2 True Color Imagery",
   description:
     "The True Color RGB composite provides a product of how the surface would look to the naked eye from space.",

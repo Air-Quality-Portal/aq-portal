@@ -3,6 +3,7 @@ import type { DatasetContent } from "@/app/site-config/types";
 export const DATASET__SENTINEL_2_SWIR: DatasetContent = {
   id: "sentinel-2-swir",
   contentType: "dataset",
+  datasetUrl: "#",
   title: "Sentinel-2 Shortwave Infrared Imagery",
   description: "Created using SWIR, Near Infrared (NIR), and Red channels for flood detection.",
   thumbnailImage: {

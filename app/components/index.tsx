@@ -10,4 +10,5 @@ export { SectionCardMini } from "./SectionCardMini";
 export { SectionCardSimple } from "./SectionCardSimple";
 export { SectionCardSimpleMosaic } from "./SectionCardSimpleMosaic";
 export { SectionHeading } from "./SectionHeading";
+export { Sidebar } from "./Sidebar";
 export { ThemeTag } from "./ThemeTag";

@@ -1,9 +1,7 @@
 import { notFound } from "next/navigation";
-
-import { ContentBlockRenderer, PageMasthead, Section } from "@/app/components";
+import { ContentBlockRenderer, PageMasthead, Section, Sidebar } from "@/app/components";
 import { makeCardMastHeadProps } from "@/app/site-config/content.helpers";
 import { DATASETS } from "@/app/site-config/dataset";
-import { DatasetSidebar } from "./DatasetSidebar";
 
 export default async function DatasetItemPage(props: PageProps<"/data-gallery/[id]">) {
   const { id } = await props.params;
@@ -19,6 +17,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
     categories,
     body,
     relatedContent: relatedIds = [],
+    contentType,
   } = dataset;
 
   // TODO: Move to content helpers, and broaden to fit any content type use case
@@ -43,7 +42,13 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
       <Section>
         <div className="grid-row grid-gap">
           <div className="grid-col-12 desktop:grid-col-3">
-            <DatasetSidebar themes={themes} categories={categories} relatedContent={relatedItems} />
+            <Sidebar
+              datasetUrl="#"
+              themes={themes}
+              categories={categories}
+              relatedContent={relatedItems}
+              contentType={contentType}
+            />
           </div>
           <div className="grid-col-12 desktop:grid-col-9">
             <h2 className="font-heading-xl margin-top-0 margin-bottom-2">Dataset Details</h2>
