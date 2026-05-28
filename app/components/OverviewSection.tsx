@@ -1,5 +1,6 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
 import type { OverviewSection } from "@/app/site-config/types";
+import { Section } from "./Section";
 
 export const OverviewBlock = ({
   region,
@@ -7,7 +8,8 @@ export const OverviewBlock = ({
   disastersType,
   overviewLink1,
   overviewLink2,
-}: OverviewSection) => {
+  isMultiColumnLayout,
+}: OverviewSection & { isMultiColumnLayout?: boolean }) => {
   const ContainerItem = ({ title, prop }: { title: string; prop: string }) => {
     return (
       <div className="grid-col-4">
@@ -18,7 +20,7 @@ export const OverviewBlock = ({
   };
 
   return (
-    <section className=" margin-bottom-7 grid-container ">
+    <Section isMultiColumnLayout={isMultiColumnLayout} className="margin-top-0">
       <h2 className="font-sans-3xl margin-top-0">Overview</h2>
       <div
         className={`grid-row  padding-y-2 border-top border-base-light ${overviewLink1 || overviewLink2 ? "" : "border-bottom"}`}
@@ -46,6 +48,6 @@ export const OverviewBlock = ({
           )}
         </div>
       ) : null}
-    </section>
+    </Section>
   );
 };

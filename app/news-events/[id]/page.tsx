@@ -29,7 +29,7 @@ export default async function EventItemPage(props: PageProps<"/news-events/[id]"
           </div>
           {/* Main content */}
           <div className={` ${showSidebar ? "grid-col-9" : "grid-col-12"}`}>
-            <OverviewBlock {...event.overview} />
+            <OverviewBlock {...event.overview} isMultiColumnLayout={showSidebar} />
             {body?.map((block, i) => (
               // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
               <ContentBlockRenderer key={i} block={block} isMultiColumnLayout={showSidebar} />
