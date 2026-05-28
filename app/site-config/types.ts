@@ -116,6 +116,9 @@ export type EventContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "event";
   mastheadImage: MastheadImage;
   isLatest?: boolean;
+  date?: string;
+  overview?: OverviewSection;
+  body?: ContentBlock[];
 };
 
 export type ThemeContent = {
@@ -132,4 +135,12 @@ type MastheadImage = {
   alt: string;
   caption?: string;
   attribution?: string;
+};
+
+export type OverviewSection = {
+  region?: string;
+  startDate?: string;
+  disastersType?: string;
+  overviewLink1?: string;
+  overviewLink2?: string;
 };
