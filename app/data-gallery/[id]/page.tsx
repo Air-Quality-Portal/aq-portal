@@ -18,6 +18,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
     body,
     relatedContent: relatedIds = [],
     contentType,
+    datasetUrl,
   } = dataset;
 
   // TODO: Move to content helpers, and broaden to fit any content type use case
@@ -43,7 +44,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
         <div className="grid-row grid-gap">
           <div className="grid-col-12 desktop:grid-col-3">
             <Sidebar
-              datasetUrl="#"
+              datasetUrl={datasetUrl}
               themes={themes}
               categories={categories}
               relatedContent={relatedItems}
