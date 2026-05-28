@@ -1,9 +1,11 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
-import { ImageComparison, Section, SectionHeading } from "@/app/components";
+import { ImageComparison, Section, SectionCardSimple, SectionHeading } from "@/app/components";
+import { StacCompareBlock, StacSingleLayerBlock } from "@/app/components/blocks";
+import { makeCardSimpleProps } from "@/app/site-config/content.helpers";
+import { typedMap } from "@/app/site-config/typed.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
-import { StacCompareBlock, StacSingleLayerBlock } from "./blocks";
 
 function ContentHeading({
   heading,
@@ -134,19 +136,19 @@ export const ContentBlockRenderer = ({
         </Section>
       );
 
-    case "link":
+    case "sectionCardSimple":
       return (
-        <Section>
-          <Link
-            href={block.href}
-            target={block.target}
-            rel={block.rel}
-            variant="text"
-            isExternal={block.target === "_blank"}
-          >
-            {block.label}
-          </Link>
-        </Section>
+        <SectionCardSimple
+          isMultiColumnLayout={isMultiColumnLayout}
+          sectionHeading={
+            block.heading && (
+              <SectionHeading {...(block.href ? { href: block.href } : {})}>
+                {block.heading}
+              </SectionHeading>
+            )
+          }
+          cards={typedMap(block.cards, makeCardSimpleProps)}
+        />
       );
   }
 };

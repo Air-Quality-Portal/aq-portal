@@ -60,7 +60,7 @@ export const RESPOND_STORIES: [
 ];
 
 // TODO: these would be fetched based on content id
-export const RESPOND_EVENTS: [EventContent, EventContent, EventContent, EventContent] = [
+export const RESPOND_EVENTS: EventContent[] = [
   EVENT__TYPHOON_SINLAKU_2026,
   EVENT__US_WINTER_STORM_EVENT_2026,
   EVENT__TEXAS_FLOODS_JULY_2025,
@@ -68,18 +68,13 @@ export const RESPOND_EVENTS: [EventContent, EventContent, EventContent, EventCon
 ];
 
 // TODO: these would be fetched based on content id
-export const RESPOND_DATASTORIES: [DataStoryContent, DataStoryContent] = [
+export const RESPOND_DATASTORIES: DataStoryContent[] = [
   DATASTORY__HURRICANE_HELENE_SEPTEMBER_2024,
   DATASTORY__HURRICANE_MILTON_OCTOBER_2024,
 ];
 
 // TODO: these would be fetched based on content id
-export const RESPOND_TRAININGS: [
-  TrainingContent | TrainingContentExternal,
-  TrainingContent | TrainingContentExternal,
-  TrainingContent | TrainingContentExternal,
-  TrainingContent | TrainingContentExternal,
-] = [
+export const RESPOND_TRAININGS: (TrainingContent | TrainingContentExternal)[] = [
   TRAINING__LIFELINES_WILDFIRE_WORKFLOW,
   TRAINING__EO_BUILDING_EXPOSURE,
   TRAINING__FUNDAMENTALS_REMOTE_SENSING,
