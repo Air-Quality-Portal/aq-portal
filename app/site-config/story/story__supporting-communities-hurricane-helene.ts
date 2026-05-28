@@ -8,8 +8,8 @@ export const STORY__SUPPORTING_COMMUNITIES_HURRICANE_HELENE: StoryContent = {
     src: "/img/story/supporting-communities-hurricane-helene.webp",
     alt: "Nighttime satellite image of Hurricane Helene in 2024 captured by NOAA-20",
   },
-  themes: [],
-  categories: [],
+  themes: ["respond"],
+  categories: ["tropical cyclone", "flood"],
   mastheadImage: {
     src: "/img/story/supporting-communities-hurricane-helene.webp",
     alt: "Nighttime satellite image of Hurricane Helene in 2024 captured by NOAA-20",

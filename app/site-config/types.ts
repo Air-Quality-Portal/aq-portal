@@ -4,13 +4,15 @@ import type {
   StacSingleLayerMapProps,
 } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
-import type { CardSimplePropsArgs } from "./content.helpers";
+import type { CardSimplePropsArgs } from "@/app/site-config/content.helpers";
 
 export type IterableItemWithId<T> = T & { id: string };
 
 export type Theme = "respond" | "build" | "prepare" | "recover";
 
 export type Category = "severewx" | "fire" | "heat" | "flood" | "tropical cyclone" | "earthquake";
+
+export type GalleryRoute = "/data-gallery" | "/news-events" | "/training"; // TODO: update to be dynamic
 
 type GeoConfig = Omit<GeoConfigProviderProps, "children">;
 
@@ -24,7 +26,13 @@ export type ContentBlock =
     }
   | { type: "note"; text: string }
   | { type: "slider"; before: { src: string; alt: string }; after: { src: string; alt: string } }
-  | { type: "video"; src: string; title?: string; caption?: string }
+  | {
+      type: "video";
+      src: string;
+      heading?: string;
+      headingLevel?: "h2" | "h3" | "h4";
+      caption?: string;
+    }
   | {
       type: "image";
       src: string;
@@ -33,11 +41,6 @@ export type ContentBlock =
       height: number;
       maxWidth?: string;
       caption?: string;
-    }
-  | {
-      type: "card-simple";
-      sectionHeading?: ReactNode;
-      cards: IterableItemWithId<CardSimplePropsArgs>[];
     }
   | (StacSingleLayerMapProps &
       GeoConfig & {
@@ -51,7 +54,12 @@ export type ContentBlock =
         heading?: string;
         headingLevel?: "h2" | "h3" | "h4";
       })
-  | { type: "link"; label: string; href: string; target?: string; rel?: string };
+  | {
+      type: "sectionCardSimple";
+      heading?: string;
+      href?: GalleryRoute;
+      cards: CardSimplePropsArgs[];
+    };
 
 type Content =
   | TrainingContent
@@ -127,6 +135,7 @@ export type ThemeContent = {
   subtitle: string;
   mastheadImage: MastheadImage;
   theme: Theme;
+  body: ContentBlock[];
 };
 
 type MastheadImage = {

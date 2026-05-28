@@ -1,6 +1,6 @@
 import {
+  ContentBlockRenderer,
   PageMasthead,
-  Section,
   SectionCardCarousel,
   SectionCardSimple,
   SectionCardSimpleMosaic,
@@ -26,16 +26,19 @@ export default function RecoverPage() {
     <>
       <PageMasthead {...makeCardMastHeadProps({ title, subtitle, theme, mastheadImage })} />
       <SectionCardSimpleMosaic
-        sectionHeading={<SectionHeading href="/news-events">News & Events</SectionHeading>}
+        sectionHeading={
+          <SectionHeading href="/news-events?contenttype=story">Stories of Impact</SectionHeading>
+        }
         cards={typedMap(RECOVER_STORIES, makeCardSimpleProps)}
       />
-      {/* Data Visualization */}
-      <Section>
-        <SectionHeading>Data Visualization</SectionHeading>
-        <p>TODO: Map block</p>
-      </Section>
+      {RECOVER_CONTENT.body.map((block, index) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
+        <ContentBlockRenderer key={index} block={block} />
+      ))}
       <SectionCardCarousel
-        sectionHeading={<SectionHeading href="/stories">Data Stories</SectionHeading>}
+        sectionHeading={
+          <SectionHeading href="/news-events?contenttype=datastory">Data Stories</SectionHeading>
+        }
         cards={typedMap(RECOVER_DATASTORIES, makeCardCarouselProps)}
       />
       <SectionCardSimple

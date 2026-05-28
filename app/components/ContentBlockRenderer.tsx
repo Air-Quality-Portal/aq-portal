@@ -1,10 +1,11 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
+
 import { ImageComparison, Section, SectionCardSimple, SectionHeading } from "@/app/components";
+import { StacCompareBlock, StacSingleLayerBlock } from "@/app/components/blocks";
+import { makeCardSimpleProps } from "@/app/site-config/content.helpers";
+import { typedMap } from "@/app/site-config/typed.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
-import { makeCardSimpleProps } from "../site-config/content.helpers";
-import { typedMap } from "../site-config/typed.helpers";
-import { StacCompareBlock, StacSingleLayerBlock } from "./blocks";
 
 function ContentHeading({
   heading,
@@ -85,7 +86,9 @@ export const ContentBlockRenderer = ({
     case "video":
       return (
         <Section isMultiColumnLayout={isMultiColumnLayout}>
-          {block.title && <h3 className="font-heading-xl margin-bottom-1">{block.title}</h3>}
+          {block.heading && (
+            <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
+          )}
           {block.src ? (
             <video controls className="width-full display-block">
               <source src={block.src} />
@@ -117,14 +120,6 @@ export const ContentBlockRenderer = ({
           </figure>
         </Section>
       );
-    case "card-simple": {
-      return (
-        <SectionCardSimple
-          cards={typedMap(block.cards, makeCardSimpleProps)}
-          sectionHeading={block.sectionHeading}
-        />
-      );
-    }
     case "stacSingleLayer":
       return (
         <Section isMultiColumnLayout={isMultiColumnLayout}>
@@ -134,6 +129,7 @@ export const ContentBlockRenderer = ({
           <StacSingleLayerBlock block={block} />
         </Section>
       );
+
     case "stacCompare":
       return (
         <Section isMultiColumnLayout={isMultiColumnLayout}>
@@ -143,19 +139,20 @@ export const ContentBlockRenderer = ({
           <StacCompareBlock block={block} />
         </Section>
       );
-    case "link":
+
+    case "sectionCardSimple":
       return (
-        <Section>
-          <Link
-            href={block.href}
-            target={block.target}
-            rel={block.rel}
-            variant="text"
-            isExternal={block.target === "_blank"}
-          >
-            {block.label}
-          </Link>
-        </Section>
+        <SectionCardSimple
+          isMultiColumnLayout={isMultiColumnLayout}
+          sectionHeading={
+            block.heading && (
+              <SectionHeading {...(block.href ? { href: block.href } : {})}>
+                {block.heading}
+              </SectionHeading>
+            )
+          }
+          cards={typedMap(block.cards, makeCardSimpleProps)}
+        />
       );
   }
 };

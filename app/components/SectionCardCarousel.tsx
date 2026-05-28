@@ -2,6 +2,7 @@ import { Card, type CardProps } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
 import { Section, type SectionProps } from "@/app/components/";
 import type { IterableItemWithId } from "@/app/site-config/types";
+import { getGridColumnClass } from "./component.helpers";
 
 export type SectionCardCarouselProps = SectionProps & {
   sectionHeading?: ReactNode;
@@ -14,6 +15,8 @@ export const SectionCardCarousel = ({
   children,
   ...sectionProps
 }: SectionCardCarouselProps) => {
+  const gridColumnClass = getGridColumnClass(cards.length, 2);
+
   return (
     <Section {...sectionProps}>
       {sectionHeading && sectionHeading}
@@ -23,7 +26,7 @@ export const SectionCardCarousel = ({
           return (
             <div
               key={card.id}
-              className="grid-col-12 tablet:grid-col-6 margin-bottom-2 display-flex height-card-md"
+              className={`${gridColumnClass} margin-bottom-2 display-flex height-card-md`}
             >
               <Card {...card} />
             </div>

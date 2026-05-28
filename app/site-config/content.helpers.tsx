@@ -7,7 +7,7 @@ import {
 } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import type { AppRoutes } from "@/.next/types/routes";
-import type { Category, ContentType, IterableItemWithId, Theme } from "./types";
+import type { Category, ContentType, IterableItemWithId, Theme } from "@/app/site-config/types";
 
 const CONTENT_THEMES: Record<Theme, { label: string; color: string; textColor?: string }> = {
   respond: {
@@ -33,10 +33,10 @@ const CONTENT_THEMES: Record<Theme, { label: string; color: string; textColor?: 
 
 const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: string }> = {
   dataset: { route: "/data-gallery", label: "data" },
-  event: { route: "/events", label: "event" },
+  event: { route: "/events", label: "event" }, // TODO: update route to news-events once routes have been finalized
   news: { route: "/news-events", label: "news" },
-  story: { route: "/stories", label: "story" }, // TODO: update route to news-events
-  datastory: { route: "/stories", label: "data story" }, // TODO: update route to news-events
+  story: { route: "/stories", label: "story" }, // TODO: update route to news-events once routes have been finalized
+  datastory: { route: "/stories", label: "data story" }, // TODO: update route to news-events once routes have been finalized
   training: { route: "/training", label: "training" },
 };
 

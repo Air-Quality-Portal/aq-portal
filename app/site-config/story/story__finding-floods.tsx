@@ -1,5 +1,4 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
-import { SectionHeading } from "@/app/components";
 import type { StoryContent } from "@/app/site-config/types";
 import { EVENT__TEXAS_FLOODS_JULY_2025 } from "../event/event__texas-floods-july-2025";
 import { EVENT__US_WINTER_STORM_EVENT_2026 } from "../event/event__us-winter-storm-jan-2026";
@@ -113,8 +112,8 @@ export const STORY__FINDING_FLOODS: StoryContent = {
       ],
     },
     {
-      type: "card-simple",
-      sectionHeading: <SectionHeading>CARD SIMPLE Learning & Resources</SectionHeading>,
+      type: "sectionCardSimple",
+      heading: "Learning & Resources",
       cards: [EVENT__TEXAS_FLOODS_JULY_2025, EVENT__US_WINTER_STORM_EVENT_2026],
     },
   ],

@@ -1,7 +1,7 @@
 pre-commit:
   commands:
     check:
-      glob: "*.{ts,tsx,js,jsx,mts,json}"
-      run: pnpm exec biome check {staged_files}
+      glob: "*.{ts,tsx,js,jsx,json,css}"
+      run: pnpm lint:staged {staged_files}
     typecheck:
       run: pnpm typecheck

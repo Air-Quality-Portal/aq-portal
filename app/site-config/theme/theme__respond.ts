@@ -27,6 +27,23 @@ export const RESPOND_CONTENT: ThemeContent = {
   mastheadImage: { alt: "", src: "/img/theme/respond-masthead.webp" },
   subtitle: "Support real-time decisions with timely insights.",
   theme: "respond",
+  body: [
+    {
+      type: "stacCompare",
+      heading: "Data Visualization",
+      initialViewState: { longitude: -82.0, latitude: 33.5, zoom: 10 },
+      leftLayerConfig: {
+        type: "raster",
+        collectionId: "blackmarble-june2026-composite",
+        dateRange: { from: "2024-08-01", to: "2024-08-31" },
+      },
+      rightLayerConfig: {
+        type: "raster",
+        collectionId: "blackmarble-hd-daily-june2026",
+        dateRange: { from: "2024-09-28", to: "2024-09-28" },
+      },
+    },
+  ],
 } as const;
 
 // TODO: these would be fetched based on content id
@@ -43,7 +60,7 @@ export const RESPOND_STORIES: [
 ];
 
 // TODO: these would be fetched based on content id
-export const RESPOND_EVENTS: [EventContent, EventContent, EventContent, EventContent] = [
+export const RESPOND_EVENTS: EventContent[] = [
   EVENT__TYPHOON_SINLAKU_2026,
   EVENT__US_WINTER_STORM_EVENT_2026,
   EVENT__TEXAS_FLOODS_JULY_2025,
@@ -51,18 +68,13 @@ export const RESPOND_EVENTS: [EventContent, EventContent, EventContent, EventCon
 ];
 
 // TODO: these would be fetched based on content id
-export const RESPOND_DATASTORIES: [DataStoryContent, DataStoryContent] = [
+export const RESPOND_DATASTORIES: DataStoryContent[] = [
   DATASTORY__HURRICANE_HELENE_SEPTEMBER_2024,
   DATASTORY__HURRICANE_MILTON_OCTOBER_2024,
 ];
 
 // TODO: these would be fetched based on content id
-export const RESPOND_TRAININGS: [
-  TrainingContent | TrainingContentExternal,
-  TrainingContent | TrainingContentExternal,
-  TrainingContent | TrainingContentExternal,
-  TrainingContent | TrainingContentExternal,
-] = [
+export const RESPOND_TRAININGS: (TrainingContent | TrainingContentExternal)[] = [
   TRAINING__LIFELINES_WILDFIRE_WORKFLOW,
   TRAINING__EO_BUILDING_EXPOSURE,
   TRAINING__FUNDAMENTALS_REMOTE_SENSING,
