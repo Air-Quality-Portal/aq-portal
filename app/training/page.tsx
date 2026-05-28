@@ -1,13 +1,13 @@
 import { CardDetailed } from "@teamimpact/veda-ui-blocks";
 import { PageMasthead, Section } from "@/app/components";
 import { TRAININGS, TRAININGS_EXTERNAL } from "@/app/site-config/training";
-import { PAGE__CARD_MASTHEAD } from "@/app/site-config/training/toplevel-page__card-masthead";
+import { TRAINING_CARD_MASTHEAD } from "@/app/site-config/training/toplevel-page__card-masthead";
 import { makeCardDetailedProps, makeCardMastHeadProps } from "../site-config/content.helpers";
 
 export default function TrainingCollectionPage() {
   return (
     <>
-      <PageMasthead {...makeCardMastHeadProps(PAGE__CARD_MASTHEAD)} />
+      <PageMasthead {...makeCardMastHeadProps(TRAINING_CARD_MASTHEAD)} />
       <Section>
         <div className="grid-row grid-gap">
           {[...TRAININGS, ...TRAININGS_EXTERNAL].map(({ id, categories, themes, ...card }) => (
