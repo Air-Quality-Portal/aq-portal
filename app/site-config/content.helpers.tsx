@@ -71,12 +71,14 @@ type CardMastheadPropsArgs = Omit<CardProps, "title" | "image" | "colorMode" | "
   };
   title?: string;
   theme?: Theme;
+  date?: string;
 };
 
 export const makeCardMastHeadProps = ({
   mastheadImage,
   title,
   theme,
+  date,
   ...rest
 }: CardMastheadPropsArgs): CardProps => ({
   image: <Image {...mastheadImage} sizes="100vw" fill preload={true} />,
@@ -93,6 +95,11 @@ export const makeCardMastHeadProps = ({
     : {}),
   colorMode: "brand",
   isMastHead: true,
+  tag: date ? (
+    <Tag color="primary-lighter" textColor="primary-dark">
+      Updated: {formattedDate(date)}
+    </Tag>
+  ) : undefined,
   ...rest,
 });
 
@@ -267,3 +274,10 @@ export const makeCardCarouselProps = ({
   colorMode: "dark",
   ...rest,
 });
+
+export const formattedDate = (date: string) =>
+  new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
