@@ -1,0 +1,81 @@
+import { Link } from "@teamimpact/veda-ui-blocks";
+import type { EventContent } from "@/app/site-config/types";
+import { TRAINING__EO_PRE_POST_FIRE_MONITORING } from "../training/training__eo-pre-post-fire-monitoring";
+import { TRAINING__FUNDAMENTALS_REMOTE_SENSING } from "../training/training__fundamentals-remote-sensing";
+import { TRAINING__LIFELINES_WILDFIRE_WORKFLOW } from "../training/training__lifelines-wildfire-workflow";
+
+export const EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025: EventContent = {
+  id: "southern-california-fire-jan-2025",
+  contentType: "event",
+  title: "Southern California Wildfires Jan 2025",
+  thumbnailImage: {
+    src: "/img/event/southern-california-fire-jan-2025.webp",
+    alt: "Infrared satellite imagery of the Palisades fire in Malibu, CA, from Jan. 12, 2025.",
+  },
+  mastheadImage: {
+    src: "/img/event/southern-california-fire-jan-2025.webp",
+    alt: "Infrared satellite imagery of the Palisades fire in Malibu, CA, from Jan. 12, 2025.",
+  },
+  themes: ["respond"],
+  categories: ["fire"],
+  overview: {
+    region: " Los Angeles County, North America",
+    startDate: "Jan. 10, 2025",
+    disastersType: "Fires",
+    overviewLink1: "https://www.usa.gov/california-wildfires",
+    overviewLink2: "https://www.fema.gov/california-wildfires",
+  },
+  body: [
+    {
+      type: "text",
+      paragraphs: [
+        "Beginning Jan. 7, 2025, several major wildfires swept through Los Angeles County, driven by powerful Santa Ana winds. The Palisades Fire, Eaton Fire, and Hurst Fire caused widespread destruction across communities from Pacific Palisades to Pasadena and San Fernando, resulting in significant loss of life, property damage, and power outages. The California Governor's Office of Emergency Services (CalOES), the Los Angeles County Office of Emergency Management, and FEMA Region 9 requested NASA's support to address several critical situational awareness needs – including identifying burned structures and damaged critical infrastructure, assessing fire extent, monitoring air quality and methane emissions, and tracking power outages across affected communities.",
+        <>
+          The NASA Disasters Program participated coordination calls hosted by CalOES and FEMA to
+          align with responder priorities. Mapping the scope of destruction was an early focus –
+          NASA shared multispectral imagery, including Sentinel-2, Landsat, and Maxar analysis, to
+          characterize burned areas and potential structural losses, while Synthetic Aperture Radar
+          (SAR){" "}
+          <Link href="https://www.earthdata.nasa.gov/learn/tutorials/change-detection-using-opera-sentinel-1-rtc">
+            Sentinel-1 change detection analysis{" "}
+          </Link>{" "}
+          pinpointed locations of potential infrastructure damage to help guide ground team
+          deployment.{" "}
+          <Link href="https://www.earthdata.nasa.gov/dashboard/data-catalog/nighttime-lights-SE">
+            Black Marble
+          </Link>{" "}
+          nighttime lights near real-time data gave local, state and federal partners a running
+          picture of which communities had likely lost power and how electrical grid restoration
+          progressed across the region. Where smoke and emissions posed possible risks to public
+          health, <Link href="https://tempo.si.edu/">TEMPO</Link> satellite data characterized air
+          quality and assessed adverse health conditions. To assess potential risks of hazardous
+          materials on the ground, NASA deployed{" "}
+          <Link href="https://earth.jpl.nasa.gov/estd-missions/airborne/aviris-3/">AVIRIS-3</Link> –
+          an airborne hyperspectral instrument – collecting 3–4 meter resolution imagery to generate
+          ash fraction maps and detect methane emissions from potential gas leaks.
+        </>,
+      ],
+    },
+    {
+      type: "text",
+      heading: "Explore the AVIRIS-3 Hyperspectral Imagery",
+      paragraphs: [
+        "A large winter storm impacted much of the continental U.S., bringing snow, ice, and subfreezing temperatures. NASA’s Disasters Program is sharing maps and data to support state and federal response agencies.",
+      ],
+    },
+    {
+      type: "text",
+      heading: "Product Gallery",
+      paragraphs: ["TBD"],
+    },
+    {
+      type: "sectionCardSimple",
+      heading: "Resources & Learning",
+      cards: [
+        TRAINING__LIFELINES_WILDFIRE_WORKFLOW,
+        TRAINING__FUNDAMENTALS_REMOTE_SENSING,
+        TRAINING__EO_PRE_POST_FIRE_MONITORING,
+      ],
+    },
+  ],
+};
