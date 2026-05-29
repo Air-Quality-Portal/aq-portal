@@ -69,11 +69,15 @@ export const EVENT__TEXAS_FLOODS_JULY_2025: EventContent = {
       },
     },
     {
-      type: "text",
+      type: "stacSingleLayer",
       heading: "Explore the UAVSAR Flood Maps",
-      paragraphs: [
-        "An embedded interactive data visualization will be added when flood maps are ready.",
-      ],
+      headingLevel: "h3",
+      initialViewState: { longitude: -97.7, latitude: 30.43, zoom: 10 },
+      layerConfig: {
+        type: "raster",
+        collectionId: "uavsar-unetclassified-composite",
+        dateRange: { from: "2025-07-09", to: "2025-07-09" },
+      },
     },
     {
       type: "sectionCardSimple",
