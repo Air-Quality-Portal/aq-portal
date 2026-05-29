@@ -2,11 +2,9 @@ import type { DatasetContent } from "@/app/site-config/types";
 import { DATASET__SENTINEL_2_COLOR_INFRARED } from "./dataset__sentinel-2-color-infrared";
 import { DATASET__SENTINEL_2_SWIR } from "./dataset__sentinel-2-swir";
 import { DATASET__SENTINEL_2_TRUE_COLOR } from "./dataset__sentinel-2-true-color";
-import { DATASET__UMBRA_BACKSCATTER } from "./dataset__umbra-backscatter";
 
 export const DATASETS: DatasetContent[] = [
   DATASET__SENTINEL_2_TRUE_COLOR,
   DATASET__SENTINEL_2_COLOR_INFRARED,
   DATASET__SENTINEL_2_SWIR,
-  DATASET__UMBRA_BACKSCATTER,
 ];
