@@ -64,10 +64,26 @@ export const EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025: EventContent = {
       ],
     },
     {
-      type: "text",
-      heading: "Product Gallery",
-      paragraphs: ["TBD"],
+      type: "stacCompare",
+      heading: "Explore the AVIRIS-3 Hyperspectral Imagery",
+      initialViewState: { longitude: -118.0938, latitude: 34.1866, zoom: 8 },
+      leftLayerConfig: {
+        type: "raster",
+        collectionId: "aviris3-rgb-subdaily",
+        dateRange: { from: "2025-01-11", to: "2025-01-16" },
+      },
+      rightLayerConfig: {
+        type: "raster",
+        collectionId: "aviris3-rgb-subdaily",
+        dateRange: { from: "2025-01-11", to: "2025-01-16" },
+      },
     },
+    // {
+    //   //TO DO: this needs to be transalted to product gallery section
+    //   type: "sectionCardSimple",
+    //   heading: "Product Gallery",
+    //   cards: [DATASET__SENTINEL_2_TRUE_COLOR, DATASET__SENTINEL_2_SWIR],
+    // },
     {
       type: "sectionCardSimple",
       heading: "Resources & Learning",
