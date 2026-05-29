@@ -64,12 +64,12 @@ export const STORY__FINDING_FLOODS: StoryContent = {
       type: "text",
       paragraphs: [
         <>
-          NASA’s <Link href="https://scifli.larc.nasa.gov/about/dynamite/">UAVSAR</Link> instrument
-          tackled a different challenge: the region's dense tree canopy. UAVSAR uses L-band radar –
-          a longer wavelength than most satellite synthetic aperture radar (SAR) systems – which can
-          pass through vegetation to detect water pooled beneath the trees. While conventional radar
-          sees only treetops, UAVSAR returned a signal from the forest floor, revealing inundation
-          that would otherwise go unmeasured. Flying aboard a Gulfstream III out of NASA's Armstrong
+          NASA’s <Link href="https://uavsar.jpl.nasa.gov/">UAVSAR</Link> instrument tackled a
+          different challenge: the region's dense tree canopy. UAVSAR uses L-band radar – a longer
+          wavelength than most satellite synthetic aperture radar (SAR) systems – which can pass
+          through vegetation to detect water pooled beneath the trees. While conventional radar sees
+          only treetops, UAVSAR returned a signal from the forest floor, revealing inundation that
+          would otherwise go unmeasured. Flying aboard a Gulfstream III out of NASA's Armstrong
           Flight Research Center, the instrument covered the Guadalupe, San Gabriel, and Colorado
           River basins across three days of flights, providing the first publicly available observed
           flood maps of the disaster.
