@@ -24,12 +24,16 @@ export default async function EventItemPage(props: PageProps<"/news-events/[id]"
         <div className="grid-row grid-gap">
           {/* Sidebar */}
           {/* TO DO: DatasetSidebar will need to be elevated to a general sidebar component this will also be placement for the inpage navigation once ready*/}
-          <div className="grid-col-12 desktop:grid-col-3">
-            <DatasetSidebar themes={themes} categories={categories} />
-          </div>
+          {showSidebar && (
+            <div className="grid-col-12 desktop:grid-col-3">
+              <DatasetSidebar themes={themes} categories={categories} />
+            </div>
+          )}
           {/* Main content */}
-          <div className={` ${showSidebar ? "grid-col-9" : "grid-col-12"}`}>
-            <OverviewBlock {...event.overview} isMultiColumnLayout={showSidebar} />
+          <div className={`grid-col-12${showSidebar ? " desktop:grid-col-9" : ""}`}>
+            {event.overview && (
+              <OverviewBlock {...event.overview} isMultiColumnLayout={showSidebar} />
+            )}
             {body?.map((block, i) => (
               // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
               <ContentBlockRenderer key={i} block={block} isMultiColumnLayout={showSidebar} />
