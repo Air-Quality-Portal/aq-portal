@@ -62,11 +62,7 @@ export const ContentBlockRenderer = ({
       return (
         <Section isMultiColumnLayout={isMultiColumnLayout}>
           {block.heading && (
-            <ContentHeading
-              heading={block.heading}
-              headingLevel={block.headingLevel}
-              id={block.id}
-            />
+            <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
           )}
           <ul className="usa-list">
             {block.items.map((item, i) =>
