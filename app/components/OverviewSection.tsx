@@ -2,6 +2,13 @@ import { Link } from "@teamimpact/veda-ui-blocks";
 import type { OverviewSection } from "@/app/site-config/types";
 import { Section } from "./Section";
 
+const ContainerItem = ({ title, prop }: { title: string; prop: string }) => (
+  <div className="grid-col-4">
+    <div className="font-body-md margin-bottom-1 text-semibold">{title}</div>
+    <span className="padding-top-1">{prop}</span>
+  </div>
+);
+
 export const OverviewBlock = ({
   region,
   startDate,
@@ -10,20 +17,11 @@ export const OverviewBlock = ({
   overviewLink2,
   isMultiColumnLayout,
 }: OverviewSection & { isMultiColumnLayout?: boolean }) => {
-  const ContainerItem = ({ title, prop }: { title: string; prop: string }) => {
-    return (
-      <div className="grid-col-4">
-        <div className="font-body-md margin-bottom-1 text-semibold">{title}</div>
-        <span className="padding-t-1">{prop}</span>
-      </div>
-    );
-  };
-
   return (
     <Section isMultiColumnLayout={isMultiColumnLayout} className="margin-top-0">
       <h2 className="font-sans-3xl margin-top-0">Overview</h2>
       <div
-        className={`grid-row  padding-y-2 border-top border-base-light ${overviewLink1 || overviewLink2 ? "" : "border-bottom"}`}
+        className={`grid-row padding-y-2 border-top border-base-light ${overviewLink1 || overviewLink2 ? "" : "border-bottom"}`}
       >
         {region && <ContainerItem title="Region" prop={region} />}
         {startDate && <ContainerItem title="Start Date" prop={startDate} />}
