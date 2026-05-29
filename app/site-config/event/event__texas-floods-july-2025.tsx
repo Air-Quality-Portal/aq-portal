@@ -58,7 +58,7 @@ export const EVENT__TEXAS_FLOODS_JULY_2025: EventContent = {
         },
         image: (
           <Image
-            alt="Earth from space"
+            alt="When flooding struck Texas Hill Country, NASA deployed two specialized aircraft to give responders a clearer picture."
             src="/img/story/finding-floods.webp"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
             fill
