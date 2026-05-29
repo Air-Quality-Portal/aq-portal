@@ -102,7 +102,7 @@ export const makeCardMastHeadProps = ({
   ...rest,
 });
 
-type CardDetailedPropsArgs = Omit<
+export type CardDetailedPropsArgs = Omit<
   CardDetailedProps,
   "image" | "imagePosition" | "tags" | "callToAction"
 > & {
@@ -113,15 +113,37 @@ type CardDetailedPropsArgs = Omit<
     src: string;
   };
   tags?: (Theme | ContentType | Category)[];
+  theme?: Theme;
+  themes?: Theme[];
+  categories?: Category[];
   url?: string;
   [key: string]: unknown;
 };
+
+const consolidateCardDetailTags = ({
+  tags,
+  theme,
+  themes,
+  categories,
+}: {
+  tags?: (Theme | ContentType | Category)[];
+  theme?: Theme;
+  themes?: Theme[];
+  categories?: Category[];
+}) => [
+  ...(tags ?? []).map((tag) => makeSimpleTag(tag)),
+  ...(theme ? [makeThemeTag(theme)] : (themes ?? []).map((themedTag) => makeThemeTag(themedTag))),
+  ...(categories ?? []).map((category) => makeSimpleTag(category)),
+];
 
 export const makeCardDetailedProps = ({
   id,
   contentType,
   thumbnailImage,
   tags,
+  theme,
+  themes,
+  categories,
   url,
   ...rest
 }: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => ({
@@ -134,26 +156,28 @@ export const makeCardDetailedProps = ({
     />
   ),
   imagePosition: "top",
-  tags: (tags ?? []).map((t) => makeSimpleTag(t)),
+  tags: consolidateCardDetailTags({ tags, theme, themes, categories }),
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `view ${CONTENT_TYPES[contentType].label}`,
   },
   ...rest,
 });
-
 export const makeCardDetailedImageLeftProps = ({
   id,
   contentType,
   thumbnailImage,
   tags,
+  theme,
+  themes,
+  categories,
   url,
   ...rest
 }: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => ({
   id,
   image: <Image {...thumbnailImage} fill sizes="200px" />,
   imagePosition: "left",
-  tags: (tags ?? []).map((t) => makeSimpleTag(t)),
+  tags: consolidateCardDetailTags({ tags, theme, themes, categories }),
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `view ${CONTENT_TYPES[contentType].label}`,
