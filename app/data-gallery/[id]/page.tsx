@@ -43,7 +43,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
       <Section>
         <div className="grid-row grid-gap">
           <div className="grid-col-12 desktop:grid-col-3">
-            {/* TO DO: DatasetSidebar needs to be updated to a generic sidebare component */}
+            {/* TO DO: DatasetSidebar needs to be updated to a generic sidebar component */}
             <DatasetSidebar themes={themes} categories={categories} relatedContent={relatedItems} />
           </div>
           <div className="grid-col-12 desktop:grid-col-9">
