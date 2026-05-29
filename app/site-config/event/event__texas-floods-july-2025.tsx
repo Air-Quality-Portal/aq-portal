@@ -1,5 +1,9 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
+import Image from "next/image";
 import type { EventContent } from "@/app/site-config/types";
+import { TRAINING__EO_BUILDING_EXPOSURE } from "../training/training__eo-building-exposure";
+import { TRAINING__FUNDAMENTALS_REMOTE_SENSING } from "../training/training__fundamentals-remote-sensing";
+import { TRAINING__INTRODUCTION_TO_SAR } from "../training/training__introduction-to-sar";
 
 export const EVENT__TEXAS_FLOODS_JULY_2025: EventContent = {
   id: "texas-floods-july-2025",
@@ -44,22 +48,26 @@ export const EVENT__TEXAS_FLOODS_JULY_2025: EventContent = {
       ],
     },
     {
-      type: "sectionCardSimple",
-      heading: "Story of Impact",
-      cards: [
-        {
-          id: "finding-floods",
-          contentType: "story",
-          title: "Finding the Floods",
-          description:
-            "When flooding struck Texas Hill Country, NASA deployed two specialized aircraft to give responders a clearer picture.",
-          thumbnailImage: {
-            src: "/img/story/finding-floods.webp",
-            alt: "Flooded river in Kerrville, Texas showing significant flood waters",
-          },
-          themes: ["respond"],
+      type: "ctaCard",
+      card: {
+        title: "Finding the Floods",
+        description:
+          "When flooding struck Texas Hill Country, NASA deployed two specialized aircraft to give responders a clearer picture.",
+        callToAction: {
+          label: "Learn More",
+          href: "/stories/finding-floods",
         },
-      ],
+        image: (
+          <Image
+            alt="Earth from space"
+            src="/img/story/finding-floods.webp"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
+            fill
+            style={{ objectFit: "cover" }}
+          />
+        ),
+        imagePosition: "right",
+      },
     },
     {
       type: "text",
@@ -75,9 +83,16 @@ export const EVENT__TEXAS_FLOODS_JULY_2025: EventContent = {
       heading: "Product Gallery",
       paragraphs: ["Product gallery content will be added when imagery products are ready."],
     },
+    {
+      type: "sectionCardSimple",
+      heading: "Resources & Learning",
+      cards: [
+        TRAINING__FUNDAMENTALS_REMOTE_SENSING,
+        TRAINING__INTRODUCTION_TO_SAR,
+        TRAINING__EO_BUILDING_EXPOSURE,
+      ],
+    },
   ],
-  resourcesLearning: ["fundamentals-remote-sensing", "introduction-to-sar", "eo-building-exposure"],
-  relatedContent: ["finding-floods"],
   themes: ["respond"],
   categories: ["flood"],
 };

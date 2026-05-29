@@ -1,4 +1,5 @@
 import type {
+  CardProps,
   GeoConfigProviderProps,
   StacCompareMapProps,
   StacSingleLayerMapProps,
@@ -73,6 +74,10 @@ export type ContentBlock =
       heading?: string;
       href?: GalleryRoute;
       cards: CardSimplePropsArgs[];
+    }
+  | {
+      type: "ctaCard";
+      card: CardProps;
     };
 
 type Content =
@@ -144,11 +149,8 @@ export type EventContent = Omit<MinimumCardContent, "contentType"> & {
   date?: string;
   overview?: OverviewSection;
   body?: ContentBlock[];
-  resourcesLearning?: string[];
   relatedContent?: string[];
 };
-
-export type DetailPageContent = StoryContent | DataStoryContent | NewsContent | EventContent;
 
 export type ThemeContent = {
   id: string;

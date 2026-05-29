@@ -1,4 +1,4 @@
-import { Link } from "@teamimpact/veda-ui-blocks";
+import { Card, Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
 import { ImageComparison, Section, SectionCardSimple, SectionHeading } from "@/app/components";
@@ -177,6 +177,15 @@ export const ContentBlockRenderer = ({
           }
           cards={typedMap(block.cards, makeCardSimpleProps)}
         />
+      );
+
+    case "ctaCard":
+      return (
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
+          <div className="grid-row">
+            <Card {...block.card} />
+          </div>
+        </Section>
       );
   }
 };

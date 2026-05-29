@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" style={{ scrollPaddingTop: "5rem" }}>
+    <html lang="en">
       <body
         className="minh-viewport"
         style={{
