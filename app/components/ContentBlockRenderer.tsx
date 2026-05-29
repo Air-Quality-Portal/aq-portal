@@ -161,7 +161,6 @@ export const ContentBlockRenderer = ({
         />
       );
     case "sectionProductGallery":
-      console.log("ContentBlockRenderer sectionProductGallery", block.cards);
       return (
         <SectionProdcutGallery
           isMultiColumnLayout={isMultiColumnLayout}
