@@ -10,27 +10,17 @@ import type { ContentBlock } from "@/app/site-config/types";
 function ContentHeading({
   heading,
   headingLevel,
-  id,
 }: {
   heading: string;
   headingLevel?: "h2" | "h3" | "h4";
-  id?: string;
 }) {
   if (headingLevel === "h4") {
-    return (
-      <h4 id={id} className="font-heading-lg margin-bottom-1">
-        {heading}
-      </h4>
-    );
+    return <h4 className="font-heading-lg margin-bottom-1">{heading}</h4>;
   }
   if (headingLevel === "h3") {
-    return (
-      <h3 id={id} className="font-heading-xl margin-bottom-1">
-        {heading}
-      </h3>
-    );
+    return <h3 className="font-heading-xl margin-bottom-1">{heading}</h3>;
   }
-  return <SectionHeading id={id}>{heading}</SectionHeading>;
+  return <SectionHeading>{heading}</SectionHeading>;
 }
 
 export const ContentBlockRenderer = ({
@@ -45,11 +35,7 @@ export const ContentBlockRenderer = ({
       return (
         <Section isMultiColumnLayout={isMultiColumnLayout}>
           {block.heading && (
-            <ContentHeading
-              heading={block.heading}
-              headingLevel={block.headingLevel}
-              id={block.id}
-            />
+            <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
           )}
           {block.paragraphs.map((p, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders

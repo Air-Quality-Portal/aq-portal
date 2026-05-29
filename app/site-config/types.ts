@@ -27,14 +27,12 @@ type GeoConfig = Omit<GeoConfigProviderProps, "children">;
 export type ContentBlock =
   | {
       type: "text";
-      id?: string;
       heading?: string;
       headingLevel?: "h2" | "h3" | "h4";
       paragraphs: ReactNode[];
     }
   | {
       type: "list";
-      id?: string;
       heading?: string;
       headingLevel?: "h2" | "h3" | "h4";
       items: (string | { label: string; href: string })[];
