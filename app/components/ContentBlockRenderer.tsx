@@ -114,7 +114,11 @@ export const ContentBlockRenderer = ({
               height={block.height}
               style={{ width: block.maxWidth ?? "100%", height: "auto" }}
             />
-            <figcaption className="font-body-sm text-base margin-top-1">{block.caption}</figcaption>
+            {block.caption && (
+              <figcaption className="font-body-sm text-base margin-top-1">
+                {block.caption}
+              </figcaption>
+            )}
           </figure>
         </Section>
       );
