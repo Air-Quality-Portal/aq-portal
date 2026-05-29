@@ -12,7 +12,6 @@ export const STORY__ESTIMATING_LOSS_RECOVERY: StoryContent = {
     src: "/img/story/estimating-loss-recovery.webp",
     alt: "Community recovery efforts in Mayfield after disaster, showing rebuilding in progress",
   },
-  themes: [],
-  categories: [],
-  body: [],
+  themes: ["recover"],
+  categories: ["severewx"],
 };
