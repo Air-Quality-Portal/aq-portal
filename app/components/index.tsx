@@ -2,6 +2,7 @@ export * from "./blocks";
 export { ContentBlockRenderer } from "./ContentBlockRenderer";
 export { HeaderWithCurrentPath } from "./HeaderWithCurrentPath";
 export { ImageComparison } from "./ImageComparison";
+export { OverviewBlock } from "./OverviewSection";
 export { PageMasthead } from "./PageMasthead";
 export { PageStatus } from "./PageStatus";
 export { Section, type SectionProps } from "./Section";
