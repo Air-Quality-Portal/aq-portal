@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { ContentBlockRenderer, Section, ThemeTag } from "@/app/components";
+import { formattedDate } from "@/app/site-config/content.helpers";
 import { TRAININGS } from "@/app/site-config/training";
 
 export default async function TrainingItemPage(props: PageProps<"/training/[id]">) {
@@ -11,17 +12,10 @@ export default async function TrainingItemPage(props: PageProps<"/training/[id]"
 
   if (!training) notFound();
 
-  // TODO: move to content helpers
-  const formattedDate = new Date(training.date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-
   return (
     <>
       {/* Hero */}
-      <Section className="margin-top-4 margin-bottom-0">
+      <Section>
         <Card
           image={
             <Image
@@ -29,17 +23,17 @@ export default async function TrainingItemPage(props: PageProps<"/training/[id]"
               alt={training.mastheadImage.alt}
               fill
               preload={true}
-              sizes="(max-width: 1024px) 100vw, 1024px"
-              style={{ objectFit: "cover" }}
+              sizes="(max-width: 1400px) 100vw, 1400px"
             />
           }
+          imagePosition="cover"
           className="minh-masthead"
         />
 
         {/* Full-width title and date */}
         <h1 className="font-heading-2xl margin-bottom-2">{training.title}</h1>
         <Tag color="primary-lighter" textColor="primary-dark">
-          Updated: {formattedDate}
+          Updated: {formattedDate(training.date)}
         </Tag>
       </Section>
 
