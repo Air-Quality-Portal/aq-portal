@@ -47,7 +47,15 @@ export type ContentBlock =
       headingLevel?: "h2" | "h3" | "h4";
       caption?: string;
     }
-  | { type: "image"; src: string; alt: string; width: number; height: number; maxWidth?: string }
+  | {
+      type: "image";
+      src: string;
+      alt: string;
+      width: number;
+      height: number;
+      maxWidth?: string;
+      caption?: string;
+    }
   | (StacSingleLayerMapProps &
       GeoConfig & {
         type: "stacSingleLayer";
@@ -118,7 +126,9 @@ export type NewsContent = Omit<MinimumCardContent, "contentType"> & {
 
 export type StoryContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "story";
+  date?: string;
   mastheadImage: MastheadImage;
+  body?: ContentBlock[];
 };
 
 export type DataStoryContent = Omit<MinimumCardContent, "contentType"> & {
@@ -129,13 +139,13 @@ export type DataStoryContent = Omit<MinimumCardContent, "contentType"> & {
 export type EventContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "event";
   mastheadImage: MastheadImage;
-  bannerImage?: MastheadImage;
+  isLatest?: boolean;
+  url?: string;
   date?: string;
   overview?: OverviewSection;
   body?: ContentBlock[];
   resourcesLearning?: string[];
   relatedContent?: string[];
-  isLatest?: boolean;
 };
 
 export type DetailPageContent = StoryContent | DataStoryContent | NewsContent | EventContent;
