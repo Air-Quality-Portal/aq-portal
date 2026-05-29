@@ -4,7 +4,7 @@ import type {
   StacSingleLayerMapProps,
 } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
-import type { CardSimplePropsArgs } from "@/app/site-config/content.helpers";
+import type { CardDetailedPropsArgs, CardSimplePropsArgs } from "@/app/site-config/content.helpers";
 
 export type IterableItemWithId<T> = T & { id: string };
 
@@ -66,6 +66,12 @@ export type ContentBlock =
       heading?: string;
       href?: GalleryRoute;
       cards: CardSimplePropsArgs[];
+    }
+  | {
+      type: "sectionProductGallery";
+      heading?: string;
+      href?: GalleryRoute;
+      cards: CardDetailedPropsArgs[];
     };
 
 type Content =

@@ -3,9 +3,13 @@ import Image from "next/image";
 
 import { ImageComparison, Section, SectionCardSimple, SectionHeading } from "@/app/components";
 import { StacCompareBlock, StacSingleLayerBlock } from "@/app/components/blocks";
-import { makeCardSimpleProps } from "@/app/site-config/content.helpers";
+import {
+  makeCardDetailedImageLeftProps,
+  makeCardSimpleProps,
+} from "@/app/site-config/content.helpers";
 import { typedMap } from "@/app/site-config/typed.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
+import { SectionProdcutGallery } from "./SectionProductGallery";
 
 function ContentHeading({
   heading,
@@ -154,6 +158,21 @@ export const ContentBlockRenderer = ({
             )
           }
           cards={typedMap(block.cards, makeCardSimpleProps)}
+        />
+      );
+    case "sectionProductGallery":
+      console.log("ContentBlockRenderer sectionProductGallery", block.cards);
+      return (
+        <SectionProdcutGallery
+          isMultiColumnLayout={isMultiColumnLayout}
+          sectionHeading={
+            block.heading && (
+              <SectionHeading {...(block.href ? { href: block.href } : {})}>
+                {block.heading}
+              </SectionHeading>
+            )
+          }
+          cards={typedMap(block.cards, makeCardDetailedImageLeftProps)}
         />
       );
   }
