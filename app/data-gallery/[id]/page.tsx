@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
 
 import { ContentBlockRenderer, PageMasthead, Section } from "@/app/components";
-import { makeCardMastHeadProps } from "@/app/site-config/content.helpers";
+import { CONTENT_TYPES, makeCardMastHeadProps } from "@/app/site-config/content.helpers";
 import { DATASETS } from "@/app/site-config/dataset";
+import { EVENTS } from "@/app/site-config/event";
 import { DatasetSidebar } from "./DatasetSidebar";
 
 export default async function DatasetItemPage(props: PageProps<"/data-gallery/[id]">) {
@@ -24,13 +25,13 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
   // TODO: Move to content helpers, and broaden to fit any content type use case
   // Can related content be of a different content type?
   const relatedItems = relatedIds.flatMap((relId) => {
-    const rel = DATASETS.find((d) => d.id === relId);
+    const rel = DATASETS.find((d) => d.id === relId) || EVENTS.find((e) => e.id === relId);
     if (!rel) return [];
     return [
       {
         id: rel.id,
         title: rel.title,
-        href: `/data-gallery/${rel.id}`,
+        href: `${CONTENT_TYPES[rel.contentType].route}/${rel.id}`,
         themes: rel.themes,
         categories: rel.categories,
       },
