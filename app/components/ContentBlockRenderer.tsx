@@ -106,16 +106,22 @@ export const ContentBlockRenderer = ({
     case "image":
       return (
         <Section isMultiColumnLayout={isMultiColumnLayout}>
-          <Image
-            src={block.src}
-            alt={block.alt}
-            width={block.width}
-            height={block.height}
-            style={{ width: block.maxWidth ?? "100%", height: "auto" }}
-          />
+          <figure>
+            <Image
+              src={block.src}
+              alt={block.alt}
+              width={block.width}
+              height={block.height}
+              style={{ width: block.maxWidth ?? "100%", height: "auto" }}
+            />
+            {block.caption && (
+              <figcaption className="font-body-sm text-base margin-top-1">
+                {block.caption}
+              </figcaption>
+            )}
+          </figure>
         </Section>
       );
-
     case "stacSingleLayer":
       return (
         <Section isMultiColumnLayout={isMultiColumnLayout}>

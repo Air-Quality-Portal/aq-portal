@@ -6,7 +6,6 @@ import {
   Tag,
 } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-import type { AppRoutes } from "@/.next/types/routes";
 import type { Category, ContentType, IterableItemWithId, Theme } from "@/app/site-config/types";
 
 const CONTENT_THEMES: Record<Theme, { label: string; color: string; textColor?: string }> = {
@@ -31,11 +30,11 @@ const CONTENT_THEMES: Record<Theme, { label: string; color: string; textColor?: 
   },
 };
 
-const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: string }> = {
+const CONTENT_TYPES: Record<ContentType, { route: string; label: string }> = {
   dataset: { route: "/data-gallery", label: "data" },
   event: { route: "/news-events", label: "event" },
   news: { route: "/news-events", label: "news" },
-  story: { route: "/news-events", label: "story" },
+  story: { route: "/stories", label: "story" },
   datastory: { route: "/news-events", label: "data story" },
   training: { route: "/training", label: "training" },
 };
@@ -71,12 +70,14 @@ type CardMastheadPropsArgs = Omit<CardProps, "title" | "image" | "colorMode" | "
   };
   title?: string;
   theme?: Theme;
+  date?: string;
 };
 
 export const makeCardMastHeadProps = ({
   mastheadImage,
   title,
   theme,
+  date,
   ...rest
 }: CardMastheadPropsArgs): CardProps => ({
   image: <Image {...mastheadImage} sizes="100vw" fill preload={true} />,
@@ -93,6 +94,11 @@ export const makeCardMastHeadProps = ({
     : {}),
   colorMode: "brand",
   isMastHead: true,
+  tag: date ? (
+    <Tag color="primary-lighter" textColor="primary-dark">
+      Updated: {formattedDate(date)}
+    </Tag>
+  ) : undefined,
   ...rest,
 });
 
@@ -267,3 +273,10 @@ export const makeCardCarouselProps = ({
   colorMode: "dark",
   ...rest,
 });
+
+export const formattedDate = (date: string) =>
+  new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
