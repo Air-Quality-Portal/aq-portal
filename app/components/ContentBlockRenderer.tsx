@@ -9,7 +9,7 @@ import {
 } from "@/app/site-config/content.helpers";
 import { typedMap } from "@/app/site-config/typed.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
-import { SectionProdcutGallery } from "./SectionProductGallery";
+import { SectionProductGallery } from "./SectionProductGallery";
 
 function ContentHeading({
   heading,
@@ -162,7 +162,7 @@ export const ContentBlockRenderer = ({
       );
     case "sectionProductGallery":
       return (
-        <SectionProdcutGallery
+        <SectionProductGallery
           isMultiColumnLayout={isMultiColumnLayout}
           sectionHeading={
             block.heading && (

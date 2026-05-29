@@ -9,7 +9,7 @@ type SectionProductGallery = SectionProps & {
   cards: IterableItemWithId<CardDetailedProps>[];
 };
 
-export const SectionProdcutGallery = ({
+export const SectionProductGallery = ({
   sectionHeading,
   cards,
   children,
