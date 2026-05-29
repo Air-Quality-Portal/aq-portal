@@ -1,6 +1,11 @@
 import { notFound } from "next/navigation";
-import { ContentBlockRenderer, OverviewBlock, PageMasthead, Section } from "@/app/components";
-import { DatasetSidebar } from "@/app/data-gallery/[id]/DatasetSidebar";
+import {
+  ContentBlockRenderer,
+  OverviewBlock,
+  PageMasthead,
+  Section,
+  Sidebar,
+} from "@/app/components";
 import { makeCardMastHeadProps } from "@/app/site-config/content.helpers";
 import { EVENTS } from "@/app/site-config/event";
 
@@ -12,7 +17,7 @@ export default async function EventItemPage(props: PageProps<"/news-events/[id]"
   if (!event) notFound();
   //TO DO: this will need to account for inpage navigation once implements
   const showSidebar = event.themes.length > 0 || event.categories.length > 0;
-  const { title, description, mastheadImage, themes, categories, body, date } = event;
+  const { title, description, mastheadImage, themes, categories, body, date, contentType } = event;
 
   return (
     <>
@@ -26,7 +31,7 @@ export default async function EventItemPage(props: PageProps<"/news-events/[id]"
           {/* TO DO: DatasetSidebar will need to be elevated to a general sidebar component this will also be placement for the inpage navigation once ready*/}
           {showSidebar && (
             <div className="grid-col-12 desktop:grid-col-3">
-              <DatasetSidebar themes={themes} categories={categories} />
+              <Sidebar themes={themes} categories={categories} contentType={contentType} />
             </div>
           )}
           {/* Main content */}
