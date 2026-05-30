@@ -15,12 +15,14 @@ export default async function NewsEventsItemPage(props: PageProps<"/news-events/
 
   if (!contentItem) notFound();
 
-  const { contentType, title, mastheadImage, themes, categories, body } = contentItem;
+  const { contentType } = contentItem;
 
   // event page layout
   if (contentType === "event") return EventItemPage(contentItem);
 
   // story, datastory, news page layout
+  const { title, mastheadImage, themes, categories, body } = contentItem;
+
   return (
     <>
       {/* Hero */}
