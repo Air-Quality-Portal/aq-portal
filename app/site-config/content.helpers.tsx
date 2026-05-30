@@ -34,7 +34,7 @@ export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }
   dataset: { route: "/data-gallery", label: "data" },
   event: { route: "/news-events", label: "event" },
   news: { route: "/news-events", label: "news" },
-  story: { route: "/stories", label: "story" },
+  story: { route: "/news-events", label: "story" },
   datastory: { route: "/news-events", label: "data story" },
   training: { route: "/training", label: "training" },
 };
