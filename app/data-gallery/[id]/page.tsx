@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { ContentBlockRenderer, PageMasthead, Section } from "@/app/components";
+import { ContentBlockRenderer, PageMasthead, PageStatus, Section } from "@/app/components";
 import { CONTENT_TYPES, makeCardMastHeadProps } from "@/app/site-config/content.helpers";
 import { DATASETS } from "@/app/site-config/dataset";
 import { EVENTS } from "@/app/site-config/event";
@@ -41,21 +41,38 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
   return (
     <>
       <PageMasthead {...makeCardMastHeadProps({ mastheadImage, title, description })} />
-      <Section>
-        <div className="grid-row grid-gap">
-          <div className="grid-col-12 desktop:grid-col-3">
-            {/* TO DO: DatasetSidebar needs to be updated to a generic sidebar component */}
-            <DatasetSidebar themes={themes} categories={categories} relatedContent={relatedItems} />
+
+      {/* Placeholder content only */}
+      {!body && (
+        <PageStatus
+          label={`Dataset Item: ${id}`}
+          heading="Under development"
+          description="The page you're looking for is under development."
+        />
+      )}
+
+      {/* Content */}
+      {body && (
+        <Section>
+          <div className="grid-row grid-gap">
+            <div className="grid-col-12 desktop:grid-col-3">
+              {/* TO DO: DatasetSidebar needs to be updated to a generic sidebar component */}
+              <DatasetSidebar
+                themes={themes}
+                categories={categories}
+                relatedContent={relatedItems}
+              />
+            </div>
+            <div className="grid-col-12 desktop:grid-col-9">
+              <h2 className="font-heading-xl margin-top-0 margin-bottom-2">Dataset Details</h2>
+              {body?.map((block, index) => (
+                // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
+                <ContentBlockRenderer key={index} block={block} isMultiColumnLayout />
+              ))}
+            </div>
           </div>
-          <div className="grid-col-12 desktop:grid-col-9">
-            <h2 className="font-heading-xl margin-top-0 margin-bottom-2">Dataset Details</h2>
-            {body.map((block, index) => (
-              // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-              <ContentBlockRenderer key={index} block={block} isMultiColumnLayout />
-            ))}
-          </div>
-        </div>
-      </Section>
+        </Section>
+      )}
     </>
   );
 }
