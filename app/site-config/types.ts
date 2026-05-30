@@ -101,20 +101,21 @@ export type TrainingContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "training";
   date: string;
   mastheadImage: MastheadImage;
-  body: ContentBlock[];
+  body?: ContentBlock[];
   relatedContent?: string[];
 };
 
 export type DatasetContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "dataset";
   mastheadImage: MastheadImage;
-  body: ContentBlock[];
+  body?: ContentBlock[];
   relatedContent?: string[];
 };
 
 export type NewsContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "news";
   mastheadImage: MastheadImage;
+  body?: ContentBlock[];
 };
 
 export type StoryContent = Omit<MinimumCardContent, "contentType"> & {
@@ -127,6 +128,7 @@ export type StoryContent = Omit<MinimumCardContent, "contentType"> & {
 export type DataStoryContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "datastory";
   mastheadImage: MastheadImage;
+  body?: ContentBlock[];
 };
 
 export type EventContent = Omit<MinimumCardContent, "contentType"> & {
