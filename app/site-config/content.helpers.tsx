@@ -70,17 +70,28 @@ type CardMastheadPropsArgs = Omit<CardProps, "title" | "image" | "colorMode" | "
   };
   title?: string;
   theme?: Theme;
-  date?: string;
 };
+
+export const makeEventPageMastHeadProps = ({
+  lastUpdatedDate,
+  ...rest
+}: Omit<CardMastheadPropsArgs, "tag"> & { lastUpdatedDate?: string }): CardProps =>
+  makeCardMastHeadProps({
+    ...rest,
+    tag: lastUpdatedDate ? (
+      <Tag color="primary-lighter" textColor="primary-dark">
+        Updated: {formattedDate(lastUpdatedDate)}
+      </Tag>
+    ) : undefined,
+  });
 
 export const makeCardMastHeadProps = ({
   mastheadImage,
   title,
   theme,
-  date,
   ...rest
 }: CardMastheadPropsArgs): CardProps => ({
-  image: <Image {...mastheadImage} sizes="100vw" fill preload={true} />,
+  image: <Image {...mastheadImage} sizes="(max-width: 1400px) 100vw, 1400px" fill preload={true} />,
   ...(title || theme
     ? {
         title: (
@@ -94,11 +105,6 @@ export const makeCardMastHeadProps = ({
     : {}),
   colorMode: "brand",
   isMastHead: true,
-  tag: date ? (
-    <Tag color="primary-lighter" textColor="primary-dark">
-      Updated: {formattedDate(date)}
-    </Tag>
-  ) : undefined,
   ...rest,
 });
 

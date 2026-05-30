@@ -5,7 +5,7 @@ export const EVENT__TYPHOON_SINLAKU_2026: EventContent = {
   id: "typhoon-sinlaku-2026",
   contentType: "event",
   title: "Typhoon Sinlaku April 2026",
-  date: "April 24, 2026",
+  lastUpdatedDate: "April 24, 2026",
   thumbnailImage: {
     src: "/img/event/typhoon-sinlaku-2026.webp",
     alt: "Banner Image: Suomi-NPP VIIRS Image of Typhoon Sinlaku with boundary overlay of the Mariana Islands, collected on April 13, 2026. Credit: NASA",

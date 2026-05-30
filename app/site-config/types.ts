@@ -136,7 +136,7 @@ export type EventContent = Omit<MinimumCardContent, "contentType"> & {
   mastheadImage: MastheadImage;
   isLatest?: boolean;
   url?: string;
-  date?: string;
+  lastUpdatedDate?: string;
   overview?: OverviewSection;
   body?: ContentBlock[];
 };
