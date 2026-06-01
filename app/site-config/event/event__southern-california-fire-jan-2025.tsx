@@ -1,4 +1,5 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
+import React from "react";
 import type { EventContent } from "@/app/site-config/types";
 import { TRAINING__EO_PRE_POST_FIRE_MONITORING } from "../training/training__eo-pre-post-fire-monitoring";
 import { TRAINING__FUNDAMENTALS_REMOTE_SENSING } from "../training/training__fundamentals-remote-sensing";
@@ -33,7 +34,7 @@ export const EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025: EventContent = {
       type: "text",
       paragraphs: [
         "Beginning Jan. 7, 2025, several major wildfires swept through Los Angeles County, driven by powerful Santa Ana winds. The Palisades Fire, Eaton Fire, and Hurst Fire caused widespread destruction across communities from Pacific Palisades to Pasadena and San Fernando, resulting in significant loss of life, property damage, and power outages. The California Governor's Office of Emergency Services (CalOES), the Los Angeles County Office of Emergency Management, and FEMA Region 9 requested NASA's support to address several critical situational awareness needs – including identifying burned structures and damaged critical infrastructure, assessing fire extent, monitoring air quality and methane emissions, and tracking power outages across affected communities.",
-        <>
+        <React.Fragment key="2">
           The NASA Disasters Program participated coordination calls hosted by CalOES and FEMA to
           align with responder priorities. Mapping the scope of destruction was an early focus –
           NASA shared multispectral imagery, including Sentinel-2, Landsat, and Maxar analysis, to
@@ -56,7 +57,7 @@ export const EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025: EventContent = {
           <Link href="https://earth.jpl.nasa.gov/estd-missions/airborne/aviris-3/">AVIRIS-3</Link> –
           an airborne hyperspectral instrument – collecting 3–4 meter resolution imagery to generate
           ash fraction maps and detect methane emissions from potential gas leaks.
-        </>,
+        </React.Fragment>,
       ],
     },
     {
