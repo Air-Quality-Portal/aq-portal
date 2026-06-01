@@ -16,8 +16,4 @@ export const DATASET__SENTINEL_2_DIFFERENCE_BURN_RATIO: DatasetContent = {
   },
   themes: [],
   categories: [],
-  relatedContent: ["sentinel-2-color-infrared", "sentinel-2-swir"],
-  body: [
-    //TO DO: full content needed
-  ],
 };
