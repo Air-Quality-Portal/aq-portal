@@ -14,4 +14,6 @@ export const EVENT__TEXAS_FLOODS_JULY_2025: EventContent = {
   },
   themes: ["respond"],
   categories: ["flood"],
+  region: "placeholder text",
+  startDate: "2026-05-31",
 };
