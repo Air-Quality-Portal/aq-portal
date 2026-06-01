@@ -122,6 +122,7 @@ export type MinimumCardContent = {
   id: string;
   contentType: ContentType;
   title: string;
+  url?: string;
   thumbnailImage: {
     src: string;
     alt: string;
