@@ -14,4 +14,6 @@ export const EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025: EventContent = {
   },
   themes: ["respond"],
   categories: ["fire"],
+  region: "placeholder text",
+  startDate: "2026-05-31",
 };
