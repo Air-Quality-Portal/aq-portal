@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { ThemeTag } from "@/app/components";
 import type { Category, ContentType, Theme } from "@/app/site-config/types";
 
-export function PageSideBar({
+export function PageSidebar({
   contentType,
   themes,
   categories,

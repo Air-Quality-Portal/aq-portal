@@ -1,11 +1,11 @@
 import {
   ContentBlockRenderer,
   PageMasthead,
+  PageSidebar,
   PageStatus,
   Section,
   SectionOverview,
 } from "@/app/components";
-import { PageSideBar } from "@/app/components/PageSidebar";
 import {
   transformEventToPageMastHeadProps,
   transformEventToSectionOverviewProps,
@@ -39,7 +39,7 @@ export default async function EventItemPage(contentItem: EventContent) {
             {/* TODO: DatasetSidebar will need to be elevated to a general sidebar component 
           this will also be placement for the inpage navigation once ready */}
             <div className="grid-col-12 desktop:grid-col-3">
-              <PageSideBar contentType={contentType} themes={themes} categories={categories} />
+              <PageSidebar contentType={contentType} themes={themes} categories={categories} />
             </div>
             {/* Content */}
             <div className="grid-col-12 desktop:grid-col-9">

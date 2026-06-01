@@ -1,6 +1,11 @@
 import { notFound } from "next/navigation";
-import { ContentBlockRenderer, PageMasthead, PageStatus, Section } from "@/app/components";
-import { PageSideBar } from "@/app/components/PageSidebar";
+import {
+  ContentBlockRenderer,
+  PageMasthead,
+  PageSidebar,
+  PageStatus,
+  Section,
+} from "@/app/components";
 import { makeCardMastHeadProps } from "@/app/site-config/content.helpers";
 import { DATASTORIES } from "@/app/site-config/datastory";
 import { EVENTS } from "@/app/site-config/event";
@@ -38,24 +43,26 @@ export default async function NewsEventsItemPage(props: PageProps<"/news-events/
       )}
 
       {/* Content */}
-      <Section>
-        <div className="grid-row grid-gap">
-          {/* Sidebar */}
-          {/* TODO: DatasetSidebar will need to be elevated to a general sidebar component 
+      {body && (
+        <Section>
+          <div className="grid-row grid-gap">
+            {/* Sidebar */}
+            {/* TODO: DatasetSidebar will need to be elevated to a general sidebar component 
           this will also be placement for the inpage navigation once ready */}
-          <div className="grid-col-12 desktop:grid-col-3">
-            <PageSideBar contentType={contentType} themes={themes} categories={categories} />
-          </div>
+            <div className="grid-col-12 desktop:grid-col-3">
+              <PageSidebar contentType={contentType} themes={themes} categories={categories} />
+            </div>
 
-          {/* Content */}
-          <div className={"grid-col-12 desktop:grid-col-9"}>
-            {body?.map((block, i) => (
-              // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
-              <ContentBlockRenderer key={i} block={block} isMultiColumnLayout />
-            ))}
+            {/* Content */}
+            <div className={"grid-col-12 desktop:grid-col-9"}>
+              {body?.map((block, i) => (
+                // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
+                <ContentBlockRenderer key={i} block={block} isMultiColumnLayout />
+              ))}
+            </div>
           </div>
-        </div>
-      </Section>
+        </Section>
+      )}
     </>
   );
 }

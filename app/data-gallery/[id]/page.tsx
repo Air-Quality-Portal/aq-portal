@@ -1,11 +1,16 @@
 import { notFound } from "next/navigation";
 
-import { ContentBlockRenderer, PageMasthead, PageStatus, Section } from "@/app/components";
+import {
+  ContentBlockRenderer,
+  PageMasthead,
+  PageSidebar,
+  PageStatus,
+  Section,
+} from "@/app/components";
 import { makeCardMastHeadProps } from "@/app/site-config/content.helpers";
 import { DATASETS } from "@/app/site-config/dataset";
 import { EVENTS } from "@/app/site-config/event";
 import { CONTENT_TYPES } from "@/app/site-config/types";
-import { PageSideBar } from "../../components/PageSidebar";
 
 export default async function DatasetItemPage(props: PageProps<"/data-gallery/[id]">) {
   const { id } = await props.params;
@@ -59,7 +64,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
           <div className="grid-row grid-gap">
             <div className="grid-col-12 desktop:grid-col-3">
               {/* TO DO: DatasetSidebar needs to be updated to a generic sidebar component */}
-              <PageSideBar
+              <PageSidebar
                 contentType={contentType}
                 themes={themes}
                 categories={categories}
