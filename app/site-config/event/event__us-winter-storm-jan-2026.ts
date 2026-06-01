@@ -6,11 +6,11 @@ export const EVENT__US_WINTER_STORM_2026: EventContent = {
   title: "U.S. Winter Storm Jan 2026",
   lastUpdatedDate: "2026-01-28",
   thumbnailImage: {
-    src: "/img/event/hazard-pattern-swirls.webp",
+    src: "/img/event/us-winter-storm-jan-2026.webp",
     alt: "Hazard pattern swirls in shades of blue",
   },
   mastheadImage: {
-    src: "/img/event/hazard-pattern-swirls.webp",
+    src: "/img/event/us-winter-storm-jan-2026.webp",
     alt: "Hazard pattern swirls in shades of blue",
   },
   themes: ["respond"],
