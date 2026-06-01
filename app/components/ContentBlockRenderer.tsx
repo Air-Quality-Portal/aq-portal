@@ -106,7 +106,7 @@ export const ContentBlockRenderer = ({
     case "image":
       return (
         <Section isMultiColumnLayout={isMultiColumnLayout}>
-          <figure>
+          <figure className="margin-0">
             <Image
               src={block.src}
               alt={block.alt}
