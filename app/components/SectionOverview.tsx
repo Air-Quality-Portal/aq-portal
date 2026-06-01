@@ -1,4 +1,5 @@
 import { Section, type SectionProps } from "@/app/components/Section";
+import type { SectionOverviewItemProps } from "@/app/site-config/event/event.helpers";
 
 const ContainerItem = ({ title, content }: { title: string; content: React.ReactNode }) => (
   <div className="grid-col-12 tablet:grid-col-4 margin-bottom-2">
@@ -7,9 +8,7 @@ const ContainerItem = ({ title, content }: { title: string; content: React.React
   </div>
 );
 
-type SectionOverviewProps = SectionProps & {
-  overviewItems: { title: string; content: React.ReactNode }[];
-};
+type SectionOverviewProps = SectionProps & SectionOverviewItemProps;
 
 export const SectionOverview = ({ overviewItems, className, ...rest }: SectionOverviewProps) => {
   return (

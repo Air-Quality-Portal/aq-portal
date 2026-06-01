@@ -1,12 +1,15 @@
 import {
   ContentBlockRenderer,
-  OverviewBlock,
   PageMasthead,
   PageStatus,
   Section,
+  SectionOverview,
 } from "@/app/components";
 import { DatasetSidebar } from "@/app/data-gallery/[id]/DatasetSidebar";
-import { transformEventToPageMastHeadProps } from "@/app/site-config/event/event.helpers";
+import {
+  transformEventToPageMastHeadProps,
+  transformEventToSectionOverviewProps,
+} from "@/app/site-config/event/event.helpers";
 import type { EventContent } from "@/app/site-config/types";
 
 export default async function EventItemPage(contentItem: EventContent) {
@@ -40,9 +43,11 @@ export default async function EventItemPage(contentItem: EventContent) {
             </div>
             {/* Content */}
             <div className="grid-col-12 desktop:grid-col-9">
-              {contentItem.overview && (
-                <OverviewBlock {...contentItem.overview} isMultiColumnLayout />
-              )}
+              <SectionOverview
+                {...transformEventToSectionOverviewProps(contentItem)}
+                isMultiColumnLayout
+              />
+
               {body?.map((block, i) => (
                 // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
                 <ContentBlockRenderer key={i} block={block} isMultiColumnLayout />
