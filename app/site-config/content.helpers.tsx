@@ -86,36 +86,16 @@ export type CardDetailedPropsArgs = Omit<
   };
   tags?: (Theme | ContentType | Category)[];
   theme?: Theme;
-  themes?: Theme[];
   categories?: Category[];
   url?: string;
   [key: string]: unknown;
 };
-
-const consolidateCardDetailTags = ({
-  tags,
-  theme,
-  themes,
-  categories,
-}: {
-  tags?: (Theme | ContentType | Category)[];
-  theme?: Theme;
-  themes?: Theme[];
-  categories?: Category[];
-}) => [
-  ...(tags ?? []).map((tag) => makeSimpleTag(tag)),
-  ...(theme ? [makeThemeTag(theme)] : (themes ?? []).map((themedTag) => makeThemeTag(themedTag))),
-  ...(categories ?? []).map((category) => makeSimpleTag(category)),
-];
 
 export const makeCardDetailedProps = ({
   id,
   contentType,
   thumbnailImage,
   tags,
-  theme,
-  themes,
-  categories,
   url,
   ...rest
 }: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => ({
@@ -128,7 +108,7 @@ export const makeCardDetailedProps = ({
     />
   ),
   imagePosition: "top",
-  tags: consolidateCardDetailTags({ tags, theme, themes, categories }),
+  tags: (tags ?? []).map((t) => makeSimpleTag(t)),
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `view ${CONTENT_TYPES[contentType].label}`,
@@ -141,7 +121,6 @@ export const makeCardDetailedImageLeftProps = ({
   thumbnailImage,
   tags,
   theme,
-  themes,
   categories,
   url,
   ...rest
@@ -149,7 +128,9 @@ export const makeCardDetailedImageLeftProps = ({
   id,
   image: <Image {...thumbnailImage} fill sizes="200px" />,
   imagePosition: "left",
-  tags: consolidateCardDetailTags({ tags, theme, themes, categories }),
+  tags: [...(tags ?? []), ...(theme ? [theme] : []), ...(categories ?? [])].map((t) =>
+    makeSimpleTag(t),
+  ),
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `view ${CONTENT_TYPES[contentType].label}`,

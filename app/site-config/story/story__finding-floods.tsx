@@ -1,7 +1,6 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
 import { Fragment } from "react";
 import type { StoryContent } from "@/app/site-config/types";
-import { DATASET__SENTINEL_2_TRUE_COLOR } from "../dataset/dataset__sentinel-2-true-color";
 import { EVENT__TEXAS_FLOODS_JULY_2025 } from "../event/event__texas-floods-july-2025";
 import { EVENT__US_WINTER_STORM_2026 } from "../event/event__us-winter-storm-jan-2026";
 
@@ -117,12 +116,6 @@ export const STORY__FINDING_FLOODS: StoryContent = {
       type: "sectionCardSimple",
       heading: "Resources & Learning",
       cards: [EVENT__TEXAS_FLOODS_JULY_2025, EVENT__US_WINTER_STORM_2026],
-    },
-    //TO DO: REMOVE BEFORE MERGE
-    {
-      type: "sectionProductGallery",
-      heading: "Resources & Learning",
-      cards: [DATASET__SENTINEL_2_TRUE_COLOR],
     },
   ],
 };

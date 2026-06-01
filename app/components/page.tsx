@@ -5,10 +5,17 @@ import {
   SectionCardSimple,
   SectionCardSimpleMosaic,
   SectionHeading,
+  SectionProductGallery,
   ThemeTag,
 } from "@/app/components/";
 import type { EventContent } from "@/app/site-config/types";
-import { makeCardCarouselProps, makeCardSimpleProps } from "../site-config/content.helpers";
+import {
+  makeCardCarouselProps,
+  makeCardDetailedImageLeftProps,
+  makeCardSimpleProps,
+} from "../site-config/content.helpers";
+import { DATASET__SENTINEL_2_COLOR_INFRARED } from "../site-config/dataset/dataset__sentinel-2-color-infrared";
+import { DATASET__SENTINEL_2_TRUE_COLOR } from "../site-config/dataset/dataset__sentinel-2-true-color";
 import { DATASTORIES } from "../site-config/datastory";
 import { EVENTS } from "../site-config/event";
 import { transformEventToCardMiniProps } from "../site-config/event/event.helpers";
@@ -177,6 +184,25 @@ export default function ComponentsPage() {
           </div>
         </div>
       </Section>
+
+      <SectionProductGallery
+        sectionHeading={<SectionHeading>Resources & Learning</SectionHeading>}
+        cards={typedMap(
+          [
+            {
+              ...DATASET__SENTINEL_2_TRUE_COLOR,
+              theme: "recover",
+              categories: ["winter weather"],
+            },
+            {
+              ...DATASET__SENTINEL_2_COLOR_INFRARED,
+              theme: "prepare",
+              categories: ["fire"],
+            },
+          ],
+          makeCardDetailedImageLeftProps,
+        )}
+      />
     </>
   );
 }

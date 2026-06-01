@@ -14,10 +14,8 @@ export const DATASET__SENTINEL_2_TRUE_COLOR: DatasetContent = {
     src: "/img/dataset/sentinel-2-true-color.webp",
     alt: "Sentinel-2 True Color imagery example",
   },
-  //TO DO: REMOVE BEFORE MERGE
-
-  themes: ["recover"],
-  categories: ["winter weather"],
+  themes: [],
+  categories: [],
   relatedContent: ["sentinel-2-color-infrared", "sentinel-2-swir"],
   body: [
     {
