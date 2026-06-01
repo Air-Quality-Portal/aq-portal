@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { ContentBlockRenderer, PageMasthead, PageStatus, Section } from "@/app/components";
-import { DatasetSidebar } from "@/app/data-gallery/[id]/DatasetSidebar";
+import { PageSideBar } from "@/app/components/PageSidebar";
 import { makeCardMastHeadProps } from "@/app/site-config/content.helpers";
 import { DATASTORIES } from "@/app/site-config/datastory";
 import { EVENTS } from "@/app/site-config/event";
@@ -44,7 +44,7 @@ export default async function NewsEventsItemPage(props: PageProps<"/news-events/
           {/* TODO: DatasetSidebar will need to be elevated to a general sidebar component 
           this will also be placement for the inpage navigation once ready */}
           <div className="grid-col-12 desktop:grid-col-3">
-            <DatasetSidebar themes={themes} categories={categories} />
+            <PageSideBar themes={themes} categories={categories} />
           </div>
 
           {/* Content */}

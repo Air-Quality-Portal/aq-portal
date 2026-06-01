@@ -4,7 +4,7 @@ import { ContentBlockRenderer, PageMasthead, PageStatus, Section } from "@/app/c
 import { CONTENT_TYPES, makeCardMastHeadProps } from "@/app/site-config/content.helpers";
 import { DATASETS } from "@/app/site-config/dataset";
 import { EVENTS } from "@/app/site-config/event";
-import { DatasetSidebar } from "./DatasetSidebar";
+import { PageSideBar } from "../../components/PageSidebar";
 
 export default async function DatasetItemPage(props: PageProps<"/data-gallery/[id]">) {
   const { id } = await props.params;
@@ -57,11 +57,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
           <div className="grid-row grid-gap">
             <div className="grid-col-12 desktop:grid-col-3">
               {/* TO DO: DatasetSidebar needs to be updated to a generic sidebar component */}
-              <DatasetSidebar
-                themes={themes}
-                categories={categories}
-                relatedContent={relatedItems}
-              />
+              <PageSideBar themes={themes} categories={categories} relatedContent={relatedItems} />
             </div>
             <div className="grid-col-12 desktop:grid-col-9">
               <h2 className="font-heading-xl margin-top-0 margin-bottom-2">Dataset Details</h2>

@@ -47,7 +47,7 @@ function RelatedContentItem({ item }: { item: RelatedItem }) {
   );
 }
 
-export function DatasetSidebar({
+export function PageSideBar({
   themes,
   categories,
   relatedContent = [],
@@ -58,6 +58,7 @@ export function DatasetSidebar({
 }) {
   return (
     <aside className="bg-base-lightest padding-4 margin-bottom-4">
+      {/* TODO: view data should be optional */}
       <div className="margin-bottom-3">
         <button type="button" className="usa-button width-full">
           View Data
@@ -67,6 +68,7 @@ export function DatasetSidebar({
       <div className="border-top border-base-lighter padding-top-3 margin-bottom-3">
         <MetaGroup label="Type">
           <div className="margin-right-1 margin-bottom-1">
+            {/* TODO: this should be actual content tyep */}
             <Tag color="primary-lighter" textColor="primary-dark">
               Dataset
             </Tag>
