@@ -20,9 +20,14 @@ export const EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025: EventContent = {
   categories: ["fire"],
   region: " Los Angeles County, North America",
   startDate: "Jan. 10, 2025",
-  disastersType: "Fires",
-  linkUSGovernment: "https://www.usa.gov/california-wildfires",
-  linkDHSFEMA: "https://www.fema.gov/california-wildfires",
+  linkUSGovernment: {
+    label: "What the U.S. government is doing ",
+    href: "https://www.usa.gov/california-wildfires",
+  },
+  linkDHSFEMA: {
+    label: "What DHS and FEMA are doing",
+    href: "https://www.fema.gov/california-wildfires",
+  },
   body: [
     {
       type: "text",
@@ -89,6 +94,53 @@ export const EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025: EventContent = {
         TRAINING__LIFELINES_WILDFIRE_WORKFLOW,
         TRAINING__FUNDAMENTALS_REMOTE_SENSING,
         TRAINING__EO_PRE_POST_FIRE_MONITORING,
+      ],
+    },
+    {
+      type: "list",
+      heading: "External Resources",
+      items: [
+        {
+          label: "NASA Wildfire Data Access & Tools",
+          href: "https://www.earthdata.nasa.gov/topics/human-dimensions/wildfires/data-access-tools",
+        },
+        {
+          label: "NASA Earthdata Pathfinders - Wildfires",
+          href: "https://earthdata.nasa.gov/learn/pathfinders/wildfire-data-pathfinder",
+        },
+        {
+          label: "Fire Information for Resource Management (FIRMS)",
+          href: "https://firms.modaps.eosdis.nasa.gov/",
+        },
+        {
+          label: "Global Wildfire Information System (GWIS)",
+          href: "https://gwis.jrc.ec.europa.eu/",
+        },
+        {
+          label: "Global Fire Weather Database (GFWED)",
+          href: "https://data.giss.nasa.gov/impacts/gfwed/",
+        },
+        "NASA Earth Observatory:",
+        {
+          label: "The Palisades Fire’s Footprint",
+          href: "https://earthobservatory.nasa.gov/images/153831/the-palisades-fires-footprint",
+        },
+        {
+          label: "Unhealthy Skies over Los Angeles County",
+          href: "https://earthobservatory.nasa.gov/images/153831/the-palisades-fires-footprint",
+        },
+        {
+          label: "Eaton Fire Leaves California Landscape Charred",
+          href: "https://earthobservatory.nasa.gov/images/153821/eaton-fire-leaves-california-landscape-charred",
+        },
+        {
+          label: "Fires Tear Through Los Angeles",
+          href: "https://earthobservatory.nasa.gov/images/153793/fires-tear-through-los-angeles",
+        },
+        {
+          label: "Smoke Streams from Palisades and Eaton Fires",
+          href: "https://earthobservatory.nasa.gov/images/153813/smoke-streams-from-palisades-and-eaton-fires",
+        },
       ],
     },
   ],
