@@ -43,7 +43,7 @@ export const EVENT__TYPHOON_SINLAKU_2026: EventContent = {
     },
     {
       type: "image",
-      src: "/img/event/typhoon-sinlaku-umbra-guam.webp",
+      src: "/img/event/typhoon-sinlaku-2026__umbra-guam.webp",
       alt: "Radar backscatter image of Antonio B Won Pat International Airport in Guam, captured by satellites on April 14, 2026",
       caption:
         'Radar backscatter image of Antonio B Won Pat International Airport in Guam, captured by satellites on April 14, 2026. Synthetic aperture radar (SAR) sensors have the ability to "see through" clouds to capture images of homes and infrastructure even in the midst of a hurricane. This image includes copyrighted material of Umbra. All rights reserved. This work utilized data made available through the NASA Commercial Satellite Data Acquisition (CSDA) program.',
