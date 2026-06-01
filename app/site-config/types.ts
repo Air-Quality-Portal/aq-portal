@@ -136,7 +136,10 @@ export type EventContent = Omit<MinimumCardContent, "contentType"> & {
   mastheadImage: MastheadImage;
   isLatest?: boolean;
   lastUpdatedDate?: string;
-  overview?: OverviewSection;
+  startDate: string;
+  region: string;
+  linkDHSFEMA?: { label: string; href: string };
+  linkUSGovernment?: { label: string; href: string };
   body?: ContentBlock[];
 };
 
@@ -154,12 +157,4 @@ type MastheadImage = {
   alt: string;
   caption?: string;
   attribution?: string;
-};
-
-export type OverviewSection = {
-  region?: string;
-  startDate?: string;
-  disastersType?: string;
-  overviewLink1?: string;
-  overviewLink2?: string;
 };
