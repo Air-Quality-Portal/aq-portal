@@ -28,14 +28,13 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
       heading: "Our Team",
       headingLevel: "h2",
       paragraphs: [
-        <>
-          <Image
-            src="/img/about/disasters-team.webp"
-            alt="NASA Disasters Team"
-            width="1200"
-            height="800"
-          />
-        </>,
+        // biome-ignore lint/correctness/useJsxKeyInIterable: static content, never reorders
+        <Image
+          src="/img/about/disasters-team.webp"
+          alt="NASA Disasters Team"
+          width="1200"
+          height="800"
+        />,
       ],
     },
     {
