@@ -15,7 +15,7 @@ import type { EventContent } from "@/app/site-config/types";
 export default async function EventItemPage(contentItem: EventContent) {
   // TO DO: this will need to account for inpage navigation once implements
 
-  const { id, themes, categories, body } = contentItem;
+  const { id, contentType, themes, categories, body } = contentItem;
 
   return (
     <>
@@ -39,7 +39,7 @@ export default async function EventItemPage(contentItem: EventContent) {
             {/* TODO: DatasetSidebar will need to be elevated to a general sidebar component 
           this will also be placement for the inpage navigation once ready */}
             <div className="grid-col-12 desktop:grid-col-3">
-              <PageSideBar themes={themes} categories={categories} />
+              <PageSideBar contentType={contentType} themes={themes} categories={categories} />
             </div>
             {/* Content */}
             <div className="grid-col-12 desktop:grid-col-9">

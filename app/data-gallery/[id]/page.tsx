@@ -13,6 +13,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
   if (!dataset) notFound();
 
   const {
+    contentType,
     title,
     description,
     mastheadImage,
@@ -57,7 +58,12 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
           <div className="grid-row grid-gap">
             <div className="grid-col-12 desktop:grid-col-3">
               {/* TO DO: DatasetSidebar needs to be updated to a generic sidebar component */}
-              <PageSideBar themes={themes} categories={categories} relatedContent={relatedItems} />
+              <PageSideBar
+                contentType={contentType}
+                themes={themes}
+                categories={categories}
+                relatedContent={relatedItems}
+              />
             </div>
             <div className="grid-col-12 desktop:grid-col-9">
               <h2 className="font-heading-xl margin-top-0 margin-bottom-2">Dataset Details</h2>
