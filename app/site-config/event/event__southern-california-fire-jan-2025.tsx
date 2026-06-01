@@ -82,12 +82,6 @@ export const EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025: EventContent = {
         dateRange: { from: "2025-01-11", to: "2025-01-16" },
       },
     },
-    // {
-    //   //TO DO: this needs to be transalted to product gallery section
-    //   type: "sectionCardSimple",
-    //   heading: "Product Gallery",
-    //   cards: [DATASET__SENTINEL_2_TRUE_COLOR, DATASET__SENTINEL_2_SWIR],
-    // },
     {
       type: "sectionCardSimple",
       heading: "Resources & Learning",
