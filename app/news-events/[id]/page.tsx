@@ -55,10 +55,12 @@ export default async function NewsEventsItemPage(props: PageProps<"/news-events/
 
             {/* Content */}
             <div className={"grid-col-12 desktop:grid-col-9"}>
-              {body?.map((block, i) => (
-                // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
-                <ContentBlockRenderer key={i} block={block} isMultiColumnLayout />
-              ))}
+              <div className="margin-top-neg-7">
+                {body?.map((block, i) => (
+                  // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
+                  <ContentBlockRenderer key={i} block={block} isMultiColumnLayout />
+                ))}
+              </div>
             </div>
           </div>
         </Section>
