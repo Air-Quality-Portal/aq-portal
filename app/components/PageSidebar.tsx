@@ -2,7 +2,12 @@ import { Link, Tag } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
 
 import { ThemeTag } from "@/app/components";
-import type { Category, ContentType, Theme } from "@/app/site-config/types";
+import {
+  type Category,
+  CONTENT_SIDEBAR_CONTENT_TYPES,
+  type ContentType,
+  type Theme,
+} from "@/app/site-config/types";
 
 export function PageSidebar({
   contentType,
@@ -15,58 +20,69 @@ export function PageSidebar({
   categories: Category[];
   relatedContent?: RelatedItem[];
 }) {
+  // TODO: update to include inpage navigation
   return (
-    <aside className="bg-base-lightest padding-4 margin-bottom-4">
-      {contentType === "dataset" && (
-        <div className="margin-bottom-3">
-          <button type="button" className="usa-button width-full">
-            View Data
-          </button>
-        </div>
-      )}
+    <aside>
+      {
+        // Begin section on themes, categories, related content
+        CONTENT_SIDEBAR_CONTENT_TYPES.includes(contentType) && (
+          <div className="bg-base-lightest padding-4 margin-bottom-4">
+            {contentType === "dataset" && (
+              <div className="margin-bottom-3">
+                <button type="button" className="usa-button width-full">
+                  View Data
+                </button>
+              </div>
+            )}
 
-      {contentType !== "event" && (
-        <div className="border-top border-base-lighter padding-top-3 margin-bottom-3">
-          <MetaGroup label="Type">
-            <div className="margin-right-1 margin-bottom-1">
-              <Tag color="primary-lighter" textColor="primary-dark">
-                {contentType}
-              </Tag>
-            </div>
-          </MetaGroup>
-
-          {themes.length > 0 && (
-            <MetaGroup label="Theme">
-              {themes.map((theme) => (
-                <div key={theme} className="margin-right-1 margin-bottom-1">
-                  <ThemeTag theme={theme} />
-                </div>
-              ))}
-            </MetaGroup>
-          )}
-
-          {categories.length > 0 && (
-            <MetaGroup label="Hazard">
-              {categories.map((category) => (
-                <div key={category} className="margin-right-1 margin-bottom-1">
+            <div className="border-top border-base-lighter padding-top-3 margin-bottom-3">
+              <MetaGroup label="Type">
+                <div className="margin-right-1 margin-bottom-1">
                   <Tag color="primary-lighter" textColor="primary-dark">
-                    {category}
+                    {contentType}
                   </Tag>
                 </div>
-              ))}
-            </MetaGroup>
-          )}
-        </div>
-      )}
+              </MetaGroup>
 
-      {relatedContent.length > 0 && (
-        <div className="border-top border-base-lighter padding-top-3">
-          <p className="text-bold font-body-sm margin-top-0 margin-bottom-3">Related Content</p>
-          {relatedContent.map((item) => (
-            <RelatedContentItem key={item.id} item={item} />
-          ))}
-        </div>
-      )}
+              {themes.length > 0 && (
+                <MetaGroup label="Theme">
+                  {themes.map((theme) => (
+                    <div key={theme} className="margin-right-1 margin-bottom-1">
+                      <ThemeTag theme={theme} />
+                    </div>
+                  ))}
+                </MetaGroup>
+              )}
+
+              {categories.length > 0 && (
+                <MetaGroup label="Hazard">
+                  {categories.map((category) => (
+                    <div key={category} className="margin-right-1 margin-bottom-1">
+                      <Tag color="primary-lighter" textColor="primary-dark">
+                        {category}
+                      </Tag>
+                    </div>
+                  ))}
+                </MetaGroup>
+              )}
+            </div>
+
+            {relatedContent.length > 0 && (
+              <div className="border-top border-base-lighter padding-top-3">
+                <p className="text-bold font-body-sm margin-top-0 margin-bottom-3">
+                  Related Content
+                </p>
+                {relatedContent.map((item) => (
+                  <RelatedContentItem key={item.id} item={item} />
+                ))}
+              </div>
+            )}
+          </div>
+        )
+      }
+      <div className="bg-base-lightest padding-4 margin-bottom-4">
+        Placeholder for in page navigation
+      </div>
     </aside>
   );
 }
