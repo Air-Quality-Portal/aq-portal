@@ -11,7 +11,7 @@ export const DATASET__SENTINEL_2_DIFFERENCE_BURN_RATIO: DatasetContent = {
     alt: "Sentinel-2 Differenced Normalized Burn Ratio (dNBR) imagery example",
   },
   mastheadImage: {
-    src: "/img/dataset/sentinel-2-nbr.webp",
+    src: "/img/dataset/sentinel-2-difference-burn-ratio.webp",
     alt: "Sentinel-2 Differenced Normalized Burn Ratio (dNBR) imagery example",
   },
   themes: [],
