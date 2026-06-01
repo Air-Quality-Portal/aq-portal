@@ -1,4 +1,5 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
+import { Fragment } from "react";
 import type { StoryContent } from "@/app/site-config/types";
 import { DATASET__SENTINEL_2_TRUE_COLOR } from "../dataset/dataset__sentinel-2-true-color";
 import { EVENT__TEXAS_FLOODS_JULY_2025 } from "../event/event__texas-floods-july-2025";
@@ -28,7 +29,7 @@ export const STORY__FINDING_FLOODS: StoryContent = {
     },
     {
       type: "image",
-      src: "/img/story/kerville-texas_flood-debris.webp",
+      src: "/img/story/finding-floods__kerrville-texas_flood-debris.webp",
       alt: "U.S. Air Force Master Sgt. Randy McKnight inspects the flood debris in Kerrville, Texas, July 11, 2025. Credit: Photo by Zelideth Rodriguez, 502nd Air Base Wing",
       caption:
         "U.S. Air Force Master Sgt. Randy McKnight inspects the flood debris in Kerrville, Texas, July 11, 2025. Credit: Photo by Zelideth Rodriguez, 502nd Air Base Wing",
@@ -40,7 +41,7 @@ export const STORY__FINDING_FLOODS: StoryContent = {
       heading: "Flying Over the Floods",
       paragraphs: [
         "NASA's response to the Texas floods relied on two advanced airborne instruments, each designed to see what other sensors couldn't.",
-        <>
+        <Fragment key="Flying Over the Floods paragraph 2">
           The WB-57 high-altitude aircraft, operated by NASA’s Johnson Space Center, carries a
           nose-mounted instrument called{" "}
           <Link href="https://scifli.larc.nasa.gov/about/dynamite/">DyNAMITE</Link> that collects
@@ -49,12 +50,12 @@ export const STORY__FINDING_FLOODS: StoryContent = {
           flood boundaries along river corridors. NASA streamed live video feeds and imagery
           directly to responders as the flights were still in the air, providing coverage of the San
           Gabriel basin at a moment when every new piece of information was critical.
-        </>,
+        </Fragment>,
       ],
     },
     {
       type: "image",
-      src: "/img/story/wb57-nosecone.webp",
+      src: "/img/story/finding-floods__wb57-nosecone.webp",
       alt: "NASA's high-altitude WB-57 aircraft departed July 8, 2025, from Ellington Field in Houston, TX. The DyNAMITE instrument is seen here affixed to its nose. Credit: NASA",
       caption:
         "NASA's high-altitude WB-57 aircraft departed July 8, 2025, from Ellington Field in Houston, TX. The DyNAMITE instrument is seen here affixed to its nose. Credit: NASA",
@@ -64,7 +65,7 @@ export const STORY__FINDING_FLOODS: StoryContent = {
     {
       type: "text",
       paragraphs: [
-        <>
+        <Fragment key="UAVSAR paragraph 1">
           NASA’s <Link href="https://uavsar.jpl.nasa.gov/">UAVSAR</Link> instrument tackled a
           different challenge: the region's dense tree canopy. UAVSAR uses L-band radar – a longer
           wavelength than most satellite synthetic aperture radar (SAR) systems – which can pass
@@ -74,12 +75,12 @@ export const STORY__FINDING_FLOODS: StoryContent = {
           Flight Research Center, the instrument covered the Guadalupe, San Gabriel, and Colorado
           River basins across three days of flights, providing the first publicly available observed
           flood maps of the disaster.
-        </>,
+        </Fragment>,
       ],
     },
     {
       type: "image",
-      src: "/img/story/gis-texas-flooding-uavsar-austin.webp",
+      src: "/img/story/finding-floods__gis-texas-flooding-uavsar-austin.webp",
       alt: "This map shows classifications that help identify flooded urban areas, croplands, vegetation, and open water using UAVSAR data collected during flights on July 9, 2025. The UAVSAR flights were coordinated by NASA’s Disasters Program, NASA’s Airborne Sciences Program, and NASA’s Jet Propulsion Laboratory, and flew out of NASA’s Armstrong Flight Research Center at Edwards Air Force Base in California. Credit: NASA",
       caption:
         "This map shows classifications that help identify flooded urban areas, croplands, vegetation, and open water using UAVSAR data collected during flights on July 9, 2025. The UAVSAR flights were coordinated by NASA’s Disasters Program, NASA’s Airborne Sciences Program, and NASA’s Jet Propulsion Laboratory, and flew out of NASA’s Armstrong Flight Research Center at Edwards Air Force Base in California. Credit: NASA",
@@ -91,15 +92,15 @@ export const STORY__FINDING_FLOODS: StoryContent = {
       heading: "From the Hill Country to Orbit",
       paragraphs: [
         "The 2025 Texas floods showed how NASA's advanced instruments fill critical information gaps, and new orbital assets are extending these capabilities further than ever.",
-        <>
+        <Fragment key="UAVSAR paragraph 2">
           UAVSAR served as a direct scientific precursor to{" "}
           <Link href="https://science.nasa.gov/mission/nisar/">NISAR</Link>, the joint NASA and ISRO
           synthetic aperture radar satellite that began delivering data in early 2026. What UAVSAR
           demonstrated over the Texas Hill Country – such as under-canopy flood detection, rapid
           turnaround, actionable data in an active emergency – is precisely what NISAR now provides
           routinely on a global scale.
-        </>,
-        <>
+        </Fragment>,
+        <Fragment key="UAVSAR paragraph 3">
           NASA also now has expanded access to high-resolution imagery from space. Through the{" "}
           <Link href="https://science.nasa.gov/earth-science/csda/">
             Commercial Satellite Data Acquisition Program
@@ -108,7 +109,7 @@ export const STORY__FINDING_FLOODS: StoryContent = {
           imagery of active disasters. These data support a range of efforts – from building damage
           assessment and road disruption mapping to search and rescue operations – offering broad
           coverage across a variety of advanced sensors.
-        </>,
+        </Fragment>,
         "Flash floods remain among the most difficult disasters to observe in real time. When cloud cover, dense vegetation, and fast-moving water converge, the gap between what responders can see and what they need to know can be life-threatening. The NASA Disasters Program works to close that gap with the right sensors, the right science, and the right partnerships.",
       ],
     },

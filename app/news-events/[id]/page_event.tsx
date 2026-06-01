@@ -1,42 +1,31 @@
-import { notFound } from "next/navigation";
 import {
   ContentBlockRenderer,
   PageMasthead,
   PageSidebar,
   PageStatus,
   Section,
+  SectionOverview,
 } from "@/app/components";
-import { makeCardMastHeadProps } from "@/app/site-config/content.helpers";
-import { DATASTORIES } from "@/app/site-config/datastory";
-import { EVENTS } from "@/app/site-config/event";
-import { NEWS } from "@/app/site-config/news";
-import { STORIES } from "@/app/site-config/story";
-import EventItemPage from "./page_event";
+import {
+  transformEventToPageMastHeadProps,
+  transformEventToSectionOverviewProps,
+} from "@/app/site-config/event/event.helpers";
+import type { EventContent } from "@/app/site-config/types";
 
-export default async function NewsEventsItemPage(props: PageProps<"/news-events/[id]">) {
-  const { id } = await props.params;
+export default async function EventItemPage(contentItem: EventContent) {
+  // TO DO: this will need to account for inpage navigation once implements
 
-  const contentItem = [...STORIES, ...DATASTORIES, ...NEWS, ...EVENTS].find((i) => i.id === id);
-
-  if (!contentItem) notFound();
-
-  const { contentType } = contentItem;
-
-  // event page layout
-  if (contentType === "event") return EventItemPage(contentItem);
-
-  // story, datastory, news page layout
-  const { title, mastheadImage, themes, categories, body } = contentItem;
+  const { id, contentType, themes, categories, body } = contentItem;
 
   return (
     <>
       {/* Hero */}
-      <PageMasthead {...makeCardMastHeadProps({ mastheadImage, title })} />
+      <PageMasthead {...transformEventToPageMastHeadProps(contentItem)} />
 
       {/* Placeholder content only */}
       {!body && (
         <PageStatus
-          label={`Story, Datastory, or News Item: ${id}`}
+          label={`Event Item: ${id}`}
           heading="Under development"
           description="The page you're looking for is under development."
         />
@@ -50,9 +39,12 @@ export default async function NewsEventsItemPage(props: PageProps<"/news-events/
             <div className="grid-col-12 desktop:grid-col-3">
               <PageSidebar contentType={contentType} themes={themes} categories={categories} />
             </div>
-
             {/* Content */}
-            <div className={"grid-col-12 desktop:grid-col-9"}>
+            <div className="grid-col-12 desktop:grid-col-9">
+              <SectionOverview
+                {...transformEventToSectionOverviewProps(contentItem)}
+                isMultiColumnLayout
+              />
               <div className="margin-top-neg-7">
                 {body?.map((block, i) => (
                   // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder

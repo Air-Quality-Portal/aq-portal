@@ -6,38 +6,14 @@ import {
   Tag,
 } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-import type { Category, ContentType, IterableItemWithId, Theme } from "@/app/site-config/types";
-
-const CONTENT_THEMES: Record<Theme, { label: string; color: string; textColor?: string }> = {
-  respond: {
-    label: "respond",
-    color: "secondary",
-    textColor: "white",
-  },
-  build: {
-    label: "build resilience",
-    color: "success",
-    textColor: "white",
-  },
-  prepare: {
-    label: "prepare",
-    color: "accent-warm",
-  },
-  recover: {
-    label: "recover",
-    color: "accent-cool",
-    textColor: "white",
-  },
-};
-
-export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }> = {
-  dataset: { route: "/data-gallery", label: "data" },
-  event: { route: "/news-events", label: "event" },
-  news: { route: "/news-events", label: "news" },
-  story: { route: "/stories", label: "story" },
-  datastory: { route: "/news-events", label: "data story" },
-  training: { route: "/training", label: "training" },
-};
+import {
+  type Category,
+  CONTENT_THEMES,
+  CONTENT_TYPES,
+  type ContentType,
+  type IterableItemWithId,
+  type Theme,
+} from "@/app/site-config/types";
 
 export const makeSimpleTag = (tag: Theme | ContentType | Category) => (
   <Tag key={tag} variant="solid" color="primary-lighter">
@@ -63,21 +39,22 @@ const makeContentTypeTag = (tag: ContentType) => {
   );
 };
 
-type CardMastheadPropsArgs = Omit<CardProps, "title" | "image" | "colorMode" | "isMasthead"> & {
+export type CardMastheadPropsArgs = Omit<
+  CardProps,
+  "title" | "image" | "colorMode" | "isMasthead"
+> & {
   mastheadImage: {
     alt: string;
     src: string;
   };
   title?: string;
   theme?: Theme;
-  date?: string;
 };
 
 export const makeCardMastHeadProps = ({
   mastheadImage,
   title,
   theme,
-  date,
   ...rest
 }: CardMastheadPropsArgs): CardProps => ({
   image: <Image {...mastheadImage} sizes="100vw" fill preload={true} />,
@@ -94,11 +71,6 @@ export const makeCardMastHeadProps = ({
     : {}),
   colorMode: "brand",
   isMastHead: true,
-  tag: date ? (
-    <Tag color="primary-lighter" textColor="primary-dark">
-      Updated: {formattedDate(date)}
-    </Tag>
-  ) : undefined,
   ...rest,
 });
 
@@ -298,9 +270,12 @@ export const makeCardCarouselProps = ({
   ...rest,
 });
 
-export const formattedDate = (date: string) =>
+export const toLongDate = (date: string) =>
   new Date(date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
+
+export const toTitleCase = (str: string) =>
+  str.toLowerCase().replace(/\b\w/g, (match) => match.toUpperCase());
