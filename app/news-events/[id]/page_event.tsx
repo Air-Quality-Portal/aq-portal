@@ -6,18 +6,18 @@ import {
   Section,
 } from "@/app/components";
 import { DatasetSidebar } from "@/app/data-gallery/[id]/DatasetSidebar";
-import { makeEventPageMastHeadProps } from "@/app/site-config/content.helpers";
+import { transformEventToPageMastHeadProps } from "@/app/site-config/event/event.helpers";
 import type { EventContent } from "@/app/site-config/types";
 
 export default async function EventItemPage(contentItem: EventContent) {
   // TO DO: this will need to account for inpage navigation once implements
 
-  const { id, title, mastheadImage, lastUpdatedDate, themes, categories, body } = contentItem;
+  const { id, themes, categories, body } = contentItem;
 
   return (
     <>
       {/* Hero */}
-      <PageMasthead {...makeEventPageMastHeadProps({ mastheadImage, title, lastUpdatedDate })} />
+      <PageMasthead {...transformEventToPageMastHeadProps(contentItem)} />
 
       {/* Placeholder content only */}
       {!body && (

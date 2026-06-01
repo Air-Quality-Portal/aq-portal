@@ -63,7 +63,10 @@ const makeContentTypeTag = (tag: ContentType) => {
   );
 };
 
-type CardMastheadPropsArgs = Omit<CardProps, "title" | "image" | "colorMode" | "isMasthead"> & {
+export type CardMastheadPropsArgs = Omit<
+  CardProps,
+  "title" | "image" | "colorMode" | "isMasthead"
+> & {
   mastheadImage: {
     alt: string;
     src: string;
@@ -71,19 +74,6 @@ type CardMastheadPropsArgs = Omit<CardProps, "title" | "image" | "colorMode" | "
   title?: string;
   theme?: Theme;
 };
-
-export const makeEventPageMastHeadProps = ({
-  lastUpdatedDate,
-  ...rest
-}: Omit<CardMastheadPropsArgs, "tag"> & { lastUpdatedDate?: string }): CardProps =>
-  makeCardMastHeadProps({
-    ...rest,
-    tag: lastUpdatedDate ? (
-      <Tag color="primary-lighter" textColor="primary-dark">
-        Updated: {formattedDate(lastUpdatedDate)}
-      </Tag>
-    ) : undefined,
-  });
 
 export const makeCardMastHeadProps = ({
   mastheadImage,
@@ -141,6 +131,7 @@ export const makeCardDetailedProps = ({
   ),
   imagePosition: "top",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
+  // TODO: need to add isExternal handling to all cards in veda-ui-blocks
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `view ${CONTENT_TYPES[contentType].label}`,
@@ -160,6 +151,7 @@ export const makeCardDetailedImageLeftProps = ({
   image: <Image {...thumbnailImage} fill sizes="200px" />,
   imagePosition: "left",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
+  // TODO: need to add isExternal handling to all cards in veda-ui-blocks
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `view ${CONTENT_TYPES[contentType].label}`,
