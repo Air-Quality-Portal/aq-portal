@@ -36,8 +36,6 @@ export default async function EventItemPage(contentItem: EventContent) {
         <Section>
           <div className="grid-row grid-gap">
             {/* Sidebar */}
-            {/* TODO: DatasetSidebar will need to be elevated to a general sidebar component 
-          this will also be placement for the inpage navigation once ready */}
             <div className="grid-col-12 desktop:grid-col-3">
               <PageSidebar contentType={contentType} themes={themes} categories={categories} />
             </div>
