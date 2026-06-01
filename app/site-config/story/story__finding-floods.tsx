@@ -27,7 +27,7 @@ export const STORY__FINDING_FLOODS: StoryContent = {
     },
     {
       type: "image",
-      src: "/img/story/kerville-texas_flood-debris.webp",
+      src: "/img/story/finding-floods__kerrville-texas_flood-debris.webp",
       alt: "U.S. Air Force Master Sgt. Randy McKnight inspects the flood debris in Kerrville, Texas, July 11, 2025. Credit: Photo by Zelideth Rodriguez, 502nd Air Base Wing",
       caption:
         "U.S. Air Force Master Sgt. Randy McKnight inspects the flood debris in Kerrville, Texas, July 11, 2025. Credit: Photo by Zelideth Rodriguez, 502nd Air Base Wing",
@@ -53,7 +53,7 @@ export const STORY__FINDING_FLOODS: StoryContent = {
     },
     {
       type: "image",
-      src: "/img/story/wb57-nosecone.webp",
+      src: "/img/story/finding-floods__wb57-nosecone.webp",
       alt: "NASA's high-altitude WB-57 aircraft departed July 8, 2025, from Ellington Field in Houston, TX. The DyNAMITE instrument is seen here affixed to its nose. Credit: NASA",
       caption:
         "NASA's high-altitude WB-57 aircraft departed July 8, 2025, from Ellington Field in Houston, TX. The DyNAMITE instrument is seen here affixed to its nose. Credit: NASA",
@@ -78,7 +78,7 @@ export const STORY__FINDING_FLOODS: StoryContent = {
     },
     {
       type: "image",
-      src: "/img/story/gis-texas-flooding-uavsar-austin.webp",
+      src: "/img/story/finding-floods__gis-texas-flooding-uavsar-austin.webp",
       alt: "This map shows classifications that help identify flooded urban areas, croplands, vegetation, and open water using UAVSAR data collected during flights on July 9, 2025. The UAVSAR flights were coordinated by NASA’s Disasters Program, NASA’s Airborne Sciences Program, and NASA’s Jet Propulsion Laboratory, and flew out of NASA’s Armstrong Flight Research Center at Edwards Air Force Base in California. Credit: NASA",
       caption:
         "This map shows classifications that help identify flooded urban areas, croplands, vegetation, and open water using UAVSAR data collected during flights on July 9, 2025. The UAVSAR flights were coordinated by NASA’s Disasters Program, NASA’s Airborne Sciences Program, and NASA’s Jet Propulsion Laboratory, and flew out of NASA’s Armstrong Flight Research Center at Edwards Air Force Base in California. Credit: NASA",
