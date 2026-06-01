@@ -3,13 +3,13 @@ import Image from "next/image";
 
 import { ImageComparison, Section, SectionCardSimple, SectionHeading } from "@/app/components";
 import { StacCompareBlock, StacSingleLayerBlock } from "@/app/components/blocks";
+import { SectionProductGallery } from "@/app/components/SectionProductGallery";
 import {
   makeCardDetailedImageLeftProps,
   makeCardSimpleProps,
 } from "@/app/site-config/content.helpers";
 import { typedMap } from "@/app/site-config/typed.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
-import { SectionProductGallery } from "./SectionProductGallery";
 
 function ContentHeading({
   heading,
