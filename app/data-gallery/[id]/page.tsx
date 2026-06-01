@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
 
 import { ContentBlockRenderer, PageMasthead, PageStatus, Section } from "@/app/components";
-import { CONTENT_TYPES, makeCardMastHeadProps } from "@/app/site-config/content.helpers";
+import { makeCardMastHeadProps } from "@/app/site-config/content.helpers";
 import { DATASETS } from "@/app/site-config/dataset";
 import { EVENTS } from "@/app/site-config/event";
+import { CONTENT_TYPES } from "@/app/site-config/types";
 import { PageSideBar } from "../../components/PageSidebar";
 
 export default async function DatasetItemPage(props: PageProps<"/data-gallery/[id]">) {

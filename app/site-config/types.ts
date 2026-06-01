@@ -4,7 +4,46 @@ import type {
   StacSingleLayerMapProps,
 } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
+import type { AppRoutes } from "@/.next/types/routes";
 import type { CardSimplePropsArgs } from "@/app/site-config/content.helpers";
+
+export const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: string }> = {
+  dataset: { route: "/data-gallery", label: "data" },
+  event: { route: "/news-events", label: "event" },
+  news: { route: "/news-events", label: "news" },
+  story: { route: "/news-events", label: "story" },
+  datastory: { route: "/news-events", label: "data story" },
+  training: { route: "/training", label: "training" },
+};
+
+export const CONTENT_THEMES: Record<Theme, { label: string; color: string; textColor?: string }> = {
+  respond: {
+    label: "respond",
+    color: "secondary",
+    textColor: "white",
+  },
+  build: {
+    label: "build resilience",
+    color: "success",
+    textColor: "white",
+  },
+  prepare: {
+    label: "prepare",
+    color: "accent-warm",
+  },
+  recover: {
+    label: "recover",
+    color: "accent-cool",
+    textColor: "white",
+  },
+};
+
+export const CONTENT_SIDEBAR_CONTENT_TYPES: ContentType[] = [
+  "dataset",
+  "story",
+  "datastory",
+  "training",
+];
 
 export type IterableItemWithId<T> = T & { id: string };
 

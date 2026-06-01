@@ -6,39 +6,14 @@ import {
   Tag,
 } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-import type { AppRoutes } from "@/.next/types/routes";
-import type { Category, ContentType, IterableItemWithId, Theme } from "@/app/site-config/types";
-
-const CONTENT_THEMES: Record<Theme, { label: string; color: string; textColor?: string }> = {
-  respond: {
-    label: "respond",
-    color: "secondary",
-    textColor: "white",
-  },
-  build: {
-    label: "build resilience",
-    color: "success",
-    textColor: "white",
-  },
-  prepare: {
-    label: "prepare",
-    color: "accent-warm",
-  },
-  recover: {
-    label: "recover",
-    color: "accent-cool",
-    textColor: "white",
-  },
-};
-
-export const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: string }> = {
-  dataset: { route: "/data-gallery", label: "data" },
-  event: { route: "/news-events", label: "event" },
-  news: { route: "/news-events", label: "news" },
-  story: { route: "/news-events", label: "story" },
-  datastory: { route: "/news-events", label: "data story" },
-  training: { route: "/training", label: "training" },
-};
+import {
+  type Category,
+  CONTENT_THEMES,
+  CONTENT_TYPES,
+  type ContentType,
+  type IterableItemWithId,
+  type Theme,
+} from "@/app/site-config/types";
 
 export const makeSimpleTag = (tag: Theme | ContentType | Category) => (
   <Tag key={tag} variant="solid" color="primary-lighter">
