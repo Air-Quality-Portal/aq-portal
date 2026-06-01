@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { ContentBlockRenderer, PageStatus, Section, ThemeTag } from "@/app/components";
-import { formattedDate } from "@/app/site-config/content.helpers";
+import { toLongDate } from "@/app/site-config/content.helpers";
 import { TRAININGS } from "@/app/site-config/training";
 
 export default async function TrainingItemPage(props: PageProps<"/training/[id]">) {
@@ -33,7 +33,7 @@ export default async function TrainingItemPage(props: PageProps<"/training/[id]"
         {/* Full-width title and date */}
         <h1 className="font-heading-2xl margin-bottom-2">{training.title}</h1>
         <Tag color="primary-lighter" textColor="primary-dark">
-          Updated: {formattedDate(training.date)}
+          Updated: {toLongDate(training.date)}
         </Tag>
       </Section>
 

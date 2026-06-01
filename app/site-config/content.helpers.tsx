@@ -272,9 +272,12 @@ export const makeCardCarouselProps = ({
   ...rest,
 });
 
-export const formattedDate = (date: string) =>
+export const toLongDate = (date: string) =>
   new Date(date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
+
+export const toTitleCase = (str: string) =>
+  str.toLowerCase().replace(/\b\w/g, (match) => match.toUpperCase());
