@@ -1,4 +1,5 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
+import { Fragment } from "react/jsx-runtime";
 import type { EventContent } from "@/app/site-config/types";
 
 export const EVENT__TYPHOON_SINLAKU_2026: EventContent = {
@@ -26,7 +27,7 @@ export const EVENT__TYPHOON_SINLAKU_2026: EventContent = {
       paragraphs: [
         "NASA supported U.S. response agencies when Typhoon Sinlaku struck the Northern Mariana Islands and Guam.",
         "Typhoon Sinlaku brought high winds and heavy rainfall to the Northern Mariana Islands and Guam, causing widespread power blackouts, flooding, and extensive damage to homes and infrastructure.",
-        <>
+        <Fragment key="Typhoon Sinlaku paragraph 2">
           In coordination with FEMA and other federal partners, the NASA Disasters Program worked
           with FEMA, USGS, the American Red Cross and the Centers for Medicare and Medicaid Services
           to support the U.S. response to the storm. The program shared satellite-based maps and
@@ -38,7 +39,7 @@ export const EVENT__TYPHOON_SINLAKU_2026: EventContent = {
           – that provided context and situational awareness. NASA also shared IMERG satellite
           precipitation data to assess rainfall impacts when ground-based weather radars on the
           islands were disabled by the storm.
-        </>,
+        </Fragment>,
       ],
     },
     {
