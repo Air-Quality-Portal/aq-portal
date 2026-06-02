@@ -14,9 +14,9 @@ import { STORY__ESTIMATING_LOSS_RECOVERY } from "../story/story__estimating-loss
 import { STORY__IDENTIFYING_INFRASTRUCTURE_RISKS_HURRICANE } from "../story/story__identifying-infrastructure-risks-hurricane";
 import { STORY__MAPPING_OIL_SPILLS_FROM_SPACE } from "../story/story__mapping_oil_spills_from_space";
 import { TRAINING__EO_BUILDING_EXPOSURE } from "../training/training__eo-building-exposure";
+import { TRAINING__EO_PRE_POST_FIRE_MONITORING } from "../training/training__eo-pre-post-fire-monitoring";
 import { TRAINING__FUNDAMENTALS_REMOTE_SENSING } from "../training/training__fundamentals-remote-sensing";
 import { TRAINING__INTRODUCTION_TO_SAR } from "../training/training__introduction-to-sar";
-import { TRAINING__LIFELINES_WILDFIRE_WORKFLOW } from "../training/training__lifelines-wildfire-workflow";
 
 export const RECOVER_CONTENT: ThemeContent = {
   id: "recover",
@@ -66,8 +66,8 @@ export const RECOVER_DATASTORIES: DataStoryContent[] = [
 
 // TODO: these would be fetched based on content id
 export const RECOVER_TRAININGS: (TrainingContent | TrainingContentExternal)[] = [
-  TRAINING__LIFELINES_WILDFIRE_WORKFLOW,
   TRAINING__EO_BUILDING_EXPOSURE,
   TRAINING__FUNDAMENTALS_REMOTE_SENSING,
   TRAINING__INTRODUCTION_TO_SAR,
+  TRAINING__EO_PRE_POST_FIRE_MONITORING,
 ];
