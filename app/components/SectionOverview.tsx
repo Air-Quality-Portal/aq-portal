@@ -10,9 +10,13 @@ const ContainerItem = ({ title, content }: { title: string; content: React.React
 
 type SectionOverviewProps = SectionProps & SectionOverviewItemProps;
 
-export const SectionOverview = ({ overviewItems, className, ...rest }: SectionOverviewProps) => {
+export const SectionOverview = ({
+  overviewItems,
+  className = "",
+  ...rest
+}: SectionOverviewProps) => {
   return (
-    <Section className={`margin-top-0 ${className}`} {...rest}>
+    <Section className={`margin-top-0 padding-bottom-3 ${className}`} {...rest}>
       <h2 className="font-sans-3xl margin-top-0">Overview</h2>
       <div className={"grid-row border-top border-bottom border-base-light padding-top-2"}>
         {overviewItems.map((i) => (
