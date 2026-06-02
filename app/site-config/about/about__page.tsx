@@ -1,4 +1,5 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
+import Image from "next/image";
 import { Fragment } from "react";
 import type { ContentBlock } from "@/app/site-config/types";
 
@@ -20,6 +21,27 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
           strike, and recover more fully in their aftermath. From hurricanes and volcanoes to floods
           and earthquakes, we use NASA's data, tools, and expertise to build resilience in
           communities across the U.S. and around the world.`,
+      ],
+    },
+    {
+      type: "text",
+      heading: "Our Team",
+      headingLevel: "h2",
+      paragraphs: [
+        // biome-ignore lint/correctness/useJsxKeyInIterable: static content, never reorders
+        <Image
+          src="/img/about/disasters-team.webp"
+          alt="NASA Disasters Team"
+          width="1200"
+          height="800"
+        />,
+      ],
+    },
+    {
+      type: "text",
+      heading: "Connect with us",
+      headingLevel: "h2",
+      paragraphs: [
         <Fragment key="hq-em-disasters@mail.nasa.gov">
           <Link href="mailto:hq-em-disasters@mail.nasa.gov" variant="text">
             Contact Our Team
