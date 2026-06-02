@@ -105,55 +105,29 @@ export const STORY__ESTIMATING_LOSS_RECOVERY: StoryContent = {
         "The third question is the most consequential.Where did it happen? What did the physical damage cost? These two questions are typically answered quickly. How long economic disruption will last has historically gone unanswered until well into the recovery process – a gap that carries real consequences for decision-makers allocating resources in the immediate aftermath. These tools are designed to narrow that gap before critical decisions are made.",
       ],
     },
+
     {
-      type: "text",
+      type: "stacCompare",
       heading: "Explore GAIA's Capabilities",
-      paragraphs: [],
-    },
-    {
-      type: "stacCompare",
-      heading: "GAIA",
-      initialViewState: { longitude: -82.0, latitude: 33.5, zoom: 10 },
+      initialViewState: { longitude: 118.3, latitude: 34, zoom: 10 },
       leftLayerConfig: {
         type: "raster",
-        collectionId: "blackmarble-june2026-composite",
-        dateRange: { from: "2024-08-01", to: "2024-08-31" },
+        collectionId: "gaia-january2025-total-composite-tmp",
+        dateRange: { from: "2025-01-01", to: "2025-01-01" },
       },
       rightLayerConfig: {
         type: "raster",
-        collectionId: "blackmarble-hd-daily-june2026",
-        dateRange: { from: "2024-09-28", to: "2024-09-28" },
+        collectionId: "gaia-january2025-wood-composite-tmp",
+        dateRange: { from: "2025-01-01", to: "2025-01-01" },
       },
     },
     {
-      type: "stacCompare",
-      heading: "Access",
-      initialViewState: { longitude: -82.0, latitude: 33.5, zoom: 10 },
-      leftLayerConfig: {
-        type: "raster",
-        collectionId: "blackmarble-june2026-composite",
-        dateRange: { from: "2024-08-01", to: "2024-08-31" },
-      },
-      rightLayerConfig: {
-        type: "raster",
-        collectionId: "blackmarble-hd-daily-june2026",
-        dateRange: { from: "2024-09-28", to: "2024-09-28" },
-      },
-    },
-    {
-      type: "stacCompare",
-      heading: "Explore",
-      initialViewState: { longitude: -82.0, latitude: 33.5, zoom: 10 },
-      leftLayerConfig: {
-        type: "raster",
-        collectionId: "blackmarble-june2026-composite",
-        dateRange: { from: "2024-08-01", to: "2024-08-31" },
-      },
-      rightLayerConfig: {
-        type: "raster",
-        collectionId: "blackmarble-hd-daily-june2026",
-        dateRange: { from: "2024-09-28", to: "2024-09-28" },
-      },
+      type: "list",
+      items: [
+        "[Access] GAIA Modeling Data",
+        "[Explore] building density and construction type distributions for a sample area, (California coastal region). Click regions to view sample building exposure data and toggle between layers: building density, construction types, and hazard zones.",
+        "[Explore] sample GAIA GeoTIFFs and shapefile(s) for a U.S. test region, including metadata and data dictionary.",
+      ],
     },
     {
       type: "list",
