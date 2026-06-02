@@ -52,8 +52,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
       {/* Placeholder content only */}
       {!body && (
         <PageStatus
-          label={`Dataset Item: ${id}`}
-          heading="Under development"
+          heading="Under Development"
           description="The page you're looking for is under development."
         />
       )}
