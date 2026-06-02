@@ -22,7 +22,7 @@ const MOCK_FEATURE_CTACARDS_PROPS = [
   {
     title: "Build Resilience",
     description: "Safeguard communities for enduring impact",
-    url: "/build-resilience",
+    url: "/resilience",
     accentColor: "#1d9950",
   },
 ];
