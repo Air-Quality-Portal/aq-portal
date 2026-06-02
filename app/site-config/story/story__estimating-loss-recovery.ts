@@ -26,7 +26,7 @@ export const STORY__ESTIMATING_LOSS_RECOVERY: StoryContent = {
     },
     {
       type: "image",
-      src: "/img/story/estimating-loss-recovery-collage.webp",
+      src: "/img/story/estimating-loss-recovery__collage.webp",
       alt: "The Graves County courthouse in Mayfield, Kentucky was severely damaged by an EF4 tornado on Dec. 10, 2021. Images from left to right above show the building before the disaster, debris clearing about a month into recovery, and building reconstruction, more than four years after the storm. Credits: Left image used under CC 2.0/Paul Sableman, May 26, 2018, Center image Liz Roll/FEMA, Jan. 18, 2022, Right image, Seph Allen/NASA April 5, 2026.",
       caption:
         "The Graves County courthouse in Mayfield, Kentucky was severely damaged by an EF4 tornado on Dec. 10, 2021. Images from left to right above show the building before the disaster, debris clearing about a month into recovery, and building reconstruction, more than four years after the storm. Credits: Left image used under CC 2.0/Paul Sableman, May 26, 2018, Center image Liz Roll/FEMA, Jan. 18, 2022, Right image, Seph Allen/NASA April 5, 2026.",
@@ -61,7 +61,7 @@ export const STORY__ESTIMATING_LOSS_RECOVERY: StoryContent = {
     },
     {
       type: "image",
-      src: "/img/story/estimating-loss-recovery-collage-2.webp",
+      src: "/img/story/estimating-loss-recovery__collage-2.webp",
       alt: "NIST (National Institute of Standards and Technology) inspectors survey earthquake damage to buildings in Turkey weeks after historic Feb. 2023 earthquakes. Credits: M. Speicher/NIST",
       caption:
         "NIST (National Institute of Standards and Technology) inspectors survey earthquake damage to buildings in Turkey weeks after historic Feb. 2023 earthquakes. Credits: M. Speicher/NIST",
@@ -76,7 +76,7 @@ export const STORY__ESTIMATING_LOSS_RECOVERY: StoryContent = {
     },
     {
       type: "image",
-      src: "/img/story/estimating-loss-recovery-table.webp",
+      src: "/img/story/estimating-loss-recovery__table.webp",
       alt: "GEDI predicts a value for a given disaster event or planning scenario, giving governments, financial institutions, and community leaders a consistent, comparable basis for understanding economic disruption.",
       caption:
         "GEDI predicts a value for a given disaster event or planning scenario, giving governments, financial institutions, and community leaders a consistent, comparable basis for understanding economic disruption.",
@@ -103,67 +103,6 @@ export const STORY__ESTIMATING_LOSS_RECOVERY: StoryContent = {
         "Not all damage data is recovery-ready.The datasets most commonly available after a disaster were built for administrative purposes, not risk assessment. When used to estimate losses or allocate resources, they can introduce compounding bias that distorts every decision that follows. Decision-makers should expect purpose-built tools, not data repurposed for objectives it was never designed to meet.",
 
         "The third question is the most consequential.Where did it happen? What did the physical damage cost? These two questions are typically answered quickly. How long economic disruption will last has historically gone unanswered until well into the recovery process – a gap that carries real consequences for decision-makers allocating resources in the immediate aftermath. These tools are designed to narrow that gap before critical decisions are made.",
-      ],
-    },
-
-    {
-      type: "stacCompare",
-      heading: "Explore GAIA's Capabilities",
-      initialViewState: { longitude: 118.3, latitude: 34, zoom: 10 },
-      leftLayerConfig: {
-        type: "raster",
-        collectionId: "gaia-january2025-total-composite-tmp",
-        dateRange: { from: "2025-01-01", to: "2025-01-01" },
-      },
-      rightLayerConfig: {
-        type: "raster",
-        collectionId: "gaia-january2025-wood-composite-tmp",
-        dateRange: { from: "2025-01-01", to: "2025-01-01" },
-      },
-    },
-    {
-      type: "list",
-      items: [
-        "[Access] GAIA Modeling Data",
-        "[Explore] building density and construction type distributions for a sample area, (California coastal region). Click regions to view sample building exposure data and toggle between layers: building density, construction types, and hazard zones.",
-        "[Explore] sample GAIA GeoTIFFs and shapefile(s) for a U.S. test region, including metadata and data dictionary.",
-      ],
-    },
-    {
-      type: "list",
-      heading: "Training Resources",
-      items: [
-        "Introducing GAIA (video training on building exposure and loss estimation)",
-        "Ethical Considerations When Using GAIA",
-        "Case Study: Nepal UNICEF (Results)",
-        "Case Study: Costa Rica (Site Surveys)",
-      ],
-    },
-    {
-      type: "list",
-      heading: "Additional related training",
-      items: [
-        "ARSET (Applied Remote Sensing Training)",
-        {
-          label: "Building Climate Risk Assessments From Local Vulnerability and Exposure",
-          href: "https://gcc02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.earthdata.nasa.gov%2Flearn%2Ftrainings%2Fbuilding-climate-risk-assessments-from-local-vulnerability-exposure&data=05%7C02%7Ctimothy.j.allen%40nasa.gov%7Cd73ed86c3c384041d1e108de9683cfae%7C7005d45845be48ae8140d43da96dd17b%7C0%7C0%7C639113690032881126%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=mG%2BHoC6kEp6Byuzw35Gbkwc%2B5%2FBsQyMw3MQurZNQIs8%3D&reserved=0",
-        },
-        {
-          label:
-            "Earth Observations in Support of Insurance & Finance Sector Decision-Making (Course Materials)",
-          href: "https://gcc02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.earthdata.nasa.gov%2Flearn%2Ftrainings%2Fearth-observations-support-insurance-finance-sector-decision-making&data=05%7C02%7Ctimothy.j.allen%40nasa.gov%7Cd73ed86c3c384041d1e108de9683cfae%7C7005d45845be48ae8140d43da96dd17b%7C0%7C0%7C639113690032899673%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=%2F5AvCyFlrfHbHhPJKxqESY%2FO8%2B5kGqVoQhLQlx6oxDg%3D&reserved=0",
-        },
-      ],
-    },
-    {
-      type: "list",
-      heading: "Connect & Learn More",
-      items: [
-        { label: "About the PI", href: "#" },
-        {
-          label: "Sign up for NASA Disasters Program updates",
-          href: "https://lp.constantcontactpages.com/sl/ICIOyJI",
-        },
       ],
     },
   ],
