@@ -43,7 +43,7 @@ export const MOCK_HEADER_PROPS: HeaderProps = {
     url: "/",
   },
   navItems: [
-    { label: "About us", href: "/about" },
+    { label: "About Us", href: "/about" },
     ...MOCK_NAV_ITEM_WITH_DROPDOWN_1,
     ...MOCK_NAV_ITEM_WITH_DROPDOWN_2,
     ...MOCK_NAV_ITEM_WITH_DROPDOWN_3,
