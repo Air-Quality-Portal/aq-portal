@@ -80,9 +80,6 @@ export function PageSidebar({
           </div>
         )
       }
-      <div className="bg-base-lightest padding-4 margin-bottom-4">
-        Placeholder for in page navigation
-      </div>
     </aside>
   );
 }
