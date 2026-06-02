@@ -139,7 +139,7 @@ export const ContentBlockRenderer = ({
             <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
           )}
           <StacCompareBlock block={block} />
-          {block.caption && <p className="font-body-sm text-base margin-top-1">{block.caption}</p>}
+          {block.caption && <p className="margin-top-1">{block.caption}</p>}
         </Section>
       );
 
