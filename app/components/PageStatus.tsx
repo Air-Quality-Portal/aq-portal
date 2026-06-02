@@ -16,7 +16,7 @@ export function PageStatus({ label, heading, description }: PageStatusProps) {
       </h1>
       {description && <p className="font-body-md text-base margin-bottom-6">{description}</p>}
       <Link href="/" className="usa-button">
-        Return to home page
+        Return to Home Page
       </Link>
     </div>
   );
