@@ -40,8 +40,7 @@ export default async function TrainingItemPage(props: PageProps<"/training/[id]"
       {/* Placeholder content only */}
       {!training.body && (
         <PageStatus
-          label={`Training Item: ${id}`}
-          heading="Under development"
+          heading="Under Development"
           description="The page you're looking for is under development."
         />
       )}
