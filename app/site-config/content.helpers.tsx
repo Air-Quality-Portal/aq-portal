@@ -124,7 +124,7 @@ export const makeCardDetailedImageLeftProps = ({
   ...rest
 }: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => ({
   id,
-  image: <Image {...thumbnailImage} fill sizes="200px" />,
+  image: <Image {...thumbnailImage} fill sizes="(max-width: 768px) 100vw, 500px" />,
   imagePosition: "left",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
   // TODO: need to add isExternal handling to all cards in veda-ui-blocks
