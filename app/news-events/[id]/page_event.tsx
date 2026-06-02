@@ -45,7 +45,7 @@ export default async function EventItemPage(contentItem: EventContent) {
                 {...transformEventToSectionOverviewProps(contentItem)}
                 isMultiColumnLayout
               />
-              <div className="margin-top-neg-7">
+              <div className="margin-top-neg-3">
                 {body?.map((block, i) => (
                   // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
                   <ContentBlockRenderer key={i} block={block} isMultiColumnLayout />
