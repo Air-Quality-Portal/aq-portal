@@ -99,23 +99,21 @@ const renderCardDetailedTitle = (title: ReactNode, isExternal: boolean): ReactNo
   <h2
     className="blocks-card-detailed__title"
     title={typeof title === "string" ? title : undefined}
-    style={{
-      display: "flex",
-      alignItems: "flex-start",
-      gap: "0.35em",
-      whiteSpace: "normal",
-      overflow: "visible",
-      textOverflow: "clip",
-    }}
+    style={{ whiteSpace: "normal", overflow: "visible" }}
   >
-    <span style={{ flex: 1, minWidth: 0 }}>{title}</span>
+    {title}
     {isExternal && (
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         width="0.85em"
         height="0.85em"
-        style={{ flexShrink: 0, marginTop: "0.3em", fill: "currentColor" }}
+        style={{
+          display: "inline-block",
+          marginLeft: "0.25em",
+          verticalAlign: "baseline",
+          fill: "currentColor",
+        }}
         aria-hidden="true"
       >
         <path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
