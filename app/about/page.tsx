@@ -21,10 +21,8 @@ export default function AboutPage() {
                   className="display-block"
                 />
               </div>
-              <h1 className="text-primary-dark">
-                <span className="display-block">About the</span>
-                <span className="display-block">NASA Disasters</span>
-                <span className="display-block">Program</span>
+              <h1 className="text-primary-dark font-heading-3xl margin-0">
+                About the NASA Disasters Program
               </h1>
             </div>
           </div>
