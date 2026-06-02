@@ -99,6 +99,7 @@ export type ContentBlock =
         type: "stacCompare";
         heading?: string;
         headingLevel?: "h2" | "h3" | "h4";
+        caption?: string;
       })
   | {
       type: "sectionCardSimple";
