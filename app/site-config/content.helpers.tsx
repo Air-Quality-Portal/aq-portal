@@ -6,6 +6,7 @@ import {
   Tag,
 } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
+import type { ReactElement } from "react";
 import {
   type Category,
   CONTENT_THEMES,
@@ -89,6 +90,36 @@ type CardDetailedPropsArgs = Omit<
   [key: string]: unknown;
 };
 
+const ExternalLinkBadge = () => (
+  <span className="position-absolute top-1 right-1 z-100 display-inline-flex flex-align-center bg-primary text-white padding-x-1 padding-y-05 radius-md font-body-3xs text-bold">
+    External Link
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="14"
+      height="14"
+      style={{ marginLeft: "0.25rem", fill: "currentColor" }}
+      aria-hidden="true"
+    >
+      <path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
+    </svg>
+  </span>
+);
+
+// veda-ui-blocks CardMediaElement only accepts <img>/<svg>/<video>/<canvas>; we wrap with a span
+// to overlay the external-link badge and cast — the package renders the JSX as-is, so the
+// runtime behavior is correct even though the wrapper element type is not in the public union.
+type CardMedia = CardDetailedProps["image"];
+const wrapImageWithExternalBadge = (image: ReactElement, isExternal: boolean): CardMedia =>
+  isExternal
+    ? ((
+        <span className="position-relative display-block height-full width-full">
+          {image}
+          <ExternalLinkBadge />
+        </span>
+      ) as unknown as CardMedia)
+    : (image as CardMedia);
+
 export const makeCardDetailedProps = ({
   id,
   contentType,
@@ -98,16 +129,16 @@ export const makeCardDetailedProps = ({
   ...rest
 }: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => ({
   id,
-  image: (
+  image: wrapImageWithExternalBadge(
     <Image
       {...thumbnailImage}
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1400px) 50vw, 700px"
-    />
+    />,
+    !!url,
   ),
   imagePosition: "top",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
-  // TODO: need to add isExternal handling to all cards in veda-ui-blocks
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `view ${CONTENT_TYPES[contentType].label}`,
@@ -124,10 +155,9 @@ export const makeCardDetailedImageLeftProps = ({
   ...rest
 }: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => ({
   id,
-  image: <Image {...thumbnailImage} fill sizes="200px" />,
+  image: wrapImageWithExternalBadge(<Image {...thumbnailImage} fill sizes="200px" />, !!url),
   imagePosition: "left",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
-  // TODO: need to add isExternal handling to all cards in veda-ui-blocks
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `view ${CONTENT_TYPES[contentType].label}`,
