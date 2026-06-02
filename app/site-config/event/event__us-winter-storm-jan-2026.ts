@@ -3,7 +3,7 @@ import type { EventContent } from "@/app/site-config/types";
 export const EVENT__US_WINTER_STORM_2026: EventContent = {
   id: "us-winter-storm-jan-2026",
   contentType: "event",
-  title: "U.S. Winter Storm Jan 2026",
+  title: "U.S. Winter Storm January 2026",
   lastUpdatedDate: "2026-01-28",
   thumbnailImage: {
     src: "/img/event/us-winter-storm-jan-2026.webp",
@@ -18,6 +18,10 @@ export const EVENT__US_WINTER_STORM_2026: EventContent = {
   region: "U.S., North America",
   startDate: "2026-01-23",
   body: [
+    {
+      type: "text",
+      paragraphs: [""],
+    },
     {
       type: "text",
       paragraphs: [
