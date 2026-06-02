@@ -7,7 +7,7 @@ import { MOCK_FOOTER_PROPS } from "./site-config/footer";
 
 export const metadata: Metadata = {
   title: "Disasters portal",
-  description: "Disasters portal",
+  description: "NASA Disasters PORTAL",
 };
 
 export default function RootLayout({

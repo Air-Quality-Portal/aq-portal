@@ -31,11 +31,11 @@ const portalDetails: FooterProps["portalDetails"] = {
     {
       label: "NASA Responsible Official:",
       name: "Shanna McClain",
-      email: "shanna.mcclain@nasa.gov",
+      email: "shanna.n.mcclain@nasa.gov",
     },
   ],
   logo: <Image src="/img/logo-emblem.svg" alt="Disasters.gov" width={121} height={124} priority />,
-  title: "Disasters Portal",
+  title: "NASA Disasters PORTAL",
   tagline: "Partnership-Oriented Resource for Training, Analysis, and Learning",
   updatedDate: "June 1, 2026",
 };
