@@ -14,5 +14,4 @@ export const DATASTORY__HURRICANE_MILTON_OCTOBER_2024: DataStoryContent = {
     src: "/img/datastory/hurricane-milton-october-2024.webp",
     alt: "Hurricane Milton in 2024 showing storm system over ocean with visible eye of the storm",
   },
-  url: "https://deploy-preview-205--disasters-portal.netlify.app/events/hurricane-milton-2024",
 };
