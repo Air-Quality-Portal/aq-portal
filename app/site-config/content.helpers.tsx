@@ -85,8 +85,6 @@ export type CardDetailedPropsArgs = Omit<
     src: string;
   };
   tags?: (Theme | ContentType | Category)[];
-  theme?: Theme;
-  categories?: Category[];
   url?: string;
   [key: string]: unknown;
 };
@@ -120,23 +118,24 @@ export const makeCardDetailedImageLeftProps = ({
   contentType,
   thumbnailImage,
   tags,
-  theme,
-  categories,
   url,
   ...rest
-}: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => ({
-  id,
-  image: <Image {...thumbnailImage} fill sizes="200px" />,
-  imagePosition: "left",
-  tags: [...(tags ?? []), ...(theme ? [theme] : []), ...(categories ?? [])].map((t) =>
-    makeSimpleTag(t),
-  ),
-  callToAction: {
-    href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
-    label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
-  },
-  ...rest,
-});
+}: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => {
+  const theme = typeof rest.theme === "string" ? (rest.theme as Theme) : undefined;
+  const categories = Array.isArray(rest.categories) ? (rest.categories as Category[]) : [];
+
+  return {
+    id,
+    image: <Image {...thumbnailImage} fill sizes="200px" />,
+    imagePosition: "left",
+    tags: [...(tags ?? []), ...(theme ? [theme] : []), ...categories].map((t) => makeSimpleTag(t)),
+    callToAction: {
+      href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
+      label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
+    },
+    ...rest,
+  };
+};
 
 export type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExternal" | "url"> & {
   id: string;
