@@ -39,7 +39,7 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
     },
     {
       type: "text",
-      heading: "Connect with us",
+      heading: "Connect With Us",
       headingLevel: "h2",
       paragraphs: [
         <Fragment key="hq-em-disasters@mail.nasa.gov">
