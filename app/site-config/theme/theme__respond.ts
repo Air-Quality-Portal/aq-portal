@@ -1,3 +1,4 @@
+import { CARTO_DARK_WITH_LABELS_BASEMAP_STYLE } from "@teamimpact/veda-ui-blocks";
 import type {
   DataStoryContent,
   EventContent,
@@ -31,16 +32,20 @@ export const RESPOND_CONTENT: ThemeContent = {
     {
       type: "stacCompare",
       heading: "Data Visualization",
-      initialViewState: { longitude: -82.0, latitude: 33.5, zoom: 10 },
+      initialViewState: { longitude: -96.5, latitude: 42.0, zoom: 7 },
+      baseMapStyle: CARTO_DARK_WITH_LABELS_BASEMAP_STYLE,
       leftLayerConfig: {
         type: "raster",
-        collectionId: "blackmarble-june2026-composite",
-        dateRange: { from: "2024-08-01", to: "2024-08-31" },
+        collectionId: "sentinel2-truecolor-subdaily",
+        collectionAssetId: "truecolor",
+        dateRange: { from: "2019-03-16", to: "2019-03-16" },
+        hideLegend: true,
       },
       rightLayerConfig: {
         type: "raster",
-        collectionId: "blackmarble-hd-daily-june2026",
-        dateRange: { from: "2024-09-28", to: "2024-09-28" },
+        collectionId: "sentinel2-mndwi-subdaily",
+        collectionAssetId: "mndwi",
+        dateRange: { from: "2019-03-16", to: "2019-03-16" },
       },
     },
   ],
