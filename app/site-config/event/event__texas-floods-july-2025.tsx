@@ -23,11 +23,8 @@ export const EVENT__TEXAS_FLOODS_JULY_2025: EventContent = {
     attribution: "NASA",
   },
   date: "2025-07-09",
-  overview: {
-    region: "Texas, North America",
-    startDate: "July 4, 2025",
-    disasterType: "Floods",
-  },
+  region: "Texas, North America",
+  startDate: "July 4, 2025",
   body: [
     {
       type: "text",
