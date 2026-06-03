@@ -36,8 +36,7 @@ export default async function NewsEventsItemPage(props: PageProps<"/news-events/
       {/* Placeholder content only */}
       {!body && (
         <PageStatus
-          label={`Story, Datastory, or News Item: ${id}`}
-          heading="Under development"
+          heading="Under Development"
           description="The page you're looking for is under development."
         />
       )}
