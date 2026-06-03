@@ -3,23 +3,20 @@ import type { EventContent } from "@/app/site-config/types";
 export const EVENT__US_WINTER_STORM_2026: EventContent = {
   id: "us-winter-storm-jan-2026",
   contentType: "event",
-  title: "U.S. Winter Storm Jan 2026",
-  date: "Jan. 28, 2026",
+  title: "U.S. Winter Storm January 2026",
+  lastUpdatedDate: "2026-01-28",
   thumbnailImage: {
-    src: "/img/event/hazard-pattern-swirls.webp",
+    src: "/img/event/us-winter-storm-jan-2026.webp",
     alt: "Hazard pattern swirls in shades of blue",
   },
   mastheadImage: {
-    src: "/img/event/hazard-pattern-swirls.webp",
+    src: "/img/event/us-winter-storm-jan-2026.webp",
     alt: "Hazard pattern swirls in shades of blue",
   },
   themes: ["respond"],
   categories: ["winter weather"],
-  overview: {
-    region: "U.S., North America",
-    startDate: "Jan. 23, 2026",
-    disasterType: "Winter Weather",
-  },
+  region: "U.S., North America",
+  startDate: "2026-01-23",
   body: [
     {
       type: "text",

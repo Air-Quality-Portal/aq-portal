@@ -5,7 +5,46 @@ import type {
   StacSingleLayerMapProps,
 } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
+import type { AppRoutes } from "@/.next/types/routes";
 import type { CardSimplePropsArgs } from "@/app/site-config/content.helpers";
+
+export const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: string }> = {
+  dataset: { route: "/data-gallery", label: "data" },
+  event: { route: "/news-events", label: "event" },
+  news: { route: "/news-events", label: "news" },
+  story: { route: "/news-events", label: "story" },
+  datastory: { route: "/news-events", label: "Data Story" },
+  training: { route: "/training", label: "training" },
+};
+
+export const CONTENT_THEMES: Record<Theme, { label: string; color: string; textColor?: string }> = {
+  respond: {
+    label: "respond",
+    color: "secondary",
+    textColor: "white",
+  },
+  build: {
+    label: "build resilience",
+    color: "success",
+    textColor: "white",
+  },
+  prepare: {
+    label: "prepare",
+    color: "accent-warm",
+  },
+  recover: {
+    label: "recover",
+    color: "accent-cool",
+    textColor: "white",
+  },
+};
+
+export const CONTENT_SIDEBAR_CONTENT_TYPES: ContentType[] = [
+  "dataset",
+  "story",
+  "datastory",
+  "training",
+];
 
 export type IterableItemWithId<T> = T & { id: string };
 
@@ -111,20 +150,21 @@ export type TrainingContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "training";
   date: string;
   mastheadImage: MastheadImage;
-  body: ContentBlock[];
+  body?: ContentBlock[];
   relatedContent?: string[];
 };
 
 export type DatasetContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "dataset";
   mastheadImage: MastheadImage;
-  body: ContentBlock[];
+  body?: ContentBlock[];
   relatedContent?: string[];
 };
 
 export type NewsContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "news";
   mastheadImage: MastheadImage;
+  body?: ContentBlock[];
 };
 
 export type StoryContent = Omit<MinimumCardContent, "contentType"> & {
@@ -137,15 +177,19 @@ export type StoryContent = Omit<MinimumCardContent, "contentType"> & {
 export type DataStoryContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "datastory";
   mastheadImage: MastheadImage;
+  body?: ContentBlock[];
+  url?: string;
 };
 
 export type EventContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "event";
   mastheadImage: MastheadImage;
   isLatest?: boolean;
-  url?: string;
-  date?: string;
-  overview?: OverviewSection;
+  lastUpdatedDate?: string;
+  startDate: string;
+  region: string;
+  linkDHSFEMA?: { label: string; href: string };
+  linkUSGovernment?: { label: string; href: string };
   body?: ContentBlock[];
   relatedContent?: string[];
 };
@@ -164,12 +208,4 @@ type MastheadImage = {
   alt: string;
   caption?: string;
   attribution?: string;
-};
-
-export type OverviewSection = {
-  region?: string;
-  startDate?: string;
-  disasterType?: string;
-  overviewLink1?: string;
-  overviewLink2?: string;
 };

@@ -3,26 +3,26 @@ import { CardCTA, type CardProps } from "@teamimpact/veda-ui-blocks";
 const MOCK_FEATURE_CTACARDS_PROPS = [
   {
     title: "Prepare",
-    description: "Anticipate risk and boost readiness.",
+    description: "Anticipate risk and boost readiness",
     url: "/prepare",
     accentColor: "#f67e09",
   },
   {
     title: "Respond",
-    description: "Support real-time decisions with timely insights.",
+    description: "Support real-time decisions with timely insights",
     url: "/respond",
     accentColor: "#c91b6e",
   },
   {
     title: "Recover",
-    description: "Assess impacts and rebuild stronger.",
+    description: "Assess impacts and rebuild stronger",
     url: "/recover",
     accentColor: "#4f6fae",
   },
   {
     title: "Build Resilience",
-    description: "Safeguard communities for enduring impact.",
-    url: "/build-resilience",
+    description: "Safeguard communities for enduring impact",
+    url: "/resilience",
     accentColor: "#1d9950",
   },
 ];
@@ -53,12 +53,9 @@ export const MOCK_CARD_MASTHEAD: CardProps = {
       playsInline
     />
   ),
-  title: <h1 className="font-heading-3xl text-bold text-white margin-0">Disasters PORTAL</h1>,
-  description: "Empowering disaster insights with actionable Earth science information.",
-  callToAction: {
-    label: "Learn About Us",
-    href: "/about",
-  },
+  title: <h1 className="font-heading-3xl text-bold text-white margin-0">NASA Disasters PORTAL</h1>,
+  description: "Empowering disaster insights with actionable Earth science information",
+
   colorMode: "brand",
   isMastHead: true,
   children: MOCK_FEATURE_CTACARDS_SECTION,

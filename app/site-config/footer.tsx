@@ -9,9 +9,13 @@ const primaryNavItems: FooterProps["primaryNavItems"] = [
 ];
 
 const secondaryNavItems: FooterProps["secondaryNavItems"] = [
-  { label: "Image Use Policy", href: "https://www.nasa.gov/accessibility/", isExternal: true },
   {
-    label: "Privacy policy",
+    label: "Image Use Policy",
+    href: "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    isExternal: true,
+  },
+  {
+    label: "Privacy Policy",
     href: "https://www.nasa.gov/nasa-web-privacy-policy-and-important-notices/",
     isExternal: true,
   },
@@ -31,11 +35,11 @@ const portalDetails: FooterProps["portalDetails"] = {
     {
       label: "NASA Responsible Official:",
       name: "Shanna McClain",
-      email: "shanna.mcclain@nasa.gov",
+      email: "shanna.n.mcclain@nasa.gov",
     },
   ],
   logo: <Image src="/img/logo-emblem.svg" alt="Disasters.gov" width={121} height={124} priority />,
-  title: "Disasters Portal",
+  title: "NASA Disasters PORTAL",
   tagline: "Partnership-Oriented Resource for Training, Analysis, and Learning",
   updatedDate: "June 1, 2026",
 };

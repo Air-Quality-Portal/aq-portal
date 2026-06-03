@@ -16,7 +16,6 @@ export const SectionHeading = ({ href, children, className, ...props }: SectionH
         {children}
       </h2>
       {href && (
-        // TODO: update once the veda-ui-blocks is updated to include the Link component
         <Link as={NextLink} href={href} variant="arrow" size="lg">
           View All
         </Link>
