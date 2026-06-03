@@ -45,7 +45,7 @@ export const transformEventToSectionOverviewProps = (
     overviewItems: [
       { title: "Region", content: region },
       { title: "Start Date", content: toLongDate(startDate) },
-      { title: "Disaster Type", content: categories.map((c) => toTitleCase(c)).join(", ") },
+      { title: "Hazard(s)", content: categories.map((c) => toTitleCase(c)).join(", ") },
       linkDHSFEMA
         ? {
             title: "What DHS and FEMA are doing:",
