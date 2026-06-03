@@ -93,6 +93,7 @@ export type ContentBlock =
         type: "stacSingleLayer";
         heading?: string;
         headingLevel?: "h2" | "h3" | "h4";
+        caption?: string;
       })
   | (StacCompareMapProps &
       GeoConfig & {
