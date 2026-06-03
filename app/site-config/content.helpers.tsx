@@ -111,7 +111,7 @@ export const makeCardDetailedProps = ({
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
-    label: `view ${CONTENT_TYPES[contentType].label}`,
+    label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
   },
   ...rest,
 });
@@ -133,7 +133,7 @@ export const makeCardDetailedImageLeftProps = ({
   ),
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
-    label: `view ${CONTENT_TYPES[contentType].label}`,
+    label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
   },
   ...rest,
 });
@@ -244,7 +244,7 @@ export const makeCardCarouselProps = ({
   tag: makeContentTypeTag(contentType),
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
-    label: `view ${CONTENT_TYPES[contentType].label}`,
+    label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
   },
   imagePosition: "cover",
   colorMode: "dark",
