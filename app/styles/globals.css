@@ -1,0 +1,4 @@
+/* Match CardDetailed description size to body text (1rem / 16px) instead of vendor default 0.75rem. */
+.blocks-card-detailed__description {
+  font-size: 1rem;
+}

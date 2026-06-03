@@ -1,6 +1,7 @@
 import { Footer } from "@teamimpact/veda-ui-blocks";
 import type { Metadata } from "next";
 import "@teamimpact/veda-ui-blocks/disasters.css";
+import "@/app/styles/globals.css";
 
 import { HeaderWithCurrentPath } from "@/app/components";
 import { MOCK_FOOTER_PROPS } from "./site-config/footer";
