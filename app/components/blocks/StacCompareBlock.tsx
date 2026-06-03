@@ -10,8 +10,6 @@ type StacCompareBlockProps = {
 };
 
 export function StacCompareBlock({ block }: StacCompareBlockProps) {
-  const { caption, ...blockConfig } = block;
-
   const {
     stacApiUrl,
     titilerBaseUrl,
@@ -21,24 +19,19 @@ export function StacCompareBlock({ block }: StacCompareBlockProps) {
     rightLayerConfig,
   } = {
     ...DEFAULT_STAC_CONFIG,
-    ...blockConfig,
+    ...block,
   };
 
   return (
     <GeoConfigProvider stacApiUrl={stacApiUrl} titilerBaseUrl={titilerBaseUrl}>
-      <figure className="margin-0">
-        <div className="display-flex height-card-lg">
-          <StacCompareMap
-            baseMapStyle={baseMapStyle}
-            initialViewState={initialViewState}
-            leftLayerConfig={leftLayerConfig}
-            rightLayerConfig={rightLayerConfig}
-          />
-        </div>
-        {caption && (
-          <figcaption className="font-body-sm text-base margin-top-1">{caption}</figcaption>
-        )}
-      </figure>
+      <div className="display-flex height-card-lg">
+        <StacCompareMap
+          baseMapStyle={baseMapStyle}
+          initialViewState={initialViewState}
+          leftLayerConfig={leftLayerConfig}
+          rightLayerConfig={rightLayerConfig}
+        />
+      </div>
     </GeoConfigProvider>
   );
 }
