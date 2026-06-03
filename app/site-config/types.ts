@@ -56,7 +56,8 @@ export type Category =
   | "flood"
   | "tropical cyclone"
   | "earthquake"
-  | "winter weather";
+  | "winter weather"
+  | "Wildfire";
 
 export type GalleryRoute = "/data-gallery" | "/news-events" | "/training"; // TODO: update to be dynamic
 
