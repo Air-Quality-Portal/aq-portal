@@ -10,20 +10,27 @@ type StacSingleLayerBlockProps = {
 };
 
 export function StacSingleLayerBlock({ block }: StacSingleLayerBlockProps) {
+  const { caption, ...blockConfig } = block;
+
   const { stacApiUrl, titilerBaseUrl, baseMapStyle, initialViewState, layerConfig } = {
     ...DEFAULT_STAC_CONFIG,
-    ...block,
+    ...blockConfig,
   };
 
   return (
     <GeoConfigProvider stacApiUrl={stacApiUrl} titilerBaseUrl={titilerBaseUrl}>
-      <div className="display-flex height-card-lg">
-        <StacSingleLayerMap
-          baseMapStyle={baseMapStyle}
-          initialViewState={initialViewState}
-          layerConfig={layerConfig}
-        />
-      </div>
+      <figure className="margin-0">
+        <div className="display-flex height-card-lg">
+          <StacSingleLayerMap
+            baseMapStyle={baseMapStyle}
+            initialViewState={initialViewState}
+            layerConfig={layerConfig}
+          />
+        </div>
+        {caption && (
+          <figcaption className="font-body-sm text-base margin-top-1">{caption}</figcaption>
+        )}
+      </figure>
     </GeoConfigProvider>
   );
 }
