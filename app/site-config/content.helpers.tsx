@@ -74,6 +74,55 @@ export const makeCardMastHeadProps = ({
   ...rest,
 });
 
+type CardFeaturedPropsArgs = Omit<
+  CardProps,
+  "image" | "imagePosition" | "callToAction" | "callToActionSecondary"
+> & {
+  id: string;
+  callToAction?: {
+    label: string;
+    href: string;
+  };
+  callToActionSecondary?: {
+    label: string;
+    href: string;
+  };
+  image: {
+    alt: string;
+    src: string;
+  };
+  imagePosition?: "left" | "right";
+};
+
+export const makeCardFeaturedProps = (
+  props: CardFeaturedPropsArgs,
+): IterableItemWithId<CardProps> => {
+  const {
+    id,
+    callToAction,
+    callToActionSecondary,
+    image,
+    imagePosition = "right",
+    ...rest
+  } = props;
+  return {
+    id,
+    callToAction,
+    callToActionSecondary,
+    image: (
+      <Image
+        alt={image.alt}
+        src={image.src}
+        sizes="(max-width: 640px) 100vw, (max-width: 1400px) 50vw, 700px"
+        fill
+        style={{ objectFit: "cover" }}
+      />
+    ),
+    imagePosition,
+    ...rest,
+  };
+};
+
 type CardDetailedPropsArgs = Omit<
   CardDetailedProps,
   "image" | "imagePosition" | "tags" | "callToAction"
