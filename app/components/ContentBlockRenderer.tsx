@@ -20,12 +20,10 @@ function ContentHeading({
   heading: string;
   headingLevel?: "h2" | "h3" | "h4";
 }) {
-  if (headingLevel === "h4") {
-    return <h4 className="font-heading-lg margin-bottom-1">{heading}</h4>;
-  }
-  if (headingLevel === "h3") {
-    return <h3 className="font-heading-lg margin-bottom-1">{heading}</h3>;
-  }
+  if (headingLevel === "h4") return <h4 className="font-heading-lg margin-bottom-1">{heading}</h4>;
+
+  if (headingLevel === "h3") return <h3 className="font-heading-lg margin-bottom-1">{heading}</h3>;
+
   return <SectionHeading>{heading}</SectionHeading>;
 }
 
