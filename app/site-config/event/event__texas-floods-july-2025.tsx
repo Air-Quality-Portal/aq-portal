@@ -72,7 +72,7 @@ export const EVENT__TEXAS_FLOODS_JULY_2025: EventContent = {
         type: "raster",
         collectionId: "uavsar-unetclassified-composite",
         collectionAssetId: "unetclassified",
-        dateRange: { from: "2025-01-01", to: "2025-01-31" },
+        dateRange: { from: "2025-07-09", to: "2025-07-09" },
       },
     },
     {
