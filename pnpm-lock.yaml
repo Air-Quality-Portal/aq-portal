@@ -15,8 +15,8 @@ importers:
         specifier: ^5.99.0
         version: 5.100.9(react@19.2.3)
       '@teamimpact/veda-ui-blocks':
-        specifier: 0.1.0-beta.12
-        version: 0.1.0-beta.12(@developmentseed/stac-react@1.0.0-alpha.2(@tanstack/react-query@5.100.9(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@fontsource-variable/inter@5.2.8)(@fontsource/dm-mono@5.2.7)(@tanstack/react-query@5.100.9(react@19.2.3))(@trussworks/react-uswds@11.0.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(@uswds/uswds@3.13.0)(focus-trap-react@11.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@uswds/uswds@3.13.0)(mapbox-gl-compare@0.4.2)(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react-map-gl@8.1.1(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
+        specifier: 0.1.0-beta.13
+        version: 0.1.0-beta.13(@developmentseed/stac-react@1.0.0-alpha.2(@tanstack/react-query@5.100.9(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@fontsource-variable/inter@5.2.8)(@fontsource/dm-mono@5.2.7)(@tanstack/react-query@5.100.9(react@19.2.3))(@trussworks/react-uswds@11.0.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(@uswds/uswds@3.13.0)(focus-trap-react@11.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@uswds/uswds@3.13.0)(mapbox-gl-compare@0.4.2)(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react-map-gl@8.1.1(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
       '@trussworks/react-uswds':
         specifier: ^11.0.0
         version: 11.0.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(@uswds/uswds@3.13.0)(focus-trap-react@11.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -493,8 +493,8 @@ packages:
     peerDependencies:
       react: ^18 || ^19
 
-  '@teamimpact/veda-ui-blocks@0.1.0-beta.12':
-    resolution: {integrity: sha512-yeq0p8OAPguQE9dxGkvdkK6cYQ/MquQK3w5VNFp5eO0dXQ5bExxVG9yAyOz7bVg1ocHsDBIuCw9pLD6d8s7vDA==}
+  '@teamimpact/veda-ui-blocks@0.1.0-beta.13':
+    resolution: {integrity: sha512-7TlpWWPGwt64xARlWF5UG4yGeMTriMMbZGNp7pg3qw9O77+Mc0gK5+00nG+rNjUhhI52453l9E0K8QJroL82rg==}
     peerDependencies:
       '@developmentseed/stac-react': ^1.0.0-alpha.2
       '@fontsource-variable/inter': ^5.2.8
@@ -1245,7 +1245,7 @@ snapshots:
       '@tanstack/query-core': 5.100.9
       react: 19.2.3
 
-  '@teamimpact/veda-ui-blocks@0.1.0-beta.12(@developmentseed/stac-react@1.0.0-alpha.2(@tanstack/react-query@5.100.9(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@fontsource-variable/inter@5.2.8)(@fontsource/dm-mono@5.2.7)(@tanstack/react-query@5.100.9(react@19.2.3))(@trussworks/react-uswds@11.0.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(@uswds/uswds@3.13.0)(focus-trap-react@11.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@uswds/uswds@3.13.0)(mapbox-gl-compare@0.4.2)(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react-map-gl@8.1.1(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)':
+  '@teamimpact/veda-ui-blocks@0.1.0-beta.13(@developmentseed/stac-react@1.0.0-alpha.2(@tanstack/react-query@5.100.9(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@fontsource-variable/inter@5.2.8)(@fontsource/dm-mono@5.2.7)(@tanstack/react-query@5.100.9(react@19.2.3))(@trussworks/react-uswds@11.0.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(@uswds/uswds@3.13.0)(focus-trap-react@11.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@uswds/uswds@3.13.0)(mapbox-gl-compare@0.4.2)(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react-map-gl@8.1.1(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@developmentseed/stac-react': 1.0.0-alpha.2(@tanstack/react-query@5.100.9(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@fontsource-variable/inter': 5.2.8
