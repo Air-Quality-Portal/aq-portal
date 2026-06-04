@@ -5,7 +5,7 @@ import type {
 } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
 import type { AppRoutes } from "@/.next/types/routes";
-import type { CardSimplePropsArgs } from "@/app/site-config/content.helpers";
+import type { CardFeaturedPropsArgs, CardSimplePropsArgs } from "@/app/site-config/content.helpers";
 
 export const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: string }> = {
   dataset: { route: "/data-gallery", label: "data" },
@@ -63,7 +63,12 @@ export type GalleryRoute = "/data-gallery" | "/news-events" | "/training"; // TO
 type GeoConfig = Omit<GeoConfigProviderProps, "children">;
 
 export type ContentBlock =
-  | { type: "text"; heading?: string; headingLevel?: "h2" | "h3" | "h4"; paragraphs: ReactNode[] }
+  | {
+      type: "text";
+      heading?: string;
+      headingLevel?: "h2" | "h3" | "h4";
+      paragraphs: ReactNode[];
+    }
   | {
       type: "list";
       heading?: string;
@@ -107,6 +112,10 @@ export type ContentBlock =
       heading?: string;
       href?: GalleryRoute;
       cards: CardSimplePropsArgs[];
+    }
+  | {
+      type: "sectionCardFeatured";
+      card: CardFeaturedPropsArgs;
     };
 
 type Content =
@@ -183,6 +192,7 @@ export type EventContent = Omit<MinimumCardContent, "contentType"> & {
   linkDHSFEMA?: { label: string; href: string };
   linkUSGovernment?: { label: string; href: string };
   body?: ContentBlock[];
+  relatedContent?: string[];
 };
 
 export type ThemeContent = {
