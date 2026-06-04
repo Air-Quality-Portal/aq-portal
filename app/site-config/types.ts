@@ -12,7 +12,7 @@ export const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: strin
   event: { route: "/news-events", label: "event" },
   news: { route: "/news-events", label: "news" },
   story: { route: "/news-events", label: "story" },
-  datastory: { route: "/news-events", label: "data story" },
+  datastory: { route: "/news-events", label: "Data Story" },
   training: { route: "/training", label: "training" },
 };
 
@@ -93,12 +93,14 @@ export type ContentBlock =
         type: "stacSingleLayer";
         heading?: string;
         headingLevel?: "h2" | "h3" | "h4";
+        caption?: string;
       })
   | (StacCompareMapProps &
       GeoConfig & {
         type: "stacCompare";
         heading?: string;
         headingLevel?: "h2" | "h3" | "h4";
+        caption?: string;
       })
   | {
       type: "sectionCardSimple";
@@ -168,6 +170,7 @@ export type DataStoryContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "datastory";
   mastheadImage: MastheadImage;
   body?: ContentBlock[];
+  url?: string;
 };
 
 export type EventContent = Omit<MinimumCardContent, "contentType"> & {
