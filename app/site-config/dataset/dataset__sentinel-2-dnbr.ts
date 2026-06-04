@@ -16,6 +16,7 @@ export const DATASET__SENTINEL_2_DNBR: DatasetContent = {
   },
   themes: ["respond", "recover"],
   categories: ["fire"],
+  relatedContent: ["sentinel-2-nbr"],
   body: [
     {
       type: "text",
