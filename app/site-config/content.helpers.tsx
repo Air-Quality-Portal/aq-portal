@@ -135,7 +135,6 @@ type CardDetailedPropsArgs = Omit<
   };
   tags?: (Theme | ContentType | Category)[];
   url?: string;
-  [key: string]: unknown;
 };
 
 export const makeCardDetailedProps = ({
@@ -194,7 +193,6 @@ export type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExt
   tag?: Theme | ContentType | Category;
   themes?: Theme[];
   url?: string;
-  [key: string]: unknown;
 };
 
 export const makeCardSimpleProps = ({
@@ -226,7 +224,6 @@ type CardSimpleMiniArgs = Omit<CardMiniProps, "image" | "tag" | "url"> & {
     src: string;
   };
   tag?: string;
-  [key: string]: unknown;
 };
 
 export const makeCardMiniProps = ({
@@ -234,7 +231,6 @@ export const makeCardMiniProps = ({
   contentType,
   thumbnailImage,
   tag,
-  themes,
   ...rest
 }: CardSimpleMiniArgs): IterableItemWithId<CardMiniProps> => ({
   id,
@@ -262,24 +258,17 @@ type CardCarouselPropsArgs = Omit<
     alt: string;
     src: string;
   };
-  title: string;
-  description?: string;
   url?: string;
-  [key: string]: unknown;
 };
 
 export const makeCardCarouselProps = ({
   id,
   contentType,
   thumbnailImage,
-  title,
-  description,
   url,
   ...rest
 }: CardCarouselPropsArgs): IterableItemWithId<CardProps> => ({
   id,
-  title,
-  description,
   image: (
     <Image
       {...thumbnailImage}
