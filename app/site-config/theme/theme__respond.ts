@@ -39,7 +39,6 @@ export const RESPOND_CONTENT: ThemeContent = {
         collectionId: "sentinel2-truecolor-subdaily",
         collectionAssetId: "truecolor",
         dateRange: { from: "2019-03-16", to: "2019-03-16" },
-        hideLegend: true,
       },
       rightLayerConfig: {
         type: "raster",
