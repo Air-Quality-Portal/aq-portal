@@ -1,4 +1,4 @@
-import { Banner, Footer } from "@teamimpact/veda-ui-blocks";
+import { Footer } from "@teamimpact/veda-ui-blocks";
 import type { Metadata } from "next";
 import "@teamimpact/veda-ui-blocks/disasters.css";
 
@@ -24,7 +24,6 @@ export default function RootLayout({
           gridTemplateRows: "auto auto 1fr auto" /* banner, header, main, footer */,
         }}
       >
-        <Banner />
         <HeaderWithCurrentPath />
         <main>{children}</main>
         <Footer {...MOCK_FOOTER_PROPS} />

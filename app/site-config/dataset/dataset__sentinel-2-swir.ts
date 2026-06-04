@@ -13,8 +13,16 @@ export const DATASET__SENTINEL_2_SWIR: DatasetContent = {
     src: "/img/dataset/sentinel-2-swir.webp",
     alt: "Sentinel-2 Shortwave Infrared imagery example",
   },
-  themes: [],
-  categories: [],
+  themes: ["respond", "build", "prepare", "recover"],
+  categories: [
+    "severewx",
+    "fire",
+    "heat",
+    "flood",
+    "tropical cyclone",
+    "earthquake",
+    "winter weather",
+  ],
   relatedContent: ["sentinel-2-true-color", "sentinel-2-color-infrared"],
   body: [
     {
