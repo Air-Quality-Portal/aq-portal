@@ -47,7 +47,7 @@ export const RESPOND_CONTENT: ThemeContent = {
         dateRange: { from: "2019-03-16", to: "2019-03-16" },
       },
       caption:
-        "The European Space Agency Sentinel-2 satellites are optical sensors that support land surface observations. This image shows a comparison between a true color image and a modified Normalized Difference Water Index (mNDWI) highlighting flooding of the Missouri and Platte Rivers near Omaha, Nebraska in March 2019.",
+        "The European Space Agency Sentinel-2 satellites are optical sensors that support land surface observations. This image shows a comparison between a true color image (left) and a modified Normalized Difference Water Index (mNDWI; right) highlighting flooding of the Missouri and Platte Rivers near Omaha, Nebraska in March 2019.",
     },
   ],
 } as const;

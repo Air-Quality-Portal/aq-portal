@@ -47,7 +47,7 @@ export const RECOVER_CONTENT: ThemeContent = {
         dateRange: { from: "2025-01-01", to: "2025-01-01" },
       },
       caption:
-        "NASA Global Assessment of Infrastructure Assets (GAIA) addresses the critical need for consistent building exposure databases for risk assessment. This visualization compares total building exposure and wood-frame building exposure in the Los Angeles metropolitan area.",
+        "NASA Global Assessment of Infrastructure Assets (GAIA) addresses the critical need for consistent building exposure databases for risk assessment. This visualization compares total building exposure (left) and wood-frame building exposure (right) in the Los Angeles metropolitan area.",
     },
   ],
 } as const;
