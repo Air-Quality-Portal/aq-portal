@@ -39,7 +39,10 @@ export const TRAINING__EO_BUILDING_EXPOSURE: TrainingContent = {
         "Explains the purpose of building exposure data, how it is used, and its role in loss estimation rather than as an end product. Clarifies that it is not building rendering data, but gridded building characteristics used for loss estimation. Presents examples to ground key concepts and introduces the key concepts of construction type, replacement cost, and building area.",
       ],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/1-1-what-is-building-exposure-data/1-1-what-is-building-exposure-data.m3u8",
+    },
     {
       type: "text",
       heading: "1.2 From building exposure to decisions",
@@ -48,7 +51,10 @@ export const TRAINING__EO_BUILDING_EXPOSURE: TrainingContent = {
         "Explains the use of loss estimation and CAT modeling to support decisions from planning and quantification to immediate response and recovery. Presents exposure as a key factor in the assessment of vulnerability and hazard to yield risk. Reviews key stakeholders such as NGOs, insurers, and governments and presents common uses for each. The benefit of more accurate exposure data is presented as a tool to reduce uncertainty, leading to opening of insurance markets and stabilizing economies. An assessment of Strengths, Weaknesses, Opportunities, and Threats (SWOT) introduces some key considerations.",
       ],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/1-2-from-building-exposure-to-decisions/1-2-from-building-exposure-to-decisions.m3u8",
+    },
     {
       type: "text",
       heading: "1.3 Practical illustrations",
@@ -57,7 +63,10 @@ export const TRAINING__EO_BUILDING_EXPOSURE: TrainingContent = {
         "Reviews two examples of building exposure data in use. One focuses on the Nepal earthquake, identifying distribution of casualties and impacts to support UNICEF outreach. The other covers a congressionally mandated study estimating the cost effectiveness of mitigation efforts which shape national policy and funding decisions.",
       ],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/1-3-practical-illustrations/1-3-practical-illustrations.m3u8",
+    },
     {
       type: "text",
       heading: "1.4 GAIA — The Global Atlas of Infrastructure Assets",
@@ -66,7 +75,10 @@ export const TRAINING__EO_BUILDING_EXPOSURE: TrainingContent = {
         "Presentation of GAIA, a global, gridded representation of the built environment. Highlights different attributes and discusses utility.",
       ],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/1-4-gaia-the-global-atlas-of-infrastructure-assets/1-4-gaia-the-global-atlas-of-infrastructure-assets.m3u8",
+    },
     {
       type: "text",
       heading: "1.5 Levels of exposure data development",
@@ -75,7 +87,10 @@ export const TRAINING__EO_BUILDING_EXPOSURE: TrainingContent = {
         "Introduces the five levels of building exposure data and why raw GIS data cannot be used directly without significant processing. Shows how the approach for development scales from global and national estimates down to aggregated and building-specific inputs, depending on the application. Uses Los Angeles to illustrate how these levels appear in terms of visual resolution.",
       ],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/1-5-levels-of-exposure-data-development/1-5-levels-of-exposure-data-development.m3u8",
+    },
     {
       type: "text",
       heading: "1.6 Brief overview of exposure data development",
@@ -84,7 +99,10 @@ export const TRAINING__EO_BUILDING_EXPOSURE: TrainingContent = {
         "Presents the process of integrating EO data, expert opinion and/or surveyed building attributes, and distribution of assets (population, building footprint, and replacement cost) to produce a gridded exposure database for loss modeling. Explains the role of EO at a global scale and uses Los Angeles to illustrate how development patterns are used to characterize the built environment. This discussion highlights key challenges in developing exposure data.",
       ],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/1-6-brief-overview-of-exposure-data-development/1-6-brief-overview-of-exposure-data-development.m3u8",
+    },
     {
       type: "text",
       heading: "1.7 Limits, uncertainty, and how to use the data",
@@ -93,7 +111,10 @@ export const TRAINING__EO_BUILDING_EXPOSURE: TrainingContent = {
         "Reviews inappropriate uses and decisions alongside appropriate applications. Shows that higher levels of exposure data do not necessarily improve accuracy, often due to overlooked readers such as replacement cost and building area. Uses research on Los Angeles and Kathmandu to illustrate how key exposure inputs alone can significantly shift estimates.",
       ],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/1-7-limits-uncertainty-and-how-to-use-the-data/1-7-limits-uncertainty-and-how-to-use-the-data.m3u8",
+    },
     {
       type: "text",
       heading: "1.8 Using exposure data responsibly",
@@ -102,7 +123,10 @@ export const TRAINING__EO_BUILDING_EXPOSURE: TrainingContent = {
         "Traces the insurance origins of loss estimation and examines how this perspective shapes what gets measured and ultimately who benefits. Shows how misperceptions surrounding data quality can substitute engineering judgment leading to unfair use of the results. Acknowledges that modeling is relatively simple, often overlooking the synergistic benefits of mitigation activities and the importance of a community perspective. Closes with suggestions to keep aware of potential consequences, advance research, and limit misuse.",
       ],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/1-8-using-exposure-data-responsibly/1-8-using-exposure-data-responsibly.m3u8",
+    },
 
     // ── Section 2 ────────────────────────────────────────────────────────────
     {
@@ -124,7 +148,10 @@ export const TRAINING__EO_BUILDING_EXPOSURE: TrainingContent = {
         "Explains the five-tier hierarchy from global estimates to building-specific data and how development approach scales with application needs and available resources.",
       ],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/2-1-understanding-the-levels-of-exposure-data-development/2-1-understanding-the-levels-of-exposure-data-development.m3u8",
+    },
     {
       type: "text",
       heading: "2.2 Making a building exposure dataset: A step-by-step approach",
@@ -139,49 +166,70 @@ export const TRAINING__EO_BUILDING_EXPOSURE: TrainingContent = {
       heading: "a) Establishing development patterns",
       paragraphs: [],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/2-2a-establishing-development-patterns/2-2a-establishing-development-patterns.m3u8",
+    },
     {
       type: "text",
       headingLevel: "h4",
       heading: "b) Remote sensing classification: Techniques and applications",
       paragraphs: [],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/2-2b-remote-sensing-classification/2-2b-remote-sensing-classification.m3u8",
+    },
     {
       type: "text",
       headingLevel: "h4",
       heading: "c) Developing mapping schemes and sampling protocols",
       paragraphs: [],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/2-2c-developing-mapping-schemes-and-sampling-protocols/2-2c-developing-mapping-schemes-and-sampling-protocols.m3u8",
+    },
     {
       type: "text",
       headingLevel: "h4",
       heading: "d) Example: Costa Rica site surveys",
       paragraphs: [],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/2-2d-case-study-costa-rica/2-2d-case-study-costa-rica.m3u8",
+    },
     {
       type: "text",
       headingLevel: "h4",
       heading: "e) Population, buildings, and replacement cost: Sources and challenges",
       paragraphs: [],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/2-2e-population-buildings-rc/2-2e-population-buildings-rc.m3u8",
+    },
     {
       type: "text",
       headingLevel: "h4",
       heading: "f) Exposure modeling: Simulation approaches",
       paragraphs: [],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/2-2f-exposure-modeling/2-2f-exposure-modeling.m3u8",
+    },
     {
       type: "text",
       headingLevel: "h4",
       heading: "g) Validation: Ensuring quality",
       paragraphs: [],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/2-2g-validation-ensuring-quality/2-2g-validation-ensuring-quality.m3u8",
+    },
 
     // ── Section 3 ────────────────────────────────────────────────────────────
     {
@@ -203,7 +251,10 @@ export const TRAINING__EO_BUILDING_EXPOSURE: TrainingContent = {
         "A demonstration of how exposure data supports loss estimation for insurance applications using an application from the World Bank. Uses Tunisia to illustrate how assets are characterized and losses estimated to inform pricing, underwriting, and risk transfer.",
       ],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/3-1-application-to-insurance-and-loss-estimation-tunisia/3-1-application-to-insurance-and-loss-estimation-tunisia.m3u8",
+    },
     {
       type: "text",
       heading: "3.2 Infrastructure mitigation from coastal hazards: Antigua and Barbuda",
@@ -212,6 +263,9 @@ export const TRAINING__EO_BUILDING_EXPOSURE: TrainingContent = {
         "A demonstration of how exposure data supports planning for coastal risk. Uses Antigua and Barbuda to illustrate how infrastructure exposure informs mitigation decisions and investment. Application for in-country risk managers.",
       ],
     },
-    { type: "video", src: "" },
+    {
+      type: "video",
+      src: "https://disasters.openveda.cloud/training-content/3-2-infrastructure-mitigation-from-coastal-hazards-antigua-and-barbuda/3-2-infrastructure-mitigation-from-coastal-hazards-antigua-and-barbuda.m3u8",
+    },
   ],
 };
