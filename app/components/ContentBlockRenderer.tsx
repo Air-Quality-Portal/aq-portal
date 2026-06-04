@@ -24,7 +24,7 @@ function ContentHeading({
     return <h4 className="font-heading-lg margin-bottom-1">{heading}</h4>;
   }
   if (headingLevel === "h3") {
-    return <h3 className="font-heading-xl margin-bottom-1">{heading}</h3>;
+    return <h3 className="font-heading-lg margin-bottom-1">{heading}</h3>;
   }
   return <SectionHeading>{heading}</SectionHeading>;
 }
