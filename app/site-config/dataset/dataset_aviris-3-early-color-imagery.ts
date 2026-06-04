@@ -16,7 +16,4 @@ export const DATASET__AVIRIS_3_EARLY_COLOR_IMAGERY: DatasetContent = {
   },
   themes: [],
   categories: [],
-  body: [
-    //TO DO: full content needed
-  ],
 };
