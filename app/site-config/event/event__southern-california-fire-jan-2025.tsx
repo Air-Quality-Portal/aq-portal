@@ -1,6 +1,7 @@
-import { Link } from "@teamimpact/veda-ui-blocks";
-import React from "react";
+import { CARTO_DARK_WITH_LABELS_BASEMAP_STYLE, Link } from "@teamimpact/veda-ui-blocks";
+import { Fragment } from "react";
 import type { EventContent } from "@/app/site-config/types";
+
 import { TRAINING__EO_PRE_POST_FIRE_MONITORING } from "../training/training__eo-pre-post-fire-monitoring";
 import { TRAINING__FUNDAMENTALS_REMOTE_SENSING } from "../training/training__fundamentals-remote-sensing";
 import { TRAINING__LIFELINES_WILDFIRE_WORKFLOW } from "../training/training__lifelines-wildfire-workflow";
@@ -34,7 +35,7 @@ export const EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025: EventContent = {
       type: "text",
       paragraphs: [
         "Beginning Jan. 7, 2025, several major wildfires swept through Los Angeles County, driven by powerful Santa Ana winds. The Palisades Fire, Eaton Fire, and Hurst Fire caused widespread destruction across communities from Pacific Palisades to Pasadena and San Fernando, resulting in significant loss of life, property damage, and power outages. The California Governor's Office of Emergency Services (CalOES), the Los Angeles County Office of Emergency Management, and FEMA Region 9 requested NASA's support to address several critical situational awareness needs – including identifying burned structures and damaged critical infrastructure, assessing fire extent, monitoring air quality and methane emissions, and tracking power outages across affected communities.",
-        <React.Fragment key="2">
+        <Fragment key="2">
           The NASA Disasters Program participated coordination calls hosted by CalOES and FEMA to
           align with responder priorities. Mapping the scope of destruction was an early focus –
           NASA shared multispectral imagery, including Sentinel-2, Landsat, and Maxar analysis, to
@@ -57,29 +58,25 @@ export const EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025: EventContent = {
           <Link href="https://earth.jpl.nasa.gov/estd-missions/airborne/aviris-3/">AVIRIS-3</Link> –
           an airborne hyperspectral instrument – collecting 3–4 meter resolution imagery to generate
           ash fraction maps and detect methane emissions from potential gas leaks.
-        </React.Fragment>,
-      ],
-    },
-    {
-      type: "text",
-      heading: "Explore the AVIRIS-3 Hyperspectral Imagery",
-      paragraphs: [
-        "A large winter storm impacted much of the continental U.S., bringing snow, ice, and subfreezing temperatures. NASA’s Disasters Program is sharing maps and data to support state and federal response agencies.",
+        </Fragment>,
       ],
     },
     {
       type: "stacCompare",
       heading: "Explore the AVIRIS-3 Hyperspectral Imagery",
-      initialViewState: { longitude: -118.0938, latitude: 34.1866, zoom: 8 },
+      initialViewState: { longitude: -118.0938, latitude: 34.1866, zoom: 7 },
+      baseMapStyle: CARTO_DARK_WITH_LABELS_BASEMAP_STYLE,
       leftLayerConfig: {
         type: "raster",
         collectionId: "aviris3-rgb-subdaily",
-        dateRange: { from: "2025-01-11", to: "2025-01-16" },
+        collectionAssetId: "rgb",
+        dateRange: { from: "2025-01-11", to: "2025-01-11" },
       },
       rightLayerConfig: {
         type: "raster",
         collectionId: "aviris3-rgb-subdaily",
-        dateRange: { from: "2025-01-11", to: "2025-01-16" },
+        collectionAssetId: "rgb",
+        dateRange: { from: "2025-01-16", to: "2025-01-16" },
       },
     },
     {
@@ -115,13 +112,15 @@ export const EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025: EventContent = {
           label: "Global Fire Weather Database (GFWED)",
           href: "https://data.giss.nasa.gov/impacts/gfwed/",
         },
-        "NASA Earth Observatory:",
+      ],
+    },
+    {
+      type: "list",
+      heading: "NASA Earth Observatory",
+      headingLevel: "h4",
+      items: [
         {
-          label: "The Palisades Fire’s Footprint",
-          href: "https://earthobservatory.nasa.gov/images/153831/the-palisades-fires-footprint",
-        },
-        {
-          label: "Unhealthy Skies over Los Angeles County",
+          label: "The Palisades Fire's Footprint",
           href: "https://earthobservatory.nasa.gov/images/153831/the-palisades-fires-footprint",
         },
         {
