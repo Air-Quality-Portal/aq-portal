@@ -22,8 +22,6 @@ export const EVENT__TYPHOON_SINLAKU_2026: EventContent = {
   body: [
     {
       type: "text",
-      heading: "Typhoon Sinlaku",
-      headingLevel: "h2",
       paragraphs: [
         "NASA supported U.S. response agencies when Typhoon Sinlaku struck the Northern Mariana Islands and Guam.",
         "Typhoon Sinlaku brought high winds and heavy rainfall to the Northern Mariana Islands and Guam, causing widespread power blackouts, flooding, and extensive damage to homes and infrastructure.",
