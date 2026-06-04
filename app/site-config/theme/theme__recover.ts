@@ -47,7 +47,7 @@ export const RECOVER_CONTENT: ThemeContent = {
         dateRange: { from: "2025-01-01", to: "2025-01-01" },
       },
       caption:
-        "NASA Global Assessment of Infrastructure Assets (GAIA) addresses the critical need for consistent building exposure databases for risk assessment. This visualization compares total building exposure (left) and wood-frame building exposure (right) in the Los Angeles metropolitan area.",
+        "The Global Atlas of Infrastructure Assets (GAIA) is a worldwide gridded building exposure dataset suitable for natural hazard risk analysis. The dataset provides a gridded representation of built-up areas worldwide in square meters. At each pixel, the value is a modeled value that represents total built-up area for the grid cell. It does not represent actual buildings in the grid cell. The left image is the total built up area which aggregates all construction types, durability types, and height categories per grid cell. The right image shows the amount of low-rise (1-3 story), wood-framed structures per grid cell. Each 100x100 meter grid cell represents the total area in square meters.",
     },
   ],
 } as const;
