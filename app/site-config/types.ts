@@ -1,12 +1,11 @@
 import type {
-  CardProps,
   GeoConfigProviderProps,
   StacCompareMapProps,
   StacSingleLayerMapProps,
 } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
 import type { AppRoutes } from "@/.next/types/routes";
-import type { CardSimplePropsArgs } from "@/app/site-config/content.helpers";
+import type { CardFeaturedPropsArgs, CardSimplePropsArgs } from "@/app/site-config/content.helpers";
 
 export const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: string }> = {
   dataset: { route: "/data-gallery", label: "data" },
@@ -115,8 +114,8 @@ export type ContentBlock =
       cards: CardSimplePropsArgs[];
     }
   | {
-      type: "ctaCard";
-      card: CardProps;
+      type: "sectionCardFeatured";
+      card: CardFeaturedPropsArgs;
     };
 
 type Content =

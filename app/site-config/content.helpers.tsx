@@ -74,7 +74,7 @@ export const makeCardMastHeadProps = ({
   ...rest,
 });
 
-type CardFeaturedPropsArgs = Omit<
+export type CardFeaturedPropsArgs = Omit<
   CardProps,
   "image" | "imagePosition" | "callToAction" | "callToActionSecondary"
 > & {

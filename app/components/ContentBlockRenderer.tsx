@@ -1,9 +1,15 @@
-import { Card, Link } from "@teamimpact/veda-ui-blocks";
+import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
-import { ImageComparison, Section, SectionCardSimple, SectionHeading } from "@/app/components";
+import {
+  ImageComparison,
+  Section,
+  SectionCardFeatured,
+  SectionCardSimple,
+  SectionHeading,
+} from "@/app/components";
 import { StacCompareBlock, StacSingleLayerBlock } from "@/app/components/blocks";
-import { makeCardSimpleProps } from "@/app/site-config/content.helpers";
+import { makeCardFeaturedProps, makeCardSimpleProps } from "@/app/site-config/content.helpers";
 import { typedMap } from "@/app/site-config/typed.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
 
@@ -175,13 +181,12 @@ export const ContentBlockRenderer = ({
         />
       );
 
-    case "ctaCard":
+    case "sectionCardFeatured":
       return (
-        <Section isMultiColumnLayout={isMultiColumnLayout}>
-          <div className="grid-row">
-            <Card {...block.card} />
-          </div>
-        </Section>
+        <SectionCardFeatured
+          isMultiColumnLayout={isMultiColumnLayout}
+          card={makeCardFeaturedProps(block.card)}
+        />
       );
   }
 };
