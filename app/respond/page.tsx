@@ -40,9 +40,7 @@ export default function RespondPage() {
       ))}
       <SectionCardMini
         sectionHeading={
-          <SectionHeading href="/news-events?contenttype=event">
-            Latest Disaster Activations
-          </SectionHeading>
+          <SectionHeading href="/news-events?contenttype=event">Latest Events</SectionHeading>
         }
         cards={typedMap(RESPOND_EVENTS, transformEventToCardMiniProps)}
       />
