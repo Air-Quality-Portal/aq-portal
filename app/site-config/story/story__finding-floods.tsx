@@ -1,4 +1,4 @@
-import { Link } from "@teamimpact/veda-ui-blocks";
+import { CARTO_DARK_WITH_LABELS_BASEMAP_STYLE, Link } from "@teamimpact/veda-ui-blocks";
 import { Fragment } from "react";
 import type { StoryContent } from "@/app/site-config/types";
 import { EVENT__TEXAS_FLOODS_JULY_2025 } from "../event/event__texas-floods-july-2025";
@@ -78,13 +78,16 @@ export const STORY__FINDING_FLOODS: StoryContent = {
       ],
     },
     {
-      type: "image",
-      src: "/img/story/finding-floods__gis-texas-flooding-uavsar-austin.webp",
-      alt: "This map shows classifications that help identify flooded urban areas, croplands, vegetation, and open water using UAVSAR data collected during flights on July 9, 2025. The UAVSAR flights were coordinated by NASA’s Disasters Program, NASA’s Airborne Sciences Program, and NASA’s Jet Propulsion Laboratory, and flew out of NASA’s Armstrong Flight Research Center at Edwards Air Force Base in California. Credit: NASA",
-      caption:
-        "This map shows classifications that help identify flooded urban areas, croplands, vegetation, and open water using UAVSAR data collected during flights on July 9, 2025. The UAVSAR flights were coordinated by NASA’s Disasters Program, NASA’s Airborne Sciences Program, and NASA’s Jet Propulsion Laboratory, and flew out of NASA’s Armstrong Flight Research Center at Edwards Air Force Base in California. Credit: NASA",
-      width: 1400,
-      height: 1400,
+      type: "stacSingleLayer",
+      heading: "Explore the UAVSAR Flood Maps",
+      initialViewState: { longitude: -99, latitude: 30.0, zoom: 10 },
+      baseMapStyle: CARTO_DARK_WITH_LABELS_BASEMAP_STYLE,
+      layerConfig: {
+        type: "raster",
+        collectionId: "uavsar-unetclassified-composite",
+        collectionAssetId: "unetclassified",
+        dateRange: { from: "2025-07-09", to: "2025-07-09" },
+      },
     },
     {
       type: "text",
