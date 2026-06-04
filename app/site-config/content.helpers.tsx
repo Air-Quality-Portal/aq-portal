@@ -155,10 +155,10 @@ export const makeCardDetailedProps = ({
   ),
   imagePosition: "top",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
-  // TODO: need to add isExternal handling to all cards in veda-ui-blocks
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
+    isExternal: !!url,
   },
   ...rest,
 });
@@ -175,10 +175,10 @@ export const makeCardDetailedImageLeftProps = ({
   image: <Image {...thumbnailImage} fill sizes="200px" />,
   imagePosition: "left",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
-  // TODO: need to add isExternal handling to all cards in veda-ui-blocks
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
+    isExternal: !!url,
   },
   ...rest,
 });
@@ -280,6 +280,7 @@ export const makeCardCarouselProps = ({
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
+    isExternal: !!url,
   },
   imagePosition: "cover",
   colorMode: "dark",
