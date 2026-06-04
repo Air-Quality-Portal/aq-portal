@@ -1,13 +1,16 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
-import { ImageComparison, Section, SectionCardSimple, SectionHeading } from "@/app/components";
+import {
+  ImageComparison,
+  Section,
+  SectionCardFeatured,
+  SectionCardSimple,
+  SectionHeading,
+} from "@/app/components";
 import { StacCompareBlock, StacSingleLayerBlock } from "@/app/components/blocks";
 import { SectionProductGallery } from "@/app/components/SectionProductGallery";
-import {
-  makeCardDetailedImageLeftProps,
-  makeCardSimpleProps,
-} from "@/app/site-config/content.helpers";
+import { makeCardFeaturedProps, makeCardSimpleProps, makeCardDetailedImageLeftProps } from "@/app/site-config/content.helpers";
 import { typedMap } from "@/app/site-config/typed.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
 
@@ -19,7 +22,9 @@ function ContentHeading({
   headingLevel?: "h2" | "h3" | "h4";
 }) {
   if (headingLevel === "h4") return <h4 className="font-heading-lg margin-bottom-1">{heading}</h4>;
+
   if (headingLevel === "h3") return <h3 className="font-heading-lg margin-bottom-1">{heading}</h3>;
+
   return <SectionHeading>{heading}</SectionHeading>;
 }
 
@@ -132,7 +137,14 @@ export const ContentBlockRenderer = ({
           {block.heading && (
             <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
           )}
-          <StacSingleLayerBlock block={block} />
+          <figure className="margin-0">
+            <StacSingleLayerBlock block={block} />
+            {block.caption && (
+              <figcaption className="font-body-sm text-base margin-top-1">
+                {block.caption}
+              </figcaption>
+            )}
+          </figure>
         </Section>
       );
 
@@ -142,7 +154,14 @@ export const ContentBlockRenderer = ({
           {block.heading && (
             <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
           )}
-          <StacCompareBlock block={block} />
+          <figure className="margin-0">
+            <StacCompareBlock block={block} />
+            {block.caption && (
+              <figcaption className="font-body-sm text-base margin-top-1">
+                {block.caption}
+              </figcaption>
+            )}
+          </figure>
         </Section>
       );
 
@@ -172,6 +191,12 @@ export const ContentBlockRenderer = ({
             )
           }
           cards={typedMap(block.cards, makeCardDetailedImageLeftProps)}
+
+    case "sectionCardFeatured":
+      return (
+        <SectionCardFeatured
+          isMultiColumnLayout={isMultiColumnLayout}
+          card={makeCardFeaturedProps(block.card)}
         />
       );
   }

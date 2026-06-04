@@ -21,7 +21,6 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
   const {
     contentType,
     title,
-    description,
     mastheadImage,
     themes,
     categories,
@@ -47,7 +46,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
 
   return (
     <>
-      <PageMasthead {...makeCardMastHeadProps({ mastheadImage, title, description })} />
+      <PageMasthead {...makeCardMastHeadProps({ mastheadImage, title })} />
 
       {/* Placeholder content only */}
       {!body && (

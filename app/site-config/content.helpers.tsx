@@ -74,7 +74,56 @@ export const makeCardMastHeadProps = ({
   ...rest,
 });
 
-export type CardDetailedPropsArgs = Omit<
+export type CardFeaturedPropsArgs = Omit<
+  CardProps,
+  "image" | "imagePosition" | "callToAction" | "callToActionSecondary"
+> & {
+  id: string;
+  callToAction?: {
+    label: string;
+    href: string;
+  };
+  callToActionSecondary?: {
+    label: string;
+    href: string;
+  };
+  image: {
+    alt: string;
+    src: string;
+  };
+  imagePosition?: "left" | "right";
+};
+
+export const makeCardFeaturedProps = (
+  props: CardFeaturedPropsArgs,
+): IterableItemWithId<CardProps> => {
+  const {
+    id,
+    callToAction,
+    callToActionSecondary,
+    image,
+    imagePosition = "right",
+    ...rest
+  } = props;
+  return {
+    id,
+    callToAction,
+    callToActionSecondary,
+    image: (
+      <Image
+        alt={image.alt}
+        src={image.src}
+        sizes="(max-width: 640px) 100vw, (max-width: 1400px) 50vw, 700px"
+        fill
+        style={{ objectFit: "cover" }}
+      />
+    ),
+    imagePosition,
+    ...rest,
+  };
+};
+
+type CardDetailedPropsArgs = Omit<
   CardDetailedProps,
   "image" | "imagePosition" | "tags" | "callToAction"
 > & {
@@ -86,7 +135,6 @@ export type CardDetailedPropsArgs = Omit<
   };
   tags?: (Theme | ContentType | Category)[];
   url?: string;
-  [key: string]: unknown;
 };
 
 export const makeCardDetailedProps = ({
@@ -147,7 +195,6 @@ export type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExt
   tag?: Theme | ContentType | Category;
   themes?: Theme[];
   url?: string;
-  [key: string]: unknown;
 };
 
 export const makeCardSimpleProps = ({
@@ -179,7 +226,6 @@ type CardSimpleMiniArgs = Omit<CardMiniProps, "image" | "tag" | "url"> & {
     src: string;
   };
   tag?: string;
-  [key: string]: unknown;
 };
 
 export const makeCardMiniProps = ({
@@ -187,7 +233,6 @@ export const makeCardMiniProps = ({
   contentType,
   thumbnailImage,
   tag,
-  themes,
   ...rest
 }: CardSimpleMiniArgs): IterableItemWithId<CardMiniProps> => ({
   id,
@@ -215,24 +260,17 @@ type CardCarouselPropsArgs = Omit<
     alt: string;
     src: string;
   };
-  title: string;
-  description?: string;
   url?: string;
-  [key: string]: unknown;
 };
 
 export const makeCardCarouselProps = ({
   id,
   contentType,
   thumbnailImage,
-  title,
-  description,
   url,
   ...rest
 }: CardCarouselPropsArgs): IterableItemWithId<CardProps> => ({
   id,
-  title,
-  description,
   image: (
     <Image
       {...thumbnailImage}

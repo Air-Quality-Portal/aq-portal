@@ -7,6 +7,7 @@ export { PageSidebar } from "./PageSidebar";
 export { PageStatus } from "./PageStatus";
 export { Section, type SectionProps } from "./Section";
 export { SectionCardCarousel } from "./SectionCardCarousel";
+export { SectionCardFeatured } from "./SectionCardFeatured";
 export { SectionCardMini } from "./SectionCardMini";
 export { SectionCardSimple } from "./SectionCardSimple";
 export { SectionCardSimpleMosaic } from "./SectionCardSimpleMosaic";
