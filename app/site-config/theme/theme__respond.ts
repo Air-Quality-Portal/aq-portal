@@ -32,14 +32,13 @@ export const RESPOND_CONTENT: ThemeContent = {
     {
       type: "stacCompare",
       heading: "Data Visualization",
-      initialViewState: { longitude: -96.5, latitude: 42.0, zoom: 7 },
+      initialViewState: { longitude: -96.43, latitude: 41.25, zoom: 9 },
       baseMapStyle: CARTO_DARK_WITH_LABELS_BASEMAP_STYLE,
       leftLayerConfig: {
         type: "raster",
         collectionId: "sentinel2-truecolor-subdaily",
         collectionAssetId: "truecolor",
         dateRange: { from: "2019-03-16", to: "2019-03-16" },
-        hideLegend: true,
       },
       rightLayerConfig: {
         type: "raster",

@@ -31,7 +31,7 @@ export const RECOVER_CONTENT: ThemeContent = {
     {
       type: "stacCompare",
       heading: "Data Visualization",
-      initialViewState: { longitude: -82.0, latitude: 33.5, zoom: 10 },
+      initialViewState: { longitude: -118.24, latitude: 34.07, zoom: 10 },
       baseMapStyle: CARTO_DARK_WITH_LABELS_BASEMAP_STYLE,
       leftLayerConfig: {
         type: "raster",
