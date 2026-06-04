@@ -66,7 +66,7 @@ export const EVENT__TEXAS_FLOODS_JULY_2025: EventContent = {
     {
       type: "stacSingleLayer",
       heading: "Explore the UAVSAR Flood Maps",
-      initialViewState: { longitude: -97.7, latitude: 30.43, zoom: 8 },
+      initialViewState: { longitude: -99, latitude: 30.0, zoom: 10 },
       baseMapStyle: CARTO_DARK_WITH_LABELS_BASEMAP_STYLE,
       layerConfig: {
         type: "raster",
