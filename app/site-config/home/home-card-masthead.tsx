@@ -22,7 +22,7 @@ const MOCK_FEATURE_CTACARDS_PROPS = [
   {
     title: "Build Resilience",
     description: "Safeguard communities for enduring impact",
-    url: "/build-resilience",
+    url: "/resilience",
     accentColor: "#1d9950",
   },
 ];
@@ -53,7 +53,7 @@ export const MOCK_CARD_MASTHEAD: CardProps = {
       playsInline
     />
   ),
-  title: <h1 className="font-heading-3xl text-bold text-white margin-0">Disasters PORTAL</h1>,
+  title: <h1 className="font-heading-3xl text-bold text-white margin-0">NASA Disasters PORTAL</h1>,
   description: "Empowering disaster insights with actionable Earth science information",
 
   colorMode: "brand",

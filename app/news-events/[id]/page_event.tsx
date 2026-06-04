@@ -15,7 +15,7 @@ import type { EventContent } from "@/app/site-config/types";
 export default async function EventItemPage(contentItem: EventContent) {
   // TO DO: this will need to account for inpage navigation once implements
 
-  const { id, contentType, themes, categories, body } = contentItem;
+  const { contentType, themes, categories, body } = contentItem;
 
   return (
     <>
@@ -25,8 +25,7 @@ export default async function EventItemPage(contentItem: EventContent) {
       {/* Placeholder content only */}
       {!body && (
         <PageStatus
-          label={`Event Item: ${id}`}
-          heading="Under development"
+          heading="Under Development"
           description="The page you're looking for is under development."
         />
       )}
@@ -45,7 +44,7 @@ export default async function EventItemPage(contentItem: EventContent) {
                 {...transformEventToSectionOverviewProps(contentItem)}
                 isMultiColumnLayout
               />
-              <div className="margin-top-neg-7">
+              <div className="margin-top-neg-3">
                 {body?.map((block, i) => (
                   // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
                   <ContentBlockRenderer key={i} block={block} isMultiColumnLayout />
