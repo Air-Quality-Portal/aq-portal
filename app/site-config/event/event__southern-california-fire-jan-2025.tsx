@@ -64,7 +64,7 @@ export const EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025: EventContent = {
     {
       type: "stacCompare",
       heading: "Explore the AVIRIS-3 Hyperspectral Imagery",
-      initialViewState: { longitude: -118.0938, latitude: 34.1866, zoom: 7 },
+      initialViewState: { longitude: -118.148, latitude: 34.195, zoom: 13 },
       baseMapStyle: CARTO_DARK_WITH_LABELS_BASEMAP_STYLE,
       leftLayerConfig: {
         type: "raster",
