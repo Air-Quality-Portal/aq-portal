@@ -100,7 +100,7 @@ export const STORY__ESTIMATING_LOSS_RECOVERY: StoryContent = {
       heading: "Cornerstones",
       paragraphs: [
         "Recovery decisions shape future risk. How a community rebuilds determines how much risk it will absorb the next time a hazard strikes. Acting on incomplete damage and loss information may inadvertently restore the same conditions that made a community's situation worse in the first place. Better tools don't just speed up recovery. They improve it.",
-        "Not all damage data is recovery-ready.The datasets most commonly available after a disaster were built for administrative purposes, not risk assessment. When used to estimate losses or allocate resources, they can introduce compounding bias that distorts every decision that follows. Decision-makers should expect purpose-built tools, not data repurposed for objectives it was never designed to meet.",
+        "Not all damage data is recovery-ready. The datasets most commonly available after a disaster were built for administrative purposes, not risk assessment. When used to estimate losses or allocate resources, they can introduce compounding bias that distorts every decision that follows. Decision-makers should expect purpose-built tools, not data repurposed for objectives it was never designed to meet.",
 
         "The third question is the most consequential.Where did it happen? What did the physical damage cost? These two questions are typically answered quickly. How long economic disruption will last has historically gone unanswered until well into the recovery process – a gap that carries real consequences for decision-makers allocating resources in the immediate aftermath. These tools are designed to narrow that gap before critical decisions are made.",
       ],
