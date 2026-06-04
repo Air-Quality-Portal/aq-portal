@@ -23,11 +23,11 @@ export const EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025: EventContent = {
   region: " Los Angeles County, North America",
   startDate: "Jan. 10, 2025",
   linkUSGovernment: {
-    label: "What the U.S. government is doing ",
+    label: "Learn more",
     href: "https://www.usa.gov/california-wildfires",
   },
   linkDHSFEMA: {
-    label: "What DHS and FEMA are doing",
+    label: "Learn more",
     href: "https://www.fema.gov/california-wildfires",
   },
   body: [
