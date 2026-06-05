@@ -8,7 +8,7 @@ import type { AppRoutes } from "@/.next/types/routes";
 import type { CardFeaturedPropsArgs, CardSimplePropsArgs } from "@/app/site-config/content.helpers";
 
 export const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: string }> = {
-  dataset: { route: "/data-gallery", label: "data" },
+  dataset: { route: "/data-gallery", label: "product" },
   event: { route: "/news-events", label: "event" },
   news: { route: "/news-events", label: "news" },
   story: { route: "/news-events", label: "story" },
