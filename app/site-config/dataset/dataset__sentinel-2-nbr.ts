@@ -5,7 +5,7 @@ export const DATASET__SENTINEL_2_NBR: DatasetContent = {
   contentType: "dataset",
   title: "Sentinel-2 Normalized Burn Ratio (NBR)",
   description:
-    "The True Color RGB composite provides a product of how the surface would look to the naked eye from space. The RGB is created using the red, green, and blue channels of the respective instrument.",
+    "Normalized Burn Ratio (NBR) is defined mathematically as (NIR – SWIR)/(NIR + SWIR) where NIR is near-infrared and SWIR is short-wave infrared. NBR is commonly used as a proxy to indicate areas which have charred vegetation.",
   thumbnailImage: {
     src: "/img/dataset/sentinel-2-nbr.webp",
     alt: "Sentinel-2 Normalized Burn Ratio (NBR)",
@@ -23,9 +23,7 @@ export const DATASET__SENTINEL_2_NBR: DatasetContent = {
       heading: "Summary",
       headingLevel: "h3",
       paragraphs: [
-        "The True Color RGB composite provides a product of how the surface would look to the naked eye from space. The RGB is created using the red, green, and blue channels of the respective instrument.",
-        "The Short Wave Infrared (SWIR) RGB is a product that is created using the SWIR, Near Infrared (NIR), and Red channels of the respective instrument.",
-        "The Color Infrared composite is created using the near-infrared, red, and green channels, allowing for the ability to see areas impacted by floods, fires, or other hazards in conditions with light clouds or smoke. The near infrared gives the ability to see through thin clouds. Healthy vegetation is shown as red; water is blue; burned areas are black.",
+        "Normalized Burn Ratio (NBR) is defined mathematically as (NIR – SWIR)/(NIR + SWIR) where NIR is near-infrared and SWIR is short-wave infrared. NBR is commonly used as a proxy to indicate areas which have charred vegetation.",
       ],
     },
     {
@@ -33,9 +31,7 @@ export const DATASET__SENTINEL_2_NBR: DatasetContent = {
       heading: "Suggested Use",
       headingLevel: "h3",
       paragraphs: [
-        "The True Color RGB provides a product of how the surface would look to the naked eye from space. The True Color RGB is produced using the 3 visible wavelength bands (red, green, and blue) from the respective sensor. Some minor atmospheric corrections have occurred.",
-        "The Short Wave Infrared (SWIR) RGB is a product that can provide value in flood detection. Areas of water will appear blue, healthy green vegetation will appear as a bright green, urban areas in various shades of magenta, snow will appear as a bright blue/cyan, and bare soils being multicolor dependent on their makeup.",
-        "A Color Infrared composite depicts healthy vegetation as red, water as blue. Some minor atmospheric corrections have occurred.",
+        "Darker areas (more negative values) in the NBR image more strongly represent the presence of burned vegetation.",
       ],
     },
     {
