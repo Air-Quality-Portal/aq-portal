@@ -9,7 +9,7 @@ import { TRAINING__LIFELINES_WILDFIRE_WORKFLOW } from "../training/training__lif
 export const EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025: EventContent = {
   id: "southern-california-fire-jan-2025",
   contentType: "event",
-  title: "Southern California Wildfires Jan 2025",
+  title: "Southern California Wildfires January 2025",
   thumbnailImage: {
     src: "/img/event/southern-california-fire-jan-2025.webp",
     alt: "Infrared satellite imagery of the Palisades fire in Malibu, CA, from Jan. 12, 2025.",
