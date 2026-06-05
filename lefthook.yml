@@ -2,8 +2,6 @@ pre-commit:
   commands:
     check:
       glob: "*.{ts,tsx,js,jsx,json,css}"
-      exclude:
-        - "public/**/*.ts"
       run: pnpm lint:staged {staged_files}
     typecheck:
       run: pnpm typecheck
