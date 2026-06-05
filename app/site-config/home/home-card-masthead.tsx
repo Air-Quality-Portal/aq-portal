@@ -43,7 +43,7 @@ const MOCK_FEATURE_CTACARDS_SECTION = (
 export const MOCK_CARD_MASTHEAD: CardProps = {
   image: (
     <video
-      src="/img/home/home-card-hero-video.mp4"
+      src="/img/home/home-card-hero-video.m3u8"
       aria-hidden="true"
       tabIndex={-1}
       poster="/img/home/home-card-hero-poster.webp"
