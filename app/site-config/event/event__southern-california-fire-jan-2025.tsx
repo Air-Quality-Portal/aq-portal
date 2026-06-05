@@ -9,7 +9,7 @@ import { TRAINING__LIFELINES_WILDFIRE_WORKFLOW } from "../training/training__lif
 export const EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025: EventContent = {
   id: "southern-california-fire-jan-2025",
   contentType: "event",
-  title: "Southern California Wildfires Jan 2025",
+  title: "Southern California Wildfires January 2025",
   thumbnailImage: {
     src: "/img/event/southern-california-fire-jan-2025.webp",
     alt: "Infrared satellite imagery of the Palisades fire in Malibu, CA, from Jan. 12, 2025.",
@@ -36,7 +36,7 @@ export const EVENT__SOUTHERN_CALIFORNIA_FIRE_JAN_2025: EventContent = {
       paragraphs: [
         "Beginning Jan. 7, 2025, several major wildfires swept through Los Angeles County, driven by powerful Santa Ana winds. The Palisades Fire, Eaton Fire, and Hurst Fire caused widespread destruction across communities from Pacific Palisades to Pasadena and San Fernando, resulting in significant loss of life, property damage, and power outages. The California Governor's Office of Emergency Services (CalOES), the Los Angeles County Office of Emergency Management, and FEMA Region 9 requested NASA's support to address several critical situational awareness needs – including identifying burned structures and damaged critical infrastructure, assessing fire extent, monitoring air quality and methane emissions, and tracking power outages across affected communities.",
         <Fragment key="2">
-          The NASA Disasters Program participated coordination calls hosted by CalOES and FEMA to
+          The NASA Disasters Program participated in coordination calls hosted by CalOES and FEMA to
           align with responder priorities. Mapping the scope of destruction was an early focus –
           NASA shared multispectral imagery, including Sentinel-2, Landsat, and Maxar analysis, to
           characterize burned areas and potential structural losses, while Synthetic Aperture Radar
