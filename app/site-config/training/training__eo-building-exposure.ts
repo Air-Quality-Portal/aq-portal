@@ -108,7 +108,7 @@ export const TRAINING__EO_BUILDING_EXPOSURE: TrainingContent = {
       heading: "1.7 Limits, uncertainty, and how to use the data",
       headingLevel: "h3",
       paragraphs: [
-        "Reviews inappropriate uses and decisions alongside appropriate applications. Shows that higher levels of exposure data do not necessarily improve accuracy, often due to overlooked readers such as replacement cost and building area. Uses research on Los Angeles and Kathmandu to illustrate how key exposure inputs alone can significantly shift estimates.",
+        "Reviews inappropriate uses and decisions alongside appropriate applications. Shows that higher levels of exposure data do not necessarily improve accuracy, often due to overlooked drivers such as replacement cost and building area. Uses research on Los Angeles and Kathmandu to illustrate how key exposure inputs alone can significantly shift estimates.",
       ],
     },
     {
