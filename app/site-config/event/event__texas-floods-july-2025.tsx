@@ -84,5 +84,11 @@ export const EVENT__TEXAS_FLOODS_JULY_2025: EventContent = {
         TRAINING__EO_BUILDING_EXPOSURE,
       ],
     },
+    {
+      type: "text",
+      heading: "Product Gallery",
+      headingLevel: "h2",
+      paragraphs: ["Product galleries under development. Will be available by September release."],
+    },
   ],
 };
