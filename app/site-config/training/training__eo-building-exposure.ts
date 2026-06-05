@@ -69,7 +69,7 @@ export const TRAINING__EO_BUILDING_EXPOSURE: TrainingContent = {
     },
     {
       type: "text",
-      heading: "1.4 GAIA — The Global Atlas of Infrastructure Assets",
+      heading: "1.4 GAIA — The Global Assessment of Infrastructure Assets",
       headingLevel: "h3",
       paragraphs: [
         "Presentation of GAIA, a global, gridded representation of the built environment. Highlights different attributes and discusses utility.",
