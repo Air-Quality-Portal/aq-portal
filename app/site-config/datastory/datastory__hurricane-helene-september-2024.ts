@@ -1,6 +1,6 @@
-import type { DataStoryContent } from "../types";
+import type { DataStoryContentWithUrl } from "../types";
 
-export const DATASTORY__HURRICANE_HELENE_SEPTEMBER_2024: DataStoryContent = {
+export const DATASTORY__HURRICANE_HELENE_SEPTEMBER_2024: DataStoryContentWithUrl = {
   id: "hurricane-helene-september-2024",
   contentType: "datastory",
   title: "Hurricane Helene - September 2024",

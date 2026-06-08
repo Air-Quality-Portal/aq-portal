@@ -179,7 +179,10 @@ export type DataStoryContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "datastory";
   mastheadImage: MastheadImage;
   body?: ContentBlock[];
-  url?: string;
+};
+
+export type DataStoryContentWithUrl = DataStoryContent & {
+  url: string;
 };
 
 export type EventContent = Omit<MinimumCardContent, "contentType"> & {
