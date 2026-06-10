@@ -6,8 +6,8 @@ import { HeaderWithCurrentPath } from "@/app/components";
 import { MOCK_FOOTER_PROPS } from "./site-config/footer";
 
 export const metadata: Metadata = {
-  title: "NASA Disasters PORTAL",
-  description: "NASA Disasters PORTAL",
+  title: "Air4US Portal",
+  description: "Air4US Portal",
 };
 
 export default function RootLayout({
