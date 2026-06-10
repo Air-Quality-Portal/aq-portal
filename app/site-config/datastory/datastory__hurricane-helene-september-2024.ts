@@ -1,6 +1,6 @@
-import type { DataStoryContent } from "../types";
+import type { DataStoryContentExternal } from "../types";
 
-export const DATASTORY__HURRICANE_HELENE_SEPTEMBER_2024: DataStoryContent = {
+export const DATASTORY__HURRICANE_HELENE_SEPTEMBER_2024: DataStoryContentExternal = {
   id: "hurricane-helene-september-2024",
   contentType: "datastory",
   title: "Hurricane Helene - September 2024",
@@ -10,9 +10,5 @@ export const DATASTORY__HURRICANE_HELENE_SEPTEMBER_2024: DataStoryContent = {
   },
   themes: ["respond", "recover"],
   categories: ["tropical cyclone", "severewx", "flood"],
-  mastheadImage: {
-    src: "/img/datastory/hurricane-helene-september-2024.webp",
-    alt: "Nighttime satellite image of Hurricane Helene in 2024 captured by NOAA-20",
-  },
   url: "https://deploy-preview-205--disasters-portal.netlify.app/events/hurricane-helene-2024",
 };
