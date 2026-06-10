@@ -1,4 +1,4 @@
-import type { DataStoryContentExternal  } from "../types";
+import type { DataStoryContentExternal } from "../types";
 import { DATASTORY__HURRICANE_HELENE_SEPTEMBER_2024 } from "./datastory__hurricane-helene-september-2024";
 import { DATASTORY__HURRICANE_MILTON_OCTOBER_2024 } from "./datastory__hurricane-milton-october-2024";
 
