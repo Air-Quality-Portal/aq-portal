@@ -158,6 +158,7 @@ export const makeCardDetailedProps = ({
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
+    isExternal: !!url,
   },
   ...rest,
 });
@@ -177,6 +178,7 @@ export const makeCardDetailedImageLeftProps = ({
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
+    isExternal: !!url,
   },
   ...rest,
 });
@@ -278,6 +280,7 @@ export const makeCardCarouselProps = ({
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
+    isExternal: !!url,
   },
   imagePosition: "cover",
   colorMode: "dark",

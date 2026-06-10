@@ -123,6 +123,7 @@ type Content =
   | TrainingContentExternal
   | DatasetContent
   | DataStoryContent
+  | DataStoryContentExternal
   | StoryContent
   | NewsContent
   | EventContent;
@@ -181,7 +182,8 @@ export type DataStoryContent = Omit<MinimumCardContent, "contentType"> & {
   body?: ContentBlock[];
 };
 
-export type DataStoryContentWithUrl = DataStoryContent & {
+export type DataStoryContentExternal = Omit<MinimumCardContent, "contentType"> & {
+  contentType: "datastory";
   url: string;
 };
 
