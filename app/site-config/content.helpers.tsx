@@ -21,15 +21,6 @@ export const makeSimpleTag = (tag: Theme | ContentType | Category) => (
   </Tag>
 );
 
-export const makeThemeTag = (tag: Theme) => {
-  const { label, ...rest } = CONTENT_THEMES[tag];
-  return (
-    <Tag key={tag} variant="solid" {...rest}>
-      {tag}
-    </Tag>
-  );
-};
-
 const makeContentTypeTag = (tag: ContentType) => {
   const { label } = CONTENT_TYPES[tag];
   return (
@@ -191,7 +182,6 @@ export type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExt
     src: string;
   };
   tag?: Theme | ContentType | Category;
-  themes?: Theme[];
   url?: string;
 };
 
@@ -200,7 +190,6 @@ export const makeCardSimpleProps = ({
   contentType,
   thumbnailImage,
   tag,
-  themes,
   url,
   ...rest
 }: CardSimplePropsArgs): IterableItemWithId<CardSimpleProps> => ({
@@ -208,9 +197,7 @@ export const makeCardSimpleProps = ({
   image: <Image {...thumbnailImage} fill sizes="(max-width: 1400px) 100vw, 1400px" />,
   tag: tag // TODO update function to allow user to choose which tag should be rendered
     ? makeSimpleTag(tag)
-    : themes?.[0]
-      ? makeThemeTag(themes[0])
-      : makeContentTypeTag(contentType),
+    : makeContentTypeTag(contentType),
   url: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
   isExternal: !!url,
   ...rest,

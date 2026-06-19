@@ -13,4 +13,3 @@ export { SectionCardSimple } from "./SectionCardSimple";
 export { SectionCardSimpleMosaic } from "./SectionCardSimpleMosaic";
 export { SectionHeading } from "./SectionHeading";
 export { SectionOverview } from "./SectionOverview";
-export { ThemeTag } from "./ThemeTag";

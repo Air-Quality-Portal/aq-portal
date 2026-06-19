@@ -4,10 +4,9 @@ import type {
   StacSingleLayerMapProps,
 } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
-import type { AppRoutes } from "@/.next/types/routes";
 import type { CardFeaturedPropsArgs, CardSimplePropsArgs } from "@/app/site-config/content.helpers";
 
-export const CONTENT_TYPES: Record<ContentType, { route: AppRoutes; label: string }> = {
+export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }> = {
   dataset: { route: "/data-gallery", label: "product" },
   event: { route: "/news-events", label: "event" },
   news: { route: "/news-events", label: "news" },
@@ -58,7 +57,7 @@ export type Category =
   | "earthquake"
   | "winter weather";
 
-export type GalleryRoute = "/data-gallery" | "/news-events" | "/training"; // TODO: update to be dynamic
+export type GalleryRoute = string;
 
 type GeoConfig = Omit<GeoConfigProviderProps, "children">;
 

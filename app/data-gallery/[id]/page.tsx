@@ -9,7 +9,6 @@ import {
 } from "@/app/components";
 import { makeCardMastHeadProps } from "@/app/site-config/content.helpers";
 import { DATASETS } from "@/app/site-config/dataset";
-import { EVENTS } from "@/app/site-config/event";
 import { CONTENT_TYPES } from "@/app/site-config/types";
 
 export default async function DatasetItemPage(props: PageProps<"/data-gallery/[id]">) {
@@ -22,7 +21,6 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
     contentType,
     title,
     mastheadImage,
-    themes,
     categories,
     body,
     relatedContent: relatedIds = [],
@@ -31,14 +29,13 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
   // TODO: Move to content helpers, and broaden to fit any content type use case
   // Can related content be of a different content type?
   const relatedItems = relatedIds.flatMap((relId) => {
-    const rel = DATASETS.find((d) => d.id === relId) || EVENTS.find((e) => e.id === relId);
+    const rel = DATASETS.find((d) => d.id === relId);
     if (!rel) return [];
     return [
       {
         id: rel.id,
         title: rel.title,
         href: `${CONTENT_TYPES[rel.contentType].route}/${rel.id}`,
-        themes: rel.themes,
         categories: rel.categories,
       },
     ];
@@ -64,7 +61,6 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
               {/* TO DO: DatasetSidebar needs to be updated to a generic sidebar component */}
               <PageSidebar
                 contentType={contentType}
-                themes={themes}
                 categories={categories}
                 relatedContent={relatedItems}
               />
