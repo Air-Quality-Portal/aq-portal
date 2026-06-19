@@ -1,12 +1,5 @@
-import {
-  Section,
-  SectionCardCarousel,
-  SectionCardSimple,
-  SectionCardSimpleMosaic,
-  SectionHeading,
-} from "@/app/components/";
-import { makeCardCarouselProps, makeCardSimpleProps } from "../site-config/content.helpers";
-import { DATASETS } from "../site-config/dataset";
+import { Section, SectionCardSimple, SectionHeading } from "@/app/components/";
+import { makeCardSimpleProps } from "../site-config/content.helpers";
 import { NEWS_EVENTS_CARDS } from "../site-config/home/home-sectioncardmosaic-news-events";
 import { typedMap } from "../site-config/typed.helpers";
 
@@ -60,23 +53,6 @@ export default function ComponentsPage() {
         </code>
       </Section>
 
-      <SectionCardSimpleMosaic
-        sectionHeading={<SectionHeading>SectionCardSimpleMosaic Component</SectionHeading>}
-        cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
-      >
-        <p>Lorem ipsum dolor sit amet...</p>
-        <code className="bg-base-lighter font-code-xs">
-          {`<SectionCardSimpleMosaic
-              sectionHeading="SectionCardSimpleMosaic Component"
-              cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
-            >
-              <p>
-                Lorem ipsum dolor sit amet...
-              </p>
-            </SectionCardSimpleMosaic>`}
-        </code>
-      </SectionCardSimpleMosaic>
-
       <SectionCardSimple
         sectionHeading={<SectionHeading>SectionCardSimple Component</SectionHeading>}
         cards={typedMap(NEWS_EVENTS_CARDS, makeCardSimpleProps)}
@@ -93,25 +69,6 @@ export default function ComponentsPage() {
             </SectionCardSimple>`}
         </code>
       </SectionCardSimple>
-
-      <SectionCardCarousel
-        sectionHeading={
-          <SectionHeading href="/components">SectionCardCarousel Component</SectionHeading>
-        }
-        cards={typedMap(DATASETS, makeCardCarouselProps)}
-      >
-        <p>Lorem ipsum dolor sit amet...</p>
-        <code className="bg-base-lighter font-code-xs">
-          {`<SectionCardCarousel
-              sectionHeading={<SectionHeading>SectionCardCarousel Component</SectionHeading>}
-              cards={NEWS_EVENTS_CARDS}
-            >
-              <p>
-                Lorem ipsum dolor sit amet...
-              </p>
-            </SectionCardCarousel>`}
-        </code>
-      </SectionCardCarousel>
     </>
   );
 }
