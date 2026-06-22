@@ -7,9 +7,9 @@ export const MOCK_HEADER_PROPS: HeaderProps = {
     url: "/",
   },
   navItems: [
-    { label: "Tool Catalog", href: "#" },
-    { label: "Data Catalog", href: "#" },
-    { label: "Resources", href: "#" },
-    { label: "About Us", href: "#" },
+    { label: "Tool Catalog", href: "/tools" },
+    { label: "Data Catalog", href: "/data-catalog" },
+    { label: "Resources", href: "/resources" },
+    { label: "About Us", href: "/about" },
   ],
 };
