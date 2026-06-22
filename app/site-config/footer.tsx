@@ -2,21 +2,41 @@ import type { FooterProps } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
 const primaryNavItems: FooterProps["primaryNavItems"] = [
+  { label: "Tool Catalog", href: "/tools" },
+  { label: "Data Catalog", href: "/data-catalog" },
+  { label: "Resources", href: "/resources" },
   { label: "About Us", href: "/about" },
-  { label: "Data Gallery", href: "/data-gallery" },
-  { label: "News & Events", href: "/news-events" },
-  { label: "Training", href: "/training" },
 ];
 
 const secondaryNavItems: FooterProps["secondaryNavItems"] = [
   {
-    label: "Image Use Policy",
-    href: "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    label: "Accessibiility support",
+    href: "#",
+    isExternal: true,
+  },
+  {
+    label: "No FEAR Act data",
+    href: "#",
+    isExternal: true,
+  },
+  {
+    label: "Office of the Inspector General",
+    href: "#",
+    isExternal: true,
+  },
+  {
+    label: "FOIA Requests",
+    href: "#",
+    isExternal: true,
+  },
+  {
+    label: "Performance reports",
+    href: "#",
     isExternal: true,
   },
   {
     label: "Privacy Policy",
-    href: "https://www.nasa.gov/nasa-web-privacy-policy-and-important-notices/",
+    href: "#",
     isExternal: true,
   },
 ];
@@ -28,14 +48,9 @@ const utilityNavItems: FooterProps["utilityNavItems"] = [
 const portalDetails: FooterProps["portalDetails"] = {
   contacts: [
     {
-      label: "Page Manager:",
-      name: "Jacob Reed",
-      email: "jacob.reed@nasa.gov",
-    },
-    {
-      label: "NASA Responsible Official:",
-      name: "Shanna McClain",
-      email: "shanna.n.mcclain@nasa.gov",
+      label: "Responsible Official:",
+      name: "Katherine Knowland",
+      email: "#",
     },
   ],
   logo: <Image src="/img/logo-emblem.svg" alt="Disasters.gov" width={121} height={124} priority />,
