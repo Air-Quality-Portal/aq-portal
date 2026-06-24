@@ -58,7 +58,7 @@ export type Category =
   | "earthquake"
   | "winter weather";
 
-export type GalleryRoute = "/data-gallery" | "/news-events" | "/training"; // TODO: update to be dynamic
+export type GalleryRoute = "/data-gallery" | "/news-events" | "/training" | "/resources"; // TODO: update to be dynamic
 
 type GeoConfig = Omit<GeoConfigProviderProps, "children">;
 
