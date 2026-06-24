@@ -15,8 +15,8 @@ importers:
         specifier: ^5.99.0
         version: 5.100.9(react@19.2.3)
       '@teamimpact/veda-ui-blocks':
-        specifier: 0.1.0-beta.13
-        version: 0.1.0-beta.13(@developmentseed/stac-react@1.0.0-alpha.2(@tanstack/react-query@5.100.9(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@fontsource-variable/inter@5.2.8)(@fontsource/dm-mono@5.2.7)(@tanstack/react-query@5.100.9(react@19.2.3))(@trussworks/react-uswds@11.0.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(@uswds/uswds@3.13.0)(focus-trap-react@11.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@uswds/uswds@3.13.0)(mapbox-gl-compare@0.4.2)(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react-map-gl@8.1.1(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
+        specifier: file:/Users/smalone/Documents/Projects/aq-portal/.local-packages/teamimpact-veda-ui-blocks-0.1.0-beta.13.tgz
+        version: file:.local-packages/teamimpact-veda-ui-blocks-0.1.0-beta.13.tgz(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(focus-trap-react@11.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@trussworks/react-uswds':
         specifier: ^11.0.0
         version: 11.0.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(@uswds/uswds@3.13.0)(focus-trap-react@11.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -126,12 +126,6 @@ packages:
 
   '@emnapi/runtime@1.10.0':
     resolution: {integrity: sha512-ewvYlk86xUoGI0zQRNq/mC+16R1QeDlKQy21Ki3oSYXNgLb45GV1P6A0M+/s6nyCuNDqe5VpaY84BzXGwVbwFA==}
-
-  '@fontsource-variable/inter@5.2.8':
-    resolution: {integrity: sha512-kOfP2D+ykbcX/P3IFnokOhVRNoTozo5/JxhAIVYLpea/UBmCQ/YWPBfWIDuBImXX/15KH+eKh4xpEUyS2sQQGQ==}
-
-  '@fontsource/dm-mono@5.2.7':
-    resolution: {integrity: sha512-Ma1az2atTVgQWuOWwjuxx26p/6A6CU9HBNKq1CFV6YKpKhpswnf9ry9Ql4+T6bTZzkdtSfS6tjJvqZOljVzIFQ==}
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -493,20 +487,12 @@ packages:
     peerDependencies:
       react: ^18 || ^19
 
-  '@teamimpact/veda-ui-blocks@0.1.0-beta.13':
-    resolution: {integrity: sha512-7TlpWWPGwt64xARlWF5UG4yGeMTriMMbZGNp7pg3qw9O77+Mc0gK5+00nG+rNjUhhI52453l9E0K8QJroL82rg==}
+  '@teamimpact/veda-ui-blocks@file:.local-packages/teamimpact-veda-ui-blocks-0.1.0-beta.13.tgz':
+    resolution: {integrity: sha512-DYiT7fEmev0umZZnosB+cj7b9I8pxpHzQY2jmiWFGtQAyJOi1M0IgrOk0ceMmyKrrx8qk2vLb0Yl7qUWDKIeDw==, tarball: file:.local-packages/teamimpact-veda-ui-blocks-0.1.0-beta.13.tgz}
+    version: 0.1.0-beta.13
     peerDependencies:
-      '@developmentseed/stac-react': ^1.0.0-alpha.2
-      '@fontsource-variable/inter': ^5.2.8
-      '@fontsource/dm-mono': ^5.2.7
-      '@tanstack/react-query': ^5.99.0
-      '@trussworks/react-uswds': ^11.0.0
-      '@uswds/uswds': ^3.13.0
-      mapbox-gl-compare: ^0.4.2
-      maplibre-gl: ^5.23.0
       react: ^19.2.3
       react-dom: ^19.2.3
-      react-map-gl: ^8.1.1
 
   '@trussworks/react-uswds@11.0.1':
     resolution: {integrity: sha512-dhrTrtV3bH9G96XN7mrqH7QL2BplaTkMZua6CWOuLuCxmsNA6KnJdx9KduUcvsmmTNY4a0dFW2gYGr94hMJvcQ==}
@@ -605,6 +591,19 @@ packages:
   element-closest@2.0.2:
     resolution: {integrity: sha512-QCqAWP3kwj8Gz9UXncVXQGdrhnWxD8SQBSeZp5pOsyCcQ6RpL738L1/tfuwBiMi6F1fYkxqPnBrFBR4L+f49Cg==}
     engines: {node: '>=4.0.0'}
+
+  embla-carousel-react@8.6.0:
+    resolution: {integrity: sha512-0/PjqU7geVmo6F734pmPqpyHqiM99olvyecY7zdweCw+6tKEXnrE90pBiBbMMU8s5tICemzpQ3hi5EpxzGW+JA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.1 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+
+  embla-carousel-reactive-utils@8.6.0:
+    resolution: {integrity: sha512-fMVUDUEx0/uIEDM0Mz3dHznDhfX+znCCDCeIophYb1QGVM7YThSWX+wz11zlYwWFOr74b4QLGg0hrGPJeG2s4A==}
+    peerDependencies:
+      embla-carousel: 8.6.0
+
+  embla-carousel@8.6.0:
+    resolution: {integrity: sha512-SjWyZBHJPbqxHOzckOfo8lHisEaJWmwd23XppYFYVh10bU66/Pn5tkVkbkCMZVdbUE5eTCI2nD8OyIP4Z+uwkA==}
 
   extend-shallow@2.0.1:
     resolution: {integrity: sha512-zCnTtlxNoAiDc3gqY2aYAWFx7XWWiasuF2K8Me5WbN8otHKTUKBwjPtNpRs/rbUZm7KxWAaNj7P1a/p52GbVug==}
@@ -981,10 +980,6 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@fontsource-variable/inter@5.2.8': {}
-
-  '@fontsource/dm-mono@5.2.7': {}
-
   '@img/colour@1.1.0':
     optional: true
 
@@ -1245,19 +1240,24 @@ snapshots:
       '@tanstack/query-core': 5.100.9
       react: 19.2.3
 
-  '@teamimpact/veda-ui-blocks@0.1.0-beta.13(@developmentseed/stac-react@1.0.0-alpha.2(@tanstack/react-query@5.100.9(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@fontsource-variable/inter@5.2.8)(@fontsource/dm-mono@5.2.7)(@tanstack/react-query@5.100.9(react@19.2.3))(@trussworks/react-uswds@11.0.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(@uswds/uswds@3.13.0)(focus-trap-react@11.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@uswds/uswds@3.13.0)(mapbox-gl-compare@0.4.2)(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react-map-gl@8.1.1(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)':
+  '@teamimpact/veda-ui-blocks@file:.local-packages/teamimpact-veda-ui-blocks-0.1.0-beta.13.tgz(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(focus-trap-react@11.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@developmentseed/stac-react': 1.0.0-alpha.2(@tanstack/react-query@5.100.9(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@fontsource-variable/inter': 5.2.8
-      '@fontsource/dm-mono': 5.2.7
       '@tanstack/react-query': 5.100.9(react@19.2.3)
       '@trussworks/react-uswds': 11.0.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(@uswds/uswds@3.13.0)(focus-trap-react@11.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@uswds/uswds': 3.13.0
+      embla-carousel: 8.6.0
+      embla-carousel-react: 8.6.0(react@19.2.3)
       mapbox-gl-compare: 0.4.2
       maplibre-gl: 5.24.0
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
       react-map-gl: 8.1.1(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+    transitivePeerDependencies:
+      - '@types/react'
+      - '@types/react-dom'
+      - focus-trap-react
+      - mapbox-gl
 
   '@trussworks/react-uswds@11.0.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(@uswds/uswds@3.13.0)(focus-trap-react@11.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
@@ -1340,6 +1340,18 @@ snapshots:
   earcut@3.0.2: {}
 
   element-closest@2.0.2: {}
+
+  embla-carousel-react@8.6.0(react@19.2.3):
+    dependencies:
+      embla-carousel: 8.6.0
+      embla-carousel-reactive-utils: 8.6.0(embla-carousel@8.6.0)
+      react: 19.2.3
+
+  embla-carousel-reactive-utils@8.6.0(embla-carousel@8.6.0):
+    dependencies:
+      embla-carousel: 8.6.0
+
+  embla-carousel@8.6.0: {}
 
   extend-shallow@2.0.1:
     dependencies:

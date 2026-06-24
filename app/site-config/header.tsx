@@ -48,4 +48,5 @@ export const MOCK_HEADER_PROPS: HeaderProps = {
     ...MOCK_NAV_ITEM_WITH_DROPDOWN_2,
     ...MOCK_NAV_ITEM_WITH_DROPDOWN_3,
   ],
+  currentPath: "/",
 };

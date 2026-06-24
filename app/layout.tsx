@@ -1,9 +1,9 @@
-import { Footer } from "@teamimpact/veda-ui-blocks";
+import { Footer, Header } from "@teamimpact/veda-ui-blocks";
 import type { Metadata } from "next";
-import "@teamimpact/veda-ui-blocks/disasters.css";
+import "@teamimpact/veda-ui-blocks/air4us.css";
 
-import { HeaderWithCurrentPath } from "@/app/components";
 import { MOCK_FOOTER_PROPS } from "./site-config/footer";
+import { MOCK_HEADER_PROPS } from "./site-config/header";
 
 export const metadata: Metadata = {
   title: "Air4US Portal",
@@ -17,15 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className="minh-viewport"
-        style={{
-          display: "grid",
-          gridTemplateRows: "auto auto 1fr auto" /* banner, header, main, footer */,
-        }}
-      >
-        <HeaderWithCurrentPath />
-        <main>{children}</main>
+      <body className="display-flex flex-column minh-viewport">
+        <Header {...MOCK_HEADER_PROPS} />
+        <main className="flex-1">{children}</main>
         <Footer {...MOCK_FOOTER_PROPS} />
       </body>
     </html>

@@ -7,6 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "theme:air4us:local": "bash ./scripts/use-local-air4us-theme.sh",
     "lint": "biome check .",
     "lint:staged": "biome check",
     "lint:ci": "biome ci .",
