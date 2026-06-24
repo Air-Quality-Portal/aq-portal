@@ -6,7 +6,7 @@ import NextLink from "next/link";
 import type { ComponentProps } from "react";
 
 type SectionHeadingProps = ComponentProps<"h2"> & {
-  href?: ComponentProps<typeof NextLink>["href"];
+  href?: string;
 };
 
 export const SectionHeading = ({ href, children, className, ...props }: SectionHeadingProps) => {
@@ -16,7 +16,12 @@ export const SectionHeading = ({ href, children, className, ...props }: SectionH
         {children}
       </h2>
       {href && (
-        <Link as={NextLink} href={href} variant="arrow" size="lg">
+        <Link
+          as={NextLink}
+          href={href as ComponentProps<typeof NextLink>["href"]}
+          variant="arrow"
+          size="lg"
+        >
           View All
         </Link>
       )}

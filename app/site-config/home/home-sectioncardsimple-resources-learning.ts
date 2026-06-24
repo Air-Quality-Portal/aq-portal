@@ -1,12 +1,12 @@
-import type { TrainingContent, TrainingContentExternal } from "@/app/site-config/types";
-import { TRAINING__EO_BUILDING_EXPOSURE } from "../training/training__eo-building-exposure";
-import { TRAINING__FUNDAMENTALS_REMOTE_SENSING } from "../training/training__fundamentals-remote-sensing";
-import { TRAINING__INTRODUCTION_TO_SAR } from "../training/training__introduction-to-sar";
-import { TRAINING__LIFELINES_WILDFIRE_WORKFLOW } from "../training/training__lifelines-wildfire-workflow";
+import type { DatasetContent } from "@/app/site-config/types";
+import { DATASET__SENTINEL_2_COLOR_INFRARED } from "../dataset/dataset__sentinel-2-color-infrared";
+import { DATASET__SENTINEL_2_DNBR } from "../dataset/dataset__sentinel-2-dnbr";
+import { DATASET__SENTINEL_2_SWIR } from "../dataset/dataset__sentinel-2-swir";
+import { DATASET__SENTINEL_2_TRUE_COLOR } from "../dataset/dataset__sentinel-2-true-color";
 
-export const RESOURCES_LEARNING_CARDS: (TrainingContent | TrainingContentExternal)[] = [
-  TRAINING__LIFELINES_WILDFIRE_WORKFLOW,
-  TRAINING__EO_BUILDING_EXPOSURE,
-  TRAINING__FUNDAMENTALS_REMOTE_SENSING,
-  TRAINING__INTRODUCTION_TO_SAR,
+export const RESOURCES_LEARNING_CARDS: DatasetContent[] = [
+  DATASET__SENTINEL_2_TRUE_COLOR,
+  DATASET__SENTINEL_2_COLOR_INFRARED,
+  DATASET__SENTINEL_2_SWIR,
+  DATASET__SENTINEL_2_DNBR,
 ];

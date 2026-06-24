@@ -1,6 +1,0 @@
-export const NEWS_EVENTS_CARD_MASTHEAD = {
-  mastheadImage: { alt: "", src: "/img/placeholder/card-masthead.webp" },
-  title: "News, Events & Stories",
-  description:
-    "Stay informed with the latest news, stories, and data stories from the NASA Disasters Program",
-};
