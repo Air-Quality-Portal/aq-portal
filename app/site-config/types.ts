@@ -10,33 +10,9 @@ export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }
   dataset: { route: "/data-gallery", label: "product" },
 };
 
-export const CONTENT_THEMES: Record<Theme, { label: string; color: string; textColor?: string }> = {
-  respond: {
-    label: "respond",
-    color: "secondary",
-    textColor: "white",
-  },
-  build: {
-    label: "build resilience",
-    color: "success",
-    textColor: "white",
-  },
-  prepare: {
-    label: "prepare",
-    color: "accent-warm",
-  },
-  recover: {
-    label: "recover",
-    color: "accent-cool",
-    textColor: "white",
-  },
-};
-
 export const CONTENT_SIDEBAR_CONTENT_TYPES: ContentType[] = ["dataset"];
 
 export type IterableItemWithId<T> = T & { id: string };
-
-export type Theme = "respond" | "build" | "prepare" | "recover";
 
 export type Category =
   | "severewx"
@@ -119,7 +95,6 @@ export type MinimumCardContent = {
     src: string;
     alt: string;
   };
-  themes: Theme[];
   categories: Category[];
   description?: string;
 };

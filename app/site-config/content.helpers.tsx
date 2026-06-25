@@ -8,14 +8,12 @@ import {
 import Image from "next/image";
 import {
   type Category,
-  CONTENT_THEMES,
   CONTENT_TYPES,
   type ContentType,
   type IterableItemWithId,
-  type Theme,
 } from "@/app/site-config/types";
 
-export const makeSimpleTag = (tag: Theme | ContentType | Category) => (
+export const makeSimpleTag = (tag: ContentType | Category) => (
   <Tag key={tag} variant="solid" color="primary-lighter">
     {tag}
   </Tag>
@@ -39,23 +37,21 @@ export type CardMastheadPropsArgs = Omit<
     src: string;
   };
   title?: string;
-  theme?: Theme;
 };
 
 export const makeCardMastHeadProps = ({
   mastheadImage,
   title,
-  theme,
   ...rest
 }: CardMastheadPropsArgs): CardProps => ({
   image: <Image {...mastheadImage} sizes="100vw" fill preload={true} />,
-  ...(title || theme
+  ...(title
     ? {
         title: (
           <h1
-            className={`font-mono-3xl text-normal text-white text-uppercase flex-align-self-start margin-0 ${theme ? `bg-${CONTENT_THEMES[theme].color} text-ls-3` : ""}`}
+            className={`font-mono-3xl text-normal text-white text-uppercase flex-align-self-start margin-0 text-ls-3`}
           >
-            {title ?? theme}
+            {title}
           </h1>
         ),
       }
@@ -124,7 +120,7 @@ type CardDetailedPropsArgs = Omit<
     alt: string;
     src: string;
   };
-  tags?: (Theme | ContentType | Category)[];
+  tags?: (ContentType | Category)[];
   url?: string;
 };
 
@@ -181,7 +177,7 @@ export type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExt
     alt: string;
     src: string;
   };
-  tag?: Theme | ContentType | Category;
+  tag?: ContentType | Category;
   url?: string;
 };
 
