@@ -12,8 +12,7 @@ const nextConfig: NextConfig = {
     root: __dirname,
   },
   images: {
-    // Allowlisted remote hosts for next/image. picsum.photos is used for
-    // placeholder thumbnails during development.
+    // Allowlisted remote hosts for next/image.
     remotePatterns: [{ protocol: "https", hostname: "**" }],
   },
   typedRoutes: true,
