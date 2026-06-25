@@ -8,11 +8,6 @@ import type { CardFeaturedPropsArgs, CardSimplePropsArgs } from "@/app/site-conf
 
 export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }> = {
   dataset: { route: "/data-gallery", label: "product" },
-  event: { route: "/news-events", label: "event" },
-  news: { route: "/news-events", label: "news" },
-  story: { route: "/news-events", label: "story" },
-  datastory: { route: "/news-events", label: "Data Story" },
-  training: { route: "/training", label: "training" },
 };
 
 export const CONTENT_THEMES: Record<Theme, { label: string; color: string; textColor?: string }> = {
@@ -37,12 +32,7 @@ export const CONTENT_THEMES: Record<Theme, { label: string; color: string; textC
   },
 };
 
-export const CONTENT_SIDEBAR_CONTENT_TYPES: ContentType[] = [
-  "dataset",
-  "story",
-  "datastory",
-  "training",
-];
+export const CONTENT_SIDEBAR_CONTENT_TYPES: ContentType[] = ["dataset"];
 
 export type IterableItemWithId<T> = T & { id: string };
 
@@ -117,14 +107,7 @@ export type ContentBlock =
       card: CardFeaturedPropsArgs;
     };
 
-type Content =
-  | TrainingContent
-  | TrainingContentExternal
-  | DatasetContent
-  | DataStoryContent
-  | StoryContent
-  | NewsContent
-  | EventContent;
+type Content = DatasetContent;
 
 export type ContentType = Content["contentType"];
 
@@ -141,66 +124,11 @@ export type MinimumCardContent = {
   description?: string;
 };
 
-export type TrainingContentExternal = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "training";
-  url: string;
-};
-
-export type TrainingContent = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "training";
-  date: string;
-  mastheadImage: MastheadImage;
-  body?: ContentBlock[];
-  relatedContent?: string[];
-};
-
 export type DatasetContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "dataset";
   mastheadImage: MastheadImage;
   body?: ContentBlock[];
   relatedContent?: string[];
-};
-
-export type NewsContent = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "news";
-  mastheadImage: MastheadImage;
-  body?: ContentBlock[];
-};
-
-export type StoryContent = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "story";
-  date?: string;
-  mastheadImage: MastheadImage;
-  body?: ContentBlock[];
-};
-
-export type DataStoryContent = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "datastory";
-  mastheadImage: MastheadImage;
-  body?: ContentBlock[];
-  url?: string;
-};
-
-export type EventContent = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "event";
-  mastheadImage: MastheadImage;
-  isLatest?: boolean;
-  lastUpdatedDate?: string;
-  startDate: string;
-  region: string;
-  linkDHSFEMA?: { label: string; href: string };
-  linkUSGovernment?: { label: string; href: string };
-  body?: ContentBlock[];
-  relatedContent?: string[];
-};
-
-export type ThemeContent = {
-  id: string;
-  title?: string;
-  subtitle: string;
-  mastheadImage: MastheadImage;
-  theme: Theme;
-  body: ContentBlock[];
 };
 
 type MastheadImage = {
