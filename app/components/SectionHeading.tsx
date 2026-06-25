@@ -7,9 +7,16 @@ import type { ComponentProps } from "react";
 
 type SectionHeadingProps = ComponentProps<"h2"> & {
   href?: string;
+  linkLabel?: string;
 };
 
-export const SectionHeading = ({ href, children, className, ...props }: SectionHeadingProps) => {
+export const SectionHeading = ({
+  href,
+  linkLabel,
+  children,
+  className,
+  ...props
+}: SectionHeadingProps) => {
   return (
     <div className="display-flex flex-justify flex-align-center">
       <h2 className={`${className ?? ""} font-sans-2xl padding-bottom-2 margin-0`} {...props}>
@@ -22,7 +29,7 @@ export const SectionHeading = ({ href, children, className, ...props }: SectionH
           variant="arrow"
           size="lg"
         >
-          View All
+          {linkLabel ?? "View All"}
         </Link>
       )}
     </div>
