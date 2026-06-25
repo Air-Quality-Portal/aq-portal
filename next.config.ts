@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
+  images: {
+    // Allowlisted remote hosts for next/image. picsum.photos is used for
+    // placeholder thumbnails during development.
+    remotePatterns: [{ protocol: "https", hostname: "**" }],
+  },
   typedRoutes: true,
 };
 
