@@ -20,6 +20,7 @@ export default function DataGalleryPage() {
                   id,
                   thumbnailImage,
                   tags: [...category1, ...category2, ...category3],
+                  tagPrimary: category1[0],
                   ...card,
                 })}
                 className="height-card-sm"
