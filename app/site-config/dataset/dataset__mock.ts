@@ -7,12 +7,12 @@ export const DATASET__MOCK: DatasetContent = {
   description:
     "The True Color RGB composite provides a product of how the surface would look to the naked eye from space.",
   thumbnailImage: {
-    src: "/img/dataset/sentinel-2-true-color.webp",
-    alt: "Sentinel-2 True Color imagery example",
+    src: "https://picsum.photos/id/237/200/300",
+    alt: "Sample Text",
   },
   mastheadImage: {
-    src: "/img/dataset/sentinel-2-true-color.webp",
-    alt: "Sentinel-2 True Color imagery example",
+    src: "https://picsum.photos/id/237/1080/1280",
+    alt: "Sample Text",
   },
   category1: ["c1 lorem", "c1 dore"],
   category2: ["c2 lorem", "c2 dore"],
