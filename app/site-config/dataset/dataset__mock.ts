@@ -14,16 +14,10 @@ export const DATASET__MOCK: DatasetContent = {
     src: "/img/dataset/sentinel-2-true-color.webp",
     alt: "Sentinel-2 True Color imagery example",
   },
-  categories: [
-    "severewx",
-    "fire",
-    "heat",
-    "flood",
-    "tropical cyclone",
-    "earthquake",
-    "winter weather",
-  ],
-  relatedContent: ["sentinel-2-color-infrared", "sentinel-2-swir"],
+  category1: ["c1 lorem", "c1 dore"],
+  category2: ["c2 lorem", "c2 dore"],
+  category3: ["c3 lorem", "c3 dore"],
+
   body: [
     {
       type: "text",

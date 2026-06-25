@@ -14,14 +14,11 @@ export const CONTENT_SIDEBAR_CONTENT_TYPES: ContentType[] = ["dataset"];
 
 export type IterableItemWithId<T> = T & { id: string };
 
-export type Category =
-  | "severewx"
-  | "fire"
-  | "heat"
-  | "flood"
-  | "tropical cyclone"
-  | "earthquake"
-  | "winter weather";
+export type Category1 = "c1 lorem" | "c1 ipsum" | "c1 dore";
+export type Category2 = "c2 lorem" | "c2 ipsum" | "c2 dore";
+export type Category3 = "c3 lorem" | "c3 ipsum" | "c3 dore";
+
+export type Category = Category1 | Category2 | Category3;
 
 export type GalleryRoute = string;
 
@@ -95,15 +92,25 @@ export type MinimumCardContent = {
     src: string;
     alt: string;
   };
-  categories: Category[];
   description?: string;
+  tag1?: Category;
+  tags?: Category[];
 };
 
-export type DatasetContent = Omit<MinimumCardContent, "contentType"> & {
+export type DatasetContent = {
+  id: string;
   contentType: "dataset";
+  title: string;
+  thumbnailImage: {
+    src: string;
+    alt: string;
+  };
+  description?: string;
+  category1: Category1[];
+  category2: Category2[];
+  category3: Category3[];
   mastheadImage: MastheadImage;
   body?: ContentBlock[];
-  relatedContent?: string[];
 };
 
 type MastheadImage = {
