@@ -1,5 +1,14 @@
 pre-commit:
   commands:
+    no-local-link:
+      glob: "{package.json,pnpm-lock.yaml}"
+      run: |
+        if grep -q 'link:.*tinacms-portal-monorepo' {staged_files}; then
+          echo "Refusing to commit a local 'link:' override for @teamimpact/veda-ui-blocks."
+          echo "Run 'pnpm install' to restore the published version before committing."
+          echo "Use 'pnpm run theme:air4us:local' for local linking (it only touches node_modules)."
+          exit 1
+        fi
     check:
       glob: "*.{ts,tsx,js,jsx,json,css}"
       run: pnpm lint:staged {staged_files}

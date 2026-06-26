@@ -55,7 +55,16 @@ echo "Building @teamimpact/veda-ui-blocks from $TARGET_BRANCH..."
 pnpm -C "$MONOREPO_PATH" --filter @teamimpact/veda-ui-blocks run build
 
 echo "Linking $PACKAGE_DIR into app..."
-pnpm -C "$APP_PATH" link "$PACKAGE_DIR"
+# Symlink directly into node_modules instead of `pnpm link`.
+# `pnpm link` mutates package.json + pnpm-lock.yaml (adding a local `link:`
+# path), which then breaks CI's `pnpm install --frozen-lockfile`. A plain
+# symlink lives entirely inside the gitignored node_modules directory, so the
+# tracked package.json/lockfile stay pinned to the published version and there
+# is nothing to strip before committing.
+LINK_TARGET="$APP_PATH/node_modules/@teamimpact/veda-ui-blocks"
+mkdir -p "$(dirname "$LINK_TARGET")"
+rm -rf "$LINK_TARGET"
+ln -s "$PACKAGE_DIR" "$LINK_TARGET"
 
 if grep -q '"@teamimpact/veda-ui-blocks/air-quality.css"' "$LAYOUT_FILE"; then
   sed -i '' 's|"@teamimpact/veda-ui-blocks/air-quality.css"|"@teamimpact/veda-ui-blocks/air4us.css"|g' "$LAYOUT_FILE"
