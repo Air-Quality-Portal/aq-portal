@@ -76,4 +76,9 @@ if grep -q '"@teamimpact/veda-ui-blocks/disasters.css"' "$LAYOUT_FILE"; then
   echo "Updated layout theme import to air4us.css"
 fi
 
+if grep -q '"@teamimpact/veda-ui-blocks/default.css"' "$LAYOUT_FILE"; then
+  sed -i '' 's|"@teamimpact/veda-ui-blocks/default.css"|"@teamimpact/veda-ui-blocks/air4us.css"|g' "$LAYOUT_FILE"
+  echo "Updated layout theme import to air4us.css"
+fi
+
 echo "Done. Local package linked and Air4US theme import is set."
