@@ -61,6 +61,38 @@ export const makeCardMastHeadProps = ({
   ...rest,
 });
 
+export type DatasetMastheadPropsArgs = Omit<
+  CardProps,
+  "title" | "image" | "colorMode" | "isMastHead" | "tag" | "imagePosition"
+> & {
+  mastheadImage: {
+    alt: string;
+    src: string;
+  };
+  title?: string;
+  provider?: Category;
+};
+
+export const makeDatasetMastheadProps = ({
+  mastheadImage,
+  title,
+  provider,
+  className,
+  ...rest
+}: DatasetMastheadPropsArgs): CardProps => ({
+  image: <Image {...mastheadImage} sizes="(max-width: 1024px) 100vw, 50vw" fill preload={true} />,
+  imagePosition: "right",
+  colorMode: "light",
+  className: ["dataset-masthead", className].filter(Boolean).join(" "),
+  ...(provider ? { tag: makeSimpleTag(provider) } : {}),
+  ...(title
+    ? {
+        title: <h1 className="font-heading-2xl text-normal margin-0">{title}</h1>,
+      }
+    : {}),
+  ...rest,
+});
+
 export type CardFeaturedPropsArgs = Omit<
   CardProps,
   "image" | "imagePosition" | "callToAction" | "callToActionSecondary"

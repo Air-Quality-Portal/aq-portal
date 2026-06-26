@@ -11,55 +11,33 @@ export const DATASET__MOCK: DatasetContent = {
     alt: "Sample Text",
   },
   mastheadImage: {
-    src: "https://picsum.photos/id/237/1080/1280",
-    alt: "Sample Text",
+    src: "https://picsum.photos/id/174/1304/480",
+    alt: "Aerial landscape sample imagery",
   },
-  category1: ["c1 lorem", "c1 dore"],
-  category2: ["c2 lorem", "c2 dore"],
+  category1: ["c1 lorem"],
+  category2: ["c2 lorem"],
   category3: ["c3 lorem", "c3 dore"],
+
+  actions: [
+    {
+      label: "Open Visualization Tool",
+      href: "https://example.com/visualization",
+      isExternal: true,
+      variant: "primary",
+    },
+    {
+      label: "Learn more",
+      href: "#",
+      variant: "outline",
+    },
+  ],
 
   body: [
     {
       type: "text",
-      heading: "Summary",
-      headingLevel: "h3",
-      paragraphs: [
-        "The True Color RGB composite provides a product of how the surface would look to the naked eye from space. The RGB is created using the red, green, and blue channels of the respective instrument.",
-      ],
-    },
-    {
-      type: "text",
-      heading: "Suggested Use",
-      headingLevel: "h3",
       paragraphs: [
         "The True Color RGB provides a product of how the surface would look to the naked eye from space. The True Color RGB is produced using the 3 visible wavelength bands (red, green, and blue) from the respective sensor. Some minor atmospheric corrections have occurred.",
       ],
-    },
-    {
-      type: "text",
-      heading: "Satellite/Sensor",
-      headingLevel: "h3",
-      paragraphs: [
-        "MultiSpectral Instrument (MSI) on European Space Agency's (ESA) Copernicus Sentinel-2A/2B satellites",
-      ],
-    },
-    {
-      type: "text",
-      heading: "Resolution",
-      headingLevel: "h3",
-      paragraphs: ["10 meters"],
-    },
-    {
-      type: "text",
-      heading: "Credits",
-      headingLevel: "h3",
-      paragraphs: ["NASA/GSFC, USGS, ESA Copernicus"],
-    },
-    {
-      type: "text",
-      heading: "Tags",
-      headingLevel: "h3",
-      paragraphs: ["ESA, Copernicus, Sentinel-2, Optical"],
     },
   ],
 };

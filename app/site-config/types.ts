@@ -110,7 +110,15 @@ export type DatasetContent = {
   category2: Category2[];
   category3: Category3[];
   mastheadImage: MastheadImage;
+  actions?: DatasetAction[];
   body?: ContentBlock[];
+};
+
+export type DatasetAction = {
+  label: string;
+  href: string;
+  isExternal?: boolean;
+  variant?: "primary" | "outline";
 };
 
 type MastheadImage = {
