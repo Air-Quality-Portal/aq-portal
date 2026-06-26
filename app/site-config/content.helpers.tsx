@@ -77,13 +77,11 @@ export const makeDatasetMastheadProps = ({
   mastheadImage,
   title,
   provider,
-  className,
   ...rest
 }: DatasetMastheadPropsArgs): CardProps => ({
   image: <Image {...mastheadImage} sizes="(max-width: 1024px) 100vw, 50vw" fill preload={true} />,
   imagePosition: "right",
   colorMode: "light",
-  className: ["dataset-masthead", className].filter(Boolean).join(" "),
   ...(provider ? { tag: makeSimpleTag(provider) } : {}),
   ...(title
     ? {
