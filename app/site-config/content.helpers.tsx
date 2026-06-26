@@ -14,7 +14,7 @@ import {
 } from "@/app/site-config/types";
 
 export const makeSimpleTag = (tag: ContentType | Category) => (
-  <Tag key={tag} variant="solid" color="primary-lighter">
+  <Tag key={tag} variant="solid" color="primary-lighter" textColor="primary-dark">
     {tag}
   </Tag>
 );
