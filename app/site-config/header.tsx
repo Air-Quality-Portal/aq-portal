@@ -12,4 +12,5 @@ export const MOCK_HEADER_PROPS: HeaderProps = {
     { label: "Resources", href: "/resources" },
     { label: "About Us", href: "/about" },
   ],
+  currentPath: "/",
 };
