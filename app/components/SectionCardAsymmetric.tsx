@@ -4,25 +4,28 @@ import { SectionHeading } from "./SectionHeading";
 
 export type SectionCardAsymmetricProps = Omit<ComponentProps<"div">, "children"> & {
   cards: ReactElement[];
-  headline: ReactNode;
-  viewAllLink: string;
-  viewAllLabel?: string;
+  sectionHeading: {
+    title: ReactNode;
+    href?: string;
+    linkLabel?: string;
+  };
 };
 
 export const SectionCardAsymmetric = ({
   cards,
-  headline,
-  viewAllLink,
-  viewAllLabel,
+  sectionHeading,
   className,
   ...props
 }: SectionCardAsymmetricProps) => {
-  const hasViewAllLink = viewAllLink.trim().length > 0;
+  const hasViewAllLink = sectionHeading.href?.trim().length;
 
   return (
     <div className={className} {...props}>
-      <SectionHeading href={hasViewAllLink ? viewAllLink : undefined} linkLabel={viewAllLabel}>
-        {headline}
+      <SectionHeading
+        href={hasViewAllLink ? sectionHeading.href : undefined}
+        linkLabel={sectionHeading.linkLabel}
+      >
+        {sectionHeading.title}
       </SectionHeading>
 
       {cards.length > 0 && (
