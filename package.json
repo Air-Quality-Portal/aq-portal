@@ -7,6 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "theme:air4us:local": "bash ./scripts/use-local-air4us-theme.sh",
     "lint": "biome check .",
     "lint:staged": "biome check",
     "lint:ci": "biome ci .",
@@ -28,7 +29,8 @@
   },
   "pnpm": {
     "overrides": {
-      "postcss@<8.5.10": ">=8.5.10"
+      "postcss@<8.5.10": ">=8.5.10",
+      "@teamimpact/veda-ui-blocks": "link:../tinacms-portal-monorepo/packages/blocks"
     }
   },
   "devDependencies": {

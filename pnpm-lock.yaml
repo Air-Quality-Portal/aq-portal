@@ -6,6 +6,7 @@ settings:
 
 overrides:
   postcss@<8.5.10: '>=8.5.10'
+  '@teamimpact/veda-ui-blocks': link:../tinacms-portal-monorepo/packages/blocks
 
 importers:
 
@@ -15,8 +16,8 @@ importers:
         specifier: ^5.99.0
         version: 5.100.9(react@19.2.3)
       '@teamimpact/veda-ui-blocks':
-        specifier: 0.1.0-beta.13
-        version: 0.1.0-beta.13(@developmentseed/stac-react@1.0.0-alpha.2(@tanstack/react-query@5.100.9(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@fontsource-variable/inter@5.2.8)(@fontsource/dm-mono@5.2.7)(@tanstack/react-query@5.100.9(react@19.2.3))(@trussworks/react-uswds@11.0.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(@uswds/uswds@3.13.0)(focus-trap-react@11.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@uswds/uswds@3.13.0)(mapbox-gl-compare@0.4.2)(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react-map-gl@8.1.1(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
+        specifier: link:../tinacms-portal-monorepo/packages/blocks
+        version: link:../tinacms-portal-monorepo/packages/blocks
       '@trussworks/react-uswds':
         specifier: ^11.0.0
         version: 11.0.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(@uswds/uswds@3.13.0)(focus-trap-react@11.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -117,21 +118,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@developmentseed/stac-react@1.0.0-alpha.2':
-    resolution: {integrity: sha512-YeWxBclhZd4rLQAv6OpqA4LR1TI5cjTn8X+qGOJSmzn7NBxgJGArPi2erOzsGZddFRtogWNhrMCW+/JqQTUzxg==}
-    peerDependencies:
-      '@tanstack/react-query': '>=4.0.0'
-      react: ^19.2.0
-      react-dom: ^19.2.0
-
   '@emnapi/runtime@1.10.0':
     resolution: {integrity: sha512-ewvYlk86xUoGI0zQRNq/mC+16R1QeDlKQy21Ki3oSYXNgLb45GV1P6A0M+/s6nyCuNDqe5VpaY84BzXGwVbwFA==}
-
-  '@fontsource-variable/inter@5.2.8':
-    resolution: {integrity: sha512-kOfP2D+ykbcX/P3IFnokOhVRNoTozo5/JxhAIVYLpea/UBmCQ/YWPBfWIDuBImXX/15KH+eKh4xpEUyS2sQQGQ==}
-
-  '@fontsource/dm-mono@5.2.7':
-    resolution: {integrity: sha512-Ma1az2atTVgQWuOWwjuxx26p/6A6CU9HBNKq1CFV6YKpKhpswnf9ry9Ql4+T6bTZzkdtSfS6tjJvqZOljVzIFQ==}
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -295,9 +283,6 @@ packages:
   '@mapbox/jsonlint-lines-primitives@2.0.2':
     resolution: {integrity: sha512-rY0o9A5ECsTQRVhv7tL/OyDpGAoUB4tTvLiW1DSzQGq4bvTPhNw1VpSNjDJc5GFZ2XuyOtSWSVN05qOtcD71qQ==}
     engines: {node: '>= 0.6'}
-
-  '@mapbox/mapbox-gl-sync-move@0.3.1':
-    resolution: {integrity: sha512-Y3PMyj0m/TBJa9OkQnO2TiVDu8sFUPmLF7q/THUHrD/g42qrURpMJJ4kufq4sR60YFMwZdCGBshrbgK5v2xXWw==}
 
   '@mapbox/point-geometry@1.1.0':
     resolution: {integrity: sha512-YGcBz1cg4ATXDCM/71L9xveh4dynfGmcLDqufR+nQQy3fKwsAZsWd/x4621/6uJaeB9mwOHE6hPeDgXz9uViUQ==}
@@ -492,21 +477,6 @@ packages:
     resolution: {integrity: sha512-Oa44XkaI3kCNN6ME0KByU3xT3SEUNOMfZpHxL6+wFoTm+OeUFYHKdeYVe0aOXlRDm/f15sgLwEt2HDorIdW8+A==}
     peerDependencies:
       react: ^18 || ^19
-
-  '@teamimpact/veda-ui-blocks@0.1.0-beta.13':
-    resolution: {integrity: sha512-7TlpWWPGwt64xARlWF5UG4yGeMTriMMbZGNp7pg3qw9O77+Mc0gK5+00nG+rNjUhhI52453l9E0K8QJroL82rg==}
-    peerDependencies:
-      '@developmentseed/stac-react': ^1.0.0-alpha.2
-      '@fontsource-variable/inter': ^5.2.8
-      '@fontsource/dm-mono': ^5.2.7
-      '@tanstack/react-query': ^5.99.0
-      '@trussworks/react-uswds': ^11.0.0
-      '@uswds/uswds': ^3.13.0
-      mapbox-gl-compare: ^0.4.2
-      maplibre-gl: ^5.23.0
-      react: ^19.2.3
-      react-dom: ^19.2.3
-      react-map-gl: ^8.1.1
 
   '@trussworks/react-uswds@11.0.1':
     resolution: {integrity: sha512-dhrTrtV3bH9G96XN7mrqH7QL2BplaTkMZua6CWOuLuCxmsNA6KnJdx9KduUcvsmmTNY4a0dFW2gYGr94hMJvcQ==}
@@ -733,9 +703,6 @@ packages:
 
   lit@3.3.2:
     resolution: {integrity: sha512-NF9zbsP79l4ao2SNrH3NkfmFgN/hBYSQo90saIVI1o5GpjAdCPVstVzO1MrLOakHoEhYkrtRjPK6Ob521aoYWQ==}
-
-  mapbox-gl-compare@0.4.2:
-    resolution: {integrity: sha512-MhKUYJri3KIfeB2rsLUh2JzPutdfehU3vqdfgp2+uocKjNYQwCUvQ0T8u7fBwIJvJKdfWg3FiDq+5oZC4AtAGg==}
 
   maplibre-gl@5.24.0:
     resolution: {integrity: sha512-ALyFxgtd5R+65UqZ/++lOqwWcC0SNho9c27fYSyLmG7AfnAul2o46F05aDJGPbFU57wos9dgcIySHs0Xe6ia3A==}
@@ -970,20 +937,10 @@ snapshots:
   '@biomejs/cli-win32-x64@2.4.15':
     optional: true
 
-  '@developmentseed/stac-react@1.0.0-alpha.2(@tanstack/react-query@5.100.9(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
-    dependencies:
-      '@tanstack/react-query': 5.100.9(react@19.2.3)
-      react: 19.2.3
-      react-dom: 19.2.3(react@19.2.3)
-
   '@emnapi/runtime@1.10.0':
     dependencies:
       tslib: 2.8.1
     optional: true
-
-  '@fontsource-variable/inter@5.2.8': {}
-
-  '@fontsource/dm-mono@5.2.7': {}
 
   '@img/colour@1.1.0':
     optional: true
@@ -1089,8 +1046,6 @@ snapshots:
       '@lit-labs/ssr-dom-shim': 1.5.1
 
   '@mapbox/jsonlint-lines-primitives@2.0.2': {}
-
-  '@mapbox/mapbox-gl-sync-move@0.3.1': {}
 
   '@mapbox/point-geometry@1.1.0': {}
 
@@ -1244,20 +1199,6 @@ snapshots:
     dependencies:
       '@tanstack/query-core': 5.100.9
       react: 19.2.3
-
-  '@teamimpact/veda-ui-blocks@0.1.0-beta.13(@developmentseed/stac-react@1.0.0-alpha.2(@tanstack/react-query@5.100.9(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@fontsource-variable/inter@5.2.8)(@fontsource/dm-mono@5.2.7)(@tanstack/react-query@5.100.9(react@19.2.3))(@trussworks/react-uswds@11.0.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(@uswds/uswds@3.13.0)(focus-trap-react@11.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@uswds/uswds@3.13.0)(mapbox-gl-compare@0.4.2)(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react-map-gl@8.1.1(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)':
-    dependencies:
-      '@developmentseed/stac-react': 1.0.0-alpha.2(@tanstack/react-query@5.100.9(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@fontsource-variable/inter': 5.2.8
-      '@fontsource/dm-mono': 5.2.7
-      '@tanstack/react-query': 5.100.9(react@19.2.3)
-      '@trussworks/react-uswds': 11.0.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(@uswds/uswds@3.13.0)(focus-trap-react@11.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@uswds/uswds': 3.13.0
-      mapbox-gl-compare: 0.4.2
-      maplibre-gl: 5.24.0
-      react: 19.2.3
-      react-dom: 19.2.3(react@19.2.3)
-      react-map-gl: 8.1.1(maplibre-gl@5.24.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
 
   '@trussworks/react-uswds@11.0.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(@uswds/uswds@3.13.0)(focus-trap-react@11.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
@@ -1456,10 +1397,6 @@ snapshots:
       '@lit/reactive-element': 2.1.2
       lit-element: 4.2.2
       lit-html: 3.3.2
-
-  mapbox-gl-compare@0.4.2:
-    dependencies:
-      '@mapbox/mapbox-gl-sync-move': 0.3.1
 
   maplibre-gl@5.24.0:
     dependencies:
