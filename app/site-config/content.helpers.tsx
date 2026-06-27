@@ -4,6 +4,7 @@ import {
   type CardProps,
   type CardSimpleProps,
   Tag,
+  type TagProps,
 } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import {
@@ -13,8 +14,11 @@ import {
   type IterableItemWithId,
 } from "@/app/site-config/types";
 
-export const makeSimpleTag = (tag: ContentType | Category) => (
-  <Tag key={tag} variant="solid" color="primary-lighter" textColor="primary-dark">
+export const makeSimpleTag = (
+  tag: ContentType | Category,
+  tagProps?: Omit<TagProps, "children">,
+) => (
+  <Tag key={tag} variant="solid" color="primary-lighter" textColor="primary-dark" {...tagProps}>
     {tag}
   </Tag>
 );
