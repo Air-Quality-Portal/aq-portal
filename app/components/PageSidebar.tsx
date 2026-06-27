@@ -1,26 +1,16 @@
 import type { ReactNode } from "react";
 
-import {
-  type Category1,
-  type Category2,
-  type Category3,
-  CONTENT_SIDEBAR_CONTENT_TYPES,
-  type ContentType,
-} from "@/app/site-config/types";
+import type { Category1, Category2, Category3 } from "@/app/site-config/types";
 
 export function PageSidebar({
-  contentType,
   category1 = [],
   category2 = [],
   category3 = [],
 }: {
-  contentType: ContentType;
   category1?: Category1[];
   category2?: Category2[];
   category3?: Category3[];
 }) {
-  if (!CONTENT_SIDEBAR_CONTENT_TYPES.includes(contentType)) return null;
-
   return (
     <aside>
       <MetaGroup label="Data Provider">{category1.join(", ") || "-"}</MetaGroup>

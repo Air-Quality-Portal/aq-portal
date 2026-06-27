@@ -10,8 +10,6 @@ export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }
   dataset: { route: "/data-gallery", label: "product" },
 };
 
-export const CONTENT_SIDEBAR_CONTENT_TYPES: ContentType[] = ["dataset"];
-
 export type IterableItemWithId<T> = T & { id: string };
 
 export type Category1 = "c1 lorem" | "c1 ipsum" | "c1 dore";

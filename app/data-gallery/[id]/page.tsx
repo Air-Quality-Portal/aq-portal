@@ -18,8 +18,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
 
   if (!dataset) notFound();
 
-  const { title, mastheadImage, body, actions, contentType, category1, category2, category3 } =
-    dataset;
+  const { title, mastheadImage, body, actions, category1, category2, category3 } = dataset;
 
   return (
     <>
@@ -89,12 +88,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
 
             {/* Sidebar */}
             <div className="grid-col-12 desktop:grid-col-4">
-              <PageSidebar
-                contentType={contentType}
-                category1={category1}
-                category2={category2}
-                category3={category3}
-              />
+              <PageSidebar category1={category1} category2={category2} category3={category3} />
             </div>
           </div>
         )}
