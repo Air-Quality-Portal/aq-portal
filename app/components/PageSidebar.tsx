@@ -1,6 +1,11 @@
 import type { ReactNode } from "react";
 
-import type { Category1, Category2, Category3 } from "@/app/site-config/types";
+import {
+  CATEGORY_MAP,
+  type Category1,
+  type Category2,
+  type Category3,
+} from "@/app/site-config/types";
 
 export function PageSidebar({
   category1 = [],
@@ -11,11 +16,19 @@ export function PageSidebar({
   category2?: Category2[];
   category3?: Category3[];
 }) {
+  const groups = [
+    { label: CATEGORY_MAP.category1.label, values: category1 },
+    { label: CATEGORY_MAP.category2.label, values: category2 },
+    { label: CATEGORY_MAP.category3.label, values: category3 },
+  ];
+
   return (
     <aside>
-      <MetaGroup label="Data Provider">{category1.join(", ") || "-"}</MetaGroup>
-      <MetaGroup label="Instrument Type">{category2.join(", ") || "-"}</MetaGroup>
-      <MetaGroup label="Instrument Subtype">{category3.join(", ") || "-"}</MetaGroup>
+      {groups.map(({ label, values }) => (
+        <MetaGroup key={label} label={label}>
+          {values.join(", ") || "-"}
+        </MetaGroup>
+      ))}
     </aside>
   );
 }

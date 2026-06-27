@@ -12,9 +12,15 @@ export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }
 
 export type IterableItemWithId<T> = T & { id: string };
 
-export type Category1 = "c1 lorem" | "c1 ipsum" | "c1 dore";
-export type Category2 = "c2 lorem" | "c2 ipsum" | "c2 dore";
-export type Category3 = "c3 lorem" | "c3 ipsum" | "c3 dore";
+export const CATEGORY_MAP = {
+  category1: { label: "Data Provider", values: ["c1 lorem", "c1 ipsum", "c1 dore"] },
+  category2: { label: "Instrument Type", values: ["c2 lorem", "c2 ipsum", "c2 dore"] },
+  category3: { label: "Instrument Subtype", values: ["c3 lorem", "c3 ipsum", "c3 dore"] },
+} as const;
+
+export type Category1 = (typeof CATEGORY_MAP)["category1"]["values"][number];
+export type Category2 = (typeof CATEGORY_MAP)["category2"]["values"][number];
+export type Category3 = (typeof CATEGORY_MAP)["category3"]["values"][number];
 
 export type Category = Category1 | Category2 | Category3;
 
