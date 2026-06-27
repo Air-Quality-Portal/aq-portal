@@ -8,54 +8,21 @@ import type { CardFeaturedPropsArgs, CardSimplePropsArgs } from "@/app/site-conf
 
 export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }> = {
   dataset: { route: "/data-gallery", label: "product" },
-  event: { route: "/news-events", label: "event" },
-  news: { route: "/news-events", label: "news" },
-  story: { route: "/news-events", label: "story" },
-  datastory: { route: "/news-events", label: "Data Story" },
-  training: { route: "/training", label: "training" },
 };
-
-export const CONTENT_THEMES: Record<Theme, { label: string; color: string; textColor?: string }> = {
-  respond: {
-    label: "respond",
-    color: "secondary",
-    textColor: "white",
-  },
-  build: {
-    label: "build resilience",
-    color: "success",
-    textColor: "white",
-  },
-  prepare: {
-    label: "prepare",
-    color: "accent-warm",
-  },
-  recover: {
-    label: "recover",
-    color: "accent-cool",
-    textColor: "white",
-  },
-};
-
-export const CONTENT_SIDEBAR_CONTENT_TYPES: ContentType[] = [
-  "dataset",
-  "story",
-  "datastory",
-  "training",
-];
 
 export type IterableItemWithId<T> = T & { id: string };
 
-export type Theme = "respond" | "build" | "prepare" | "recover";
+export const CATEGORY_MAP = {
+  category1: { label: "Data Provider", values: ["c1 lorem", "c1 ipsum", "c1 dore"] },
+  category2: { label: "Instrument Type", values: ["c2 lorem", "c2 ipsum", "c2 dore"] },
+  category3: { label: "Instrument Subtype", values: ["c3 lorem", "c3 ipsum", "c3 dore"] },
+} as const;
 
-export type Category =
-  | "severewx"
-  | "fire"
-  | "heat"
-  | "flood"
-  | "tropical cyclone"
-  | "earthquake"
-  | "winter weather";
+export type Category1 = (typeof CATEGORY_MAP)["category1"]["values"][number];
+export type Category2 = (typeof CATEGORY_MAP)["category2"]["values"][number];
+export type Category3 = (typeof CATEGORY_MAP)["category3"]["values"][number];
+
+export type Category = Category1 | Category2 | Category3;
 
 export type GalleryRoute = string;
 
@@ -117,14 +84,7 @@ export type ContentBlock =
       card: CardFeaturedPropsArgs;
     };
 
-type Content =
-  | TrainingContent
-  | TrainingContentExternal
-  | DatasetContent
-  | DataStoryContent
-  | StoryContent
-  | NewsContent
-  | EventContent;
+type Content = DatasetContent;
 
 export type ContentType = Content["contentType"];
 
@@ -136,71 +96,35 @@ export type MinimumCardContent = {
     src: string;
     alt: string;
   };
-  themes: Theme[];
-  categories: Category[];
   description?: string;
+  tag1?: Category;
+  tags?: Category[];
 };
 
-export type TrainingContentExternal = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "training";
-  url: string;
-};
-
-export type TrainingContent = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "training";
-  date: string;
-  mastheadImage: MastheadImage;
-  body?: ContentBlock[];
-  relatedContent?: string[];
-};
-
-export type DatasetContent = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "dataset";
-  mastheadImage: MastheadImage;
-  body?: ContentBlock[];
-  relatedContent?: string[];
-};
-
-export type NewsContent = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "news";
-  mastheadImage: MastheadImage;
-  body?: ContentBlock[];
-};
-
-export type StoryContent = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "story";
-  date?: string;
-  mastheadImage: MastheadImage;
-  body?: ContentBlock[];
-};
-
-export type DataStoryContent = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "datastory";
-  mastheadImage: MastheadImage;
-  body?: ContentBlock[];
-  url?: string;
-};
-
-export type EventContent = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "event";
-  mastheadImage: MastheadImage;
-  isLatest?: boolean;
-  lastUpdatedDate?: string;
-  startDate: string;
-  region: string;
-  linkDHSFEMA?: { label: string; href: string };
-  linkUSGovernment?: { label: string; href: string };
-  body?: ContentBlock[];
-  relatedContent?: string[];
-};
-
-export type ThemeContent = {
+export type DatasetContent = {
   id: string;
-  title?: string;
-  subtitle: string;
+  contentType: "dataset";
+  title: string;
+  thumbnailImage: {
+    src: string;
+    alt: string;
+  };
+  description?: string;
+  category1: Category1[];
+  category2: Category2[];
+  category3: Category3[];
   mastheadImage: MastheadImage;
-  theme: Theme;
-  body: ContentBlock[];
+  actions?: {
+    primary: DatasetAction;
+    secondary?: DatasetAction;
+  };
+  body?: ContentBlock[];
+};
+
+export type DatasetAction = {
+  label: string;
+  href: string;
+  isExternal?: boolean;
 };
 
 type MastheadImage = {

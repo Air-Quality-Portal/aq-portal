@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(__dirname, ".."),
   },
+  images: {
+    // Allowlisted remote hosts for next/image.
+    remotePatterns: [{ protocol: "https", hostname: "**" }],
+  },
   typedRoutes: true,
   webpack: (config) => {
     config.resolve.symlinks = false;
