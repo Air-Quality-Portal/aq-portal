@@ -58,18 +58,24 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
               ))}
 
               {/* Action buttons */}
-              {actions && actions.length > 0 && (
+              {actions && (
                 <div className="display-flex flex-wrap margin-top-4" style={{ gap: "1rem" }}>
-                  {actions.map((action) => (
+                  <Link
+                    href={actions.primary.href}
+                    isExternal={actions.primary.isExternal}
+                    variant="button"
+                  >
+                    {actions.primary.label}
+                  </Link>
+                  {actions.secondary && (
                     <Link
-                      key={action.href}
-                      href={action.href}
-                      isExternal={action.isExternal}
-                      variant={action.variant === "outline" ? "button-outline" : "button"}
+                      href={actions.secondary.href}
+                      isExternal={actions.secondary.isExternal}
+                      variant="button-outline"
                     >
-                      {action.label}
+                      {actions.secondary.label}
                     </Link>
-                  ))}
+                  )}
                 </div>
               )}
             </div>

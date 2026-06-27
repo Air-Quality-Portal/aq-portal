@@ -18,19 +18,17 @@ export const DATASET__MOCK: DatasetContent = {
   category2: ["c2 lorem"],
   category3: ["c3 lorem", "c3 dore"],
 
-  actions: [
-    {
+  actions: {
+    primary: {
       label: "Open Visualization Tool",
       href: "https://example.com/visualization",
       isExternal: true,
-      variant: "primary",
     },
-    {
+    secondary: {
       label: "Learn more",
       href: "#",
-      variant: "outline",
     },
-  ],
+  },
 
   body: [
     {
