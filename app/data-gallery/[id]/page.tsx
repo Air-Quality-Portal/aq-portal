@@ -9,7 +9,7 @@ import {
   PageStatus,
   Section,
 } from "@/app/components";
-import { makeDatasetMastheadProps } from "@/app/site-config/content.helpers";
+import { makeCardMastHeadProps } from "@/app/site-config/content.helpers";
 import { DATASETS } from "@/app/site-config/dataset";
 
 export default async function DatasetItemPage(props: PageProps<"/data-gallery/[id]">) {
@@ -24,7 +24,14 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
   return (
     <>
       <PageMasthead
-        {...makeDatasetMastheadProps({ mastheadImage, title, provider: category1[0] })}
+        {...makeCardMastHeadProps({
+          mastheadImage,
+          title,
+          tagPrimary: category1[0],
+          colorMode: "light",
+          imagePosition: "right",
+          isMastHead: false,
+        })}
       />
 
       <Section>

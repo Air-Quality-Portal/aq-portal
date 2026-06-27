@@ -28,20 +28,20 @@ const makeContentTypeTag = (tag: ContentType) => {
   );
 };
 
-export type CardMastheadPropsArgs = Omit<
-  CardProps,
-  "title" | "image" | "colorMode" | "isMasthead"
-> & {
+export type CardMastheadPropsArgs = Omit<CardProps, "title" | "image"> & {
   mastheadImage: {
     alt: string;
     src: string;
   };
   title?: string;
+  tagPrimary?: ContentType | Category;
 };
 
 export const makeCardMastHeadProps = ({
   mastheadImage,
   title,
+  tagPrimary,
+  colorMode = "brand",
   ...rest
 }: CardMastheadPropsArgs): CardProps => ({
   image: <Image {...mastheadImage} sizes="100vw" fill preload={true} />,
@@ -49,45 +49,20 @@ export const makeCardMastHeadProps = ({
     ? {
         title: (
           <h1
-            className={`font-mono-3xl text-normal text-white text-uppercase flex-align-self-start margin-0 text-ls-3`}
+            className={
+              colorMode === "brand"
+                ? "font-mono-3xl text-normal text-white text-uppercase flex-align-self-start margin-0 text-ls-3"
+                : "font-heading-2xl text-normal margin-0"
+            }
           >
             {title}
           </h1>
         ),
       }
     : {}),
-  colorMode: "brand",
+  ...(tagPrimary ? { tag: makeSimpleTag(tagPrimary) } : {}),
+  colorMode,
   isMastHead: true,
-  ...rest,
-});
-
-export type DatasetMastheadPropsArgs = Omit<
-  CardProps,
-  "title" | "image" | "colorMode" | "isMastHead" | "tag" | "imagePosition"
-> & {
-  mastheadImage: {
-    alt: string;
-    src: string;
-  };
-  title?: string;
-  provider?: Category;
-};
-
-export const makeDatasetMastheadProps = ({
-  mastheadImage,
-  title,
-  provider,
-  ...rest
-}: DatasetMastheadPropsArgs): CardProps => ({
-  image: <Image {...mastheadImage} sizes="(max-width: 1024px) 100vw, 50vw" fill preload={true} />,
-  imagePosition: "right",
-  colorMode: "light",
-  ...(provider ? { tag: makeSimpleTag(provider) } : {}),
-  ...(title
-    ? {
-        title: <h1 className="font-heading-2xl text-normal margin-0">{title}</h1>,
-      }
-    : {}),
   ...rest,
 });
 
