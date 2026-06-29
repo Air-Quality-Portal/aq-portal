@@ -1,7 +1,9 @@
 import { Section, SectionCardSimple, SectionHeading } from "@/app/components/";
+import { MAP_CAROUSEL_ITEMS } from "@/app/site-config/map";
 import { makeCardSimpleProps } from "../site-config/content.helpers";
 import { NEWS_EVENTS_CARDS } from "../site-config/home/home-sectioncardmosaic-news-events";
 import { typedMap } from "../site-config/typed.helpers";
+import { MapCarouselBlock } from "./MapCarouselBlock";
 
 export default function ComponentsPage() {
   return (
@@ -69,6 +71,12 @@ export default function ComponentsPage() {
             </SectionCardSimple>`}
         </code>
       </SectionCardSimple>
+      <MapCarouselBlock
+        maps={MAP_CAROUSEL_ITEMS}
+        heading="MapCarouselComponent"
+        linkLabel="View all data"
+        href="#"
+      />
     </>
   );
 }

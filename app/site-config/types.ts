@@ -5,7 +5,7 @@ import type {
 } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
 import type { CardFeaturedPropsArgs, CardSimplePropsArgs } from "@/app/site-config/content.helpers";
-
+import type { MapLayerItem } from "@/app/site-config/map";
 export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }> = {
   dataset: { route: "/data-gallery", label: "product" },
   event: { route: "/news-events", label: "event" },
@@ -115,6 +115,13 @@ export type ContentBlock =
   | {
       type: "sectionCardFeatured";
       card: CardFeaturedPropsArgs;
+    }
+  | {
+      type: "mapCarousel";
+      maps: MapLayerItem[];
+      heading?: string;
+      href?: string;
+      linkLabel?: string;
     };
 
 type Content =
@@ -153,7 +160,12 @@ export type TrainingContent = Omit<MinimumCardContent, "contentType"> & {
   body?: ContentBlock[];
   relatedContent?: string[];
 };
-
+export type MapCarouselBlockProps = {
+  maps?: MapLayerItem[];
+  heading?: string;
+  href?: string;
+  linkLabel?: string;
+};
 export type DatasetContent = Omit<MinimumCardContent, "contentType"> & {
   contentType: "dataset";
   mastheadImage: MastheadImage;
