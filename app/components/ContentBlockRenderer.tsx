@@ -1,7 +1,13 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
-import { ImageComparison, Section, SectionCardSimple, SectionHeading } from "@/app/components";
+import {
+  ImageComparison,
+  MapCarouselBlock,
+  Section,
+  SectionCardSimple,
+  SectionHeading,
+} from "@/app/components";
 import { StacCompareBlock, StacSingleLayerBlock } from "@/app/components/blocks";
 import { makeCardSimpleProps } from "@/app/site-config/content.helpers";
 import { typedMap } from "@/app/site-config/typed.helpers";
@@ -138,6 +144,17 @@ export const ContentBlockRenderer = ({
               </figcaption>
             )}
           </figure>
+        </Section>
+      );
+    case "mapCarousel":
+      return (
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
+          <MapCarouselBlock
+            maps={block.maps}
+            heading={block.heading}
+            linkLabel={block.linkLabel}
+            href={block.href}
+          />
         </Section>
       );
 
