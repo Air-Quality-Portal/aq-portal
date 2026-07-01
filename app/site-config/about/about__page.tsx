@@ -1,4 +1,5 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
+import Image from "next/image";
 import { Fragment } from "react";
 import type { ContentBlock } from "@/app/site-config/types";
 
@@ -24,11 +25,17 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
       ],
     },
     {
-      type: "image",
-      src: "/img/placeholder.svg",
-      alt: "Placeholder image",
-      width: 600,
-      height: 400,
+      type: "text",
+      paragraphs: [
+        <Image
+          key="placeholder"
+          src="https://placehold.co/600x400"
+          alt="Placeholder"
+          width={600}
+          height={400}
+          unoptimized
+        />,
+      ],
     },
 
     {
@@ -41,18 +48,15 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
           to the team below.",{" "}
         </span>,
 
-        <Fragment key="hq-em-disasters@mail.nasa.gov">
+        <Fragment key="contact-links">
           <br />
-          <Link
-            href="mailto:https://airquality-designprototype.netlify.app/about#:~:text=Katherine%20Knowland%20%E2%80%94%20katherine.knowland%40nasa.gov"
-            variant="text"
-          >
+          <Link href="mailto:katherineknowland@nasa.gov" variant="text">
             Resposible Official
           </Link>
           <br />
           <br />
           <Link
-            href="mailto:https://air4us@nasa.gov"
+            href="mailto:air4us@nasa.gov"
             rel="noopener noreferrer"
             target="_blank"
             variant="text"
