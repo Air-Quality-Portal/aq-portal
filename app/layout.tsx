@@ -21,7 +21,17 @@ export default function RootLayout({
     <html lang="en">
       <body className="display-flex flex-column minh-viewport">
         <Header {...MOCK_HEADER_PROPS} />
-        <main className="flex-1">{children}</main>
+        <main
+          className="flex-1"
+          style={{
+            paddingLeft: "220px",
+            paddingRight: "220px",
+            paddingTop: "41px",
+            paddingBottom: "71px",
+          }}
+        >
+          {children}
+        </main>
         <Footer {...MOCK_FOOTER_PROPS} />
       </body>
     </html>
