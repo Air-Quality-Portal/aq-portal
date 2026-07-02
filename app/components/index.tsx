@@ -1,10 +1,12 @@
 export * from "./blocks";
 export { ContentBlockRenderer } from "./ContentBlockRenderer";
+export { DatasetCatalogToolbar } from "./DatasetCatalogToolbar";
 export { HeaderWithCurrentPath } from "./HeaderWithCurrentPath";
 export { ImageComparison } from "./ImageComparison";
 export { PageMasthead } from "./PageMasthead";
 export { PageSidebar } from "./PageSidebar";
 export { PageStatus } from "./PageStatus";
+export { Pagination } from "./Pagination";
 export { Section, type SectionProps } from "./Section";
 export { SectionCardAsymmetric, type SectionCardAsymmetricProps } from "./SectionCardAsymmetric";
 export { SectionCardSimple } from "./SectionCardSimple";
