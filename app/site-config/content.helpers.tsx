@@ -4,19 +4,21 @@ import {
   type CardProps,
   type CardSimpleProps,
   Tag,
+  type TagProps,
 } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import {
   type Category,
-  CONTENT_THEMES,
   CONTENT_TYPES,
   type ContentType,
   type IterableItemWithId,
-  type Theme,
 } from "@/app/site-config/types";
 
-export const makeSimpleTag = (tag: Theme | ContentType | Category) => (
-  <Tag key={tag} variant="solid" color="primary-lighter">
+export const makeSimpleTag = (
+  tag: ContentType | Category,
+  tagProps?: Omit<TagProps, "children">,
+) => (
+  <Tag key={tag} variant="solid" color="primary-lighter" textColor="primary-dark" {...tagProps}>
     {tag}
   </Tag>
 );
@@ -30,38 +32,28 @@ const makeContentTypeTag = (tag: ContentType) => {
   );
 };
 
-export type CardMastheadPropsArgs = Omit<
-  CardProps,
-  "title" | "image" | "colorMode" | "isMasthead"
-> & {
+export type CardMastheadPropsArgs = Omit<CardProps, "title" | "image"> & {
   mastheadImage: {
     alt: string;
     src: string;
   };
   title?: string;
-  theme?: Theme;
+  tagPrimary?: ContentType | Category;
 };
 
 export const makeCardMastHeadProps = ({
   mastheadImage,
   title,
-  theme,
+  tagPrimary,
+  colorMode = "brand",
+  isMastHead,
   ...rest
 }: CardMastheadPropsArgs): CardProps => ({
-  image: <Image {...mastheadImage} sizes="100vw" fill preload={true} />,
-  ...(title || theme
-    ? {
-        title: (
-          <h1
-            className={`font-mono-3xl text-normal text-white text-uppercase flex-align-self-start margin-0 ${theme ? `bg-${CONTENT_THEMES[theme].color} text-ls-3` : ""}`}
-          >
-            {title ?? theme}
-          </h1>
-        ),
-      }
-    : {}),
-  colorMode: "brand",
-  isMastHead: true,
+  image: <Image {...mastheadImage} sizes="100vw" fill />,
+  title: title,
+  tag: tagPrimary ? makeSimpleTag(tagPrimary) : null,
+  colorMode,
+  isMastHead: isMastHead,
   ...rest,
 });
 
@@ -124,7 +116,8 @@ type CardDetailedPropsArgs = Omit<
     alt: string;
     src: string;
   };
-  tags?: (Theme | ContentType | Category)[];
+  tags?: (ContentType | Category)[];
+  tagPrimary?: ContentType | Category;
   url?: string;
 };
 
@@ -133,6 +126,7 @@ export const makeCardDetailedProps = ({
   contentType,
   thumbnailImage,
   tags,
+  tagPrimary,
   url,
   ...rest
 }: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => ({
@@ -146,6 +140,7 @@ export const makeCardDetailedProps = ({
   ),
   imagePosition: "top",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
+  tagPrimary: tagPrimary ? makeSimpleTag(tagPrimary) : undefined,
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
@@ -158,6 +153,7 @@ export const makeCardDetailedImageLeftProps = ({
   id,
   contentType,
   thumbnailImage,
+  tagPrimary,
   tags,
   url,
   ...rest
@@ -166,6 +162,7 @@ export const makeCardDetailedImageLeftProps = ({
   image: <Image {...thumbnailImage} fill sizes="200px" />,
   imagePosition: "left",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
+  tagPrimary: tagPrimary ? makeSimpleTag(tagPrimary) : undefined,
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
@@ -181,7 +178,7 @@ export type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExt
     alt: string;
     src: string;
   };
-  tag?: Theme | ContentType | Category;
+  tag?: ContentType | Category;
   url?: string;
 };
 
