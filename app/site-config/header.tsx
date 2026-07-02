@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const MOCK_HEADER_PROPS: HeaderProps = {
   portalDetails: {
-    logo: <Image src="/img/logo-header.png" alt="Disasters.gov" width={148} height={52} />,
+    logo: <Image src="/img/logo-emblem.svg" alt="AIR4US" width={67} height={68} />,
     url: "/",
   },
   navItems: [

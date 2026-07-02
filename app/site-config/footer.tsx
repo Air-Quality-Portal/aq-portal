@@ -38,9 +38,9 @@ const portalDetails: FooterProps["portalDetails"] = {
       email: "shanna.n.mcclain@nasa.gov",
     },
   ],
-  logo: <Image src="/img/logo-emblem.svg" alt="Disasters.gov" width={121} height={124} priority />,
-  title: "Air Quality PORTAL",
-  tagline: "Partnership-Oriented Resource for Training, Analysis, and Learning",
+  logo: <Image src="/img/logo-emblem.svg" alt="AIR4US" width={121} height={124} priority />,
+  title: "AIR Quality Portal",
+  tagline: "Empowering US air quality decisions through Earth observations.",
   updatedDate: "June 1, 2026",
 };
 
