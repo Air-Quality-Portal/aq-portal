@@ -3,8 +3,8 @@ import Image from "next/image";
 
 const primaryNavItems: FooterProps["primaryNavItems"] = [
   { label: "About Us", href: "/about" },
-  { label: "Data Gallery", href: "/data-gallery" },
-  { label: "News & Events", href: "/news-events" },
+  { label: "Tool Catalog", href: "/tools" },
+  { label: "Data Catalog", href: "/data-gallery" },
   { label: "Training", href: "/training" },
 ];
 
@@ -39,7 +39,7 @@ const portalDetails: FooterProps["portalDetails"] = {
     },
   ],
   logo: <Image src="/img/logo-emblem.svg" alt="Disasters.gov" width={121} height={124} priority />,
-  title: "NASA Disasters PORTAL",
+  title: "Air Quality PORTAL",
   tagline: "Partnership-Oriented Resource for Training, Analysis, and Learning",
   updatedDate: "June 1, 2026",
 };
