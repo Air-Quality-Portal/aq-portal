@@ -1,5 +1,24 @@
 pre-commit:
   commands:
+    no-local-link:
+      glob: "{package.json,pnpm-lock.yaml}"
+      run: |
+        if grep -q 'link:.*tinacms-portal-monorepo' {staged_files}; then
+          echo "Refusing to commit a local 'link:' override for @teamimpact/veda-ui-blocks."
+          echo "Run 'pnpm install' to restore the published version before committing."
+          echo "Use 'pnpm run theme:air4us:local' for local linking (it only touches node_modules)."
+          exit 1
+        fi
+    no-local-theme-css:
+      glob: "app/layout.tsx"
+      run: |
+        if grep -q 'veda-ui-blocks/air4us.css' {staged_files}; then
+          echo "Refusing to commit the 'air4us.css' theme import."
+          echo "air4us.css only exists in the local monorepo build, not the published"
+          echo "package, so it breaks CI. Restore the published import (default.css)"
+          echo "before committing. 'pnpm run theme:air4us:local' applies air4us.css locally."
+          exit 1
+        fi
     check:
       glob: "*.{ts,tsx,js,jsx,json,css}"
       run: pnpm lint:staged {staged_files}

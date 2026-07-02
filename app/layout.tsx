@@ -1,6 +1,6 @@
 import { Footer, Header } from "@teamimpact/veda-ui-blocks";
 import type { Metadata } from "next";
-import "@teamimpact/veda-ui-blocks/air4us.css";
+import "@teamimpact/veda-ui-blocks/default.css";
 
 import { MOCK_FOOTER_PROPS } from "./site-config/footer";
 import { MOCK_HEADER_PROPS } from "./site-config/header";

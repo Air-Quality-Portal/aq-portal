@@ -29,8 +29,7 @@
   },
   "pnpm": {
     "overrides": {
-      "postcss@<8.5.10": ">=8.5.10",
-      "@teamimpact/veda-ui-blocks": "link:../tinacms-portal-monorepo/packages/blocks"
+      "postcss@<8.5.10": ">=8.5.10"
     }
   },
   "devDependencies": {
