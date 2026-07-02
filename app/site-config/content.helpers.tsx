@@ -46,27 +46,14 @@ export const makeCardMastHeadProps = ({
   title,
   tagPrimary,
   colorMode = "brand",
+  isMastHead,
   ...rest
 }: CardMastheadPropsArgs): CardProps => ({
-  image: <Image {...mastheadImage} sizes="100vw" fill preload={true} />,
-  ...(title
-    ? {
-        title: (
-          <h1
-            className={
-              colorMode === "brand"
-                ? "font-mono-3xl text-normal text-white text-uppercase flex-align-self-start margin-0 text-ls-3"
-                : "font-heading-2xl text-normal margin-0"
-            }
-          >
-            {title}
-          </h1>
-        ),
-      }
-    : {}),
-  ...(tagPrimary ? { tag: makeSimpleTag(tagPrimary) } : {}),
+  image: <Image {...mastheadImage} sizes="100vw" fill />,
+  title: title,
+  tag: tagPrimary ? makeSimpleTag(tagPrimary) : null,
   colorMode,
-  isMastHead: true,
+  isMastHead: isMastHead,
   ...rest,
 });
 
