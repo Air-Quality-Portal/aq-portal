@@ -37,7 +37,7 @@ const makeMockDataset = (index: number): DatasetContent => {
       alt: `Placeholder dataset thumbnail ${n}`,
     },
     mastheadImage: {
-      src: "https://placehold.co/1600x600.png",
+      src: "https://placehold.co/300x250.png",
       alt: `Placeholder dataset masthead ${n}`,
     },
     // Index-driven variation so card tags differ; de-duplicate category3.
