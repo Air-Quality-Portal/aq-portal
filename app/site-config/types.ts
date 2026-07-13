@@ -33,7 +33,8 @@ export type ContentBlock =
       type: "text";
       heading?: string;
       headingLevel?: "h2" | "h3" | "h4";
-      paragraphs: ReactNode[];
+      paragraphs?: ReactNode[];
+      content?: ReactNode[];
     }
   | {
       type: "list";
