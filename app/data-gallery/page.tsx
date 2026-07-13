@@ -22,14 +22,15 @@ export default async function DataGalleryPage(props: PageProps<"/data-gallery">)
     <>
       {/* Title-only masthead: the air4us `no-image` masthead variant hides the media and renders
           a serif/light title on the masthead's light background. Image is required but hidden. */}
-      <Card
-        className="no-image"
-        isMastHead
-        imagePosition="cover"
-        title={DATA_GALLERY_CARD_MASTHEAD.title}
-        image={<svg role="presentation" aria-hidden="true" />}
-      />
       <Section>
+        <Card
+          className="no-image margin-bottom-2"
+          isMastHead
+          imagePosition="cover"
+          title={DATA_GALLERY_CARD_MASTHEAD.title}
+          image={<svg role="presentation" aria-hidden="true" />}
+        />
+
         <DatasetCatalogToolbar count={total} />
         <div className="grid-row grid-gap">
           {pageItems.map(
