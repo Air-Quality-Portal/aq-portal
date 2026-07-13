@@ -1,8 +1,8 @@
 import { Footer, Header } from "@teamimpact/veda-ui-blocks";
 import type { Metadata } from "next";
 import "@teamimpact/veda-ui-blocks/default.css";
-// use this after the theme is published from monorepo
-// import "@teamimpact/veda-ui-blocks/air4us.css";
+// Switch to the air4us theme stylesheet once it is published from the monorepo.
+// Run `pnpm run theme:air4us:local` to apply it locally for development.
 
 import { MOCK_FOOTER_PROPS } from "./site-config/footer";
 import { MOCK_HEADER_PROPS } from "./site-config/header";
@@ -21,17 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="display-flex flex-column minh-viewport">
         <Header {...MOCK_HEADER_PROPS} />
-        <main
-          className="flex-1"
-          style={{
-            paddingLeft: "220px",
-            paddingRight: "220px",
-            paddingTop: "41px",
-            paddingBottom: "71px",
-          }}
-        >
-          {children}
-        </main>
+        <main>{children}</main>
         <Footer {...MOCK_FOOTER_PROPS} />
       </body>
     </html>
