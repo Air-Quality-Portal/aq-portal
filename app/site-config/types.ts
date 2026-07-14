@@ -8,6 +8,7 @@ import type { CardFeaturedPropsArgs, CardSimplePropsArgs } from "@/app/site-conf
 
 export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }> = {
   dataset: { route: "/data-gallery", label: "product" },
+  tool: { route: "/tools", label: "tool" },
 };
 
 export type IterableItemWithId<T> = T & { id: string };
@@ -85,7 +86,7 @@ export type ContentBlock =
       card: CardFeaturedPropsArgs;
     };
 
-type Content = DatasetContent;
+type Content = DatasetContent | ToolContent;
 
 export type ContentType = Content["contentType"];
 
@@ -120,6 +121,27 @@ export type DatasetContent = {
     secondary?: DatasetAction;
   };
   body?: ContentBlock[];
+};
+
+// Tools mirror the data gallery's card format (image-left CardDetailed) but
+// have no detail page — each card title links straight out to an external
+// tool. Categories are free text, independent of the dataset taxonomy.
+export type ToolContent = {
+  id: string;
+  contentType: "tool";
+  title: string;
+  fullname: string;
+  description?: string;
+  /** External URL the card title links to. */
+  href: string;
+  /** Primary tag shown over the image, e.g. "Agency". */
+  tagPrimary?: string;
+  /** Tags shown below the description. */
+  categories?: string[];
+  thumbnailImage: {
+    src: string;
+    alt: string;
+  };
 };
 
 export type DatasetAction = {

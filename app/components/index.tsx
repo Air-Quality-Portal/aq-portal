@@ -11,3 +11,4 @@ export { Section, type SectionProps } from "./Section";
 export { SectionCardAsymmetric, type SectionCardAsymmetricProps } from "./SectionCardAsymmetric";
 export { SectionCardSimple } from "./SectionCardSimple";
 export { SectionHeading } from "./SectionHeading";
+export { ToolCatalogToolbar } from "./ToolCatalogToolbar";

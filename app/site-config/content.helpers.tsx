@@ -195,7 +195,7 @@ export const makeCardSimpleProps = ({
   tag: tag // TODO update function to allow user to choose which tag should be rendered
     ? makeSimpleTag(tag)
     : makeContentTypeTag(contentType),
-  url: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
+  href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
   isExternal: !!url,
   ...rest,
 });
@@ -228,7 +228,7 @@ export const makeCardMiniProps = ({
         ),
       }
     : {}),
-  url: `${CONTENT_TYPES[contentType].route}/${id}`,
+  href: `${CONTENT_TYPES[contentType].route}/${id}`,
   ...rest,
 });
 
