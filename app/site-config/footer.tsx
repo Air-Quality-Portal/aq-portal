@@ -60,7 +60,7 @@ const portalDetails: FooterProps["portalDetails"] = {
     },
   ],
   logo: <Image src="/img/logo-emblem.svg" alt="AIR4US" width={121} height={124} priority />,
-  title: "AIR Quality Portal",
+  title: "",
   tagline: "Empowering US air quality decisions through Earth observations.",
   updatedDate: "June 1, 2026",
 };
