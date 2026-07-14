@@ -96,27 +96,19 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
                       </Tag>
                     ) : undefined
                   }
-                  title={
-                    <>
-                      <Link
-                        className="font-body-xl font-light"
-                        href={href}
-                        isExternal
-                        variant="text"
-                        style={{ fontWeight: 300 }}
-                      >
-                        {title}
-                      </Link>
-
-                      <hr className="margin-top-2"></hr>
-                    </>
-                  }
+                  title={title}
                   description={description}
                   tags={categories?.map((tag) => (
                     <Tag key={tag} variant="outline">
                       {tag}
                     </Tag>
                   ))}
+                  callToActionSecondary={{
+                    href: href,
+                    label: href,
+                    type: "isText",
+                    isExternal: true,
+                  }}
                 />
               </div>
             ),
