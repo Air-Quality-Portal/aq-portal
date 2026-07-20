@@ -45,15 +45,11 @@ export const makeCardMastHeadProps = ({
   mastheadImage,
   title,
   tagPrimary,
-  colorMode = "brand",
-  isMastHead,
   ...rest
 }: CardMastheadPropsArgs): CardProps => ({
   image: <Image {...mastheadImage} sizes="100vw" fill />,
   title: title,
   tag: tagPrimary ? makeSimpleTag(tagPrimary) : null,
-  colorMode,
-  isMastHead: isMastHead,
   ...rest,
 });
 
@@ -171,7 +167,7 @@ export const makeCardDetailedImageLeftProps = ({
   ...rest,
 });
 
-export type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExternal" | "url"> & {
+export type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExternal" | "href"> & {
   id: string;
   contentType: ContentType;
   thumbnailImage: {
@@ -195,12 +191,12 @@ export const makeCardSimpleProps = ({
   tag: tag // TODO update function to allow user to choose which tag should be rendered
     ? makeSimpleTag(tag)
     : makeContentTypeTag(contentType),
-  url: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
+  href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
   isExternal: !!url,
   ...rest,
 });
 
-type CardSimpleMiniArgs = Omit<CardMiniProps, "image" | "tag" | "url"> & {
+type CardSimpleMiniArgs = Omit<CardMiniProps, "image" | "tag" | "href"> & {
   id: string;
   contentType: ContentType;
   thumbnailImage: {
@@ -228,7 +224,7 @@ export const makeCardMiniProps = ({
         ),
       }
     : {}),
-  url: `${CONTENT_TYPES[contentType].route}/${id}`,
+  href: `${CONTENT_TYPES[contentType].route}/${id}`,
   ...rest,
 });
 

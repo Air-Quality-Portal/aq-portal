@@ -27,19 +27,13 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
             mastheadImage,
             title,
             tagPrimary: category1[0],
-            colorMode: "light",
-            imagePosition: "cover",
-            isMastHead: true,
+            imagePosition: "right",
           })}
         />
       </Section>
       <Section>
         <div className="grid-container">
-          <Link
-            href="/data-gallery"
-            variant="text"
-            className="display-inline-flex flex-align-center text-primary text-bold margin-bottom-4"
-          >
+          <Link href="/data-gallery" variant="text" className="display-inline-flex">
             <span aria-hidden="true" className="margin-right-1">
               &larr;
             </span>
