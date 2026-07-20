@@ -1,4 +1,5 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
+import NextLink from "next/link";
 import { notFound } from "next/navigation";
 
 import {
@@ -33,7 +34,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
       </Section>
       <Section>
         <div className="grid-container">
-          <Link href="/data-gallery" variant="text" className="display-inline-flex">
+          <Link as={NextLink} href="/data-gallery" variant="text" className="display-inline-flex">
             <span aria-hidden="true" className="margin-right-1">
               &larr;
             </span>
