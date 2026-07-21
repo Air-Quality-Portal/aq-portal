@@ -12,17 +12,14 @@ export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }
 
 export type IterableItemWithId<T> = T & { id: string };
 
-export const CATEGORY_MAP = {
-  category1: { label: "Data Provider", values: ["c1 lorem", "c1 ipsum", "c1 dore"] },
-  category2: { label: "Instrument Type", values: ["c2 lorem", "c2 ipsum", "c2 dore"] },
-  category3: { label: "Instrument Subtype", values: ["c3 lorem", "c3 ipsum", "c3 dore"] },
-} as const;
+export type Category = string;
 
-export type Category1 = (typeof CATEGORY_MAP)["category1"]["values"][number];
-export type Category2 = (typeof CATEGORY_MAP)["category2"]["values"][number];
-export type Category3 = (typeof CATEGORY_MAP)["category3"]["values"][number];
+export type DatasetMetadataEntry = {
+  label: string;
+  value: string;
+};
 
-export type Category = Category1 | Category2 | Category3;
+export type DatasetMetadata = Record<string, DatasetMetadataEntry>;
 
 export type GalleryRoute = string;
 
@@ -110,9 +107,7 @@ export type DatasetContent = {
     alt: string;
   };
   description?: string;
-  category1: Category1[];
-  category2: Category2[];
-  category3: Category3[];
+  metadata: DatasetMetadata;
   mastheadImage: MastheadImage;
   actions?: {
     primary: DatasetAction;

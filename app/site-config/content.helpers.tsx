@@ -11,8 +11,12 @@ import {
   type Category,
   CONTENT_TYPES,
   type ContentType,
+  type DatasetMetadata,
   type IterableItemWithId,
 } from "@/app/site-config/types";
+
+export const getMetadataFieldTag = (metadata: DatasetMetadata, key: string): string | undefined =>
+  metadata[key]?.value;
 
 export const makeSimpleTag = (
   tag: ContentType | Category,

@@ -9,7 +9,7 @@ import {
   PageStatus,
   Section,
 } from "@/app/components";
-import { makeCardMastHeadProps } from "@/app/site-config/content.helpers";
+import { getMetadataFieldTag, makeCardMastHeadProps } from "@/app/site-config/content.helpers";
 import { DATASETS } from "@/app/site-config/dataset";
 
 export default async function DatasetItemPage(props: PageProps<"/data-gallery/[id]">) {
@@ -18,7 +18,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
 
   if (!dataset) notFound();
 
-  const { title, mastheadImage, body, actions, category1, category2, category3 } = dataset;
+  const { title, mastheadImage, body, actions, metadata } = dataset;
 
   return (
     <>
@@ -27,7 +27,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
           {...makeCardMastHeadProps({
             mastheadImage,
             title,
-            tagPrimary: category1[0],
+            tagPrimary: getMetadataFieldTag(metadata, "provider"),
             imagePosition: "right",
           })}
         />
@@ -79,7 +79,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
 
               {/* Sidebar */}
               <div className="grid-col-12 desktop:grid-col-3">
-                <PageSidebar category1={category1} category2={category2} category3={category3} />
+                <PageSidebar metadata={metadata} />
               </div>
             </div>
           )}

@@ -14,9 +14,18 @@ export const DATASET__MOCK: DatasetContent = {
     src: "https://picsum.photos/id/174/1304/480",
     alt: "Aerial landscape sample imagery",
   },
-  category1: ["c1 lorem"],
-  category2: ["c2 lorem"],
-  category3: ["c3 lorem", "c3 dore"],
+  metadata: {
+    provider: { label: "Data Provider", value: "US EPA" },
+    parameters: { label: "Parameters & Units", value: "PM2.5 µg/m³" },
+    spatialCoverage: { label: "Spatial Coverage", value: "United States" },
+    temporalCoverage: { label: "Temporal Coverage", value: "1980 – Present" },
+    temporalResolution: { label: "Temporal Resolution", value: "Hourly" },
+    updateFrequency: { label: "Update Frequency", value: "Hourly" },
+    latency: { label: "Latency", value: "Low - near real-time to daily" },
+    spatialResolution: { label: "Spatial Resolution", value: "Varies by product" },
+    dataFormat: { label: "Data Format", value: "CSV, JSON, API" },
+    versionHistory: { label: "Version History", value: "v2.1 (current)" },
+  },
 
   actions: {
     primary: {
