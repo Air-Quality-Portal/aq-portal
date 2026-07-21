@@ -1,3 +1,4 @@
+export { BackToCatalogLink } from "./BackToCatalogLink";
 export * from "./blocks";
 export { ContentBlockRenderer } from "./ContentBlockRenderer";
 export { HeaderWithCurrentPath } from "./HeaderWithCurrentPath";

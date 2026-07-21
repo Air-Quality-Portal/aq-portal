@@ -1,8 +1,8 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
-import NextLink from "next/link";
 import { notFound } from "next/navigation";
 
 import {
+  BackToCatalogLink,
   ContentBlockRenderer,
   PageMasthead,
   PageSidebar,
@@ -34,12 +34,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
       </Section>
       <Section>
         <div className="grid-container">
-          <Link as={NextLink} href="/data-gallery" variant="text" className="display-inline-flex">
-            <span aria-hidden="true" className="margin-right-1">
-              &larr;
-            </span>
-            Back to Data Catalog
-          </Link>
+          <BackToCatalogLink href="/data-gallery" />
 
           {/* Placeholder content only */}
           {!body && (
