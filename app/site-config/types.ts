@@ -16,7 +16,7 @@ export type Category = string;
 
 export type DatasetMetadataEntry = {
   label: string;
-  value: string;
+  value: string[];
 };
 
 export type DatasetMetadata = Record<string, DatasetMetadataEntry>;

@@ -8,7 +8,11 @@ export function PageSidebar({ metadata = {} }: { metadata?: DatasetMetadata }) {
           <p className="font-mono-3xs text-base text-uppercase margin-top-0 margin-bottom-05">
             {label}
           </p>
-          <p className="font-body-md margin-0">{value}</p>
+          {value.map((item) => (
+            <p key={item} className="font-body-md margin-0">
+              {item}
+            </p>
+          ))}
         </div>
       ))}
     </aside>
