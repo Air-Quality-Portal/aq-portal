@@ -36,10 +36,6 @@ export const DATASET__MOCK: DatasetContent = {
       href: "https://example.com/visualization",
       isExternal: true,
     },
-    secondary: {
-      label: "Learn more",
-      href: "#",
-    },
   },
 
   body: [

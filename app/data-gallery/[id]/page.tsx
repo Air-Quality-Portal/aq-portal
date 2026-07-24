@@ -64,15 +64,6 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
                     >
                       {actions.primary.label}
                     </Link>
-                    {actions.secondary && (
-                      <Link
-                        href={actions.secondary.href}
-                        isExternal={actions.secondary.isExternal}
-                        variant="button-outline"
-                      >
-                        {actions.secondary.label}
-                      </Link>
-                    )}
                   </div>
                 )}
               </div>
