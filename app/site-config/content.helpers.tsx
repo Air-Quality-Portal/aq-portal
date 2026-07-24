@@ -1,10 +1,9 @@
-import {
-  type CardDetailedProps,
-  type CardMiniProps,
-  type CardProps,
-  type CardSimpleProps,
-  Tag,
-  type TagProps,
+import type {
+  CardDetailedProps,
+  CardMiniProps,
+  CardProps,
+  CardSimpleProps,
+  TagProps,
 } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import {
@@ -15,25 +14,25 @@ import {
   type IterableItemWithId,
 } from "@/app/site-config/types";
 
+export type TagInCard = Omit<TagProps, "size" | "onClose" | "children"> & { label: string };
+
 export const getMetadataFieldTag = (metadata: DatasetMetadata, key: string): string | undefined =>
-  metadata[key]?.value;
+  metadata[key]?.value[0];
 
 export const makeSimpleTag = (
   tag: ContentType | Category,
-  tagProps?: Omit<TagProps, "children">,
-) => (
-  <Tag key={tag} variant="solid" color="primary-lighter" textColor="primary-dark" {...tagProps}>
-    {tag}
-  </Tag>
-);
+  tagProps?: Omit<TagInCard, "label">,
+): TagInCard => ({
+  variant: "solid",
+  color: "primary-lighter",
+  textColor: "primary-dark",
+  ...tagProps,
+  label: tag,
+});
 
-const makeContentTypeTag = (tag: ContentType) => {
+const makeContentTypeTag = (tag: ContentType): TagInCard => {
   const { label } = CONTENT_TYPES[tag];
-  return (
-    <Tag key={label} variant="solid">
-      {label}
-    </Tag>
-  );
+  return { variant: "solid", label };
 };
 
 export type CardMastheadPropsArgs = Omit<CardProps, "title" | "image"> & {
@@ -53,7 +52,7 @@ export const makeCardMastHeadProps = ({
 }: CardMastheadPropsArgs): CardProps => ({
   image: <Image {...mastheadImage} sizes="100vw" fill />,
   title: title,
-  tag: tagPrimary ? makeSimpleTag(tagPrimary) : null,
+  tag: tagPrimary ? makeSimpleTag(tagPrimary) : undefined,
   ...rest,
 });
 
@@ -108,7 +107,7 @@ export const makeCardFeaturedProps = (
 
 type CardDetailedPropsArgs = Omit<
   CardDetailedProps,
-  "image" | "imagePosition" | "tags" | "callToAction"
+  "image" | "imagePosition" | "tags" | "tagPrimary" | "callToAction"
 > & {
   id: string;
   contentType: ContentType;
@@ -219,15 +218,7 @@ export const makeCardMiniProps = ({
 }: CardSimpleMiniArgs): IterableItemWithId<CardMiniProps> => ({
   id,
   image: <Image {...thumbnailImage} fill sizes="200px" />,
-  ...(tag
-    ? {
-        tag: (
-          <Tag variant="text" color="secondary">
-            {tag}
-          </Tag>
-        ),
-      }
-    : {}),
+  ...(tag ? { tag: { label: tag, variant: "text", color: "secondary" } as const } : {}),
   href: `${CONTENT_TYPES[contentType].route}/${id}`,
   ...rest,
 });
