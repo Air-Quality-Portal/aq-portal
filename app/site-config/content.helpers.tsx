@@ -105,7 +105,7 @@ export const makeCardFeaturedProps = (
   };
 };
 
-type CardDetailedPropsArgs = Omit<
+export type CardDetailedPropsArgs = Omit<
   CardDetailedProps,
   "image" | "imagePosition" | "tags" | "tagPrimary" | "callToAction"
 > & {

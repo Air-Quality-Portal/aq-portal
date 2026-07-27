@@ -8,5 +8,6 @@ export { PageSidebar } from "./PageSidebar";
 export { PageStatus } from "./PageStatus";
 export { Section, type SectionProps } from "./Section";
 export { SectionCardAsymmetric, type SectionCardAsymmetricProps } from "./SectionCardAsymmetric";
+export { SectionCardDetailed } from "./SectionCardDetailed";
 export { SectionCardSimple } from "./SectionCardSimple";
 export { SectionHeading } from "./SectionHeading";

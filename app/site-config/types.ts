@@ -38,7 +38,7 @@ export type ContentBlock =
       headingLevel?: "h2" | "h3" | "h4";
       items: (string | { label: string; href: string })[];
     }
-  | { type: "note"; text: string }
+  | { type: "note"; text: string; label?: string }
   | { type: "slider"; before: { src: string; alt: string }; after: { src: string; alt: string } }
   | {
       type: "video";
@@ -71,10 +71,40 @@ export type ContentBlock =
         caption?: string;
       })
   | {
+      type: "linkList";
+      heading?: string;
+      headingLevel?: "h2" | "h3" | "h4";
+      lead?: string;
+      links: { label: string; href: string; isExternal?: boolean }[];
+    }
+  | {
+      type: "tutorialList";
+      heading?: string;
+      headingLevel?: "h2" | "h3" | "h4";
+      lead?: string;
+      tutorials: {
+        title: string;
+        description?: string;
+        href: string;
+        duration?: string;
+        level?: "Beginner" | "Intermediate" | "Advanced";
+      }[];
+    }
+  | {
       type: "sectionCardSimple";
       heading?: string;
       href?: GalleryRoute;
+      description?: string;
       cards: CardSimplePropsArgs[];
+    }
+  | {
+      type: "relatedDatasets";
+      heading?: string;
+      headingLevel?: "h2" | "h3" | "h4";
+      href?: GalleryRoute;
+      description?: string;
+      /** Ids of datasets in the catalog to display. Card content is derived from each dataset. */
+      datasetIds: string[];
     }
   | {
       type: "sectionCardFeatured";
@@ -107,6 +137,8 @@ export type DatasetContent = {
     alt: string;
   };
   description?: string;
+  /** Topic tags shown on catalog and related-dataset cards. */
+  categories?: Category[];
   metadata: DatasetMetadata;
   mastheadImage: MastheadImage;
   actions?: {

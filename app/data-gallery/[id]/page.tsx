@@ -1,5 +1,6 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
 import { notFound } from "next/navigation";
+import { Fragment } from "react";
 
 import {
   BackToCatalogLink,
@@ -51,21 +52,23 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
               <div className="grid-col-12 desktop:grid-col-9">
                 {body?.map((block, index) => (
                   // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-                  <ContentBlockRenderer key={index} block={block} isMultiColumnLayout />
-                ))}
+                  <Fragment key={index}>
+                    <ContentBlockRenderer block={block} isMultiColumnLayout />
 
-                {/* Action buttons */}
-                {actions && (
-                  <div className="display-flex flex-wrap margin-top-4" style={{ gap: "1rem" }}>
-                    <Link
-                      href={actions.primary.href}
-                      isExternal={actions.primary.isExternal}
-                      variant="button"
-                    >
-                      {actions.primary.label}
-                    </Link>
-                  </div>
-                )}
+                    {/* Primary action rendered inline after the intro block */}
+                    {index === 0 && actions && (
+                      <div className="display-flex flex-wrap margin-top-4" style={{ gap: "1rem" }}>
+                        <Link
+                          href={actions.primary.href}
+                          isExternal={actions.primary.isExternal}
+                          variant="button"
+                        >
+                          {actions.primary.label}
+                        </Link>
+                      </div>
+                    )}
+                  </Fragment>
+                ))}
               </div>
 
               {/* Sidebar */}
