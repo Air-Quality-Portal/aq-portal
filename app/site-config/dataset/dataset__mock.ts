@@ -14,6 +14,7 @@ export const DATASET__MOCK: DatasetContent = {
     src: "https://picsum.photos/id/174/1304/480",
     alt: "Aerial landscape sample imagery",
   },
+  categories: ["Air Quality", "NASA", "NO₂", "Satellite", "Hourly"],
   metadata: {
     provider: { label: "Data Provider", value: ["US EPA"] },
     parameters: {
@@ -146,7 +147,7 @@ export const DATASET__MOCK: DatasetContent = {
       headingLevel: "h3",
       description:
         "Other datasets in the catalog you can explore in the AIR4US visualization tool.",
-      datasetIds: ["aqs-airnow", "nasa-firms", "maiac-aod"],
+      datasetIds: ["mock-dataset-1", "mock-dataset-2", "mock-dataset-3"],
     },
   ],
 };

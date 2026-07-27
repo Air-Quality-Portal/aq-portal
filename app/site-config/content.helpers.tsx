@@ -137,14 +137,9 @@ export const makeCardDetailedProps = ({
       sizes="(max-width: 640px) 100vw, (max-width: 1400px) 50vw, 700px"
     />
   ),
-  imagePosition: "top",
+  imagePosition: "left",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
   tagPrimary: tagPrimary ? makeSimpleTag(tagPrimary) : undefined,
-  callToAction: {
-    href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
-    label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
-    isExternal: !!url,
-  },
   ...rest,
 });
 
