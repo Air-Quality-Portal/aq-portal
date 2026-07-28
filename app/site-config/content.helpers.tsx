@@ -167,7 +167,7 @@ export const makeCardDetailedImageLeftProps = ({
     image: <Image {...thumbnailImage} fill sizes="194px" />,
     imagePosition: "left",
     title: (
-      <Link className="font-body-lg text-light" href={href} isExternal={!!url} variant="text-plain">
+      <Link className="font-body-lg text-light" href={href} isExternal={!!url} variant="text">
         {title}
       </Link>
     ),

@@ -44,6 +44,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
             title,
             tagPrimary: getMetadataFieldTag(metadata, "provider"),
             imagePosition: "right",
+            isMastHead: true,
           })}
         />
       </Section>
