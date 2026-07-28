@@ -116,6 +116,19 @@ export type ContentBlock =
   | {
       type: "sectionCardFeatured";
       card: CardFeaturedPropsArgs;
+    }
+  | {
+      type: "tutorialList";
+      heading?: string;
+      headingLevel?: "h2" | "h3" | "h4";
+      lead?: string;
+      tutorials: {
+        title: string;
+        href: string;
+        description?: string;
+        duration?: string;
+        level?: "beginner" | "intermediate" | "advanced";
+      }[];
     };
 
 type Content =

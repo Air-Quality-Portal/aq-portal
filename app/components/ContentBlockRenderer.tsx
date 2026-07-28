@@ -1,4 +1,4 @@
-import { Link } from "@teamimpact/veda-ui-blocks";
+import { Link, Tag } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import React from "react";
 import { ImageComparison, Section, SectionCardSimple, SectionHeading } from "@/app/components";
@@ -6,6 +6,17 @@ import { StacCompareBlock, StacSingleLayerBlock } from "@/app/components/blocks"
 import { makeCardSimpleProps } from "@/app/site-config/content.helpers";
 import { typedMap } from "@/app/site-config/typed.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
+
+const TUTORIAL_LEVEL_COLOR: Record<"beginner" | "intermediate" | "advanced", string> = {
+  beginner: "success-lighter",
+  intermediate: "info-lighter",
+  advanced: "secondary-lighter",
+};
+
+function ContentLead({ lead }: { lead?: string }) {
+  if (!lead) return null;
+  return <p className="text-base margin-top-0 margin-bottom-2">{lead}</p>;
+}
 
 function ContentHeading({
   heading,
@@ -159,6 +170,47 @@ export const ContentBlockRenderer = ({
               </figcaption>
             )}
           </figure>
+        </Section>
+      );
+
+    case "tutorialList":
+      return (
+        <Section isMultiColumnLayout={isMultiColumnLayout}>
+          {block.heading && (
+            <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
+          )}
+          <ContentLead lead={block.lead} />
+          <ul className="usa-list usa-list--unstyled">
+            {block.tutorials.map((tutorial) => (
+              <li key={tutorial.href} className="margin-bottom-2">
+                <div className="border-1px border-base-lighter radius-md padding-3">
+                  <Link href={tutorial.href} className="font-body-lg" variant="text" size="lg">
+                    {tutorial.title}
+                  </Link>
+                  {tutorial.description && (
+                    <p className="text-base margin-top-1 margin-bottom-0">{tutorial.description}</p>
+                  )}
+                  {(tutorial.duration || tutorial.level) && (
+                    <div
+                      className="display-flex flex-wrap flex-align-center margin-top-2"
+                      style={{ gap: "0.5rem" }}
+                    >
+                      {tutorial.duration && (
+                        <Tag variant="outline" color="base">
+                          {tutorial.duration}
+                        </Tag>
+                      )}
+                      {tutorial.level && (
+                        <Tag variant="solid" color={TUTORIAL_LEVEL_COLOR[tutorial.level]}>
+                          {tutorial.level.toUpperCase()}
+                        </Tag>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
         </Section>
       );
 
