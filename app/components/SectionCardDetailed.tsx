@@ -27,7 +27,7 @@ export const SectionCardDetailed = ({
             key={props.id}
             className="grid-col-12 tablet:grid-col-6 margin-y-1 desktop:margin-y-2"
           >
-            <CardDetailed {...props} className="height-card-lg" />
+            <CardDetailed {...props} className={props.className ?? "height-card-md"} />
           </div>
         ))}
       </div>

@@ -5,6 +5,7 @@ import type {
   CardSimpleProps,
   TagProps,
 } from "@teamimpact/veda-ui-blocks";
+import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import {
   type Category,
@@ -150,20 +151,32 @@ export const makeCardDetailedImageLeftProps = ({
   tagPrimary,
   tags,
   url,
+  title,
   ...rest
-}: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => ({
-  id,
-  image: <Image {...thumbnailImage} fill sizes="200px" />,
-  imagePosition: "left",
-  tags: (tags ?? []).map((t) => makeSimpleTag(t)),
-  tagPrimary: tagPrimary ? makeSimpleTag(tagPrimary) : undefined,
-  callToAction: {
-    href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
-    label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
-    isExternal: !!url,
-  },
-  ...rest,
-});
+}: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => {
+  const href = url ? url : `${CONTENT_TYPES[contentType].route}/${id}`;
+
+  return {
+    id,
+    className: "height-card-md bg-base-lightest",
+    image: <Image {...thumbnailImage} fill sizes="194px" />,
+    imagePosition: "left",
+    title: (
+      <Link className="font-body-lg text-light" href={href} isExternal={!!url} variant="text-plain">
+        {title}
+      </Link>
+    ),
+    tags: (tags ?? []).map((t) => makeSimpleTag(t, { variant: "outline", color: "base" })),
+    tagPrimary: tagPrimary
+      ? makeSimpleTag(tagPrimary, {
+          variant: "solid",
+          color: "base-lighter",
+          textColor: "primary-dark",
+        })
+      : undefined,
+    ...rest,
+  };
+};
 
 export type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExternal" | "href"> & {
   id: string;

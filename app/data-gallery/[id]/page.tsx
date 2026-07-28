@@ -12,6 +12,19 @@ import {
 } from "@/app/components";
 import { getMetadataFieldTag, makeCardMastHeadProps } from "@/app/site-config/content.helpers";
 import { DATASETS } from "@/app/site-config/dataset";
+import type { ContentBlock } from "@/app/site-config/types";
+
+/**
+ * Blocks that break out of the sidebar column to span the full page container.
+ */
+const FULL_WIDTH_BLOCK_TYPES = new Set<ContentBlock["type"]>(["relatedDatasets"]);
+
+const isFullWidth = (block: ContentBlock) => FULL_WIDTH_BLOCK_TYPES.has(block.type);
+
+const splitBody = (body: ContentBlock[]) => ({
+  mainBlocks: body.filter((block) => !isFullWidth(block)),
+  fullWidthBlocks: body.filter(isFullWidth),
+});
 
 export default async function DatasetItemPage(props: PageProps<"/data-gallery/[id]">) {
   const { id } = await props.params;
@@ -20,6 +33,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
   if (!dataset) notFound();
 
   const { title, mastheadImage, body, actions, metadata } = dataset;
+  const { mainBlocks, fullWidthBlocks } = splitBody(body ?? []);
 
   return (
     <>
@@ -34,23 +48,23 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
         />
       </Section>
       <Section>
-        <div className="grid-container">
-          <BackToCatalogLink href="/data-gallery" />
+        <BackToCatalogLink href="/data-gallery" />
 
-          {/* Placeholder content only */}
-          {!body && (
-            <PageStatus
-              heading="Under Development"
-              description="The page you're looking for is under development."
-            />
-          )}
+        {/* Placeholder content only */}
+        {!body && (
+          <PageStatus
+            heading="Under Development"
+            description="The page you're looking for is under development."
+          />
+        )}
 
-          {/* Content */}
-          {body && (
+        {/* Content */}
+        {body && (
+          <>
             <div className="grid-row grid-gap">
               {/* Main content */}
               <div className="grid-col-12 desktop:grid-col-9">
-                {body?.map((block, index) => (
+                {mainBlocks.map((block, index) => (
                   // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
                   <Fragment key={index}>
                     <ContentBlockRenderer block={block} isMultiColumnLayout />
@@ -76,8 +90,14 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
                 <PageSidebar metadata={metadata} />
               </div>
             </div>
-          )}
-        </div>
+
+            {/* Blocks that span the page container, outside the sidebar column */}
+            {fullWidthBlocks.map((block, index) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
+              <ContentBlockRenderer key={index} block={block} isMultiColumnLayout />
+            ))}
+          </>
+        )}
       </Section>
     </>
   );
