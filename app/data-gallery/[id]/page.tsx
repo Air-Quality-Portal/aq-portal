@@ -1,7 +1,6 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
 import { notFound } from "next/navigation";
 import { Fragment } from "react";
-
 import {
   BackToCatalogLink,
   ContentBlockRenderer,
