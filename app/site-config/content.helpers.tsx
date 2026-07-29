@@ -1,9 +1,8 @@
-import {
-  type CardDetailedProps,
-  type CardMiniProps,
-  type CardProps,
-  type CardSimpleProps,
-  Tag,
+import type {
+  CardDetailedProps,
+  CardMiniProps,
+  CardProps,
+  CardSimpleProps,
 } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import {
@@ -15,20 +14,16 @@ import {
   type Theme,
 } from "@/app/site-config/types";
 
-export const makeSimpleTag = (tag: Theme | ContentType | Category) => (
-  <Tag key={tag} variant="solid" color="primary-lighter">
-    {tag}
-  </Tag>
-);
+export const makeSimpleTag = (tag: Theme | ContentType | Category) => ({
+  label: tag,
+  variant: "solid" as const,
+  color: "primary-lighter",
+});
 
-const makeContentTypeTag = (tag: ContentType) => {
-  const { label } = CONTENT_TYPES[tag];
-  return (
-    <Tag key={label} variant="solid">
-      {label}
-    </Tag>
-  );
-};
+const makeContentTypeTag = (tag: ContentType) => ({
+  label: CONTENT_TYPES[tag].label,
+  variant: "solid" as const,
+});
 
 export type CardMastheadPropsArgs = Omit<
   CardProps,
@@ -198,7 +193,7 @@ export const makeCardSimpleProps = ({
   tag: tag // TODO update function to allow user to choose which tag should be rendered
     ? makeSimpleTag(tag)
     : makeContentTypeTag(contentType),
-  url: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
+  href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
   isExternal: !!url,
   ...rest,
 });
@@ -222,16 +217,8 @@ export const makeCardMiniProps = ({
 }: CardSimpleMiniArgs): IterableItemWithId<CardMiniProps> => ({
   id,
   image: <Image {...thumbnailImage} fill sizes="200px" />,
-  ...(tag
-    ? {
-        tag: (
-          <Tag variant="text" color="secondary">
-            {tag}
-          </Tag>
-        ),
-      }
-    : {}),
-  url: `${CONTENT_TYPES[contentType].route}/${id}`,
+  ...(tag ? { tag: { label: tag, variant: "text" as const, color: "secondary" } } : {}),
+  href: `${CONTENT_TYPES[contentType].route}/${id}`,
   ...rest,
 });
 
