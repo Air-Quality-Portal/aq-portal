@@ -3,7 +3,6 @@ import type {
   CardMiniProps,
   CardProps,
   CardSimpleProps,
-  TagProps,
 } from "@teamimpact/veda-ui-blocks";
 import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
@@ -15,26 +14,19 @@ import {
   type IterableItemWithId,
 } from "@/app/site-config/types";
 
-export type TagInCard = Omit<TagProps, "size" | "onClose" | "children"> & { label: string };
+export const makeSimpleTag = (tag: ContentType | Category) => ({
+  label: tag,
+  variant: "solid" as const,
+  color: "primary-lighter",
+});
+
+const makeContentTypeTag = (tag: ContentType) => ({
+  label: CONTENT_TYPES[tag].label,
+  variant: "solid" as const,
+});
 
 export const getMetadataFieldTag = (metadata: DatasetMetadata, key: string): string | undefined =>
   metadata[key]?.value[0];
-
-export const makeSimpleTag = (
-  tag: ContentType | Category,
-  tagProps?: Omit<TagInCard, "label">,
-): TagInCard => ({
-  variant: "solid",
-  color: "primary-lighter",
-  textColor: "primary-dark",
-  ...tagProps,
-  label: tag,
-});
-
-const makeContentTypeTag = (tag: ContentType): TagInCard => {
-  const { label } = CONTENT_TYPES[tag];
-  return { variant: "solid", label };
-};
 
 export type CardMastheadPropsArgs = Omit<CardProps, "title" | "image"> & {
   mastheadImage: {
@@ -166,14 +158,8 @@ export const makeCardDetailedImageLeftProps = ({
         {title}
       </Link>
     ),
-    tags: (tags ?? []).map((t) => makeSimpleTag(t, { variant: "outline", color: "base" })),
-    tagPrimary: tagPrimary
-      ? makeSimpleTag(tagPrimary, {
-          variant: "solid",
-          color: "base-lighter",
-          textColor: "primary-dark",
-        })
-      : undefined,
+    tags: (tags ?? []).map((t) => makeSimpleTag(t)),
+    tagPrimary: tagPrimary ? makeSimpleTag(tagPrimary) : undefined,
     ...rest,
   };
 };
@@ -226,7 +212,7 @@ export const makeCardMiniProps = ({
 }: CardSimpleMiniArgs): IterableItemWithId<CardMiniProps> => ({
   id,
   image: <Image {...thumbnailImage} fill sizes="200px" />,
-  ...(tag ? { tag: { label: tag, variant: "text", color: "secondary" } as const } : {}),
+  ...(tag ? { tag: { label: tag, variant: "text" as const, color: "secondary" } } : {}),
   href: `${CONTENT_TYPES[contentType].route}/${id}`,
   ...rest,
 });
