@@ -197,7 +197,7 @@ export const ContentBlockRenderer = ({
           <ul className="usa-list usa-list--unstyled">
             {block.links.map((link) => (
               <li key={link.href} className="margin-bottom-1">
-                <Link href={link.href} isExternal={link.isExternal} variant="button-outline-gap">
+                <Link href={link.href} isExternal={link.isExternal} variant="button-outline">
                   {link.label}
                 </Link>
               </li>
@@ -217,12 +217,7 @@ export const ContentBlockRenderer = ({
             {block.tutorials.map((tutorial) => (
               <li key={tutorial.href} className="margin-bottom-2">
                 <div className="border-1px border-base-lighter radius-md padding-3">
-                  <Link
-                    href={tutorial.href}
-                    className="font-body-lg"
-                    variant="text-plain"
-                    size="lg"
-                  >
+                  <Link href={tutorial.href} className="font-body-lg" variant="text" size="lg">
                     {tutorial.title}
                   </Link>
                   {tutorial.description && (
