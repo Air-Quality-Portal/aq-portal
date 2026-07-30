@@ -1,6 +1,8 @@
 export { BackToCatalogLink } from "./BackToCatalogLink";
 export * from "./blocks";
 export { ContentBlockRenderer } from "./ContentBlockRenderer";
+export { ContentHeading } from "./ContentHeading";
+export { ContentLead } from "./ContentLead";
 export { DatasetCatalogToolbar } from "./DatasetCatalogToolbar";
 export { HeaderWithCurrentPath } from "./HeaderWithCurrentPath";
 export { ImageComparison } from "./ImageComparison";

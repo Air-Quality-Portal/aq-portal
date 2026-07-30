@@ -12,14 +12,23 @@ export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }
 
 export type IterableItemWithId<T> = T & { id: string };
 
-export type Category = string;
-
 export type DatasetMetadataEntry = {
   label: string;
-  value: string[];
+  /** A single value, or several values that belong to the same field. */
+  value: string | string[];
+  /**
+   * How to join a multi-value `value`, e.g. `", "` or `" / "`. Defaults to a
+   * space. Use `"\n"` to render each value on its own line.
+   */
+  delimiter?: string;
 };
 
-export type DatasetMetadata = Record<string, DatasetMetadataEntry>;
+export type DatasetMetadata = {
+  /** Topic tags shown on catalog and related-dataset cards. Not rendered in the sidebar. */
+  tags?: string[];
+  /** Labeled properties of the dataset, rendered in the detail page sidebar. */
+  fields?: Record<string, DatasetMetadataEntry>;
+};
 
 export type GalleryRoute = string;
 
@@ -71,40 +80,11 @@ export type ContentBlock =
         caption?: string;
       })
   | {
-      type: "linkList";
-      heading?: string;
-      headingLevel?: "h2" | "h3" | "h4";
-      lead?: string;
-      links: { label: string; href: string; isExternal?: boolean }[];
-    }
-  | {
-      type: "tutorialList";
-      heading?: string;
-      headingLevel?: "h2" | "h3" | "h4";
-      lead?: string;
-      tutorials: {
-        title: string;
-        description?: string;
-        href: string;
-        duration?: string;
-        level?: "Beginner" | "Intermediate" | "Advanced";
-      }[];
-    }
-  | {
       type: "sectionCardSimple";
       heading?: string;
       href?: GalleryRoute;
       description?: string;
       cards: CardSimplePropsArgs[];
-    }
-  | {
-      type: "relatedDatasets";
-      heading?: string;
-      headingLevel?: "h2" | "h3" | "h4";
-      href?: GalleryRoute;
-      description?: string;
-      /** Ids of datasets in the catalog to display. Card content is derived from each dataset. */
-      datasetIds: string[];
     }
   | {
       type: "sectionCardFeatured";
@@ -124,8 +104,8 @@ export type MinimumCardContent = {
     alt: string;
   };
   description?: string;
-  tag1?: Category;
-  tags?: Category[];
+  tag1?: string;
+  tags?: string[];
 };
 
 export type DatasetContent = {
@@ -137,8 +117,6 @@ export type DatasetContent = {
     alt: string;
   };
   description?: string;
-  /** Topic tags shown on catalog and related-dataset cards. */
-  categories?: Category[];
   metadata: DatasetMetadata;
   mastheadImage: MastheadImage;
   actions?: {
@@ -146,6 +124,36 @@ export type DatasetContent = {
     secondary?: DatasetAction;
   };
   body?: ContentBlock[];
+  linkSections?: DatasetLinkSection[];
+  tutorials?: DatasetTutorialSection;
+  relatedDatasets?: RelatedDatasetsSection;
+};
+
+export type DatasetLinkSection = {
+  heading?: string;
+  lead?: string;
+  links: { label: string; href: string; isExternal?: boolean }[];
+};
+
+export type DatasetTutorialSection = {
+  heading?: string;
+  lead?: string;
+  tutorials: DatasetTutorial[];
+};
+
+export type RelatedDatasetsSection = {
+  heading?: string;
+  description?: string;
+  /** Ids of datasets in the catalog to display. Card content is derived from each dataset. */
+  datasetIds: string[];
+};
+
+export type DatasetTutorial = {
+  title: string;
+  description?: string;
+  href: string;
+  duration?: string;
+  level?: "beginner" | "intermediate" | "advanced";
 };
 
 export type DatasetAction = {

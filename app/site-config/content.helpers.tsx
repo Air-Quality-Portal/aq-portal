@@ -3,36 +3,59 @@ import type {
   CardMiniProps,
   CardProps,
   CardSimpleProps,
-  TagProps,
 } from "@teamimpact/veda-ui-blocks";
+import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import {
-  type Category,
   CONTENT_TYPES,
   type ContentType,
   type DatasetMetadata,
+  type DatasetMetadataEntry,
   type IterableItemWithId,
 } from "@/app/site-config/types";
 
-export type TagInCard = Omit<TagProps, "size" | "onClose" | "children"> & { label: string };
-
-export const getMetadataFieldTag = (metadata: DatasetMetadata, key: string): string | undefined =>
-  metadata[key]?.value[0];
-
-export const makeSimpleTag = (
-  tag: ContentType | Category,
-  tagProps?: Omit<TagInCard, "label">,
-): TagInCard => ({
-  variant: "solid",
+export const makePrimaryTag = (tag: string) => ({
+  label: tag,
+  variant: "solid" as const,
   color: "primary-lighter",
   textColor: "primary-dark",
-  ...tagProps,
-  label: tag,
 });
 
-const makeContentTypeTag = (tag: ContentType): TagInCard => {
-  const { label } = CONTENT_TYPES[tag];
-  return { variant: "solid", label };
+export const makeSimpleTag = (tag: string) => ({
+  label: tag,
+  variant: "outline" as const,
+  color: "base-light",
+});
+
+export const makeContentTypeTag = (tag: ContentType) => ({
+  ...makeSimpleTag(CONTENT_TYPES[tag].label),
+  variant: "solid" as const,
+});
+
+export const makeButtonOutlineLink = (href: string, isExternal = true) => ({
+  href,
+  isExternal,
+  className:
+    "flex-justify width-full shadow-none text-light padding-y-2 border-1px border-base-lighter",
+  variant: "button-outline" as const,
+});
+
+/** The lines to render for a metadata entry : the sidebar prints one per line. */
+export const getMetadataValueLines = (entry: DatasetMetadataEntry): string[] => {
+  if (!Array.isArray(entry.value)) return [entry.value];
+  if (entry.delimiter === "\n")
+    // "\n" gives each value its own line.
+    return entry.value;
+  // Any other delimiter joins the values onto one line.
+  return [entry.value.join(entry.delimiter ?? " ")];
+};
+
+export const getMetadataFields = (metadata: DatasetMetadata): [string, DatasetMetadataEntry][] =>
+  Object.entries(metadata.fields ?? {});
+
+export const getMetadataFieldTag = (metadata: DatasetMetadata, key: string): string | undefined => {
+  const entry = metadata.fields?.[key];
+  return entry && getMetadataValueLines(entry).join(" ");
 };
 
 export type CardMastheadPropsArgs = Omit<CardProps, "title" | "image"> & {
@@ -41,7 +64,7 @@ export type CardMastheadPropsArgs = Omit<CardProps, "title" | "image"> & {
     src: string;
   };
   title?: string;
-  tagPrimary?: ContentType | Category;
+  tagPrimary?: string;
 };
 
 export const makeCardMastHeadProps = ({
@@ -52,7 +75,7 @@ export const makeCardMastHeadProps = ({
 }: CardMastheadPropsArgs): CardProps => ({
   image: <Image {...mastheadImage} sizes="100vw" fill />,
   title: title,
-  tag: tagPrimary ? makeSimpleTag(tagPrimary) : undefined,
+  tag: tagPrimary ? makePrimaryTag(tagPrimary) : undefined,
   ...rest,
 });
 
@@ -115,8 +138,8 @@ export type CardDetailedPropsArgs = Omit<
     alt: string;
     src: string;
   };
-  tags?: (ContentType | Category)[];
-  tagPrimary?: ContentType | Category;
+  tags?: string[];
+  tagPrimary?: string;
   url?: string;
 };
 
@@ -139,7 +162,12 @@ export const makeCardDetailedProps = ({
   ),
   imagePosition: "left",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
-  tagPrimary: tagPrimary ? makeSimpleTag(tagPrimary) : undefined,
+  tagPrimary: tagPrimary ? makePrimaryTag(tagPrimary) : undefined,
+  callToAction: {
+    href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
+    label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
+    isExternal: !!url,
+  },
   ...rest,
 });
 
@@ -150,18 +178,61 @@ export const makeCardDetailedImageLeftProps = ({
   tagPrimary,
   tags,
   url,
+  title,
   ...rest
-}: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => ({
+}: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => {
+  const href = url ? url : `${CONTENT_TYPES[contentType].route}/${id}`;
+
+  return {
+    id,
+    className: "height-card-md bg-base-lightest",
+    image: <Image {...thumbnailImage} fill sizes="194px" />,
+    imagePosition: "left",
+    title: (
+      <Link className="font-body-lg text-light" href={href} isExternal={!!url} variant="text">
+        {title}
+      </Link>
+    ),
+    tags: (tags ?? []).map((tag) => makeSimpleTag(tag)),
+    tagPrimary: tagPrimary ? { ...makePrimaryTag(tagPrimary) } : undefined,
+    ...rest,
+  };
+};
+
+export type CardDetailedTextOnlyPropsArgs = Omit<
+  CardDetailedProps,
+  "image" | "imagePosition" | "tagPrimary" | "title" | "callToAction" | "callToActionSecondary"
+> & {
+  id: string;
+  title: string;
+  href: string;
+  isExternal?: boolean;
+};
+
+export const makeCardDetailedTextOnlyProps = ({
   id,
-  image: <Image {...thumbnailImage} fill sizes="200px" />,
-  imagePosition: "left",
-  tags: (tags ?? []).map((t) => makeSimpleTag(t)),
-  tagPrimary: tagPrimary ? makeSimpleTag(tagPrimary) : undefined,
-  callToAction: {
-    href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
-    label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
-    isExternal: !!url,
-  },
+  title,
+  href,
+  isExternal,
+  description,
+  tags,
+  className,
+  ...rest
+}: CardDetailedTextOnlyPropsArgs): IterableItemWithId<CardDetailedProps> => ({
+  id,
+  className: className ? `display-block ${className}` : "display-block",
+  image: <svg aria-hidden="true" focusable="false" />,
+  title: (
+    <>
+      <Link className="font-body-lg text-light" href={href} isExternal={isExternal} variant="text">
+        {title}
+      </Link>
+      {description && (
+        <p className="font-body-xs text-base-dark text-light margin-0">{description}</p>
+      )}
+    </>
+  ),
+  tags,
   ...rest,
 });
 
@@ -172,7 +243,7 @@ export type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExt
     alt: string;
     src: string;
   };
-  tag?: ContentType | Category;
+  tag?: string;
   url?: string;
 };
 
@@ -213,7 +284,7 @@ export const makeCardMiniProps = ({
 }: CardSimpleMiniArgs): IterableItemWithId<CardMiniProps> => ({
   id,
   image: <Image {...thumbnailImage} fill sizes="200px" />,
-  ...(tag ? { tag: { label: tag, variant: "text", color: "secondary" } as const } : {}),
+  ...(tag ? { tag: { ...makeSimpleTag(tag), variant: "text" as const, color: "secondary" } } : {}),
   href: `${CONTENT_TYPES[contentType].route}/${id}`,
   ...rest,
 });

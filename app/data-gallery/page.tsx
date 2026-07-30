@@ -2,7 +2,7 @@ import { Card, CardDetailed, Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import { DatasetCatalogToolbar, Pagination, Section } from "@/app/components";
 import { DATA_GALLERY_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
-import { getMetadataFieldTag, makePrimaryTag } from "../site-config/content.helpers";
+import { getMetadataFieldTag, makePrimaryTag, makeSimpleTag } from "../site-config/content.helpers";
 import { DATASETS } from "../site-config/dataset";
 
 const PER_PAGE = 8;
@@ -24,9 +24,9 @@ export default async function DataGalleryPage(props: PageProps<"/data-gallery">)
       <Card className="height-masthead" isMastHead title={DATA_GALLERY_CARD_MASTHEAD.title} />
       <DatasetCatalogToolbar count={total} />
       <div className="grid-row grid-gap">
-        {pageItems.map(({ id, title, description, thumbnailImage, metadata, categories }) => {
+        {pageItems.map(({ id, title, description, thumbnailImage, metadata }) => {
           const tagPrimary = getMetadataFieldTag(metadata, "provider");
-          const tags = categories ?? [];
+          const tags = metadata.tags ?? [];
 
           return (
             <div key={id} className="grid-col-12 tablet:grid-col-6 margin-y-1 desktop:margin-y-2">
@@ -45,11 +45,7 @@ export default async function DataGalleryPage(props: PageProps<"/data-gallery">)
                   </Link>
                 }
                 description={description}
-                tags={tags.map((tag) => ({
-                  label: tag,
-                  variant: "outline",
-                  color: "base",
-                }))}
+                tags={tags.map((tag) => makeSimpleTag(tag))}
               />
             </div>
           );
