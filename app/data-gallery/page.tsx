@@ -2,7 +2,7 @@ import { Card, CardDetailed, Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import { DatasetCatalogToolbar, Pagination, Section } from "@/app/components";
 import { DATA_GALLERY_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
-import { getMetadataFieldTag } from "../site-config/content.helpers";
+import { getMetadataFieldTag, makePrimaryTag } from "../site-config/content.helpers";
 import { DATASETS } from "../site-config/dataset";
 
 const PER_PAGE = 8;
@@ -21,7 +21,7 @@ export default async function DataGalleryPage(props: PageProps<"/data-gallery">)
 
   return (
     <Section>
-      <Card className=" height-masthead" isMastHead title={DATA_GALLERY_CARD_MASTHEAD.title} />
+      <Card className="height-masthead" isMastHead title={DATA_GALLERY_CARD_MASTHEAD.title} />
       <DatasetCatalogToolbar count={total} />
       <div className="grid-row grid-gap">
         {pageItems.map(({ id, title, description, thumbnailImage, metadata, categories }) => {
@@ -34,21 +34,12 @@ export default async function DataGalleryPage(props: PageProps<"/data-gallery">)
                 className="height-card-md bg-base-lightest"
                 imagePosition="left"
                 image={<Image {...thumbnailImage} fill sizes="194px" />}
-                tagPrimary={
-                  tagPrimary
-                    ? {
-                        label: tagPrimary,
-                        variant: "solid",
-                        color: "base-lighter",
-                        textColor: "primary-dark",
-                      }
-                    : undefined
-                }
+                tagPrimary={tagPrimary ? makePrimaryTag(tagPrimary) : undefined}
                 title={
                   <Link
                     className="font-body-lg text-light"
                     href={`/data-gallery/${id}`}
-                    variant="text-plain"
+                    variant="text"
                   >
                     {title}
                   </Link>
