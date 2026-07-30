@@ -6,7 +6,7 @@ import type { ComponentProps } from "react";
 
 export function BackToCatalogLink({ href }: { href: ComponentProps<typeof NextLink>["href"] }) {
   return (
-    <Link as={NextLink} href={href} variant="text" className="display-inline-flex">
+    <Link as={NextLink} href={href} variant="text" className="display-inline-flex padding-y-3">
       <span aria-hidden="true" className="margin-right-1">
         &larr;
       </span>
