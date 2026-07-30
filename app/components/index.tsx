@@ -9,7 +9,6 @@ export { ImageComparison } from "./ImageComparison";
 export { PageMasthead } from "./PageMasthead";
 export { PageSidebar } from "./PageSidebar";
 export { PageStatus } from "./PageStatus";
-export { Pagination } from "./Pagination";
 export { Section, type SectionProps } from "./Section";
 export { SectionCardAsymmetric, type SectionCardAsymmetricProps } from "./SectionCardAsymmetric";
 export { SectionCardDetailed } from "./SectionCardDetailed";

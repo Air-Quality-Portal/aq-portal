@@ -1,6 +1,7 @@
 import { Card, CardDetailed, Link } from "@teamimpact/veda-ui-blocks";
+// import {Pagination} from "@teamimpact/veda-ui-blocks"
 import Image from "next/image";
-import { DatasetCatalogToolbar, Pagination, Section } from "@/app/components";
+import { DatasetCatalogToolbar, Section } from "@/app/components";
 import { DATA_GALLERY_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
 import { getMetadataFieldTag, makePrimaryTag, makeSimpleTag } from "../site-config/content.helpers";
 import { DATASETS } from "../site-config/dataset";
@@ -51,13 +52,13 @@ export default async function DataGalleryPage(props: PageProps<"/data-gallery">)
           );
         })}
       </div>
-      {totalPages > 1 && (
+      {/* {totalPages > 1 && (
         <Pagination
           getHref={(page) => `/data-gallery?page=${page}`}
           currentPage={currentPage}
           totalPages={totalPages}
         />
-      )}
+      )} */}
     </Section>
   );
 }
