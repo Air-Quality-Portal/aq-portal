@@ -97,13 +97,6 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
             </div>
           ))}
         </div>
-        {totalPages > 1 && (
-          <Pagination
-            getHref={(page) => `/tools?page=${page}`}
-            currentPage={currentPage}
-            totalPages={totalPages}
-          />
-        )}
       </Section>
     </>
   );

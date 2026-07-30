@@ -7,7 +7,7 @@ import type { ToolContent } from "@/app/site-config/types";
  * links out to an external placeholder URL.
  */
 
-const MOCK_COUNT = 20;
+const MOCK_COUNT = 10;
 
 const CATEGORIES = ["cat lorem", "cat ipsum", "cat dolor", "cat sit", "cat amet"];
 
