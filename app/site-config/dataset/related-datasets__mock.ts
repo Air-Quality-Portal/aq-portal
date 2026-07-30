@@ -22,7 +22,7 @@ export const AQS_AIRNOW__MOCK: DatasetContent = {
     alt: "Map of United States air quality monitoring coverage",
   },
   metadata: {
-    provider: { label: "Data Provider", value: ["US EPA"] },
+    provider: { label: "Data Provider", value: "US EPA" },
   },
 };
 
@@ -42,7 +42,7 @@ export const NASA_FIRMS__MOCK: DatasetContent = {
     alt: "Satellite imagery of thermal anomalies",
   },
   metadata: {
-    provider: { label: "Data Provider", value: ["NASA"] },
+    provider: { label: "Data Provider", value: "NASA" },
   },
 };
 
@@ -62,6 +62,6 @@ export const MAIAC_AOD__MOCK: DatasetContent = {
     alt: "Aerosol optical depth map",
   },
   metadata: {
-    provider: { label: "Data Provider", value: ["NASA"] },
+    provider: { label: "Data Provider", value: "NASA" },
   },
 };

@@ -16,7 +16,13 @@ export type Category = string;
 
 export type DatasetMetadataEntry = {
   label: string;
-  value: string[];
+  /** A single value, or several values that belong to the same field. */
+  value: string | string[];
+  /**
+   * How to join a multi-value `value` into one line, e.g. `", "` or `" / "`.
+   * When omitted, each value is rendered on its own line.
+   */
+  delimiter?: string;
 };
 
 export type DatasetMetadata = Record<string, DatasetMetadataEntry>;

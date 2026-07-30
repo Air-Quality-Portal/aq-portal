@@ -11,6 +11,7 @@ import {
   CONTENT_TYPES,
   type ContentType,
   type DatasetMetadata,
+  type DatasetMetadataEntry,
   type IterableItemWithId,
 } from "@/app/site-config/types";
 
@@ -25,8 +26,19 @@ const makeContentTypeTag = (tag: ContentType) => ({
   variant: "solid" as const,
 });
 
-export const getMetadataFieldTag = (metadata: DatasetMetadata, key: string): string | undefined =>
-  metadata[key]?.value[0];
+/**
+ * Turns a metadata entry into the lines to render: a `delimiter` joins multiple
+ * values onto one line, otherwise each value gets its own line.
+ */
+export const getMetadataValueLines = (entry: DatasetMetadataEntry): string[] => {
+  const values = Array.isArray(entry.value) ? entry.value : [entry.value];
+  return entry.delimiter ? [values.join(entry.delimiter)] : values;
+};
+
+export const getMetadataFieldTag = (metadata: DatasetMetadata, key: string): string | undefined => {
+  const entry = metadata[key];
+  return entry && getMetadataValueLines(entry)[0];
+};
 
 export type CardMastheadPropsArgs = Omit<CardProps, "title" | "image"> & {
   mastheadImage: {
