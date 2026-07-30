@@ -24,13 +24,12 @@ export default async function DataGalleryPage(props: PageProps<"/data-gallery">)
     <Section>
       <Card className="height-masthead" isMastHead title={DATA_GALLERY_CARD_MASTHEAD.title} />
       <DatasetCatalogToolbar count={total} />
-      <div className="grid-row grid-gap">
+      <div className="grid-row grid-gap-4">
         {pageItems.map(({ id, title, description, thumbnailImage, metadata }) => {
           const tagPrimary = getMetadataFieldTag(metadata, "provider");
           const tags = metadata.tags ?? [];
-
           return (
-            <div key={id} className="grid-col-12 tablet:grid-col-6 margin-y-1 desktop:margin-y-2">
+            <div key={id} className="grid-col-12 tablet:grid-col-6 margin-y-1 desktop:margin-y-4">
               <CardDetailed
                 className="height-card-md bg-base-lightest"
                 imagePosition="left"
