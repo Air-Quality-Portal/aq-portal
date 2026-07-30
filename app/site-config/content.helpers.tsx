@@ -12,10 +12,17 @@ import {
   type IterableItemWithId,
 } from "@/app/site-config/types";
 
-export const makeSimpleTag = (tag: ContentType | Category) => ({
+export const makePrimaryTag = (tag: string) => ({
   label: tag,
   variant: "solid" as const,
   color: "primary-lighter",
+  textColor: "primary-dark",
+});
+
+export const makeSimpleTag = (tag: string) => ({
+  label: tag,
+  variant: "outline" as const,
+  color: "base-light",
 });
 
 const makeContentTypeTag = (tag: ContentType) => ({
@@ -42,7 +49,7 @@ export const makeCardMastHeadProps = ({
 }: CardMastheadPropsArgs): CardProps => ({
   image: <Image {...mastheadImage} sizes="100vw" fill />,
   title: title,
-  tag: tagPrimary ? makeSimpleTag(tagPrimary) : undefined,
+  tag: tagPrimary ? makePrimaryTag(tagPrimary) : undefined,
   colorMode,
   isMastHead: isMastHead,
   ...rest,
@@ -131,7 +138,7 @@ export const makeCardDetailedProps = ({
   ),
   imagePosition: "top",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
-  tagPrimary: tagPrimary ? makeSimpleTag(tagPrimary) : undefined,
+  tagPrimary: tagPrimary ? makePrimaryTag(tagPrimary) : undefined,
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
@@ -153,7 +160,7 @@ export const makeCardDetailedImageLeftProps = ({
   image: <Image {...thumbnailImage} fill sizes="200px" />,
   imagePosition: "left",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
-  tagPrimary: tagPrimary ? makeSimpleTag(tagPrimary) : undefined,
+  tagPrimary: tagPrimary ? makePrimaryTag(tagPrimary) : undefined,
   callToAction: {
     href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
     label: `View ${toTitleCase(CONTENT_TYPES[contentType].label)}`,
