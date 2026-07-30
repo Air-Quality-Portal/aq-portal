@@ -11,6 +11,7 @@ import {
 import { StacCompareBlock, StacSingleLayerBlock } from "@/app/components/blocks";
 import {
   getMetadataFieldTag,
+  makeButtonOutlineLink,
   makeCardDetailedImageLeftProps,
   makeCardDetailedTextOnlyProps,
   makeCardSimpleProps,
@@ -199,14 +200,7 @@ export const ContentBlockRenderer = ({
           <ul className="usa-list usa-list--unstyled">
             {block.links.map((link) => (
               <li key={link.href} className="margin-bottom-1">
-                <Link
-                  className="flex-justify width-full"
-                  href={link.href}
-                  isExternal={true}
-                  variant="button-outline"
-                >
-                  {link.label}
-                </Link>
+                <Link {...makeButtonOutlineLink(link.href)}>{link.label}</Link>
               </li>
             ))}
           </ul>

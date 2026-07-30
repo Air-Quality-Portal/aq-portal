@@ -33,6 +33,14 @@ export const makeContentTypeTag = (tag: ContentType) => ({
   variant: "solid" as const,
 });
 
+export const makeButtonOutlineLink = (href: string, isExternal = true) => ({
+  href,
+  isExternal,
+  className:
+    "flex-justify width-full shadow-none text-light padding-y-2 border-1px border-base-lighter",
+  variant: "button-outline" as const,
+});
+
 /**
  * Turns a metadata entry into the lines to render: a `delimiter` joins multiple
  * values onto one line, otherwise each value gets its own line.
