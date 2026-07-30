@@ -128,7 +128,14 @@ export type DatasetContent = {
   body?: ContentBlock[];
   linkSections?: DatasetLinkSection[];
   tutorials?: DatasetTutorialSection;
+  citation?: DatasetCitationSection;
   relatedDatasets?: RelatedDatasetsSection;
+};
+
+export type DatasetCitationSection = {
+  /** @default "Cite this dataset" */
+  heading?: string;
+  text: string;
 };
 
 export type DatasetLinkSection = {

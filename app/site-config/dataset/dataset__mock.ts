@@ -147,6 +147,11 @@ export const DATASET__MOCK: DatasetContent = {
     ],
   },
 
+  citation: {
+    heading: "Cite this dataset",
+    text: "ESA / Copernicus. Sentinel-2 True Color Imagery, 2015 – Present. Accessed via the AIR4US Portal, https://worldview.earthdata.nasa.gov.",
+  },
+
   relatedDatasets: {
     heading: "Related datasets",
     description: "Other datasets in the catalog you can explore in the AIR4US visualization tool.",

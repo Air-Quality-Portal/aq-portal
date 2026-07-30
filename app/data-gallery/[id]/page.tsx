@@ -22,15 +22,16 @@ import {
 } from "@/app/site-config/content.helpers";
 import { DATASETS, getDatasetsByIds } from "@/app/site-config/dataset";
 import type {
+  DatasetCitationSection,
   DatasetLinkSection,
   DatasetTutorialSection,
   RelatedDatasetsSection,
 } from "@/app/site-config/types";
 
 const TUTORIAL_LEVEL_COLOR: Record<string, string> = {
-  beginner: "success-lighter",
-  intermediate: "info-lighter",
-  advanced: "secondary-lighter",
+  beginner: "success",
+  intermediate: "info",
+  advanced: "secondary",
 };
 
 function DatasetLinks({ section }: { section: DatasetLinkSection }) {
@@ -64,7 +65,8 @@ function DatasetTutorials({ section }: { section: DatasetTutorialSection }) {
               {
                 ...makeSimpleTag(tutorial.level.toUpperCase()),
                 variant: "solid" as const,
-                color: TUTORIAL_LEVEL_COLOR[tutorial.level],
+                color: `${TUTORIAL_LEVEL_COLOR[tutorial.level]}-lighter`,
+                textColor: `${TUTORIAL_LEVEL_COLOR[tutorial.level]}-darker`,
               },
             ]
           : []),
@@ -82,6 +84,20 @@ function DatasetTutorials({ section }: { section: DatasetTutorialSection }) {
       }
       cards={cards}
     />
+  );
+}
+
+function DatasetCitation({ section }: { section: DatasetCitationSection }) {
+  return (
+    <Section
+      isMultiColumnLayout
+      className="border-top-2px border-base-lightest padding-top-2 margin-bottom-0"
+    >
+      <p className="font-mono-3xs text-base text-uppercase margin-top-0 margin-bottom-1">
+        {section.heading ?? "Cite this dataset"}
+      </p>
+      <p className="font-body-3xs margin-0 text-base">{section.text}</p>
+    </Section>
   );
 }
 
@@ -125,9 +141,12 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
     metadata,
     linkSections,
     tutorials,
+    citation,
     relatedDatasets,
   } = dataset;
-  const hasContent = Boolean(body || linkSections?.length || tutorials || relatedDatasets);
+  const hasContent = Boolean(
+    body || linkSections?.length || tutorials || citation || relatedDatasets,
+  );
 
   return (
     <Section>
@@ -186,6 +205,8 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
               ))}
 
               {tutorials && <DatasetTutorials section={tutorials} />}
+
+              {citation && <DatasetCitation section={citation} />}
             </div>
 
             {/* Sidebar */}

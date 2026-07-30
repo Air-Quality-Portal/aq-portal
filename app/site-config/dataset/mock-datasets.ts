@@ -208,6 +208,7 @@ const makeMockDataset = (archetype: DatasetArchetype, index: number): DatasetCon
   const relatedIds = [1, 2, 3].map(
     (offset) => ARCHETYPES[(index + offset) % ARCHETYPES.length]?.id ?? id,
   );
+  const providerText = Array.isArray(provider) ? provider.join(" / ") : provider;
 
   return {
     id,
@@ -262,6 +263,10 @@ const makeMockDataset = (archetype: DatasetArchetype, index: number): DatasetCon
           level: "intermediate",
         },
       ],
+    },
+    citation: {
+      heading: "Cite this dataset",
+      text: `${providerText}. ${title}, ${rest.temporalCoverage}. ${LOREM_SHORT} Accessed via the AIR4US Portal, https://example.com/${id}.`,
     },
     relatedDatasets: {
       heading: "Related datasets",
