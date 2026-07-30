@@ -1,19 +1,39 @@
 import type { FooterProps } from "@teamimpact/veda-ui-blocks";
-import Image from "next/image";
 
 const primaryNavItems: FooterProps["primaryNavItems"] = [
+  { label: "Tool Catalog", href: "/tools" },
+  { label: "Data Catalog", href: "/data-gallery" },
+  { label: "Resources", href: "/training" },
   { label: "About Us", href: "/about" },
-  { label: "Data Gallery", href: "/data-gallery" },
-  { label: "News & Events", href: "/news-events" },
-  { label: "Training", href: "/training" },
 ];
 
 const secondaryNavItems: FooterProps["secondaryNavItems"] = [
   {
-    label: "Image Use Policy",
-    href: "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    label: "Accessibility Support",
+    href: "https://www.nasa.gov/accessibility/",
     isExternal: true,
   },
+  {
+    label: "No FEAR Act data",
+    href: "https://www.nasa.gov/no-fear-act/",
+    isExternal: true,
+  },
+  {
+    label: "Office of the Inspector General",
+    href: "https://oig.nasa.gov/",
+    isExternal: true,
+  },
+  {
+    label: "FOIA Requests",
+    href: "https://www.nasa.gov/foia/",
+    isExternal: true,
+  },
+  {
+    label: "Performance Reports",
+    href: "https://www.nasa.gov/organizations/budget-annual-reports/agency-financial-reports/",
+    isExternal: true,
+  },
+
   {
     label: "Privacy Policy",
     href: "https://www.nasa.gov/nasa-web-privacy-policy-and-important-notices/",
@@ -22,25 +42,24 @@ const secondaryNavItems: FooterProps["secondaryNavItems"] = [
 ];
 
 const utilityNavItems: FooterProps["utilityNavItems"] = [
-  { label: "Visit nasa.gov", href: "https://www.nasa.gov", isExternal: true },
+  {
+    text: "Looking for U.S. government information and services? ",
+    label: "  Visit USA.gov",
+    href: "https://www.usa.gov",
+    isExternal: true,
+  },
 ];
 
 const portalDetails: FooterProps["portalDetails"] = {
   contacts: [
     {
-      label: "Page Manager:",
-      name: "Jacob Reed",
-      email: "jacob.reed@nasa.gov",
-    },
-    {
-      label: "NASA Responsible Official:",
-      name: "Shanna McClain",
-      email: "shanna.n.mcclain@nasa.gov",
+      label: "Responsible Official:",
+      name: "Katherine Knowland",
+      email: "k.e.knowland@nasa.gov",
     },
   ],
-  logo: <Image src="/img/logo-emblem.svg" alt="Disasters.gov" width={121} height={124} priority />,
-  title: "NASA Disasters PORTAL",
-  tagline: "Partnership-Oriented Resource for Training, Analysis, and Learning",
+  title: "AIR4US",
+  tagline: "Empowering US air quality decisions through Earth observations.",
   updatedDate: "June 1, 2026",
 };
 
