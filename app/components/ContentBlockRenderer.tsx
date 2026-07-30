@@ -1,4 +1,4 @@
-import { Link, Tag } from "@teamimpact/veda-ui-blocks";
+import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
 import {
@@ -12,7 +12,9 @@ import { StacCompareBlock, StacSingleLayerBlock } from "@/app/components/blocks"
 import {
   getMetadataFieldTag,
   makeCardDetailedImageLeftProps,
+  makeCardDetailedTextOnlyProps,
   makeCardSimpleProps,
+  makeSimpleTag,
 } from "@/app/site-config/content.helpers";
 import { getDatasetsByIds } from "@/app/site-config/dataset";
 import { typedMap } from "@/app/site-config/typed.helpers";
@@ -197,7 +199,12 @@ export const ContentBlockRenderer = ({
           <ul className="usa-list usa-list--unstyled">
             {block.links.map((link) => (
               <li key={link.href} className="margin-bottom-1">
-                <Link href={link.href} isExternal={link.isExternal} variant="button-outline">
+                <Link
+                  className="flex-justify width-full"
+                  href={link.href}
+                  isExternal={true}
+                  variant="button-outline"
+                >
                   {link.label}
                 </Link>
               </li>
@@ -206,46 +213,43 @@ export const ContentBlockRenderer = ({
         </Section>
       );
 
-    case "tutorialList":
-      return (
-        <Section isMultiColumnLayout={isMultiColumnLayout}>
-          {block.heading && (
-            <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
-          )}
-          <ContentLead lead={block.lead} />
-          <ul className="usa-list usa-list--unstyled">
-            {block.tutorials.map((tutorial) => (
-              <li key={tutorial.href} className="margin-bottom-2">
-                <div className="border-1px border-base-lighter radius-md padding-3">
-                  <Link href={tutorial.href} className="font-body-lg" variant="text" size="lg">
-                    {tutorial.title}
-                  </Link>
-                  {tutorial.description && (
-                    <p className="text-base margin-top-1 margin-bottom-0">{tutorial.description}</p>
-                  )}
-                  {(tutorial.duration || tutorial.level) && (
-                    <div
-                      className="display-flex flex-wrap flex-align-center margin-top-2"
-                      style={{ gap: "0.5rem" }}
-                    >
-                      {tutorial.duration && (
-                        <Tag variant="outline" color="base">
-                          {tutorial.duration}
-                        </Tag>
-                      )}
-                      {tutorial.level && (
-                        <Tag variant="solid" color={TUTORIAL_LEVEL_COLOR[tutorial.level]}>
-                          {tutorial.level.toUpperCase()}
-                        </Tag>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ul>
-        </Section>
+    case "tutorialList": {
+      const cards = block.tutorials.map((tutorial) =>
+        makeCardDetailedTextOnlyProps({
+          id: tutorial.href,
+          className: "height-full border-1px border-base-lighter",
+          title: tutorial.title,
+          href: tutorial.href,
+          description: tutorial.description,
+          tags: [
+            ...(tutorial.duration ? [makeSimpleTag(tutorial.duration)] : []),
+            ...(tutorial.level
+              ? [
+                  {
+                    ...makeSimpleTag(tutorial.level.toUpperCase()),
+                    variant: "solid" as const,
+                    color: TUTORIAL_LEVEL_COLOR[tutorial.level],
+                  },
+                ]
+              : []),
+          ],
+        }),
       );
+
+      return (
+        <SectionCardDetailed
+          isMultiColumnLayout={isMultiColumnLayout}
+          maxColumns={1}
+          description={block.lead}
+          sectionHeading={
+            block.heading && (
+              <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
+            )
+          }
+          cards={cards}
+        />
+      );
+    }
 
     case "sectionCardSimple":
       return (
