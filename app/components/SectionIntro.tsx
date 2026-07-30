@@ -14,7 +14,6 @@ export type SectionIntroProps = {
   };
 };
 
-/** Eyebrow, heading and intro copy shared by the sections of a page. */
 export const SectionIntro = ({
   eyebrow,
   heading,
@@ -22,7 +21,7 @@ export const SectionIntro = ({
   callToAction,
 }: SectionIntroProps) => (
   <div className="display-flex flex-justify flex-align-start flex-wrap margin-bottom-3">
-    <div className="tablet:grid-col-8">
+    <div className="flex-fill">
       <p className="font-mono-3xs text-base-light text-uppercase text-ls-1 margin-top-0 margin-bottom-1">
         {eyebrow}
       </p>
@@ -30,7 +29,7 @@ export const SectionIntro = ({
         {heading}
       </h2>
       {description && (
-        <p className="font-sans-sm line-height-sans-5 text-normal text-base margin-bottom-0">
+        <p className="font-sans-sm line-height-sans-5 text-normal text-base margin-top-1 margin-bottom-0 tablet:grid-col-6">
           {description}
         </p>
       )}
