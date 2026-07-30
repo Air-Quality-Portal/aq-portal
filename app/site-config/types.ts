@@ -10,6 +10,8 @@ export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }
   dataset: { route: "/data-gallery", label: "product" },
 };
 
+export type ContentHeadingLevel = "h2" | "h3" | "h4";
+
 export type IterableItemWithId<T> = T & { id: string };
 
 export type DatasetMetadataEntry = {
@@ -131,18 +133,21 @@ export type DatasetContent = {
 
 export type DatasetLinkSection = {
   heading?: string;
+  headingLevel?: ContentHeadingLevel;
   lead?: string;
   links: { label: string; href: string; isExternal?: boolean }[];
 };
 
 export type DatasetTutorialSection = {
   heading?: string;
+  headingLevel?: ContentHeadingLevel;
   lead?: string;
   tutorials: DatasetTutorial[];
 };
 
 export type RelatedDatasetsSection = {
   heading?: string;
+  headingLevel?: ContentHeadingLevel;
   description?: string;
   /** Ids of datasets in the catalog to display. Card content is derived from each dataset. */
   datasetIds: string[];
