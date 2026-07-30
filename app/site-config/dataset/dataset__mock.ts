@@ -52,10 +52,11 @@ export const DATASET__MOCK: DatasetContent = {
       label: "Recommended use",
       text: "Best suited for spatial mapping, transport tracking, and satellite-based estimation. Combine with ground monitors for surface-level accuracy.",
     },
+  ],
+
+  linkSections: [
     {
-      type: "linkList",
       heading: "Documentation",
-      headingLevel: "h3",
       lead: "Documentation, algorithm details, and background reading for Sentinel-2.",
       links: [
         {
@@ -86,9 +87,7 @@ export const DATASET__MOCK: DatasetContent = {
       ],
     },
     {
-      type: "linkList",
       heading: "Download data",
-      headingLevel: "h3",
       lead: "Access Sentinel-2 through the provider portal or download it directly.",
       links: [
         {
@@ -109,45 +108,42 @@ export const DATASET__MOCK: DatasetContent = {
         },
       ],
     },
-    {
-      type: "tutorialList",
-      heading: "Tutorials",
-      headingLevel: "h3",
-      lead: "Self-paced tutorials to help you get started with Sentinel-2.",
-      tutorials: [
-        {
-          title: "Getting started with Sentinel-2",
-          description:
-            "An introduction to the Sentinel-2 dataset — what it measures, how it is produced, and when to use it.",
-          href: "https://example.com/tutorial/getting-started",
-          duration: "10 min",
-          level: "Beginner",
-        },
-        {
-          title: "Accessing and downloading Sentinel-2 data",
-          description:
-            "Find, subset, and download Sentinel-2 data, with tips for common file formats and access tools.",
-          href: "https://example.com/tutorial/downloading",
-          duration: "20 min",
-          level: "Intermediate",
-        },
-        {
-          title: "Exploring Sentinel-2 in the AIR4US visualization tool",
-          description:
-            "Load Sentinel-2 layers in the AIR4US visualization tool and interpret them alongside other air quality data.",
-          href: "https://example.com/tutorial/visualization",
-          duration: "15 min",
-          level: "Advanced",
-        },
-      ],
-    },
-    {
-      type: "relatedDatasets",
-      heading: "Related datasets",
-      headingLevel: "h3",
-      description:
-        "Other datasets in the catalog you can explore in the AIR4US visualization tool.",
-      datasetIds: ["aqs-airnow", "nasa-firms", "maiac-aod"],
-    },
   ],
+
+  tutorials: {
+    heading: "Tutorials",
+    lead: "Self-paced tutorials to help you get started with Sentinel-2.",
+    tutorials: [
+      {
+        title: "Getting started with Sentinel-2",
+        description:
+          "An introduction to the Sentinel-2 dataset — what it measures, how it is produced, and when to use it.",
+        href: "https://example.com/tutorial/getting-started",
+        duration: "10 min",
+        level: "beginner",
+      },
+      {
+        title: "Accessing and downloading Sentinel-2 data",
+        description:
+          "Find, subset, and download Sentinel-2 data, with tips for common file formats and access tools.",
+        href: "https://example.com/tutorial/downloading",
+        duration: "20 min",
+        level: "intermediate",
+      },
+      {
+        title: "Exploring Sentinel-2 in the AIR4US visualization tool",
+        description:
+          "Load Sentinel-2 layers in the AIR4US visualization tool and interpret them alongside other air quality data.",
+        href: "https://example.com/tutorial/visualization",
+        duration: "15 min",
+        level: "advanced",
+      },
+    ],
+  },
+
+  relatedDatasets: {
+    heading: "Related datasets",
+    description: "Other datasets in the catalog you can explore in the AIR4US visualization tool.",
+    datasetIds: ["aqs-airnow", "nasa-firms", "maiac-aod"],
+  },
 };

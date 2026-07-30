@@ -2,50 +2,16 @@ import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
 import {
+  ContentHeading,
   ImageComparison,
   Section,
-  SectionCardDetailed,
   SectionCardSimple,
   SectionHeading,
 } from "@/app/components";
 import { StacCompareBlock, StacSingleLayerBlock } from "@/app/components/blocks";
-import {
-  getMetadataFieldTag,
-  makeButtonOutlineLink,
-  makeCardDetailedImageLeftProps,
-  makeCardDetailedTextOnlyProps,
-  makeCardSimpleProps,
-  makeSimpleTag,
-} from "@/app/site-config/content.helpers";
-import { getDatasetsByIds } from "@/app/site-config/dataset";
+import { makeCardSimpleProps } from "@/app/site-config/content.helpers";
 import { typedMap } from "@/app/site-config/typed.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
-
-function ContentHeading({
-  heading,
-  headingLevel,
-}: {
-  heading: string;
-  headingLevel?: "h2" | "h3" | "h4";
-}) {
-  if (headingLevel === "h4") return <div className="font-sans-md margin-bottom-1">{heading}</div>;
-
-  if (headingLevel === "h3") return <div className="font-sans-lg margin-bottom-1">{heading}</div>;
-
-  return <SectionHeading>{heading}</SectionHeading>;
-}
-
-function ContentLead({ lead }: { lead?: string }) {
-  if (!lead) return null;
-
-  return <p className="text-base margin-top-0 margin-bottom-3">{lead}</p>;
-}
-
-const TUTORIAL_LEVEL_COLOR: Record<string, string> = {
-  Beginner: "success-lighter",
-  Intermediate: "info-lighter",
-  Advanced: "secondary-lighter",
-};
 
 export const ContentBlockRenderer = ({
   block,
@@ -190,61 +156,6 @@ export const ContentBlockRenderer = ({
         </Section>
       );
 
-    case "linkList":
-      return (
-        <Section isMultiColumnLayout={isMultiColumnLayout}>
-          {block.heading && (
-            <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
-          )}
-          <ContentLead lead={block.lead} />
-          <ul className="usa-list usa-list--unstyled">
-            {block.links.map((link) => (
-              <li key={link.href} className="margin-bottom-1">
-                <Link {...makeButtonOutlineLink(link.href)}>{link.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </Section>
-      );
-
-    case "tutorialList": {
-      const cards = block.tutorials.map((tutorial) =>
-        makeCardDetailedTextOnlyProps({
-          id: tutorial.href,
-          className: "height-full border-1px border-base-lighter",
-          title: tutorial.title,
-          href: tutorial.href,
-          description: tutorial.description,
-          tags: [
-            ...(tutorial.duration ? [makeSimpleTag(tutorial.duration)] : []),
-            ...(tutorial.level
-              ? [
-                  {
-                    ...makeSimpleTag(tutorial.level.toUpperCase()),
-                    variant: "solid" as const,
-                    color: TUTORIAL_LEVEL_COLOR[tutorial.level],
-                  },
-                ]
-              : []),
-          ],
-        }),
-      );
-
-      return (
-        <SectionCardDetailed
-          isMultiColumnLayout={isMultiColumnLayout}
-          maxColumns={1}
-          description={block.lead}
-          sectionHeading={
-            block.heading && (
-              <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
-            )
-          }
-          cards={cards}
-        />
-      );
-    }
-
     case "sectionCardSimple":
       return (
         <SectionCardSimple
@@ -260,32 +171,5 @@ export const ContentBlockRenderer = ({
           cards={typedMap(block.cards, makeCardSimpleProps)}
         />
       );
-
-    case "relatedDatasets": {
-      const cards = getDatasetsByIds(block.datasetIds).map((dataset) =>
-        makeCardDetailedImageLeftProps({
-          id: dataset.id,
-          contentType: dataset.contentType,
-          title: dataset.title,
-          description: dataset.description,
-          thumbnailImage: dataset.thumbnailImage,
-          tagPrimary: getMetadataFieldTag(dataset.metadata, "provider"),
-          tags: dataset.categories,
-        }),
-      );
-
-      return (
-        <SectionCardDetailed
-          isMultiColumnLayout={isMultiColumnLayout}
-          description={block.description}
-          sectionHeading={
-            block.heading && (
-              <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
-            )
-          }
-          cards={cards}
-        />
-      );
-    }
   }
 };

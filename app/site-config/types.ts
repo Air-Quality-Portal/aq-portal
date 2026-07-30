@@ -77,40 +77,11 @@ export type ContentBlock =
         caption?: string;
       })
   | {
-      type: "linkList";
-      heading?: string;
-      headingLevel?: "h2" | "h3" | "h4";
-      lead?: string;
-      links: { label: string; href: string; isExternal?: boolean }[];
-    }
-  | {
-      type: "tutorialList";
-      heading?: string;
-      headingLevel?: "h2" | "h3" | "h4";
-      lead?: string;
-      tutorials: {
-        title: string;
-        description?: string;
-        href: string;
-        duration?: string;
-        level?: "Beginner" | "Intermediate" | "Advanced";
-      }[];
-    }
-  | {
       type: "sectionCardSimple";
       heading?: string;
       href?: GalleryRoute;
       description?: string;
       cards: CardSimplePropsArgs[];
-    }
-  | {
-      type: "relatedDatasets";
-      heading?: string;
-      headingLevel?: "h2" | "h3" | "h4";
-      href?: GalleryRoute;
-      description?: string;
-      /** Ids of datasets in the catalog to display. Card content is derived from each dataset. */
-      datasetIds: string[];
     }
   | {
       type: "sectionCardFeatured";
@@ -152,6 +123,36 @@ export type DatasetContent = {
     secondary?: DatasetAction;
   };
   body?: ContentBlock[];
+  linkSections?: DatasetLinkSection[];
+  tutorials?: DatasetTutorialSection;
+  relatedDatasets?: RelatedDatasetsSection;
+};
+
+export type DatasetLinkSection = {
+  heading?: string;
+  lead?: string;
+  links: { label: string; href: string; isExternal?: boolean }[];
+};
+
+export type DatasetTutorialSection = {
+  heading?: string;
+  lead?: string;
+  tutorials: DatasetTutorial[];
+};
+
+export type RelatedDatasetsSection = {
+  heading?: string;
+  description?: string;
+  /** Ids of datasets in the catalog to display. Card content is derived from each dataset. */
+  datasetIds: string[];
+};
+
+export type DatasetTutorial = {
+  title: string;
+  description?: string;
+  href: string;
+  duration?: string;
+  level?: "beginner" | "intermediate" | "advanced";
 };
 
 export type DatasetAction = {
