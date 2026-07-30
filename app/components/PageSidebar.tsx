@@ -3,7 +3,7 @@ import type { DatasetMetadata } from "@/app/site-config/types";
 
 export function PageSidebar({ metadata = {} }: { metadata?: DatasetMetadata }) {
   return (
-    <aside>
+    <aside className="border-left-1px border-base-lighter padding-left-4">
       {getMetadataFields(metadata).map(([key, entry]) => (
         <div key={key} className="margin-bottom-3">
           <p className="font-mono-2xs text-base text-uppercase margin-top-0 margin-bottom-1">

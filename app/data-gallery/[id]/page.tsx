@@ -93,7 +93,7 @@ function DatasetCitation({ section }: { section: DatasetCitationSection }) {
       isMultiColumnLayout
       className="border-top-2px border-base-lightest padding-top-2 margin-bottom-0"
     >
-      <p className="font-mono-3xs text-base text-uppercase margin-top-0 margin-bottom-1">
+      <p className="font-mono-3xs text-base text-uppercase margin-top-0 margin-bottom-2">
         {section.heading ?? "Cite this dataset"}
       </p>
       <p className="font-body-3xs margin-0 text-base">{section.text}</p>
@@ -173,8 +173,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
       {hasContent && (
         <>
           <div className="grid-row grid-gap margin-top-3">
-            {/* Main content */}
-            <div className="grid-col-12 desktop:grid-col-9">
+            <div className="grid-col-12 desktop:grid-col-8">
               {body?.map((block, index) => (
                 // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
                 <Fragment key={index}>
@@ -208,9 +207,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
 
               {citation && <DatasetCitation section={citation} />}
             </div>
-
-            {/* Sidebar */}
-            <div className="grid-col-12 desktop:grid-col-3">
+            <div className="grid-col-12 desktop:grid-offset-1 desktop:grid-col-3">
               <PageSidebar metadata={metadata} />
             </div>
           </div>
