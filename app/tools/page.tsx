@@ -1,8 +1,8 @@
 import { Card, CardDetailed, Carousel } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-import { Pagination, Section, ToolCatalogToolbar } from "@/app/components";
-import { makePrimaryTag, makeSimpleTag } from "@/app/site-config/content.helpers";
-import { TOOLS } from "@/app/site-config/tool";
+import { Section, SectionIntro, ToolCatalogToolbar } from "@/app/components";
+import { makePrimaryTag } from "@/app/site-config/content.helpers";
+import { AIR4US_TOOL_INTRO, PARTNER_TOOLS_INTRO, TOOLS } from "@/app/site-config/tool";
 
 const PER_PAGE = 9;
 
@@ -33,11 +33,7 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
       </Section>
       {featuredTools.length > 0 && (
         <Section>
-          <p className="font-sans-3xs text-base-light text-uppercase margin-y-1">The AIR4US Tool</p>
-          <div className="font-sans-lg ">
-            Explore air quality data in one{" "}
-            <span className="text-accent-cool-darker">interactive map</span>
-          </div>
+          <SectionIntro {...AIR4US_TOOL_INTRO} />
 
           <Carousel
             className="height-card-lg"
@@ -57,6 +53,7 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
       )}
 
       <Section>
+        <SectionIntro {...PARTNER_TOOLS_INTRO} />
         <ToolCatalogToolbar count={total} />
         <div className="grid-row grid-gap">
           {pageItems.map((tool) => (
@@ -84,7 +81,14 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
                 description={tool.description}
                 tags={
                   tool.categories
-                    ? tool.categories?.map((label) => makeSimpleTag(label))
+                    ? tool.categories?.map((label) => {
+                        return {
+                          label: label,
+                          variant: "text",
+                          color: "base",
+                          className: "font-mono-2xs",
+                        };
+                      })
                     : undefined
                 }
                 callToActionSecondary={{
