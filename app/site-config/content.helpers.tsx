@@ -14,10 +14,17 @@ import {
   type Theme,
 } from "@/app/site-config/types";
 
-export const makeSimpleTag = (tag: Theme | ContentType | Category) => ({
+export const makePrimaryTag = (tag: string) => ({
   label: tag,
   variant: "solid" as const,
   color: "primary-lighter",
+  textColor: "primary-dark",
+});
+
+export const makeSimpleTag = (tag: string) => ({
+  label: tag,
+  variant: "outline" as const,
+  color: "base-light",
 });
 
 const makeContentTypeTag = (tag: ContentType) => ({
