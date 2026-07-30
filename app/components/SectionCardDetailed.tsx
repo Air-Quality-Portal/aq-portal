@@ -10,6 +10,8 @@ type SectionCardDetailedProps = SectionProps & {
   cards: IterableItemWithId<CardDetailedProps>[];
   /** Cards per row on tablet and up. @default 2 */
   maxColumns?: 1 | 2;
+  /** Vertical spacing between card rows, in USWDS spacing units. @default 2 */
+  rowGap?: 2 | 4 | 6;
 };
 
 export const SectionCardDetailed = ({
@@ -17,6 +19,7 @@ export const SectionCardDetailed = ({
   description,
   cards,
   maxColumns = 2,
+  rowGap = 2,
   children,
   ...sectionProps
 }: SectionCardDetailedProps) => {
@@ -26,9 +29,9 @@ export const SectionCardDetailed = ({
     <Section {...sectionProps}>
       {sectionHeading && sectionHeading}
       {description && <p className="text-base">{description}</p>}
-      <div className="grid-row ">
+      <div className={`grid-row grid-gap-4 margin-bottom-neg-${rowGap}`}>
         {cards.map((props) => (
-          <div key={props.id} className={`${gridColumnClass} margin-bottom-1`}>
+          <div key={props.id} className={`${gridColumnClass} margin-bottom-${rowGap}`}>
             <CardDetailed {...props} className={props.className ?? "height-card-md"} />
           </div>
         ))}

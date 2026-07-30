@@ -101,6 +101,7 @@ function DatasetRelated({ section }: { section: RelatedDatasetsSection }) {
   return (
     <SectionCardDetailed
       isMultiColumnLayout
+      rowGap={6}
       description={section.description}
       sectionHeading={
         section.heading && <ContentHeading heading={section.heading} headingLevel="h3" />
@@ -152,13 +153,17 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
       {/* Content */}
       {hasContent && (
         <>
-          <div className="grid-row grid-gap">
+          <div className="grid-row grid-gap margin-top-3">
             {/* Main content */}
             <div className="grid-col-12 desktop:grid-col-9">
               {body?.map((block, index) => (
                 // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
                 <Fragment key={index}>
-                  <ContentBlockRenderer block={block} isMultiColumnLayout />
+                  <ContentBlockRenderer
+                    block={block}
+                    isMultiColumnLayout
+                    className={index === 0 ? "margin-top-0" : ""}
+                  />
 
                   {/* Primary action rendered inline after the intro block */}
                   {index === 0 && actions && (
