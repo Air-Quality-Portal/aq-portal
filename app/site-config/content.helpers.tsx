@@ -25,7 +25,7 @@ export const makePrimaryTag = (tag: ContentType | Category) => ({
 export const makeSimpleTag = (tag: ContentType | Category) => ({
   label: tag,
   variant: "outline" as const,
-  color: "base",
+  color: "base-light",
 });
 
 export const makeContentTypeTag = (tag: ContentType) => ({
