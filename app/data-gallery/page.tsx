@@ -1,4 +1,4 @@
-import { Card, CardDetailed, Link, Tag } from "@teamimpact/veda-ui-blocks";
+import { Card, CardDetailed, Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import { DatasetCatalogToolbar, Pagination, Section } from "@/app/components";
 import { DATA_GALLERY_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
@@ -39,11 +39,12 @@ export default async function DataGalleryPage(props: PageProps<"/data-gallery">)
                   className="height-card-lg"
                   imagePosition="left"
                   image={<Image {...thumbnailImage} fill sizes="194px" />}
-                  tagPrimary={
-                    <Tag variant="solid" color="base-lighter" textColor="primary-dark">
-                      {category1[0]}
-                    </Tag>
-                  }
+                  tagPrimary={{
+                    label: category1[0],
+                    variant: "solid",
+                    color: "base-lighter",
+                    textColor: "primary-dark",
+                  }}
                   title={
                     <>
                       <Link
@@ -59,11 +60,10 @@ export default async function DataGalleryPage(props: PageProps<"/data-gallery">)
                     </>
                   }
                   description={description}
-                  tags={[...category1, ...category2, ...category3].map((tag) => (
-                    <Tag key={tag} variant="outline">
-                      {tag}
-                    </Tag>
-                  ))}
+                  tags={[...category1, ...category2, ...category3].map((tag) => ({
+                    label: tag,
+                    variant: "outline",
+                  }))}
                 />
               </div>
             ),

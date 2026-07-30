@@ -1,9 +1,19 @@
-import { Card, CardDetailed, Link, Tag } from "@teamimpact/veda-ui-blocks";
+import { Card, CardDetailed, Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import { Pagination, Section, ToolCatalogToolbar } from "@/app/components";
 import { TOOLS } from "@/app/site-config/tool";
 
 const PER_PAGE = 8;
+
+// Cards take their tags as props, not as rendered `Tag` elements.
+const makePrimaryTag = (label: string) => ({
+  label,
+  variant: "solid" as const,
+  color: "base-lighter",
+  textColor: "primary-dark",
+});
+
+const makeSimpleTag = (label: string) => ({ label, variant: "outline" as const });
 
 export default async function ToolsPage(props: PageProps<"/tools">) {
   // The first tool is featured full-width on top; the rest fill the grid.
@@ -46,13 +56,7 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
                 style={{ objectFit: "cover" }}
               />
             }
-            tagPrimary={
-              primaryTool.tagPrimary ? (
-                <Tag variant="solid" color="base-lighter" textColor="primary-dark">
-                  {primaryTool.tagPrimary}
-                </Tag>
-              ) : undefined
-            }
+            tagPrimary={primaryTool.tagPrimary ? makePrimaryTag(primaryTool.tagPrimary) : undefined}
             title={
               <>
                 <Link
@@ -69,11 +73,7 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
               </>
             }
             description={primaryTool.description}
-            tags={primaryTool.categories?.map((tag) => (
-              <Tag key={tag} variant="outline">
-                {tag}
-              </Tag>
-            ))}
+            tags={primaryTool.categories?.map((tag) => makeSimpleTag(tag))}
             callToAction={{ href: primaryTool.href, label: "Open tool", isExternal: true }}
           />
         </Section>
@@ -89,13 +89,7 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
                   className="height-card-lg"
                   imagePosition="top"
                   image={<Image {...thumbnailImage} fill sizes="194px" />}
-                  tagPrimary={
-                    tagPrimary ? (
-                      <Tag variant="solid" color="base-lighter" textColor="primary-dark">
-                        {tagPrimary}
-                      </Tag>
-                    ) : undefined
-                  }
+                  tagPrimary={tagPrimary ? makePrimaryTag(tagPrimary) : undefined}
                   title={
                     <>
                       <Link
@@ -112,11 +106,7 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
                     </>
                   }
                   description={description}
-                  tags={categories?.map((tag) => (
-                    <Tag key={tag} variant="outline">
-                      {tag}
-                    </Tag>
-                  ))}
+                  tags={categories?.map((tag) => makeSimpleTag(tag))}
                 />
               </div>
             ),
