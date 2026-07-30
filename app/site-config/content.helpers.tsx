@@ -7,7 +7,6 @@ import type {
 import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import {
-  type Category,
   CONTENT_TYPES,
   type ContentType,
   type DatasetMetadata,
@@ -15,14 +14,14 @@ import {
   type IterableItemWithId,
 } from "@/app/site-config/types";
 
-export const makePrimaryTag = (tag: ContentType | Category) => ({
+export const makePrimaryTag = (tag: string) => ({
   label: tag,
   variant: "solid" as const,
   color: "primary-lighter",
   textColor: "primary-dark",
 });
 
-export const makeSimpleTag = (tag: ContentType | Category) => ({
+export const makeSimpleTag = (tag: string) => ({
   label: tag,
   variant: "outline" as const,
   color: "base-light",
@@ -41,18 +40,22 @@ export const makeButtonOutlineLink = (href: string, isExternal = true) => ({
   variant: "button-outline" as const,
 });
 
-/**
- * Turns a metadata entry into the lines to render: a `delimiter` joins multiple
- * values onto one line, otherwise each value gets its own line.
- */
+/** The lines to render for a metadata entry : the sidebar prints one per line. */
 export const getMetadataValueLines = (entry: DatasetMetadataEntry): string[] => {
-  const values = Array.isArray(entry.value) ? entry.value : [entry.value];
-  return entry.delimiter ? [values.join(entry.delimiter)] : values;
+  if (!Array.isArray(entry.value)) return [entry.value];
+  if (entry.delimiter === "\n")
+    // "\n" gives each value its own line.
+    return entry.value;
+  // Any other delimiter joins the values onto one line.
+  return [entry.value.join(entry.delimiter ?? " ")];
 };
 
+export const getMetadataFields = (metadata: DatasetMetadata): [string, DatasetMetadataEntry][] =>
+  Object.entries(metadata.fields ?? {});
+
 export const getMetadataFieldTag = (metadata: DatasetMetadata, key: string): string | undefined => {
-  const entry = metadata[key];
-  return entry && getMetadataValueLines(entry)[0];
+  const entry = metadata.fields?.[key];
+  return entry && getMetadataValueLines(entry).join(" ");
 };
 
 export type CardMastheadPropsArgs = Omit<CardProps, "title" | "image"> & {
@@ -61,7 +64,7 @@ export type CardMastheadPropsArgs = Omit<CardProps, "title" | "image"> & {
     src: string;
   };
   title?: string;
-  tagPrimary?: ContentType | Category;
+  tagPrimary?: string;
 };
 
 export const makeCardMastHeadProps = ({
@@ -135,8 +138,8 @@ export type CardDetailedPropsArgs = Omit<
     alt: string;
     src: string;
   };
-  tags?: (ContentType | Category)[];
-  tagPrimary?: ContentType | Category;
+  tags?: string[];
+  tagPrimary?: string;
   url?: string;
 };
 
@@ -240,7 +243,7 @@ export type CardSimplePropsArgs = Omit<CardSimpleProps, "image" | "tag" | "isExt
     alt: string;
     src: string;
   };
-  tag?: ContentType | Category;
+  tag?: string;
   url?: string;
 };
 

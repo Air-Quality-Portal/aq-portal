@@ -94,7 +94,7 @@ function DatasetRelated({ section }: { section: RelatedDatasetsSection }) {
       description: dataset.description,
       thumbnailImage: dataset.thumbnailImage,
       tagPrimary: getMetadataFieldTag(dataset.metadata, "provider"),
-      tags: dataset.categories,
+      tags: dataset.metadata.tags,
     }),
   );
 

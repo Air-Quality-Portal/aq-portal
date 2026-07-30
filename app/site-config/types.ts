@@ -12,20 +12,23 @@ export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }
 
 export type IterableItemWithId<T> = T & { id: string };
 
-export type Category = string;
-
 export type DatasetMetadataEntry = {
   label: string;
   /** A single value, or several values that belong to the same field. */
   value: string | string[];
   /**
-   * How to join a multi-value `value` into one line, e.g. `", "` or `" / "`.
-   * When omitted, each value is rendered on its own line.
+   * How to join a multi-value `value`, e.g. `", "` or `" / "`. Defaults to a
+   * space. Use `"\n"` to render each value on its own line.
    */
   delimiter?: string;
 };
 
-export type DatasetMetadata = Record<string, DatasetMetadataEntry>;
+export type DatasetMetadata = {
+  /** Topic tags shown on catalog and related-dataset cards. Not rendered in the sidebar. */
+  tags?: string[];
+  /** Labeled properties of the dataset, rendered in the detail page sidebar. */
+  fields?: Record<string, DatasetMetadataEntry>;
+};
 
 export type GalleryRoute = string;
 
@@ -101,8 +104,8 @@ export type MinimumCardContent = {
     alt: string;
   };
   description?: string;
-  tag1?: Category;
-  tags?: Category[];
+  tag1?: string;
+  tags?: string[];
 };
 
 export type DatasetContent = {
@@ -114,8 +117,6 @@ export type DatasetContent = {
     alt: string;
   };
   description?: string;
-  /** Topic tags shown on catalog and related-dataset cards. */
-  categories?: Category[];
   metadata: DatasetMetadata;
   mastheadImage: MastheadImage;
   actions?: {
