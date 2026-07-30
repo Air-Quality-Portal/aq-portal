@@ -6,11 +6,11 @@ export function PageSidebar({ metadata = {} }: { metadata?: DatasetMetadata }) {
     <aside>
       {getMetadataFields(metadata).map(([key, entry]) => (
         <div key={key} className="margin-bottom-3">
-          <p className="font-mono-3xs text-base text-uppercase margin-top-0 margin-bottom-05">
+          <p className="font-mono-2xs text-base text-uppercase margin-top-0 margin-bottom-1">
             {entry.label}
           </p>
           {getMetadataValueLines(entry).map((item) => (
-            <p key={item} className="font-body-md margin-0">
+            <p key={item} className="font-body-sm text-medium margin-y-05">
               {item}
             </p>
           ))}
