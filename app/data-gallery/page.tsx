@@ -69,7 +69,13 @@ export default async function DataGalleryPage(props: PageProps<"/data-gallery">)
             ),
           )}
         </div>
-        <Pagination pathname="/data-gallery" currentPage={currentPage} totalPages={totalPages} />
+        {totalPages > 1 && (
+          <Pagination
+            getHref={(page) => `/data-gallery?page=${page}`}
+            currentPage={currentPage}
+            totalPages={totalPages}
+          />
+        )}
       </Section>
     </>
   );
