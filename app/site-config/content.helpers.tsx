@@ -74,7 +74,14 @@ export const makeCardMastHeadProps = ({
 }: CardMastheadPropsArgs): CardProps => ({
   image: <Image {...mastheadImage} sizes="100vw" fill />,
   title: title,
-  tag: tagPrimary ? makePrimaryTag(tagPrimary) : undefined,
+  tag: tagPrimary
+    ? {
+        label: tagPrimary,
+        variant: "solid" as const,
+        bgColor: "white",
+        textColor: "primary-dark",
+      }
+    : undefined,
   ...rest,
 });
 
