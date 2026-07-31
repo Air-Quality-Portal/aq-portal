@@ -61,13 +61,26 @@ export type GalleryRoute = string;
 
 type GeoConfig = Omit<GeoConfigProviderProps, "children">;
 
+export type AboutContact = {
+  title: string;
+  titleAs?: "h2" | "h3" | "h4" | "h5" | "h6";
+  name?: string;
+  email: string;
+};
+
+export type AboutContactSection = {
+  heading?: string;
+  headingLevel?: "h2" | "h3" | "h4";
+  lead?: string;
+  contacts: AboutContact[];
+};
+
 export type ContentBlock =
   | {
       type: "text";
       heading?: string;
       headingLevel?: "h2" | "h3" | "h4";
-      paragraphs?: ReactNode[];
-      content?: ReactNode[];
+      paragraphs: ReactNode[];
     }
   | {
       type: "list";

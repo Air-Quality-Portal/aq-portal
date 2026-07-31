@@ -1,7 +1,6 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
-import React from "react";
 import { ImageComparison, Section, SectionCardSimple, SectionHeading } from "@/app/components";
 import { StacCompareBlock, StacSingleLayerBlock } from "@/app/components/blocks";
 import { makeCardSimpleProps } from "@/app/site-config/content.helpers";
@@ -39,10 +38,6 @@ export const ContentBlockRenderer = ({
           {block.paragraphs?.map((p, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
             <p key={i}>{p}</p>
-          ))}
-          {block.content?.map((c, i) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-            <React.Fragment key={i}>{c}</React.Fragment>
           ))}
         </Section>
       );
