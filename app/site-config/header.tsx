@@ -7,7 +7,7 @@ export const MOCK_HEADER_PROPS: HeaderProps = {
     title: "AIR4US",
   },
   navItems: [
-    { label: "Tool Catalog", href: "/tools" },
+    { label: "Tools Catalog", href: "/tools" },
     { label: "Data Catalog", href: "/data-catalog" },
     { label: "Resources", href: "/resources" },
     { label: "About Us", href: "/about" },
