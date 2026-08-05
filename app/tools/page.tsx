@@ -10,8 +10,7 @@ const FEATURED_COUNT = 3;
 const hrefLabel = (href: string) => href.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
 export default async function ToolsPage() {
-  // The featured tools are featured in the top carousel
-  const featuredTools = TOOLS.slice(0, FEATURED_COUNT);
+  const featuredTools = TOOLS.slice(0, FEATURED_COUNT); //These are featured in the top carousel
 
   return (
     <>
