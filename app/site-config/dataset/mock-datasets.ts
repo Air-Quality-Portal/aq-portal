@@ -225,6 +225,7 @@ const makeMockDataset = (index: number): DatasetContent => {
   const { id, title } = MOCK_KEYS[index];
   // The three datasets that follow this one, wrapping at the end of the catalog.
   const relatedIds = [1, 2, 3].map((offset) => MOCK_KEYS[(index + offset) % MOCK_COUNT].id);
+  const providerText = Array.isArray(seed.provider) ? seed.provider.join(" / ") : seed.provider;
 
   return {
     id,
@@ -279,6 +280,10 @@ const makeMockDataset = (index: number): DatasetContent => {
           level: "intermediate",
         },
       ],
+    },
+    citation: {
+      heading: "Cite this dataset",
+      text: `${providerText}. ${title}, ${seed.temporalCoverage}. ${LOREM_SHORT} Accessed via the AIR4US Portal, https://example.com/${id}.`,
     },
     relatedDatasets: {
       heading: "Related datasets",

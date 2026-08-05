@@ -16,27 +16,33 @@ import type { ContentBlock } from "@/app/site-config/types";
 export const ContentBlockRenderer = ({
   block,
   isMultiColumnLayout,
+  className,
 }: {
   block: ContentBlock;
   isMultiColumnLayout?: boolean;
+  className?: string;
 }) => {
+  const sectionProps = { isMultiColumnLayout, className };
+
   switch (block.type) {
     case "text":
       return (
-        <Section isMultiColumnLayout={isMultiColumnLayout}>
+        <Section {...sectionProps}>
           {block.heading && (
             <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
           )}
           {block.paragraphs.map((p, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-            <p key={i}>{p}</p>
+            <p key={i} className={i === 0 && !block.heading ? "margin-top-0" : ""}>
+              {p}
+            </p>
           ))}
         </Section>
       );
 
     case "list":
       return (
-        <Section isMultiColumnLayout={isMultiColumnLayout}>
+        <Section {...sectionProps}>
           {block.heading && (
             <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
           )}
@@ -57,7 +63,7 @@ export const ContentBlockRenderer = ({
 
     case "note":
       return (
-        <Section isMultiColumnLayout={isMultiColumnLayout}>
+        <Section {...sectionProps}>
           <div
             role="note"
             className="bg-primary-lightest border-left-1 border-primary radius-right-md padding-top-2 padding-bottom-105 padding-x-3 margin-bottom-4"
@@ -74,7 +80,7 @@ export const ContentBlockRenderer = ({
 
     case "slider":
       return (
-        <Section isMultiColumnLayout={isMultiColumnLayout}>
+        <Section {...sectionProps}>
           <ImageComparison
             before={block.before}
             after={block.after}
@@ -85,7 +91,7 @@ export const ContentBlockRenderer = ({
 
     case "video":
       return (
-        <Section isMultiColumnLayout={isMultiColumnLayout}>
+        <Section {...sectionProps}>
           {block.heading && (
             <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
           )}
@@ -105,7 +111,7 @@ export const ContentBlockRenderer = ({
 
     case "image":
       return (
-        <Section isMultiColumnLayout={isMultiColumnLayout}>
+        <Section {...sectionProps}>
           <figure className="margin-0">
             <Image
               src={block.src}
@@ -124,7 +130,7 @@ export const ContentBlockRenderer = ({
       );
     case "stacSingleLayer":
       return (
-        <Section isMultiColumnLayout={isMultiColumnLayout}>
+        <Section {...sectionProps}>
           {block.heading && (
             <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
           )}
@@ -141,7 +147,7 @@ export const ContentBlockRenderer = ({
 
     case "stacCompare":
       return (
-        <Section isMultiColumnLayout={isMultiColumnLayout}>
+        <Section {...sectionProps}>
           {block.heading && (
             <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
           )}
@@ -159,7 +165,7 @@ export const ContentBlockRenderer = ({
     case "sectionCardSimple":
       return (
         <SectionCardSimple
-          isMultiColumnLayout={isMultiColumnLayout}
+          {...sectionProps}
           description={block.description}
           sectionHeading={
             block.heading && (

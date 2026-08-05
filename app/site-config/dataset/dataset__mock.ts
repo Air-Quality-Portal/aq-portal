@@ -61,6 +61,7 @@ export const DATASET__MOCK: DatasetContent = {
   linkSections: [
     {
       heading: "Documentation",
+      headingLevel: "h3",
       lead: "Documentation, algorithm details, and background reading for Sentinel-2.",
       links: [
         {
@@ -116,6 +117,7 @@ export const DATASET__MOCK: DatasetContent = {
 
   tutorials: {
     heading: "Tutorials",
+    headingLevel: "h3",
     lead: "Self-paced tutorials to help you get started with Sentinel-2.",
     tutorials: [
       {
@@ -143,6 +145,11 @@ export const DATASET__MOCK: DatasetContent = {
         level: "advanced",
       },
     ],
+  },
+
+  citation: {
+    heading: "Cite this dataset",
+    text: "ESA / Copernicus. Sentinel-2 True Color Imagery, 2015 – Present. Accessed via the AIR4US Portal, https://worldview.earthdata.nasa.gov.",
   },
 
   relatedDatasets: {
