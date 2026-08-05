@@ -186,13 +186,10 @@ export type ToolContent = {
   };
 };
 
-export type ThemeContent = {
-  id: string;
-  title?: string;
-  subtitle: string;
-  mastheadImage: MastheadImage;
-  theme: Theme;
-  body: ContentBlock[];
+export type DatasetAction = {
+  label: string;
+  href: string;
+  isExternal?: boolean;
 };
 
 type MastheadImage = {
