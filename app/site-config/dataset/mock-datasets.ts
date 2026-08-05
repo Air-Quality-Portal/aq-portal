@@ -6,12 +6,12 @@ import type {
 } from "@/app/site-config/types";
 
 /**
- * Placeholder catalog datasets, generated from the archetypes below so the
- * gallery has content to render. Titles, descriptions, tags and providers are
- * realistic; every other value is invented. Each one follows the same shape as
- * DATASET__MOCK — `metadata.tags` drives the card tags, the remaining metadata
- * fields fill the sidebar, and the body/link/tutorial sections exercise the
- * detail-page renderer.
+ * Placeholder catalog datasets, generated from the seed list below so the
+ * gallery has enough content to page through. Titles, descriptions, tags and
+ * providers are realistic; every other value is invented. Each one follows the
+ * same shape as DATASET__MOCK — `metadata.tags` drives the card tags, the
+ * remaining metadata fields fill the sidebar, and the body/link/tutorial
+ * sections exercise the detail-page renderer.
  *
  * These are the single source of truth for their card content: a
  * "Related datasets" section references them by id rather than redefining any
@@ -21,7 +21,7 @@ import type {
 /** One value as a string, several as an array — same rule as a metadata entry. */
 type MetadataValue = DatasetMetadataEntry["value"];
 
-type DatasetArchetype = {
+type RawDataset = {
   id: string;
   title: string;
   description: string;
@@ -38,7 +38,7 @@ type DatasetArchetype = {
   dataFormat: MetadataValue;
 };
 
-const ARCHETYPES: DatasetArchetype[] = [
+const MOCK_DETAILS: RawDataset[] = [
   {
     id: "aqs-airnow",
     title: "AQS / AirNow Air Quality Monitoring Data",
@@ -169,6 +169,24 @@ const ARCHETYPES: DatasetArchetype[] = [
   },
 ];
 
+/** How many datasets to generate, enough to make the catalog pagination demonstrable. */
+const MOCK_COUNT = 24;
+
+/**
+ * The id and title of every generated dataset, in catalog order. The seed list is
+ * cycled until MOCK_COUNT is reached: the first pass keeps each seed's own id and
+ * title, later passes get a numbered suffix so both stay unique. Resolving these
+ * up front lets "Related datasets" reference ids guaranteed to exist.
+ */
+const MOCK_KEYS = Array.from({ length: MOCK_COUNT }, (_, index) => {
+  const seed = MOCK_DETAILS[index % MOCK_DETAILS.length];
+  const pass = Math.floor(index / MOCK_DETAILS.length);
+
+  return pass === 0
+    ? { id: seed.id, title: seed.title }
+    : { id: `${seed.id}-${pass + 1}`, title: `${seed.title} (${pass + 1})` };
+});
+
 const LOREM_SHORT =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
@@ -202,19 +220,18 @@ const makeMockLinkSections = (title: string): DatasetLinkSection[] => [
   },
 ];
 
-const makeMockDataset = (archetype: DatasetArchetype, index: number): DatasetContent => {
-  const { id, title, description, tags, provider, ...rest } = archetype;
-  // The three archetypes that follow this one, wrapping at the end of the list.
-  const relatedIds = [1, 2, 3].map(
-    (offset) => ARCHETYPES[(index + offset) % ARCHETYPES.length]?.id ?? id,
-  );
-  const providerText = Array.isArray(provider) ? provider.join(" / ") : provider;
+const makeMockDataset = (index: number): DatasetContent => {
+  const seed = MOCK_DETAILS[index % MOCK_DETAILS.length];
+  const { id, title } = MOCK_KEYS[index];
+  // The three datasets that follow this one, wrapping at the end of the catalog.
+  const relatedIds = [1, 2, 3].map((offset) => MOCK_KEYS[(index + offset) % MOCK_COUNT].id);
+  const providerText = Array.isArray(seed.provider) ? seed.provider.join(" / ") : seed.provider;
 
   return {
     id,
     contentType: "dataset",
     title,
-    description,
+    description: seed.description,
     thumbnailImage: {
       src: `https://picsum.photos/seed/${id}/400/600`,
       alt: `Placeholder thumbnail for ${title}`,
@@ -224,21 +241,21 @@ const makeMockDataset = (archetype: DatasetArchetype, index: number): DatasetCon
       alt: `Placeholder masthead for ${title}`,
     },
     metadata: {
-      tags,
+      tags: seed.tags,
       fields: {
-        provider: { label: "Data Provider", value: provider, delimiter: " / " },
-        parameters: { label: "Parameters & Units", value: rest.parameters, delimiter: "\n" },
-        spatialCoverage: { label: "Spatial Coverage", value: rest.spatialCoverage },
-        temporalCoverage: { label: "Temporal Coverage", value: rest.temporalCoverage },
-        temporalResolution: { label: "Temporal Resolution", value: rest.temporalResolution },
-        updateFrequency: { label: "Update Frequency", value: rest.updateFrequency },
-        latency: { label: "Latency", value: rest.latency },
+        provider: { label: "Data Provider", value: seed.provider, delimiter: " / " },
+        parameters: { label: "Parameters & Units", value: seed.parameters, delimiter: "\n" },
+        spatialCoverage: { label: "Spatial Coverage", value: seed.spatialCoverage },
+        temporalCoverage: { label: "Temporal Coverage", value: seed.temporalCoverage },
+        temporalResolution: { label: "Temporal Resolution", value: seed.temporalResolution },
+        updateFrequency: { label: "Update Frequency", value: seed.updateFrequency },
+        latency: { label: "Latency", value: seed.latency },
         spatialResolution: {
           label: "Spatial Resolution",
-          value: rest.spatialResolution,
+          value: seed.spatialResolution,
           delimiter: ", ",
         },
-        dataFormat: { label: "Data Format", value: rest.dataFormat, delimiter: ", " },
+        dataFormat: { label: "Data Format", value: seed.dataFormat, delimiter: ", " },
         versionHistory: { label: "Version History", value: `v${1 + (index % 3)}.${index % 5}` },
       },
     },
@@ -266,7 +283,7 @@ const makeMockDataset = (archetype: DatasetArchetype, index: number): DatasetCon
     },
     citation: {
       heading: "Cite this dataset",
-      text: `${providerText}. ${title}, ${rest.temporalCoverage}. ${LOREM_SHORT} Accessed via the AIR4US Portal, https://example.com/${id}.`,
+      text: `${providerText}. ${title}, ${seed.temporalCoverage}. ${LOREM_SHORT} Accessed via the AIR4US Portal, https://example.com/${id}.`,
     },
     relatedDatasets: {
       heading: "Related datasets",
@@ -277,4 +294,6 @@ const makeMockDataset = (archetype: DatasetArchetype, index: number): DatasetCon
   };
 };
 
-export const MOCK_DATASETS: DatasetContent[] = ARCHETYPES.map(makeMockDataset);
+export const MOCK_DATASETS: DatasetContent[] = Array.from({ length: MOCK_COUNT }, (_, index) =>
+  makeMockDataset(index),
+);

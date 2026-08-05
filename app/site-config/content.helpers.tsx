@@ -166,7 +166,7 @@ export const makeCardDetailedProps = ({
       sizes="(max-width: 640px) 100vw, (max-width: 1400px) 50vw, 700px"
     />
   ),
-  imagePosition: "top",
+  imagePosition: "left",
   tags: (tags ?? []).map((t) => makeSimpleTag(t)),
   tagPrimary: tagPrimary ? makePrimaryTag(tagPrimary) : undefined,
   callToAction: {

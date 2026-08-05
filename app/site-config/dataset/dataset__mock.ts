@@ -155,6 +155,6 @@ export const DATASET__MOCK: DatasetContent = {
   relatedDatasets: {
     heading: "Related datasets",
     description: "Other datasets in the catalog you can explore in the AIR4US visualization tool.",
-    datasetIds: ["aqs-airnow", "nasa-firms", "maiac-aod"],
+    datasetIds: ["aqs-airnow", "nasa-firms", "tempo"],
   },
 };
