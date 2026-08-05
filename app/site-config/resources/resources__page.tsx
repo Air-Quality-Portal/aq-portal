@@ -1,37 +1,17 @@
-import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
-import type { ContentBlock } from "@/app/site-config/types";
+import type {
+  ContentBlock,
+  ResourceLinkSection,
+  ResourceTutorialSection,
+  ResourceWorkshopSection,
+} from "@/app/site-config/types";
 
 export type ResourcesPageBody = {
   body: ContentBlock[];
+  linkSections?: ResourceLinkSection[];
+  tutorials?: ResourceTutorialSection;
+  workshopSection?: ResourceWorkshopSection;
 };
-
-const SAMPLE_FAQ = [
-  {
-    label: "AIR4US Data Access Guide (PDF)",
-    href: "....",
-  },
-  {
-    label: "TEMPO Level-2 Product User Guide",
-    href: "....",
-  },
-  {
-    label: "MAIAC Algorithm Theoretical Basis Document",
-    href: "....",
-  },
-  {
-    label: "AQS Data Mart User Guide",
-    href: "....",
-  },
-  {
-    label: "HYSPLIT Model Documentation",
-    href: "....",
-  },
-  {
-    label: "GEOS-CF Output Variables Reference",
-    href: "....",
-  },
-];
 
 export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
   body: [
@@ -41,47 +21,6 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
       headingLevel: "h3",
       paragraphs: [
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      ],
-    },
-
-    {
-      type: "tutorialList",
-      heading: "Video Tutorials",
-      headingLevel: "h3",
-      lead: "Self-paced video tutorials covering key datasets, tools, and workflows available through the AIR4US Portal.",
-      tutorials: [
-        {
-          title: "Getting started with MODIS/VIIRS/GOES",
-          href: "#",
-          description:
-            "An introduction to the MODIS/VIIRS/GOES dataset — what it measures, how it is produced, and when to use it.",
-          duration: "10 MIN",
-          level: "beginner",
-        },
-        {
-          title: "Accessing and downloading MODIS/VIIRS/GOES data",
-          href: "#",
-          description:
-            "Find, subset, and download MODIS/VIIRS/GOES data, with tips for common file formats and access tools.",
-          duration: "20 MIN",
-          level: "intermediate",
-        },
-        {
-          title: "Accessing and downloading MODIS/VIIRS/GOES data",
-          href: "#",
-          description:
-            "Find, subset, and download MODIS/VIIRS/GOES data, with tips for common file formats and access tools.",
-          duration: "20 MIN",
-          level: "intermediate",
-        },
-        {
-          title: "Exploring MODIS/VIIRS/GOES in the AIR4US visualization tool",
-          href: "#",
-          description:
-            "Load MODIS/VIIRS/GOES layers in the AIR4US visualization tool and interpret them alongside other air quality data.",
-          duration: "15 MIN",
-          level: "advanced",
-        },
       ],
     },
 
@@ -106,36 +45,106 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
         />,
       ],
     },
+  ],
 
-    {
-      type: "text",
-      heading: "Workshops and Webinars",
-      headingLevel: "h3",
-      paragraphs: [
-        "Live training events hosted by NASA, NOAA, and EPA scientists. Registration is free and open to air quality professionals, researchers, and students.",
-      ],
-    },
+  workshopSection: {
+    heading: "Workshops & Webinars",
+    headingLevel: "h3",
+    lead: "Live training events hosted by NASA, NOAA, and EPA scientists. Registration is free and open to air quality professionals, researchers, and students.",
+    workshops: [
+      {
+        id: "workshop-summer-2026-1",
+        title: "AIR4US Summer Training Workshop (July 14-16, 2026)",
+        href: "#",
+        description:
+          "Three-day intensive training covering satellite data products, ground-based monitoring networks, and model evaluation techniques. Open to state and local air quality agency staff.",
+        tags: ["IN PERSON + VIRTUAL"],
+        callToAction: { label: "Register", href: "#" },
+      },
+      {
+        id: "workshop-summer-2026-2",
+        title: "AIR4US Summer Training Workshop (July 14-16, 2026)",
+        href: "#",
+        description:
+          "Three-day intensive training covering satellite data products, ground-based monitoring networks, and model evaluation techniques. Open to state and local air quality agency staff.",
+        tags: ["IN PERSON + VIRTUAL"],
+        callToAction: { label: "Register", href: "#" },
+      },
+    ],
+  },
 
+  linkSections: [
     {
-      type: "text",
-      headingLevel: "h3",
       heading: "Documentation",
-      content: [
-        "Documentation, algorithm details, and background reading for MODIS/VIIRS/GOES.",
-        <div key="sample-faq" className="display-flex flex-column margin-top-2">
-          {SAMPLE_FAQ.map(({ label, href }, index) => (
-            <Link
-              key={href}
-              href={href}
-              isExternal
-              variant="link-row"
-              className={index > 0 ? "margin-top-05" : undefined}
-            >
-              {label}
-            </Link>
-          ))}
-        </div>,
+      headingLevel: "h3",
+      lead: "Documentation, algorithm details, and background reading for MODIS/VIIRS/GOES.",
+      links: [
+        {
+          label: "MODIS/VIIRS/GOES — official dataset page",
+          href: "#",
+          isExternal: true,
+        },
+        {
+          label: "NASA / NOAA documentation",
+          href: "#",
+          isExternal: true,
+        },
+        {
+          label: "Algorithm Theoretical Basis Document (ATBD)",
+          href: "#",
+          isExternal: true,
+        },
+        {
+          label: "Data quality & validation report",
+          href: "#",
+          isExternal: true,
+        },
+        {
+          label: "Related publications",
+          href: "#",
+          isExternal: true,
+        },
       ],
     },
   ],
+
+  tutorials: {
+    heading: "Video Tutorials",
+    headingLevel: "h3",
+    lead: "Self-paced video tutorials covering key datasets, tools, and workflows available through the AIR4US Portal.",
+    tutorials: [
+      {
+        title: "Getting started with MODIS/VIIRS/GOES",
+        description:
+          "An introduction to the MODIS/VIIRS/GOES dataset — what it measures, how it is produced, and when to use it.",
+        href: "#",
+        duration: "10 MIN",
+        level: "beginner",
+      },
+      {
+        title: "Accessing and downloading MODIS/VIIRS/GOES data",
+        description:
+          "Find, subset, and download MODIS/VIIRS/GOES data, with tips for common file formats and access tools.",
+        href: "#",
+        duration: "20 MIN",
+        level: "intermediate",
+      },
+      {
+        title: "Accessing and downloading MODIS/VIIRS/GOES data",
+        description:
+          "Find, subset, and download MODIS/VIIRS/GOES data, with tips for common file formats and access tools.",
+        href: "#",
+        duration: "20 MIN",
+        level: "intermediate",
+      },
+      {
+        title: "Exploring MODIS/VIIRS/GOES in the AIR4US visualization tool",
+        description:
+          "Load MODIS/VIIRS/GOES layers in the AIR4US visualization tool and interpret them alongside other air quality data.",
+        href: "#",
+        duration: "15 MIN",
+        level: "advanced",
+      },
+    ],
+  },
 };

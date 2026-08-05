@@ -61,6 +61,46 @@ export type GalleryRoute = string;
 
 type GeoConfig = Omit<GeoConfigProviderProps, "children">;
 
+export type ContentHeadingLevel = "h2" | "h3" | "h4";
+
+export type ResourceTutorial = {
+  title: string;
+  description?: string;
+  href: string;
+  duration?: string;
+  level?: "beginner" | "intermediate" | "advanced";
+};
+
+export type ResourceLinkSection = {
+  heading?: string;
+  headingLevel?: ContentHeadingLevel;
+  lead?: string;
+  links: { label: string; href: string; isExternal?: boolean }[];
+};
+
+export type ResourceTutorialSection = {
+  heading?: string;
+  headingLevel?: ContentHeadingLevel;
+  lead?: string;
+  tutorials: ResourceTutorial[];
+};
+
+export type ResourceWorkshopItem = {
+  id: string;
+  title: string;
+  href: string;
+  description?: string;
+  tags?: string[];
+  callToAction: { label: string; href: string };
+};
+
+export type ResourceWorkshopSection = {
+  heading?: string;
+  headingLevel?: ContentHeadingLevel;
+  lead?: string;
+  workshops: ResourceWorkshopItem[];
+};
+
 export type ContentBlock =
   | {
       type: "text";
