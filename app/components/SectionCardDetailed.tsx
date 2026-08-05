@@ -1,8 +1,8 @@
 import type { CardDetailedProps } from "@teamimpact/veda-ui-blocks";
 import { CardDetailed } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
+import { Section, type SectionProps } from "@/app/components";
 import type { IterableItemWithId } from "@/app/site-config/types";
-import { Section, type SectionProps } from "./Section";
 
 type SectionCardDetailedProps = SectionProps & {
   sectionHeading?: ReactNode;

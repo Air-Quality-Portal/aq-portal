@@ -7,11 +7,13 @@ import { getGridColumnClass } from "./component.helpers";
 
 type SectionCardSimpleProps = SectionProps & {
   sectionHeading?: ReactNode;
+  description?: string;
   cards: IterableItemWithId<CardSimpleProps>[];
 };
 
 export const SectionCardSimple = ({
   sectionHeading,
+  description,
   cards,
   children,
   ...sectionProps
@@ -20,6 +22,7 @@ export const SectionCardSimple = ({
   return (
     <Section {...sectionProps}>
       {sectionHeading && sectionHeading}
+      {description && <p className="text-base margin-top-0 margin-bottom-3">{description}</p>}
       <div className="grid-row grid-gap-2 margin-bottom-neg-2">
         {cards.map((props) => (
           <div key={props.id} className={`${gridColumnClass} margin-bottom-2 height-card-md`}>
