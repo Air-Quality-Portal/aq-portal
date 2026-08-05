@@ -36,8 +36,6 @@ export type GalleryRoute = string;
 
 type GeoConfig = Omit<GeoConfigProviderProps, "children">;
 
-export type ContentHeadingLevel = "h2" | "h3" | "h4";
-
 export type ResourceTutorial = {
   title: string;
   description?: string;
@@ -81,8 +79,7 @@ export type ContentBlock =
       type: "text";
       heading?: string;
       headingLevel?: "h2" | "h3" | "h4";
-      paragraphs?: ReactNode[];
-      content?: ReactNode[];
+      paragraphs: ReactNode[];
     }
   | {
       type: "list";

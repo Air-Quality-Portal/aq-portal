@@ -13,7 +13,6 @@ import {
   type DatasetMetadataEntry,
   type IterableItemWithId,
   type ResourceWorkshopItem,
-  type Theme,
 } from "@/app/site-config/types";
 
 export const makePrimaryTag = (tag: string) => ({
@@ -333,51 +332,6 @@ export const makeCardCarouselProps = ({
   },
   imagePosition: "cover",
   colorMode: "dark",
-  ...rest,
-});
-
-export const makeButtonOutlineLink = (href: string, isExternal = true) => ({
-  href,
-  isExternal,
-  className:
-    "flex-justify width-full shadow-none text-light padding-y-2 border-1px border-base-lighter",
-  variant: "button-outline" as const,
-});
-
-export type CardDetailedTextOnlyPropsArgs = Omit<
-  CardDetailedProps,
-  "image" | "imagePosition" | "tagPrimary" | "title" | "callToAction" | "callToActionSecondary"
-> & {
-  id: string;
-  title: string;
-  href: string;
-  isExternal?: boolean;
-};
-
-export const makeCardDetailedTextOnlyProps = ({
-  id,
-  title,
-  href,
-  isExternal,
-  description,
-  tags,
-  className,
-  ...rest
-}: CardDetailedTextOnlyPropsArgs): IterableItemWithId<CardDetailedProps> => ({
-  id,
-  className: className ? `display-block ${className}` : "display-block",
-  image: <svg aria-hidden="true" focusable="false" />,
-  title: (
-    <>
-      <Link className="font-body-lg text-light" href={href} isExternal={isExternal} variant="text">
-        {title}
-      </Link>
-      {description && (
-        <p className="font-body-xs text-base-dark text-light margin-0">{description}</p>
-      )}
-    </>
-  ),
-  tags,
   ...rest,
 });
 
