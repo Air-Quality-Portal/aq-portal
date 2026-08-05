@@ -1,10 +1,15 @@
+export { BackToCatalogLink } from "./BackToCatalogLink";
 export * from "./blocks";
 export { ContentBlockRenderer } from "./ContentBlockRenderer";
+export { ContentHeading } from "./ContentHeading";
+export { ContentLead } from "./ContentLead";
 export { HeaderWithCurrentPath } from "./HeaderWithCurrentPath";
 export { ImageComparison } from "./ImageComparison";
 export { PageMasthead } from "./PageMasthead";
+export { PageSidebar } from "./PageSidebar";
 export { PageStatus } from "./PageStatus";
 export { Section, type SectionProps } from "./Section";
 export { SectionCardAsymmetric, type SectionCardAsymmetricProps } from "./SectionCardAsymmetric";
+export { SectionCardDetailed } from "./SectionCardDetailed";
 export { SectionCardSimple } from "./SectionCardSimple";
 export { SectionHeading } from "./SectionHeading";
