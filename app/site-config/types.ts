@@ -8,54 +8,29 @@ import type { CardFeaturedPropsArgs, CardSimplePropsArgs } from "@/app/site-conf
 
 export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }> = {
   dataset: { route: "/data-gallery", label: "product" },
-  event: { route: "/news-events", label: "event" },
-  news: { route: "/news-events", label: "news" },
-  story: { route: "/news-events", label: "story" },
-  datastory: { route: "/news-events", label: "Data Story" },
-  training: { route: "/training", label: "training" },
 };
 
-export const CONTENT_THEMES: Record<Theme, { label: string; color: string; textColor?: string }> = {
-  respond: {
-    label: "respond",
-    color: "secondary",
-    textColor: "white",
-  },
-  build: {
-    label: "build resilience",
-    color: "success",
-    textColor: "white",
-  },
-  prepare: {
-    label: "prepare",
-    color: "accent-warm",
-  },
-  recover: {
-    label: "recover",
-    color: "accent-cool",
-    textColor: "white",
-  },
-};
-
-export const CONTENT_SIDEBAR_CONTENT_TYPES: ContentType[] = [
-  "dataset",
-  "story",
-  "datastory",
-  "training",
-];
+export type ContentHeadingLevel = "h2" | "h3" | "h4";
 
 export type IterableItemWithId<T> = T & { id: string };
 
-export type Theme = "respond" | "build" | "prepare" | "recover";
+export type DatasetMetadataEntry = {
+  label: string;
+  /** A single value, or several values that belong to the same field. */
+  value: string | string[];
+  /**
+   * How to join a multi-value `value`, e.g. `", "` or `" / "`. Defaults to a
+   * space. Use `"\n"` to render each value on its own line.
+   */
+  delimiter?: string;
+};
 
-export type Category =
-  | "severewx"
-  | "fire"
-  | "heat"
-  | "flood"
-  | "tropical cyclone"
-  | "earthquake"
-  | "winter weather";
+export type DatasetMetadata = {
+  /** Topic tags shown on catalog and related-dataset cards. Not rendered in the sidebar. */
+  tags?: string[];
+  /** Labeled properties of the dataset, rendered in the detail page sidebar. */
+  fields?: Record<string, DatasetMetadataEntry>;
+};
 
 export type GalleryRoute = string;
 
@@ -74,7 +49,7 @@ export type ContentBlock =
       headingLevel?: "h2" | "h3" | "h4";
       items: (string | { label: string; href: string })[];
     }
-  | { type: "note"; text: string }
+  | { type: "note"; text: string; label?: string }
   | { type: "slider"; before: { src: string; alt: string }; after: { src: string; alt: string } }
   | {
       type: "video";
@@ -110,6 +85,7 @@ export type ContentBlock =
       type: "sectionCardSimple";
       heading?: string;
       href?: GalleryRoute;
+      description?: string;
       cards: CardSimplePropsArgs[];
     }
   | {
@@ -117,14 +93,7 @@ export type ContentBlock =
       card: CardFeaturedPropsArgs;
     };
 
-type Content =
-  | TrainingContent
-  | TrainingContentExternal
-  | DatasetContent
-  | DataStoryContent
-  | StoryContent
-  | NewsContent
-  | EventContent;
+type Content = DatasetContent;
 
 export type ContentType = Content["contentType"];
 
@@ -136,62 +105,67 @@ export type MinimumCardContent = {
     src: string;
     alt: string;
   };
-  themes: Theme[];
-  categories: Category[];
   description?: string;
+  tag1?: string;
+  tags?: string[];
 };
 
-export type TrainingContentExternal = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "training";
-  url: string;
-};
-
-export type TrainingContent = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "training";
-  date: string;
-  mastheadImage: MastheadImage;
-  body?: ContentBlock[];
-  relatedContent?: string[];
-};
-
-export type DatasetContent = Omit<MinimumCardContent, "contentType"> & {
+export type DatasetContent = {
+  id: string;
   contentType: "dataset";
+  title: string;
+  thumbnailImage: {
+    src: string;
+    alt: string;
+  };
+  description?: string;
+  metadata: DatasetMetadata;
   mastheadImage: MastheadImage;
+  actions?: {
+    primary: DatasetAction;
+    secondary?: DatasetAction;
+  };
   body?: ContentBlock[];
-  relatedContent?: string[];
+  linkSections?: DatasetLinkSection[];
+  tutorials?: DatasetTutorialSection;
+  citation?: DatasetCitationSection;
+  relatedDatasets?: RelatedDatasetsSection;
 };
 
-export type NewsContent = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "news";
-  mastheadImage: MastheadImage;
-  body?: ContentBlock[];
+export type DatasetCitationSection = {
+  /** @default "Cite this dataset" */
+  heading?: string;
+  text: string;
 };
 
-export type StoryContent = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "story";
-  date?: string;
-  mastheadImage: MastheadImage;
-  body?: ContentBlock[];
+export type DatasetLinkSection = {
+  heading?: string;
+  headingLevel?: ContentHeadingLevel;
+  lead?: string;
+  links: { label: string; href: string; isExternal?: boolean }[];
 };
 
-export type DataStoryContent = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "datastory";
-  mastheadImage: MastheadImage;
-  body?: ContentBlock[];
-  url?: string;
+export type DatasetTutorialSection = {
+  heading?: string;
+  headingLevel?: ContentHeadingLevel;
+  lead?: string;
+  tutorials: DatasetTutorial[];
 };
 
-export type EventContent = Omit<MinimumCardContent, "contentType"> & {
-  contentType: "event";
-  mastheadImage: MastheadImage;
-  isLatest?: boolean;
-  lastUpdatedDate?: string;
-  startDate: string;
-  region: string;
-  linkDHSFEMA?: { label: string; href: string };
-  linkUSGovernment?: { label: string; href: string };
-  body?: ContentBlock[];
-  relatedContent?: string[];
+export type RelatedDatasetsSection = {
+  heading?: string;
+  headingLevel?: ContentHeadingLevel;
+  description?: string;
+  /** Ids of datasets in the catalog to display. Card content is derived from each dataset. */
+  datasetIds: string[];
+};
+
+export type DatasetTutorial = {
+  title: string;
+  description?: string;
+  href: string;
+  duration?: string;
+  level?: "beginner" | "intermediate" | "advanced";
 };
 
 export type ToolContent = {
