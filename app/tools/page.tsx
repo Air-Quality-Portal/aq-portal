@@ -4,27 +4,14 @@ import { Section, SectionIntro, ToolCatalogToolbar } from "@/app/components";
 import { makePrimaryTag } from "@/app/site-config/content.helpers";
 import { AIR4US_TOOL_INTRO, PARTNER_TOOLS_INTRO, TOOLS } from "@/app/site-config/tool";
 
-const PER_PAGE = 9;
-
 // Tools shown as full-width slides above the grid; the rest fill the paginated grid.
 const FEATURED_COUNT = 3;
 
 const hrefLabel = (href: string) => href.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
-export default async function ToolsPage(props: PageProps<"/tools">) {
-  // The leading tools are featured in the carousel on top; the rest fill the grid.
+export default async function ToolsPage() {
+  // The featured tools are featured in the top carousel
   const featuredTools = TOOLS.slice(0, FEATURED_COUNT);
-  const restTools = TOOLS.slice(FEATURED_COUNT);
-  const total = TOOLS.length;
-  const totalPages = Math.max(1, Math.ceil(restTools.length / PER_PAGE));
-
-  const { page } = (await props.searchParams) ?? {};
-  const requestedPage = Number.parseInt(Array.isArray(page) ? page[0] : (page ?? ""), 10);
-  const currentPage = Number.isNaN(requestedPage)
-    ? 1
-    : Math.min(Math.max(requestedPage, 1), totalPages);
-
-  const pageItems = restTools.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
 
   return (
     <>
@@ -54,9 +41,9 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
 
       <Section>
         <SectionIntro {...PARTNER_TOOLS_INTRO} />
-        <ToolCatalogToolbar count={total} />
+        <ToolCatalogToolbar count={TOOLS.length - FEATURED_COUNT} />
         <div className="grid-row grid-gap">
-          {pageItems.map((tool) => (
+          {TOOLS.map((tool) => (
             <div
               key={tool.id}
               className="grid-col-12 tablet:grid-col-6 desktop:grid-col-4 margin-y-1 desktop:margin-y-2"
