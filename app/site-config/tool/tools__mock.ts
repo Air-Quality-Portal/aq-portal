@@ -9,7 +9,7 @@ import type { ToolContent } from "@/app/site-config/types";
 
 const MOCK_COUNT = 10;
 
-const CATEGORIES = ["cat lorem", "cat ipsum", "cat dolor", "cat sit", "cat amet"];
+const ADDITIONAL_TAGS = ["cat lorem", "cat ipsum", "cat dolor", "cat sit", "cat amet"];
 
 const LOREM =
   "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt".split(
@@ -38,10 +38,10 @@ const makeMockTool = (index: number): ToolContent => {
     href: `https://example.com/tools/${n}`,
     tagPrimary: "Agency",
     // Index-driven variation so card tags differ; de-duplicate.
-    categories: [
+    additionalTags: [
       ...new Set([
-        CATEGORIES[index % CATEGORIES.length],
-        CATEGORIES[(index + 2) % CATEGORIES.length],
+        ADDITIONAL_TAGS[index % ADDITIONAL_TAGS.length],
+        ADDITIONAL_TAGS[(index + 2) % ADDITIONAL_TAGS.length],
       ]),
     ],
     thumbnailImage: {

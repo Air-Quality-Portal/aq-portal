@@ -80,8 +80,8 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
                 }
                 description={tool.description}
                 tags={
-                  tool.categories
-                    ? tool.categories?.map((label) => {
+                  tool.additionalTags
+                    ? tool.additionalTags?.map((label) => {
                         return {
                           label: label,
                           variant: "text",

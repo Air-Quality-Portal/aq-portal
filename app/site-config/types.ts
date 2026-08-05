@@ -179,7 +179,7 @@ export type ToolContent = {
   /** Primary tag shown over the image, e.g. "Agency". */
   tagPrimary?: string;
   /** Tags shown below the description. */
-  categories?: string[];
+  additionalTags?: string[];
   thumbnailImage: {
     src: string;
     alt: string;
