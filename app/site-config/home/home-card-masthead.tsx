@@ -1,4 +1,4 @@
-import { type CardProps } from "@teamimpact/veda-ui-blocks";
+import type { CardProps } from "@teamimpact/veda-ui-blocks";
 
 export const MOCK_CARD_MASTHEAD: CardProps = {
   callToAction: {
