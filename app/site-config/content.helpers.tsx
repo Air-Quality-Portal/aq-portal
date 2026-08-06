@@ -17,6 +17,7 @@ import {
 export const makePrimaryTag = (tag: string) => ({
   label: tag,
   variant: "solid" as const,
+  color: "white",
   textColor: "primary-dark",
 });
 
