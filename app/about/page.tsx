@@ -1,39 +1,34 @@
-import Image from "next/image";
-
-import { Section } from "@/app/components";
-import { ContentBlockRenderer } from "@/app/components/ContentBlockRenderer";
+import { Card, InPageNavigation } from "@teamimpact/veda-ui-blocks";
+import { ContentBlockRenderer, Section } from "@/app/components";
 import { ABOUT_PAGE_BODY } from "@/app/site-config/about/about__page";
+
+const ABOUT_CONTENT_ID = "about-page-content";
 
 export default function AboutPage() {
   return (
-    <>
-      {/* Hero section: emblem + title */}
-      <Section>
-        <div className="grid-row">
-          <div className="grid-col-12">
-            <div className="display-flex flex-row flex-align-center">
-              <div className="margin-right-3">
-                <Image
-                  src="/img/logo-emblem-primary.svg"
-                  alt="NASA Disasters Program emblem"
-                  width={134}
-                  height={138}
-                  className="display-block"
-                />
-              </div>
-              <h1 className="text-primary-dark font-heading-3xl margin-0">
-                About the NASA Disasters Program
-              </h1>
-            </div>
-          </div>
-        </div>
-      </Section>
+    <Section>
+      <Card className="height-masthead" isMastHead title="About AIR4US" />
 
-      {/* Body content: heading, paragraph, CTAs */}
-      {ABOUT_PAGE_BODY.body.map((block, i) => (
-        // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
-        <ContentBlockRenderer key={i} block={block} />
-      ))}
-    </>
+      <div className="grid-row grid-gap margin-top-6">
+        <div className="grid-col-3 display-none desktop:display-block">
+          <InPageNavigation
+            className="margin-top-0"
+            data-title-text="ON THIS PAGE"
+            data-main-content-selector={`#${ABOUT_CONTENT_ID}`}
+          />
+        </div>
+        <div className="grid-col-9 usa-prose" id={ABOUT_CONTENT_ID}>
+          {ABOUT_PAGE_BODY.body.map((block, i) => (
+            <ContentBlockRenderer
+              // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
+              key={i}
+              block={block}
+              isMultiColumnLayout
+              className={i === 0 ? "margin-top-0" : ""}
+            />
+          ))}
+        </div>
+      </div>
+    </Section>
   );
 }
