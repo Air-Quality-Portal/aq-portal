@@ -6,7 +6,9 @@ import {
   ImageComparison,
   Section,
   SectionCardSimple,
+  SectionCardTextOnly,
   SectionHeading,
+  SectionLinks,
 } from "@/app/components";
 import { StacCompareBlock, StacSingleLayerBlock } from "@/app/components/blocks";
 import { makeCardSimpleProps } from "@/app/site-config/content.helpers";
@@ -178,5 +180,11 @@ export const ContentBlockRenderer = ({
           cards={typedMap(block.cards, makeCardSimpleProps)}
         />
       );
+
+    case "cardTextOnly":
+      return <SectionCardTextOnly section={block} />;
+
+    case "links":
+      return <SectionLinks section={block} />;
   }
 };

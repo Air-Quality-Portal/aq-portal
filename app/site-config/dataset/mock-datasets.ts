@@ -1,8 +1,8 @@
 import type {
   ContentBlock,
   DatasetContent,
-  DatasetLinkSection,
   DatasetMetadataEntry,
+  LinkSection,
 } from "@/app/site-config/types";
 
 /**
@@ -198,7 +198,7 @@ const makeMockBody = (): ContentBlock[] => [
   { type: "note", label: "Recommended use", text: LOREM_SHORT },
 ];
 
-const makeMockLinkSections = (title: string): DatasetLinkSection[] => [
+const makeMockLinkSections = (title: string): LinkSection[] => [
   {
     heading: "Documentation",
     lead: `Documentation, algorithm details, and background reading for ${title}.`,
