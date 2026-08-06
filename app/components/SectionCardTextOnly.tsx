@@ -2,12 +2,6 @@ import { ContentHeading, SectionCardDetailed } from "@/app/components";
 import { makeCardDetailedTextOnlyProps } from "@/app/site-config/content.helpers";
 import type { CardTextOnlySection } from "@/app/site-config/types";
 
-/**
- * A stack of imageless cards — linked title, description, tags, optional call to
- * action. Content-kind-agnostic: pass any `CardTextOnlySection`, whatever the
- * underlying content is. Domain content is adapted into that shape by the
- * `make*CardSection` helpers in `content.helpers`.
- */
 export function SectionCardTextOnly({
   section,
   maxColumns = 1,

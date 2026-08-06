@@ -48,7 +48,6 @@ export const makeTutorialLevelTag = (level: TutorialLevel) => ({
   textColor: `${TUTORIAL_LEVEL_COLOR[level]}-darker`,
 });
 
-/** Adapts authored tutorials into the generic card shape `SectionCardTextOnly` renders. */
 export const makeTutorialCardSection = ({
   tutorials,
   ...section
@@ -66,7 +65,6 @@ export const makeTutorialCardSection = ({
   })),
 });
 
-/** Adapts authored workshops into the generic card shape `SectionCardTextOnly` renders. */
 export const makeWorkshopCardSection = ({
   workshops,
   ...section

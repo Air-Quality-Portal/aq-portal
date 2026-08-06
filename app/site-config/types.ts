@@ -92,7 +92,9 @@ export type ContentBlock =
   | {
       type: "sectionCardFeatured";
       card: CardFeaturedPropsArgs;
-    };
+    }
+  | ({ type: "cardTextOnly" } & CardTextOnlySection)
+  | ({ type: "links" } & LinkSection);
 
 type Content = DatasetContent;
 
@@ -147,15 +149,9 @@ export type RelatedDatasetsSection = {
   datasetIds: string[];
 };
 
-/** A tag as `CardDetailed` expects it. Build these with the `make*Tag` helpers. */
 export type CardTag = NonNullable<CardDetailedProps["tags"]>[number];
 
-/**
- * One imageless card: a linked title, optional description, tags and call to
- * action. Rendered by `SectionCardTextOnly`. Content-kind-agnostic on purpose —
- * adapt domain content (tutorials, workshops, anything card-shaped) into this
- * with a `make*CardSection` helper rather than adding fields here.
- */
+/** Adapt domain content into this with a `make*CardSection` helper rather than adding fields here. */
 export type CardTextOnlyItem = {
   id: string;
   title: string;
@@ -173,7 +169,6 @@ export type CardTextOnlySection = {
   items: CardTextOnlyItem[];
 };
 
-/** A list of related reading, rendered as outline buttons. Shared by dataset and resources pages. */
 export type LinkSection = {
   heading?: string;
   headingLevel?: ContentHeadingLevel;
@@ -191,7 +186,6 @@ export type Tutorial = {
   level?: TutorialLevel;
 };
 
-/** Self-paced tutorials, rendered as detailed cards. Shared by dataset and resources pages. */
 export type TutorialSection = {
   heading?: string;
   headingLevel?: ContentHeadingLevel;
@@ -208,7 +202,6 @@ export type WorkshopItem = {
   callToAction: { label: string; href: string };
 };
 
-/** Live training events, rendered as detailed cards with a call to action. */
 export type WorkshopSection = {
   heading?: string;
   headingLevel?: ContentHeadingLevel;
