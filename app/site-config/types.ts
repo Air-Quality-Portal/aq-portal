@@ -1,4 +1,5 @@
 import type {
+  CardDetailedProps,
   GeoConfigProviderProps,
   StacCompareMapProps,
   StacSingleLayerMapProps,
@@ -35,44 +36,6 @@ export type DatasetMetadata = {
 export type GalleryRoute = string;
 
 type GeoConfig = Omit<GeoConfigProviderProps, "children">;
-
-export type ResourceTutorial = {
-  title: string;
-  description?: string;
-  href: string;
-  duration?: string;
-  level?: "beginner" | "intermediate" | "advanced";
-};
-
-export type ResourceLinkSection = {
-  heading?: string;
-  headingLevel?: ContentHeadingLevel;
-  lead?: string;
-  links: { label: string; href: string; isExternal?: boolean }[];
-};
-
-export type ResourceTutorialSection = {
-  heading?: string;
-  headingLevel?: ContentHeadingLevel;
-  lead?: string;
-  tutorials: ResourceTutorial[];
-};
-
-export type ResourceWorkshopItem = {
-  id: string;
-  title: string;
-  href: string;
-  description?: string;
-  tags?: string[];
-  callToAction: { label: string; href: string };
-};
-
-export type ResourceWorkshopSection = {
-  heading?: string;
-  headingLevel?: ContentHeadingLevel;
-  lead?: string;
-  workshops: ResourceWorkshopItem[];
-};
 
 export type ContentBlock =
   | {
@@ -129,19 +92,6 @@ export type ContentBlock =
   | {
       type: "sectionCardFeatured";
       card: CardFeaturedPropsArgs;
-    }
-  | {
-      type: "tutorialList";
-      heading?: string;
-      headingLevel?: "h2" | "h3" | "h4";
-      lead?: string;
-      tutorials: {
-        title: string;
-        href: string;
-        description?: string;
-        duration?: string;
-        level?: "beginner" | "intermediate" | "advanced";
-      }[];
     };
 
 type Content = DatasetContent;
@@ -177,8 +127,8 @@ export type DatasetContent = {
     secondary?: DatasetAction;
   };
   body?: ContentBlock[];
-  linkSections?: DatasetLinkSection[];
-  tutorials?: DatasetTutorialSection;
+  linkSections?: LinkSection[];
+  tutorials?: TutorialSection;
   citation?: DatasetCitationSection;
   relatedDatasets?: RelatedDatasetsSection;
 };
@@ -189,20 +139,6 @@ export type DatasetCitationSection = {
   text: string;
 };
 
-export type DatasetLinkSection = {
-  heading?: string;
-  headingLevel?: ContentHeadingLevel;
-  lead?: string;
-  links: { label: string; href: string; isExternal?: boolean }[];
-};
-
-export type DatasetTutorialSection = {
-  heading?: string;
-  headingLevel?: ContentHeadingLevel;
-  lead?: string;
-  tutorials: DatasetTutorial[];
-};
-
 export type RelatedDatasetsSection = {
   heading?: string;
   headingLevel?: ContentHeadingLevel;
@@ -211,12 +147,73 @@ export type RelatedDatasetsSection = {
   datasetIds: string[];
 };
 
-export type DatasetTutorial = {
+/** A tag as `CardDetailed` expects it. Build these with the `make*Tag` helpers. */
+export type CardTag = NonNullable<CardDetailedProps["tags"]>[number];
+
+/**
+ * One imageless card: a linked title, optional description, tags and call to
+ * action. Rendered by `SectionCardTextOnly`. Content-kind-agnostic on purpose —
+ * adapt domain content (tutorials, workshops, anything card-shaped) into this
+ * with a `make*CardSection` helper rather than adding fields here.
+ */
+export type CardTextOnlyItem = {
+  id: string;
+  title: string;
+  href: string;
+  isExternal?: boolean;
+  description?: string;
+  tags?: CardTag[];
+  callToAction?: { label: string; href: string };
+};
+
+export type CardTextOnlySection = {
+  heading?: string;
+  headingLevel?: ContentHeadingLevel;
+  lead?: string;
+  items: CardTextOnlyItem[];
+};
+
+/** A list of related reading, rendered as outline buttons. Shared by dataset and resources pages. */
+export type LinkSection = {
+  heading?: string;
+  headingLevel?: ContentHeadingLevel;
+  lead?: string;
+  links: { label: string; href: string; isExternal?: boolean }[];
+};
+
+export type TutorialLevel = "beginner" | "intermediate" | "advanced";
+
+export type Tutorial = {
   title: string;
   description?: string;
   href: string;
   duration?: string;
-  level?: "beginner" | "intermediate" | "advanced";
+  level?: TutorialLevel;
+};
+
+/** Self-paced tutorials, rendered as detailed cards. Shared by dataset and resources pages. */
+export type TutorialSection = {
+  heading?: string;
+  headingLevel?: ContentHeadingLevel;
+  lead?: string;
+  tutorials: Tutorial[];
+};
+
+export type WorkshopItem = {
+  id: string;
+  title: string;
+  href: string;
+  description?: string;
+  tags?: string[];
+  callToAction: { label: string; href: string };
+};
+
+/** Live training events, rendered as detailed cards with a call to action. */
+export type WorkshopSection = {
+  heading?: string;
+  headingLevel?: ContentHeadingLevel;
+  lead?: string;
+  workshops: WorkshopItem[];
 };
 
 export type DatasetAction = {

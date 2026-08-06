@@ -1,16 +1,16 @@
 import Image from "next/image";
 import type {
   ContentBlock,
-  ResourceLinkSection,
-  ResourceTutorialSection,
-  ResourceWorkshopSection,
+  LinkSection,
+  TutorialSection,
+  WorkshopSection,
 } from "@/app/site-config/types";
 
 export type ResourcesPageBody = {
   body: ContentBlock[];
-  linkSections?: ResourceLinkSection[];
-  tutorials?: ResourceTutorialSection;
-  workshopSection?: ResourceWorkshopSection;
+  linkSections?: LinkSection[];
+  tutorials?: TutorialSection;
+  workshopSection?: WorkshopSection;
 };
 
 export const RESOURCES_PAGE_BODY: ResourcesPageBody = {

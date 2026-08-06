@@ -7,12 +7,15 @@ import type {
 import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import {
+  type CardTextOnlySection,
   CONTENT_TYPES,
   type ContentType,
   type DatasetMetadata,
   type DatasetMetadataEntry,
   type IterableItemWithId,
-  type ResourceWorkshopItem,
+  type TutorialLevel,
+  type TutorialSection,
+  type WorkshopSection,
 } from "@/app/site-config/types";
 
 export const makePrimaryTag = (tag: string) => ({
@@ -30,6 +33,49 @@ export const makeSimpleTag = (tag: string) => ({
 export const makeContentTypeTag = (tag: ContentType) => ({
   ...makeSimpleTag(CONTENT_TYPES[tag].label),
   variant: "solid" as const,
+});
+
+const TUTORIAL_LEVEL_COLOR: Record<TutorialLevel, string> = {
+  beginner: "success",
+  intermediate: "info",
+  advanced: "secondary",
+};
+
+export const makeTutorialLevelTag = (level: TutorialLevel) => ({
+  ...makeSimpleTag(level.toUpperCase()),
+  variant: "solid" as const,
+  color: `${TUTORIAL_LEVEL_COLOR[level]}-lighter`,
+  textColor: `${TUTORIAL_LEVEL_COLOR[level]}-darker`,
+});
+
+/** Adapts authored tutorials into the generic card shape `SectionCardTextOnly` renders. */
+export const makeTutorialCardSection = ({
+  tutorials,
+  ...section
+}: TutorialSection): CardTextOnlySection => ({
+  ...section,
+  items: tutorials.map((tutorial) => ({
+    id: tutorial.href,
+    title: tutorial.title,
+    href: tutorial.href,
+    description: tutorial.description,
+    tags: [
+      ...(tutorial.duration ? [makeSimpleTag(tutorial.duration)] : []),
+      ...(tutorial.level ? [makeTutorialLevelTag(tutorial.level)] : []),
+    ],
+  })),
+});
+
+/** Adapts authored workshops into the generic card shape `SectionCardTextOnly` renders. */
+export const makeWorkshopCardSection = ({
+  workshops,
+  ...section
+}: WorkshopSection): CardTextOnlySection => ({
+  ...section,
+  items: workshops.map(({ tags, ...workshop }) => ({
+    ...workshop,
+    tags: tags?.map((tag) => makeSimpleTag(tag)),
+  })),
 });
 
 export const makeButtonOutlineLink = (href: string, isExternal = true) => ({
@@ -333,37 +379,6 @@ export const makeCardCarouselProps = ({
   imagePosition: "cover",
   colorMode: "dark",
   ...rest,
-});
-
-export const makeWorkshopCardProps = ({
-  id,
-  title,
-  href,
-  description,
-  tags,
-  callToAction,
-  className,
-}: ResourceWorkshopItem & { className?: string }): IterableItemWithId<CardDetailedProps> => ({
-  id,
-  className: className ? `display-block ${className}` : "display-block",
-  image: <svg aria-hidden="true" focusable="false" />,
-  title: (
-    <>
-      <Link className="font-body-lg text-light" href={href} variant="text">
-        {title}
-      </Link>
-      {description && (
-        <p className="font-body-xs text-base-dark text-light margin-0">{description}</p>
-      )}
-    </>
-  ),
-  tags: tags?.map((tag) => ({ label: tag, variant: "outline" as const, color: "base" })),
-  callToAction: {
-    href: callToAction.href,
-    label: callToAction.label,
-    variant: "button" as const,
-    style: { width: 97, height: 40, flex: "none", boxSizing: "border-box" as const },
-  },
 });
 
 export const toLongDate = (date: string) =>
