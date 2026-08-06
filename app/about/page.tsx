@@ -15,9 +15,9 @@ export default function AboutPage() {
         <div className="grid-row grid-gap">
           <div className="grid-col-3 display-none desktop:display-block">
             <InPageNavigation
-              title="On THIS PAGE"
-              contentSelector={`#${ABOUT_CONTENT_ID}`}
-              headingElements="h3"
+              data-title-text="On THIS PAGE"
+              data-main-content-selector={`#${ABOUT_CONTENT_ID}`}
+              data-heading-elements="h3"
             />
           </div>
           <div className="grid-col-9 usa-prose" id={ABOUT_CONTENT_ID}>
