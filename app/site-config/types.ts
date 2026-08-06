@@ -66,6 +66,8 @@ export type ContentBlock =
       height: number;
       maxWidth?: string;
       caption?: string;
+      /** Skip the Next.js image optimizer (e.g. remote placeholder services that serve SVG). */
+      unoptimized?: boolean;
     }
   | (StacSingleLayerMapProps &
       GeoConfig & {

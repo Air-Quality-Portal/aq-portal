@@ -1,6 +1,3 @@
-import { Link } from "@teamimpact/veda-ui-blocks";
-import Image from "next/image";
-import { Fragment } from "react";
 import type { ContentBlock } from "@/app/site-config/types";
 
 export type AboutPageBody = {
@@ -11,52 +8,64 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
   body: [
     {
       type: "text",
-      heading: "Advancing Science for Disaster Resilience",
+      heading: "A Multi-Agency Platform for Integrating Air Quality Information",
       headingLevel: "h2",
       paragraphs: [
-        `The NASA Disasters Program puts Earth science to work for those who make critical
-          decisions before, during, and after disasters. We translate NASA's unmatched view of Earth
-          from space into actionable insights, helping emergency managers, government agencies, and
-          industry partners prepare for high-impact hazards, respond effectively when disasters
-          strike, and recover more fully in their aftermath. From hurricanes and volcanoes to floods
-          and earthquakes, we use NASA's data, tools, and expertise to build resilience in
-          communities across the U.S. and around the world.`,
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       ],
     },
     {
-      type: "text",
-      heading: "Our Team",
-      headingLevel: "h2",
-      paragraphs: [
-        // biome-ignore lint/correctness/useJsxKeyInIterable: static content, never reorders
-        <Image
-          src="/img/about/disasters-team.webp"
-          alt="NASA Disasters Team"
-          width="1200"
-          height="800"
-        />,
-      ],
+      type: "image",
+      src: "https://placehold.co/600x400",
+      alt: "",
+      width: 600,
+      height: 400,
+      unoptimized: true,
     },
+
     {
       type: "text",
-      heading: "Connect With Us",
+      heading: "Our Partners",
       headingLevel: "h2",
       paragraphs: [
-        <Fragment key="hq-em-disasters@mail.nasa.gov">
-          <Link href="mailto:hq-em-disasters@mail.nasa.gov" variant="text">
-            Contact Our Team
-          </Link>
-          <br />
-          <br />
-          <Link
-            href="https://lp.constantcontactpages.com/sl/ICIOyJI"
-            rel="noopener noreferrer"
-            target="_blank"
-            variant="text"
-          >
-            Sign up for the NASA Disasters Community Newsletter
-          </Link>
-        </Fragment>,
+        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      ],
+    },
+
+    {
+      type: "text",
+      heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      headingLevel: "h3",
+      paragraphs: [
+        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      ],
+    },
+
+    {
+      type: "image",
+      src: "https://placehold.co/880x400",
+      alt: "",
+      width: 880,
+      height: 400,
+      unoptimized: true,
+    },
+
+    {
+      type: "text",
+      heading: "Feedback",
+      headingLevel: "h2",
+      paragraphs: [
+        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      ],
+    },
+
+    {
+      type: "text",
+      heading: "Contact",
+      headingLevel: "h2",
+      paragraphs: [
+        "Have questions about the AIR4US Portal, its datasets, or how to get involved? Reach out to the team below.",
       ],
     },
   ],

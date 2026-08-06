@@ -118,6 +118,7 @@ export const ContentBlockRenderer = ({
               alt={block.alt}
               width={block.width}
               height={block.height}
+              unoptimized={block.unoptimized}
               style={{ width: block.maxWidth ?? "100%", height: "auto" }}
             />
             {block.caption && (
