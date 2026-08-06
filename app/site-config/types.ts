@@ -209,6 +209,24 @@ export type WorkshopSection = {
   workshops: WorkshopItem[];
 };
 
+export type ToolContent = {
+  id: string;
+  contentType: "tool";
+  title: string;
+  fullname: string;
+  description?: string;
+  /** External URL the card title links to. */
+  href: string;
+  /** Primary tag shown over the image, e.g. "Agency". */
+  tagPrimary?: string;
+  /** Tags shown below the description. */
+  additionalTags?: string[];
+  thumbnailImage: {
+    src: string;
+    alt: string;
+  };
+};
+
 export type DatasetAction = {
   label: string;
   href: string;

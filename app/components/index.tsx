@@ -16,3 +16,5 @@ export { SectionCardSimple } from "./SectionCardSimple";
 export { SectionCardTextOnly } from "./SectionCardTextOnly";
 export { SectionHeading } from "./SectionHeading";
 export { SectionLinks } from "./SectionLinks";
+export { SectionIntro, type SectionIntroProps } from "./SectionIntro";
+export { ToolCatalogToolbar } from "./ToolCatalogToolbar";
