@@ -41,8 +41,7 @@ export type ContentBlock =
       type: "text";
       heading?: string;
       headingLevel?: "h2" | "h3" | "h4";
-      paragraphs?: ReactNode[];
-      content?: ReactNode[];
+      paragraphs: ReactNode[];
     }
   | {
       type: "list";
@@ -67,6 +66,8 @@ export type ContentBlock =
       height: number;
       maxWidth?: string;
       caption?: string;
+      /** Skip the Next.js image optimizer (e.g. remote placeholder services that serve SVG). */
+      unoptimized?: boolean;
     }
   | (StacSingleLayerMapProps &
       GeoConfig & {

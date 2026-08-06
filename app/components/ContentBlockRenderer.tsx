@@ -1,7 +1,6 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 
-import React from "react";
 import {
   ContentHeading,
   ImageComparison,
@@ -32,15 +31,11 @@ export const ContentBlockRenderer = ({
           {block.heading && (
             <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
           )}
-          {block.paragraphs?.map((p, i) => (
+          {block.paragraphs.map((p, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
             <p key={i} className={i === 0 && !block.heading ? "margin-top-0" : ""}>
               {p}
             </p>
-          ))}
-          {block.content?.map((c, i) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-            <React.Fragment key={i}>{c}</React.Fragment>
           ))}
         </Section>
       );
@@ -123,6 +118,7 @@ export const ContentBlockRenderer = ({
               alt={block.alt}
               width={block.width}
               height={block.height}
+              unoptimized={block.unoptimized}
               style={{ width: block.maxWidth ?? "100%", height: "auto" }}
             />
             {block.caption && (
