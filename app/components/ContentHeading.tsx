@@ -14,5 +14,5 @@ export function ContentHeading({
   if (headingLevel === "h3")
     return <h3 className=" font-heading-lg margin-bottom-2 text-light">{heading}</h3>;
 
-  return <SectionHeading>{heading}</SectionHeading>;
+  return <SectionHeading className="text-normal">{heading}</SectionHeading>;
 }
