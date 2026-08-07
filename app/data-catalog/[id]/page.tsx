@@ -62,7 +62,7 @@ function DatasetRelated({ section }: { section: RelatedDatasetsSection }) {
   );
 }
 
-export default async function DatasetItemPage(props: PageProps<"/data-gallery/[id]">) {
+export default async function DatasetItemPage(props: PageProps<"/data-catalog/[id]">) {
   const { id } = await props.params;
   const dataset = DATASETS.find((d) => d.id === id);
 
@@ -94,7 +94,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
           isMastHead: true,
         })}
       />
-      <BackToCatalogLink href="/data-gallery" />
+      <BackToCatalogLink href="/data-catalog" />
 
       {/* Placeholder content only */}
       {!hasContent && (
