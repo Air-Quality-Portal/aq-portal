@@ -5,87 +5,22 @@ import {
   BackToCatalogLink,
   ContentBlockRenderer,
   ContentHeading,
-  ContentLead,
   PageMasthead,
   PageSidebar,
   PageStatus,
   Section,
   SectionCardDetailed,
+  SectionCardTextOnly,
+  SectionLinks,
 } from "@/app/components";
 import {
   getMetadataFieldTag,
-  makeButtonOutlineLink,
   makeCardDetailedImageLeftProps,
-  makeCardDetailedTextOnlyProps,
   makeCardMastHeadProps,
-  makeSimpleTag,
+  makeTutorialCardSection,
 } from "@/app/site-config/content.helpers";
 import { DATASETS, getDatasetsByIds } from "@/app/site-config/dataset";
-import type {
-  DatasetCitationSection,
-  DatasetLinkSection,
-  DatasetTutorialSection,
-  RelatedDatasetsSection,
-} from "@/app/site-config/types";
-
-const TUTORIAL_LEVEL_COLOR: Record<string, string> = {
-  beginner: "success",
-  intermediate: "info",
-  advanced: "secondary",
-};
-
-function DatasetLinks({ section }: { section: DatasetLinkSection }) {
-  return (
-    <Section isMultiColumnLayout>
-      {section.heading && <ContentHeading heading={section.heading} headingLevel="h3" />}
-      <ContentLead lead={section.lead} />
-      <ul className="usa-list usa-list--unstyled">
-        {section.links.map((link) => (
-          <li key={link.href} className="margin-bottom-1">
-            <Link {...makeButtonOutlineLink(link.href, link.isExternal)}>{link.label}</Link>
-          </li>
-        ))}
-      </ul>
-    </Section>
-  );
-}
-
-function DatasetTutorials({ section }: { section: DatasetTutorialSection }) {
-  const cards = section.tutorials.map((tutorial) =>
-    makeCardDetailedTextOnlyProps({
-      id: tutorial.href,
-      className: "height-full border-1px border-base-lighter",
-      title: tutorial.title,
-      href: tutorial.href,
-      description: tutorial.description,
-      tags: [
-        ...(tutorial.duration ? [makeSimpleTag(tutorial.duration)] : []),
-        ...(tutorial.level
-          ? [
-              {
-                ...makeSimpleTag(tutorial.level.toUpperCase()),
-                variant: "solid" as const,
-                color: `${TUTORIAL_LEVEL_COLOR[tutorial.level]}-lighter`,
-                textColor: `${TUTORIAL_LEVEL_COLOR[tutorial.level]}-darker`,
-              },
-            ]
-          : []),
-      ],
-    }),
-  );
-
-  return (
-    <SectionCardDetailed
-      isMultiColumnLayout
-      maxColumns={1}
-      description={section.lead}
-      sectionHeading={
-        section.heading && <ContentHeading heading={section.heading} headingLevel="h3" />
-      }
-      cards={cards}
-    />
-  );
-}
+import type { DatasetCitationSection, RelatedDatasetsSection } from "@/app/site-config/types";
 
 function DatasetCitation({ section }: { section: DatasetCitationSection }) {
   return (
@@ -200,10 +135,10 @@ export default async function DatasetItemPage(props: PageProps<"/data-gallery/[i
 
               {linkSections?.map((section, index) => (
                 // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-                <DatasetLinks key={index} section={section} />
+                <SectionLinks key={index} section={section} />
               ))}
 
-              {tutorials && <DatasetTutorials section={tutorials} />}
+              {tutorials && <SectionCardTextOnly section={makeTutorialCardSection(tutorials)} />}
 
               {citation && <DatasetCitation section={citation} />}
             </div>

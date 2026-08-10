@@ -7,11 +7,15 @@ import type {
 import { Link } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
 import {
+  type CardTextOnlySection,
   CONTENT_TYPES,
   type ContentType,
   type DatasetMetadata,
   type DatasetMetadataEntry,
   type IterableItemWithId,
+  type TutorialLevel,
+  type TutorialSection,
+  type WorkshopSection,
 } from "@/app/site-config/types";
 
 export const makePrimaryTag = (tag: string) => ({
@@ -30,6 +34,47 @@ export const makeSimpleTag = (tag: string) => ({
 export const makeContentTypeTag = (tag: ContentType) => ({
   ...makeSimpleTag(CONTENT_TYPES[tag].label),
   variant: "solid" as const,
+});
+
+const TUTORIAL_LEVEL_COLOR: Record<TutorialLevel, string> = {
+  beginner: "success",
+  intermediate: "info",
+  advanced: "secondary",
+};
+
+export const makeTutorialLevelTag = (level: TutorialLevel) => ({
+  ...makeSimpleTag(level.toUpperCase()),
+  variant: "solid" as const,
+  color: `${TUTORIAL_LEVEL_COLOR[level]}-lighter`,
+  textColor: `${TUTORIAL_LEVEL_COLOR[level]}-darker`,
+});
+
+export const makeTutorialCardSection = ({
+  tutorials,
+  ...section
+}: TutorialSection): CardTextOnlySection => ({
+  ...section,
+  items: tutorials.map((tutorial) => ({
+    id: tutorial.href,
+    title: tutorial.title,
+    href: tutorial.href,
+    description: tutorial.description,
+    tags: [
+      ...(tutorial.duration ? [makeSimpleTag(tutorial.duration)] : []),
+      ...(tutorial.level ? [makeTutorialLevelTag(tutorial.level)] : []),
+    ],
+  })),
+});
+
+export const makeWorkshopCardSection = ({
+  workshops,
+  ...section
+}: WorkshopSection): CardTextOnlySection => ({
+  ...section,
+  items: workshops.map(({ tags, ...workshop }) => ({
+    ...workshop,
+    tags: tags?.map((tag) => makeSimpleTag(tag)),
+  })),
 });
 
 export const makeButtonOutlineLink = (href: string, isExternal = true) => ({
