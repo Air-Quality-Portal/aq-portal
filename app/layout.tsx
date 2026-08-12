@@ -1,4 +1,4 @@
-import { Footer } from "@teamimpact/veda-ui-blocks";
+import { Banner, Footer } from "@teamimpact/veda-ui-blocks";
 import type { Metadata } from "next";
 import "@teamimpact/veda-ui-blocks/air4us.css";
 
@@ -18,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="display-flex flex-column minh-viewport">
+        <Banner />
         <HeaderWithCurrentPath />
         <main className="flex-1">{children}</main>
         <Footer {...MOCK_FOOTER_PROPS} />
