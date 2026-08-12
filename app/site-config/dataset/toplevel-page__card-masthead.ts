@@ -1,4 +1,4 @@
-export const DATA_GALLERY_CARD_MASTHEAD = {
+export const DATA_CATALOG_CARD_MASTHEAD = {
   mastheadImage: { alt: "", src: "/img/placeholder/card-masthead.webp" },
   title: "Air Quality Data Catalog",
   description:
