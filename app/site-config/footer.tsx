@@ -58,7 +58,14 @@ const portalDetails: FooterProps["portalDetails"] = {
       email: "k.e.knowland@nasa.gov",
     },
   ],
-  title: "AIR4US",
+  title: (
+    <span>
+      <span style={{ color: "var(--color-accent-cool-theme-color-accent-cool, #00BDE3)" }}>
+        AIR
+      </span>
+      <span style={{ color: "var(--color-primary-theme-color-white, #ffffff)" }}>4US</span>
+    </span>
+  ),
   tagline: "Empowering US air quality decisions through Earth observations.",
   updatedDate: "June 1, 2026",
 };
