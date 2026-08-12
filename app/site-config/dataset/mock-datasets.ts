@@ -7,7 +7,7 @@ import type {
 
 /**
  * Placeholder catalog datasets, generated from the seed list below so the
- * gallery has enough content to page through. Titles, descriptions, tags and
+ * catalog has enough content to page through. Titles, descriptions, tags and
  * providers are realistic; every other value is invented. Each one follows the
  * same shape as DATASET__MOCK — `metadata.tags` drives the card tags, the
  * remaining metadata fields fill the sidebar, and the body/link/tutorial

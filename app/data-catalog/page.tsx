@@ -2,13 +2,13 @@ import { Card, CardDetailed, Link } from "@teamimpact/veda-ui-blocks";
 // import {Pagination} from "@teamimpact/veda-ui-blocks"
 import Image from "next/image";
 import { DatasetCatalogToolbar, Section } from "@/app/components";
-import { DATA_GALLERY_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
+import { DATA_CATALOG_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
 import { getMetadataFieldTag, makePrimaryTag, makeSimpleTag } from "../site-config/content.helpers";
 import { DATASETS } from "../site-config/dataset";
 
 const PER_PAGE = 8;
 
-export default async function DataGalleryPage(props: PageProps<"/data-gallery">) {
+export default async function DataCatalogPage(props: PageProps<"/data-catalog">) {
   const total = DATASETS.length;
   const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
 
@@ -22,7 +22,7 @@ export default async function DataGalleryPage(props: PageProps<"/data-gallery">)
 
   return (
     <Section>
-      <Card className="height-masthead" isMastHead title={DATA_GALLERY_CARD_MASTHEAD.title} />
+      <Card className="height-masthead" isMastHead title={DATA_CATALOG_CARD_MASTHEAD.title} />
       <DatasetCatalogToolbar count={total} />
       <div className="grid-row grid-gap-4">
         {pageItems.map(({ id, title, description, thumbnailImage, metadata }) => {
@@ -38,7 +38,7 @@ export default async function DataGalleryPage(props: PageProps<"/data-gallery">)
                 title={
                   <Link
                     className="font-body-lg text-light"
-                    href={`/data-gallery/${id}`}
+                    href={`/data-catalog/${id}`}
                     variant="text"
                   >
                     {title}
@@ -53,7 +53,7 @@ export default async function DataGalleryPage(props: PageProps<"/data-gallery">)
       </div>
       {/* {totalPages > 1 && (
         <Pagination
-          getHref={(page) => `/data-gallery?page=${page}`}
+          getHref={(page) => `/data-catalog?page=${page}`}
           currentPage={currentPage}
           totalPages={totalPages}
         />
