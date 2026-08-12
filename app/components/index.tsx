@@ -14,6 +14,7 @@ export { SectionCardAsymmetric, type SectionCardAsymmetricProps } from "./Sectio
 export { SectionCardDetailed } from "./SectionCardDetailed";
 export { SectionCardSimple } from "./SectionCardSimple";
 export { SectionCardTextOnly } from "./SectionCardTextOnly";
+export { SectionContacts } from "./SectionContacts";
 export { SectionHeading } from "./SectionHeading";
 export { SectionIntro, type SectionIntroProps } from "./SectionIntro";
 export { SectionLinks } from "./SectionLinks";

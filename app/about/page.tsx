@@ -14,6 +14,7 @@ export default function AboutPage() {
           <InPageNavigation
             className="margin-top-0"
             data-title-text="ON THIS PAGE"
+            data-heading-elements="h2"
             data-main-content-selector={`#${ABOUT_CONTENT_ID}`}
           />
         </div>
