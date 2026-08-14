@@ -8,7 +8,7 @@ import type { ReactNode } from "react";
 import type { CardFeaturedPropsArgs, CardSimplePropsArgs } from "@/app/site-config/content.helpers";
 
 export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }> = {
-  dataset: { route: "/data-gallery", label: "product" },
+  dataset: { route: "/data-catalog", label: "product" },
 };
 
 export type ContentHeadingLevel = "h2" | "h3" | "h4";
@@ -33,7 +33,7 @@ export type DatasetMetadata = {
   fields?: Record<string, DatasetMetadataEntry>;
 };
 
-export type GalleryRoute = string;
+export type CatalogRoute = string;
 
 type GeoConfig = Omit<GeoConfigProviderProps, "children">;
 
@@ -87,7 +87,7 @@ export type ContentBlock =
   | {
       type: "sectionCardSimple";
       heading?: string;
-      href?: GalleryRoute;
+      href?: CatalogRoute;
       description?: string;
       cards: CardSimplePropsArgs[];
     }
