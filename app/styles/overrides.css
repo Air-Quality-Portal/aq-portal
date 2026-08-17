@@ -1,0 +1,33 @@
+/*
+ * Overrides for @teamimpact/veda-ui-blocks (air4us.css).
+ * Keep selectors at or above the library's specificity so they win
+ * regardless of stylesheet import order.
+ */
+
+.site-title,
+.site-title:focus,
+.site-title:focus-visible,
+.blocks-header__portal-logo,
+.blocks-header__portal-logo:focus,
+.blocks-header__portal-logo:focus-visible {
+  text-decoration: none;
+  outline: none;
+}
+
+.site-title__text {
+  font-family: var(--font-family-sans, sans-serif);
+  font-weight: normal;
+  font-size: var(--site-title-font-size, var(--font-size-xl));
+}
+
+.site-title__air {
+  color: var(--color-accent-cool-theme-color-accent-cool, #00bde3);
+}
+
+.site-title__us {
+  color: var(--site-title-color, var(--color-primary-theme-color-primary-dark, #1a4480));
+}
+
+.blocks-header.usa-header--basic .blocks-header__portal-details {
+  gap: 0;
+}
