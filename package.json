@@ -17,7 +17,7 @@
     "prepare": "lefthook install"
   },
   "dependencies": {
-    "@teamimpact/veda-ui-blocks": "0.1.0-beta.15",
+    "@teamimpact/veda-ui-blocks": "0.1.0-beta.16",
     "next": "16.2.6",
     "react": "19.2.3",
     "react-dom": "19.2.3"
