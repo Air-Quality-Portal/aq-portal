@@ -1,4 +1,5 @@
 import type { FooterProps } from "@teamimpact/veda-ui-blocks";
+import { SiteTitle } from "../components/SiteTitle";
 
 const primaryNavItems: FooterProps["primaryNavItems"] = [
   { label: "Tools Catalog", href: "/tools" },
@@ -78,7 +79,12 @@ const portalDetails: FooterProps["portalDetails"] = {
       email: "k.e.knowland@nasa.gov",
     },
   ],
-  title: "AIR4US",
+  title: (
+    <SiteTitle
+      color1="var(--color-accent-cool-theme-color-accent-cool, #00BDE3)"
+      color2="var(--color-primary-theme-color-primary-lighest, #EFF6FB)"
+    />
+  ),
   tagline: "Empowering US air quality decisions through Earth observations.",
   updatedDate: formatBuildDate(),
 };
