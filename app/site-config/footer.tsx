@@ -3,7 +3,7 @@ import type { FooterProps } from "@teamimpact/veda-ui-blocks";
 const primaryNavItems: FooterProps["primaryNavItems"] = [
   { label: "Tools Catalog", href: "/tools" },
   { label: "Data Catalog", href: "/data-catalog" },
-  { label: "Resources", href: "/training" },
+  { label: "Resources", href: "/resources" },
   { label: "About Us", href: "/about" },
 ];
 

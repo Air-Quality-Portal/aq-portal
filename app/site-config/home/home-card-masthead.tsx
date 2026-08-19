@@ -2,7 +2,7 @@ import type { CardProps } from "@teamimpact/veda-ui-blocks";
 
 export const MOCK_CARD_MASTHEAD: CardProps = {
   callToAction: {
-    href: "/link",
+    href: "/tools",
     label: "Explore the Tool Catalog  → ",
     variant: "button",
   },

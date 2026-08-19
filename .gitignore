@@ -45,3 +45,5 @@ node_modules
 
 # worktrees
 .worktrees/
+# claude code worktrees
+.claude/worktrees/
