@@ -14,9 +14,8 @@ export function SectionContacts({ section }: { section: ContactSection }) {
           <CardContact
             key={contact.email}
             title={contact.title}
-            titleAs={contact.titleAs ?? "h3"}
-            name={contact.name}
-            email={contact.email}
+            titleLevel={contact.titleAs ?? "h3"}
+            contacts={[{ type: "email", value: contact.email, label: contact.name }]}
           />
         ))}
       </div>
