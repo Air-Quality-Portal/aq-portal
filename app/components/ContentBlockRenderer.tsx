@@ -7,6 +7,7 @@ import {
   Section,
   SectionCardSimple,
   SectionCardTextOnly,
+  SectionContacts,
   SectionHeading,
   SectionLinks,
 } from "@/app/components";
@@ -186,5 +187,8 @@ export const ContentBlockRenderer = ({
 
     case "links":
       return <SectionLinks section={block} />;
+
+    case "contacts":
+      return <SectionContacts section={block} />;
   }
 };
