@@ -1,0 +1,16 @@
+.aq-filter-item > div {
+  display: block;
+  align-items: center;
+  padding-bottom: 0.75rem;
+  margin: 0.75rem 0;
+
+  transition: background-color 0.2s ease;
+
+  &:has(input[type="checkbox"]:checked) {
+    background-color: var(--color-base-lightest);
+  }
+
+  &:hover {
+    background-color: var(--color-base-lightest);
+  }
+}
