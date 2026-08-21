@@ -2,7 +2,7 @@
 
 import { Drawer, Link, SearchInput, SvgSearch } from "@teamimpact/veda-ui-blocks";
 import { useState } from "react";
-import { DatasetAccordionFilters } from "./DatasetAccordionFilter";
+import { DatasetAccordionFilters } from "./DatasetFilters";
 
 type DatasetCatalogToolbarProps = {
   /** Total number of datasets in the catalog (shown as a count badge). */
