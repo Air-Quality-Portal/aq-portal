@@ -12,6 +12,15 @@ import type { NextConfig } from "next";
  */
 const nextConfig: NextConfig = {
   transpilePackages: ["@teamimpact/veda-ui-blocks"],
+  env: {
+    /*
+     * Evaluated once when this config loads and inlined into the bundle, so it
+     * is frozen at `next build` time and identical on the server and the
+     * client. Surfaced as the "site last updated" date in the footer.
+     * In `next dev` it is the dev server start time.
+     */
+    NEXT_PUBLIC_BUILD_TIME: new Date().toISOString(),
+  },
   turbopack: {
     root: path.resolve(__dirname, ".."),
   },

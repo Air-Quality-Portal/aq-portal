@@ -4,7 +4,7 @@ import { SiteTitle } from "../components/SiteTitle";
 const primaryNavItems: FooterProps["primaryNavItems"] = [
   { label: "Tools Catalog", href: "/tools" },
   { label: "Data Catalog", href: "/data-catalog" },
-  { label: "Resources", href: "/training" },
+  { label: "Resources", href: "/resources" },
   { label: "About Us", href: "/about" },
 ];
 
@@ -51,6 +51,26 @@ const utilityNavItems: FooterProps["utilityNavItems"] = [
   },
 ];
 
+const buildDateFormatter = new Intl.DateTimeFormat("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
+});
+
+/*
+ * `NEXT_PUBLIC_BUILD_TIME` is set in next.config.ts and inlined at build time.
+ * Formatting in UTC keeps the server-rendered and hydrated markup identical.
+ * Falls back to the current date if the value is missing or unparseable.
+ */
+function formatBuildDate(): string {
+  const buildTime = process.env.NEXT_PUBLIC_BUILD_TIME;
+  const parsed = buildTime ? new Date(buildTime) : null;
+  const date = parsed && !Number.isNaN(parsed.getTime()) ? parsed : new Date();
+
+  return buildDateFormatter.format(date);
+}
+
 const portalDetails: FooterProps["portalDetails"] = {
   contacts: [
     {
@@ -66,7 +86,7 @@ const portalDetails: FooterProps["portalDetails"] = {
     />
   ),
   tagline: "Empowering US air quality decisions through Earth observations.",
-  updatedDate: "June 1, 2026",
+  updatedDate: formatBuildDate(),
 };
 
 export const MOCK_FOOTER_PROPS: FooterProps = {
