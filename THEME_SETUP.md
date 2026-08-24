@@ -161,26 +161,6 @@ pnpm run theme:air4us:local -- feat/my-branch
 
 This will rebuild and relink the latest theme.
 
-## Manual pnpm Link (No Script)
-
-If you want to do this manually, run:
-
-```bash
-MONOREPO_PATH=/Users/smalone/Documents/Projects/tinacms-portal-monorepo
-TARGET_BRANCH=feat/my-branch
-
-git -C "$MONOREPO_PATH" checkout "$TARGET_BRANCH"
-pnpm -C "$MONOREPO_PATH" --filter @teamimpact/veda-ui-blocks run build
-pnpm -C "$AQ_PORTAL_DIR" link "$MONOREPO_PATH/packages/blocks"
-```
-
-To remove the local link and go back to the registry version:
-
-```bash
-pnpm -C "$AQ_PORTAL_DIR" unlink @teamimpact/veda-ui-blocks
-pnpm -C "$AQ_PORTAL_DIR" install
-```
-
 ## Configuration
 
 The script uses these inputs (optional):
