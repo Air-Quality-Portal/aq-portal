@@ -43,7 +43,6 @@ next-env.d.ts
 node_modules
 .env
 
-# worktrees
+# worktrees - any tool, any depth
 .worktrees/
-# claude code worktrees
-.claude/worktrees/
+worktrees/
