@@ -22,7 +22,7 @@ export const ToolCatalogToolbar = ({
 }: ToolCatalogToolbarProps) => {
   const router = useRouter();
   const pathname = usePathname();
-  const [value, setValue] = useState(query);
+  const [catalogSearchValue, setCatalogSearchValue] = useState(query);
 
   // The query we last wrote ourselves, so its echo can be told apart from a
   // genuinely external change (back/forward, the clear link).
@@ -33,7 +33,7 @@ export const ToolCatalogToolbar = ({
   useEffect(() => {
     if (query === committed.current) return;
     committed.current = query;
-    setValue(query);
+    setCatalogSearchValue(query);
   }, [query]);
 
   const commit = useCallback(
@@ -56,13 +56,13 @@ export const ToolCatalogToolbar = ({
   );
 
   useEffect(() => {
-    const trimmed = value.trim();
+    const trimmed = catalogSearchValue.trim();
     if (trimmed === query.trim()) return;
 
     const timeout = setTimeout(() => commit(trimmed), DEBOUNCE_MS);
 
     return () => clearTimeout(timeout);
-  }, [value, query, commit]);
+  }, [catalogSearchValue, query, commit]);
 
   return (
     <div className="display-flex flex-justify flex-align-center flex-wrap margin-bottom-3">
@@ -87,8 +87,8 @@ export const ToolCatalogToolbar = ({
             // screen-reader only, so drop it to keep the icon centered.
             className: "padding-left-5 margin-top-0",
             placeholder: searchPlaceholder,
-            value,
-            onChange: (event) => setValue(event.target.value),
+            value: catalogSearchValue,
+            onChange: (event) => setCatalogSearchValue(event.target.value),
           }}
         />
       </div>
