@@ -1,4 +1,5 @@
 import { Card, CardDetailed, Link } from "@teamimpact/veda-ui-blocks";
+// import {Pagination} from "@teamimpact/veda-ui-blocks"
 import Image from "next/image";
 import { DatasetCatalogToolbar, Section } from "@/app/components";
 import { DATA_CATALOG_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
@@ -50,6 +51,13 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
           );
         })}
       </div>
+      {/* {totalPages > 1 && (
+        <Pagination
+          getHref={(page) => `/data-catalog?page=${page}`}
+          currentPage={currentPage}
+          totalPages={totalPages}
+        />
+      )} */}
     </Section>
   );
 }
