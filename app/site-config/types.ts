@@ -7,9 +7,9 @@ import type {
 import type { ReactNode } from "react";
 import type { CardFeaturedPropsArgs, CardSimplePropsArgs } from "@/app/site-config/content.helpers";
 
-export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }> = {
+export const CONTENT_TYPES = {
   dataset: { route: "/data-catalog", label: "product" },
-};
+} as const satisfies Record<ContentType, { route: string; label: string }>;
 
 export type ContentHeadingLevel = "h2" | "h3" | "h4";
 

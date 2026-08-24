@@ -1,5 +1,6 @@
 export { BackToCatalogLink } from "./BackToCatalogLink";
 export * from "./blocks";
+export { CatalogPagination } from "./CatalogPagination";
 export { ContentBlockRenderer } from "./ContentBlockRenderer";
 export { ContentHeading } from "./ContentHeading";
 export { ContentLead } from "./ContentLead";
