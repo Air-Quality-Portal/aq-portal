@@ -5,7 +5,7 @@ import type {
   StacSingleLayerMapProps,
 } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
-import type { CardFeaturedPropsArgs, CardSimplePropsArgs } from "@/app/site-config/content.helpers";
+import type { CardSimplePropsArgs } from "@/app/site-config/content.helpers";
 
 export const CONTENT_TYPES: Record<ContentType, { route: string; label: string }> = {
   dataset: { route: "/data-catalog", label: "product" },
@@ -91,29 +91,10 @@ export type ContentBlock =
       description?: string;
       cards: CardSimplePropsArgs[];
     }
-  | {
-      type: "sectionCardFeatured";
-      card: CardFeaturedPropsArgs;
-    }
   | ({ type: "cardTextOnly" } & CardTextOnlySection)
   | ({ type: "links" } & LinkSection);
 
-type Content = DatasetContent;
-
-export type ContentType = Content["contentType"];
-
-export type MinimumCardContent = {
-  id: string;
-  contentType: ContentType;
-  title: string;
-  thumbnailImage: {
-    src: string;
-    alt: string;
-  };
-  description?: string;
-  tag1?: string;
-  tags?: string[];
-};
+export type ContentType = DatasetContent["contentType"];
 
 export type DatasetContent = {
   id: string;
@@ -213,7 +194,6 @@ export type WorkshopSection = {
 
 export type ToolContent = {
   id: string;
-  contentType: "tool";
   title: string;
   fullname: string;
   description?: string;

@@ -43,5 +43,6 @@ next-env.d.ts
 node_modules
 .env
 
-# worktrees
+# worktrees - any tool, any depth
 .worktrees/
+worktrees/
