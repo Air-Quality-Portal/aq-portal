@@ -38,11 +38,19 @@ export const ToolCatalogToolbar = ({
 
   const commit = useCallback(
     (next: string) => {
+      // Opening a search from the unfiltered catalog gets one history entry, so
+      // Back returns to the full list. Refining or clearing replaces it, keeping
+      // every keystroke out of history.
+      const opensSearch = next !== "" && committed.current === "";
       committed.current = next;
       // `typedRoutes` cannot verify a runtime query string, so cast at this boundary.
       const href = (next ? `${pathname}?q=${encodeURIComponent(next)}` : pathname) as Route;
-      // `replace` keeps each keystroke out of history.
-      router.replace(href, { scroll: false });
+
+      if (opensSearch) {
+        router.push(href, { scroll: false });
+      } else {
+        router.replace(href, { scroll: false });
+      }
     },
     [pathname, router],
   );
