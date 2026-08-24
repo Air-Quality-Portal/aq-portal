@@ -74,7 +74,7 @@ If `MONOREPO_PATH` is not set, the script will also try this default:
 
 ## Quick Start
 
-### 1. Run the Theme Setup Script
+### Run the Theme Setup Script
 
 From the root of this project, run:
 
@@ -90,13 +90,7 @@ cd "$AQ_PORTAL_DIR"
 pnpm run theme:air4us:local -- feat/my-branch
 ```
 
-That's it! The script will:
-- Switch the monorepo to the requested branch if needed
-- Build the `@teamimpact/veda-ui-blocks` package from the monorepo branch
-- Symlink the local package into this app's `node_modules`
-- Warn if the layout is not importing `air4us.css`
-
-## What the Script Does
+### What the Script Does
 
 The `scripts/use-local-air4us-theme.sh` script automates the following steps:
 
