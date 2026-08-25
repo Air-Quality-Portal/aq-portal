@@ -74,7 +74,7 @@ If `MONOREPO_PATH` is not set, the script will also try this default:
 
 ## Quick Start
 
-### 1. Run the Theme Setup Script
+### Run the Theme Setup Script
 
 From the root of this project, run:
 
@@ -90,40 +90,38 @@ cd "$AQ_PORTAL_DIR"
 pnpm run theme:air4us:local -- feat/my-branch
 ```
 
-That's it! The script will:
-- Switch the monorepo to the requested branch if needed
-- Build the `@teamimpact/veda-ui-blocks` package from the monorepo branch
-- Link the local package into this app with `pnpm link`
-- Update the theme CSS import to `air4us.css`
-- Add the `Banner` component to match the theme's layout
-
-## What the Script Does
+### What the Script Does
 
 The `scripts/use-local-air4us-theme.sh` script automates the following steps:
 
 1. **Selects branch**: Uses the provided branch argument, `TARGET_BRANCH`, or defaults to `feat/baseline-setup-for-aq`
 2. **Switches branch**: Checks out the target branch locally, fetching from `origin` if needed
 3. **Builds the package**: Runs `pnpm run build` for `@teamimpact/veda-ui-blocks`
-4. **Links locally**: Runs `pnpm link` from `packages/blocks` into this app's `node_modules`
-5. **Updates layout**: Switches theme import from old import to `air4us.css`
-6. **Adds Banner**: Includes the `<Banner />` component for proper layout structure
+4. **Links locally**: Symlinks `packages/blocks` into this app's `node_modules`
+5. **Checks layout**: Warns if `app/layout.tsx` is not importing `air4us.css`
 
-Because this flow uses `pnpm link`, rerunning the setup does not rewrite this app's `package.json` dependency entry for `@teamimpact/veda-ui-blocks`.
+The script deliberately uses a plain symlink rather than `pnpm link`, which would add a
+local `link:` path to `package.json` and `pnpm-lock.yaml` and break CI's
+`pnpm install --frozen-lockfile`. A symlink lives entirely inside the gitignored
+`node_modules` directory, so the tracked manifests stay pinned to the published version.
+A `lefthook` pre-commit hook rejects any `link:` override that slips in.
 
 ## File Structure
 
-After running the setup script, your layout will be:
+The layout looks like this:
 
 ```tsx
-import { Banner, Footer, Header } from "@teamimpact/veda-ui-blocks";
+import { Banner, Footer } from "@teamimpact/veda-ui-blocks";
 import "@teamimpact/veda-ui-blocks/air4us.css";
+
+import { HeaderWithCurrentPath } from "./components/HeaderWithCurrentPath";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="display-flex flex-column minh-viewport">
         <Banner />
-        <Header {...MOCK_HEADER_PROPS} />
+        <HeaderWithCurrentPath />
         <main className="flex-1">{children}</main>
         <Footer {...MOCK_FOOTER_PROPS} />
       </body>
@@ -133,8 +131,11 @@ export default function RootLayout({ children }) {
 ```
 
 The layout uses flexbox with:
-- `Banner` at the top
-- `Header` for navigation
+- `Banner` at the top (the USWDS "official website of the United States government"
+  banner; it serves `us_flag_small.png`, `icon-dot-gov.svg`, and `icon-https.svg` out of
+  `public/img/`)
+- `HeaderWithCurrentPath` for navigation (a client wrapper around `Header` that supplies
+  `currentPath` from `usePathname()` for active-nav highlighting)
 - Flexible main content area
 - `Footer` at the bottom
 
@@ -153,26 +154,6 @@ pnpm run theme:air4us:local -- feat/my-branch
 ```
 
 This will rebuild and relink the latest theme.
-
-## Manual pnpm Link (No Script)
-
-If you want to do this manually, run:
-
-```bash
-MONOREPO_PATH=/Users/smalone/Documents/Projects/tinacms-portal-monorepo
-TARGET_BRANCH=feat/my-branch
-
-git -C "$MONOREPO_PATH" checkout "$TARGET_BRANCH"
-pnpm -C "$MONOREPO_PATH" --filter @teamimpact/veda-ui-blocks run build
-pnpm -C "$AQ_PORTAL_DIR" link "$MONOREPO_PATH/packages/blocks"
-```
-
-To remove the local link and go back to the registry version:
-
-```bash
-pnpm -C "$AQ_PORTAL_DIR" unlink @teamimpact/veda-ui-blocks
-pnpm -C "$AQ_PORTAL_DIR" install
-```
 
 ## Configuration
 
@@ -227,20 +208,22 @@ The header is configured in [`app/site-config/header.tsx`](app/site-config/heade
 ```tsx
 export const MOCK_HEADER_PROPS: HeaderProps = {
   portalDetails: {
-    logo: <Image src="/img/logo-header.png" alt="Disasters.gov" width={148} height={52} />,
+    logo: <></>,
     url: "/",
+    title: "AIR4US",
   },
   navItems: [
+    { label: "Tools Catalog", href: "/tools" },
+    { label: "Data Catalog", href: "/data-gallery" },
+    { label: "Resources", href: "/resources" },
     { label: "About Us", href: "/about" },
-    { label: "Explore By Need", subItems: [...] },
-    { label: "Explore Data", subItems: [...] },
-    { label: "Resources & Learning", subItems: [...] },
   ],
-  currentPath: "/",  // Set dynamically in a wrapper for active nav highlighting
 };
 ```
 
-To make the header responsive to route changes, wrap it in a client component that passes `currentPath` from `usePathname()`.
+`currentPath` is not set here — `app/components/HeaderWithCurrentPath.tsx` is a client
+component that supplies it from `usePathname()` so the active nav item is highlighted on
+route changes.
 
 ## Footer Configuration
 
@@ -259,7 +242,8 @@ Footer props are in [`app/site-config/footer.tsx`](app/site-config/footer.tsx).
 After theme setup:
 
 1. **Customize nav items** — Update nav links in `app/site-config/header.tsx`
-2. **Update logo** — Replace `/public/img/logo-header.png`
+2. **Add a logo** — `portalDetails.logo` in `app/site-config/header.tsx` is currently an
+   empty fragment; drop an asset in `public/img/` and reference it there
 3. **Configure footer** — Edit `app/site-config/footer.tsx`
 4. **Build pages** — Create content pages that use the theme components
 5. **Test responsiveness** — View the site on mobile to verify the theme's responsive behavior

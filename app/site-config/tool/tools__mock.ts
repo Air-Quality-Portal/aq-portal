@@ -30,7 +30,6 @@ const makeMockTool = (index: number): ToolContent => {
 
   return {
     id: `mock-tool-${n}`,
-    contentType: "tool",
     title: `${toTitleCase(titleWords)} Tool ${n}`,
     fullname: toTitleCase(fullnameWords),
     description:
