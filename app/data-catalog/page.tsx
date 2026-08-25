@@ -1,7 +1,8 @@
-import { Card, CardDetailed, Link } from "@teamimpact/veda-ui-blocks";
-// import {Pagination} from "@teamimpact/veda-ui-blocks"
-import Image from "next/image";
+import { Card, CardDetailed } from "@teamimpact/veda-ui-blocks";
 import { DatasetCatalogToolbar, Section } from "@/app/components";
+// import {Pagination} from "@teamimpact/veda-ui-blocks"
+import { AppImage } from "@/app/components/AppImage";
+import { AppLinkStyled } from "@/app/components/AppLink";
 import { DATA_CATALOG_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
 import { getMetadataFieldTag, makePrimaryTag, makeSimpleTag } from "../site-config/content.helpers";
 import { DATASETS } from "../site-config/dataset";
@@ -33,16 +34,16 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
               <CardDetailed
                 className="height-card-md bg-base-lightest"
                 imagePosition="left"
-                image={<Image {...thumbnailImage} fill sizes="194px" />}
+                image={<AppImage {...thumbnailImage} fill sizes="194px" />}
                 tagPrimary={tagPrimary ? makePrimaryTag(tagPrimary) : undefined}
                 title={
-                  <Link
+                  <AppLinkStyled
                     className="font-body-lg text-light"
                     href={`/data-catalog/${id}`}
                     variant="text"
                   >
                     {title}
-                  </Link>
+                  </AppLinkStyled>
                 }
                 description={description}
                 tags={tags.map((tag) => makeSimpleTag(tag))}

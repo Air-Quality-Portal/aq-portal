@@ -1,6 +1,6 @@
 import type { CardDetailedProps, CardProps, CardSimpleProps } from "@teamimpact/veda-ui-blocks";
-import { Link } from "@teamimpact/veda-ui-blocks";
-import Image from "next/image";
+import { AppImage } from "@/app/components/AppImage";
+import { AppLinkStyled } from "@/app/components/AppLink";
 import {
   type CardTextOnlySection,
   CONTENT_TYPES,
@@ -113,7 +113,7 @@ export const makeCardMastHeadProps = ({
   tagPrimary,
   ...rest
 }: CardMastheadPropsArgs): CardProps => ({
-  image: <Image {...mastheadImage} sizes="100vw" fill />,
+  image: <AppImage {...mastheadImage} sizes="100vw" fill />,
   title: title,
   tag: tagPrimary
     ? {
@@ -156,12 +156,17 @@ export const makeCardDetailedImageLeftProps = ({
   return {
     id,
     className: "height-card-md bg-base-lightest",
-    image: <Image {...thumbnailImage} fill sizes="194px" />,
+    image: <AppImage {...thumbnailImage} fill sizes="194px" />,
     imagePosition: "left",
     title: (
-      <Link className="font-body-lg text-light" href={href} isExternal={!!url} variant="text">
+      <AppLinkStyled
+        className="font-body-lg text-light"
+        href={href}
+        isExternal={!!url}
+        variant="text"
+      >
         {title}
-      </Link>
+      </AppLinkStyled>
     ),
     tags: (tags ?? []).map((tag) => makeSimpleTag(tag)),
     tagPrimary: tagPrimary ? { ...makePrimaryTag(tagPrimary) } : undefined,
@@ -194,9 +199,14 @@ export const makeCardDetailedTextOnlyProps = ({
   image: <svg aria-hidden="true" focusable="false" />,
   title: (
     <>
-      <Link className="font-body-lg text-light" href={href} isExternal={isExternal} variant="text">
+      <AppLinkStyled
+        className="font-body-lg text-light"
+        href={href}
+        isExternal={isExternal}
+        variant="text"
+      >
         {title}
-      </Link>
+      </AppLinkStyled>
       {description && (
         <p className="font-body-xs text-base-dark text-light margin-0">{description}</p>
       )}
@@ -226,7 +236,7 @@ export const makeCardSimpleProps = ({
   ...rest
 }: CardSimplePropsArgs): IterableItemWithId<CardSimpleProps> => ({
   id,
-  image: <Image {...thumbnailImage} fill sizes="(max-width: 1400px) 100vw, 1400px" />,
+  image: <AppImage {...thumbnailImage} fill sizes="(max-width: 1400px) 100vw, 1400px" />,
   tag: tag // TODO update function to allow user to choose which tag should be rendered
     ? makeSimpleTag(tag)
     : makeContentTypeTag(contentType),

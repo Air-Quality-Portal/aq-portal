@@ -1,21 +1,7 @@
 import path from "node:path";
 import type { NextConfig } from "next";
 
-/*
- * The app is mounted under a path prefix in production (earth.gov/air4us is
- * served by a CloudFront behaviour in front of this deployment) while branch
- * previews on *.amplifyapp.com serve at the root, so the prefix has to vary
- * per deployment rather than being hardcoded.
- *
- * Next inlines this at build time; there is no runtime switch. The variable
- * has to be set before `next build`, not in the hosting runtime.
- *
- * Accepts "air4us", "/air4us" or "/air4us/" and normalises to "/air4us".
- * Unset or empty serves at the root.
- */
-const rawBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-const trimmedBasePath = rawBasePath.replace(/^\/+|\/+$/g, "");
-const basePath = trimmedBasePath === "" ? "" : `/${trimmedBasePath}`;
+import { BASE_PATH } from "./app/site-config/base-path.helpers";
 
 /*
  * The Turbopack root must include both this project and the locally linked
@@ -27,7 +13,11 @@ const basePath = trimmedBasePath === "" ? "" : `/${trimmedBasePath}`;
  * https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory
  */
 const nextConfig: NextConfig = {
-  basePath,
+  /*
+   * `typedRoutes` is off: it types next/link's href as `Route`, but the blocks
+   * `linksAs` slot requires a component whose href accepts a plain `string`.
+   */
+  ...(BASE_PATH ? { basePath: BASE_PATH } : {}),
   transpilePackages: ["@teamimpact/veda-ui-blocks"],
   env: {
     /*
@@ -45,7 +35,6 @@ const nextConfig: NextConfig = {
     // Allowlisted remote hosts for next/image.
     remotePatterns: [{ protocol: "https", hostname: "**" }],
   },
-  typedRoutes: true,
   webpack: (config) => {
     config.resolve.symlinks = false;
     return config;

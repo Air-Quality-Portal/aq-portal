@@ -1,6 +1,6 @@
 import { Card, CardDetailed, Carousel } from "@teamimpact/veda-ui-blocks";
-import Image from "next/image";
 import { Section, SectionIntro, ToolCatalogToolbar } from "@/app/components";
+import { AppImage } from "@/app/components/AppImage";
 import { makePrimaryTag } from "@/app/site-config/content.helpers";
 import { AIR4US_TOOL_INTRO, PARTNER_TOOLS_INTRO, TOOLS } from "@/app/site-config/tool";
 
@@ -26,7 +26,7 @@ export default async function ToolsPage() {
             maxVisibleItems={1}
             items={featuredTools.map((tool) => ({
               image: (
-                <Image
+                <AppImage
                   {...tool.thumbnailImage}
                   fill
                   sizes="(max-width: 880px) 100vw, 880px"
@@ -51,7 +51,7 @@ export default async function ToolsPage() {
                 className="height-full border-1px border-base-lighter"
                 imagePosition="top"
                 image={
-                  <Image
+                  <AppImage
                     {...tool.thumbnailImage}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

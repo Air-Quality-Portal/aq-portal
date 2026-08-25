@@ -1,3 +1,6 @@
+export { AppImage } from "./AppImage";
+export { AppLink, AppLinkStyled } from "./AppLink";
+export { AppVideo } from "./AppVideo";
 export { BackToCatalogLink } from "./BackToCatalogLink";
 export * from "./blocks";
 export { ContentBlockRenderer } from "./ContentBlockRenderer";
