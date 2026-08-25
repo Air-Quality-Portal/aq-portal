@@ -23,6 +23,7 @@ export const ToolCatalogToolbar = ({
   const router = useRouter();
   const pathname = usePathname();
   const [catalogSearchValue, setCatalogSearchValue] = useState(query);
+  const toolbarRef = useRef<HTMLDivElement>(null);
 
   // The query we last wrote ourselves, so its echo can be told apart from a
   // genuinely external change (back/forward, the clear link).
@@ -64,8 +65,30 @@ export const ToolCatalogToolbar = ({
     return () => clearTimeout(timeout);
   }, [catalogSearchValue, query, commit]);
 
+  // Landing on a shared link with `?q=` filters the grid far below the fold, so
+  // the page looks unchanged. Bring the results into view once, on arrival only:
+  // scrolling while someone types would yank the page out from under them.
+  const hasAutoScrolled = useRef(false);
+  useEffect(() => {
+    if (hasAutoScrolled.current) return;
+    hasAutoScrolled.current = true;
+    if (!query) return;
+
+    // Aim at the whole section so its heading leads the results, rather than
+    // dropping the reader onto a bare grid.
+    const target = toolbarRef.current?.closest("section") ?? toolbarRef.current;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    target?.scrollIntoView({
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+      block: "start",
+    });
+  }, [query]);
+
   return (
-    <div className="display-flex flex-justify flex-align-center flex-wrap margin-bottom-3">
+    <div
+      ref={toolbarRef}
+      className="display-flex flex-justify flex-align-center flex-wrap margin-bottom-3"
+    >
       {/* TextInput has no prefix slot and its wrapper cannot nest inside a
           `usa-input-group`, so the icon is laid over the padded field. */}
       <div className="position-relative maxw-card-lg">
