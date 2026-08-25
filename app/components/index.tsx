@@ -18,3 +18,4 @@ export { SectionHeading } from "./SectionHeading";
 export { SectionIntro, type SectionIntroProps } from "./SectionIntro";
 export { SectionLinks } from "./SectionLinks";
 export { ToolCatalogToolbar } from "./ToolCatalogToolbar";
+export { VisualizationToolIntro, type VisualizationToolIntroProps } from "./VisualizationToolIntro";
