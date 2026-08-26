@@ -16,9 +16,10 @@ type FilterObject = {
 export const DatasetAccordionFilters = () => {
   const filters: FilterObject[] = [dataTypesFilter, parametersFilter, useCasesFilter];
 
-  const accordionItems = filters.map((filter) => ({
+  const accordionItems = filters.map((filter, index) => ({
     id: filter.label.toLowerCase().replace(/\s+/g, "-"),
     title: filter.label,
+    expanded: index === 0 /* Opens the first accordion item by default */,
     content: (
       <div>
         {filter.values.map((item) => (

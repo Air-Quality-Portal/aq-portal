@@ -37,7 +37,6 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
                 tagPrimary={tagPrimary ? makePrimaryTag(tagPrimary) : undefined}
                 title={
                   <Link
-                    key={id}
                     className="font-body-lg text-light"
                     href={`${CONTENT_TYPES.dataset.route}/${id}`}
                     variant="text"
