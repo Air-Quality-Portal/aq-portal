@@ -12,29 +12,6 @@ type DatasetCatalogToolbarProps = {
 export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const DrawerFooter = () => {
-    return (
-      <div className="display-flex">
-        <Link
-          className="usa-button display-flex flex-justify-center flex-1 margin-right-2"
-          as="button"
-          variant="button"
-          onClick={() => setIsOpen(false)}
-        >
-          Apply Filters
-        </Link>
-        <Link
-          className="usa-button"
-          as="button"
-          variant="button-outline"
-          onClick={() => setIsOpen(false)}
-        >
-          Clear
-        </Link>
-      </div>
-    );
-  };
-
   return (
     <>
       <div className="display-flex flex-justify flex-align-center flex-wrap margin-y-6 border border-base-lighter radius-lg bg-white padding-y-105 padding-x-205">
@@ -57,7 +34,26 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
         title="Search and Filter"
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
-        footer={<DrawerFooter />}
+        footer={
+          <div className="display-flex">
+            <Link
+              className="usa-button display-flex flex-justify-center flex-1 margin-right-2"
+              as="button"
+              variant="button"
+              onClick={() => setIsOpen(false)}
+            >
+              Apply Filters
+            </Link>
+            <Link
+              className="usa-button"
+              as="button"
+              variant="button-outline"
+              onClick={() => setIsOpen(false)}
+            >
+              Clear
+            </Link>
+          </div>
+        }
       >
         <SearchInput
           name="datasetSearch"
