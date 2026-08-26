@@ -66,19 +66,8 @@ mkdir -p "$(dirname "$LINK_TARGET")"
 rm -rf "$LINK_TARGET"
 ln -s "$PACKAGE_DIR" "$LINK_TARGET"
 
-if grep -q '"@teamimpact/veda-ui-blocks/air-quality.css"' "$LAYOUT_FILE"; then
-  sed -i '' 's|"@teamimpact/veda-ui-blocks/air-quality.css"|"@teamimpact/veda-ui-blocks/air4us.css"|g' "$LAYOUT_FILE"
-  echo "Updated layout theme import to air4us.css"
-fi
-
-if grep -q '"@teamimpact/veda-ui-blocks/disasters.css"' "$LAYOUT_FILE"; then
-  sed -i '' 's|"@teamimpact/veda-ui-blocks/disasters.css"|"@teamimpact/veda-ui-blocks/air4us.css"|g' "$LAYOUT_FILE"
-  echo "Updated layout theme import to air4us.css"
-fi
-
-if grep -q '"@teamimpact/veda-ui-blocks/default.css"' "$LAYOUT_FILE"; then
-  sed -i '' 's|"@teamimpact/veda-ui-blocks/default.css"|"@teamimpact/veda-ui-blocks/air4us.css"|g' "$LAYOUT_FILE"
-  echo "Updated layout theme import to air4us.css"
+if ! grep -q '"@teamimpact/veda-ui-blocks/air4us.css"' "$LAYOUT_FILE"; then
+  echo "Warning: $LAYOUT_FILE does not import air4us.css. Add it before running the app."
 fi
 
 echo "Done. Local package linked and Air4US theme import is set."
