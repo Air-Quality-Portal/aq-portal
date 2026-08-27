@@ -1,6 +1,6 @@
 "use client";
 
-import { Drawer, Link, SearchInput, SvgSearch, Tag } from "@teamimpact/veda-ui-blocks";
+import { Drawer, Link, SvgSearch, Tag } from "@teamimpact/veda-ui-blocks";
 import { useState } from "react";
 import {
   dataTypesFilter,
@@ -112,11 +112,6 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
           </div>
         }
       >
-        <SearchInput
-          name="datasetSearch"
-          label="Search"
-          inputProps={{ placeholder: "Search datasets..." }}
-        />
         <div className="padding-y-5">
           <DatasetAccordionFilters
             selectedFilters={selectedFilters}
