@@ -21,7 +21,7 @@ export const DatasetAccordionFilters = () => {
     title: filter.label,
     expanded: index === 0 /* Opens the first accordion item by default */,
     content: (
-      <div>
+      <div className="aq-filter-content">
         {filter.values.map((item) => (
           <div key={item.value} className="aq-filter-item">
             <Checkbox name={item.value} label={item.label} value={item.value} />

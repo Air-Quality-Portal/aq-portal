@@ -1,16 +1,31 @@
-.aq-filter-item > div {
-  display: block;
-  align-items: center;
-  padding-bottom: 0.75rem;
-  margin: 0.75rem 0;
+.usa-accordion__content:has(.aq-filter-content) {
+  padding: 0 !important;
+}
 
-  transition: background-color 0.2s ease;
+.aq-filter-content {
+  border: 0.25rem solid var(--color-base-lightest);
+}
 
-  &:has(input[type="checkbox"]:checked) {
-    background-color: var(--color-base-lightest);
-  }
+.aq-filter-item {
+  margin: 1rem 0.5rem;
+  cursor: pointer;
 
-  &:hover {
-    background-color: var(--color-base-lightest);
+  .usa-checkbox {
+    display: flex;
+    align-items: center;
+    border: 0.1rem solid var(--color-base-lightest);
+    padding-left: 1rem;
+    padding-bottom: 0.75rem;
+    /*margin: 0.75rem 0;*/
+
+    transition: background-color 0.2s ease;
+
+    &:has(input[type="checkbox"]:checked) {
+      background-color: var(--color-base-lightest);
+    }
+
+    &:hover {
+      background-color: var(--color-base-lightest);
+    }
   }
 }
