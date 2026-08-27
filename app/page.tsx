@@ -18,8 +18,8 @@ export default function Home() {
   const featuredTools = TOOLS.slice(0, FEATURED_COUNT); //These are featured in the top carousel
   return (
     <>
-      <Section className="margin-y-0">
-        <div className="display-flex desktop:minh-card-lg ">
+      <Section>
+        <div className="display-flex desktop:minh-card-lg">
           <Card {...MOCK_CARD_MASTHEAD} />
         </div>
       </Section>
