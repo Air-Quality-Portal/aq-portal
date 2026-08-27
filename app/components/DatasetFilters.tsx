@@ -15,7 +15,7 @@ type FilterObject = {
 };
 
 type DatasetAccordionFiltersProps = {
-  selectedFilters: Set<string>;
+  selectedFilters: string[];
   onFilterChangeAction: (value: string) => void;
 };
 
@@ -37,8 +37,10 @@ export const DatasetAccordionFilters = ({
               name={item.value}
               label={item.label}
               value={item.value}
-              inputProps={{ checked: selectedFilters.has(item.value) }}
-              onChange={() => onFilterChange(item.value)}
+              inputProps={{
+                checked: selectedFilters.includes(item.value),
+                onChange: () => onFilterChange(item.value),
+              }}
             />
           </div>
         ))}
