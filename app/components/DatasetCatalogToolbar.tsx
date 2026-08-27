@@ -48,37 +48,44 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
 
   return (
     <>
-      <div className="display-flex flex-justify flex-align-center flex-wrap margin-y-6 border border-base-lighter radius-lg bg-white padding-y-105 padding-x-205">
-        <p className="display-flex flex-align-center margin-0 text-bold width-full">
-          Datasets
-          <span className="margin-left-1 padding-x-1 padding-y-1 bg-primary text-white radius-md font-sans-2xs">
-            {count}
+      <div className="display-flex flex-justify flex-align-center margin-y-6 border border-base-lighter radius-lg padding-y-105 padding-x-205">
+        <div className="display-flex flex-align-center flex-1">
+          <span className="text-bold">
+            Datasets
+            <span className="margin-left-1 margin-right-2 padding-x-1 padding-y-1 bg-primary text-white radius-md font-sans-2xs">
+              {count}
+            </span>
           </span>
-          <span className="display-block flex-justify margin-left-2">
+          <span className="display-flex flex-wrap width-full">
             {Array.from(appliedFilters).map((filterValue) => (
               <Tag
                 key={filterValue}
                 variant="outline"
                 color="base"
-                className="padding-x-1 margin-x-1"
+                className="margin-right-1 margin-y-1"
                 onClose={() => removeTagFilter(filterValue)}
               >
                 {filterValueToLabel[filterValue]}
               </Tag>
             ))}
+            {appliedFilters.length > 0 && (
+              <Link className="margin-left-2" onClick={clearFilters}>
+                Clear all
+              </Link>
+            )}
           </span>
-          <Link
-            className="usa-button margin-left-auto"
-            as="button"
-            variant="button"
-            onClick={() => {
-              setSelectedFilters([...appliedFilters]);
-              setIsOpen(true);
-            }}
-          >
-            Search and Filter <SvgSearch className="usa-icon" />
-          </Link>
-        </p>
+        </div>
+        <Link
+          className="usa-button"
+          as="button"
+          variant="button"
+          onClick={() => {
+            setSelectedFilters([...appliedFilters]);
+            setIsOpen(true);
+          }}
+        >
+          Search and Filter <SvgSearch className="usa-icon" />
+        </Link>
       </div>
       <Drawer
         title="Search and Filter"
