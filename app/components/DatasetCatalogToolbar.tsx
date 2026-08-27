@@ -50,7 +50,7 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
     <>
       <div className="display-flex flex-justify flex-align-center margin-y-6 border border-base-lighter radius-lg padding-y-105 padding-x-205">
         <div className="display-flex flex-align-center flex-1">
-          <span className="text-bold">
+          <span>
             Datasets
             <span className="margin-left-1 margin-right-2 padding-x-1 padding-y-1 bg-primary text-white radius-md font-sans-2xs">
               {count}
