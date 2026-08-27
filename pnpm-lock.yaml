@@ -12,8 +12,8 @@ importers:
   .:
     dependencies:
       '@teamimpact/veda-ui-blocks':
-        specifier: 0.1.0-beta.16
-        version: 0.1.0-beta.16(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(stac-ts@1.0.5)
+        specifier: 0.1.0-beta.17
+        version: 0.1.0-beta.17(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(stac-ts@1.0.5)
       next:
         specifier: 16.2.6
         version: 16.2.6(@opentelemetry/api@1.9.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.99.0)
@@ -473,8 +473,8 @@ packages:
     peerDependencies:
       react: ^18 || ^19
 
-  '@teamimpact/veda-ui-blocks@0.1.0-beta.16':
-    resolution: {integrity: sha512-mbbk7yoG81yt+anz8Yn25nlOjZuKX/JqSgFKaPwE84h+yd8KyV7FgaJR2zED30EBW7s8sQ1b965IBS3CRqdiQg==}
+  '@teamimpact/veda-ui-blocks@0.1.0-beta.17':
+    resolution: {integrity: sha512-+hEVFSn5w2gwnSrL8Ahs4ljLbfQdBeoLbUC6w/D9H8nckVcE2QdLIFjMcy5ZewwuYd//fLQa74hRyCXnqTS9lg==}
     peerDependencies:
       react: ^19.2.3
       react-dom: ^19.2.3
@@ -1229,7 +1229,7 @@ snapshots:
       '@tanstack/query-core': 5.100.9
       react: 19.2.3
 
-  '@teamimpact/veda-ui-blocks@0.1.0-beta.16(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(stac-ts@1.0.5)':
+  '@teamimpact/veda-ui-blocks@0.1.0-beta.17(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(stac-ts@1.0.5)':
     dependencies:
       '@developmentseed/stac-react': 1.0.0-alpha.3(@tanstack/react-query@5.100.9(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(stac-ts@1.0.5)
       '@tanstack/react-query': 5.100.9(react@19.2.3)

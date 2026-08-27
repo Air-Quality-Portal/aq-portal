@@ -10,8 +10,10 @@ export function SectionCardTextOnly({
   /** Cards per row on tablet and up. @default 1 */
   maxColumns?: 1 | 2;
 }) {
-  const cards = section.items.map(({ callToAction, ...item }) => ({
+  const cards = section.items.map(({ id, callToAction, ...item }) => ({
+    key: id,
     ...makeCardDetailedTextOnlyProps({
+      id,
       ...item,
       className: "height-full border-1px border-base-lighter",
     }),
