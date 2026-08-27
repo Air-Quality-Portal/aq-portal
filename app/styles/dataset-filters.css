@@ -8,7 +8,7 @@
 
 .aq-filter-item {
   margin: 1rem 0.5rem;
-  cursor: pointer;
+  /*cursor: pointer;*/
 
   .usa-checkbox {
     display: flex;

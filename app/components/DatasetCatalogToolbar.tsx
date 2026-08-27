@@ -10,7 +10,22 @@ type DatasetCatalogToolbarProps = {
 };
 
 export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedFilters, setSelectedFilters] = useState<Set<string>>(new Set());
+
+  const toggleFilter = (value: string) => {
+    const updated = new Set(selectedFilters);
+    if (updated.has(value)) {
+      updated.delete(value);
+    } else {
+      updated.add(value);
+    }
+    setSelectedFilters(updated);
+  };
+
+  const clearFilters = () => {
+    setSelectedFilters(new Set());
+  };
 
   return (
     <>
@@ -48,7 +63,7 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
               className="usa-button"
               as="button"
               variant="button-outline"
-              onClick={() => setIsOpen(false)}
+              onClick={clearFilters}
             >
               Clear
             </Link>
@@ -61,7 +76,10 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
           inputProps={{ placeholder: "Search datasets..." }}
         />
         <div className="padding-y-5">
-          <DatasetAccordionFilters />
+          <DatasetAccordionFilters
+            selectedFilters={selectedFilters}
+            onFilterChangeAction={toggleFilter}
+          />
         </div>
       </Drawer>
     </>
