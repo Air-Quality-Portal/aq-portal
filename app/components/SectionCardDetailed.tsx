@@ -31,8 +31,12 @@ export const SectionCardDetailed = ({
       {description && <p className="text-base">{description}</p>}
       <div className={`grid-row grid-gap-4 margin-bottom-neg-${rowGap}`}>
         {cards.map((props) => (
-          <div key={props.id} className={`${gridColumnClass} margin-bottom-${rowGap}`}>
-            <CardDetailed {...props} className={props.className ?? "height-card-md"} />
+          <div key={`div-${props.id}`} className={`${gridColumnClass} margin-bottom-${rowGap}`}>
+            <CardDetailed
+              {...props}
+              id={`card-${props.id}`}
+              className={props.className ?? "height-card-md"}
+            />
           </div>
         ))}
       </div>
