@@ -62,7 +62,7 @@ const buildDateFormatter = new Intl.DateTimeFormat("en-US", {
  * Formatting in UTC keeps the server-rendered and hydrated markup identical.
  * Falls back to the current date if the value is missing or unparseable.
  */
-function formatBuildDate(): string {
+export function formatBuildDate(): string {
   const buildTime = process.env.NEXT_PUBLIC_BUILD_TIME;
   const parsed = buildTime ? new Date(buildTime) : null;
   const date = parsed && !Number.isNaN(parsed.getTime()) ? parsed : new Date();
