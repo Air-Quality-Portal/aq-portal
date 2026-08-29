@@ -1,6 +1,11 @@
-import { Card, Carousel } from "@teamimpact/veda-ui-blocks";
-import Image from "next/image";
-import { Section, SectionIntro, ToolCatalog, VisualizationToolIntro } from "@/app/components";
+import { Card } from "@teamimpact/veda-ui-blocks";
+import {
+  Section,
+  SectionIntro,
+  ToolCatalog,
+  ToolHighlights,
+  VisualizationToolIntro,
+} from "@/app/components";
 import { FEATURED_COUNT, TOOLS } from "@/app/site-config/tool";
 import {
   HOMEPAGE_EXPLORE_INTRO,
@@ -20,22 +25,7 @@ export default function Home() {
       </Section>
       {featuredTools.length > 0 && (
         <Section className="padding-top-7">
-          <SectionIntro {...HOMEPAGE_VISUALIZE_INTRO} />
-
-          <Carousel
-            className="height-card-lg"
-            maxVisibleItems={1}
-            items={featuredTools.map((tool) => ({
-              image: (
-                <Image
-                  {...tool.thumbnailImage}
-                  fill
-                  sizes="(max-width: 880px) 100vw, 880px"
-                  style={{ objectFit: "cover" }}
-                />
-              ),
-            }))}
-          />
+          <ToolHighlights intro={HOMEPAGE_VISUALIZE_INTRO} tools={featuredTools} />
         </Section>
       )}
       <Section className="margin-top-0">

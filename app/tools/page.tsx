@@ -1,6 +1,6 @@
 import { Card } from "@teamimpact/veda-ui-blocks";
 import Link from "next/link";
-import { Section, SectionIntro, ToolCatalog, ToolCatalogToolbar } from "@/app/components";
+import { Section, SectionIntro, ToolCatalog, ToolCatalogToolbar, ToolHighlights } from "@/app/components";
 import {
   AIR4US_TOOL_INTRO,
   FEATURED_COUNT,
@@ -25,7 +25,7 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
       </Section>
       {featuredTools.length > 0 && (
         <Section>
-          <SectionIntro {...AIR4US_TOOL_INTRO} />
+          <ToolHighlights intro={AIR4US_TOOL_INTRO} tools={featuredTools} />
         </Section>
       )}
 
