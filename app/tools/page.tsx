@@ -1,16 +1,23 @@
 import { Card, CardDetailed, Carousel } from "@teamimpact/veda-ui-blocks";
 import Image from "next/image";
+import Link from "next/link";
 import { Section, SectionIntro, ToolCatalogToolbar } from "@/app/components";
 import { makePrimaryTag } from "@/app/site-config/content.helpers";
-import { AIR4US_TOOL_INTRO, PARTNER_TOOLS_INTRO, TOOLS } from "@/app/site-config/tool";
+import { AIR4US_TOOL_INTRO, PARTNER_TOOLS_INTRO, searchTools, TOOLS } from "@/app/site-config/tool";
 
 // Tools shown as full-width slides above the grid; the rest fill the paginated grid.
 const FEATURED_COUNT = 3;
 
 const hrefLabel = (href: string) => href.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
-export default async function ToolsPage() {
+export default async function ToolsPage(props: PageProps<"/tools">) {
+  const { q = "" } = await props.searchParams;
+  const query = typeof q === "string" ? q : "";
+
   const featuredTools = TOOLS.slice(0, FEATURED_COUNT); //These are featured in the top carousel
+  // The featured tools already have the carousel above; the grid searches the rest.
+  const catalogTools = TOOLS.slice(FEATURED_COUNT);
+  const results = searchTools(catalogTools, query);
 
   return (
     <>
@@ -40,9 +47,19 @@ export default async function ToolsPage() {
 
       <Section>
         <SectionIntro {...PARTNER_TOOLS_INTRO} />
-        <ToolCatalogToolbar count={TOOLS.length - FEATURED_COUNT} />
+        <ToolCatalogToolbar count={results.length} query={query} />
+        {results.length === 0 && (
+          <div className="padding-y-6 text-center">
+            <p className="margin-0 text-bold">No tools match “{query}”.</p>
+            <p className="margin-top-1 margin-bottom-0">
+              <Link href="/tools" className="usa-link">
+                Clear search
+              </Link>
+            </p>
+          </div>
+        )}
         <div className="grid-row grid-gap">
-          {TOOLS.map((tool) => (
+          {results.map((tool) => (
             <div
               key={tool.id}
               className="grid-col-12 tablet:grid-col-6 desktop:grid-col-4 margin-y-1 desktop:margin-y-2"
