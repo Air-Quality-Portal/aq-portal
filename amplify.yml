@@ -4,10 +4,8 @@ frontend:
     preBuild:
       commands:
         - node --version
-        - nvm current
         - nvm use 22
         - corepack enable
-        - pnpm --version
         - pnpm config set store-dir .pnpm-store
         - pnpm install --frozen-lockfile
     build:
