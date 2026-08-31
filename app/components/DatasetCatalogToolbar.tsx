@@ -1,6 +1,6 @@
 "use client";
 
-import { Drawer, Link, SvgSearch, Tag } from "@teamimpact/veda-ui-blocks";
+import { Drawer, Link, SvgFilterList, Tag } from "@teamimpact/veda-ui-blocks";
 import { useState } from "react";
 import {
   dataTypesFilter,
@@ -84,7 +84,7 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
             setIsOpen(true);
           }}
         >
-          Search and Filter <SvgSearch className="usa-icon" />
+          Filter <SvgFilterList className="usa-icon" />
         </Link>
       </div>
       <Drawer
