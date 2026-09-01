@@ -14,17 +14,17 @@ export const VisualizationToolIntro = ({
   description,
   callToAction,
 }: VisualizationToolIntroProps) => (
-  <div className="display-flex flex-align-start flex-justify-between">
+  <div className="display-flex flex-align-start flex-justify">
     <div>
-      <h1 className="text-primary font-sans-lg text-normal line-height-1 margin-0">{heading}</h1>
+      <h3 className="text-primary font-body-lg text-normal line-height-body-1 margin-0">
+        {heading}
+      </h3>
       <p className="font-sans-xs line-height-sans-5 text-normal text-base margin-top-1 margin-bottom-0">
         {description}
       </p>
     </div>
-    <div className="flex-align-end margin-left-auto">
-      <Link variant="button" isExternal href={callToAction.href}>
-        {callToAction.label}
-      </Link>
-    </div>
+    <Link variant="button" isExternal href={callToAction.href}>
+      {callToAction.label}
+    </Link>
   </div>
 );
