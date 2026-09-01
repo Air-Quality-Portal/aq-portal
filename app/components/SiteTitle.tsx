@@ -1,22 +1,16 @@
 type SiteTitleProps = {
-  color1?: string;
-  color2?: string;
+  /**
+   * Color of the "4US" half. Varies by surface: dark on the light header,
+   * near-white on the dark footer.
+   */
+  usColor: string;
 };
 
-export const SiteTitle = ({
-  color1 = "var(--color-primary-theme-color-primary-dark, #1A4480)",
-  color2 = "var(--color-accent-cool-theme-color-accent-cool, #00BDE3)",
-}: SiteTitleProps) => {
+export function SiteTitle({ usColor }: SiteTitleProps) {
   return (
-    <a href="/" className="site-title">
-      <span className="site-title__text">
-        <span className="site-title__air" style={{ color: color1 }}>
-          AIR
-        </span>
-        <span className="site-title__us" style={{ color: color2 }}>
-          4US
-        </span>
-      </span>
-    </a>
+    <span className="site-title">
+      AIR
+      <span style={{ color: usColor }}>4US</span>
+    </span>
   );
-};
+}

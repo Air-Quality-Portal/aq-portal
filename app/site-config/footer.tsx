@@ -79,12 +79,7 @@ const portalDetails: FooterProps["portalDetails"] = {
       email: "k.e.knowland@nasa.gov",
     },
   ],
-  title: (
-    <SiteTitle
-      color1="var(--color-accent-cool-theme-color-accent-cool, #00BDE3)"
-      color2="var(--color-primary-theme-color-primary-lighest, #EFF6FB)"
-    />
-  ),
+  title: <SiteTitle usColor="var(--color-primary-lightest)" />,
   tagline: "Empowering US air quality decisions through Earth observations.",
   updatedDate: formatBuildDate(),
 };
