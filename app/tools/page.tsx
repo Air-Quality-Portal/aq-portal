@@ -9,18 +9,18 @@ import {
 } from "@/app/components";
 import {
   AIR4US_TOOL_INTRO,
-  CATALOG_TOOLS,
   FEATURED_TOOLS,
   PARTNER_TOOLS_INTRO,
   searchTools,
+  TOOLS,
 } from "@/app/site-config/tool";
 
 export default async function ToolsPage(props: PageProps<"/tools">) {
   const { q = "" } = await props.searchParams;
   const query = typeof q === "string" ? q : "";
 
-  // The featured tools have the carousel above; the grid searches the rest.
-  const results = searchTools(CATALOG_TOOLS, query);
+  // Featured tools have the carousel above; the grid lists the whole catalog.
+  const results = searchTools(TOOLS, query);
 
   return (
     <>
