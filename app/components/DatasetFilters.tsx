@@ -1,6 +1,7 @@
 "use client";
 
 import { Accordion, Checkbox } from "@teamimpact/veda-ui-blocks";
+import { useEffect, useState } from "react";
 import { DATASET_FILTERS } from "@/app/site-config/dataset/dataset-filters";
 
 import "../styles/dataset-filters.css";
@@ -14,10 +15,23 @@ export const DatasetAccordionFilters = ({
   selectedFilters,
   onFilterChangeAction: onFilterChange,
 }: DatasetAccordionFiltersProps) => {
-  const accordionItems = DATASET_FILTERS.map((filter, index) => ({
+  const [expandedSections, setExpandedSections] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (selectedFilters.length === 0) {
+      setExpandedSections([DATASET_FILTERS[0].id]);
+    } else {
+      const expanded = DATASET_FILTERS.filter((filter) =>
+        filter.options.some((option) => selectedFilters.includes(option.value)),
+      ).map((f) => f.id);
+      setExpandedSections(expanded);
+    }
+  }, [selectedFilters]);
+
+  const accordionItems = DATASET_FILTERS.map((filter) => ({
     id: filter.label.toLowerCase().replace(/\s+/g, "-"),
     title: filter.label,
-    expanded: index === 0 /* Opens the first accordion item by default */,
+    expanded: expandedSections.includes(filter.id),
     content: (
       <div className="aq-filter-content">
         {filter.options.map((item) => (
@@ -37,5 +51,5 @@ export const DatasetAccordionFilters = ({
     ),
   }));
 
-  return <Accordion titleAs="h5" items={accordionItems} />;
+  return <Accordion titleAs="h5" items={accordionItems} data-allow-multiple />;
 };
