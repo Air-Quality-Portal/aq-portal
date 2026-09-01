@@ -1,7 +1,7 @@
 "use client";
 
 import { Accordion, Checkbox } from "@teamimpact/veda-ui-blocks";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DATASET_FILTERS } from "@/app/site-config/dataset/dataset-filters";
 
 import "../styles/dataset-filters.css";
@@ -16,15 +16,19 @@ export const DatasetAccordionFilters = ({
   onFilterChangeAction: onFilterChange,
 }: DatasetAccordionFiltersProps) => {
   const [expandedSections, setExpandedSections] = useState<string[]>([]);
+  const isInitialized = useRef(false);
 
   useEffect(() => {
-    if (selectedFilters.length === 0) {
-      setExpandedSections([DATASET_FILTERS[0].id]);
-    } else {
-      const expanded = DATASET_FILTERS.filter((filter) =>
-        filter.options.some((option) => selectedFilters.includes(option.value)),
-      ).map((f) => f.id);
-      setExpandedSections(expanded);
+    if (!isInitialized.current) {
+      if (selectedFilters.length === 0) {
+        setExpandedSections([DATASET_FILTERS[0].id]);
+      } else {
+        const expanded = DATASET_FILTERS.filter((filter) =>
+          filter.options.some((option) => selectedFilters.includes(option.value)),
+        ).map((f) => f.id);
+        setExpandedSections(expanded);
+      }
+      isInitialized.current = true;
     }
   }, [selectedFilters]);
 
