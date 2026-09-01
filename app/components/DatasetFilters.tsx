@@ -1,18 +1,9 @@
 "use client";
 
 import { Accordion, Checkbox } from "@teamimpact/veda-ui-blocks";
-import {
-  dataTypesFilter,
-  parametersFilter,
-  useCasesFilter,
-} from "../site-config/dataset/dataset-filters";
+import { DATASET_FILTERS } from "@/app/site-config/dataset/dataset-filters";
 
 import "../styles/dataset-filters.css";
-
-type FilterObject = {
-  label: string;
-  values: Array<{ label: string; value: string }>;
-};
 
 type DatasetAccordionFiltersProps = {
   selectedFilters: string[];
@@ -23,15 +14,13 @@ export const DatasetAccordionFilters = ({
   selectedFilters,
   onFilterChangeAction: onFilterChange,
 }: DatasetAccordionFiltersProps) => {
-  const filters: FilterObject[] = [dataTypesFilter, parametersFilter, useCasesFilter];
-
-  const accordionItems = filters.map((filter, index) => ({
+  const accordionItems = DATASET_FILTERS.map((filter, index) => ({
     id: filter.label.toLowerCase().replace(/\s+/g, "-"),
     title: filter.label,
     expanded: index === 0 /* Opens the first accordion item by default */,
     content: (
       <div className="aq-filter-content">
-        {filter.values.map((item) => (
+        {filter.options.map((item) => (
           <div key={item.value} className="aq-filter-item">
             <Checkbox
               name={item.value}

@@ -1,5 +1,5 @@
 .usa-accordion__content:has(.aq-filter-content) {
-  padding: 0 !important;
+  padding: 0;
 }
 
 .aq-filter-content {

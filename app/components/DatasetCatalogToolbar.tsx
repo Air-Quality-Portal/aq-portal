@@ -2,12 +2,8 @@
 
 import { Drawer, Link, SvgFilterList, Tag } from "@teamimpact/veda-ui-blocks";
 import { useState } from "react";
-import {
-  dataTypesFilter,
-  parametersFilter,
-  useCasesFilter,
-} from "@/app/site-config/dataset/dataset-filters";
-import { DatasetAccordionFilters } from "./DatasetFilters";
+import { DatasetAccordionFilters } from "@/app/components/DatasetFilters";
+import { DATASET_FILTERS } from "@/app/site-config/dataset/dataset-filters";
 
 type DatasetCatalogToolbarProps = {
   /** Total number of datasets in the catalog (shown as a count badge). */
@@ -20,8 +16,9 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
   const [appliedFilters, setAppliedFilters] = useState<string[]>([]);
 
   const filterValueToLabel: Record<string, string> = {};
-  [dataTypesFilter, parametersFilter, useCasesFilter].forEach((filter) => {
-    filter.values.forEach((item) => {
+
+  DATASET_FILTERS.forEach((filter) => {
+    filter.options.forEach((item) => {
       filterValueToLabel[item.value] = item.label;
     });
   });
@@ -69,12 +66,7 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
               </Tag>
             ))}
             {appliedFilters.length > 0 && (
-              <Link
-                className="margin-left-2"
-                as="button"
-                variant="button-outline"
-                onClick={clearFilters}
-              >
+              <Link className="margin-left-2" onClick={clearFilters}>
                 Clear all
               </Link>
             )}
