@@ -6,16 +6,13 @@ import {
   ToolHighlights,
   VisualizationToolIntro,
 } from "@/app/components";
-import { CATALOG_TOOLS, FEATURED_TOOLS } from "@/app/site-config/tool";
+import { FEATURED_TOOLS } from "@/app/site-config/tool";
 import {
   HOMEPAGE_EXPLORE_INTRO,
   HOMEPAGE_VISUALIZE_INTRO,
   VISUALIZATION_TOOL_INTRO,
 } from "./site-config/home/home_page";
 import { MOCK_CARD_MASTHEAD } from "./site-config/home/home-card-masthead";
-
-/** How many catalog tools the homepage previews before "View all tools". */
-const HOMEPAGE_CATALOG_COUNT = 4;
 
 export default function Home() {
   return (
@@ -36,7 +33,7 @@ export default function Home() {
       <Section>
         <SectionIntro {...HOMEPAGE_EXPLORE_INTRO} />
 
-        <ToolCatalog tools={CATALOG_TOOLS.slice(0, HOMEPAGE_CATALOG_COUNT)} layout="feature" />
+        <ToolCatalog tools={FEATURED_TOOLS} layout="feature" />
       </Section>
     </>
   );
