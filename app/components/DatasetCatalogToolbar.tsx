@@ -5,26 +5,24 @@ import { useState } from "react";
 import { DatasetAccordionFilters } from "@/app/components/DatasetFilters";
 import { DATASET_FILTERS } from "@/app/site-config/dataset/dataset-filters";
 
+const filterValueToLabel: Record<string, string> = {};
+DATASET_FILTERS.forEach((filter) => {
+  filter.options.forEach((item) => {
+    filterValueToLabel[item.value] = item.label;
+  });
+});
+
 type DatasetCatalogToolbarProps = {
   /** Total number of datasets in the catalog (shown as a count badge). */
   count: number;
 };
 
 export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [appliedFilters, setAppliedFilters] = useState<string[]>([]);
 
-  const filterValueToLabel: Record<string, string> = {};
-
-  DATASET_FILTERS.forEach((filter) => {
-    filter.options.forEach((item) => {
-      filterValueToLabel[item.value] = item.label;
-    });
-  });
-
   const toggleCheckboxFilter = (value: string) => {
-    setSelectedFilters((prev) =>
+    setAppliedFilters((prev) =>
       prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value],
     );
   };
@@ -33,13 +31,7 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
     setAppliedFilters((prev) => prev.filter((v) => v !== filterValue));
   };
 
-  const applyFilters = () => {
-    setAppliedFilters([...selectedFilters]);
-    setIsOpen(false);
-  };
-
   const clearFilters = () => {
-    setSelectedFilters([]);
     setAppliedFilters([]);
   };
 
@@ -54,7 +46,7 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
             </span>
           </span>
           <span className="display-flex flex-wrap width-full">
-            {Array.from(appliedFilters).map((filterValue) => (
+            {appliedFilters.map((filterValue) => (
               <Tag
                 key={filterValue}
                 variant="outline"
@@ -77,8 +69,7 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
           as="button"
           variant="button"
           onClick={() => {
-            setSelectedFilters([...appliedFilters]);
-            setIsOpen(true);
+            setIsDrawerOpen(true);
           }}
         >
           Filter <SvgFilterList className="usa-icon" />
@@ -86,15 +77,15 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
       </div>
       <Drawer
         title="Search and Filter"
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
         footer={
           <div className="display-flex">
             <Link
               className="usa-button display-flex flex-justify-center flex-1 margin-right-2"
               as="button"
               variant="button"
-              onClick={applyFilters}
+              onClick={() => setIsDrawerOpen(false)}
             >
               Apply Filters
             </Link>
@@ -111,7 +102,7 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
       >
         <div className="padding-y-5">
           <DatasetAccordionFilters
-            selectedFilters={selectedFilters}
+            selectedFilters={appliedFilters}
             onFilterChangeAction={toggleCheckboxFilter}
           />
         </div>
