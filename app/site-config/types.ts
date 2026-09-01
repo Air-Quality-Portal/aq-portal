@@ -207,6 +207,8 @@ export type ToolContent = {
     src: string;
     alt: string;
   };
+  /** Promoted to the carousel; featured tools are excluded from the catalog grid. */
+  isFeatured?: boolean;
 };
 
 export type DatasetAction = {

@@ -47,6 +47,8 @@ const makeMockTool = (index: number): ToolContent => {
       src: "https://placehold.co/600x400/png",
       alt: `Placeholder tool thumbnail ${n}`,
     },
+    // Stands in for an editorial choice; real content sets this per tool.
+    isFeatured: index < 3,
   };
 };
 
