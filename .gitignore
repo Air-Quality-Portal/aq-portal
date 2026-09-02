@@ -46,3 +46,6 @@ node_modules
 # worktrees - any tool, any depth
 .worktrees/
 worktrees/
+
+# pnpm store (used by Amplify build cache)
+.pnpm-store
