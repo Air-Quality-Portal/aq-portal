@@ -1,4 +1,5 @@
 import type { FooterProps } from "@teamimpact/veda-ui-blocks";
+import { SiteTitle } from "../components/SiteTitle";
 
 const primaryNavItems: FooterProps["primaryNavItems"] = [
   { label: "Tools Catalog", href: "/tools" },
@@ -78,7 +79,7 @@ const portalDetails: FooterProps["portalDetails"] = {
       email: "k.e.knowland@nasa.gov",
     },
   ],
-  title: "AIR4US",
+  title: <SiteTitle usColor="var(--color-primary-lightest)" />,
   tagline: "Empowering US air quality decisions through Earth observations.",
   updatedDate: formatBuildDate(),
 };
