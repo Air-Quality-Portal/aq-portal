@@ -2,6 +2,7 @@ import { Banner, Footer } from "@teamimpact/veda-ui-blocks";
 import type { Metadata } from "next";
 import "@teamimpact/veda-ui-blocks/air4us.css";
 
+import { AppLink } from "./components/AppLink";
 import { HeaderWithCurrentPath } from "./components/HeaderWithCurrentPath";
 import { MOCK_FOOTER_PROPS } from "./site-config/footer";
 
@@ -21,7 +22,7 @@ export default function RootLayout({
         <Banner />
         <HeaderWithCurrentPath />
         <main className="flex-1">{children}</main>
-        <Footer {...MOCK_FOOTER_PROPS} />
+        <Footer {...MOCK_FOOTER_PROPS} linksAs={AppLink} />
       </body>
     </html>
   );
