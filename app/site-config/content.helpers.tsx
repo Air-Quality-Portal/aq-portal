@@ -196,7 +196,7 @@ export const makeCardDetailedTextOnlyProps = ({
 }: CardDetailedTextOnlyPropsArgs): IterableItemWithId<CardDetailedProps> => ({
   id,
   className: className ? `display-block ${className}` : "display-block",
-  image: <svg aria-hidden="true" focusable="false" />,
+  image: <svg key={id} aria-hidden="true" focusable="false" />,
   title: (
     <>
       <AppLinkStyled

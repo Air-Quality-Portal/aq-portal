@@ -20,7 +20,11 @@ import {
   makeTutorialCardSection,
 } from "@/app/site-config/content.helpers";
 import { DATASETS, getDatasetsByIds } from "@/app/site-config/dataset";
-import type { DatasetCitationSection, RelatedDatasetsSection } from "@/app/site-config/types";
+import {
+  CONTENT_TYPES,
+  type DatasetCitationSection,
+  type RelatedDatasetsSection,
+} from "@/app/site-config/types";
 
 function DatasetCitation({ section }: { section: DatasetCitationSection }) {
   return (
@@ -94,7 +98,7 @@ export default async function DatasetItemPage(props: PageProps<"/data-catalog/[i
           isMastHead: true,
         })}
       />
-      <BackToCatalogLink href="/data-catalog" />
+      <BackToCatalogLink href={CONTENT_TYPES.dataset.route} />
 
       {/* Placeholder content only */}
       {!hasContent && (

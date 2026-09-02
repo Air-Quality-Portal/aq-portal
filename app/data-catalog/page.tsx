@@ -1,11 +1,11 @@
 import { Card, CardDetailed } from "@teamimpact/veda-ui-blocks";
-import { DatasetCatalogToolbar, Section } from "@/app/components";
-// import {Pagination} from "@teamimpact/veda-ui-blocks"
+import { CatalogPagination, DatasetCatalogToolbar, Section } from "@/app/components";
 import { AppImage } from "@/app/components/AppImage";
 import { AppLinkStyled } from "@/app/components/AppLink";
 import { DATA_CATALOG_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
 import { getMetadataFieldTag, makePrimaryTag, makeSimpleTag } from "../site-config/content.helpers";
 import { DATASETS } from "../site-config/dataset";
+import { CONTENT_TYPES } from "../site-config/types";
 
 const PER_PAGE = 8;
 
@@ -38,8 +38,9 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
                 tagPrimary={tagPrimary ? makePrimaryTag(tagPrimary) : undefined}
                 title={
                   <AppLinkStyled
+                    key={id}
                     className="font-body-lg text-light"
-                    href={`/data-catalog/${id}`}
+                    href={`${CONTENT_TYPES.dataset.route}/${id}`}
                     variant="text"
                   >
                     {title}
@@ -52,13 +53,13 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
           );
         })}
       </div>
-      {/* {totalPages > 1 && (
-        <Pagination
-          getHref={(page) => `/data-catalog?page=${page}`}
+      {totalPages > 1 && (
+        <CatalogPagination
+          basePath={CONTENT_TYPES.dataset.route}
           currentPage={currentPage}
           totalPages={totalPages}
         />
-      )} */}
+      )}
     </Section>
   );
 }
