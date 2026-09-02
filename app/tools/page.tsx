@@ -9,7 +9,7 @@ import {
 } from "@/app/components";
 import {
   AIR4US_TOOL_INTRO,
-  FEATURED_COUNT,
+  FEATURED_TOOLS,
   PARTNER_TOOLS_INTRO,
   searchTools,
   TOOLS,
@@ -19,19 +19,17 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
   const { q = "" } = await props.searchParams;
   const query = typeof q === "string" ? q : "";
 
-  const featuredTools = TOOLS.slice(0, FEATURED_COUNT); //These are featured in the top carousel
-  // The featured tools already have the carousel above; the grid searches the rest.
-  const catalogTools = TOOLS.slice(FEATURED_COUNT);
-  const results = searchTools(catalogTools, query);
+  // Featured tools have the carousel above; the grid lists the whole catalog.
+  const results = searchTools(TOOLS, query);
 
   return (
     <>
       <Section>
         <Card className="height-masthead" isMastHead title="Air Quality Tools Catalog" />
       </Section>
-      {featuredTools.length > 0 && (
+      {FEATURED_TOOLS.length > 0 && (
         <Section>
-          <ToolHighlights intro={AIR4US_TOOL_INTRO} tools={featuredTools} />
+          <ToolHighlights intro={AIR4US_TOOL_INTRO} tools={FEATURED_TOOLS} />
         </Section>
       )}
 
