@@ -1,6 +1,8 @@
 import path from "node:path";
 import type { NextConfig } from "next";
 
+import { BASE_PATH } from "./app/site-config/base-path.helpers";
+
 /*
  * The Turbopack root must include both this project and the locally linked
  * `@teamimpact/veda-ui-blocks` package, which lives in a sibling directory
@@ -11,6 +13,11 @@ import type { NextConfig } from "next";
  * https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory
  */
 const nextConfig: NextConfig = {
+  /*
+   * `typedRoutes` is off: it types next/link's href as `Route`, but the blocks
+   * `linksAs` slot requires a component whose href accepts a plain `string`.
+   */
+  ...(BASE_PATH ? { basePath: BASE_PATH } : {}),
   transpilePackages: ["@teamimpact/veda-ui-blocks"],
   env: {
     /*
@@ -28,7 +35,6 @@ const nextConfig: NextConfig = {
     // Allowlisted remote hosts for next/image.
     remotePatterns: [{ protocol: "https", hostname: "**" }],
   },
-  typedRoutes: true,
   webpack: (config) => {
     config.resolve.symlinks = false;
     return config;

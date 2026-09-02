@@ -1,5 +1,5 @@
-import { Link } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
+import { AppLinkStyled } from "@/app/components/AppLink";
 
 export type SectionIntroProps = {
   /** Small uppercase label above the heading. */
@@ -35,9 +35,9 @@ export const SectionIntro = ({
       )}
     </div>
     {callToAction && (
-      <Link href={callToAction.href} variant="button-outline">
+      <AppLinkStyled href={callToAction.href} variant="button-outline">
         {callToAction.label}
-      </Link>
+      </AppLinkStyled>
     )}
   </div>
 );

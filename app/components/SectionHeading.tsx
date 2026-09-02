@@ -1,9 +1,7 @@
 "use client";
 
-import { Link } from "@teamimpact/veda-ui-blocks";
-import NextLink from "next/link";
-
 import type { ComponentProps } from "react";
+import { AppLinkStyled } from "@/app/components/AppLink";
 
 type SectionHeadingProps = ComponentProps<"h2"> & {
   href?: string;
@@ -23,14 +21,9 @@ export const SectionHeading = ({
         {children}
       </h2>
       {href && (
-        <Link
-          as={NextLink}
-          href={href as ComponentProps<typeof NextLink>["href"]}
-          variant="arrow"
-          size="lg"
-        >
+        <AppLinkStyled href={href} variant="arrow" size="lg">
           {linkLabel ?? "View All"}
-        </Link>
+        </AppLinkStyled>
       )}
     </div>
   );
