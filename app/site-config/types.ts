@@ -92,7 +92,8 @@ export type ContentBlock =
       cards: CardSimplePropsArgs[];
     }
   | ({ type: "cardTextOnly" } & CardTextOnlySection)
-  | ({ type: "links" } & LinkSection);
+  | ({ type: "links" } & LinkSection)
+  | ({ type: "contacts" } & ContactSection);
 
 export type ContentType = DatasetContent["contentType"];
 
@@ -190,6 +191,20 @@ export type WorkshopSection = {
   headingLevel?: ContentHeadingLevel;
   lead?: string;
   workshops: WorkshopItem[];
+};
+
+export type ContactItem = {
+  title: string;
+  titleAs?: "h2" | "h3" | "h4" | "h5" | "h6";
+  name?: string;
+  email: string;
+};
+
+export type ContactSection = {
+  heading?: string;
+  headingLevel?: ContentHeadingLevel;
+  lead?: string;
+  contacts: ContactItem[];
 };
 
 export type ToolContent = {
