@@ -1,7 +1,7 @@
 "use client";
 
 import { Accordion, Checkbox } from "@teamimpact/veda-ui-blocks";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { DATASET_FILTERS } from "@/app/site-config/dataset/dataset-filters";
 
 import "../styles/dataset-filters.css";
