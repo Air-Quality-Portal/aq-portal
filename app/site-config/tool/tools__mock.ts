@@ -50,6 +50,47 @@ const makeMockTool = (index: number): ToolContent => {
   };
 };
 
-export const TOOLS: ToolContent[] = Array.from({ length: MOCK_COUNT }, (_, index) =>
-  makeMockTool(index),
-);
+const REAL_WORLD_TOOLS: ToolContent[] = [
+  {
+    id: "air-quality-monitor",
+    title: "Air Quality Monitor",
+    fullname: "EPA Air Quality Monitoring Tool",
+    description: "Monitor air quality across regions",
+    href: "https://example.com/air-quality",
+    tagPrimary: "Air Quality",
+    thumbnailImage: {
+      src: "https://placehold.co/600x400/png",
+      alt: "Air Quality Monitor",
+    },
+  },
+  {
+    id: "pm25-analyzer",
+    title: "PM2.5 Analyzer",
+    fullname: "Particulate Matter 2.5 Analyzer",
+    description: "Analyze PM2.5 levels in your area",
+    href: "https://example.com/pm25",
+    tagPrimary: "Pollution",
+    additionalTags: ["Air Quality", "PM2.5"],
+    thumbnailImage: {
+      src: "https://placehold.co/600x400/png",
+      alt: "PM2.5 Analyzer",
+    },
+  },
+  {
+    id: "ozone-tracker",
+    title: "Ozone Level Tracker",
+    fullname: "Ground-level Ozone Tracker",
+    description: "Track ozone levels by location",
+    href: "https://example.com/ozone",
+    tagPrimary: "Pollution",
+    thumbnailImage: {
+      src: "https://placehold.co/600x400/png",
+      alt: "Ozone Level Tracker",
+    },
+  },
+];
+
+export const TOOLS: ToolContent[] = [
+  ...REAL_WORLD_TOOLS,
+  ...Array.from({ length: MOCK_COUNT }, (_, index) => makeMockTool(index)),
+];
