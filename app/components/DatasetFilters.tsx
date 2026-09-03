@@ -32,17 +32,17 @@ export const DatasetAccordionFilters = ({
         {filter.options
           .sort((a, b) => a.label.localeCompare(b.label))
           .map((item) => (
-          <div key={item.value} className="aq-filter-item">
-            <Checkbox
-              name={item.value}
-              label={item.label}
-              value={item.value}
-              inputProps={{
-                checked: selectedFilters.includes(item.value),
-                onChange: () => onFilterChange(item.value),
-              }}
-            />
-          </div>
+            <div key={item.value} className="aq-filter-item">
+              <Checkbox
+                name={item.value}
+                label={item.label}
+                value={item.value}
+                inputProps={{
+                  checked: selectedFilters.includes(item.value),
+                  onChange: () => onFilterChange(item.value),
+                }}
+              />
+            </div>
         ))}
       </div>
     ),
