@@ -1,7 +1,7 @@
 import { Card, CardDetailed, Carousel } from "@teamimpact/veda-ui-blocks";
-import Image from "next/image";
-import Link from "next/link";
 import { Section, SectionIntro, ToolCatalogToolbar } from "@/app/components";
+import { AppImage } from "@/app/components/AppImage";
+import { AppLink } from "@/app/components/AppLink";
 import { makePrimaryTag } from "@/app/site-config/content.helpers";
 import { AIR4US_TOOL_INTRO, PARTNER_TOOLS_INTRO, searchTools, TOOLS } from "@/app/site-config/tool";
 
@@ -33,7 +33,7 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
             maxVisibleItems={1}
             items={featuredTools.map((tool) => ({
               image: (
-                <Image
+                <AppImage
                   {...tool.thumbnailImage}
                   fill
                   sizes="(max-width: 880px) 100vw, 880px"
@@ -52,9 +52,9 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
           <div className="padding-y-6 text-center">
             <p className="margin-0 text-bold">No tools match “{query}”.</p>
             <p className="margin-top-1 margin-bottom-0">
-              <Link href="/tools" className="usa-link">
+              <AppLink href="/tools" className="usa-link">
                 Clear search
-              </Link>
+              </AppLink>
             </p>
           </div>
         )}
@@ -68,7 +68,7 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
                 className="height-full border-1px border-base-lighter"
                 imagePosition="top"
                 image={
-                  <Image
+                  <AppImage
                     {...tool.thumbnailImage}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

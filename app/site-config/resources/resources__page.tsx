@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { AppImage } from "@/app/components/AppImage";
 import {
   makeTutorialCardSection,
   makeWorkshopCardSection,
@@ -75,7 +75,7 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
     {
       type: "text",
       paragraphs: [
-        <Image
+        <AppImage
           key="placeholder"
           src="https://placehold.co/880x400"
           alt="Placeholder"

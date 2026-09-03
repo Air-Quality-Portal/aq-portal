@@ -1,4 +1,3 @@
-import { Link } from "@teamimpact/veda-ui-blocks";
 import { notFound } from "next/navigation";
 import { Fragment } from "react";
 import {
@@ -13,6 +12,7 @@ import {
   SectionCardTextOnly,
   SectionLinks,
 } from "@/app/components";
+import { AppLinkStyled } from "@/app/components/AppLink";
 import {
   getMetadataFieldTag,
   makeCardDetailedImageLeftProps,
@@ -125,13 +125,13 @@ export default async function DatasetItemPage(props: PageProps<"/data-catalog/[i
                   {/* Primary action rendered inline after the intro block */}
                   {index === 0 && actions && (
                     <div className="display-flex flex-wrap margin-top-4" style={{ gap: "1rem" }}>
-                      <Link
+                      <AppLinkStyled
                         href={actions.primary.href}
                         isExternal={actions.primary.isExternal}
                         variant="button"
                       >
                         {actions.primary.label}
-                      </Link>
+                      </AppLinkStyled>
                     </div>
                   )}
                 </Fragment>
