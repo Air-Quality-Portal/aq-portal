@@ -29,7 +29,9 @@ export const DatasetAccordionFilters = ({
     expanded: initiallyExpanded.includes(filter.id),
     content: (
       <div className="aq-filter-content">
-        {filter.options.map((item) => (
+        {filter.options
+          .sort((a, b) => a.label.localeCompare(b.label))
+          .map((item) => (
           <div key={item.value} className="aq-filter-item">
             <Checkbox
               name={item.value}

@@ -5,12 +5,9 @@ import { useState } from "react";
 import { DatasetAccordionFilters } from "@/app/components/DatasetFilters";
 import { DATASET_FILTERS } from "@/app/site-config/dataset/dataset-filters";
 
-const filterValueToLabel: Record<string, string> = {};
-DATASET_FILTERS.forEach((filter) => {
-  filter.options.forEach((item) => {
-    filterValueToLabel[item.value] = item.label;
-  });
-});
+const labelsByFilterValue = Object.fromEntries(
+  DATASET_FILTERS.flatMap((filter) => filter.options.map((item) => [item.value, item.label])),
+);
 
 type DatasetCatalogToolbarProps = {
   /** Total number of datasets in the catalog (shown as a count badge). */
@@ -54,7 +51,7 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
                 className="margin-right-1 margin-y-1"
                 onClose={() => removeTagFilter(filterValue)}
               >
-                {filterValueToLabel[filterValue]}
+                {labelsByFilterValue[filterValue]}
               </Tag>
             ))}
             {appliedFilters.length > 0 && (
