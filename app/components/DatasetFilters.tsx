@@ -15,27 +15,18 @@ export const DatasetAccordionFilters = ({
   selectedFilters,
   onFilterChangeAction: onFilterChange,
 }: DatasetAccordionFiltersProps) => {
-  const [expandedSections, setExpandedSections] = useState<string[]>([]);
-  const isInitialized = useRef(false);
+  const [initiallyExpanded] = useState<string[]>(() => {
+    const facetsWithActiveFilters = DATASET_FILTERS.filter((filter) =>
+      filter.options.some((option) => selectedFilters.includes(option.value)),
+    ).map((filter) => filter.id);
 
-  useEffect(() => {
-    if (!isInitialized.current) {
-      if (selectedFilters.length === 0) {
-        setExpandedSections([DATASET_FILTERS[0].id]);
-      } else {
-        const expanded = DATASET_FILTERS.filter((filter) =>
-          filter.options.some((option) => selectedFilters.includes(option.value)),
-        ).map((f) => f.id);
-        setExpandedSections(expanded);
-      }
-      isInitialized.current = true;
-    }
-  }, [selectedFilters]);
+    return facetsWithActiveFilters.length > 0 ? facetsWithActiveFilters : [DATASET_FILTERS[0].id];
+  });
 
   const accordionItems = DATASET_FILTERS.map((filter) => ({
     id: filter.id,
     title: filter.label,
-    expanded: expandedSections.includes(filter.id),
+    expanded: initiallyExpanded.includes(filter.id),
     content: (
       <div className="aq-filter-content">
         {filter.options.map((item) => (
