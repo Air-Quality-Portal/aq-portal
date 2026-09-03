@@ -33,7 +33,7 @@ export const DatasetAccordionFilters = ({
   }, [selectedFilters]);
 
   const accordionItems = DATASET_FILTERS.map((filter) => ({
-    id: filter.label.toLowerCase().replace(/\s+/g, "-"),
+    id: filter.id,
     title: filter.label,
     expanded: expandedSections.includes(filter.id),
     content: (

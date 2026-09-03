@@ -8,7 +8,6 @@
 
 .aq-filter-item {
   margin: 1rem 0.5rem;
-  /*cursor: pointer;*/
 
   .usa-checkbox {
     display: flex;
@@ -16,7 +15,6 @@
     border: 0.1rem solid var(--color-base-lightest);
     padding-left: 1rem;
     padding-bottom: 0.75rem;
-    /*margin: 0.75rem 0;*/
 
     transition: background-color 0.2s ease;
 

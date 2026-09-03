@@ -7,7 +7,7 @@ export const DATASET_FILTERS: DatasetFilter[] = [
     options: [
       { label: "Regulatory Monitor", value: "reg-monitor" },
       { label: "Air Sensor", value: "airsensor" },
-      { label: "Meterological Station", value: "met-station" },
+      { label: "Meteorological Station", value: "met-station" },
       { label: "Other ground-based monitor", value: "ground-based" },
       { label: "Satellite", value: "satellite" },
       { label: "Forecast Model", value: "forecast" },
