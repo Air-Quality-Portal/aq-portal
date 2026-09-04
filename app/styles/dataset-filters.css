@@ -1,0 +1,29 @@
+.usa-accordion__content:has(.aq-filter-content) {
+  padding: 0;
+}
+
+.aq-filter-content {
+  border: 0.25rem solid var(--color-base-lightest);
+}
+
+.aq-filter-item {
+  margin: 1rem 0.5rem;
+
+  .usa-checkbox {
+    display: flex;
+    align-items: center;
+    border: 0.1rem solid var(--color-base-lightest);
+    padding-left: 1rem;
+    padding-bottom: 0.75rem;
+
+    transition: background-color 0.2s ease;
+
+    &:has(input[type="checkbox"]:checked) {
+      background-color: var(--color-base-lightest);
+    }
+
+    &:hover {
+      background-color: var(--color-base-lightest);
+    }
+  }
+}
