@@ -1,5 +1,4 @@
 import { Card } from "@teamimpact/veda-ui-blocks";
-import Link from "next/link";
 import {
   Section,
   SectionIntro,
@@ -7,6 +6,7 @@ import {
   ToolCatalogToolbar,
   ToolHighlights,
 } from "@/app/components";
+import { AppLink } from "@/app/components/AppLink";
 import {
   AIR4US_TOOL_INTRO,
   FEATURED_TOOLS,
@@ -40,9 +40,9 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
           <div className="padding-y-6 text-center">
             <p className="margin-0 text-bold">No tools match "{query}".</p>
             <p className="margin-top-1 margin-bottom-0">
-              <Link href="/tools" className="usa-link">
+              <AppLink href="/tools" className="usa-link">
                 Clear search
-              </Link>
+              </AppLink>
             </p>
           </div>
         )}

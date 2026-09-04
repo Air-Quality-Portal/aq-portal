@@ -1,5 +1,5 @@
 import { CardDetailed } from "@teamimpact/veda-ui-blocks";
-import Image from "next/image";
+import { AppImage } from "@/app/components/AppImage";
 import { makePrimaryTag } from "@/app/site-config/content.helpers";
 import type { ToolContent } from "@/app/site-config/types";
 
@@ -51,7 +51,7 @@ export const ToolCatalog = ({ tools, layout = "thirds" }: ToolCatalogProps) => {
           <CardDetailed
             className="height-full border-1px border-base-lighter"
             imagePosition="top"
-            image={<Image {...tool.thumbnailImage} fill sizes={sizes} />}
+            image={<AppImage {...tool.thumbnailImage} fill sizes={sizes} />}
             tagPrimary={tool.tagPrimary ? makePrimaryTag(tool.tagPrimary) : undefined}
             intro={tool.fullname}
             title={

@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -46,3 +47,6 @@ node_modules
 # worktrees - any tool, any depth
 .worktrees/
 worktrees/
+
+# pnpm store (used by Amplify build cache)
+.pnpm-store

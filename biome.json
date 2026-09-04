@@ -17,9 +17,36 @@
       "correctness": {
         "noUnusedImports": "error",
         "noUnusedVariables": "error"
+      },
+      "style": {
+        "noRestrictedImports": {
+          "level": "error",
+          "options": {
+            "paths": {
+              "next/link": "Use AppLink (@/app/components/AppLink) for type definitions or 'as' prop definitions with base path support. Use AppLinkStyled for link components to be rendered with base path support.",
+              "next/image": "Use AppImage (@/app/components/AppImage) for base path support."
+            }
+          }
+        }
       }
     }
   },
+  "overrides": [
+    {
+      "includes": [
+        "app/components/AppLink.tsx",
+        "app/components/AppImage.tsx",
+        "app/components/AppVideo.tsx"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": "off"
+          }
+        }
+      }
+    }
+  ],
   "assist": {
     "enabled": true,
     "actions": {
