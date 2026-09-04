@@ -25,7 +25,7 @@ export const SectionIntro = ({
 }: SectionIntroProps) => (
   <div className="display-flex flex-justify flex-align-start flex-wrap margin-bottom-3">
     <div className="flex-fill">
-      <p className="font-mono-3xs text-base-light text-uppercase text-ls-1 margin-top-0 margin-bottom-1">
+      <p className="font-mono-2xs text-base-light text-uppercase text-ls-1 margin-top-0 margin-bottom-1">
         {eyebrow}
       </p>
       <h2
