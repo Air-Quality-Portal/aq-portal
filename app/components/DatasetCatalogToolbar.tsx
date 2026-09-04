@@ -55,7 +55,7 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
               </Tag>
             ))}
             {appliedFilters.length > 0 && (
-              <Link className="margin-left-2" onClick={clearFilters}>
+              <Link className="margin-left-2" as="button" onClick={clearFilters}>
                 Clear all
               </Link>
             )}
