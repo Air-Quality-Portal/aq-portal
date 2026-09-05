@@ -1,8 +1,5 @@
 import { AppImage } from "@/app/components/AppImage";
-import {
-  makeTutorialCardSection,
-  makeWorkshopCardSection,
-} from "@/app/site-config/content.helpers";
+import { makeTutorialCardSection } from "@/app/site-config/content.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
 
 export type ResourcesPageBody = {
@@ -81,14 +78,15 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
           alt="Placeholder"
           width={880}
           height={400}
+          style={{ width: "100%", height: "auto" }}
           unoptimized
         />,
       ],
     },
 
     {
-      type: "cardTextOnly",
-      ...makeWorkshopCardSection({
+      type: "clientCardTextOnly",
+      section: {
         heading: "Workshops & Webinars",
         headingLevel: "h2",
         lead: "Live training events hosted by NASA, NOAA, and EPA scientists. Registration is free and open to air quality professionals, researchers, and students.",
@@ -97,6 +95,7 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
             id: "workshop-summer-2026-1",
             title: "AIR4US Summer Training Workshop (July 14-16, 2026)",
             href: "#",
+            startsAt: "2026-07-14T15:00:00Z",
             description:
               "Three-day intensive training covering satellite data products, ground-based monitoring networks, and model evaluation techniques. Open to state and local air quality agency staff.",
             tags: ["IN PERSON + VIRTUAL"],
@@ -106,13 +105,34 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
             id: "workshop-summer-2026-2",
             title: "AIR4US Summer Training Workshop (July 14-16, 2026)",
             href: "#",
+            startsAt: "2026-07-14T15:00:00Z",
             description:
               "Three-day intensive training covering satellite data products, ground-based monitoring networks, and model evaluation techniques. Open to state and local air quality agency staff.",
             tags: ["IN PERSON + VIRTUAL"],
             callToAction: { label: "Register", href: "#" },
           },
+          {
+            id: "workshop-winter-2027",
+            title: "AIR4US Winter Air Quality Webinar (February 17, 2027)",
+            href: "#",
+            startsAt: "2027-02-17T15:00:00Z",
+            description:
+              "A virtual session demonstrating air quality data discovery, visualization, and analysis workflows for researchers and agency staff.",
+            tags: ["VIRTUAL"],
+            callToAction: { label: "Register", href: "#" },
+          },
+          {
+            id: "workshop-fall-2026",
+            title: "AIR4US Fall Satellite Data Workshop (November 10, 2026)",
+            href: "#",
+            startsAt: "2026-11-10T15:00:00Z",
+            description:
+              "Hands-on training focused on using satellite observations alongside ground-based monitoring data for air quality applications.",
+            tags: ["IN PERSON + VIRTUAL"],
+            callToAction: { label: "Register", href: "#" },
+          },
         ],
-      }),
+      },
     },
 
     {
