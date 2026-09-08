@@ -207,6 +207,7 @@ export type ToolContent = {
     src: string;
     alt: string;
   };
+  isFeatured?: boolean;
 };
 
 export type DatasetAction = {
