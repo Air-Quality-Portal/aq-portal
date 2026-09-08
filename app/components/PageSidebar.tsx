@@ -1,4 +1,4 @@
-import { getMetadataFields, getMetadataValueLines } from "@/app/site-config/content.helpers";
+import { getMetadataFields, getMetadataValueLines } from "@/app/_utilities/content.helpers";
 import type { DatasetMetadata } from "@/app/site-config/types";
 
 export function PageSidebar({ metadata = {} }: { metadata?: DatasetMetadata }) {

@@ -1,7 +1,7 @@
 import path from "node:path";
 import type { NextConfig } from "next";
 
-import { BASE_PATH } from "./app/site-config/base-path.helpers";
+import { BASE_PATH } from "./app/_utilities/base-path.helpers";
 
 /*
  * The Turbopack root must include both this project and the locally linked

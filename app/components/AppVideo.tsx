@@ -1,6 +1,6 @@
 import type { ComponentProps } from "react";
 
-import { withBasePath } from "@/app/site-config/base-path.helpers";
+import { withBasePath } from "@/app/_utilities/base-path.helpers";
 
 /**
  * Raw <video> does not get the base path from Next, which only prefixes its

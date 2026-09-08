@@ -1,8 +1,5 @@
+import { makeTutorialCardSection, makeWorkshopCardSection } from "@/app/_utilities/content.helpers";
 import { AppImage } from "@/app/components/AppImage";
-import {
-  makeTutorialCardSection,
-  makeWorkshopCardSection,
-} from "@/app/site-config/content.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
 
 export type ResourcesPageBody = {

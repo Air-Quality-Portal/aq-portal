@@ -5,7 +5,7 @@ import type {
   StacSingleLayerMapProps,
 } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
-import type { CardSimplePropsArgs } from "@/app/site-config/content.helpers";
+import type { CardSimplePropsArgs } from "@/app/_utilities/content.helpers";
 
 export const CONTENT_TYPES = {
   dataset: { route: "/data-catalog", label: "product" },
