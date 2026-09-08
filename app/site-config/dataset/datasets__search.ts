@@ -1,5 +1,8 @@
-import { type CatalogSearchField, searchCatalogItems } from "@/app/site-config/catalog-search";
-import { getMetadataFieldTag } from "@/app/site-config/content.helpers";
+import {
+  type CatalogSearchField,
+  searchCatalogItems,
+} from "@/app/_utilities/catalog-search.helpers";
+import { getMetadataFieldTag } from "@/app/_utilities/content.helpers";
 import type { DatasetContent } from "@/app/site-config/types";
 
 const DATASET_SEARCH_FIELDS: CatalogSearchField<DatasetContent>[] = [

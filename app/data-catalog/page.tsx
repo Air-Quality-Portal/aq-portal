@@ -4,7 +4,7 @@ import { AppImage } from "@/app/components/AppImage";
 import { AppLink, AppLinkStyled } from "@/app/components/AppLink";
 import { DATASETS, searchDatasets } from "@/app/site-config/dataset";
 import { DATA_CATALOG_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
-import { getMetadataFieldTag, makePrimaryTag, makeSimpleTag } from "../site-config/content.helpers";
+import { getMetadataFieldTag, makePrimaryTag, makeSimpleTag } from "../_utilities/content.helpers";
 import { CONTENT_TYPES } from "../site-config/types";
 
 const PER_PAGE = 8;

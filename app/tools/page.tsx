@@ -1,8 +1,8 @@
 import { Card, CardDetailed, Carousel } from "@teamimpact/veda-ui-blocks";
+import { makePrimaryTag } from "@/app/_utilities/content.helpers";
 import { Section, SectionIntro, ToolCatalogToolbar } from "@/app/components";
 import { AppImage } from "@/app/components/AppImage";
 import { AppLink } from "@/app/components/AppLink";
-import { makePrimaryTag } from "@/app/site-config/content.helpers";
 import { AIR4US_TOOL_INTRO, PARTNER_TOOLS_INTRO, searchTools, TOOLS } from "@/app/site-config/tool";
 
 // Tools shown as full-width slides above the grid; the rest fill the paginated grid.

@@ -1,3 +1,5 @@
+import { makeCardSimpleProps } from "@/app/_utilities/content.helpers";
+import { typedMap } from "@/app/_utilities/typed.helpers";
 import {
   ContentHeading,
   ImageComparison,
@@ -11,8 +13,6 @@ import { AppImage } from "@/app/components/AppImage";
 import { AppLinkStyled } from "@/app/components/AppLink";
 import { AppVideo } from "@/app/components/AppVideo";
 import { StacCompareBlock, StacSingleLayerBlock } from "@/app/components/blocks";
-import { makeCardSimpleProps } from "@/app/site-config/content.helpers";
-import { typedMap } from "@/app/site-config/typed.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
 
 export const ContentBlockRenderer = ({

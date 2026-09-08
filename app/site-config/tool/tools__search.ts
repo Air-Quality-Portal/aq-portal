@@ -1,4 +1,7 @@
-import { type CatalogSearchField, searchCatalogItems } from "@/app/site-config/catalog-search";
+import {
+  type CatalogSearchField,
+  searchCatalogItems,
+} from "@/app/_utilities/catalog-search.helpers";
 import type { ToolContent } from "@/app/site-config/types";
 
 const TOOL_SEARCH_FIELDS: CatalogSearchField<ToolContent>[] = [
