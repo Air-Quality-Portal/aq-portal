@@ -16,11 +16,10 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
     },
     {
       type: "image",
-      src: "https://espo.nasa.gov/sites/default/files/images/GSFC_20171208_Archive_e001386~large.jpg",
+      src: "/img/about/about-hero.jpg",
       alt: "",
       width: 600,
       height: 400,
-      unoptimized: true,
     },
 
     {
