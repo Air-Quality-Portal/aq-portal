@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { TOOLS } from "./tools__mock";
 import { searchTools } from "./tools__search";
+import { testTool1, testTool2, testTool3 } from "./tools__search.fixtures";
+
+const TOOLS = [testTool1, testTool2, testTool3];
 
 describe("searchTools", () => {
   it("returns all tools when query is empty", () => {
