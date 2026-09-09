@@ -17,5 +17,11 @@ export function createTestDataset(
 }
 
 export const testDataset1 = createTestDataset("test-dataset-1");
-export const testDataset2 = createTestDataset("test-dataset-2");
-export const testDataset3 = createTestDataset("test-dataset-3");
+
+export const testDataset2 = createTestDataset("test-dataset-2", {
+  description: "Another test dataset for search and filtering",
+});
+
+export const testDataset3 = createTestDataset("test-dataset-3", {
+  metadata: { tags: ["sample", "test"] },
+});
