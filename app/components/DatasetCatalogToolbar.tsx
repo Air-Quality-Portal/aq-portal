@@ -98,10 +98,12 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
         }
       >
         <div className="padding-y-5">
-          <DatasetAccordionFilters
-            selectedFilters={appliedFilters}
-            onFilterChangeAction={toggleCheckboxFilter}
-          />
+          {isDrawerOpen && (
+            <DatasetAccordionFilters
+              selectedFilters={appliedFilters}
+              onFilterChangeAction={toggleCheckboxFilter}
+            />
+          )}
         </div>
       </Drawer>
     </>
