@@ -92,6 +92,10 @@ export type ContentBlock =
       cards: CardSimplePropsArgs[];
     }
   | ({ type: "cardTextOnly" } & CardTextOnlySection)
+  | {
+      type: "clientCardTextOnly";
+      section: WorkshopSection;
+    }
   | ({ type: "links" } & LinkSection);
 
 export type ContentType = DatasetContent["contentType"];
@@ -186,6 +190,7 @@ export type WorkshopItem = {
   id: string;
   title: string;
   href: string;
+  startsAt: string;
   description?: string;
   tags?: string[];
   callToAction: { label: string; href: string };

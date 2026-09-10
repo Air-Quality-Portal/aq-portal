@@ -61,16 +61,71 @@ export const makeTutorialCardSection = ({
   })),
 });
 
-export const makeWorkshopCardSection = ({
-  workshops,
-  ...section
-}: WorkshopSection): CardTextOnlySection => ({
-  ...section,
-  items: workshops.map(({ tags, ...workshop }) => ({
-    ...workshop,
-    tags: tags?.map((tag) => makeSimpleTag(tag)),
-  })),
-});
+const EXACT_UTC_TIMESTAMP = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
+
+const parseExactUtcTimestamp = (value: unknown): number | undefined => {
+  if (typeof value !== "string" || !EXACT_UTC_TIMESTAMP.test(value)) return undefined;
+
+  const instant = Date.parse(value);
+  if (!Number.isFinite(instant)) return undefined;
+
+  return new Date(instant).toISOString() === value.replace("Z", ".000Z") ? instant : undefined;
+};
+
+const PAST_EVENT_TAG = {
+  label: "Past Event",
+  variant: "solid" as const,
+  color: "accent-warm-lighter",
+  textColor: "accent-warm-darker",
+};
+
+export const makeWorkshopCardSection = (
+  { workshops, ...section }: WorkshopSection,
+  { now = new Date() }: { now?: Date } = {},
+): CardTextOnlySection => {
+  const nowInstant = now.getTime();
+  const validWorkshops = workshops.flatMap((workshop, sourceIndex) => {
+    const startsAtInstant = parseExactUtcTimestamp(workshop.startsAt);
+    return startsAtInstant === undefined ? [] : [{ workshop, sourceIndex, startsAtInstant }];
+  });
+  const bySourceIndex = (
+    first: (typeof validWorkshops)[number],
+    second: (typeof validWorkshops)[number],
+  ) => first.sourceIndex - second.sourceIndex;
+  const future = validWorkshops
+    .filter(({ startsAtInstant }) => nowInstant < startsAtInstant)
+    .sort(
+      (first, second) =>
+        first.startsAtInstant - second.startsAtInstant || bySourceIndex(first, second),
+    );
+  const past = validWorkshops
+    .filter(({ startsAtInstant }) => nowInstant >= startsAtInstant)
+    .sort(
+      (first, second) =>
+        second.startsAtInstant - first.startsAtInstant || bySourceIndex(first, second),
+    );
+
+  return {
+    ...section,
+    items: [
+      ...future.map(({ workshop }) => ({
+        id: workshop.id,
+        title: workshop.title,
+        href: workshop.href,
+        description: workshop.description,
+        tags: workshop.tags?.map(makeSimpleTag),
+        callToAction: workshop.callToAction,
+      })),
+      ...past.map(({ workshop }) => ({
+        id: workshop.id,
+        title: workshop.title,
+        href: workshop.href,
+        description: workshop.description,
+        tags: [...(workshop.tags?.map(makeSimpleTag) ?? []), PAST_EVENT_TAG],
+      })),
+    ],
+  };
+};
 
 export const makeButtonOutlineLink = (href: string, isExternal = true) => ({
   href,
