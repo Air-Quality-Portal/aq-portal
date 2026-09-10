@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { AppLink } from "@/app/components/AppLink";
 
 interface PageStatusProps {
   label?: string;
@@ -15,9 +15,9 @@ export function PageStatus({ label, heading, description }: PageStatusProps) {
         {heading}
       </h1>
       {description && <p className="font-body-md text-base margin-bottom-6">{description}</p>}
-      <Link href="/" className="usa-button">
+      <AppLink href="/" className="usa-button">
         Return to Home Page
-      </Link>
+      </AppLink>
     </div>
   );
 }

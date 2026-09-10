@@ -1,3 +1,6 @@
+export { AppImage } from "./AppImage";
+export { AppLink, AppLinkStyled } from "./AppLink";
+export { AppVideo } from "./AppVideo";
 export { BackToCatalogLink } from "./BackToCatalogLink";
 export * from "./blocks";
 export { CatalogPagination } from "./CatalogPagination";
@@ -18,4 +21,7 @@ export { SectionContacts } from "./SectionContacts";
 export { SectionHeading } from "./SectionHeading";
 export { SectionIntro, type SectionIntroProps } from "./SectionIntro";
 export { SectionLinks } from "./SectionLinks";
+export { ToolCatalog } from "./ToolCatalog";
 export { ToolCatalogToolbar } from "./ToolCatalogToolbar";
+export { ToolHighlights } from "./ToolHighlights";
+export { VisualizationToolIntro, type VisualizationToolIntroProps } from "./VisualizationToolIntro";

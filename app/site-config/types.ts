@@ -97,6 +97,12 @@ export type ContentBlock =
 
 export type ContentType = DatasetContent["contentType"];
 
+export type DatasetFilter = {
+  id: string;
+  label: string;
+  options: Array<{ label: string; value: string }>;
+};
+
 export type DatasetContent = {
   id: string;
   contentType: "dataset";
@@ -222,6 +228,7 @@ export type ToolContent = {
     src: string;
     alt: string;
   };
+  isFeatured?: boolean;
 };
 
 export type DatasetAction = {

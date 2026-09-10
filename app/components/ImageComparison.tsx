@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
+import { AppImage } from "@/app/components/AppImage";
 
 type ImageComparisonProps = {
   before: { src: string; alt: string };
@@ -21,14 +21,14 @@ export const ImageComparison = ({
   return (
     <div className={`position-relative overflow-hidden ${className}`}>
       {/* after image — base layer */}
-      <Image src={after.src} alt={after.alt} fill sizes={sizes} style={{ objectFit: "cover" }} />
+      <AppImage src={after.src} alt={after.alt} fill sizes={sizes} style={{ objectFit: "cover" }} />
 
       {/* before image — clipped to left of divider */}
       <div
         className="position-absolute top-0 left-0 right-0 bottom-0"
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
       >
-        <Image
+        <AppImage
           src={before.src}
           alt={before.alt}
           fill

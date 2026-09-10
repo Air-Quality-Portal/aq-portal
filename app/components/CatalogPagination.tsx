@@ -2,6 +2,8 @@
 import { Pagination } from "@teamimpact/veda-ui-blocks";
 import { useSearchParams } from "next/navigation";
 
+import { withBasePath } from "@/app/site-config/base-path.helpers";
+
 type CatalogPaginationProps = {
   /** Route the page links point at, e.g. "/data-catalog". */
   basePath: string;
@@ -19,6 +21,8 @@ type CatalogPaginationProps = {
  * prop is a function, which cannot be passed from a server component.
  * Page links keep the rest of the query string intact, so paging does not
  * drop an active search or filter.
+ * `getHref` returns a plain string that blocks renders into a bare anchor, so
+ * next/link never sees it and `withBasePath` has to apply the app base path.
  */
 export function CatalogPagination({
   basePath,
@@ -31,7 +35,7 @@ export function CatalogPagination({
   const getHref = (page: number) => {
     const params = new URLSearchParams(searchParams);
     params.set(pageParam, String(page));
-    return `${basePath}?${params}`;
+    return `${withBasePath(basePath)}?${params}`;
   };
 
   return <Pagination getHref={getHref} currentPage={currentPage} totalPages={totalPages} />;
