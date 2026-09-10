@@ -1,21 +1,23 @@
-import { CardContact } from "@teamimpact/veda-ui-blocks";
-import { ContentHeading, ContentLead, Section } from "@/app/components";
+import { CardCTA } from "@teamimpact/veda-ui-blocks";
+import { ContentLead, Section } from "@/app/components";
 import type { ContactSection } from "@/app/site-config/types";
 
 export function SectionContacts({ section }: { section: ContactSection }) {
   return (
     <Section isMultiColumnLayout>
-      {section.heading && (
-        <ContentHeading heading={section.heading} headingLevel={section.headingLevel ?? "h2"} />
-      )}
       <ContentLead lead={section.lead} />
-      <div className="display-flex flex-column gap-4">
+      <div className="display-flex flex-column">
         {section.contacts.map((contact) => (
-          <CardContact
+          <CardCTA
+            className="margin-bottom-3"
             key={contact.email}
-            title={contact.title}
-            titleLevel={contact.titleAs ?? "h3"}
-            contacts={[{ type: "email", value: contact.email, label: contact.name }]}
+            title={<span className="font-body-sm text-bold">{contact.title}</span>}
+            callToAction={{
+              label: `${contact.name ? `${contact.name} - ` : ""}${contact.email}`,
+              href: contact.email,
+              isExternal: false,
+              variant: "text",
+            }}
           />
         ))}
       </div>
