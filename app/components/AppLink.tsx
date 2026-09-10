@@ -23,6 +23,6 @@ export { default as AppLink } from "next/link";
  * using the blocks styling (variant, size). Structural slots (Header/Footer
  * `linksAs`, Card `as`) style their own anchors -- pass the bare AppLink there.
  */
-export function AppLinkStyled(props: Omit<LinkProps<typeof NextLink>, "as">) {
+export function AppLinkStyled(props: LinkProps) {
   return <Link as={NextLink} {...props} />;
 }
