@@ -81,6 +81,7 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
             callToAction: {
               label: "Register",
               href: "https://www.earthdata.nasa.gov/learn/training/geostationary-remote-sensing-aerosols-air-quality-applications-north-america",
+              isExternal: true,
             },
           },
           {
@@ -90,7 +91,7 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
             description:
               "Three-day intensive training covering how to use AIR4US to visualize and compare satellite data products, ground-based monitoring networks, and model outputs. Open to federal, state, local, and tribal air quality agency staff.",
             tags: ["VIRTUAL WORKSHOP", "IN-PERSON WORKSHOP"],
-            callToAction: { label: "Register", href: "#" },
+            callToAction: { label: "Register", href: "#", isExternal: true },
           },
         ],
       }),
