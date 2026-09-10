@@ -14,7 +14,7 @@ export function SectionContacts({ section }: { section: ContactSection }) {
             title={<span className="font-body-sm text-bold">{contact.title}</span>}
             callToAction={{
               label: `${contact.name ? `${contact.name} - ` : ""}${contact.email}`,
-              href: contact.email,
+              href: `mailto:${contact.email}`,
               isExternal: false,
               variant: "text",
             }}
