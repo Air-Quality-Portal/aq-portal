@@ -45,7 +45,7 @@ const secondaryNavItems: FooterProps["secondaryNavItems"] = [
 const utilityNavItems: FooterProps["utilityNavItems"] = [
   {
     text: "Looking for U.S. government information and services? ",
-    label: "  Visit USA.gov",
+    label: " Visit USA.gov",
     href: "https://www.usa.gov",
     isExternal: true,
   },
