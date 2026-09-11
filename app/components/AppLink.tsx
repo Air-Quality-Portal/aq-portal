@@ -1,7 +1,8 @@
 "use client";
 
-import { Link } from "@teamimpact/veda-ui-blocks";
+import { Link, type LinkProps } from "@teamimpact/veda-ui-blocks";
 import NextLink from "next/link";
+import type { ComponentPropsWithRef, ComponentType } from "react";
 
 /*
  * AppLink: next/link re-exported from a "use client" module.
@@ -23,6 +24,16 @@ export { default as AppLink } from "next/link";
  * using the blocks styling (variant, size). Structural slots (Header/Footer
  * `linksAs`, Card `as`) style their own anchors -- pass the bare AppLink there.
  */
-export function AppLinkStyled(props: any) {
-  return <Link as={NextLink} {...props} />;
+type AppLinkStyledProps = Omit<LinkProps, "as" | "href"> & {
+  href: string;
+};
+
+type AppNextLinkProps = Omit<ComponentPropsWithRef<typeof NextLink>, "href"> & {
+  href: string;
+};
+
+const AppNextLink = NextLink as unknown as ComponentType<AppNextLinkProps>;
+
+export function AppLinkStyled({ href, ...props }: AppLinkStyledProps) {
+  return <Link as={AppNextLink} href={href} {...props} />;
 }
