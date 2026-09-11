@@ -49,8 +49,8 @@ export const makeTutorialCardSection = ({
   ...section
 }: TutorialSection): CardTextOnlySection => ({
   ...section,
-  items: tutorials.map((tutorial) => ({
-    id: tutorial.href,
+  items: tutorials.map((tutorial, index) => ({
+    id: `tutorial-${index}`,
     title: tutorial.title,
     href: tutorial.href,
     description: tutorial.description,
