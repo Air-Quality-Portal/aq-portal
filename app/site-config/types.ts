@@ -67,6 +67,7 @@ export type ContentBlock =
       height: number;
       maxWidth?: string;
       caption?: string;
+      attribution?: string;
       /** Skip the Next.js image optimizer (e.g. remote placeholder services that serve SVG). */
       unoptimized?: boolean;
     }
@@ -188,7 +189,7 @@ export type WorkshopItem = {
   href: string;
   description?: string;
   tags?: string[];
-  callToAction: { label: string; href: string };
+  callToAction: { label: string; href: string; isExternal?: boolean };
 };
 
 export type WorkshopSection = {

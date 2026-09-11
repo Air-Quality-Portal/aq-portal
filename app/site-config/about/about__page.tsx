@@ -11,16 +11,16 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
       heading: "A Multi-Agency Platform for Integrating Air Quality Information",
       headingLevel: "h2",
       paragraphs: [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "The Air-quality Information Resource for the United States (AIR4US) helps lower the barriers to integrate information between air-quality remote sensing observations, model outputs, and in-situ monitors. By streamlining air-quality data from multiple organizations, AIR4US brings critical data together in one unified location to help air quality management working at local to national scales. AIR4US also aims to develop new future data integration capabilities based on stakeholder priorities. ",
       ],
     },
     {
       type: "image",
-      src: "https://placehold.co/600x400",
-      alt: "",
+      src: "/img/about/about-earth.webp",
+      alt: "A high-resolution image of Earth from space, showing North America, Central America, the Gulf of America, and surrounding oceans with visible cloud formations. ",
+      attribution: "Blue Marble 2012 (NASA/NOAA) ",
       width: 600,
       height: 400,
-      unoptimized: true,
     },
 
     {
@@ -28,35 +28,24 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
       heading: "Our Partners",
       headingLevel: "h2",
       paragraphs: [
-        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+        "AIR4US is a cross-agency effort working to create an impactful air-quality information system for data-driven decision making. Our primary collaborators and partners include federal scientific authorities such as NASA, the Environmental Protection Agency (EPA), and the National Oceanic and Atmospheric Administration (NOAA). Each contributor brings a unique air-quality data portfolio and expertise, which when combined, provide a comprehensive picture of past, current, and future air quality. ",
       ],
     },
 
     {
       type: "text",
-      heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      heading: "Technical Support and Stakeholder Network",
       headingLevel: "h3",
       paragraphs: [
-        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+        "Beyond these central agencies, the partnership draws vital technical integration and testing support from NASA’s Health and Air Quality Applied Sciences Team (HAQAST), specifically through a dedicated Tiger Team. The initiative connects AIR4US to a broad network of end-user stakeholders from the U.S. air-quality management community through its user engagement group.",
       ],
     },
-
-    {
-      type: "image",
-      src: "https://placehold.co/880x400",
-      alt: "",
-      width: 880,
-      height: 400,
-      unoptimized: true,
-    },
-
     {
       type: "text",
       heading: "Feedback",
       headingLevel: "h2",
       paragraphs: [
-        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
-        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+        "Your input is essential to helping us continuously improve the AIR4US platform. As we expand our services, data visualization tools, and capacity-building efforts, we welcome your suggestions, bug reports, and feature requests. Please reach out to {placeholder} to share your thoughts and ensure the platform meets your community’s needs.",
       ],
     },
 
