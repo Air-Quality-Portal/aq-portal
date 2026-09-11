@@ -30,13 +30,9 @@ export const SectionCardDetailed = ({
       {sectionHeading && sectionHeading}
       {description && <p className="text-base">{description}</p>}
       <div className={`grid-row grid-gap-4 margin-bottom-neg-${rowGap}`}>
-        {cards.map(({ key: _key, id, className: _className, ...cardProps }) => (
+        {cards.map(({ key, id, className, ...props }) => (
           <div key={`div-${id}`} className={`${gridColumnClass} margin-bottom-${rowGap}`}>
-            <CardDetailed
-              {...cardProps}
-              id={`card-${id}`}
-              className={_className ?? "height-card-md"}
-            />
+            <CardDetailed {...props} id={`card-${id}`} className={className ?? "height-card-md"} />
           </div>
         ))}
       </div>
