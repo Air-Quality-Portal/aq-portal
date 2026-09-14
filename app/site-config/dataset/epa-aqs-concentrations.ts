@@ -24,6 +24,13 @@ export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
       "High ozone",
       "Dust storm",
       "Transboundary pollution",
+      "PM2.5",
+      "O₃",
+      "NO₂",
+      "PM10",
+      "SO₂",
+      "CO",
+      "Retrospective(>15 days)",
     ],
     fields: {
       provider: { label: "Data Provider", value: "EPA" },

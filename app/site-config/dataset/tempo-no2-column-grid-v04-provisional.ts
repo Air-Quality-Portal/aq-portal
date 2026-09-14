@@ -22,6 +22,9 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
       "On-road emissions",
       "Hazardous air pollutants",
       "High ozone",
+      "NO₂",
+      "Satellite",
+      "Short latency(3 - 24 hours",
     ],
     fields: {
       provider: {
