@@ -24,7 +24,7 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
       "High ozone",
       "NO₂",
       "Satellite",
-      "Short latency(3 - 24 hours",
+      "Short latency (3 - 24 hours)",
     ],
     fields: {
       provider: {

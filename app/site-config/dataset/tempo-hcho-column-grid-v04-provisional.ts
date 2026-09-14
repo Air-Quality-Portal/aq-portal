@@ -23,7 +23,7 @@ export const TEMPO_HCHO_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
       "Agricultural emissions",
       "HCHO",
       "Satellite",
-      "Short latency(3 - 24 hours",
+      "Short latency (3 - 24 hours)",
     ],
     fields: {
       provider: {
