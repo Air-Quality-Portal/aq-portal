@@ -34,7 +34,7 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
               <CardDetailed
                 className="height-card-md bg-base-lightest"
                 imagePosition="left"
-                image={<AppImage {...thumbnailImage} fill sizes="194px" />}
+                image={<AppImage {...thumbnailImage} fill sizes="700px" />}
                 tagPrimary={tagPrimary ? makePrimaryTag(tagPrimary) : undefined}
                 title={
                   <AppLinkStyled
