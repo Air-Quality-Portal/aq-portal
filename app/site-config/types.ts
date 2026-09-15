@@ -201,7 +201,6 @@ export type WorkshopSection = {
 
 export type ContactItem = {
   title: string;
-  titleAs?: "h2" | "h3" | "h4" | "h5" | "h6";
   label: string;
   email: string;
 };
