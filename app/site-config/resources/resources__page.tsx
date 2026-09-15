@@ -85,8 +85,9 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
     },
 
     {
-      type: "clientCardTextOnly",
-      section: {
+      type: "adaptedCards",
+      adapter: "workshops",
+      source: {
         heading: "Workshops & Webinars",
         headingLevel: "h2",
         lead: "Live training events hosted by NASA, NOAA, and EPA scientists. Registration is free and open to air quality professionals, researchers, and students.",
