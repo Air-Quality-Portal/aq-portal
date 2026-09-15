@@ -104,7 +104,7 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
       headingLevel: "h3",
       links: [
         {
-          label: "TEMPO NO2 Level 3 (PROVISIONAL) V04 Data Access",
+          label: "TEMPO NO₂ Level 3 (PROVISIONAL) V04 Data Access",
           href: "https://doi.org/10.5067/IS-40e/TEMPO/NO2_L3.004",
           isExternal: true,
         },

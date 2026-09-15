@@ -8,11 +8,11 @@ export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
     "Model-generated 72-hour forecast guidance for surface ozone (O₃) and PM₂.₅ across the United States",
   thumbnailImage: {
     src: "/images/datasets/naqfc-aqm-card.webp",
-    alt: "Map of forecasted continental U.S. PM2.5 levels with low values in green and higher concentrations in orange and red. The color transitions align with the EPA’s PM2.5 concentration breakpoints for each AQI category.",
+    alt: "Map of forecasted continental U.S. PM₂.₅ levels with low values in green and higher concentrations in orange and red. The color transitions align with the EPA’s PM₂.₅ concentration breakpoints for each AQI category.",
   },
   mastheadImage: {
     src: "/images/datasets/naqfc-aqm-banner.webp",
-    alt: "Map of forecasted continental U.S. PM2.5 levels with low values in green and higher concentrations in orange and red. The color transitions align with the EPA’s PM2.5 concentration breakpoints for each AQI category.",
+    alt: "Map of forecasted continental U.S. PM₂.₅ levels with low values in green and higher concentrations in orange and red. The color transitions align with the EPA’s PM₂.₅ concentration breakpoints for each AQI category.",
   },
   metadata: {
     tags: [
@@ -24,7 +24,7 @@ export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
       "Forecast model",
       "Forecast (0 - 3 days)",
       "O₃",
-      "PM2.5",
+      "PM₂.₅",
     ],
     fields: {
       provider: { label: "Data Provider", value: ["NOAA", "NWS"], delimiter: " / " },
@@ -64,7 +64,7 @@ export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
       versionHistory: {
         label: "Version History",
         value:
-          "NAQFC AQM v7 O3 and PM2.5 forecasts (hourly averages only) were incorporated into AIR4US in September 2026.",
+          "NAQFC AQM v7 O₃ and PM₂.₅ forecasts (hourly averages only) were incorporated into AIR4US in September 2026.",
       },
       fileFormat: { label: "File Format", value: "grib2" },
     },
