@@ -113,6 +113,7 @@ export const TOOLS: ToolContent[] = [
       attribution: "EPA",
       attributionLink: "https://fire.airnow.gov/#3.92/40.37/-101.21",
     },
+    isFeatured: true,
   },
   {
     id: "airnow-mobile-app",
@@ -463,6 +464,7 @@ export const TOOLS: ToolContent[] = [
       attributionLink:
         "https://19january2017snapshot.epa.gov/sites/production/files/2015-09/goes-gasp.gif",
     },
+    isFeatured: true,
   },
   {
     id: "satpm",
@@ -516,5 +518,6 @@ export const TOOLS: ToolContent[] = [
       attribution: "NASA",
       attributionLink: "https://worldview.earthdata.nasa.gov/?t=2026-08-27-T21%3A09%3A49Z",
     },
+    isFeatured: true,
   },
 ];
