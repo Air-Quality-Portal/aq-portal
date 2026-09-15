@@ -24,8 +24,8 @@ export const SectionCardSimple = ({
       {sectionHeading && sectionHeading}
       {description && <p className="text-base margin-top-0 margin-bottom-3">{description}</p>}
       <div className="grid-row grid-gap-2 margin-bottom-neg-2">
-        {cards.map((props) => (
-          <div key={props.id} className={`${gridColumnClass} margin-bottom-2 height-card-md`}>
+        {cards.map(({ key, id, ...props }) => (
+          <div key={id} className={`${gridColumnClass} margin-bottom-2 height-card-md`}>
             <CardSimple {...props} />
           </div>
         ))}

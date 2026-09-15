@@ -11,20 +11,23 @@ export default function ResourcesPage() {
     <Section>
       <Card className="height-masthead" isMastHead title={RESOURCES_PAGE_MASTHEAD.title} />
 
-      <div className="grid-container padding-y-7">
-        <div className="grid-row grid-gap">
-          <div className="grid-col-3 display-none desktop:display-block">
-            <InPageNavigation
-              data-title-text="ON THIS PAGE"
-              data-main-content-selector={`#${RESOURCES_CONTENT_ID}`}
-            />
-          </div>
-          <div className="grid-col-9 usa-prose" id={RESOURCES_CONTENT_ID}>
-            {body.map((block, i) => (
+      <div className="grid-row grid-gap margin-top-6">
+        <div className="grid-col-3 display-none desktop:display-block">
+          <InPageNavigation
+            data-title-text="ON THIS PAGE"
+            data-main-content-selector={`#${RESOURCES_CONTENT_ID}`}
+          />
+        </div>
+        <div className="grid-col-9 usa-prose" id={RESOURCES_CONTENT_ID}>
+          {body.map((block, i) => (
+            <ContentBlockRenderer
               // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
-              <ContentBlockRenderer key={i} block={block} isMultiColumnLayout />
-            ))}
-          </div>
+              key={i}
+              block={block}
+              isMultiColumnLayout
+              className={i === 0 ? "margin-top-0" : ""}
+            />
+          ))}
         </div>
       </div>
     </Section>

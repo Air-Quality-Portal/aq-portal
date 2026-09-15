@@ -9,8 +9,12 @@ export function SectionLinks({ section }: { section: LinkSection }) {
       {section.heading && <ContentHeading heading={section.heading} headingLevel="h3" />}
       <ContentLead lead={section.lead} />
       <ul className="usa-list usa-list--unstyled">
-        {section.links.map((link) => (
-          <li key={link.href} className="margin-bottom-1">
+        {section.links.map((link, index) => (
+          <li
+            // biome-ignore lint/suspicious/noArrayIndexKey: static link list, never reorder
+            key={`link-${index}`}
+            className="margin-bottom-1"
+          >
             <AppLinkStyled {...makeButtonOutlineLink(link.href, link.isExternal)}>
               {link.label}
             </AppLinkStyled>
