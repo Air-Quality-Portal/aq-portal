@@ -60,7 +60,7 @@ export const CatalogSearchInput = ({
     return () => clearTimeout(timeout);
   }, [commit, query, catalogSearchValue]);
 
-  // A shared search URL should bring the catalog results into view on arrival.
+  // A shared search URL should bring the catalog results into view on page load.
   const hasAutoScrolled = useRef(false);
   useEffect(() => {
     if (hasAutoScrolled.current) return;
