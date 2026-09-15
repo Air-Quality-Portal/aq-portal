@@ -8,10 +8,18 @@ import {
   type DatasetMetadata,
   type DatasetMetadataEntry,
   type IterableItemWithId,
+  type TaggedCardSection,
   type TutorialLevel,
   type TutorialSection,
-  type WorkshopSection,
 } from "@/app/site-config/types";
+
+/**
+ * True for hrefs that leave the site: absolute URLs with a scheme and
+ * protocol-relative ones. In-page anchors and app-internal paths are internal.
+ * Card helpers derive a link's `isExternal` from this so authored content
+ * carries the href alone.
+ */
+export const isExternalHref = (href: string): boolean => /^([a-z][a-z0-9+.-]*:)?\/\//i.test(href);
 
 export const makePrimaryTag = (tag: string) => ({
   label: tag,
@@ -53,6 +61,7 @@ export const makeTutorialCardSection = ({
     id: `tutorial-${index}`,
     title: tutorial.title,
     href: tutorial.href,
+    isExternal: isExternalHref(tutorial.href),
     description: tutorial.description,
     tags: [
       ...(tutorial.duration ? [makeSimpleTag(tutorial.duration)] : []),
@@ -61,14 +70,18 @@ export const makeTutorialCardSection = ({
   })),
 });
 
-export const makeWorkshopCardSection = ({
-  workshops,
+export const makeTaggedCardSection = ({
+  items,
   ...section
-}: WorkshopSection): CardTextOnlySection => ({
+}: TaggedCardSection): CardTextOnlySection => ({
   ...section,
-  items: workshops.map(({ tags, ...workshop }) => ({
-    ...workshop,
+  items: items.map(({ tags, callToAction, ...item }) => ({
+    ...item,
+    isExternal: isExternalHref(item.href),
     tags: tags?.map((tag) => makeSimpleTag(tag)),
+    ...(callToAction && {
+      callToAction: { ...callToAction, isExternal: isExternalHref(callToAction.href) },
+    }),
   })),
 });
 
