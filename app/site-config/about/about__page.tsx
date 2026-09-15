@@ -61,18 +61,19 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
     },
 
     {
-      type: "contacts",
+      type: "contact",
       heading: "Contact",
       headingLevel: "h2",
       lead: "Have questions about the AIR4US Portal, its datasets, or how to get involved? Reach out to the team below.",
       contacts: [
         {
           title: "Responsible Official",
-          name: "Katherine Knowland ",
+          label: "Katherine Knowland - katherine.knowland@nasa.gov",
           email: "katherine.knowland@nasa.gov",
         },
         {
           title: "General Inquiries",
+          label: "air4us@example.gov",
           email: "air4us@example.gov",
         },
       ],

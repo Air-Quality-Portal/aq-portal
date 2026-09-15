@@ -187,7 +187,7 @@ export const ContentBlockRenderer = ({
     case "links":
       return <SectionLinks section={block} />;
 
-    case "contacts":
+    case "contact":
       return <SectionContacts section={block} />;
   }
 };

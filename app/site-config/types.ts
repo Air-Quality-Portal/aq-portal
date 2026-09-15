@@ -93,7 +93,7 @@ export type ContentBlock =
     }
   | ({ type: "cardTextOnly" } & CardTextOnlySection)
   | ({ type: "links" } & LinkSection)
-  | ({ type: "contacts" } & ContactSection);
+  | ({ type: "contact" } & ContactSection);
 
 export type ContentType = DatasetContent["contentType"];
 
@@ -202,7 +202,7 @@ export type WorkshopSection = {
 export type ContactItem = {
   title: string;
   titleAs?: "h2" | "h3" | "h4" | "h5" | "h6";
-  name?: string;
+  label: string;
   email: string;
 };
 
