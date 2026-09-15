@@ -2,17 +2,18 @@ import { Card, CardDetailed } from "@teamimpact/veda-ui-blocks";
 import { CatalogPagination, DatasetCatalogToolbar, Section } from "@/app/components";
 import { AppImage } from "@/app/components/AppImage";
 import { AppLink, AppLinkStyled } from "@/app/components/AppLink";
-import { DATASETS, searchDatasets } from "@/app/site-config/dataset";
+import { DATASETS, filterDatasetsByTags, searchDatasets } from "@/app/site-config/dataset";
 import { DATA_CATALOG_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
+import { normalizeCatalogSearchParams } from "../_utilities/catalog-search.helpers";
 import { getMetadataFieldTag, makePrimaryTag, makeSimpleTag } from "../_utilities/content.helpers";
 import { CONTENT_TYPES } from "../site-config/types";
 
 const PER_PAGE = 8;
 
 export default async function DataCatalogPage(props: PageProps<"/data-catalog">) {
-  const { page, q = "" } = (await props.searchParams) ?? {};
-  const query = typeof q === "string" ? q : "";
-  const results = searchDatasets(DATASETS, query);
+  const { page, q = "", tags } = (await props.searchParams) ?? {};
+  const { query, selectedTags } = normalizeCatalogSearchParams({ q, tags });
+  const results = filterDatasetsByTags(searchDatasets(DATASETS, query), selectedTags);
   const total = results.length;
   const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
 
@@ -29,13 +30,13 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
         <Card className="height-masthead" isMastHead title={DATA_CATALOG_CARD_MASTHEAD.title} />
       </Section>
       <Section>
-        <DatasetCatalogToolbar count={total} query={query} />
+        <DatasetCatalogToolbar count={total} query={query} selectedTags={selectedTags} />
         {total === 0 && (
           <div className="padding-y-6 text-center">
-            <p className="margin-0 text-bold">No datasets match “{query}”.</p>
+            <p className="margin-0 text-bold">There are no matching datasets.</p>
             <p className="margin-top-1 margin-bottom-0">
               <AppLink href={CONTENT_TYPES.dataset.route} className="usa-link">
-                Clear search
+                Clear search {tags ? "and filters" : ""}
               </AppLink>
             </p>
           </div>

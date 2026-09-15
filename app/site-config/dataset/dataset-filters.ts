@@ -1,5 +1,12 @@
-import type { DatasetFilter } from "@/app/site-config/types";
+import type { DatasetContent, DatasetFilter } from "@/app/site-config/types";
 
+/**
+ * Manually managed categories and filters.
+ * Every option's `value` is a string that could be matched
+ * to a dataset's `metadata.tags`.
+ * A dataset added with a new tag may or may not be added here;
+ * either would be a deliberate choice.
+ */
 export const DATASET_FILTERS: DatasetFilter[] = [
   {
     id: "data-type",
@@ -47,3 +54,19 @@ export const DATASET_FILTERS: DatasetFilter[] = [
     ],
   },
 ];
+
+/**
+ * Keeps datasets that have at least one of the selected tags.
+ * Category is a UI-only grouping; matching flattens every
+ * selected value regardless of which category it came from.
+ * No selected filters means all datasets are returned.
+ */
+export const filterDatasetsByTags = (
+  datasets: DatasetContent[],
+  selectedTags: string[],
+): DatasetContent[] =>
+  selectedTags.length === 0
+    ? datasets
+    : datasets.filter((dataset) =>
+        (dataset.metadata.tags ?? []).some((tag) => selectedTags.includes(tag)),
+      );

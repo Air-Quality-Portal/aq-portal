@@ -44,7 +44,9 @@ const MOCK_DETAILS: RawDataset[] = [
     title: "AQS / AirNow Air Quality Monitoring Data",
     description:
       "Real-time and historical ground-level air quality measurements from EPA's nationwide monitoring network. Incorporates PM2.5, ozone, CO, and NO₂ with IMPROVE and CASTNet quality flags.",
-    tags: ["Air Quality", "EPA", "PM2.5", "Ground Station", "Real-Time"],
+    // "reg-monitor" and "pm2.5" are added to validate the tag filter
+    // datasets will be updated with real data
+    tags: ["Air Quality", "EPA", "PM2.5", "Ground Station", "Real-Time", "reg-monitor", "pm2.5"],
     provider: "US EPA",
     parameters: ["PM2.5 µg/m³", "Ozone ppb", "CO ppm", "NO₂ ppb"],
     spatialCoverage: "United States",
@@ -156,7 +158,9 @@ const MOCK_DETAILS: RawDataset[] = [
     title: "HMS Smoke Polygons",
     description:
       "Daily wildfire smoke plume extent polygons from NOAA's Hazard Mapping System, manually analyzed from satellite imagery to support smoke forecasting and public health alerts.",
-    tags: ["Smoke", "NOAA", "Satellite", "Wildfire", "Fire Mapping"],
+    // "satellite" and "wildfire" are added to validate the tag filter
+    // datasets will be updated with real data
+    tags: ["Smoke", "NOAA", "Satellite", "Wildfire", "Fire Mapping", "satellite", "wildfire"],
     provider: "NOAA",
     parameters: ["Smoke plume extent", "Plume density (light / medium / heavy)"],
     spatialCoverage: "North America",

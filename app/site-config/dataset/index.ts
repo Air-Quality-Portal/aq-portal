@@ -2,6 +2,7 @@ import type { DatasetContent } from "@/app/site-config/types";
 import { MOCK_DETAILED_DATASET } from "./dataset__mock";
 import { MOCK_DATASETS } from "./datasets__mock";
 
+export { filterDatasetsByTags } from "./dataset-filters";
 export { searchDatasets } from "./datasets__search";
 
 export const DATASETS: DatasetContent[] = [MOCK_DETAILED_DATASET, ...MOCK_DATASETS];

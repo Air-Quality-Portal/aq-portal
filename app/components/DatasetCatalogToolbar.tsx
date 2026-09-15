@@ -1,43 +1,60 @@
 "use client";
 
 import { Drawer, Link, SvgFilterList, Tag } from "@teamimpact/veda-ui-blocks";
+import type { Route } from "next";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { DatasetAccordionFilters } from "@/app/components/DatasetFilters";
 import { DATASET_FILTERS } from "@/app/site-config/dataset/dataset-filters";
 import { CatalogSearchInput } from "./CatalogSearchInput";
 
-const labelsByFilterValue = Object.fromEntries(
-  DATASET_FILTERS.flatMap((filter) => filter.options.map((item) => [item.value, item.label])),
-);
-
 type DatasetCatalogToolbarProps = {
   /** Number of datasets currently matching the catalog query. */
   count: number;
   query?: string;
+  /** Tags currently applied via the `tags` URL param. */
+  selectedTags?: string[];
 };
 
-export const DatasetCatalogToolbar = ({ count, query = "" }: DatasetCatalogToolbarProps) => {
+export const DatasetCatalogToolbar = ({
+  count,
+  query = "",
+  selectedTags = [],
+}: DatasetCatalogToolbarProps) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
-  const [appliedFilters, setAppliedFilters] = useState<string[]>([]);
+
+  // Applies a new tag selection to the URL, independent of the `q` param
+  const applyTags = (next: string[]) => {
+    const params = new URLSearchParams(searchParams);
+    params.delete("tags");
+    for (const tag of next) params.append("tags", tag);
+    // A changed filter always starts at the first page.
+    params.delete("page");
+
+    const href = `${pathname}${params.size ? `?${params}` : ""}` as Route;
+    router.replace(href, { scroll: false });
+  };
 
   const toggleCheckboxFilter = (value: string) => {
-    setAppliedFilters((prev) =>
-      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value],
-    );
+    const next = selectedTags.includes(value)
+      ? selectedTags.filter((tag) => tag !== value)
+      : [...selectedTags, value];
+    applyTags(next);
   };
 
   const removeTagFilter = (filterValue: string) => {
-    setAppliedFilters((prev) => prev.filter((v) => v !== filterValue));
+    applyTags(selectedTags.filter((tag) => tag !== filterValue));
   };
 
-  const clearFilters = () => {
-    setAppliedFilters([]);
-  };
+  const clearFilters = () => applyTags([]);
 
   return (
     <>
       <div className="display-flex flex-justify flex-align-center margin-y-6 border border-base-lighter radius-lg padding-y-105 padding-x-205">
-        <div className="display-flex flex-align-center flex-1">
+        <div aria-live="polite" className="display-flex flex-align-center flex-1">
           <span>
             Datasets
             <span className="margin-left-1 margin-right-2 padding-x-1 padding-y-1 bg-primary text-white radius-md font-sans-2xs">
@@ -45,7 +62,7 @@ export const DatasetCatalogToolbar = ({ count, query = "" }: DatasetCatalogToolb
             </span>
           </span>
           <span className="display-flex flex-wrap width-full">
-            {appliedFilters.map((filterValue) => (
+            {selectedTags.map((filterValue) => (
               <Tag
                 key={filterValue}
                 variant="outline"
@@ -53,16 +70,22 @@ export const DatasetCatalogToolbar = ({ count, query = "" }: DatasetCatalogToolb
                 className="margin-right-1 margin-y-1"
                 onClose={() => removeTagFilter(filterValue)}
               >
-                {labelsByFilterValue[filterValue]}
+                {filterValue}
               </Tag>
             ))}
-            {appliedFilters.length > 0 && (
+            {selectedTags.length > 0 && (
               <Link className="margin-left-2" as="button" onClick={clearFilters}>
                 Clear all
               </Link>
             )}
           </span>
         </div>
+        <CatalogSearchInput
+          query={query}
+          label="Search datasets"
+          placeholder="Search datasets..."
+          inputId="dataset-catalog-search"
+        />
         <Link
           className="usa-button"
           as="button"
@@ -108,7 +131,8 @@ export const DatasetCatalogToolbar = ({ count, query = "" }: DatasetCatalogToolb
         <div className="padding-y-5">
           {isDrawerOpen && (
             <DatasetAccordionFilters
-              selectedFilters={appliedFilters}
+              filters={DATASET_FILTERS}
+              selectedFilters={selectedTags}
               onFilterChangeAction={toggleCheckboxFilter}
             />
           )}
