@@ -189,7 +189,7 @@ export type WorkshopItem = {
   href: string;
   description?: string;
   tags?: string[];
-  callToAction: { label: string; href: string; isExternal?: boolean };
+  callToAction?: { label: string; href: string; isExternal?: boolean };
 };
 
 export type WorkshopSection = {

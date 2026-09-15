@@ -65,6 +65,33 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
 
     {
       type: "cardTextOnly",
+      ...makeTutorialCardSection({
+        heading: "Partner Agency Tool Tutorials",
+        headingLevel: "h2",
+        lead: "Tutorial resources for tools provided by our partner agencies, accessible via the Air-Quality Tool Catalog.",
+        tutorials: [
+          {
+            title: "RSIG3D Video Demonstrations",
+            description:
+              "A series of short tutorial videos illustrating how to use RSIG3D to view, retrieve, and save data. NOTE: THIS IS AN EXAMPLE FOR HOW TUTORIALS ON PARTNER AGENCY TOOLS CAN BE CROSS-LISTED ON AIR4US",
+            href: "https://www.epa.gov/hesc/rsig3d-video-demonstrations",
+            duration: "30 MIN",
+            level: "intermediate",
+          },
+          {
+            title: "Get Started with NASA Worldview",
+            description:
+              "Learn how to use Worldview to explore and visualize NASA Earth science imagery to see hurricanes forming, wildfires spreading, icebergs drifting, and more. NOTE: THIS IS AN EXAMPLE FOR HOW TUTORIALS ON PARTNER AGENCY TOOLS CAN BE CROSS-LISTED ON AIR4US",
+            href: "https://www.earthdata.nasa.gov/learn/tutorials/get-started-nasa-worldview",
+            duration: "20 MIN",
+            level: "beginner",
+          },
+        ],
+      }),
+    },
+
+    {
+      type: "cardTextOnly",
       ...makeWorkshopCardSection({
         heading: "Workshops & Webinars",
         headingLevel: "h2",
@@ -80,7 +107,7 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
             tags: ["WEBINAR"],
             callToAction: {
               label: "Register",
-              href: "https://www.earthdata.nasa.gov/learn/training/geostationary-remote-sensing-aerosols-air-quality-applications-north-america",
+              href: "https://www.earthdata.nasa.gov/learn/trainings/geostationary-remote-sensing-aerosols-air-quality-applications-north-america",
               isExternal: true,
             },
           },
@@ -92,6 +119,50 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
               "Three-day intensive training covering how to use AIR4US to visualize and compare satellite data products, ground-based monitoring networks, and model outputs. Open to federal, state, local, and tribal air quality agency staff.",
             tags: ["VIRTUAL WORKSHOP", "IN-PERSON WORKSHOP"],
             callToAction: { label: "Register", href: "#", isExternal: true },
+          },
+        ],
+      }),
+    },
+
+    {
+      type: "cardTextOnly",
+      ...makeWorkshopCardSection({
+        heading: "Partner Resource Pages",
+        headingLevel: "h2",
+        lead: "Resources provided by our partner agencies.",
+        workshops: [
+          {
+            id: "partner-resource-arset",
+            title:
+              "Geostationary Remote Sensing of Aerosols for Air Quality Applications in North America",
+            href: "https://www.earthdata.nasa.gov/data/projects/arset/learn?topic[14867]=14867",
+            description:
+              "The Applied Remote Sensing Training (ARSET) program offers online and in-person trainings covering a range of datasets, web portals, and analysis tools and their application to air quality, among other topics.",
+            tags: ["NASA"],
+          },
+          {
+            id: "partner-resource-haqast",
+            title: "Health and Air Quality Applied Sciences Team",
+            href: "https://haqast.wisc.edu/getting-started/",
+            description:
+              "Resources for getting started with using remote sensing data for health and air quality applications, collected and curated by NASA Health and Air Quality Applied Sciences Team (HAQAST) members.  ",
+            tags: ["NASA"],
+          },
+          {
+            id: "partner-resource-airknowledge",
+            title: "Air Knowledge",
+            href: "https://airknowledge.gov/",
+            description:
+              "Training material focused on the Clean Air Act program areas associated with ambient air quality planning and stationary source emissions control regulation.",
+            tags: ["EPA"],
+          },
+          {
+            id: "partner-resource-star-atmospheric",
+            title: "STAR Atmospheric Composition Product Training",
+            href: "https://www.star.nesdis.noaa.gov/atmospheric-composition-training/index.php",
+            description:
+              "The STAR Aerosols and Atmospheric Composition Science Team conducts training courses on aerosol, fire, and trace gas satellite products from ABI, VIIRS, TROPOMI & TEMPO. The objectives of the training program are to increase access to the satellite products and promote their proper use in air quality applications in operations & research.",
+            tags: ["NOAA"],
           },
         ],
       }),

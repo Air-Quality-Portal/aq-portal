@@ -122,9 +122,13 @@ export const ContentBlockRenderer = ({
               unoptimized={block.unoptimized}
               style={{ width: block.maxWidth ?? "100%", height: "auto" }}
             />
-            {block.caption && (
+            {(block.caption || block.attribution) && (
               <figcaption className="font-body-sm text-base margin-top-1">
                 {block.caption}
+                {block.caption && block.attribution && " "}
+                {block.attribution && (
+                  <span className=" text-base text-base-dark">{block.attribution}</span>
+                )}
               </figcaption>
             )}
           </figure>
