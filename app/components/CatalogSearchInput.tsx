@@ -76,7 +76,7 @@ export const CatalogSearchInput = ({
   }, [query]);
 
   return (
-    <div ref={inputRef} className="position-relative maxw-card-lg">
+    <div ref={inputRef} className="position-relative maxw-card-lg margin-right-1">
       <span
         aria-hidden="true"
         className="position-absolute top-0 bottom-0 left-105 z-100 display-flex flex-align-center text-base"

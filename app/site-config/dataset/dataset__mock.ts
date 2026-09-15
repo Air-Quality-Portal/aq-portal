@@ -1,6 +1,6 @@
 import type { DatasetContent } from "@/app/site-config/types";
 
-export const DATASET__MOCK: DatasetContent = {
+export const MOCK_DETAILED_DATASET: DatasetContent = {
   id: "sentinel-2-true-color",
   contentType: "dataset",
   title: "Sentinel-2 True Color Imagery",
