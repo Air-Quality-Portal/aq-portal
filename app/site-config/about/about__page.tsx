@@ -43,7 +43,7 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
 
     {
       type: "image",
-      src: "https://placehold.co/880x400",
+      src: "https://placehold.co/600x400",
       alt: "",
       width: 880,
       height: 400,
@@ -61,11 +61,21 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
     },
 
     {
-      type: "text",
+      type: "contact",
       heading: "Contact",
       headingLevel: "h2",
-      paragraphs: [
-        "Have questions about the AIR4US Portal, its datasets, or how to get involved? Reach out to the team below.",
+      lead: "Have questions about the AIR4US Portal, its datasets, or how to get involved? Reach out to the team below.",
+      contacts: [
+        {
+          title: "Responsible Official",
+          label: "Katherine Knowland - katherine.knowland@nasa.gov",
+          email: "katherine.knowland@nasa.gov",
+        },
+        {
+          title: "General Inquiries",
+          label: "air4us@example.gov",
+          email: "air4us@example.gov",
+        },
       ],
     },
   ],
