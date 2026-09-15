@@ -1,5 +1,4 @@
-import { makeTutorialCardSection, makeWorkshopCardSection } from "@/app/_utilities/content.helpers";
-import { AppImage } from "@/app/components/AppImage";
+import { makeTaggedCardSection, makeTutorialCardSection } from "@/app/_utilities/content.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
 
 export type ResourcesPageBody = {
@@ -13,47 +12,48 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
       heading: "Getting Started",
       headingLevel: "h2",
       paragraphs: [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Browse the resources below to learn how to use the AIR4US Visualization Tool, as well as how to access, interpret, and apply the data and tools available through the AIR4US Portal.",
+        "All training materials are freely available. Tutorials can be completed at your own pace. Register for upcoming workshops and webinars, and access resources from past events.",
       ],
     },
 
     {
       type: "cardTextOnly",
       ...makeTutorialCardSection({
-        heading: "Video Tutorials",
+        heading: "AIR4US Visualization Tool Tutorials",
         headingLevel: "h2",
-        lead: "Self-paced video tutorials covering key datasets, tools, and workflows available through the AIR4US Portal.",
+        lead: "Self-paced tutorials covering key datasets, tools, and workflows available through the AIR4US Visualization Tool",
         tutorials: [
           {
-            title: "Getting started with MODIS/VIIRS/GOES",
+            title: "Getting Started with AIR4US",
             description:
-              "An introduction to the MODIS/VIIRS/GOES dataset — what it measures, how it is produced, and when to use it.",
+              "An introductory video explaining the AIR4US Visualization Tool's user interface and basic functions.",
             href: "#",
             duration: "10 MIN",
             level: "beginner",
           },
           {
-            title: "Accessing and downloading MODIS/VIIRS/GOES data",
+            title: "Visualizing near-real-time air quality information",
             description:
-              "Find, subset, and download MODIS/VIIRS/GOES data, with tips for common file formats and access tools.",
+              "Use the near-real-time air quality information available via AIR4US to assess the current air quality situation in your area.",
             href: "#",
-            duration: "20 MIN",
-            level: "intermediate",
+            duration: "10 MIN",
+            level: "beginner",
           },
           {
-            title: "Accessing and downloading MODIS/VIIRS/GOES data",
+            title: "Forecasting high-ozone events",
             description:
-              "Find, subset, and download MODIS/VIIRS/GOES data, with tips for common file formats and access tools.",
-            href: "#",
-            duration: "20 MIN",
-            level: "intermediate",
-          },
-          {
-            title: "Exploring MODIS/VIIRS/GOES in the AIR4US visualization tool",
-            description:
-              "Load MODIS/VIIRS/GOES layers in the AIR4US visualization tool and interpret them alongside other air quality data.",
+              "Use Ozone and other related data available in AIR4US to predict high-ozone events in your area.",
             href: "#",
             duration: "15 MIN",
+            level: "intermediate",
+          },
+          {
+            title: "Long-term air quality trend analysis",
+            description:
+              "Use AIR4US to assess long-term trends in air quality using a combination of monitor data, satellite information, and retrospective model simulations.",
+            href: "#",
+            duration: "30 MIN",
             level: "advanced",
           },
         ],
@@ -61,52 +61,103 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
     },
 
     {
-      type: "text",
-      heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      headingLevel: "h3",
-      paragraphs: [
-        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
-      ],
-    },
-
-    {
-      type: "text",
-      paragraphs: [
-        <AppImage
-          key="placeholder"
-          src="https://placehold.co/880x400"
-          alt="Placeholder"
-          width={880}
-          height={400}
-          unoptimized
-        />,
-      ],
+      type: "cardTextOnly",
+      ...makeTutorialCardSection({
+        heading: "Partner Agency Tool Tutorials",
+        headingLevel: "h2",
+        lead: "Tutorial resources for tools provided by our partner agencies, accessible via the Air-Quality Tool Catalog.",
+        tutorials: [
+          {
+            title: "RSIG3D Video Demonstrations",
+            description:
+              "A series of short tutorial videos illustrating how to use RSIG3D to view, retrieve, and save data. NOTE: THIS IS AN EXAMPLE FOR HOW TUTORIALS ON PARTNER AGENCY TOOLS CAN BE CROSS-LISTED ON AIR4US",
+            href: "https://www.epa.gov/hesc/rsig3d-video-demonstrations",
+            duration: "30 MIN",
+            level: "intermediate",
+          },
+          {
+            title: "Get Started with NASA Worldview",
+            description:
+              "Learn how to use Worldview to explore and visualize NASA Earth science imagery to see hurricanes forming, wildfires spreading, icebergs drifting, and more. NOTE: THIS IS AN EXAMPLE FOR HOW TUTORIALS ON PARTNER AGENCY TOOLS CAN BE CROSS-LISTED ON AIR4US",
+            href: "https://www.earthdata.nasa.gov/learn/tutorials/get-started-nasa-worldview",
+            duration: "20 MIN",
+            level: "beginner",
+          },
+        ],
+      }),
     },
 
     {
       type: "cardTextOnly",
-      ...makeWorkshopCardSection({
+      ...makeTaggedCardSection({
         heading: "Workshops & Webinars",
         headingLevel: "h2",
-        lead: "Live training events hosted by NASA, NOAA, and EPA scientists. Registration is free and open to air quality professionals, researchers, and students.",
-        workshops: [
+        lead: "Explore training events hosted by AIR4US partner agencies and affiliated organizations, and view registration details for upcoming events and available resources from past events.",
+        items: [
           {
-            id: "workshop-summer-2026-1",
-            title: "AIR4US Summer Training Workshop (July 14-16, 2026)",
-            href: "#",
+            id: "workshop-geostationary-aerosols-2026",
+            title:
+              "Geostationary Remote Sensing of Aerosols for Air Quality Applications in North America",
+            href: "https://www.earthdata.nasa.gov/learn/trainings/geostationary-remote-sensing-aerosols-air-quality-applications-north-america",
             description:
-              "Three-day intensive training covering satellite data products, ground-based monitoring networks, and model evaluation techniques. Open to state and local air quality agency staff.",
-            tags: ["IN PERSON + VIRTUAL"],
-            callToAction: { label: "Register", href: "#" },
+              "This training provides an overview of TEMPO capabilities and available NOAA aerosol products generated using synergistic TEMPO and ABI observations. Instructors demonstrate how to access and interpret near real-time and archived TEMPO aerosol products imagery on the NOAA AerosolWatch website.",
+            tags: ["WEBINAR"],
+            callToAction: {
+              label: "Register",
+              href: "https://www.earthdata.nasa.gov/learn/trainings/geostationary-remote-sensing-aerosols-air-quality-applications-north-america",
+            },
           },
           {
-            id: "workshop-summer-2026-2",
-            title: "AIR4US Summer Training Workshop (July 14-16, 2026)",
+            id: "workshop-air4us-summer-2027",
+            title: "AIR4US Summer Training Workshop 2027",
             href: "#",
             description:
-              "Three-day intensive training covering satellite data products, ground-based monitoring networks, and model evaluation techniques. Open to state and local air quality agency staff.",
-            tags: ["IN PERSON + VIRTUAL"],
+              "Three-day intensive training covering how to use AIR4US to visualize and compare satellite data products, ground-based monitoring networks, and model outputs. Open to federal, state, local, and tribal air quality agency staff.",
+            tags: ["VIRTUAL WORKSHOP", "IN-PERSON WORKSHOP"],
             callToAction: { label: "Register", href: "#" },
+          },
+        ],
+      }),
+    },
+
+    {
+      type: "cardTextOnly",
+      ...makeTaggedCardSection({
+        heading: "Partner Resource Pages",
+        headingLevel: "h2",
+        lead: "Resources provided by our partner agencies.",
+        items: [
+          {
+            id: "partner-resource-arset",
+            title: "Applied Remote Sensing Training",
+            href: "https://www.earthdata.nasa.gov/data/projects/arset/learn?topic[14867]=14867",
+            description:
+              "The Applied Remote Sensing Training (ARSET) program offers online and in-person trainings covering a range of datasets, web portals, and analysis tools and their application to air quality, among other topics.",
+            tags: ["NASA"],
+          },
+          {
+            id: "partner-resource-haqast",
+            title: "Health and Air Quality Applied Sciences Team",
+            href: "https://haqast.wisc.edu/getting-started/",
+            description:
+              "Resources for getting started with using remote sensing data for health and air quality applications, collected and curated by NASA Health and Air Quality Applied Sciences Team (HAQAST) members.",
+            tags: ["NASA"],
+          },
+          {
+            id: "partner-resource-airknowledge",
+            title: "Air Knowledge",
+            href: "https://airknowledge.gov/",
+            description:
+              "Training material focused on the Clean Air Act program areas associated with ambient air quality planning and stationary source emissions control regulation.",
+            tags: ["EPA"],
+          },
+          {
+            id: "partner-resource-star-atmospheric",
+            title: "STAR Atmospheric Composition Product Training",
+            href: "https://www.star.nesdis.noaa.gov/atmospheric-composition-training/index.php",
+            description:
+              "The STAR Aerosols and Atmospheric Composition Science Team conducts training courses on aerosol, fire, and trace gas satellite products from ABI, VIIRS, TROPOMI & TEMPO. The objectives of the training program are to increase access to the satellite products and promote their proper use in air quality applications in operations & research.",
+            tags: ["NOAA"],
           },
         ],
       }),
@@ -116,34 +167,8 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
       type: "links",
       heading: "Documentation",
       headingLevel: "h3",
-      lead: "Documentation, algorithm details, and background reading for MODIS/VIIRS/GOES.",
-      links: [
-        {
-          label: "MODIS/VIIRS/GOES — official dataset page",
-          href: "#",
-          isExternal: true,
-        },
-        {
-          label: "NASA / NOAA documentation",
-          href: "#",
-          isExternal: true,
-        },
-        {
-          label: "Algorithm Theoretical Basis Document (ATBD)",
-          href: "#",
-          isExternal: true,
-        },
-        {
-          label: "Data quality & validation report",
-          href: "#",
-          isExternal: true,
-        },
-        {
-          label: "Related publications",
-          href: "#",
-          isExternal: true,
-        },
-      ],
+      lead: "To be added later",
+      links: [],
     },
   ],
 };
