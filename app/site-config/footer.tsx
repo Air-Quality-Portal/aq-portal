@@ -75,12 +75,12 @@ const portalDetails: FooterProps["portalDetails"] = {
   contacts: [
     {
       label: "Responsible Official:",
-      name: "Katherine Knowland",
-      email: "k.e.knowland@nasa.gov",
+      name: "K. Emma Knowland",
+      email: "https://science.nasa.gov/people/dr-k-emma-knowland/",
     },
   ],
   title: <SiteTitle usColor="var(--color-primary-lightest)" />,
-  tagline: "Empowering US air quality decisions through Earth observations.",
+  tagline: "Air-quality Information Resource for the United States",
   updatedDate: formatBuildDate(),
 };
 

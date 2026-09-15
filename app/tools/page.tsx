@@ -25,7 +25,7 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
   return (
     <>
       <Section>
-        <Card className="height-masthead" isMastHead title="Air Quality Tools Catalog" />
+        <Card className="height-masthead" isMastHead title="Air Quality Tool Catalog" />
       </Section>
       {FEATURED_TOOLS.length > 0 && (
         <Section>
