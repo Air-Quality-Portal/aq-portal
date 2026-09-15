@@ -95,13 +95,13 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
       ...makeWorkshopCardSection({
         heading: "Workshops & Webinars",
         headingLevel: "h2",
-        lead: "Explore training events hosted by AIR4US partner agencies and affiliated organizations, and view registration details for upcoming events and available resources from past events. ",
+        lead: "Explore training events hosted by AIR4US partner agencies and affiliated organizations, and view registration details for upcoming events and available resources from past events.",
         workshops: [
           {
             id: "workshop-geostationary-aerosols-2026",
             title:
               "Geostationary Remote Sensing of Aerosols for Air Quality Applications in North America",
-            href: "https://www.earthdata.nasa.gov/learn/training/geostationary-remote-sensing-aerosols-air-quality-applications-north-america",
+            href: "https://www.earthdata.nasa.gov/learn/trainings/geostationary-remote-sensing-aerosols-air-quality-applications-north-america",
             description:
               "This training provides an overview of TEMPO capabilities and available NOAA aerosol products generated using synergistic TEMPO and ABI observations. Instructors demonstrate how to access and interpret near real-time and archived TEMPO aerosol products imagery on the NOAA AerosolWatch website.",
             tags: ["WEBINAR"],
@@ -133,8 +133,7 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
         workshops: [
           {
             id: "partner-resource-arset",
-            title:
-              "Geostationary Remote Sensing of Aerosols for Air Quality Applications in North America",
+            title: "Applied Remote Sensing Training",
             href: "https://www.earthdata.nasa.gov/data/projects/arset/learn?topic[14867]=14867",
             description:
               "The Applied Remote Sensing Training (ARSET) program offers online and in-person trainings covering a range of datasets, web portals, and analysis tools and their application to air quality, among other topics.",
@@ -145,7 +144,7 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
             title: "Health and Air Quality Applied Sciences Team",
             href: "https://haqast.wisc.edu/getting-started/",
             description:
-              "Resources for getting started with using remote sensing data for health and air quality applications, collected and curated by NASA Health and Air Quality Applied Sciences Team (HAQAST) members.  ",
+              "Resources for getting started with using remote sensing data for health and air quality applications, collected and curated by NASA Health and Air Quality Applied Sciences Team (HAQAST) members.",
             tags: ["NASA"],
           },
           {
@@ -172,34 +171,8 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
       type: "links",
       heading: "Documentation",
       headingLevel: "h3",
-      lead: "Technical documentation and guides for resources available through the AIR4US Portal",
-      links: [
-        {
-          label: "MODIS/VIIRS/GOES — official dataset page",
-          href: "#",
-          isExternal: true,
-        },
-        {
-          label: "NASA / NOAA documentation",
-          href: "#",
-          isExternal: true,
-        },
-        {
-          label: "Algorithm Theoretical Basis Document (ATBD)",
-          href: "#",
-          isExternal: true,
-        },
-        {
-          label: "Data quality & validation report",
-          href: "#",
-          isExternal: true,
-        },
-        {
-          label: "Related publications",
-          href: "#",
-          isExternal: true,
-        },
-      ],
+      lead: "To be added later",
+      links: [],
     },
   ],
 };

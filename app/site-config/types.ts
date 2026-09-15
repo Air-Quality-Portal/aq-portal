@@ -67,7 +67,12 @@ export type ContentBlock =
       height: number;
       maxWidth?: string;
       caption?: string;
-      attribution?: string;
+      /**
+       * Image credit, rendered on its own line below the caption. `label`
+       * prefixes the credit as plain text (e.g. "Credits:"); only `text`
+       * becomes the link when a `url` is given.
+       */
+      attribution?: { label?: string; text: string; url?: string };
       /** Skip the Next.js image optimizer (e.g. remote placeholder services that serve SVG). */
       unoptimized?: boolean;
     }

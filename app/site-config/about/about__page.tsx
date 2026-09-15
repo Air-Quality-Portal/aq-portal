@@ -11,16 +11,20 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
       heading: "A Multi-Agency Platform for Integrating Air Quality Information",
       headingLevel: "h2",
       paragraphs: [
-        "The Air-quality Information Resource for the United States (AIR4US) helps lower the barriers to integrate information between air-quality remote sensing observations, model outputs, and in-situ monitors. By streamlining air-quality data from multiple organizations, AIR4US brings critical data together in one unified location to help air quality management working at local to national scales. AIR4US also aims to develop new future data integration capabilities based on stakeholder priorities. ",
+        "The Air-quality Information Resource for the United States (AIR4US) helps lower the barriers to integrate information between air-quality remote sensing observations, model outputs, and in-situ monitors. By streamlining air-quality data from multiple organizations, AIR4US brings critical data together in one unified location to help air quality management working at local to national scales. AIR4US also aims to develop new future data integration capabilities based on stakeholder priorities.",
       ],
     },
     {
       type: "image",
       src: "/img/about/about-earth.webp",
-      alt: "A high-resolution image of Earth from space, showing North America, Central America, the Gulf of America, and surrounding oceans with visible cloud formations. ",
-      attribution: "Blue Marble 2012 (NASA/NOAA) ",
-      width: 600,
-      height: 400,
+      alt: "A high-resolution image of Earth from space, showing North America, Central America, the Gulf of America, and surrounding oceans with visible cloud formations.",
+      attribution: {
+        label: "Credits:",
+        text: "Blue Marble 2012 (NASA/NOAA)",
+        url: "https://www.nasa.gov/image-article/blue-marble-2012/",
+      },
+      width: 880,
+      height: 880,
     },
 
     {
@@ -28,7 +32,7 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
       heading: "Our Partners",
       headingLevel: "h2",
       paragraphs: [
-        "AIR4US is a cross-agency effort working to create an impactful air-quality information system for data-driven decision making. Our primary collaborators and partners include federal scientific authorities such as NASA, the Environmental Protection Agency (EPA), and the National Oceanic and Atmospheric Administration (NOAA). Each contributor brings a unique air-quality data portfolio and expertise, which when combined, provide a comprehensive picture of past, current, and future air quality. ",
+        "AIR4US is a cross-agency effort working to create an impactful air-quality information system for data-driven decision making. Our primary collaborators and partners include federal scientific authorities such as NASA, the Environmental Protection Agency (EPA), and the National Oceanic and Atmospheric Administration (NOAA). Each contributor brings a unique air-quality data portfolio and expertise, which when combined, provide a comprehensive picture of past, current, and future air quality.",
       ],
     },
 

@@ -125,9 +125,17 @@ export const ContentBlockRenderer = ({
             {(block.caption || block.attribution) && (
               <figcaption className="font-body-sm text-base margin-top-1">
                 {block.caption}
-                {block.caption && block.attribution && " "}
                 {block.attribution && (
-                  <span className=" text-base text-base-dark">{block.attribution}</span>
+                  <span className="display-block text-base-dark">
+                    {block.attribution.label && `${block.attribution.label} `}
+                    {block.attribution.url ? (
+                      <AppLinkStyled href={block.attribution.url} isExternal variant="text">
+                        {block.attribution.text}
+                      </AppLinkStyled>
+                    ) : (
+                      block.attribution.text
+                    )}
+                  </span>
                 )}
               </figcaption>
             )}
