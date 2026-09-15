@@ -188,7 +188,12 @@ export type TutorialSection = {
   tutorials: Tutorial[];
 };
 
-export type WorkshopItem = {
+/**
+ * A card that links somewhere and carries plain-string tags. Holds no
+ * presentation values, so it is JSON-serializable and can be authored in a CMS.
+ * `makeTaggedCardSection` turns the tags into styled ones at render time.
+ */
+export type TaggedCardItem = {
   id: string;
   title: string;
   href: string;
@@ -197,11 +202,11 @@ export type WorkshopItem = {
   callToAction?: { label: string; href: string; isExternal?: boolean };
 };
 
-export type WorkshopSection = {
+export type TaggedCardSection = {
   heading?: string;
   headingLevel?: ContentHeadingLevel;
   lead?: string;
-  workshops: WorkshopItem[];
+  items: TaggedCardItem[];
 };
 
 export type ToolContent = {

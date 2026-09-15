@@ -8,9 +8,9 @@ import {
   type DatasetMetadata,
   type DatasetMetadataEntry,
   type IterableItemWithId,
+  type TaggedCardSection,
   type TutorialLevel,
   type TutorialSection,
-  type WorkshopSection,
 } from "@/app/site-config/types";
 
 export const makePrimaryTag = (tag: string) => ({
@@ -61,13 +61,13 @@ export const makeTutorialCardSection = ({
   })),
 });
 
-export const makeWorkshopCardSection = ({
-  workshops,
+export const makeTaggedCardSection = ({
+  items,
   ...section
-}: WorkshopSection): CardTextOnlySection => ({
+}: TaggedCardSection): CardTextOnlySection => ({
   ...section,
-  items: workshops.map(({ tags, ...workshop }) => ({
-    ...workshop,
+  items: items.map(({ tags, ...item }) => ({
+    ...item,
     tags: tags?.map((tag) => makeSimpleTag(tag)),
   })),
 });

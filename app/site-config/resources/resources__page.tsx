@@ -1,7 +1,4 @@
-import {
-  makeTutorialCardSection,
-  makeWorkshopCardSection,
-} from "@/app/site-config/content.helpers";
+import { makeTaggedCardSection, makeTutorialCardSection } from "@/app/site-config/content.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
 
 export type ResourcesPageBody = {
@@ -92,11 +89,11 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
 
     {
       type: "cardTextOnly",
-      ...makeWorkshopCardSection({
+      ...makeTaggedCardSection({
         heading: "Workshops & Webinars",
         headingLevel: "h2",
         lead: "Explore training events hosted by AIR4US partner agencies and affiliated organizations, and view registration details for upcoming events and available resources from past events.",
-        workshops: [
+        items: [
           {
             id: "workshop-geostationary-aerosols-2026",
             title:
@@ -126,11 +123,11 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
 
     {
       type: "cardTextOnly",
-      ...makeWorkshopCardSection({
+      ...makeTaggedCardSection({
         heading: "Partner Resource Pages",
         headingLevel: "h2",
         lead: "Resources provided by our partner agencies.",
-        workshops: [
+        items: [
           {
             id: "partner-resource-arset",
             title: "Applied Remote Sensing Training",
