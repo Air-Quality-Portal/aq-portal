@@ -154,7 +154,7 @@ export type CardTextOnlyItem = {
   isExternal?: boolean;
   description?: string;
   tags?: CardTag[];
-  callToAction?: { label: string; href: string };
+  callToAction?: { label: string; href: string; isExternal?: boolean };
 };
 
 export type CardTextOnlySection = {
@@ -191,7 +191,8 @@ export type TutorialSection = {
 /**
  * A card that links somewhere and carries plain-string tags. Holds no
  * presentation values, so it is JSON-serializable and can be authored in a CMS.
- * `makeTaggedCardSection` turns the tags into styled ones at render time.
+ * `makeTaggedCardSection` turns the tags into styled ones at render time and
+ * derives each link's external flag from its href.
  */
 export type TaggedCardItem = {
   id: string;
@@ -199,7 +200,7 @@ export type TaggedCardItem = {
   href: string;
   description?: string;
   tags?: string[];
-  callToAction?: { label: string; href: string; isExternal?: boolean };
+  callToAction?: { label: string; href: string };
 };
 
 export type TaggedCardSection = {
