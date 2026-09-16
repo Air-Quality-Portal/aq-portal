@@ -36,7 +36,7 @@ export const DATASET_FILTERS: DatasetFilter[] = [
       { label: "HCHO", value: "HCHO" },
       { label: "NO₂", value: "NO₂" },
       { label: "O₃", value: "O₃" },
-      { label: "PM2.5", value: "PM2.5" },
+      { label: "PM₂.₅", value: "PM₂.₅" },
     ],
   },
   {
