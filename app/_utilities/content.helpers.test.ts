@@ -4,7 +4,7 @@ import {
   makePrimaryTag,
   makeSimpleTag,
   makeTutorialLevelTag,
-} from "./content.helpers";
+} from "../_utilities/content.helpers";
 
 describe("Tag makers", () => {
   describe("makePrimaryTag", () => {

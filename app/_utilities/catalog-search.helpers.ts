@@ -58,17 +58,18 @@ export const searchCatalogItems = <T>(
   );
 };
 
+export const normalizeQueryParam = (q?: string | string[]): string =>
+  typeof q === "string" ? q : "";
+
+export const normalizeTagsParam = (tags?: string | string[]): string[] => {
+  console.log("TAGS", tags);
+  return tags === undefined ? [] : Array.isArray(tags) ? tags : [tags];
+};
+
 export const normalizeCatalogSearchParams = (params: {
   q?: string | string[];
   tags?: string | string[];
-}): CatalogSearchParams => {
-  const query = typeof params.q === "string" ? params.q : "";
-
-  const selectedTags = params.tags
-    ? Array.isArray(params.tags)
-      ? params.tags
-      : [params.tags]
-    : [];
-
-  return { query, selectedTags };
-};
+}): CatalogSearchParams => ({
+  query: normalizeQueryParam(params.q),
+  selectedTags: normalizeTagsParam(params.tags),
+});

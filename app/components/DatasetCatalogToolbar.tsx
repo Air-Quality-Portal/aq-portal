@@ -97,12 +97,6 @@ export const DatasetCatalogToolbar = ({
           Filter <SvgFilterList className="usa-icon" />
         </Link>
       </div>
-      <CatalogSearchInput
-        query={query}
-        label="Search datasets"
-        placeholder="Search datasets..."
-        inputId="dataset-catalog-search"
-      />
       <Drawer
         title="Search and Filter"
         isOpen={isDrawerOpen}
