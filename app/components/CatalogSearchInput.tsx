@@ -47,7 +47,9 @@ export const CatalogSearchInput = ({
       // A changed search always starts at the first page when the catalog is paginated.
       if (pageParam) params.delete(pageParam);
 
-      const href = `${pathname}${params.size ? `?${params}` : ""}` as Route;
+      const qs = params.toString();
+      const href = `${pathname}${qs ? `?${qs}` : ""}` as Route;
+
       if (opensSearch) router.push(href, { scroll: false });
       else router.replace(href, { scroll: false });
     },
