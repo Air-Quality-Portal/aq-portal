@@ -6,12 +6,15 @@ import { DATASETS, filterDatasetsByTags, searchDatasets } from "@/app/site-confi
 import { DATA_CATALOG_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
 import { normalizeCatalogSearchParams } from "../_utilities/catalog-search.helpers";
 import { getMetadataFieldTag, makePrimaryTag, makeSimpleTag } from "../_utilities/content.helpers";
-import { CONTENT_TYPES } from "../site-config/types";
+import { CONTENT_TYPES, type DatasetContent } from "../site-config/types";
 
 const PER_PAGE = 8;
+const PAGE_PARAM = "page";
 
 export default async function DataCatalogPage(props: PageProps<"/data-catalog">) {
-  const { page, q = "", tags } = (await props.searchParams) ?? {};
+  const searchParams = (await props.searchParams) ?? {};
+  const page = searchParams[PAGE_PARAM];
+  const { q = "", tags } = searchParams;
   const { query, selectedTags } = normalizeCatalogSearchParams({ q, tags });
   const results = filterDatasetsByTags(searchDatasets(DATASETS, query), selectedTags);
   const total = results.length;
@@ -30,7 +33,12 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
         <Card className="height-masthead" isMastHead title={DATA_CATALOG_CARD_MASTHEAD.title} />
       </Section>
       <Section>
-        <DatasetCatalogToolbar count={total} query={query} selectedTags={selectedTags} />
+        <DatasetCatalogToolbar
+          count={total}
+          query={query}
+          selectedTags={selectedTags}
+          pageParam={PAGE_PARAM}
+        />
         {total === 0 && (
           <div className="padding-y-6 text-center">
             <p className="margin-0 text-bold">There are no matching datasets.</p>
@@ -42,7 +50,7 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
           </div>
         )}
         <div className="grid-row grid-gap-4">
-          {pageItems.map(({ id, title, description, thumbnailImage, metadata }) => {
+          {pageItems.map(({ id, title, description, thumbnailImage, metadata }: DatasetContent) => {
             const tagPrimary = getMetadataFieldTag(metadata, "provider");
             const tags = metadata.tags ?? [];
             return (
@@ -74,6 +82,7 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
             basePath={CONTENT_TYPES.dataset.route}
             currentPage={currentPage}
             totalPages={totalPages}
+            pageParam={PAGE_PARAM}
           />
         )}
       </Section>

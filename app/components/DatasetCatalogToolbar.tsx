@@ -10,12 +10,15 @@ type DatasetCatalogToolbarProps = {
   query?: string;
   /** Tags currently applied via the `tags` URL param. */
   selectedTags?: string[];
+  /** URL param controlling pagination; cleared when the search or filters change. */
+  pageParam: string;
 };
 
 export const DatasetCatalogToolbar = ({
   count,
   query = "",
   selectedTags = [],
+  pageParam,
 }: DatasetCatalogToolbarProps) => (
   <>
     <p className="font-sans-md line-height-sans-5 text-normal text-base-dark margin-0">
@@ -35,8 +38,13 @@ export const DatasetCatalogToolbar = ({
         label="Search datasets"
         placeholder="Search datasets..."
         inputId="dataset-catalog-search"
+        pageParam={pageParam}
       />
-      <CatalogTagFilter filters={DATASET_FILTERS} selectedTags={selectedTags} />
+      <CatalogTagFilter
+        filters={DATASET_FILTERS}
+        selectedTags={selectedTags}
+        pageParam={pageParam}
+      />
     </div>
   </>
 );

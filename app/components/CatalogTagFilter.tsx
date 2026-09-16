@@ -12,7 +12,7 @@ type CatalogTagFilterProps = {
   filters: DatasetFilter[];
   /** Tags currently applied via the `tags` URL param. */
   selectedTags?: string[];
-  tagsParam?: string;
+  pageParam?: string;
 };
 
 /**
@@ -22,7 +22,7 @@ type CatalogTagFilterProps = {
 export const CatalogTagFilter = ({
   filters,
   selectedTags = [],
-  tagsParam = "",
+  pageParam = "",
 }: CatalogTagFilterProps) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -34,7 +34,7 @@ export const CatalogTagFilter = ({
     params.delete("tags");
     for (const tag of next) params.append("tags", tag);
     // A changed filter always starts at the first page.
-    if (tagsParam) params.delete(tagsParam);
+    if (pageParam) params.delete(pageParam);
 
     const href = `${pathname}${params.size ? `?${params}` : ""}` as Route;
     router.replace(href, { scroll: false });
