@@ -53,7 +53,10 @@ export const DatasetCatalogToolbar = ({
 
   return (
     <>
-      <div className="display-flex flex-justify flex-align-center margin-y-6 border border-base-lighter radius-lg padding-y-105 padding-x-205">
+      <p className="font-sans-md line-height-sans-5 text-normal text-base-dark margin-0">
+        Browse air quality datasets that can be explored in the AIR4US visualization tool.
+      </p>
+      <div className="display-flex flex-justify flex-align-center margin-y-5 border border-base-lighter radius-lg padding-y-105 padding-x-205">
         <div aria-live="polite" className="display-flex flex-align-center flex-1">
           <span>
             Datasets

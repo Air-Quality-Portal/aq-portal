@@ -21,13 +21,23 @@ const scoreTerm = (term: string, tokens: string[], weight: number) => {
 /**
  * Filters catalog items by a free-text query and orders them by relevance. Terms are
  * matched with AND, so each additional word narrows the results. A blank query
- * returns every catalog in its original order.
+ * returns every catalog in its original order. At least one field is required,
+ * and every field must have a finite, positive weight.
  */
 export const searchCatalogItems = <T>(
   items: T[],
   query: string | undefined,
   weightedFields: CatalogSearchField<T>[],
 ): T[] => {
+  if (
+    weightedFields.length === 0 ||
+    weightedFields.some(({ weight }) => !Number.isFinite(weight) || weight <= 0)
+  ) {
+    throw new TypeError(
+      "Catalog search requires one or more fields, each with a finite, positive weight",
+    );
+  }
+
   const terms = tokenize(query ?? "");
   if (terms.length === 0) return items;
 

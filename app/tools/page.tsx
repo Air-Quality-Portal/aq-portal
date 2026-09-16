@@ -25,7 +25,7 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
   return (
     <>
       <Section>
-        <Card className="height-masthead" isMastHead title="Air Quality Tools Catalog" />
+        <Card className="height-masthead" isMastHead title="Air Quality Tool Catalog" />
       </Section>
       {FEATURED_TOOLS.length > 0 && (
         <Section>
@@ -38,7 +38,7 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
         <ToolCatalogToolbar count={results.length} query={query} />
         {results.length === 0 && (
           <div className="padding-y-6 text-center">
-            <p className="margin-0 text-bold">No tools match “{query}”.</p>
+            <p className="margin-0 text-bold">No tools match "{query}".</p>
             <p className="margin-top-1 margin-bottom-0">
               <AppLink href="/tools" className="usa-link">
                 Clear search
