@@ -1,6 +1,12 @@
 import { notFound } from "next/navigation";
 import { Fragment } from "react";
 import {
+  getMetadataFieldTag,
+  makeCardDetailedImageLeftProps,
+  makeCardMastHeadProps,
+  makeTutorialCardSection,
+} from "@/app/_utilities/content.helpers";
+import {
   BackToCatalogLink,
   ContentBlockRenderer,
   ContentHeading,
@@ -13,12 +19,6 @@ import {
   SectionLinks,
 } from "@/app/components";
 import { AppLinkStyled } from "@/app/components/AppLink";
-import {
-  getMetadataFieldTag,
-  makeCardDetailedImageLeftProps,
-  makeCardMastHeadProps,
-  makeTutorialCardSection,
-} from "@/app/site-config/content.helpers";
 import { DATASETS, getDatasetsByIds } from "@/app/site-config/dataset";
 import {
   CONTENT_TYPES,

@@ -1,4 +1,4 @@
-import { makeTaggedCardSection, makeTutorialCardSection } from "@/app/site-config/content.helpers";
+import { makeTaggedCardSection, makeTutorialCardSection } from "@/app/_utilities/content.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
 
 export type ResourcesPageBody = {

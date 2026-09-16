@@ -2,7 +2,7 @@
 import { Pagination } from "@teamimpact/veda-ui-blocks";
 import { useSearchParams } from "next/navigation";
 
-import { withBasePath } from "@/app/site-config/base-path.helpers";
+import { withBasePath } from "@/app/_utilities/base-path.helpers";
 
 type CatalogPaginationProps = {
   /** Route the page links point at, e.g. "/data-catalog". */

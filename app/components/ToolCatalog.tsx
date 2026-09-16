@@ -1,6 +1,6 @@
 import { CardDetailed } from "@teamimpact/veda-ui-blocks";
+import { makePrimaryTag } from "@/app/_utilities/content.helpers";
 import { AppImage } from "@/app/components/AppImage";
-import { makePrimaryTag } from "@/app/site-config/content.helpers";
 import type { ToolContent } from "@/app/site-config/types";
 
 const hrefLabel = (href: string) => href.replace(/^https?:\/\//, "").replace(/\/$/, "");
