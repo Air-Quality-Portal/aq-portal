@@ -12,6 +12,7 @@ type CatalogSearchInputProps = {
   label: string;
   placeholder: string;
   inputId: string;
+  pageParam?: string;
 };
 
 export const CatalogSearchInput = ({
@@ -19,6 +20,7 @@ export const CatalogSearchInput = ({
   label,
   placeholder,
   inputId,
+  pageParam,
 }: CatalogSearchInputProps) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -42,14 +44,14 @@ export const CatalogSearchInput = ({
       const params = new URLSearchParams(searchParams);
       if (next) params.set("q", next);
       else params.delete("q");
-      // A changed search always starts at the first page.
-      params.delete("page");
+      // A changed search always starts at the first page when the catalog is paginated.
+      if (pageParam) params.delete(pageParam);
 
       const href = `${pathname}${params.size ? `?${params}` : ""}` as Route;
       if (opensSearch) router.push(href, { scroll: false });
       else router.replace(href, { scroll: false });
     },
-    [pathname, router, searchParams],
+    [pathname, router, searchParams, pageParam],
   );
 
   useEffect(() => {

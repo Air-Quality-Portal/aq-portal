@@ -14,9 +14,14 @@ type DatasetCatalogToolbarProps = {
   /** Number of datasets currently matching the catalog query. */
   count: number;
   query?: string;
+  pageParam: string;
 };
 
-export const DatasetCatalogToolbar = ({ count, query = "" }: DatasetCatalogToolbarProps) => {
+export const DatasetCatalogToolbar = ({
+  count,
+  query = "",
+  pageParam,
+}: DatasetCatalogToolbarProps) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [appliedFilters, setAppliedFilters] = useState<string[]>([]);
 
@@ -71,6 +76,7 @@ export const DatasetCatalogToolbar = ({ count, query = "" }: DatasetCatalogToolb
           label="Search datasets"
           placeholder="Search datasets..."
           inputId="dataset-catalog-search"
+          pageParam={pageParam}
         />
         <Link
           className="usa-button"

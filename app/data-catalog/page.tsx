@@ -8,9 +8,12 @@ import { getMetadataFieldTag, makePrimaryTag, makeSimpleTag } from "../_utilitie
 import { CONTENT_TYPES } from "../site-config/types";
 
 const PER_PAGE = 8;
+const PAGE_PARAM = "page";
 
 export default async function DataCatalogPage(props: PageProps<"/data-catalog">) {
-  const { page, q = "" } = (await props.searchParams) ?? {};
+  const searchParams = (await props.searchParams) ?? {};
+  const page = searchParams[PAGE_PARAM];
+  const q = searchParams.q ?? "";
   const query = typeof q === "string" ? q : "";
   const results = searchDatasets(DATASETS, query);
   const total = results.length;
@@ -29,7 +32,7 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
         <Card className="height-masthead" isMastHead title={DATA_CATALOG_CARD_MASTHEAD.title} />
       </Section>
       <Section>
-        <DatasetCatalogToolbar count={total} query={query} />
+        <DatasetCatalogToolbar count={total} query={query} pageParam={PAGE_PARAM} />
         {total === 0 && (
           <div className="padding-y-6 text-center">
             <p className="margin-0 text-bold">No datasets match “{query}”.</p>
@@ -73,6 +76,7 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
             basePath={CONTENT_TYPES.dataset.route}
             currentPage={currentPage}
             totalPages={totalPages}
+            pageParam={PAGE_PARAM}
           />
         )}
       </Section>
