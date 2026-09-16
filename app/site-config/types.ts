@@ -92,7 +92,6 @@ export type ContentBlock =
       cards: CardSimplePropsArgs[];
     }
   | ({ type: "cardTextOnly" } & CardTextOnlySection)
-  | AdaptedCardBlock
   | ({ type: "links" } & LinkSection);
 
 export type ContentType = DatasetContent["contentType"];
@@ -193,30 +192,6 @@ export type WorkshopSection = {
   lead?: string;
   workshops: WorkshopItem[];
 };
-
-export type SectionClientCardTextOnlyProps<Adapter extends CardAdapterKey> = {
-  adapter: Adapter;
-  source: CardAdapterSourceMap[Adapter];
-};
-
-/** Serializable source data accepted by each client-side card adapter. */
-export type CardAdapterSourceMap = {
-  workshops: WorkshopSection;
-};
-
-export type CardAdapterKey = keyof CardAdapterSourceMap;
-
-/**
- * A serializable content block whose source is adapted in the browser before
- * being rendered through SectionCardTextOnly.
- */
-export type AdaptedCardBlock = {
-  [Adapter in CardAdapterKey]: {
-    type: "adaptedCards";
-    adapter: Adapter;
-    source: CardAdapterSourceMap[Adapter];
-  };
-}[CardAdapterKey];
 
 export type ToolContent = {
   id: string;

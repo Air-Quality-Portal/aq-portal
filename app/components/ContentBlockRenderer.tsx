@@ -11,7 +11,6 @@ import { AppImage } from "@/app/components/AppImage";
 import { AppLinkStyled } from "@/app/components/AppLink";
 import { AppVideo } from "@/app/components/AppVideo";
 import { StacCompareBlock, StacSingleLayerBlock } from "@/app/components/blocks";
-import { SectionClientCardTextOnly } from "@/app/components/SectionClientCardTextOnly";
 import { makeCardSimpleProps } from "@/app/site-config/content.helpers";
 import { typedMap } from "@/app/site-config/typed.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
@@ -183,9 +182,6 @@ export const ContentBlockRenderer = ({
 
     case "cardTextOnly":
       return <SectionCardTextOnly section={block} />;
-
-    case "adaptedCards":
-      return <SectionClientCardTextOnly adapter={block.adapter} source={block.source} />;
 
     case "links":
       return <SectionLinks section={block} />;

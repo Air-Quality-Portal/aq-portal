@@ -10,6 +10,7 @@ import {
   type IterableItemWithId,
   type TutorialLevel,
   type TutorialSection,
+  type WorkshopItem,
   type WorkshopSection,
 } from "@/app/site-config/types";
 
@@ -79,36 +80,64 @@ const PAST_EVENT_TAG = {
   textColor: "accent-warm-darker",
 };
 
+type DatedWorkshop = {
+  workshop: WorkshopItem;
+  sourceIndex: number;
+  startsAtInstant: number;
+};
+
+type OrganizedWorkshops = {
+  future: WorkshopItem[];
+  past: WorkshopItem[];
+};
+
+const bySourceIndex = (first: DatedWorkshop, second: DatedWorkshop) =>
+  first.sourceIndex - second.sourceIndex;
+
+const getFutureWorkshops = (workshops: DatedWorkshop[], nowInstant: number): WorkshopItem[] =>
+  workshops
+    .filter(({ startsAtInstant }) => startsAtInstant > nowInstant)
+    .sort(
+      (first, second) =>
+        first.startsAtInstant - second.startsAtInstant || bySourceIndex(first, second),
+    )
+    .map(({ workshop }) => workshop);
+
+const getPastWorkshops = (workshops: DatedWorkshop[], nowInstant: number): WorkshopItem[] =>
+  workshops
+    .filter(({ startsAtInstant }) => startsAtInstant <= nowInstant)
+    .sort(
+      (first, second) =>
+        second.startsAtInstant - first.startsAtInstant || bySourceIndex(first, second),
+    )
+    .map(({ workshop }) => workshop);
+
+export const organizeWorkshops = (
+  workshops: WorkshopItem[],
+  now: Date = new Date(),
+): OrganizedWorkshops => {
+  const datedWorkshops = workshops.flatMap((workshop, sourceIndex) => {
+    const startsAtInstant = parseExactUtcTimestamp(workshop.startsAt);
+    return startsAtInstant === undefined ? [] : [{ workshop, sourceIndex, startsAtInstant }];
+  });
+  const nowInstant = now.getTime();
+
+  return {
+    future: getFutureWorkshops(datedWorkshops, nowInstant),
+    past: getPastWorkshops(datedWorkshops, nowInstant),
+  };
+};
+
 export const makeWorkshopCardSection = (
   { workshops, ...section }: WorkshopSection,
   { now = new Date() }: { now?: Date } = {},
 ): CardTextOnlySection => {
-  const nowInstant = now.getTime();
-  const validWorkshops = workshops.flatMap((workshop, sourceIndex) => {
-    const startsAtInstant = parseExactUtcTimestamp(workshop.startsAt);
-    return startsAtInstant === undefined ? [] : [{ workshop, sourceIndex, startsAtInstant }];
-  });
-  const bySourceIndex = (
-    first: (typeof validWorkshops)[number],
-    second: (typeof validWorkshops)[number],
-  ) => first.sourceIndex - second.sourceIndex;
-  const future = validWorkshops
-    .filter(({ startsAtInstant }) => nowInstant < startsAtInstant)
-    .sort(
-      (first, second) =>
-        first.startsAtInstant - second.startsAtInstant || bySourceIndex(first, second),
-    );
-  const past = validWorkshops
-    .filter(({ startsAtInstant }) => nowInstant >= startsAtInstant)
-    .sort(
-      (first, second) =>
-        second.startsAtInstant - first.startsAtInstant || bySourceIndex(first, second),
-    );
+  const { future, past } = organizeWorkshops(workshops, now);
 
   return {
     ...section,
     items: [
-      ...future.map(({ workshop }) => ({
+      ...future.map((workshop) => ({
         id: workshop.id,
         title: workshop.title,
         href: workshop.href,
@@ -116,7 +145,7 @@ export const makeWorkshopCardSection = (
         tags: workshop.tags?.map(makeSimpleTag),
         callToAction: workshop.callToAction,
       })),
-      ...past.map(({ workshop }) => ({
+      ...past.map((workshop) => ({
         id: workshop.id,
         title: workshop.title,
         href: workshop.href,

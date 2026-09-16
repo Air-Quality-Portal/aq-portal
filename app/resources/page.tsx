@@ -1,11 +1,16 @@
 import { Card, InPageNavigation } from "@teamimpact/veda-ui-blocks";
-import { ContentBlockRenderer, Section } from "@/app/components";
+import {
+  ContentBlockRenderer,
+  Section,
+  SectionLinks,
+  SectionWorkshopCards,
+} from "@/app/components";
 import { RESOURCES_PAGE_BODY, RESOURCES_PAGE_MASTHEAD } from "@/app/site-config/resources";
 
 const RESOURCES_CONTENT_ID = "resources-page-content";
 
 export default function ResourcesPage() {
-  const { body } = RESOURCES_PAGE_BODY;
+  const { body, workshops, linkSections } = RESOURCES_PAGE_BODY;
 
   return (
     <Section>
@@ -23,6 +28,13 @@ export default function ResourcesPage() {
             {body.map((block, i) => (
               // biome-ignore lint/suspicious/noArrayIndexKey: static content blocks, never reorder
               <ContentBlockRenderer key={i} block={block} isMultiColumnLayout />
+            ))}
+
+            {workshops && <SectionWorkshopCards section={workshops} />}
+
+            {linkSections?.map((section, index) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
+              <SectionLinks key={index} section={section} />
             ))}
           </div>
         </div>
