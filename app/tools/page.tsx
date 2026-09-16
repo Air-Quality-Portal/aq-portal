@@ -1,5 +1,6 @@
 import { Card } from "@teamimpact/veda-ui-blocks";
 import {
+  CatalogPagination,
   Section,
   SectionIntro,
   ToolCatalog,
@@ -15,12 +16,22 @@ import {
   TOOLS,
 } from "@/app/site-config/tool";
 
+const PER_PAGE = 9;
+
 export default async function ToolsPage(props: PageProps<"/tools">) {
-  const { q = "" } = await props.searchParams;
+  const { q = "", page } = await props.searchParams;
   const query = typeof q === "string" ? q : "";
 
   // Featured tools have the carousel above; the grid lists the whole catalog.
   const results = searchTools(TOOLS, query);
+
+  const totalPages = Math.max(1, Math.ceil(results.length / PER_PAGE));
+  const requestedPage = Number.parseInt(Array.isArray(page) ? page[0] : (page ?? ""), 10);
+  const currentPage = Number.isNaN(requestedPage)
+    ? 1
+    : Math.min(Math.max(requestedPage, 1), totalPages);
+
+  const pageItems = results.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
 
   return (
     <>
@@ -46,7 +57,10 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
             </p>
           </div>
         )}
-        <ToolCatalog tools={results} />
+        <ToolCatalog tools={pageItems} />
+        {totalPages > 1 && (
+          <CatalogPagination basePath="/tools" currentPage={currentPage} totalPages={totalPages} />
+        )}
       </Section>
     </>
   );
