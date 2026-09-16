@@ -1,9 +1,9 @@
 import { CardDetailed } from "@teamimpact/veda-ui-blocks";
-import { makePrimaryTag } from "@/app/_utilities/content.helpers";
+import type { Route } from "next";
 import { AppImage } from "@/app/components/AppImage";
+import { AppLinkStyled } from "@/app/components/AppLink";
+import { makePrimaryTag } from "@/app/_utilities/content.helpers";
 import type { ToolContent } from "@/app/site-config/types";
-
-const hrefLabel = (href: string) => href.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
 export type ToolCatalogLayout = "thirds" | "feature";
 
@@ -55,9 +55,12 @@ export const ToolCatalog = ({ tools, layout = "thirds" }: ToolCatalogProps) => {
             tagPrimary={tool.tagPrimary ? makePrimaryTag(tool.tagPrimary) : undefined}
             intro={tool.fullname}
             title={
-              <div className="blocks-card-detailed__title font-sans-lg text-light">
+              <AppLinkStyled
+                href={tool.href as Route}
+                className="blocks-card-detailed__title font-sans-lg text-light"
+              >
                 {tool.title}
-              </div>
+              </AppLinkStyled>
             }
             description={tool.description}
             tags={
@@ -70,12 +73,6 @@ export const ToolCatalog = ({ tools, layout = "thirds" }: ToolCatalogProps) => {
                   }))
                 : undefined
             }
-            callToActionSecondary={{
-              href: tool.href,
-              label: hrefLabel(tool.href),
-              variant: "text",
-              isExternal: true,
-            }}
           />
         </div>
       ))}
