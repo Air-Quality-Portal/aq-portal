@@ -16,7 +16,6 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
         "All training materials are freely available. Tutorials can be completed at your own pace. Register for upcoming workshops and webinars, and access resources from past events.",
       ],
     },
-
     {
       type: "cardTextOnly",
       ...makeTutorialCardSection({
@@ -27,7 +26,7 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
           {
             title: "Getting Started with AIR4US",
             description:
-              "An introductory video explaining the AIR4US Visualization Tool's user interface and basic functions.",
+              "An introductory video explaining the AIR4US Visualization Tool's user interface and basic functions. NOTE: THIS IS A PLACEHOLDER FOR A POTENTIAL TUTORIAL TO BE CREATED LATER",
             href: "#",
             duration: "10 MIN",
             level: "beginner",
@@ -35,7 +34,7 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
           {
             title: "Visualizing near-real-time air quality information",
             description:
-              "Use the near-real-time air quality information available via AIR4US to assess the current air quality situation in your area.",
+              "Use the near-real-time air quality information available via AIR4US to assess the current air quality situation in your area. NOTE: THIS IS A PLACEHOLDER FOR A POTENTIAL TUTORIAL TO BE CREATED LATER",
             href: "#",
             duration: "10 MIN",
             level: "beginner",
@@ -43,7 +42,7 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
           {
             title: "Forecasting high-ozone events",
             description:
-              "Use Ozone and other related data available in AIR4US to predict high-ozone events in your area.",
+              "Use Ozone and other related data available in AIR4US to predict high-ozone events in your area. NOTE: THIS IS A PLACEHOLDER FOR A POTENTIAL TUTORIAL TO BE CREATED LATER",
             href: "#",
             duration: "15 MIN",
             level: "intermediate",
@@ -51,7 +50,7 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
           {
             title: "Long-term air quality trend analysis",
             description:
-              "Use AIR4US to assess long-term trends in air quality using a combination of monitor data, satellite information, and retrospective model simulations.",
+              "Use AIR4US to assess long-term trends in air quality using a combination of monitor data, satellite information, and retrospective model simulations. NOTE: THIS IS A PLACEHOLDER FOR A POTENTIAL TUTORIAL TO BE CREATED LATER",
             href: "#",
             duration: "30 MIN",
             level: "advanced",
@@ -59,7 +58,6 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
         ],
       }),
     },
-
     {
       type: "cardTextOnly",
       ...makeTutorialCardSection({
@@ -86,7 +84,6 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
         ],
       }),
     },
-
     {
       type: "cardTextOnly",
       ...makeTaggedCardSection({
@@ -100,7 +97,7 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
               "Geostationary Remote Sensing of Aerosols for Air Quality Applications in North America",
             href: "https://www.earthdata.nasa.gov/learn/trainings/geostationary-remote-sensing-aerosols-air-quality-applications-north-america",
             description:
-              "This training provides an overview of TEMPO capabilities and available NOAA aerosol products generated using synergistic TEMPO and ABI observations. Instructors demonstrate how to access and interpret near real-time and archived TEMPO aerosol products imagery on the NOAA AerosolWatch website.",
+              "This training provides an overview of TEMPO capabilities and available NOAA aerosol products generated using synergistic TEMPO and ABI observations. Instructors demonstrate how to access and interpret near real-time and archived TEMPO aerosol products imagery on the NOAA AerosolWatch website. NOTE: THIS IS AN EXAMPLE OF HOW UPCOMING EVENTS MAY BE CROSS-LISTED TO AIR4US",
             tags: ["WEBINAR"],
             callToAction: {
               label: "Register",
@@ -112,14 +109,13 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
             title: "AIR4US Summer Training Workshop 2027",
             href: "#",
             description:
-              "Three-day intensive training covering how to use AIR4US to visualize and compare satellite data products, ground-based monitoring networks, and model outputs. Open to federal, state, local, and tribal air quality agency staff.",
+              "Three-day intensive training covering how to use AIR4US to visualize and compare satellite data products, ground-based monitoring networks, and model outputs. Open to federal, state, local, and tribal air quality agency staff. NOTE: THIS IS AN EXAMPLE OF HOW A FUTURE AIR4US WORKSHOP MIGHT BE ADVERTISED",
             tags: ["VIRTUAL WORKSHOP", "IN-PERSON WORKSHOP"],
             callToAction: { label: "Register", href: "#" },
           },
         ],
       }),
     },
-
     {
       type: "cardTextOnly",
       ...makeTaggedCardSection({
@@ -162,13 +158,12 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
         ],
       }),
     },
-
-    {
-      type: "links",
-      heading: "Documentation",
-      headingLevel: "h3",
-      lead: "To be added later",
-      links: [],
-    },
+    // {
+    //   type: "links",
+    //   heading: "Documentation",
+    //   headingLevel: "h3",
+    //   lead: "To be added later",
+    //   links: [],
+    // },
   ],
 };
