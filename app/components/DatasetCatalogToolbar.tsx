@@ -4,17 +4,24 @@ import { Drawer, Link, SvgFilterList, Tag } from "@teamimpact/veda-ui-blocks";
 import { useState } from "react";
 import { DatasetAccordionFilters } from "@/app/components/DatasetFilters";
 import { DATASET_FILTERS } from "@/app/site-config/dataset/dataset-filters";
+import { CatalogSearchInput } from "./CatalogSearchInput";
 
 const labelsByFilterValue = Object.fromEntries(
   DATASET_FILTERS.flatMap((filter) => filter.options.map((item) => [item.value, item.label])),
 );
 
 type DatasetCatalogToolbarProps = {
-  /** Total number of datasets in the catalog (shown as a count badge). */
+  /** Number of datasets currently matching the catalog query. */
   count: number;
+  query?: string;
+  pageParam: string;
 };
 
-export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => {
+export const DatasetCatalogToolbar = ({
+  count,
+  query = "",
+  pageParam,
+}: DatasetCatalogToolbarProps) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [appliedFilters, setAppliedFilters] = useState<string[]>([]);
 
@@ -34,8 +41,11 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
 
   return (
     <>
-      <div className="display-flex flex-justify flex-align-center margin-y-6 border border-base-lighter radius-lg padding-y-105 padding-x-205">
-        <div className="display-flex flex-align-center flex-1">
+      <p className="font-sans-md line-height-sans-5 text-normal text-base-dark margin-0">
+        Browse air quality datasets that can be explored in the AIR4US visualization tool.
+      </p>
+      <div className="display-flex flex-justify flex-align-center margin-y-5 border border-base-lighter radius-lg padding-y-105 padding-x-205">
+        <div aria-live="polite" className="display-flex flex-align-center flex-1">
           <span>
             Datasets
             <span className="margin-left-1 margin-right-2 padding-x-1 padding-y-1 bg-primary text-white radius-md font-sans-2xs">
@@ -61,6 +71,13 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
             )}
           </span>
         </div>
+        <CatalogSearchInput
+          query={query}
+          label="Search datasets"
+          placeholder="Search datasets..."
+          inputId="dataset-catalog-search"
+          pageParam={pageParam}
+        />
         <Link
           className="usa-button"
           as="button"
@@ -72,6 +89,7 @@ export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => 
           Filter <SvgFilterList className="usa-icon" />
         </Link>
       </div>
+
       <Drawer
         title="Search and Filter"
         isOpen={isDrawerOpen}
