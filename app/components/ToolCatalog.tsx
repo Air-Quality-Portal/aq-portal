@@ -1,8 +1,9 @@
 import { CardDetailed } from "@teamimpact/veda-ui-blocks";
 import type { Route } from "next";
+import "../styles/tool-catalog.css";
+import { makePrimaryTag } from "@/app/_utilities/content.helpers";
 import { AppImage } from "@/app/components/AppImage";
 import { AppLinkStyled } from "@/app/components/AppLink";
-import { makePrimaryTag } from "@/app/_utilities/content.helpers";
 import type { ToolContent } from "@/app/site-config/types";
 
 export type ToolCatalogLayout = "thirds" | "feature";
@@ -49,15 +50,16 @@ export const ToolCatalog = ({ tools, layout = "thirds" }: ToolCatalogProps) => {
           className={`grid-col-12 tablet:grid-col-6 ${desktopCol(index)} margin-y-1 desktop:margin-y-2`}
         >
           <CardDetailed
-            className="height-full border-1px border-base-lighter"
+            className="height-full border-1px border-base-lighter tool-catalog-card"
             imagePosition="top"
             image={<AppImage {...tool.thumbnailImage} fill sizes={sizes} />}
             tagPrimary={tool.tagPrimary ? makePrimaryTag(tool.tagPrimary) : undefined}
             intro={tool.fullname}
             title={
               <AppLinkStyled
+                className="font-body-lg text-light"
                 href={tool.href as Route}
-                className="blocks-card-detailed__title font-sans-lg text-light"
+                isExternal
               >
                 {tool.title}
               </AppLinkStyled>
