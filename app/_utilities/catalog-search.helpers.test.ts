@@ -48,7 +48,7 @@ describe("searchCatalogItems", () => {
     -1,
     Number.NaN,
     Number.POSITIVE_INFINITY,
-  ])("rejects the invalid field weight %s", (weight) => {
+  ])("rejects the invalid field weight %s", (weight: number) => {
     expect(() =>
       searchCatalogItems(ITEMS, "air", [{ weight, textOf: (item) => [item.title] }]),
     ).toThrowError(TypeError);

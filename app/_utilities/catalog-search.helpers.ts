@@ -72,7 +72,6 @@ export const normalizeQueryParam = (q?: string | string[]): string =>
   typeof q === "string" ? q : "";
 
 export const normalizeTagsParam = (tags?: string | string[]): string[] => {
-  console.log("TAGS", tags);
   return tags === undefined ? [] : Array.isArray(tags) ? tags : [tags];
 };
 
