@@ -162,7 +162,7 @@ export const TOOLS: ToolContent[] = [
     tagPrimary: "EPA",
     additionalTags: ["Criteria pollutant monitoring", "Regulatory monitor"],
     thumbnailImage: {
-      src: "/img/tools_images/aps_api_tool_catalog_card.webp",
+      src: "/img/tools_images/aqs_api_tool_catalog_card.webp",
       alt: "AQS API website with documentation on accessing EPA AQS monitor data via APIs.",
       attribution: "EPA",
       attributionLink: "https://aqs.epa.gov/aqsweb/documents/data_api.html",
