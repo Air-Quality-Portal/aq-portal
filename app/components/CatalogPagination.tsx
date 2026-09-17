@@ -3,7 +3,6 @@ import { Pagination } from "@teamimpact/veda-ui-blocks";
 import { useSearchParams } from "next/navigation";
 
 import { withBasePath } from "@/app/_utilities/base-path.helpers";
-import { CATALOG_PAGE_PARAM } from "@/app/_utilities/catalog-pagination.helpers";
 
 type CatalogPaginationProps = {
   /** Route the page links point at, e.g. "/data-catalog". */
@@ -29,7 +28,7 @@ export function CatalogPagination({
   basePath,
   currentPage,
   totalPages,
-  pageParam = CATALOG_PAGE_PARAM,
+  pageParam = "page",
 }: CatalogPaginationProps) {
   const searchParams = useSearchParams();
 
