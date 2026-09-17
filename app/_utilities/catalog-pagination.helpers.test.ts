@@ -31,8 +31,8 @@ describe("paginateCatalogItems", () => {
     expect(paginateCatalogItems(ITEMS, "3", 2).pageItems).toEqual(["e"]);
   });
 
-  it("falls back to page 1 when the page is missing or not a number", () => {
-    for (const page of [undefined, "", "abc", []]) {
+  it("falls back to page 1 when the page is missing or not a whole number", () => {
+    for (const page of [undefined, "", "abc", "2abc", "2.5", "2e3", []]) {
       expect(paginateCatalogItems(ITEMS, page, 2).currentPage).toBe(1);
     }
   });
