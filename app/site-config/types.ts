@@ -181,9 +181,18 @@ export type WorkshopItem = {
   title: string;
   href: string;
   startsAt: string;
+  dateLabel: string;
   description?: string;
   tags?: string[];
-  callToAction: { label: string; href: string };
+  /**
+   * Keep these actions separate so a past workshop's "View recording" button
+   * cannot accidentally use its registration URL. The card adapter shows the
+   * registration action before `startsAt` and the recording action afterward.
+   */
+  callToActions: {
+    registration?: { label: string; href: string };
+    recording?: { label: string; href: string };
+  };
 };
 
 export type WorkshopSection = {

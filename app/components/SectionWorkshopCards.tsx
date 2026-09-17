@@ -1,30 +1,102 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { makeWorkshopCardSection } from "@/app/site-config/content.helpers";
+import { useEffect, useId, useState } from "react";
+import { makeWorkshopCardSections } from "@/app/site-config/content.helpers";
 import type { CardTextOnlySection, WorkshopSection } from "@/app/site-config/types";
 import { ContentHeading } from "./ContentHeading";
 import { Section } from "./Section";
 import { SectionCardTextOnly } from "./SectionCardTextOnly";
+import styles from "./SectionWorkshopCards.module.css";
+import { type TabOption, Tabs } from "./Tabs";
+
+const INITIAL_CARD_COUNT = 3;
+type WorkshopStatus = "upcoming" | "past";
+type WorkshopCardSections = Record<WorkshopStatus, CardTextOnlySection>;
 
 export function SectionWorkshopCards({ section }: { section: WorkshopSection }) {
-  const [cardSection, setCardSection] = useState<CardTextOnlySection | null>(null);
+  const [sections, setSections] = useState<WorkshopCardSections | null>(null);
+  const [activeStatus, setActiveStatus] = useState<WorkshopStatus>("upcoming");
+  const [showAll, setShowAll] = useState(false);
+  const tabsId = useId();
+  const panelId = `${tabsId}-panel`;
 
   useEffect(() => {
-    setCardSection(makeWorkshopCardSection(section, { now: new Date() }));
+    const workshopSections = makeWorkshopCardSections(section);
+
+    setSections(workshopSections);
+    setActiveStatus(
+      workshopSections.upcoming.items.length === 0 && workshopSections.past.items.length > 0
+        ? "past"
+        : "upcoming",
+    );
+    setShowAll(false);
   }, [section]);
 
-  if (cardSection) return <SectionCardTextOnly section={cardSection} />;
+  if (!sections) {
+    return (
+      <Section isMultiColumnLayout>
+        {section.heading && (
+          <ContentHeading heading={section.heading} headingLevel={section.headingLevel ?? "h3"} />
+        )}
+        {section.lead && <p className="text-base">{section.lead}</p>}
+        <p role="status" className="text-base margin-bottom-0">
+          Loading workshops…
+        </p>
+      </Section>
+    );
+  }
+
+  const selectStatus = (status: WorkshopStatus) => {
+    setActiveStatus(status);
+    setShowAll(false);
+  };
+  const activeSection = sections[activeStatus];
+  const visibleSection = {
+    ...activeSection,
+    items: showAll ? activeSection.items : activeSection.items.slice(0, INITIAL_CARD_COUNT),
+  };
+
+  const tabOptions: TabOption<WorkshopStatus>[] = [
+    { value: "upcoming", label: "Upcoming", count: sections.upcoming.items.length },
+    { value: "past", label: "Past", count: sections.past.items.length },
+  ];
 
   return (
-    <Section isMultiColumnLayout>
-      {section.heading && (
-        <ContentHeading heading={section.heading} headingLevel={section.headingLevel ?? "h3"} />
+    <SectionCardTextOnly
+      section={visibleSection}
+      beforeCards={
+        <Tabs
+          id={tabsId}
+          panelId={panelId}
+          ariaLabel="Filter workshops by date"
+          options={tabOptions}
+          activeTab={activeStatus}
+          onTabChange={selectStatus}
+        />
+      }
+      cardsContainerProps={{
+        id: panelId,
+        role: "tabpanel",
+        "aria-labelledby": `${tabsId}-${activeStatus}-tab`,
+      }}
+    >
+      {activeSection.items.length > INITIAL_CARD_COUNT && (
+        <div className={styles.showAll}>
+          <button
+            type="button"
+            className="usa-button usa-button--outline"
+            aria-expanded={showAll}
+            onClick={() => setShowAll((isShowingAll) => !isShowingAll)}
+          >
+            {showAll ? "Show less" : `Show all ${activeSection.items.length} ${activeStatus}`}
+          </button>
+        </div>
       )}
-      {section.lead && <p className="text-base">{section.lead}</p>}
-      <p role="status" className="text-base margin-bottom-0">
-        Loading workshops…
-      </p>
-    </Section>
+      {activeSection.items.length === 0 && (
+        <p className="text-center">
+          No {activeStatus} {activeSection.heading?.toLocaleLowerCase()} items to show
+        </p>
+      )}
+    </SectionCardTextOnly>
   );
 }

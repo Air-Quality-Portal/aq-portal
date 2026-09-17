@@ -1,12 +1,14 @@
 import type { CardDetailedProps } from "@teamimpact/veda-ui-blocks";
 import { CardDetailed } from "@teamimpact/veda-ui-blocks";
-import type { ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { Section, type SectionProps } from "@/app/components";
 import type { IterableItemWithId } from "@/app/site-config/types";
 
 type SectionCardDetailedProps = SectionProps & {
   sectionHeading?: ReactNode;
   description?: string;
+  beforeCards?: ReactNode;
+  cardsContainerProps?: ComponentProps<"div">;
   cards: IterableItemWithId<CardDetailedProps>[];
   /** Cards per row on tablet and up. @default 2 */
   maxColumns?: 1 | 2;
@@ -17,6 +19,8 @@ type SectionCardDetailedProps = SectionProps & {
 export const SectionCardDetailed = ({
   sectionHeading,
   description,
+  beforeCards,
+  cardsContainerProps,
   cards,
   maxColumns = 2,
   rowGap = 2,
@@ -24,11 +28,8 @@ export const SectionCardDetailed = ({
   ...sectionProps
 }: SectionCardDetailedProps) => {
   const gridColumnClass = maxColumns === 1 ? "grid-col-12" : "grid-col-12 tablet:grid-col-6";
-
-  return (
-    <Section {...sectionProps}>
-      {sectionHeading && sectionHeading}
-      {description && <p className="text-base">{description}</p>}
+  const cardsContent = (
+    <>
       <div className={`grid-row grid-gap-4 margin-bottom-neg-${rowGap}`}>
         {cards.map(({ key, id, className, ...props }) => (
           <div key={`div-${id}`} className={`${gridColumnClass} margin-bottom-${rowGap}`}>
@@ -42,6 +43,15 @@ export const SectionCardDetailed = ({
         ))}
       </div>
       {children}
+    </>
+  );
+
+  return (
+    <Section {...sectionProps}>
+      {sectionHeading && sectionHeading}
+      {description && <p className="text-base">{description}</p>}
+      {beforeCards}
+      {cardsContainerProps ? <div {...cardsContainerProps}>{cardsContent}</div> : cardsContent}
     </Section>
   );
 };

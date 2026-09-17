@@ -1,3 +1,4 @@
+import type { ComponentProps, ReactNode } from "react";
 import { ContentHeading, SectionCardDetailed } from "@/app/components";
 import { makeCardDetailedTextOnlyProps } from "@/app/site-config/content.helpers";
 import type { CardTextOnlySection } from "@/app/site-config/types";
@@ -5,10 +6,16 @@ import type { CardTextOnlySection } from "@/app/site-config/types";
 export function SectionCardTextOnly({
   section,
   maxColumns = 1,
+  beforeCards,
+  cardsContainerProps,
+  children,
 }: {
   section: CardTextOnlySection;
   /** Cards per row on tablet and up. @default 1 */
   maxColumns?: 1 | 2;
+  beforeCards?: ReactNode;
+  cardsContainerProps?: ComponentProps<"div">;
+  children?: ReactNode;
 }) {
   const cards = section.items.map(({ id, callToAction, ...item }) => ({
     key: id,
@@ -32,7 +39,11 @@ export function SectionCardTextOnly({
           <ContentHeading heading={section.heading} headingLevel={section.headingLevel ?? "h3"} />
         )
       }
+      beforeCards={beforeCards}
+      cardsContainerProps={cardsContainerProps}
       cards={cards}
-    />
+    >
+      {children}
+    </SectionCardDetailed>
   );
 }

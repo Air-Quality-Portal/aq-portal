@@ -73,11 +73,24 @@ const parseExactUtcTimestamp = (value: unknown): number | undefined => {
   return new Date(instant).toISOString() === value.replace("Z", ".000Z") ? instant : undefined;
 };
 
-const PAST_EVENT_TAG = {
-  label: "Past Event",
+const makeWorkshopDateTag = (dateLabel: string) => ({
+  label: dateLabel,
+  variant: "text" as const,
+  color: "base-dark",
+});
+
+const makeWorkshopFormatTag = (tag: string) => ({
+  label: tag,
   variant: "solid" as const,
-  color: "accent-warm-lighter",
-  textColor: "accent-warm-darker",
+  color: "primary-lightest",
+  textColor: "primary-darker",
+});
+
+const PAST_EVENT_TAG = {
+  label: "PAST",
+  variant: "solid" as const,
+  color: "base-lighter",
+  textColor: "base-dark",
 };
 
 type DatedWorkshop = {
@@ -128,31 +141,35 @@ export const organizeWorkshops = (
   };
 };
 
-export const makeWorkshopCardSection = (
+const makeWorkshopCardSection = (
+  section: Omit<WorkshopSection, "workshops">,
+  workshops: WorkshopItem[],
+  isPast: boolean,
+): CardTextOnlySection => ({
+  ...section,
+  items: workshops.map((workshop) => ({
+    id: workshop.id,
+    title: workshop.title,
+    href: workshop.href,
+    description: workshop.description,
+    tags: [
+      makeWorkshopDateTag(workshop.dateLabel),
+      ...(workshop.tags?.map(makeWorkshopFormatTag) ?? []),
+      ...(isPast ? [PAST_EVENT_TAG] : []),
+    ],
+    callToAction: isPast ? workshop.callToActions.recording : workshop.callToActions.registration,
+  })),
+});
+
+export const makeWorkshopCardSections = (
   { workshops, ...section }: WorkshopSection,
   { now = new Date() }: { now?: Date } = {},
-): CardTextOnlySection => {
+) => {
   const { future, past } = organizeWorkshops(workshops, now);
 
   return {
-    ...section,
-    items: [
-      ...future.map((workshop) => ({
-        id: workshop.id,
-        title: workshop.title,
-        href: workshop.href,
-        description: workshop.description,
-        tags: workshop.tags?.map(makeSimpleTag),
-        callToAction: workshop.callToAction,
-      })),
-      ...past.map((workshop) => ({
-        id: workshop.id,
-        title: workshop.title,
-        href: workshop.href,
-        description: workshop.description,
-        tags: [...(workshop.tags?.map(makeSimpleTag) ?? []), PAST_EVENT_TAG],
-      })),
-    ],
+    upcoming: makeWorkshopCardSection(section, future, false),
+    past: makeWorkshopCardSection(section, past, true),
   };
 };
 
