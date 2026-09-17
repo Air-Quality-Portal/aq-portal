@@ -1,3 +1,5 @@
+import type { CatalogSearchParams } from "../site-config/types";
+
 export type CatalogSearchField<T> = {
   weight: number;
   textOf: (item: T) => (string | undefined)[];
@@ -65,3 +67,18 @@ export const searchCatalogItems = <T>(
       .map(({ item }) => item)
   );
 };
+
+export const normalizeQueryParam = (q?: string | string[]): string =>
+  typeof q === "string" ? q : "";
+
+export const normalizeTagsParam = (tags?: string | string[]): string[] => {
+  return tags === undefined ? [] : Array.isArray(tags) ? tags : [tags];
+};
+
+export const normalizeCatalogSearchParams = (params: {
+  q?: string | string[];
+  tags?: string | string[];
+}): CatalogSearchParams => ({
+  query: normalizeQueryParam(params.q),
+  selectedTags: normalizeTagsParam(params.tags),
+});

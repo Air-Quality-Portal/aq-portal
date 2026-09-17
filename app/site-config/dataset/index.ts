@@ -4,6 +4,7 @@ import { NAQFC_AQM_FORECAST_V7 } from "./naqfc-aqm-forecast-v7";
 import { TEMPO_HCHO_COLUMN_GRID_V04_PROVISIONAL } from "./tempo-hcho-column-grid-v04-provisional";
 import { TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL } from "./tempo-no2-column-grid-v04-provisional";
 
+export { filterDatasetsByTags } from "./dataset-filters";
 export { searchDatasets } from "./datasets__search";
 
 export const DATASETS: DatasetContent[] = [

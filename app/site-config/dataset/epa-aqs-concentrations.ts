@@ -24,7 +24,7 @@ export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
       "High ozone",
       "Dust storm",
       "Transboundary pollution",
-      "PM2.5",
+      "PM₂.₅",
       "O₃",
       "NO₂",
       "PM10",
