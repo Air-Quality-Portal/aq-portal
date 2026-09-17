@@ -238,6 +238,8 @@ export type ToolContent = {
   thumbnailImage: {
     src: string;
     alt: string;
+    attribution?: string;
+    attributionLink?: string;
   };
   isFeatured?: boolean;
 };

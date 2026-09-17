@@ -1,30 +1,34 @@
 import { Card, CardDetailed } from "@teamimpact/veda-ui-blocks";
-import { CatalogPagination, DatasetCatalogToolbar, Section } from "@/app/components";
+import {
+  CATALOG_PAGE_PARAM,
+  firstSearchParam,
+  paginateCatalogItems,
+} from "@/app/_utilities/catalog-pagination.helpers";
+import {
+  CatalogEmptyState,
+  CatalogPagination,
+  DatasetCatalogToolbar,
+  Section,
+} from "@/app/components";
 import { AppImage } from "@/app/components/AppImage";
-import { AppLink, AppLinkStyled } from "@/app/components/AppLink";
+import { AppLinkStyled } from "@/app/components/AppLink";
 import { DATASETS, searchDatasets } from "@/app/site-config/dataset";
 import { DATA_CATALOG_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
 import { getMetadataFieldTag, makePrimaryTag, makeSimpleTag } from "../_utilities/content.helpers";
 import { CONTENT_TYPES } from "../site-config/types";
 
 const PER_PAGE = 8;
-const PAGE_PARAM = "page";
 
 export default async function DataCatalogPage(props: PageProps<"/data-catalog">) {
   const searchParams = (await props.searchParams) ?? {};
-  const page = searchParams[PAGE_PARAM];
-  const q = searchParams.q ?? "";
-  const query = typeof q === "string" ? q : "";
+  const query = firstSearchParam(searchParams.q);
   const results = searchDatasets(DATASETS, query);
   const total = results.length;
-  const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
-
-  const requestedPage = Number.parseInt(Array.isArray(page) ? page[0] : (page ?? ""), 10);
-  const currentPage = Number.isNaN(requestedPage)
-    ? 1
-    : Math.min(Math.max(requestedPage, 1), totalPages);
-
-  const pageItems = results.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
+  const { pageItems, currentPage, totalPages } = paginateCatalogItems(
+    results,
+    searchParams[CATALOG_PAGE_PARAM],
+    PER_PAGE,
+  );
 
   return (
     <>
@@ -32,16 +36,13 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
         <Card className="height-masthead" isMastHead title={DATA_CATALOG_CARD_MASTHEAD.title} />
       </Section>
       <Section>
-        <DatasetCatalogToolbar count={total} query={query} pageParam={PAGE_PARAM} />
+        <DatasetCatalogToolbar count={total} query={query} pageParam={CATALOG_PAGE_PARAM} />
         {total === 0 && (
-          <div className="padding-y-6 text-center">
-            <p className="margin-0 text-bold">No datasets match “{query}”.</p>
-            <p className="margin-top-1 margin-bottom-0">
-              <AppLink href={CONTENT_TYPES.dataset.route} className="usa-link">
-                Clear search
-              </AppLink>
-            </p>
-          </div>
+          <CatalogEmptyState
+            query={query}
+            itemsLabel="datasets"
+            clearHref={CONTENT_TYPES.dataset.route}
+          />
         )}
         <div className="grid-row grid-gap-4">
           {pageItems.map(({ id, title, description, thumbnailImage, metadata }) => {
@@ -76,7 +77,7 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
             basePath={CONTENT_TYPES.dataset.route}
             currentPage={currentPage}
             totalPages={totalPages}
-            pageParam={PAGE_PARAM}
+            pageParam={CATALOG_PAGE_PARAM}
           />
         )}
       </Section>
