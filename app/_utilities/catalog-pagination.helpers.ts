@@ -28,7 +28,8 @@ export const paginateCatalogItems = <T>(
   }
 
   const totalPages = Math.max(1, Math.ceil(items.length / perPage));
-  const parsedPage = Number.parseInt(firstSearchParam(requestedPage), 10);
+  const pageValue = firstSearchParam(requestedPage);
+  const parsedPage = /^[+-]?\d+$/.test(pageValue) ? Number(pageValue) : Number.NaN;
   const currentPage = Number.isNaN(parsedPage) ? 1 : Math.min(Math.max(parsedPage, 1), totalPages);
 
   return {
