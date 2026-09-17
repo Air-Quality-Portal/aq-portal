@@ -1,7 +1,6 @@
 import { Card, CardDetailed } from "@teamimpact/veda-ui-blocks";
 import {
   CATALOG_PAGE_PARAM,
-  firstSearchParam,
   paginateCatalogItems,
 } from "@/app/_utilities/catalog-pagination.helpers";
 import {
@@ -11,7 +10,7 @@ import {
   Section,
 } from "@/app/components";
 import { AppImage } from "@/app/components/AppImage";
-import { AppLink, AppLinkStyled } from "@/app/components/AppLink";
+import { AppLinkStyled } from "@/app/components/AppLink";
 import { DATASETS, filterDatasetsByTags, searchDatasets } from "@/app/site-config/dataset";
 import { DATA_CATALOG_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
 import { normalizeCatalogSearchParams } from "../_utilities/catalog-search.helpers";
@@ -22,13 +21,13 @@ const PER_PAGE = 8;
 
 export default async function DataCatalogPage(props: PageProps<"/data-catalog">) {
   const searchParams = (await props.searchParams) ?? {};
-  const page = searchParams[PAGE_PARAM];
   const { q = "", tags } = searchParams;
   const { query, selectedTags } = normalizeCatalogSearchParams({ q, tags });
-  const results = filterDatasetsByTags(searchDatasets(DATASETS, query), selectedTags);
-  const total = results.length;
+  const searched = searchDatasets(DATASETS, query);
+  const filtered = filterDatasetsByTags(searched, selectedTags);
+  const total = filtered.length;
   const { pageItems, currentPage, totalPages } = paginateCatalogItems(
-    results,
+    filtered,
     searchParams[CATALOG_PAGE_PARAM],
     PER_PAGE,
   );
@@ -39,9 +38,9 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
         <Card className="height-masthead" isMastHead title={DATA_CATALOG_CARD_MASTHEAD.title} />
       </Section>
       <Section>
-        <DatasetCatalogToolbar 
-          count={total} 
-          query={query} 
+        <DatasetCatalogToolbar
+          count={total}
+          query={query}
           selectedTags={selectedTags}
           pageParam={CATALOG_PAGE_PARAM}
         />
