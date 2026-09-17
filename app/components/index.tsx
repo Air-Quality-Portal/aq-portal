@@ -3,6 +3,7 @@ export { AppLink, AppLinkStyled } from "./AppLink";
 export { AppVideo } from "./AppVideo";
 export { BackToCatalogLink } from "./BackToCatalogLink";
 export * from "./blocks";
+export { CatalogEmptyState } from "./CatalogEmptyState";
 export { CatalogPagination } from "./CatalogPagination";
 export { CatalogSearchInput } from "./CatalogSearchInput";
 export { ContentBlockRenderer } from "./ContentBlockRenderer";

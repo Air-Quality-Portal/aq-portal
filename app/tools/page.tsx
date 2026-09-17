@@ -1,5 +1,11 @@
 import { Card } from "@teamimpact/veda-ui-blocks";
 import {
+  CATALOG_PAGE_PARAM,
+  firstSearchParam,
+  paginateCatalogItems,
+} from "@/app/_utilities/catalog-pagination.helpers";
+import {
+  CatalogEmptyState,
   CatalogPagination,
   Section,
   SectionIntro,
@@ -7,7 +13,6 @@ import {
   ToolCatalogToolbar,
   ToolHighlights,
 } from "@/app/components";
-import { AppLink } from "@/app/components/AppLink";
 import {
   AIR4US_TOOL_INTRO,
   FEATURED_TOOLS,
@@ -19,19 +24,16 @@ import {
 const PER_PAGE = 9;
 
 export default async function ToolsPage(props: PageProps<"/tools">) {
-  const { q = "", page } = await props.searchParams;
-  const query = typeof q === "string" ? q : "";
+  const searchParams = await props.searchParams;
+  const query = firstSearchParam(searchParams.q);
 
   // Featured tools have the carousel above; the grid lists the whole catalog.
   const results = searchTools(TOOLS, query);
-
-  const totalPages = Math.max(1, Math.ceil(results.length / PER_PAGE));
-  const requestedPage = Number.parseInt(Array.isArray(page) ? page[0] : (page ?? ""), 10);
-  const currentPage = Number.isNaN(requestedPage)
-    ? 1
-    : Math.min(Math.max(requestedPage, 1), totalPages);
-
-  const pageItems = results.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
+  const { pageItems, currentPage, totalPages } = paginateCatalogItems(
+    results,
+    searchParams[CATALOG_PAGE_PARAM],
+    PER_PAGE,
+  );
 
   return (
     <>
@@ -46,20 +48,18 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
 
       <Section>
         <SectionIntro {...PARTNER_TOOLS_INTRO} />
-        <ToolCatalogToolbar count={results.length} query={query} />
+        <ToolCatalogToolbar count={results.length} query={query} pageParam={CATALOG_PAGE_PARAM} />
         {results.length === 0 && (
-          <div className="padding-y-6 text-center">
-            <p className="margin-0 text-bold">No tools match "{query}".</p>
-            <p className="margin-top-1 margin-bottom-0">
-              <AppLink href="/tools" className="usa-link">
-                Clear search
-              </AppLink>
-            </p>
-          </div>
+          <CatalogEmptyState query={query} itemsLabel="tools" clearHref="/tools" />
         )}
         <ToolCatalog tools={pageItems} />
         {totalPages > 1 && (
-          <CatalogPagination basePath="/tools" currentPage={currentPage} totalPages={totalPages} />
+          <CatalogPagination
+            basePath="/tools"
+            currentPage={currentPage}
+            totalPages={totalPages}
+            pageParam={CATALOG_PAGE_PARAM}
+          />
         )}
       </Section>
     </>
