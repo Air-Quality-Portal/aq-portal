@@ -5,7 +5,7 @@ import type {
   StacSingleLayerMapProps,
 } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
-import type { CardSimplePropsArgs } from "@/app/site-config/content.helpers";
+import type { CardSimplePropsArgs } from "@/app/_utilities/content.helpers";
 
 export const CONTENT_TYPES = {
   dataset: { route: "/data-catalog", label: "product" },
@@ -67,6 +67,12 @@ export type ContentBlock =
       height: number;
       maxWidth?: string;
       caption?: string;
+      /**
+       * Image credit, rendered on its own line below the caption. `label`
+       * prefixes the credit as plain text (e.g. "Credits:"); only `text`
+       * becomes the link when a `url` is given.
+       */
+      attribution?: { label?: string; text: string; url?: string };
       /** Skip the Next.js image optimizer (e.g. remote placeholder services that serve SVG). */
       unoptimized?: boolean;
     }
@@ -92,9 +98,16 @@ export type ContentBlock =
       cards: CardSimplePropsArgs[];
     }
   | ({ type: "cardTextOnly" } & CardTextOnlySection)
-  | ({ type: "links" } & LinkSection);
+  | ({ type: "links" } & LinkSection)
+  | ({ type: "contact" } & ContactSection);
 
 export type ContentType = DatasetContent["contentType"];
+
+export type DatasetFilter = {
+  id: string;
+  label: string;
+  options: Array<{ label: string; value: string }>;
+};
 
 export type DatasetContent = {
   id: string;
@@ -142,7 +155,7 @@ export type CardTextOnlyItem = {
   isExternal?: boolean;
   description?: string;
   tags?: CardTag[];
-  callToAction?: { label: string; href: string };
+  callToAction?: { label: string; href: string; isExternal?: boolean };
 };
 
 export type CardTextOnlySection = {
@@ -176,6 +189,28 @@ export type TutorialSection = {
   tutorials: Tutorial[];
 };
 
+/**
+ * A card that links somewhere and carries plain-string tags. Holds no
+ * presentation values, so it is JSON-serializable and can be authored in a CMS.
+ * `makeTaggedCardSection` turns the tags into styled ones at render time and
+ * derives each link's external flag from its href.
+ */
+export type TaggedCardItem = {
+  id: string;
+  title: string;
+  href: string;
+  description?: string;
+  tags?: string[];
+  callToAction?: { label: string; href: string };
+};
+
+export type TaggedCardSection = {
+  heading?: string;
+  headingLevel?: ContentHeadingLevel;
+  lead?: string;
+  items: TaggedCardItem[];
+};
+
 export type WorkshopItem = {
   id: string;
   title: string;
@@ -202,6 +237,19 @@ export type WorkshopSection = {
   workshops: WorkshopItem[];
 };
 
+export type ContactItem = {
+  title: string;
+  label: string;
+  email: string;
+};
+
+export type ContactSection = {
+  heading?: string;
+  headingLevel?: ContentHeadingLevel;
+  lead?: string;
+  contacts: ContactItem[];
+};
+
 export type ToolContent = {
   id: string;
   title: string;
@@ -216,7 +264,10 @@ export type ToolContent = {
   thumbnailImage: {
     src: string;
     alt: string;
+    attribution?: string;
+    attributionLink?: string;
   };
+  isFeatured?: boolean;
 };
 
 export type DatasetAction = {

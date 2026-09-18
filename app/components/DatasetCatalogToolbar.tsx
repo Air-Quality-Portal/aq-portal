@@ -1,15 +1,129 @@
+"use client";
+
+import { Drawer, Link, SvgFilterList, Tag } from "@teamimpact/veda-ui-blocks";
+import { useState } from "react";
+import { DatasetAccordionFilters } from "@/app/components/DatasetFilters";
+import { DATASET_FILTERS } from "@/app/site-config/dataset/dataset-filters";
+import { CatalogSearchInput } from "./CatalogSearchInput";
+
+const labelsByFilterValue = Object.fromEntries(
+  DATASET_FILTERS.flatMap((filter) => filter.options.map((item) => [item.value, item.label])),
+);
+
 type DatasetCatalogToolbarProps = {
-  /** Total number of datasets in the catalog (shown as a count badge). */
+  /** Number of datasets currently matching the catalog query. */
   count: number;
+  query?: string;
+  pageParam: string;
 };
 
-export const DatasetCatalogToolbar = ({ count }: DatasetCatalogToolbarProps) => (
-  <div className="display-flex flex-justify flex-align-center flex-wrap margin-y-6 border border-base-lighter radius-lg bg-white padding-y-105 padding-x-205">
-    <p className="display-flex flex-align-center margin-0 text-bold">
-      Datasets
-      <span className="margin-left-1 padding-x-1 padding-y-1 bg-primary text-white radius-md font-sans-2xs">
-        {count}
-      </span>
-    </p>
-  </div>
-);
+export const DatasetCatalogToolbar = ({
+  count,
+  query = "",
+  pageParam,
+}: DatasetCatalogToolbarProps) => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+  const [appliedFilters, setAppliedFilters] = useState<string[]>([]);
+
+  const toggleCheckboxFilter = (value: string) => {
+    setAppliedFilters((prev) =>
+      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value],
+    );
+  };
+
+  const removeTagFilter = (filterValue: string) => {
+    setAppliedFilters((prev) => prev.filter((v) => v !== filterValue));
+  };
+
+  const clearFilters = () => {
+    setAppliedFilters([]);
+  };
+
+  return (
+    <>
+      <p className="font-sans-md line-height-sans-5 text-normal text-base-dark margin-0">
+        Browse air quality datasets that can be explored in the AIR4US visualization tool.
+      </p>
+      <div className="display-flex flex-justify flex-align-center margin-y-5 border border-base-lighter radius-lg padding-y-105 padding-x-205">
+        <div aria-live="polite" className="display-flex flex-align-center flex-1">
+          <span>
+            Datasets
+            <span className="margin-left-1 margin-right-2 padding-x-1 padding-y-1 bg-primary text-white radius-md font-sans-2xs">
+              {count}
+            </span>
+          </span>
+          <span className="display-flex flex-wrap width-full">
+            {appliedFilters.map((filterValue) => (
+              <Tag
+                key={filterValue}
+                variant="outline"
+                color="base"
+                className="margin-right-1 margin-y-1"
+                onClose={() => removeTagFilter(filterValue)}
+              >
+                {labelsByFilterValue[filterValue]}
+              </Tag>
+            ))}
+            {appliedFilters.length > 0 && (
+              <Link className="margin-left-2" as="button" onClick={clearFilters}>
+                Clear all
+              </Link>
+            )}
+          </span>
+        </div>
+        <CatalogSearchInput
+          query={query}
+          label="Search datasets"
+          placeholder="Search datasets..."
+          inputId="dataset-catalog-search"
+          pageParam={pageParam}
+        />
+        <Link
+          className="usa-button"
+          as="button"
+          variant="button"
+          onClick={() => {
+            setIsDrawerOpen(true);
+          }}
+        >
+          Filter <SvgFilterList className="usa-icon" />
+        </Link>
+      </div>
+
+      <Drawer
+        title="Search and Filter"
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        footer={
+          <div className="display-flex">
+            <Link
+              className="usa-button display-flex flex-justify-center flex-1 margin-right-2"
+              as="button"
+              variant="button"
+              onClick={() => setIsDrawerOpen(false)}
+            >
+              Apply Filters
+            </Link>
+            <Link
+              className="usa-button"
+              as="button"
+              variant="button-outline"
+              onClick={clearFilters}
+            >
+              Clear
+            </Link>
+          </div>
+        }
+      >
+        <div className="padding-y-5">
+          {isDrawerOpen && (
+            <DatasetAccordionFilters
+              selectedFilters={appliedFilters}
+              onFilterChangeAction={toggleCheckboxFilter}
+            />
+          )}
+        </div>
+      </Drawer>
+    </>
+  );
+};

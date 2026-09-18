@@ -19,7 +19,7 @@ export const AIR4US_TOOL_INTRO: SectionIntroProps = {
     </>
   ),
   description:
-    "The AIR4US visualization tool brings authoritative air quality layers like smoke, surface monitors, and satellite observations together, so you can explore conditions across the country in a single app.",
+    "The AIR4US visualization tool brings together authoritative air-quality data from monitors, satellites, and models, so you can explore conditions across the country in a single app.",
   callToAction: {
     label: "View all data",
     href: "/data-catalog",

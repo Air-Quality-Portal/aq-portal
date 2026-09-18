@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useState } from "react";
-import { makeWorkshopCardSections } from "@/app/site-config/content.helpers";
+import { makeWorkshopCardSections } from "@/app/_utilities/content.helpers";
 import type { CardTextOnlySection, WorkshopSection } from "@/app/site-config/types";
 import { ContentHeading } from "./ContentHeading";
 import { Section } from "./Section";

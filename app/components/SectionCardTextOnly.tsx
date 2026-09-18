@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from "react";
+import { makeCardDetailedTextOnlyProps } from "@/app/_utilities/content.helpers";
 import { ContentHeading, SectionCardDetailed } from "@/app/components";
-import { makeCardDetailedTextOnlyProps } from "@/app/site-config/content.helpers";
 import type { CardTextOnlySection } from "@/app/site-config/types";
 
 export function SectionCardTextOnly({

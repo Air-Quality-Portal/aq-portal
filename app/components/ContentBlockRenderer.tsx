@@ -1,9 +1,12 @@
+import { makeCardSimpleProps } from "@/app/_utilities/content.helpers";
+import { typedMap } from "@/app/_utilities/typed.helpers";
 import {
   ContentHeading,
   ImageComparison,
   Section,
   SectionCardSimple,
   SectionCardTextOnly,
+  SectionContacts,
   SectionHeading,
   SectionLinks,
 } from "@/app/components";
@@ -11,8 +14,6 @@ import { AppImage } from "@/app/components/AppImage";
 import { AppLinkStyled } from "@/app/components/AppLink";
 import { AppVideo } from "@/app/components/AppVideo";
 import { StacCompareBlock, StacSingleLayerBlock } from "@/app/components/blocks";
-import { makeCardSimpleProps } from "@/app/site-config/content.helpers";
-import { typedMap } from "@/app/site-config/typed.helpers";
 import type { ContentBlock } from "@/app/site-config/types";
 
 export const ContentBlockRenderer = ({
@@ -122,9 +123,21 @@ export const ContentBlockRenderer = ({
               unoptimized={block.unoptimized}
               style={{ width: block.maxWidth ?? "100%", height: "auto" }}
             />
-            {block.caption && (
+            {(block.caption || block.attribution) && (
               <figcaption className="font-body-sm text-base margin-top-1">
                 {block.caption}
+                {block.attribution && (
+                  <span className="display-block text-base-dark">
+                    {block.attribution.label && `${block.attribution.label} `}
+                    {block.attribution.url ? (
+                      <AppLinkStyled href={block.attribution.url} isExternal variant="text">
+                        {block.attribution.text}
+                      </AppLinkStyled>
+                    ) : (
+                      block.attribution.text
+                    )}
+                  </span>
+                )}
               </figcaption>
             )}
           </figure>
@@ -185,5 +198,8 @@ export const ContentBlockRenderer = ({
 
     case "links":
       return <SectionLinks section={block} />;
+
+    case "contact":
+      return <SectionContacts section={block} />;
   }
 };

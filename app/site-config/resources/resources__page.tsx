@@ -1,11 +1,10 @@
-import { AppImage } from "@/app/components/AppImage";
-import { makeTutorialCardSection } from "@/app/site-config/content.helpers";
-import type { ContentBlock, LinkSection, WorkshopSection } from "@/app/site-config/types";
+import { makeTaggedCardSection, makeTutorialCardSection } from "@/app/_utilities/content.helpers";
+import type { ContentBlock, WorkshopSection } from "@/app/site-config/types";
 
 export type ResourcesPageBody = {
   body: ContentBlock[];
   workshops?: WorkshopSection;
-  linkSections?: LinkSection[];
+  partnerResources?: ContentBlock[];
 };
 
 export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
@@ -15,206 +14,165 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
       heading: "Getting Started",
       headingLevel: "h2",
       paragraphs: [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Browse the resources below to learn how to use the AIR4US Visualization Tool, as well as how to access, interpret, and apply the data and tools available through the AIR4US Portal.",
+        "All training materials are freely available. Tutorials can be completed at your own pace. Register for upcoming workshops and webinars, and access resources from past events.",
       ],
     },
-
     {
       type: "cardTextOnly",
       ...makeTutorialCardSection({
-        heading: "Video Tutorials",
+        heading: "AIR4US Visualization Tool Tutorials",
         headingLevel: "h2",
-        lead: "Self-paced video tutorials covering key datasets, tools, and workflows available through the AIR4US Portal.",
+        lead: "Self-paced tutorials covering key datasets, tools, and workflows available through the AIR4US Visualization Tool",
         tutorials: [
           {
-            title: "Getting started with MODIS/VIIRS/GOES",
+            title: "Getting Started with AIR4US",
             description:
-              "An introduction to the MODIS/VIIRS/GOES dataset — what it measures, how it is produced, and when to use it.",
+              "An introductory video explaining the AIR4US Visualization Tool's user interface and basic functions. NOTE: THIS IS A PLACEHOLDER FOR A POTENTIAL TUTORIAL TO BE CREATED LATER",
             href: "#",
             duration: "10 MIN",
             level: "beginner",
           },
           {
-            title: "Accessing and downloading MODIS/VIIRS/GOES data",
+            title: "Visualizing near-real-time air quality information",
             description:
-              "Find, subset, and download MODIS/VIIRS/GOES data, with tips for common file formats and access tools.",
+              "Use the near-real-time air quality information available via AIR4US to assess the current air quality situation in your area. NOTE: THIS IS A PLACEHOLDER FOR A POTENTIAL TUTORIAL TO BE CREATED LATER",
             href: "#",
-            duration: "20 MIN",
-            level: "intermediate",
+            duration: "10 MIN",
+            level: "beginner",
           },
           {
-            title: "Accessing and downloading MODIS/VIIRS/GOES data",
+            title: "Forecasting high-ozone events",
             description:
-              "Find, subset, and download MODIS/VIIRS/GOES data, with tips for common file formats and access tools.",
-            href: "#",
-            duration: "20 MIN",
-            level: "intermediate",
-          },
-          {
-            title: "Exploring MODIS/VIIRS/GOES in the AIR4US visualization tool",
-            description:
-              "Load MODIS/VIIRS/GOES layers in the AIR4US visualization tool and interpret them alongside other air quality data.",
+              "Use Ozone and other related data available in AIR4US to predict high-ozone events in your area. NOTE: THIS IS A PLACEHOLDER FOR A POTENTIAL TUTORIAL TO BE CREATED LATER",
             href: "#",
             duration: "15 MIN",
+            level: "intermediate",
+          },
+          {
+            title: "Long-term air quality trend analysis",
+            description:
+              "Use AIR4US to assess long-term trends in air quality using a combination of monitor data, satellite information, and retrospective model simulations. NOTE: THIS IS A PLACEHOLDER FOR A POTENTIAL TUTORIAL TO BE CREATED LATER",
+            href: "#",
+            duration: "30 MIN",
             level: "advanced",
           },
         ],
       }),
     },
-
     {
-      type: "text",
-      heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      headingLevel: "h3",
-      paragraphs: [
-        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
-      ],
-    },
-
-    {
-      type: "text",
-      paragraphs: [
-        <AppImage
-          key="placeholder"
-          src="https://placehold.co/880x400"
-          alt="Placeholder"
-          width={880}
-          height={400}
-          style={{ width: "100%", height: "auto" }}
-          unoptimized
-        />,
-      ],
+      type: "cardTextOnly",
+      ...makeTutorialCardSection({
+        heading: "Partner Agency Tool Tutorials",
+        headingLevel: "h2",
+        lead: "Tutorial resources for tools provided by our partner agencies, accessible via the Air-Quality Tool Catalog.",
+        tutorials: [
+          {
+            title: "RSIG3D Video Demonstrations",
+            description:
+              "A series of short tutorial videos illustrating how to use RSIG3D to view, retrieve, and save data. NOTE: THIS IS AN EXAMPLE FOR HOW TUTORIALS ON PARTNER AGENCY TOOLS CAN BE CROSS-LISTED ON AIR4US",
+            href: "https://www.epa.gov/hesc/rsig3d-video-demonstrations",
+            duration: "30 MIN",
+            level: "intermediate",
+          },
+          {
+            title: "Get Started with NASA Worldview",
+            description:
+              "Learn how to use Worldview to explore and visualize NASA Earth science imagery to see hurricanes forming, wildfires spreading, icebergs drifting, and more. NOTE: THIS IS AN EXAMPLE FOR HOW TUTORIALS ON PARTNER AGENCY TOOLS CAN BE CROSS-LISTED ON AIR4US",
+            href: "https://www.earthdata.nasa.gov/learn/tutorials/get-started-nasa-worldview",
+            duration: "20 MIN",
+            level: "beginner",
+          },
+        ],
+      }),
     },
   ],
 
   workshops: {
     heading: "Workshops & Webinars",
     headingLevel: "h2",
-    lead: "Live training events hosted by NASA, NOAA, and EPA scientists. Registration is free and open to air quality professionals, researchers, and students.",
+    lead: "Explore training events hosted by AIR4US partner agencies and affiliated organizations, and view registration details for upcoming events and available resources from past events.",
     workshops: [
       {
-        id: "workshop-fall-2026",
-        title: "AIR4US Fall Training Workshop 2026",
-        href: "#",
+        id: "workshop-geostationary-aerosols-2026",
+        title:
+          "Geostationary Remote Sensing of Aerosols for Air Quality Applications in North America",
+        href: "https://www.earthdata.nasa.gov/learn/trainings/geostationary-remote-sensing-aerosols-air-quality-applications-north-america",
         startsAt: "2026-10-20T15:00:00Z",
-        dateLabel: "October 20–22, 2026",
+        dateLabel: "October 20, 2026",
         description:
-          "Three-day intensive training covering satellite data products, ground-based monitoring networks, and model evaluation techniques. Open to state and local air quality agency staff.",
-        tags: ["IN-PERSON + VIRTUAL"],
-        callToActions: { registration: { label: "Register", href: "#" } },
-      },
-      {
-        id: "wildfire-smoke-webinars",
-        title: "Wildfire Smoke Monitoring Webinar",
-        href: "#",
-        startsAt: "2026-11-05T15:00:00Z",
-        dateLabel: "November 5, 2026",
-        description:
-          "A 90-minute webinar featuring case studies from recent wildfire events, with presentations from NASA, NOAA, and EPA scientists.",
+          "This training provides an overview of TEMPO capabilities and available NOAA aerosol products generated using synergistic TEMPO and ABI observations. Instructors demonstrate how to access and interpret near real-time and archived TEMPO aerosol products imagery on the NOAA AerosolWatch website. NOTE: THIS IS AN EXAMPLE OF HOW UPCOMING EVENTS MAY BE CROSS-LISTED TO AIR4US",
         tags: ["WEBINAR"],
+        callToActions: {
+          registration: {
+            label: "Register",
+            href: "https://www.earthdata.nasa.gov/learn/trainings/geostationary-remote-sensing-aerosols-air-quality-applications-north-america",
+          },
+        },
+      },
+      {
+        id: "workshop-air4us-summer-2027",
+        title: "AIR4US Summer Training Workshop 2027",
+        href: "#",
+        startsAt: "2027-07-14T15:00:00Z",
+        dateLabel: "July 14–16, 2027",
+        description:
+          "Three-day intensive training covering how to use AIR4US to visualize and compare satellite data products, ground-based monitoring networks, and model outputs. Open to federal, state, local, and tribal air quality agency staff. NOTE: THIS IS AN EXAMPLE OF HOW A FUTURE AIR4US WORKSHOP MIGHT BE ADVERTISED",
+        tags: ["VIRTUAL WORKSHOP", "IN-PERSON WORKSHOP"],
         callToActions: { registration: { label: "Register", href: "#" } },
-      },
-      {
-        id: "data-fusion-pm25-2026",
-        title: "Data Fusion Techniques for PM2.5 Estimation",
-        href: "#",
-        startsAt: "2026-11-12T15:00:00Z",
-        dateLabel: "November 12, 2026",
-        description:
-          "Half-day workshop on combining satellite retrievals, model output, and ground measurements to produce high-resolution PM2.5 surfaces for health research.",
-        tags: ["VIRTUAL WORKSHOP"],
-        callToActions: { registration: { label: "Register", href: "#" } },
-      },
-      {
-        id: "air-sensor-calibration-2026",
-        title: "Air Sensor Calibration and Data Quality",
-        href: "#",
-        startsAt: "2026-12-03T15:00:00Z",
-        dateLabel: "December 3, 2026",
-        description:
-          "Practical guidance for calibrating low-cost air sensors and evaluating data quality for community monitoring projects.",
-        tags: ["WEBINAR"],
-        callToActions: { registration: { label: "Register", href: "#" } },
-      },
-      {
-        id: "workshop-summer-2026",
-        title: "AIR4US Summer Training Workshop 2026",
-        href: "#",
-        startsAt: "2026-07-14T15:00:00Z",
-        dateLabel: "July 14–16, 2026",
-        description:
-          "Three-day intensive training on satellite data products, monitoring networks, and model evaluation. Recording and materials now available.",
-        tags: ["IN-PERSON + VIRTUAL"],
-        callToActions: { recording: { label: "View recording", href: "#" } },
-      },
-      {
-        id: "satellite-aod-pm25-2026",
-        title: "Satellite AOD for PM2.5 Estimation",
-        href: "#",
-        startsAt: "2026-05-08T15:00:00Z",
-        dateLabel: "May 8, 2026",
-        description:
-          "Hands-on workshop on using MODIS and VIIRS aerosol optical depth to estimate surface PM2.5 for health and exposure studies.",
-        tags: ["VIRTUAL WORKSHOP"],
-        callToActions: { recording: { label: "View recording", href: "#" } },
-      },
-      {
-        id: "hysplit-trajectory-2026",
-        title: "Introduction to HYSPLIT Trajectory Modeling",
-        href: "#",
-        startsAt: "2026-03-19T15:00:00Z",
-        dateLabel: "March 19, 2026",
-        description:
-          "Beginner webinar on running forward and backward trajectories in HYSPLIT to trace smoke and dust transport pathways.",
-        tags: ["WEBINAR"],
-        callToActions: { recording: { label: "View recording", href: "#" } },
-      },
-      {
-        id: "air-quality-data-2026",
-        title: "Finding and Using Air Quality Data",
-        href: "#",
-        startsAt: "2026-02-12T15:00:00Z",
-        dateLabel: "February 12, 2026",
-        description:
-          "An introduction to finding, comparing, and downloading satellite and ground-based air quality observations.",
-        tags: ["WEBINAR"],
-        callToActions: { recording: { label: "View recording", href: "#" } },
       },
     ],
   },
 
-  linkSections: [
+  partnerResources: [
     {
-      heading: "Documentation",
-      headingLevel: "h3",
-      lead: "Documentation, algorithm details, and background reading for MODIS/VIIRS/GOES.",
-      links: [
-        {
-          label: "MODIS/VIIRS/GOES — official dataset page",
-          href: "#",
-          isExternal: true,
-        },
-        {
-          label: "NASA / NOAA documentation",
-          href: "#",
-          isExternal: true,
-        },
-        {
-          label: "Algorithm Theoretical Basis Document (ATBD)",
-          href: "#",
-          isExternal: true,
-        },
-        {
-          label: "Data quality & validation report",
-          href: "#",
-          isExternal: true,
-        },
-        {
-          label: "Related publications",
-          href: "#",
-          isExternal: true,
-        },
-      ],
+      type: "cardTextOnly",
+      ...makeTaggedCardSection({
+        heading: "Partner Resource Pages",
+        headingLevel: "h2",
+        lead: "Resources provided by our partner agencies.",
+        items: [
+          {
+            id: "partner-resource-arset",
+            title: "Applied Remote Sensing Training",
+            href: "https://www.earthdata.nasa.gov/data/projects/arset/learn?topic[14867]=14867",
+            description:
+              "The Applied Remote Sensing Training (ARSET) program offers online and in-person trainings covering a range of datasets, web portals, and analysis tools and their application to air quality, among other topics.",
+            tags: ["NASA"],
+          },
+          {
+            id: "partner-resource-haqast",
+            title: "Health and Air Quality Applied Sciences Team",
+            href: "https://haqast.wisc.edu/getting-started/",
+            description:
+              "Resources for getting started with using remote sensing data for health and air quality applications, collected and curated by NASA Health and Air Quality Applied Sciences Team (HAQAST) members.",
+            tags: ["NASA"],
+          },
+          {
+            id: "partner-resource-airknowledge",
+            title: "Air Knowledge",
+            href: "https://airknowledge.gov/",
+            description:
+              "Training material focused on the Clean Air Act program areas associated with ambient air quality planning and stationary source emissions control regulation.",
+            tags: ["EPA"],
+          },
+          {
+            id: "partner-resource-star-atmospheric",
+            title: "STAR Atmospheric Composition Product Training",
+            href: "https://www.star.nesdis.noaa.gov/atmospheric-composition-training/index.php",
+            description:
+              "The STAR Aerosols and Atmospheric Composition Science Team conducts training courses on aerosol, fire, and trace gas satellite products from ABI, VIIRS, TROPOMI & TEMPO. The objectives of the training program are to increase access to the satellite products and promote their proper use in air quality applications in operations & research.",
+            tags: ["NOAA"],
+          },
+        ],
+      }),
     },
+    // {
+    //   type: "links",
+    //   heading: "Documentation",
+    //   headingLevel: "h3",
+    //   lead: "To be added later",
+    //   links: [],
+    // },
   ],
 };
