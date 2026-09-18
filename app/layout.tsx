@@ -1,6 +1,7 @@
 import { Banner, Footer } from "@teamimpact/veda-ui-blocks";
 import type { Metadata } from "next";
 import "@teamimpact/veda-ui-blocks/air4us.css";
+import "./styles/pollutants.css";
 
 import { AppLink } from "./components/AppLink";
 import { HeaderWithCurrentPath } from "./components/HeaderWithCurrentPath";

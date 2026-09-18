@@ -1,5 +1,7 @@
+import { isValidElement, type ReactElement } from "react";
 import { describe, expect, it } from "vitest";
 import {
+  makeCardMastHeadProps,
   makeContentTypeTag,
   makePrimaryTag,
   makeSimpleTag,
@@ -67,5 +69,26 @@ describe("Tag makers", () => {
       expect(tag.variant).toBe("solid");
       expect(tag.color).toBe("base-light");
     });
+  });
+});
+
+describe("makeCardMastHeadProps", () => {
+  const mastheadImage = { src: "/img/masthead.webp", alt: "A map" };
+
+  /*
+   * CardDetailed only supplies the `h2.blocks-card__title` wrapper when `title`
+   * is a string; anything else it renders raw into the flex column, so a
+   * formatted title has to carry that heading itself or its pieces stack.
+   */
+  it("keeps a formatted title inside a single card heading element", () => {
+    const { title } = makeCardMastHeadProps({
+      mastheadImage,
+      title: "AQM O3 and PM2.5 Forecasts",
+    });
+
+    expect(isValidElement(title)).toBe(true);
+    const heading = title as ReactElement<{ className?: string }>;
+    expect(heading.type).toBe("h2");
+    expect(heading.props.className).toBe("blocks-card__title");
   });
 });

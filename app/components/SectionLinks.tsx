@@ -1,4 +1,5 @@
 import { makeButtonOutlineLink } from "@/app/_utilities/content.helpers";
+import { formatPollutants } from "@/app/_utilities/pollutants.helpers";
 import { ContentHeading, ContentLead, Section } from "@/app/components";
 import { AppLinkStyled } from "@/app/components/AppLink";
 import type { LinkSection } from "@/app/site-config/types";
@@ -16,7 +17,7 @@ export function SectionLinks({ section }: { section: LinkSection }) {
             className="margin-bottom-1"
           >
             <AppLinkStyled {...makeButtonOutlineLink(link.href, link.isExternal)}>
-              {link.label}
+              {formatPollutants(link.label)}
             </AppLinkStyled>
           </li>
         ))}

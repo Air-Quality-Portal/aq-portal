@@ -12,6 +12,7 @@ import {
   type TutorialLevel,
   type TutorialSection,
 } from "@/app/site-config/types";
+import { formatPollutants } from "./pollutants.helpers";
 
 /**
  * True for hrefs that leave the site: absolute URLs with a scheme and
@@ -127,7 +128,12 @@ export const makeCardMastHeadProps = ({
   ...rest
 }: CardMastheadPropsArgs): CardProps => ({
   image: <AppImage {...mastheadImage} sizes="100vw" fill />,
-  title: title,
+  /*
+   * Card only wraps a string title in its own heading; a formatted one arrives
+   * as nodes and would otherwise land straight in the card's flex column, one
+   * line per node. Supplying the heading keeps the title on a single line.
+   */
+  title: title && <h2 className="blocks-card__title">{formatPollutants(title)}</h2>,
   tag: tagPrimary
     ? {
         label: tagPrimary,
@@ -178,7 +184,7 @@ export const makeCardDetailedImageLeftProps = ({
         isExternal={!!url}
         variant="text"
       >
-        {title}
+        {typeof title === "string" ? formatPollutants(title) : title}
       </AppLinkStyled>
     ),
     tags: (tags ?? []).map((tag) => makeSimpleTag(tag)),
@@ -218,10 +224,12 @@ export const makeCardDetailedTextOnlyProps = ({
         isExternal={isExternal}
         variant="text"
       >
-        {title}
+        {formatPollutants(title)}
       </AppLinkStyled>
       {description && (
-        <p className="font-body-xs text-base-dark text-light margin-0">{description}</p>
+        <p className="font-body-xs text-base-dark text-light margin-0">
+          {formatPollutants(description)}
+        </p>
       )}
     </>
   ),

@@ -1,4 +1,5 @@
 import { makeCardSimpleProps } from "@/app/_utilities/content.helpers";
+import { formatPollutants } from "@/app/_utilities/pollutants.helpers";
 import { typedMap } from "@/app/_utilities/typed.helpers";
 import {
   ContentHeading,
@@ -37,7 +38,7 @@ export const ContentBlockRenderer = ({
           {block.paragraphs.map((p, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
             <p key={i} className={i === 0 && !block.heading ? "margin-top-0" : ""}>
-              {p}
+              {typeof p === "string" ? formatPollutants(p) : p}
             </p>
           ))}
         </Section>
@@ -53,10 +54,10 @@ export const ContentBlockRenderer = ({
             {block.items.map((item, i) =>
               typeof item === "string" ? (
                 // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-                <li key={i}>{item}</li>
+                <li key={i}>{formatPollutants(item)}</li>
               ) : (
                 <li key={item.href}>
-                  <AppLinkStyled href={item.href}>{item.label}</AppLinkStyled>
+                  <AppLinkStyled href={item.href}>{formatPollutants(item.label)}</AppLinkStyled>
                 </li>
               ),
             )}
@@ -76,7 +77,9 @@ export const ContentBlockRenderer = ({
                 {block.label}
               </p>
             )}
-            <p className="text-base-darkest line-height-sans-5 margin-0">{block.text}</p>
+            <p className="text-base-darkest line-height-sans-5 margin-0">
+              {formatPollutants(block.text)}
+            </p>
           </div>
         </Section>
       );
@@ -107,7 +110,9 @@ export const ContentBlockRenderer = ({
               <p className="text-base margin-0">Video coming soon</p>
             </div>
           )}
-          {block.caption && <p className="font-body-sm text-base margin-top-1">{block.caption}</p>}
+          {block.caption && (
+            <p className="font-body-sm text-base margin-top-1">{formatPollutants(block.caption)}</p>
+          )}
         </Section>
       );
 
@@ -125,7 +130,7 @@ export const ContentBlockRenderer = ({
             />
             {(block.caption || block.attribution) && (
               <figcaption className="font-body-sm text-base margin-top-1">
-                {block.caption}
+                {block.caption && formatPollutants(block.caption)}
                 {block.attribution && (
                   <span className="display-block text-base-dark">
                     {block.attribution.label && `${block.attribution.label} `}
@@ -153,7 +158,7 @@ export const ContentBlockRenderer = ({
             <StacSingleLayerBlock block={block} />
             {block.caption && (
               <figcaption className="font-body-sm text-base margin-top-1">
-                {block.caption}
+                {formatPollutants(block.caption)}
               </figcaption>
             )}
           </figure>
@@ -170,7 +175,7 @@ export const ContentBlockRenderer = ({
             <StacCompareBlock block={block} />
             {block.caption && (
               <figcaption className="font-body-sm text-base margin-top-1">
-                {block.caption}
+                {formatPollutants(block.caption)}
               </figcaption>
             )}
           </figure>
@@ -185,7 +190,7 @@ export const ContentBlockRenderer = ({
           sectionHeading={
             block.heading && (
               <SectionHeading {...(block.href ? { href: block.href } : {})}>
-                {block.heading}
+                {formatPollutants(block.heading)}
               </SectionHeading>
             )
           }

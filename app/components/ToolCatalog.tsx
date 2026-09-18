@@ -2,6 +2,7 @@ import { CardDetailed } from "@teamimpact/veda-ui-blocks";
 import type { Route } from "next";
 import "../styles/tool-catalog.css";
 import { makePrimaryTag } from "@/app/_utilities/content.helpers";
+import { formatPollutants } from "@/app/_utilities/pollutants.helpers";
 import { AppImage } from "@/app/components/AppImage";
 import { AppLinkStyled } from "@/app/components/AppLink";
 import type { ToolContent } from "@/app/site-config/types";
@@ -61,7 +62,7 @@ export const ToolCatalog = ({ tools, layout = "thirds" }: ToolCatalogProps) => {
                 href={tool.href as Route}
                 isExternal
               >
-                {tool.title}
+                {formatPollutants(tool.title)}
               </AppLinkStyled>
             }
             description={tool.description}

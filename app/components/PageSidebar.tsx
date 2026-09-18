@@ -1,4 +1,5 @@
 import { getMetadataFields, getMetadataValueLines } from "@/app/_utilities/content.helpers";
+import { formatPollutants } from "@/app/_utilities/pollutants.helpers";
 import type { DatasetMetadata } from "@/app/site-config/types";
 
 export function PageSidebar({ metadata = {} }: { metadata?: DatasetMetadata }) {
@@ -11,7 +12,7 @@ export function PageSidebar({ metadata = {} }: { metadata?: DatasetMetadata }) {
           </p>
           {getMetadataValueLines(entry).map((item) => (
             <p key={item} className="font-body-sm text-medium margin-y-05">
-              {item}
+              {formatPollutants(item)}
             </p>
           ))}
         </div>
