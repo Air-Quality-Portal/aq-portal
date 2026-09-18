@@ -1,0 +1,15 @@
+/*
+ * Pollutant figures are marked up with `sub` rather than written with Unicode
+ * subscript characters: neither Public Sans nor Merriweather carries a glyph in
+ * the U+2080-U+2089 range, so those characters are drawn by a fallback face at a
+ * mismatched size and baseline, and Unicode has no subscript period for PM2.5.
+ *
+ * The browser default pairs `vertical-align: sub` with `font-size: smaller`,
+ * which grows the line box and opens uneven gaps in body copy. A fixed offset
+ * with no line height of its own keeps the figure on the surrounding line grid.
+ */
+sub {
+  font-size: 0.7em;
+  line-height: 0;
+  vertical-align: -0.25em;
+}

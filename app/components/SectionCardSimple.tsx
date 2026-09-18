@@ -1,6 +1,7 @@
 import type { CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import { CardSimple } from "@teamimpact/veda-ui-blocks";
 import type { ReactNode } from "react";
+import { formatPollutants } from "@/app/_utilities/pollutants.helpers";
 import { Section, type SectionProps } from "@/app/components";
 import type { IterableItemWithId } from "@/app/site-config/types";
 import { getGridColumnClass } from "./component.helpers";
@@ -22,7 +23,9 @@ export const SectionCardSimple = ({
   return (
     <Section {...sectionProps}>
       {sectionHeading && sectionHeading}
-      {description && <p className="text-base margin-top-0 margin-bottom-3">{description}</p>}
+      {description && (
+        <p className="text-base margin-top-0 margin-bottom-3">{formatPollutants(description)}</p>
+      )}
       <div className="grid-row grid-gap-2 margin-bottom-neg-2">
         {cards.map(({ key, id, ...props }) => (
           <div key={id} className={`${gridColumnClass} margin-bottom-2 height-card-md`}>

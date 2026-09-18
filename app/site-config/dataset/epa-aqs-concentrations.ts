@@ -25,10 +25,10 @@ export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
       "Dust storm",
       "Transboundary pollution",
       "PM2.5",
-      "O₃",
-      "NO₂",
+      "O3",
+      "NO2",
       "PM10",
-      "SO₂",
+      "SO2",
       "CO",
       "Retrospective(>15 days)",
     ],
@@ -37,11 +37,11 @@ export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
       parameters: {
         label: "Parameters & Units",
         value: [
-          "Surface Particulate Matter (PM₁₀   and PM₂.₅) Concentration, micrograms per cubic meter (µg/m³)",
-          "Surface Ozone (O₃) Concentration, parts per million (ppm)",
+          "Surface Particulate Matter (PM10 and PM2.5) Concentration, micrograms per cubic meter (µg/m³)",
+          "Surface Ozone (O3) Concentration, parts per million (ppm)",
           "Surface Carbon Monoxide (CO) Concentration, parts per million (ppm)",
-          "Surface Nitrogen Dioxide (NO₂) Concentration, parts per billion (ppb)",
-          "Surface Sulfur Dioxide (SO₂) Concentration, parts per billion (ppb)",
+          "Surface Nitrogen Dioxide (NO2) Concentration, parts per billion (ppb)",
+          "Surface Sulfur Dioxide (SO2) Concentration, parts per billion (ppb)",
         ],
         delimiter: "\n",
       },
@@ -58,7 +58,7 @@ export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
       versionHistory: {
         label: "Version History",
         value:
-          "AQS hourly concentrations of PM₁₀, PM₂.₅, O₃, CO, NO₂, and SO₂ were incorporated into AIR4US in September 2026.",
+          "AQS hourly concentrations of PM10, PM2.5, O3, CO, NO2, and SO2 were incorporated into AIR4US in September 2026.",
       },
       fileFormat: { label: "File Format", value: "json" },
     },
@@ -74,7 +74,7 @@ export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
     {
       type: "text",
       paragraphs: [
-        "The Air Quality System (AQS) contains ambient air sample data collected by the EPA, state, local, and tribal air pollution control agencies from thousands of monitors across the United States. This dataset in AIR4US includes hourly averages from 1999 to the present for the criteria pollutants: ozone (O₃), carbon monoxide (CO), sulfur dioxide (SO₂), nitrogen dioxide (NO₂), and particulate matter (PM₂.₅ and PM₁₀). Concentration measurements for O₃ and CO are reported in parts per million (ppm), and for NO₂ and SO₂ in parts per billion (ppb). PM₂.₅ and PM₁₀ concentration measurements are in micrograms per cubic meter (µg/m³). Real-time air-quality data are not available from AQS. It can take six months or more from the time data are collected until they are validated and added to the AQS. Near real-time air-quality monitor data are available via AirNow.",
+        "The Air Quality System (AQS) contains ambient air sample data collected by the EPA, state, local, and tribal air pollution control agencies from thousands of monitors across the United States. This dataset in AIR4US includes hourly averages from 1999 to the present for the criteria pollutants: ozone (O3), carbon monoxide (CO), sulfur dioxide (SO2), nitrogen dioxide (NO2), and particulate matter (PM2.5 and PM10). Concentration measurements for O3 and CO are reported in parts per million (ppm), and for NO2 and SO2 in parts per billion (ppb). PM2.5 and PM10 concentration measurements are in micrograms per cubic meter (µg/m³). Real-time air-quality data are not available from AQS. It can take six months or more from the time data are collected until they are validated and added to the AQS. Near real-time air-quality monitor data are available via AirNow.",
       ],
     },
     {

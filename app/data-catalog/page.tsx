@@ -4,6 +4,7 @@ import {
   firstSearchParam,
   paginateCatalogItems,
 } from "@/app/_utilities/catalog-pagination.helpers";
+import { formatPollutants } from "@/app/_utilities/pollutants.helpers";
 import {
   CatalogEmptyState,
   CatalogPagination,
@@ -62,7 +63,7 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
                       href={`${CONTENT_TYPES.dataset.route}/${id}`}
                       variant="text"
                     >
-                      {title}
+                      {formatPollutants(title)}
                     </AppLinkStyled>
                   }
                   description={description}
