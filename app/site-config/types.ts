@@ -225,8 +225,8 @@ export type WorkshopItem = {
    * registration action before `startsAt` and the recording action afterward.
    */
   callToActions: {
-    registration?: { label: string; href: string };
-    recording?: { label: string; href: string };
+    registration?: { label: string; href?: string | null };
+    recording?: { label: string; href?: string | null };
   };
 };
 

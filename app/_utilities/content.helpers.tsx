@@ -88,6 +88,7 @@ export const makeTaggedCardSection = ({
 });
 
 const EXACT_UTC_TIMESTAMP = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
+const TBD_TIMESTAMP = "TBD";
 
 const parseExactUtcTimestamp = (value: unknown): number | undefined => {
   if (typeof value !== "string" || !EXACT_UTC_TIMESTAMP.test(value)) return undefined;
@@ -158,10 +159,11 @@ export const organizeWorkshops = (
     const startsAtInstant = parseExactUtcTimestamp(workshop.startsAt);
     return startsAtInstant === undefined ? [] : [{ workshop, sourceIndex, startsAtInstant }];
   });
+  const tbdWorkshops = workshops.filter(({ startsAt }) => startsAt === TBD_TIMESTAMP);
   const nowInstant = now.getTime();
 
   return {
-    future: getFutureWorkshops(datedWorkshops, nowInstant),
+    future: [...getFutureWorkshops(datedWorkshops, nowInstant), ...tbdWorkshops],
     past: getPastWorkshops(datedWorkshops, nowInstant),
   };
 };
@@ -176,6 +178,7 @@ const makeWorkshopCardSection = (
     const callToAction = isPast
       ? workshop.callToActions.recording
       : workshop.callToActions.registration;
+    const callToActionHref = callToAction?.href?.trim();
 
     return {
       id: workshop.id,
@@ -188,9 +191,14 @@ const makeWorkshopCardSection = (
         ...(workshop.tags?.map(makeWorkshopFormatTag) ?? []),
         ...(isPast ? [PAST_EVENT_TAG] : []),
       ],
-      callToAction: callToAction
-        ? { ...callToAction, isExternal: isExternalHref(callToAction.href) }
-        : undefined,
+      callToAction:
+        callToAction && callToActionHref
+          ? {
+              label: callToAction.label,
+              href: callToActionHref,
+              isExternal: isExternalHref(callToActionHref),
+            }
+          : undefined,
     };
   }),
 });
