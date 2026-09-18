@@ -211,6 +211,32 @@ export type TaggedCardSection = {
   items: TaggedCardItem[];
 };
 
+export type WorkshopItem = {
+  id: string;
+  title: string;
+  href: string;
+  startsAt: string;
+  dateLabel: string;
+  description?: string;
+  tags?: string[];
+  /**
+   * Keep these actions separate so a past workshop's "View recording" button
+   * cannot accidentally use its registration URL. The card adapter shows the
+   * registration action before `startsAt` and the recording action afterward.
+   */
+  callToActions: {
+    registration?: { label: string; href?: string | null };
+    recording?: { label: string; href?: string | null };
+  };
+};
+
+export type WorkshopSection = {
+  heading?: string;
+  headingLevel?: ContentHeadingLevel;
+  lead?: string;
+  workshops: WorkshopItem[];
+};
+
 export type ContactItem = {
   title: string;
   label: string;
