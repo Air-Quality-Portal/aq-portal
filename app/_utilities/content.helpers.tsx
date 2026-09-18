@@ -172,18 +172,27 @@ const makeWorkshopCardSection = (
   isPast: boolean,
 ): CardTextOnlySection => ({
   ...section,
-  items: workshops.map((workshop) => ({
-    id: workshop.id,
-    title: workshop.title,
-    href: workshop.href,
-    description: workshop.description,
-    tags: [
-      makeWorkshopDateTag(workshop.dateLabel),
-      ...(workshop.tags?.map(makeWorkshopFormatTag) ?? []),
-      ...(isPast ? [PAST_EVENT_TAG] : []),
-    ],
-    callToAction: isPast ? workshop.callToActions.recording : workshop.callToActions.registration,
-  })),
+  items: workshops.map((workshop) => {
+    const callToAction = isPast
+      ? workshop.callToActions.recording
+      : workshop.callToActions.registration;
+
+    return {
+      id: workshop.id,
+      title: workshop.title,
+      href: workshop.href,
+      isExternal: isExternalHref(workshop.href),
+      description: workshop.description,
+      tags: [
+        makeWorkshopDateTag(workshop.dateLabel),
+        ...(workshop.tags?.map(makeWorkshopFormatTag) ?? []),
+        ...(isPast ? [PAST_EVENT_TAG] : []),
+      ],
+      callToAction: callToAction
+        ? { ...callToAction, isExternal: isExternalHref(callToAction.href) }
+        : undefined,
+    };
+  }),
 });
 
 export const makeWorkshopCardSections = (
