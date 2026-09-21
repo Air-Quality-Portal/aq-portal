@@ -1,28 +1,27 @@
 import type { DatasetContent } from "@/app/site-config/types";
 
-export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
-  id: "tempo-no2-column-grid-v04-provisional",
+export const TEMPO_HCHO_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
+  id: "tempo-hcho-column-grid-v04-provisional",
   contentType: "dataset",
-  title: "TEMPO Gridded NO₂ Tropospheric Column V04",
+  title: "TEMPO Gridded HCHO Total Column V04",
   description:
-    "Hourly daytime observations of tropospheric nitrogen dioxide (NO₂) across North America measured by TEMPO",
+    "Hourly daytime observations of total column formaldehyde (HCHO) across North America measured by TEMPO",
   thumbnailImage: {
-    src: "/images/datasets/tempo-no2-card.webp",
-    alt: "TEMPO satellite map showing tropospheric NO₂ air pollution levels over the Washington, D.C., to New York City metro corridor",
+    src: "/images/datasets/tempo-hcho-card.webp",
+    alt: "TEMPO formaldehyde data in a blue to yellow scale collected July 29, 2026, on a map over the southeastern United States",
   },
   mastheadImage: {
-    src: "/images/datasets/tempo-no2-banner.webp",
-    alt: "TEMPO satellite map showing tropospheric NO₂ air pollution levels over the Washington, D.C., to New York City metro corridor",
+    src: "/images/datasets/tempo-hcho-banner.webp",
+    alt: "TEMPO formaldehyde data in a blue to yellow scale collected July 29, 2026, on a map over the southeastern United States",
   },
   metadata: {
     tags: [
       "Wildfire smoke",
-      "Criteria pollutant monitoring",
-      "Industrial emissions",
-      "On-road emissions",
-      "Hazardous air pollutants",
       "High ozone",
-      "NO₂",
+      "Industrial emissions",
+      "Hazardous air pollutants",
+      "Agricultural emissions",
+      "HCHO",
       "Satellite",
       "Short latency (3 - 24 hours)",
     ],
@@ -35,7 +34,7 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
       parameters: {
         label: "Parameters & Units",
         value: [
-          "Tropospheric Column Nitrogen Dioxide (NO₂) Density, molecules per square centimeter (molec/cm²)",
+          "Vertical Column Formaldehyde (HCHO) Density, molecules per square centimeter (molec/cm²)",
         ],
         delimiter: "\n",
       },
@@ -44,7 +43,7 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
       temporalResolution: { label: "Temporal Resolution", value: "Hourly daytime scans" },
       updateFrequency: {
         label: "Update Frequency",
-        value: "Hourly during daylight hours",
+        value: "Hourly during daytime hours",
       },
       latency: { label: "Latency", value: "~3 to 24 hours" },
       spatialResolution: { label: "Spatial Resolution", value: "0.02°" },
@@ -52,9 +51,8 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
       versionHistory: {
         label: "Version History",
         value:
-          "V04 provisional data was added to AIR4US in September 2026 with QA filtering applied.",
+          "V04 Provisional data was added to AIR4US in September 2026 with QA filtering applied.",
       },
-      fileFormat: { label: "File Format", value: "NetCDF-4" },
     },
   },
   actions: {
@@ -68,7 +66,7 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
     {
       type: "text",
       paragraphs: [
-        "The TEMPO (Tropospheric Emissions: Monitoring of Pollution) mission is a geostationary satellite mission that measures air quality over North America during daylight hours at a high spatial resolution and with a temporal resolution of one hour or less. The nitrogen dioxide (NO₂) Level 3 (PROVISIONAL) dataset in AIR4US provides information on tropospheric NO₂ vertical columns measured in molecules per square centimeter (molecules/cm³). In the AIR4US tool low quality pixels have been filtered out using the following threshold: effective cloud fraction > 0.5, solar zenith angle > 80, quality flag > 1. TEMPO Level 3 products have a spatial resolution of 0.02° and are generated using an area-weighted regridding algorithm, combining information from all Level 2 files in a TEMPO East-West scan cycle. This dataset reached provisional validation on December 9, 2024. The TEMPO gridded NO product contains hourly daytime scans across North America, with more frequent scans in the morning over the eastern portion of the field of regard and in the evenings over the western portion. Data are available from August 2, 2023, to the present.",
+        "The TEMPO (Tropospheric Emissions: Monitoring of Pollution) mission is a geostationary satellite mission that measures air-quality over North America during daylight hours at a high spatial resolution and with a temporal resolution of one hour or less. The formaldehyde (HCHO) Level 3 (PROVISIONAL) dataset provides information on total column HCHO measured in molecules per square centimeter (molecules/cm³). In the AIR4US tool low quality pixels have been filtered out using the following threshold: effective cloud fraction > 0.5, solar zenith angle > 80, quality flag > 1. TEMPO Level 3 products have a spatial resolution of 0.02° and are generated using an area-weighted regridding algorithm, combining information from all Level 2 files in a TEMPO East-West scan cycle. This dataset reached provisional validation on December 9, 2024. The TEMPO gridded HCHO product contains hourly daytime scans across North America, with more frequent scans in the morning over the eastern portion of the field of regard and in the evenings over the western portion. Data are available from August 2, 2023, to the present.",
       ],
     },
     {
@@ -93,7 +91,7 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
           isExternal: true,
         },
         {
-          label: "NASA’s TEMPO Mission Page",
+          label: "NASA's TEMPO Mission Page",
           href: "https://science.nasa.gov/mission/tempo/",
           isExternal: true,
         },
@@ -104,8 +102,8 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
       headingLevel: "h3",
       links: [
         {
-          label: "TEMPO NO₂ Level 3 (PROVISIONAL) V04 Data Access",
-          href: "https://doi.org/10.5067/IS-40e/TEMPO/NO2_L3.004",
+          label: "TEMPO HCHO Level 3 (PROVISIONAL) Data Access",
+          href: "https://doi.org/10.5067/IS-40e/TEMPO/HCHO_L3.004",
           isExternal: true,
         },
       ],
@@ -127,10 +125,23 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
   },
   citation: {
     heading: "Cite this dataset",
-    text: "Liu, X. (2026). TEMPO gridded NO2 tropospheric and stratospheric columns V04 (PROVISIONAL) [Dataset]. NASA Langley Atmospheric Science Data Center Distributed Active Archive Center. https://doi.org/10.5067/IS-40E/TEMPO/NO2_L3.004 Date Accessed: YYYY-MM-DD",
+    text: (
+      <>
+        Liu, X. (2026). TEMPO gridded formaldehyde total column V04 (PROVISIONAL) [Dataset]. NASA
+        Langley Atmospheric Science Data Center Distributed Active Archive Center.{" "}
+        <a
+          href="https://doi.org/10.5067/IS-40E/TEMPO/HCHO_L3.004"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://doi.org/10.5067/IS-40E/TEMPO/HCHO_L3.004
+        </a>{" "}
+        Date Accessed: YYYY-MM-DD
+      </>
+    ),
   },
   relatedDatasets: {
     heading: "Related datasets",
-    datasetIds: ["tempo-hcho-column-grid-v04-provisional", "epa-aqs-concentrations"],
+    datasetIds: ["tempo-no2-column-grid-v04-provisional"],
   },
 };
