@@ -3,7 +3,7 @@ import {
   Section,
   SectionIntro,
   ToolCatalog,
-  ToolHighlights,
+  ToolHighlight,
   VisualizationToolIntro,
 } from "@/app/components";
 import { FEATURED_TOOLS, VISUALIZATION_TOOL_INTRO } from "@/app/site-config/tool";
@@ -20,7 +20,7 @@ export default function Home() {
       </Section>
       {FEATURED_TOOLS.length > 0 && (
         <Section className="padding-top-7">
-          <ToolHighlights intro={HOMEPAGE_VISUALIZE_INTRO} tools={FEATURED_TOOLS} />
+          <ToolHighlight intro={HOMEPAGE_VISUALIZE_INTRO} />
         </Section>
       )}
       <Section className="margin-top-0">

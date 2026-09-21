@@ -1,14 +1,12 @@
 import { CardDetailed } from "@teamimpact/veda-ui-blocks";
 import { AppImage } from "@/app/components/AppImage";
 import { SectionIntro, type SectionIntroProps } from "@/app/components/SectionIntro";
-import type { ToolContent } from "@/app/site-config/types";
 
-type ToolHighlightsProps = {
+type ToolHighlightProps = {
   intro: SectionIntroProps;
-  tools: ToolContent[];
 };
 
-export const ToolHighlights = ({ intro, tools }: ToolHighlightsProps) => (
+export const ToolHighlight = ({ intro }: ToolHighlightProps) => (
   <>
     <SectionIntro {...intro} />
     <CardDetailed

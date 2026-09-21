@@ -11,7 +11,7 @@ import {
   SectionIntro,
   ToolCatalog,
   ToolCatalogToolbar,
-  ToolHighlights,
+  ToolHighlight,
   VisualizationToolIntro,
 } from "@/app/components";
 import {
@@ -44,7 +44,7 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
       </Section>
       {FEATURED_TOOLS.length > 0 && (
         <Section>
-          <ToolHighlights intro={AIR4US_TOOL_INTRO} tools={FEATURED_TOOLS} />
+          <ToolHighlight intro={AIR4US_TOOL_INTRO} />
         </Section>
       )}
       <Section className="margin-top-0">
