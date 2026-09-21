@@ -134,7 +134,7 @@ export type DatasetContent = {
 export type DatasetCitationSection = {
   /** @default "Cite this dataset" */
   heading?: string;
-  text: string;
+  text: string | ReactNode;
 };
 
 export type RelatedDatasetsSection = {
