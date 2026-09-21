@@ -8,7 +8,7 @@ export const PARTNER_TOOLS_INTRO: SectionIntroProps = {
     </>
   ),
   description:
-    "Browse tools available from our partner agencies to access, visualize, and analyze air quality data.",
+    "Browse tools available from our partner agencies to access, visualize, and analyze air-quality data.",
 };
 
 export const AIR4US_TOOL_INTRO: SectionIntroProps = {
