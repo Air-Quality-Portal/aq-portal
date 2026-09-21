@@ -9,7 +9,7 @@ import { SectionCardTextOnly } from "./SectionCardTextOnly";
 import styles from "./SectionWorkshopCards.module.css";
 import { type TabOption, Tabs } from "./Tabs";
 
-const INITIAL_CARD_COUNT = 3;
+const INITIAL_VISIBLE_CARD_COUNT = 3;
 type WorkshopStatus = "upcoming" | "past";
 type WorkshopCardSections = Record<WorkshopStatus, CardTextOnlySection>;
 
@@ -53,7 +53,7 @@ export function SectionWorkshopCards({ section }: { section: WorkshopSection }) 
   const activeSection = sections[activeStatus];
   const visibleSection = {
     ...activeSection,
-    items: showAll ? activeSection.items : activeSection.items.slice(0, INITIAL_CARD_COUNT),
+    items: showAll ? activeSection.items : activeSection.items.slice(0, INITIAL_VISIBLE_CARD_COUNT),
   };
 
   const tabOptions: TabOption<WorkshopStatus>[] = [
@@ -80,7 +80,7 @@ export function SectionWorkshopCards({ section }: { section: WorkshopSection }) 
         "aria-labelledby": `${tabsId}-${activeStatus}-tab`,
       }}
     >
-      {activeSection.items.length > INITIAL_CARD_COUNT && (
+      {activeSection.items.length > INITIAL_VISIBLE_CARD_COUNT && (
         <div className={styles.showAll}>
           <button
             type="button"
