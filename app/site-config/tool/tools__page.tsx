@@ -1,4 +1,4 @@
-import type { SectionIntroProps } from "@/app/components";
+import type { SectionIntroProps, VisualizationToolIntroProps } from "@/app/components";
 
 export const PARTNER_TOOLS_INTRO: SectionIntroProps = {
   eyebrow: "Partner Agency Tools",
@@ -23,5 +23,15 @@ export const AIR4US_TOOL_INTRO: SectionIntroProps = {
   callToAction: {
     label: "View all data",
     href: "/data-catalog",
+  },
+};
+
+export const VISUALIZATION_TOOL_INTRO: VisualizationToolIntroProps = {
+  heading: "Visualize, compare and analyze data",
+  description:
+    "This is a placeholder briefly explaining the capabilities that can be shown in the image above this description. ",
+  callToAction: {
+    label: "Open Visualization Tool",
+    href: "#",
   },
 };

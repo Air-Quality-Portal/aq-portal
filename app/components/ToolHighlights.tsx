@@ -1,4 +1,4 @@
-import { Carousel } from "@teamimpact/veda-ui-blocks";
+import { CardDetailed } from "@teamimpact/veda-ui-blocks";
 import { AppImage } from "@/app/components/AppImage";
 import { SectionIntro, type SectionIntroProps } from "@/app/components/SectionIntro";
 import type { ToolContent } from "@/app/site-config/types";
@@ -11,19 +11,19 @@ type ToolHighlightsProps = {
 export const ToolHighlights = ({ intro, tools }: ToolHighlightsProps) => (
   <>
     <SectionIntro {...intro} />
-    <Carousel
-      className="height-card-lg"
-      maxVisibleItems={1}
-      items={tools.map((tool) => ({
-        image: (
-          <AppImage
-            {...tool.thumbnailImage}
-            fill
-            sizes="(max-width: 880px) 100vw, 880px"
-            style={{ objectFit: "cover" }}
-          />
-        ),
-      }))}
+    <CardDetailed
+      // CardDetailed renders `image` as a cover background sized by the card itself,
+      // so the card carries the screenshot's aspect ratio to keep it from cropping.
+      style={{ aspectRatio: "3416 / 1768" }}
+      image={
+        <AppImage
+          src="/img/home/viz-tool.webp"
+          alt="screenshot of air4us visualization tool"
+          fill
+          sizes="100vw"
+          quality={90}
+        />
+      }
     />
   </>
 );

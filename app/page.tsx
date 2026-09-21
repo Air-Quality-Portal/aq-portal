@@ -6,12 +6,8 @@ import {
   ToolHighlights,
   VisualizationToolIntro,
 } from "@/app/components";
-import { FEATURED_TOOLS } from "@/app/site-config/tool";
-import {
-  HOMEPAGE_EXPLORE_INTRO,
-  HOMEPAGE_VISUALIZE_INTRO,
-  VISUALIZATION_TOOL_INTRO,
-} from "./site-config/home/home_page";
+import { FEATURED_TOOLS, VISUALIZATION_TOOL_INTRO } from "@/app/site-config/tool";
+import { HOMEPAGE_EXPLORE_INTRO, HOMEPAGE_VISUALIZE_INTRO } from "./site-config/home/home_page";
 import { MOCK_CARD_MASTHEAD } from "./site-config/home/home-card-masthead";
 
 export default function Home() {
