@@ -151,7 +151,7 @@ export type CardTag = NonNullable<CardDetailedProps["tags"]>[number];
 export type CardTextOnlyItem = {
   id: string;
   title: string;
-  href: string;
+  href?: string;
   isExternal?: boolean;
   description?: string;
   tags?: CardTag[];
@@ -217,7 +217,7 @@ export type WorkshopStatus = "upcoming" | "past";
 export type WorkshopItem = {
   id: string;
   title: string;
-  href: string;
+  href?: string;
   startsAt: string;
   dateLabel: string;
   description?: string;

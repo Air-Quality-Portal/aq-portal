@@ -184,12 +184,13 @@ const makeWorkshopCardSection = (
         ? workshop.callToActions.recording
         : workshop.callToActions.registration;
       const callToActionHref = callToAction?.href?.trim();
+      const workshopHref = workshop.href?.trim() || undefined;
 
       return {
         id: workshop.id,
         title: workshop.title,
-        href: workshop.href,
-        isExternal: isExternalHref(workshop.href),
+        href: workshopHref,
+        isExternal: isExternalHref(workshopHref ?? ""),
         description: workshop.description,
         tags: [
           makeWorkshopDateTag(workshop.dateLabel),
@@ -329,7 +330,7 @@ export type CardDetailedTextOnlyPropsArgs = Omit<
 > & {
   id: string;
   title: string;
-  href: string;
+  href?: string;
   isExternal?: boolean;
 };
 
@@ -348,14 +349,18 @@ export const makeCardDetailedTextOnlyProps = ({
   image: <svg key={id} aria-hidden="true" focusable="false" />,
   title: (
     <>
-      <AppLinkStyled
-        className="font-body-lg text-light"
-        href={href}
-        isExternal={isExternal}
-        variant="text"
-      >
-        {title}
-      </AppLinkStyled>
+      {href ? (
+        <AppLinkStyled
+          className="font-body-lg text-light"
+          href={href}
+          isExternal={isExternal}
+          variant="text"
+        >
+          {title}
+        </AppLinkStyled>
+      ) : (
+        <span className="font-body-lg text-light">{title}</span>
+      )}
       {description && (
         <p className="font-body-xs text-base-dark text-light margin-0">{description}</p>
       )}

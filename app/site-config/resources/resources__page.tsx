@@ -111,6 +111,16 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
         },
       },
       {
+        id: "workshop-air4us-fall-2026",
+        title: "AIR4US Fall Training Workshop 2026",
+        startsAt: "TBD",
+        dateLabel: "TBD",
+        description:
+          "Three-day intensive training covering how to use AIR4US to visualize and compare satellite data products, ground-based monitoring networks, and model outputs. Open to federal, state, local, and tribal air quality agency staff. NOTE: THIS IS AN EXAMPLE OF HOW A FUTURE AIR4US WORKSHOP MIGHT BE ADVERTISED",
+        tags: ["VIRTUAL WORKSHOP", "IN-PERSON WORKSHOP"],
+        callToActions: { registration: { label: "Register", href: "" } },
+      },
+      {
         id: "workshop-air4us-summer-2027",
         title: "AIR4US Summer Training Workshop 2027",
         href: "#",
