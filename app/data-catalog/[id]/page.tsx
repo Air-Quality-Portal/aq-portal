@@ -1,9 +1,10 @@
+import { CardSimple } from "@teamimpact/veda-ui-blocks";
 import { notFound } from "next/navigation";
 import { Fragment } from "react";
 import {
   getMetadataFieldTag,
-  makeCardDetailedImageLeftProps,
   makeCardMastHeadProps,
+  makePrimaryTag,
   makeTutorialCardSection,
 } from "@/app/_utilities/content.helpers";
 import {
@@ -14,10 +15,10 @@ import {
   PageSidebar,
   PageStatus,
   Section,
-  SectionCardDetailed,
   SectionCardTextOnly,
   SectionLinks,
 } from "@/app/components";
+import { AppImage } from "@/app/components/AppImage";
 import { AppLinkStyled } from "@/app/components/AppLink";
 import { DATASETS, getDatasetsByIds } from "@/app/site-config/dataset";
 import {
@@ -41,28 +42,28 @@ function DatasetCitation({ section }: { section: DatasetCitationSection }) {
 }
 
 function DatasetRelated({ section }: { section: RelatedDatasetsSection }) {
-  const cards = getDatasetsByIds(section.datasetIds).map((dataset) =>
-    makeCardDetailedImageLeftProps({
-      id: dataset.id,
-      contentType: dataset.contentType,
-      title: dataset.title,
-      description: dataset.description,
-      thumbnailImage: dataset.thumbnailImage,
-      tagPrimary: getMetadataFieldTag(dataset.metadata, "provider"),
-      tags: dataset.metadata.tags,
-    }),
-  );
+  const datasets = getDatasetsByIds(section.datasetIds);
 
   return (
-    <SectionCardDetailed
-      isMultiColumnLayout
-      rowGap={6}
-      description={section.description}
-      sectionHeading={
-        section.heading && <ContentHeading heading={section.heading} headingLevel="h3" />
-      }
-      cards={cards}
-    />
+    <Section isMultiColumnLayout>
+      {section.heading && <ContentHeading heading={section.heading} headingLevel="h3" />}
+      <div className="grid-row grid-gap-4">
+        {datasets.map((dataset) => {
+          const tagPrimary = getMetadataFieldTag(dataset.metadata, "provider");
+          return (
+            <div key={dataset.id} className="grid-col-6">
+              <CardSimple
+                href={`${CONTENT_TYPES.dataset.route}/${dataset.id}`}
+                title={dataset.title}
+                image={<AppImage {...dataset.thumbnailImage} fill sizes="50vw" />}
+                tag={tagPrimary ? makePrimaryTag(tagPrimary) : undefined}
+                size="sm"
+              />
+            </div>
+          );
+        })}
+      </div>
+    </Section>
   );
 }
 
@@ -145,6 +146,8 @@ export default async function DatasetItemPage(props: PageProps<"/data-catalog/[i
               {tutorials && <SectionCardTextOnly section={makeTutorialCardSection(tutorials)} />}
 
               {citation && <DatasetCitation section={citation} />}
+
+              {relatedDatasets && <DatasetRelated section={relatedDatasets} />}
             </div>
             <div className="grid-col-12 desktop:grid-offset-1 desktop:grid-col-3">
               <PageSidebar metadata={metadata} />
@@ -152,7 +155,6 @@ export default async function DatasetItemPage(props: PageProps<"/data-catalog/[i
           </div>
 
           {/* Spans the page container, outside the sidebar column */}
-          {relatedDatasets && <DatasetRelated section={relatedDatasets} />}
         </>
       )}
     </Section>
