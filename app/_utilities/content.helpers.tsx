@@ -13,6 +13,7 @@ import {
   type TutorialSection,
   type WorkshopItem,
   type WorkshopSection,
+  type WorkshopStatus,
 } from "@/app/site-config/types";
 
 /**
@@ -171,37 +172,42 @@ export const organizeWorkshops = (
 const makeWorkshopCardSection = (
   section: Omit<WorkshopSection, "workshops">,
   workshops: WorkshopItem[],
-  isPast: boolean,
-): CardTextOnlySection => ({
-  ...section,
-  items: workshops.map((workshop) => {
-    const callToAction = isPast
-      ? workshop.callToActions.recording
-      : workshop.callToActions.registration;
-    const callToActionHref = callToAction?.href?.trim();
+  status: WorkshopStatus,
+): CardTextOnlySection => {
+  const isPast = status === "past";
 
-    return {
-      id: workshop.id,
-      title: workshop.title,
-      href: workshop.href,
-      isExternal: isExternalHref(workshop.href),
-      description: workshop.description,
-      tags: [
-        makeWorkshopDateTag(workshop.dateLabel),
-        ...(workshop.tags?.map(makeWorkshopFormatTag) ?? []),
-        ...(isPast ? [PAST_EVENT_TAG] : []),
-      ],
-      callToAction:
-        callToAction && callToActionHref
-          ? {
-              label: callToAction.label,
-              href: callToActionHref,
-              isExternal: isExternalHref(callToActionHref),
-            }
-          : undefined,
-    };
-  }),
-});
+  return {
+    ...section,
+    items: workshops.map((workshop) => {
+      // A past workshop offers its recording, an upcoming one its registration.
+      const callToAction = isPast
+        ? workshop.callToActions.recording
+        : workshop.callToActions.registration;
+      const callToActionHref = callToAction?.href?.trim();
+
+      return {
+        id: workshop.id,
+        title: workshop.title,
+        href: workshop.href,
+        isExternal: isExternalHref(workshop.href),
+        description: workshop.description,
+        tags: [
+          makeWorkshopDateTag(workshop.dateLabel),
+          ...(workshop.tags?.map(makeWorkshopFormatTag) ?? []),
+          ...(isPast ? [PAST_EVENT_TAG] : []),
+        ],
+        callToAction:
+          callToAction && callToActionHref
+            ? {
+                label: callToAction.label,
+                href: callToActionHref,
+                isExternal: isExternalHref(callToActionHref),
+              }
+            : undefined,
+      };
+    }),
+  };
+};
 
 export const makeWorkshopCardSections = (
   { workshops, ...section }: WorkshopSection,
@@ -210,8 +216,8 @@ export const makeWorkshopCardSections = (
   const { future, past } = organizeWorkshops(workshops, now);
 
   return {
-    upcoming: makeWorkshopCardSection(section, future, false),
-    past: makeWorkshopCardSection(section, past, true),
+    upcoming: makeWorkshopCardSection(section, future, "upcoming"),
+    past: makeWorkshopCardSection(section, past, "past"),
   };
 };
 

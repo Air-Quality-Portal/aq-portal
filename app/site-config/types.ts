@@ -211,6 +211,9 @@ export type TaggedCardSection = {
   items: TaggedCardItem[];
 };
 
+/** Which side of `startsAt` a workshop sits on, and the tab that lists it. */
+export type WorkshopStatus = "upcoming" | "past";
+
 export type WorkshopItem = {
   id: string;
   title: string;
