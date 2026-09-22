@@ -47,6 +47,7 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
         {total === 0 && (
           <CatalogEmptyState
             query={query}
+            selectedTags={selectedTags}
             itemsLabel="datasets"
             clearHref={CONTENT_TYPES.dataset.route}
           />

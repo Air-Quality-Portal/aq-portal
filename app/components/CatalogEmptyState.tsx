@@ -7,18 +7,44 @@ type CatalogEmptyStateProps = {
   itemsLabel: string;
   /** Catalog route without a query string, so following it clears the search. */
   clearHref: string;
+  /** Tags currently applied via filters. */
+  selectedTags?: string[];
 };
 
 /** Shown in place of catalog results when a search matches nothing. */
-export const CatalogEmptyState = ({ query, itemsLabel, clearHref }: CatalogEmptyStateProps) => (
-  <div className="padding-y-6 text-center">
-    <p className="margin-0 text-bold">
-      No {itemsLabel} match “{query}”.
-    </p>
-    <p className="margin-top-1 margin-bottom-0">
-      <AppLink href={clearHref} className="usa-link">
-        Clear search
-      </AppLink>
-    </p>
-  </div>
-);
+export const CatalogEmptyState = ({
+  query,
+  itemsLabel,
+  clearHref,
+  selectedTags = [],
+}: CatalogEmptyStateProps) => {
+  const hasQuery = query.length > 0;
+  const hasFilters = selectedTags.length > 0;
+
+  let message: string;
+  let actionLabel: string;
+
+  if (hasFilters && !hasQuery) {
+    const tagsList = selectedTags.join('", "');
+    message = `No ${itemsLabel} match the selected filters ("${tagsList}").`;
+    actionLabel = "Clear filters";
+  } else if (hasFilters && hasQuery) {
+    const tagsList = selectedTags.join('", "');
+    message = `No ${itemsLabel} match "${query}" and the selected filters ("${tagsList}").`;
+    actionLabel = "Clear search and filters";
+  } else {
+    message = `No ${itemsLabel} match “${query}”.`;
+    actionLabel = "Clear search";
+  }
+
+  return (
+    <div className="padding-y-6 text-center">
+      <p className="margin-0 text-bold">{message}</p>
+      <p className="margin-top-1 margin-bottom-0">
+        <AppLink href={clearHref} className="usa-link">
+          {actionLabel}
+        </AppLink>
+      </p>
+    </div>
+  );
+};
