@@ -9,8 +9,9 @@ export function PageSidebar({ metadata = {} }: { metadata?: DatasetMetadata }) {
           <p className="font-mono-2xs text-base text-uppercase margin-top-0 margin-bottom-1">
             {entry.label}
           </p>
-          {getMetadataValueLines(entry).map((item) => (
-            <p key={item} className="font-body-sm text-medium margin-y-05">
+          {getMetadataValueLines(entry).map((item, i) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: items are static and never reorder
+            <p key={i} className="font-body-sm text-medium margin-y-05">
               {item}
             </p>
           ))}
