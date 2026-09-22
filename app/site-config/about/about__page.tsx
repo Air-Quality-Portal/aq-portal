@@ -23,8 +23,9 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
         text: "Blue Marble 2012 (NASA/NOAA)",
         url: "https://www.nasa.gov/image-article/blue-marble-2012/",
       },
-      width: 880,
-      height: 880,
+      width: 700,
+      height: 700,
+      maxWidth: "700px",
     },
 
     {

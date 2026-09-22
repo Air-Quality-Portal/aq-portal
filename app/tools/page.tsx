@@ -11,7 +11,8 @@ import {
   SectionIntro,
   ToolCatalog,
   ToolCatalogToolbar,
-  ToolHighlights,
+  ToolHighlight,
+  VisualizationToolIntro,
 } from "@/app/components";
 import {
   AIR4US_TOOL_INTRO,
@@ -19,6 +20,7 @@ import {
   PARTNER_TOOLS_INTRO,
   searchTools,
   TOOLS,
+  VISUALIZATION_TOOL_INTRO,
 } from "@/app/site-config/tool";
 
 const PER_PAGE = 9;
@@ -42,9 +44,12 @@ export default async function ToolsPage(props: PageProps<"/tools">) {
       </Section>
       {FEATURED_TOOLS.length > 0 && (
         <Section>
-          <ToolHighlights intro={AIR4US_TOOL_INTRO} tools={FEATURED_TOOLS} />
+          <ToolHighlight intro={AIR4US_TOOL_INTRO} />
         </Section>
       )}
+      <Section className="margin-top-0">
+        <VisualizationToolIntro {...VISUALIZATION_TOOL_INTRO} />
+      </Section>
 
       <Section>
         <SectionIntro {...PARTNER_TOOLS_INTRO} />

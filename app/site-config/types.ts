@@ -17,8 +17,8 @@ export type IterableItemWithId<T> = T & { id: string };
 
 export type DatasetMetadataEntry = {
   label: string;
-  /** A single value, or several values that belong to the same field. */
-  value: string | string[];
+  /** A single value, or several values that belong to the same field. Accepts ReactNode for rich content (e.g. links). */
+  value: string | string[] | ReactNode;
   /**
    * How to join a multi-value `value`, e.g. `", "` or `" / "`. Defaults to a
    * space. Use `"\n"` to render each value on its own line.

@@ -1,4 +1,5 @@
 import type { CardDetailedProps, CardProps, CardSimpleProps } from "@teamimpact/veda-ui-blocks";
+import type React from "react";
 import { AppImage } from "@/app/components/AppImage";
 import { AppLinkStyled } from "@/app/components/AppLink";
 import {
@@ -94,12 +95,9 @@ export const makeButtonOutlineLink = (href: string, isExternal = true) => ({
 });
 
 /** The lines to render for a metadata entry : the sidebar prints one per line. */
-export const getMetadataValueLines = (entry: DatasetMetadataEntry): string[] => {
+export const getMetadataValueLines = (entry: DatasetMetadataEntry): React.ReactNode[] => {
   if (!Array.isArray(entry.value)) return [entry.value];
-  if (entry.delimiter === "\n")
-    // "\n" gives each value its own line.
-    return entry.value;
-  // Any other delimiter joins the values onto one line.
+  if (entry.delimiter === "\n") return entry.value;
   return [entry.value.join(entry.delimiter ?? " ")];
 };
 
