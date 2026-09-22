@@ -82,3 +82,15 @@ export const normalizeCatalogSearchParams = (params: {
   query: normalizeQueryParam(params.q),
   selectedTags: normalizeTagsParam(params.tags),
 });
+
+export type EmptyStateType = "query" | "filters" | "query-and-filters";
+
+/** Determines the reason for an empty catalog result to render context-aware messaging. */
+export const getEmptyStateType = (query: string, selectedTags: string[]): EmptyStateType => {
+  const hasQuery = query.length > 0;
+  const hasFilters = selectedTags.length > 0;
+
+  if (hasFilters && hasQuery) return "query-and-filters";
+  if (hasFilters) return "filters";
+  return "query";
+};

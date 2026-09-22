@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   type CatalogSearchField,
+  getEmptyStateType,
   normalizeQueryParam,
   normalizeTagsParam,
   searchCatalogItems,
@@ -156,5 +157,19 @@ describe("normalizeTagsParam", () => {
 
   it("returns the array as-is for repeated ?tags= keys", () => {
     expect(normalizeTagsParam(["EPA", "NASA"])).toEqual(["EPA", "NASA"]);
+  });
+});
+
+describe("getEmptyStateType", () => {
+  it("returns 'query' when only a search query is present", () => {
+    expect(getEmptyStateType("air quality", [])).toBe("query");
+  });
+
+  it("returns 'filters' when only filters are applied", () => {
+    expect(getEmptyStateType("", ["EPA", "NASA"])).toBe("filters");
+  });
+
+  it("returns 'query-and-filters' when both query and filters are present", () => {
+    expect(getEmptyStateType("air quality", ["EPA"])).toBe("query-and-filters");
   });
 });

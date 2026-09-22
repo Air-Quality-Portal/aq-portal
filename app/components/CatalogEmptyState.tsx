@@ -1,3 +1,4 @@
+import { getEmptyStateType } from "@/app/_utilities/catalog-search.helpers";
 import { AppLink } from "./AppLink";
 
 type CatalogEmptyStateProps = {
@@ -18,23 +19,28 @@ export const CatalogEmptyState = ({
   clearHref,
   selectedTags = [],
 }: CatalogEmptyStateProps) => {
-  const hasQuery = query.length > 0;
-  const hasFilters = selectedTags.length > 0;
+  const emptyStateType = getEmptyStateType(query, selectedTags);
 
   let message: string;
   let actionLabel: string;
 
-  if (hasFilters && !hasQuery) {
-    const tagsList = selectedTags.join('", "');
-    message = `No ${itemsLabel} match the selected filters ("${tagsList}").`;
-    actionLabel = "Clear filters";
-  } else if (hasFilters && hasQuery) {
-    const tagsList = selectedTags.join('", "');
-    message = `No ${itemsLabel} match "${query}" and the selected filters ("${tagsList}").`;
-    actionLabel = "Clear search and filters";
-  } else {
-    message = `No ${itemsLabel} match “${query}”.`;
-    actionLabel = "Clear search";
+  switch (emptyStateType) {
+    case "filters": {
+      const tagsList = selectedTags.join('", "');
+      message = `No ${itemsLabel} match the selected filters ("${tagsList}").`;
+      actionLabel = "Clear filters";
+      break;
+    }
+    case "query-and-filters": {
+      const tagsList = selectedTags.join('", "');
+      message = `No ${itemsLabel} match "${query}" and the selected filters ("${tagsList}").`;
+      actionLabel = "Clear search and filters";
+      break;
+    }
+    case "query":
+      message = `No ${itemsLabel} match "${query}".`;
+      actionLabel = "Clear search";
+      break;
   }
 
   return (
