@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useState } from "react";
 import { makeWorkshopCardSections } from "@/app/_utilities/content.helpers";
-import type { CardTextOnlySection, WorkshopSection } from "@/app/site-config/types";
+import type { CardTextOnlySection, WorkshopSection, WorkshopStatus } from "@/app/site-config/types";
 import { ContentHeading } from "./ContentHeading";
 import { Section } from "./Section";
 import { SectionCardTextOnly } from "./SectionCardTextOnly";
@@ -10,12 +10,11 @@ import styles from "./SectionWorkshopCards.module.css";
 import { type TabOption, Tabs } from "./Tabs";
 
 const INITIAL_VISIBLE_CARD_COUNT = 3;
-type WorkshopStatus = "upcoming" | "past";
 type WorkshopCardSections = Record<WorkshopStatus, CardTextOnlySection>;
 
 export function SectionWorkshopCards({ section }: { section: WorkshopSection }) {
   const [sections, setSections] = useState<WorkshopCardSections | null>(null);
-  const [activeStatus, setActiveStatus] = useState<WorkshopStatus>("upcoming");
+  const [activeTab, setActiveTab] = useState<WorkshopStatus>("upcoming");
   const [showAll, setShowAll] = useState(false);
   const tabsId = useId();
   const panelId = `${tabsId}-panel`;
@@ -24,7 +23,7 @@ export function SectionWorkshopCards({ section }: { section: WorkshopSection }) 
     const workshopSections = makeWorkshopCardSections(section);
 
     setSections(workshopSections);
-    setActiveStatus(
+    setActiveTab(
       workshopSections.upcoming.items.length === 0 && workshopSections.past.items.length > 0
         ? "past"
         : "upcoming",
@@ -46,11 +45,11 @@ export function SectionWorkshopCards({ section }: { section: WorkshopSection }) 
     );
   }
 
-  const selectStatus = (status: WorkshopStatus) => {
-    setActiveStatus(status);
+  const handleTabChange = (tab: WorkshopStatus) => {
+    setActiveTab(tab);
     setShowAll(false);
   };
-  const activeSection = sections[activeStatus];
+  const activeSection = sections[activeTab];
   const visibleSection = {
     ...activeSection,
     items: showAll ? activeSection.items : activeSection.items.slice(0, INITIAL_VISIBLE_CARD_COUNT),
@@ -70,14 +69,14 @@ export function SectionWorkshopCards({ section }: { section: WorkshopSection }) 
           panelId={panelId}
           ariaLabel="Filter workshops by date"
           options={tabOptions}
-          activeTab={activeStatus}
-          onTabChange={selectStatus}
+          activeTab={activeTab}
+          onTabChange={handleTabChange}
         />
       }
       cardsContainerProps={{
         id: panelId,
         role: "tabpanel",
-        "aria-labelledby": `${tabsId}-${activeStatus}-tab`,
+        "aria-labelledby": `${tabsId}-${activeTab}-tab`,
       }}
     >
       {activeSection.items.length > INITIAL_VISIBLE_CARD_COUNT && (
@@ -88,13 +87,13 @@ export function SectionWorkshopCards({ section }: { section: WorkshopSection }) 
             aria-expanded={showAll}
             onClick={() => setShowAll((isShowingAll) => !isShowingAll)}
           >
-            {showAll ? "Show less" : `Show all ${activeSection.items.length} ${activeStatus}`}
+            {showAll ? "Show less" : `Show all ${activeSection.items.length} ${activeTab}`}
           </button>
         </div>
       )}
       {activeSection.items.length === 0 && (
         <p className="text-center">
-          No {activeStatus} {activeSection.heading?.toLocaleLowerCase()} items to show
+          No {activeTab} {activeSection.heading?.toLocaleLowerCase()} items to show
         </p>
       )}
     </SectionCardTextOnly>
