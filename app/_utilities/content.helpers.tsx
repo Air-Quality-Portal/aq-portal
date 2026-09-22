@@ -139,6 +139,10 @@ export const makeCardMastHeadProps = ({
   ...rest,
 });
 
+// CardDetailed renders a 200 × 400 px image region. Request enough source width
+// for object-fit: cover when a thumbnail has not already been cropped to 1:2.
+export const CARD_DETAILED_IMAGE_SIZES = "384px";
+
 export type CardDetailedPropsArgs = Omit<
   CardDetailedProps,
   "image" | "imagePosition" | "tags" | "tagPrimary" | "callToAction"
@@ -169,7 +173,7 @@ export const makeCardDetailedImageLeftProps = ({
   return {
     id,
     className: "height-card-md bg-base-lightest",
-    image: <AppImage {...thumbnailImage} fill sizes="194px" />,
+    image: <AppImage {...thumbnailImage} fill sizes={CARD_DETAILED_IMAGE_SIZES} />,
     imagePosition: "left",
     title: (
       <AppLinkStyled
