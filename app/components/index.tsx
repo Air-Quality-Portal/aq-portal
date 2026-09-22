@@ -26,5 +26,5 @@ export { SectionLinks } from "./SectionLinks";
 export { SectionWorkshopCards } from "./SectionWorkshopCards";
 export { ToolCatalog } from "./ToolCatalog";
 export { ToolCatalogToolbar } from "./ToolCatalogToolbar";
-export { ToolHighlights } from "./ToolHighlights";
+export { ToolHighlight } from "./ToolHighlight";
 export { VisualizationToolIntro, type VisualizationToolIntroProps } from "./VisualizationToolIntro";
