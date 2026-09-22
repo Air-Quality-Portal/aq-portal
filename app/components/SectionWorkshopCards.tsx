@@ -55,29 +55,38 @@ export function SectionWorkshopCards({ section }: { section: WorkshopSection }) 
     items: showAll ? activeSection.items : activeSection.items.slice(0, INITIAL_VISIBLE_CARD_COUNT),
   };
 
-  const tabOptions: TabOption<WorkshopStatus>[] = [
-    { value: "upcoming", label: "Upcoming", count: sections.upcoming.items.length },
-    { value: "past", label: "Past", count: sections.past.items.length },
-  ];
+  const tabOptions = (
+    [
+      { value: "upcoming", label: "Upcoming", count: sections.upcoming.items.length },
+      { value: "past", label: "Past", count: sections.past.items.length },
+    ] satisfies TabOption<WorkshopStatus>[]
+  ).filter(({ count }) => count > 0);
+  const hasTabs = tabOptions.length > 0;
 
   return (
     <SectionCardTextOnly
       section={visibleSection}
       beforeCards={
-        <Tabs
-          id={tabsId}
-          panelId={panelId}
-          ariaLabel="Filter workshops by date"
-          options={tabOptions}
-          activeTab={activeTab}
-          onTabChange={handleTabChange}
-        />
+        hasTabs ? (
+          <Tabs
+            id={tabsId}
+            panelId={panelId}
+            ariaLabel="Filter workshops by date"
+            options={tabOptions}
+            activeTab={activeTab}
+            onTabChange={handleTabChange}
+          />
+        ) : undefined
       }
-      cardsContainerProps={{
-        id: panelId,
-        role: "tabpanel",
-        "aria-labelledby": `${tabsId}-${activeTab}-tab`,
-      }}
+      cardsContainerProps={
+        hasTabs
+          ? {
+              id: panelId,
+              role: "tabpanel",
+              "aria-labelledby": `${tabsId}-${activeTab}-tab`,
+            }
+          : undefined
+      }
     >
       {activeSection.items.length > INITIAL_VISIBLE_CARD_COUNT && (
         <div className={styles.showAll}>
