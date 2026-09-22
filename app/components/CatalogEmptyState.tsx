@@ -26,14 +26,12 @@ export const CatalogEmptyState = ({
 
   switch (emptyStateType) {
     case "filters": {
-      const tagsList = selectedTags.join('", "');
-      message = `No ${itemsLabel} match the selected filters ("${tagsList}").`;
+      message = `No ${itemsLabel} match the selected filters.`;
       actionLabel = "Clear filters";
       break;
     }
     case "query-and-filters": {
-      const tagsList = selectedTags.join('", "');
-      message = `No ${itemsLabel} match "${query}" and the selected filters ("${tagsList}").`;
+      message = `No ${itemsLabel} match "${query}" and the selected filters.`;
       actionLabel = "Clear search and filters";
       break;
     }
