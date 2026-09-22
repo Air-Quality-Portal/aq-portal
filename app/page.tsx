@@ -3,15 +3,11 @@ import {
   Section,
   SectionIntro,
   ToolCatalog,
-  ToolHighlights,
+  ToolHighlight,
   VisualizationToolIntro,
 } from "@/app/components";
-import { FEATURED_TOOLS } from "@/app/site-config/tool";
-import {
-  HOMEPAGE_EXPLORE_INTRO,
-  HOMEPAGE_VISUALIZE_INTRO,
-  VISUALIZATION_TOOL_INTRO,
-} from "./site-config/home/home_page";
+import { FEATURED_TOOLS, VISUALIZATION_TOOL_INTRO } from "@/app/site-config/tool";
+import { HOMEPAGE_EXPLORE_INTRO, HOMEPAGE_VISUALIZE_INTRO } from "./site-config/home/home_page";
 import { MOCK_CARD_MASTHEAD } from "./site-config/home/home-card-masthead";
 
 export default function Home() {
@@ -24,7 +20,7 @@ export default function Home() {
       </Section>
       {FEATURED_TOOLS.length > 0 && (
         <Section className="padding-top-7">
-          <ToolHighlights intro={HOMEPAGE_VISUALIZE_INTRO} tools={FEATURED_TOOLS} />
+          <ToolHighlight intro={HOMEPAGE_VISUALIZE_INTRO} />
         </Section>
       )}
       <Section className="margin-top-0">

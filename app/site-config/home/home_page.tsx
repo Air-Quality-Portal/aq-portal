@@ -1,4 +1,4 @@
-import type { SectionIntroProps, VisualizationToolIntroProps } from "@/app/components";
+import type { SectionIntroProps } from "@/app/components";
 
 export const HOMEPAGE_VISUALIZE_INTRO: SectionIntroProps = {
   eyebrow: "VISUALIZE",
@@ -25,15 +25,5 @@ export const HOMEPAGE_EXPLORE_INTRO: SectionIntroProps = {
   callToAction: {
     label: "View all tools",
     href: "/tools",
-  },
-};
-
-export const VISUALIZATION_TOOL_INTRO: VisualizationToolIntroProps = {
-  heading: "Fire Smoke North-America",
-  description:
-    "High resolution, interactive forecasts of hourly, daily average and daily maximum concentrations of PM2.5 smoke particles at ground level from wildfires.",
-  callToAction: {
-    label: "Open Visualization Tool",
-    href: "#",
   },
 };
