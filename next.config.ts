@@ -34,6 +34,12 @@ const nextConfig: NextConfig = {
   images: {
     // Allowlisted remote hosts for next/image.
     remotePatterns: [{ protocol: "https", hostname: "**" }],
+    /*
+     * The optimizer rejects any `quality` not listed here. 90 serves the UI
+     * screenshots, whose fine text and thin lines visibly degrade at the
+     * default 75 once the source has already been through a lossy encode.
+     */
+    qualities: [75, 90],
   },
   webpack: (config) => {
     config.resolve.symlinks = false;
