@@ -1,3 +1,3 @@
 export const DATA_CATALOG_CARD_MASTHEAD = {
-  title: "Air Quality Data Catalog",
+  title: "AIR4US Data Catalog",
 };

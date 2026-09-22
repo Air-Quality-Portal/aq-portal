@@ -1,7 +1,7 @@
 import { TOOLS } from "./tools__content";
 
 export { TOOLS } from "./tools__content";
-export { AIR4US_TOOL_INTRO, PARTNER_TOOLS_INTRO } from "./tools__page";
+export { AIR4US_TOOL_INTRO, PARTNER_TOOLS_INTRO, VISUALIZATION_TOOL_INTRO } from "./tools__page";
 export { searchTools } from "./tools__search";
 
 /** Promoted to the homepage; /tools lists the full catalog, featured included. */
