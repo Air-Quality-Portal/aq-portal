@@ -12,7 +12,7 @@ describe("Tag makers", () => {
       const tag = makePrimaryTag("NASA");
       expect(tag.label).toBe("NASA");
       expect(tag.variant).toBe("solid");
-      expect(tag.color).toBe("white");
+      expect(tag.bgColor).toBe("base-lightest");
       expect(tag.textColor).toBe("primary-dark");
     });
 

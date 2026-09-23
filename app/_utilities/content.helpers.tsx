@@ -3,6 +3,7 @@ import type React from "react";
 import { AppImage } from "@/app/components/AppImage";
 import { AppLinkStyled } from "@/app/components/AppLink";
 import {
+  type CardTag,
   type CardTextOnlySection,
   CONTENT_TYPES,
   type ContentType,
@@ -22,33 +23,33 @@ import {
  */
 export const isExternalHref = (href: string): boolean => /^([a-z][a-z0-9+.-]*:)?\/\//i.test(href);
 
-export const makePrimaryTag = (tag: string) => ({
+export const makePrimaryTag = (tag: string): CardTag => ({
   label: tag,
-  variant: "solid" as const,
-  color: "white",
+  variant: "solid",
+  bgColor: "base-lightest",
   textColor: "primary-dark",
 });
 
-export const makeSimpleTag = (tag: string) => ({
+export const makeSimpleTag = (tag: string): CardTag => ({
   label: tag,
-  variant: "outline" as const,
+  variant: "outline",
   color: "base-light",
 });
 
-export const makeContentTypeTag = (tag: ContentType) => ({
+export const makeContentTypeTag = (tag: ContentType): CardTag => ({
   ...makeSimpleTag(CONTENT_TYPES[tag].label),
-  variant: "solid" as const,
+  variant: "solid",
 });
 
-const TUTORIAL_LEVEL_COLOR: Record<TutorialLevel, string> = {
+const TUTORIAL_LEVEL_COLOR = {
   beginner: "success",
   intermediate: "info",
   advanced: "secondary",
-};
+} as const satisfies Record<TutorialLevel, string>;
 
-export const makeTutorialLevelTag = (level: TutorialLevel) => ({
+export const makeTutorialLevelTag = (level: TutorialLevel): CardTag => ({
   ...makeSimpleTag(level.toUpperCase()),
-  variant: "solid" as const,
+  variant: "solid",
   color: `${TUTORIAL_LEVEL_COLOR[level]}-lighter`,
   textColor: `${TUTORIAL_LEVEL_COLOR[level]}-darker`,
 });
@@ -130,7 +131,7 @@ export const makeCardMastHeadProps = ({
     ? {
         label: tagPrimary,
         variant: "solid" as const,
-        bgColor: "white",
+        bgColor: "base-lightest",
         textColor: "primary-dark",
       }
     : undefined,
@@ -206,8 +207,7 @@ export const makeCardDetailedTextOnlyProps = ({
   ...rest
 }: CardDetailedTextOnlyPropsArgs): IterableItemWithId<CardDetailedProps> => ({
   id,
-  className: className ? `display-block ${className}` : "display-block",
-  image: <svg key={id} aria-hidden="true" focusable="false" />,
+  className,
   title: (
     <>
       <AppLinkStyled
