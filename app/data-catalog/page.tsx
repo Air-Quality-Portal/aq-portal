@@ -14,7 +14,12 @@ import { AppLinkStyled } from "@/app/components/AppLink";
 import { DATASETS, filterDatasetsByTags, searchDatasets } from "@/app/site-config/dataset";
 import { DATA_CATALOG_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
 import { normalizeCatalogSearchParams } from "../_utilities/catalog-search.helpers";
-import { getMetadataFieldTag, makePrimaryTag, makeSimpleTag } from "../_utilities/content.helpers";
+import {
+  CARD_DETAILED_IMAGE_SIZES,
+  getMetadataFieldTag,
+  makePrimaryTag,
+  makeSimpleTag,
+} from "../_utilities/content.helpers";
 import { CONTENT_TYPES, type DatasetContent } from "../site-config/types";
 
 const PER_PAGE = 8;
@@ -61,7 +66,7 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
                 <CardDetailed
                   className="height-card-md bg-base-lightest"
                   imagePosition="left"
-                  image={<AppImage {...thumbnailImage} fill sizes="194px" />}
+                  image={<AppImage {...thumbnailImage} fill sizes={CARD_DETAILED_IMAGE_SIZES} />}
                   tagPrimary={tagPrimary ? makePrimaryTag(tagPrimary) : undefined}
                   title={
                     <AppLinkStyled
