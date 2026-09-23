@@ -1,7 +1,6 @@
 import { Card, CardDetailed } from "@teamimpact/veda-ui-blocks";
 import {
   CATALOG_PAGE_PARAM,
-  firstSearchParam,
   paginateCatalogItems,
 } from "@/app/_utilities/catalog-pagination.helpers";
 import {
@@ -12,25 +11,28 @@ import {
 } from "@/app/components";
 import { AppImage } from "@/app/components/AppImage";
 import { AppLinkStyled } from "@/app/components/AppLink";
-import { DATASETS, searchDatasets } from "@/app/site-config/dataset";
+import { DATASETS, filterDatasetsByTags, searchDatasets } from "@/app/site-config/dataset";
 import { DATA_CATALOG_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
+import { normalizeCatalogSearchParams } from "../_utilities/catalog-search.helpers";
 import {
   CARD_DETAILED_IMAGE_SIZES,
   getMetadataFieldTag,
   makePrimaryTag,
   makeSimpleTag,
 } from "../_utilities/content.helpers";
-import { CONTENT_TYPES } from "../site-config/types";
+import { CONTENT_TYPES, type DatasetContent } from "../site-config/types";
 
 const PER_PAGE = 8;
 
 export default async function DataCatalogPage(props: PageProps<"/data-catalog">) {
   const searchParams = (await props.searchParams) ?? {};
-  const query = firstSearchParam(searchParams.q);
-  const results = searchDatasets(DATASETS, query);
-  const total = results.length;
+  const { q = "", tags } = searchParams;
+  const { query, selectedTags } = normalizeCatalogSearchParams({ q, tags });
+  const searched = searchDatasets(DATASETS, query);
+  const filtered = filterDatasetsByTags(searched, selectedTags);
+  const total = filtered.length;
   const { pageItems, currentPage, totalPages } = paginateCatalogItems(
-    results,
+    filtered,
     searchParams[CATALOG_PAGE_PARAM],
     PER_PAGE,
   );
@@ -41,16 +43,22 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
         <Card className="height-masthead" isMastHead title={DATA_CATALOG_CARD_MASTHEAD.title} />
       </Section>
       <Section>
-        <DatasetCatalogToolbar count={total} query={query} pageParam={CATALOG_PAGE_PARAM} />
+        <DatasetCatalogToolbar
+          count={total}
+          query={query}
+          selectedTags={selectedTags}
+          pageParam={CATALOG_PAGE_PARAM}
+        />
         {total === 0 && (
           <CatalogEmptyState
             query={query}
+            selectedTags={selectedTags}
             itemsLabel="datasets"
             clearHref={CONTENT_TYPES.dataset.route}
           />
         )}
         <div className="grid-row grid-gap-4">
-          {pageItems.map(({ id, title, description, thumbnailImage, metadata }) => {
+          {pageItems.map(({ id, title, description, thumbnailImage, metadata }: DatasetContent) => {
             const tagPrimary = getMetadataFieldTag(metadata, "provider");
             const tags = metadata.tags ?? [];
             return (

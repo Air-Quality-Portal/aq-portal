@@ -1,43 +1,35 @@
 "use client";
 
-import { Drawer, Link, SvgFilterList, Tag } from "@teamimpact/veda-ui-blocks";
-import { useState } from "react";
-import { DatasetAccordionFilters } from "@/app/components/DatasetFilters";
+import { Link, SvgFilterList, Tag } from "@teamimpact/veda-ui-blocks";
 import { DATASET_FILTERS } from "@/app/site-config/dataset/dataset-filters";
+import { CatalogFilterDrawer } from "./CatalogFilterDrawer";
 import { CatalogSearchInput } from "./CatalogSearchInput";
-
-const labelsByFilterValue = Object.fromEntries(
-  DATASET_FILTERS.flatMap((filter) => filter.options.map((item) => [item.value, item.label])),
-);
+import { useCatalogTagFilter } from "./useCatalogTagFilter";
 
 type DatasetCatalogToolbarProps = {
   /** Number of datasets currently matching the catalog query. */
   count: number;
   query?: string;
+  /** Tags currently applied via the `tags` URL param. */
+  selectedTags?: string[];
+  /** URL param controlling pagination; cleared when the search or filters change. */
   pageParam: string;
 };
 
 export const DatasetCatalogToolbar = ({
   count,
   query = "",
+  selectedTags = [],
   pageParam,
 }: DatasetCatalogToolbarProps) => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
-  const [appliedFilters, setAppliedFilters] = useState<string[]>([]);
-
-  const toggleCheckboxFilter = (value: string) => {
-    setAppliedFilters((prev) =>
-      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value],
-    );
-  };
-
-  const removeTagFilter = (filterValue: string) => {
-    setAppliedFilters((prev) => prev.filter((v) => v !== filterValue));
-  };
-
-  const clearFilters = () => {
-    setAppliedFilters([]);
-  };
+  const {
+    isDrawerOpen,
+    openDrawer,
+    closeDrawer,
+    toggleCheckboxFilter,
+    removeTagFilter,
+    clearFilters,
+  } = useCatalogTagFilter({ selectedTags, pageParam });
 
   return (
     <>
@@ -53,7 +45,7 @@ export const DatasetCatalogToolbar = ({
             </span>
           </span>
           <span className="display-flex flex-wrap width-full">
-            {appliedFilters.map((filterValue) => (
+            {selectedTags.map((filterValue) => (
               <Tag
                 key={filterValue}
                 variant="outline"
@@ -61,10 +53,10 @@ export const DatasetCatalogToolbar = ({
                 className="margin-right-1 margin-y-1"
                 onClose={() => removeTagFilter(filterValue)}
               >
-                {labelsByFilterValue[filterValue]}
+                {filterValue}
               </Tag>
             ))}
-            {appliedFilters.length > 0 && (
+            {selectedTags.length > 0 && (
               <Link className="margin-left-2" as="button" onClick={clearFilters}>
                 Clear all
               </Link>
@@ -78,52 +70,19 @@ export const DatasetCatalogToolbar = ({
           inputId="dataset-catalog-search"
           pageParam={pageParam}
         />
-        <Link
-          className="usa-button"
-          as="button"
-          variant="button"
-          onClick={() => {
-            setIsDrawerOpen(true);
-          }}
-        >
+        <Link className="usa-button" as="button" variant="button" onClick={openDrawer}>
           Filter <SvgFilterList className="usa-icon" />
         </Link>
       </div>
 
-      <Drawer
-        title="Search and Filter"
+      <CatalogFilterDrawer
+        filters={DATASET_FILTERS}
+        selectedTags={selectedTags}
         isOpen={isDrawerOpen}
-        onClose={() => setIsDrawerOpen(false)}
-        footer={
-          <div className="display-flex">
-            <Link
-              className="usa-button display-flex flex-justify-center flex-1 margin-right-2"
-              as="button"
-              variant="button"
-              onClick={() => setIsDrawerOpen(false)}
-            >
-              Apply Filters
-            </Link>
-            <Link
-              className="usa-button"
-              as="button"
-              variant="button-outline"
-              onClick={clearFilters}
-            >
-              Clear
-            </Link>
-          </div>
-        }
-      >
-        <div className="padding-y-5">
-          {isDrawerOpen && (
-            <DatasetAccordionFilters
-              selectedFilters={appliedFilters}
-              onFilterChangeAction={toggleCheckboxFilter}
-            />
-          )}
-        </div>
-      </Drawer>
+        onClose={closeDrawer}
+        onToggleFilter={toggleCheckboxFilter}
+        onClearFilters={clearFilters}
+      />
     </>
   );
 };

@@ -6,6 +6,11 @@ import { withBasePath } from "@/app/_utilities/base-path.helpers";
  * next/image does not apply basePath to `src`, this is a wrapper that does.
  * https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath#images
  */
-export function AppImage({ src, ...rest }: ImageProps) {
+export function AppImage({
+  src,
+  attribution,
+  attributionLink,
+  ...rest
+}: ImageProps & { attribution?: string; attributionLink?: string }) {
   return <NextImage src={typeof src === "string" ? withBasePath(src) : src} {...rest} />;
 }

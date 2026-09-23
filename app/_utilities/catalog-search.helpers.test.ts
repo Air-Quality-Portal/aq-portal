@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { type CatalogSearchField, searchCatalogItems } from "./catalog-search.helpers";
+import {
+  type CatalogSearchField,
+  getEmptyStateType,
+  normalizeQueryParam,
+  normalizeTagsParam,
+  searchCatalogItems,
+} from "./catalog-search.helpers";
 
 type CatalogItem = {
   id: string;
@@ -43,7 +49,7 @@ describe("searchCatalogItems", () => {
     -1,
     Number.NaN,
     Number.POSITIVE_INFINITY,
-  ])("rejects the invalid field weight %s", (weight) => {
+  ])("rejects the invalid field weight %s", (weight: number) => {
     expect(() =>
       searchCatalogItems(ITEMS, "air", [{ weight, textOf: (item) => [item.title] }]),
     ).toThrowError(TypeError);
@@ -119,5 +125,51 @@ describe("searchCatalogItems", () => {
     const item = { id: "empty", title: undefined, tags: [] };
 
     expect(searchCatalogItems([item], "air", WEIGHTED_FIELDS)).toEqual([]);
+  });
+});
+
+describe("normalizeQueryParam", () => {
+  it("returns the string as-is when q is a single string", () => {
+    expect(normalizeQueryParam("air quality")).toBe("air quality");
+  });
+
+  it("returns an empty string when q is undefined", () => {
+    expect(normalizeQueryParam(undefined)).toBe("");
+  });
+
+  it("returns an empty string when q is already empty", () => {
+    expect(normalizeQueryParam("")).toBe("");
+  });
+
+  it("returns an empty string when multiple ?q= keys are present", () => {
+    expect(normalizeQueryParam(["first", "second"])).toBe("");
+  });
+});
+
+describe("normalizeTagsParam", () => {
+  it("returns an empty array when tags is undefined", () => {
+    expect(normalizeTagsParam(undefined)).toEqual([]);
+  });
+
+  it("wraps a single tag string into a one-item array", () => {
+    expect(normalizeTagsParam("EPA")).toEqual(["EPA"]);
+  });
+
+  it("returns the array as-is for repeated ?tags= keys", () => {
+    expect(normalizeTagsParam(["EPA", "NASA"])).toEqual(["EPA", "NASA"]);
+  });
+});
+
+describe("getEmptyStateType", () => {
+  it("returns 'query' when only a search query is present", () => {
+    expect(getEmptyStateType("air quality", [])).toBe("query");
+  });
+
+  it("returns 'filters' when only filters are applied", () => {
+    expect(getEmptyStateType("", ["EPA", "NASA"])).toBe("filters");
+  });
+
+  it("returns 'query-and-filters' when both query and filters are present", () => {
+    expect(getEmptyStateType("air quality", ["EPA"])).toBe("query-and-filters");
   });
 });
