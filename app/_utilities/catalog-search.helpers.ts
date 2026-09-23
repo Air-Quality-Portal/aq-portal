@@ -1,3 +1,5 @@
+import type { CatalogSearchParams } from "../site-config/types";
+
 export type CatalogSearchField<T> = {
   weight: number;
   textOf: (item: T) => (string | undefined)[];
@@ -64,4 +66,31 @@ export const searchCatalogItems = <T>(
       .sort((a, b) => b.score - a.score || a.index - b.index)
       .map(({ item }) => item)
   );
+};
+
+export const normalizeQueryParam = (q?: string | string[]): string =>
+  typeof q === "string" ? q : "";
+
+export const normalizeTagsParam = (tags?: string | string[]): string[] => {
+  return tags === undefined ? [] : Array.isArray(tags) ? tags : [tags];
+};
+
+export const normalizeCatalogSearchParams = (params: {
+  q?: string | string[];
+  tags?: string | string[];
+}): CatalogSearchParams => ({
+  query: normalizeQueryParam(params.q),
+  selectedTags: normalizeTagsParam(params.tags),
+});
+
+export type EmptyStateType = "query" | "filters" | "query-and-filters";
+
+/** Determines the reason for an empty catalog result to render context-aware messaging. */
+export const getEmptyStateType = (query: string, selectedTags: string[]): EmptyStateType => {
+  const hasQuery = query.length > 0;
+  const hasFilters = selectedTags.length > 0;
+
+  if (hasFilters && hasQuery) return "query-and-filters";
+  if (hasFilters) return "filters";
+  return "query";
 };
