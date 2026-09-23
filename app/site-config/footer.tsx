@@ -76,7 +76,7 @@ const portalDetails: FooterProps["portalDetails"] = {
     {
       label: "Responsible Official:",
       name: "K. Emma Knowland",
-      email: "https://science.nasa.gov/people/dr-k-emma-knowland/",
+      website: "https://science.nasa.gov/people/dr-k-emma-knowland/",
     },
   ],
   title: <SiteTitle usColor="var(--color-primary-lightest)" />,
