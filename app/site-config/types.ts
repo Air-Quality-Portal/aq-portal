@@ -26,9 +26,12 @@ export type DatasetMetadataEntry = {
   delimiter?: string;
 };
 
+export const TAG_FILTER_CATEGORIES = ["Data Type", "Parameter", "Use Case"] as const;
+export type TagFilterCategory = (typeof TAG_FILTER_CATEGORIES)[number];
+export type DatasetTagGroup = { category: TagFilterCategory; options: string[] };
 export type DatasetMetadata = {
-  /** Topic tags shown on catalog and related-dataset cards. Not rendered in the sidebar. */
-  tags?: string[];
+  /** Topic tags used to generate dataset filters and shown on catalog and related-dataset cards. Not rendered in the sidebar. */
+  tags?: DatasetTagGroup[];
   /** Labeled properties of the dataset, rendered in the detail page sidebar. */
   fields?: Record<string, DatasetMetadataEntry>;
 };
@@ -108,10 +111,14 @@ export type ContentBlock =
 
 export type ContentType = DatasetContent["contentType"];
 
+export type DatasetFilterOption = {
+  label: string;
+  value: string;
+};
 export type DatasetFilter = {
   id: string;
-  label: string;
-  options: Array<{ label: string; value: string }>;
+  label: TagFilterCategory;
+  options: DatasetFilterOption[];
 };
 
 export type DatasetContent = {

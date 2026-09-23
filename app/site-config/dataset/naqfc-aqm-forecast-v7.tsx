@@ -16,15 +16,24 @@ export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
   },
   metadata: {
     tags: [
-      "Wildfire smoke",
-      "High ozone",
-      "Criteria pollutant monitoring",
-      "Transboundary pollution",
-      "Dust storm",
-      "Forecast model",
-      "Forecast (0 - 3 days)",
-      "O₃",
-      "PM₂.₅",
+      {
+        category: "Use Case",
+        options: [
+          "Wildfire smoke",
+          "High ozone",
+          "Criteria pollutant monitoring",
+          "Transboundary pollution",
+          "Dust storm",
+        ],
+      },
+      {
+        category: "Data Type",
+        options: ["Forecast model", "Forecast (0 - 3 days)"],
+      },
+      {
+        category: "Parameter",
+        options: ["O₃", "PM₂.₅"],
+      },
     ],
     fields: {
       provider: { label: "Data Provider", value: ["NOAA", "NWS"], delimiter: " / " },

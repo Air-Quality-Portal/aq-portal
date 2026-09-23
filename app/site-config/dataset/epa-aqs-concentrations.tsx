@@ -16,21 +16,23 @@ export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
   },
   metadata: {
     tags: [
-      "Criteria pollutant monitoring",
-      "Wildfire smoke",
-      "Industrial emissions",
-      "On-road emissions",
-      "Agricultural emissions",
-      "High ozone",
-      "Dust storm",
-      "Transboundary pollution",
-      "PM₂.₅",
-      "O₃",
-      "NO₂",
-      "PM10",
-      "SO₂",
-      "CO",
-      "Retrospective(>15 days)",
+      {
+        category: "Use Case",
+        options: [
+          "Criteria pollutant monitoring",
+          "Wildfire smoke",
+          "Industrial emissions",
+          "On-road emissions",
+          "Agricultural emissions",
+          "High ozone",
+          "Dust storm",
+          "Transboundary pollution",
+        ],
+      },
+      {
+        category: "Parameter",
+        options: ["PM₂.₅", "O₃", "NO₂", "PM10", "SO₂", "CO"],
+      },
     ],
     fields: {
       provider: { label: "Data Provider", value: "EPA" },

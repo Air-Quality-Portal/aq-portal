@@ -1,7 +1,7 @@
 "use client";
 
 import { Link, SvgFilterList, Tag } from "@teamimpact/veda-ui-blocks";
-import { DATASET_FILTERS } from "@/app/site-config/dataset/dataset-filters";
+import { DATASET_FILTERS } from "@/app/site-config/dataset/";
 import { CatalogFilterDrawer } from "./CatalogFilterDrawer";
 import { CatalogSearchInput } from "./CatalogSearchInput";
 import { useCatalogTagFilter } from "./useCatalogTagFilter";

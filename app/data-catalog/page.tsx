@@ -14,7 +14,12 @@ import { AppLinkStyled } from "@/app/components/AppLink";
 import { DATASETS, filterDatasetsByTags, searchDatasets } from "@/app/site-config/dataset";
 import { DATA_CATALOG_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
 import { normalizeCatalogSearchParams } from "../_utilities/catalog-search.helpers";
-import { getMetadataFieldTag, makePrimaryTag, makeSimpleTag } from "../_utilities/content.helpers";
+import {
+  getMetadataFieldTag,
+  getTagsAsList,
+  makePrimaryTag,
+  makeSimpleTag,
+} from "../_utilities/content.helpers";
 import { CONTENT_TYPES, type DatasetContent } from "../site-config/types";
 
 const PER_PAGE = 8;
@@ -55,7 +60,7 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
         <div className="grid-row grid-gap-4">
           {pageItems.map(({ id, title, description, thumbnailImage, metadata }: DatasetContent) => {
             const tagPrimary = getMetadataFieldTag(metadata, "provider");
-            const tags = metadata.tags ?? [];
+            const tags = metadata.tags ? getTagsAsList(metadata.tags) : [];
             return (
               <div key={id} className="grid-col-12 tablet:grid-col-6 margin-y-1 desktop:margin-y-4">
                 <CardDetailed
