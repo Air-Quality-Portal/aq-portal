@@ -2,28 +2,30 @@
 
 import { Accordion, Checkbox } from "@teamimpact/veda-ui-blocks";
 import { useState } from "react";
-import { DATASET_FILTERS } from "@/app/site-config/dataset/dataset-filters";
+import type { DatasetFilter } from "@/app/site-config/types";
 
 import "../styles/dataset-filters.css";
 
 type DatasetAccordionFiltersProps = {
+  filters: DatasetFilter[];
   selectedFilters: string[];
   onFilterChangeAction: (value: string) => void;
 };
 
 export const DatasetAccordionFilters = ({
+  filters,
   selectedFilters,
   onFilterChangeAction: onFilterChange,
 }: DatasetAccordionFiltersProps) => {
   const [initiallyExpanded] = useState<string[]>(() => {
-    const facetsWithActiveFilters = DATASET_FILTERS.filter((filter) =>
-      filter.options.some((option) => selectedFilters.includes(option.value)),
-    ).map((filter) => filter.id);
+    const facetsWithActiveFilters = filters
+      .filter((filter) => filter.options.some((option) => selectedFilters.includes(option.value)))
+      .map((filter) => filter.id);
 
-    return facetsWithActiveFilters.length > 0 ? facetsWithActiveFilters : [DATASET_FILTERS[0].id];
+    return facetsWithActiveFilters.length > 0 ? facetsWithActiveFilters : [filters[0].id];
   });
 
-  const accordionItems = DATASET_FILTERS.map((filter) => ({
+  const accordionItems = filters.map((filter) => ({
     id: filter.id,
     title: filter.label,
     expanded: initiallyExpanded.includes(filter.id),
