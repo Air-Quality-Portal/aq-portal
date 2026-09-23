@@ -61,7 +61,8 @@ export function SectionWorkshopCards({ section }: { section: WorkshopSection }) 
       { value: "past", label: "Past", count: sections.past.items.length },
     ] satisfies TabOption<WorkshopStatus>[]
   ).filter(({ count }) => count > 0);
-  const hasTabs = tabOptions.length > 0;
+  // One kind of event on its own needs no tabs: there is nothing to switch to.
+  const hasTabs = tabOptions.length > 1;
 
   return (
     <SectionCardTextOnly
