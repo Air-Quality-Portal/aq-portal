@@ -35,6 +35,11 @@ export type DatasetMetadata = {
 
 export type CatalogRoute = string;
 
+export type CatalogSearchParams = {
+  query: string;
+  selectedTags: string[];
+};
+
 type GeoConfig = Omit<GeoConfigProviderProps, "children">;
 
 export type ContentBlock =
