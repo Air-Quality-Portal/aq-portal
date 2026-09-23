@@ -149,14 +149,7 @@ export const ContentBlockRenderer = ({
           {block.heading && (
             <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
           )}
-          <figure className="margin-0">
-            <StacSingleLayerBlock block={block} />
-            {block.caption && (
-              <figcaption className="font-body-sm text-base margin-top-1">
-                {block.caption}
-              </figcaption>
-            )}
-          </figure>
+          <StacSingleLayerBlock block={block} />
         </Section>
       );
 
@@ -166,14 +159,7 @@ export const ContentBlockRenderer = ({
           {block.heading && (
             <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
           )}
-          <figure className="margin-0">
-            <StacCompareBlock block={block} />
-            {block.caption && (
-              <figcaption className="font-body-sm text-base margin-top-1">
-                {block.caption}
-              </figcaption>
-            )}
-          </figure>
+          <StacCompareBlock block={block} />
         </Section>
       );
 

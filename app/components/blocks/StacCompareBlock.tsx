@@ -17,6 +17,7 @@ export function StacCompareBlock({ block }: StacCompareBlockProps) {
     initialViewState,
     leftLayerConfig,
     rightLayerConfig,
+    caption,
   } = {
     ...DEFAULT_STAC_CONFIG,
     ...block,
@@ -30,6 +31,7 @@ export function StacCompareBlock({ block }: StacCompareBlockProps) {
           initialViewState={initialViewState}
           leftLayerConfig={leftLayerConfig}
           rightLayerConfig={rightLayerConfig}
+          caption={caption}
         />
       </div>
     </GeoConfigProvider>
