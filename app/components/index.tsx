@@ -23,6 +23,7 @@ export { SectionContacts } from "./SectionContacts";
 export { SectionHeading } from "./SectionHeading";
 export { SectionIntro, type SectionIntroProps } from "./SectionIntro";
 export { SectionLinks } from "./SectionLinks";
+export { SectionWorkshopCards } from "./SectionWorkshopCards";
 export { ToolCatalog } from "./ToolCatalog";
 export { ToolCatalogToolbar } from "./ToolCatalogToolbar";
 export { ToolHighlight } from "./ToolHighlight";
