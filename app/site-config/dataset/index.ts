@@ -1,5 +1,4 @@
-import type { DatasetContent, DatasetFilter } from "@/app/site-config/types";
-import { generateDatasetFilters } from "./dataset-filters";
+import type { DatasetContent } from "@/app/site-config/types";
 import { EPA_AQS_CONCENTRATIONS } from "./epa-aqs-concentrations";
 import { NAQFC_AQM_FORECAST_V7 } from "./naqfc-aqm-forecast-v7";
 import { NOAA_HMS_FIRE_SMOKE } from "./noaa-hms-fire-smoke";
@@ -16,8 +15,6 @@ export const DATASETS: DatasetContent[] = [
   TEMPO_HCHO_COLUMN_GRID_V04_PROVISIONAL,
   TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL,
 ];
-
-export const DATASET_FILTERS: DatasetFilter[] = generateDatasetFilters(DATASETS);
 
 export const getDatasetsByIds = (ids: string[]): DatasetContent[] =>
   ids

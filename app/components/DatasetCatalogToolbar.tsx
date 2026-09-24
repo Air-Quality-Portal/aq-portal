@@ -1,7 +1,8 @@
 "use client";
 
 import { Link, SvgFilterList, Tag } from "@teamimpact/veda-ui-blocks";
-import { DATASET_FILTERS, getFilterLabel } from "@/app/site-config/dataset";
+import { getFilterLabel } from "@/app/site-config/dataset";
+import type { DatasetFilter } from "@/app/site-config/types";
 import { CatalogFilterDrawer } from "./CatalogFilterDrawer";
 import { CatalogSearchInput } from "./CatalogSearchInput";
 import { useCatalogTagFilter } from "./useCatalogTagFilter";
@@ -14,6 +15,8 @@ type DatasetCatalogToolbarProps = {
   selectedTags?: string[];
   /** URL param controlling pagination; cleared when the search or filters change. */
   pageParam: string;
+  /** Available filters for datasets. */
+  filters: DatasetFilter[];
 };
 
 export const DatasetCatalogToolbar = ({
@@ -21,6 +24,7 @@ export const DatasetCatalogToolbar = ({
   query = "",
   selectedTags = [],
   pageParam,
+  filters,
 }: DatasetCatalogToolbarProps) => {
   const {
     isDrawerOpen,
@@ -53,7 +57,7 @@ export const DatasetCatalogToolbar = ({
                 className="margin-right-1 margin-y-1"
                 onClose={() => removeTagFilter(filterValue)}
               >
-                {getFilterLabel(DATASET_FILTERS, filterValue)}
+                {getFilterLabel(filters, filterValue)}
               </Tag>
             ))}
             {selectedTags.length > 0 && (
@@ -76,7 +80,7 @@ export const DatasetCatalogToolbar = ({
       </div>
 
       <CatalogFilterDrawer
-        filters={DATASET_FILTERS}
+        filters={filters}
         selectedTags={selectedTags}
         isOpen={isDrawerOpen}
         onClose={closeDrawer}

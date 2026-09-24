@@ -11,7 +11,12 @@ import {
 } from "@/app/components";
 import { AppImage } from "@/app/components/AppImage";
 import { AppLinkStyled } from "@/app/components/AppLink";
-import { DATASETS, filterDatasetsByTags, searchDatasets } from "@/app/site-config/dataset";
+import {
+  DATASETS,
+  filterDatasetsByTags,
+  generateDatasetFilters,
+  searchDatasets,
+} from "@/app/site-config/dataset";
 import { DATA_CATALOG_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
 import { normalizeCatalogSearchParams } from "../_utilities/catalog-search.helpers";
 import {
@@ -29,6 +34,7 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
   const searchParams = (await props.searchParams) ?? {};
   const { q = "", tags } = searchParams;
   const { query, selectedTags } = normalizeCatalogSearchParams({ q, tags });
+  const filters = generateDatasetFilters(DATASETS);
   const searched = searchDatasets(DATASETS, query);
   const filtered = filterDatasetsByTags(searched, selectedTags);
   const total = filtered.length;
@@ -49,6 +55,7 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
           query={query}
           selectedTags={selectedTags}
           pageParam={CATALOG_PAGE_PARAM}
+          filters={filters}
         />
         {total === 0 && (
           <CatalogEmptyState
