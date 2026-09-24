@@ -15,7 +15,7 @@ export function createTestDataset(
       tags: [
         { category: "Data Type", options: ["Satellite"] },
         { category: "Latency", options: ["Retrospective (15+ days)"] },
-        { category: "Parameter", options: ["Smoke"] },
+        { category: "Parameter", options: ["Smoke", "PM₂.₅"] },
         { category: "Topic", options: ["Wildfire Smoke", "High Ozone"] },
       ],
     },
@@ -30,5 +30,11 @@ export const testDataset2 = createTestDataset("test-dataset-2", {
 });
 
 export const testDataset3 = createTestDataset("test-dataset-3", {
-  metadata: { tags: [{ category: "Topic", options: ["sample", "test"] }] },
+  metadata: {
+    tags: [
+      { category: "Data Type", options: ["Forecast model"] },
+      { category: "Parameter", options: ["Smoke", "PM₂.₅", "PM10"] },
+      { category: "Topic", options: ["sample", "test"] },
+    ],
+  },
 });

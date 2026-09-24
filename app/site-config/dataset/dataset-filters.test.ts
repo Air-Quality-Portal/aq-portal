@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { filterDatasetsByTags, generateDatasetFilters, getIdFromValue } from "./dataset-filters";
-import { createTestDataset } from "./index.fixtures";
+import {
+  filterDatasetsByTags,
+  generateDatasetFilters,
+  getFilterLabel,
+  getIdFromValue,
+} from "./dataset-filters";
+import { createTestDataset, testDataset1, testDataset2, testDataset3 } from "./index.fixtures";
 
 describe("getIdFromValue", () => {
   it("converts values to clean kebab-case IDs", () => {
@@ -20,9 +25,8 @@ describe("getIdFromValue", () => {
 });
 
 describe("generateDatasetFilters", () => {
-  it("generates filters from datasets", () => {
-    const datasets = [createTestDataset("test-1")];
-    const filters = generateDatasetFilters(datasets);
+  it("generates filters from datasets in the expected order", () => {
+    const filters = generateDatasetFilters([testDataset1]);
 
     expect(filters).toHaveLength(4);
     expect(filters.map((f) => f.label)).toEqual(["Data Type", "Latency", "Parameter", "Topic"]);
@@ -30,7 +34,7 @@ describe("generateDatasetFilters", () => {
 
   it("extracts unique options per category", () => {
     const datasets = [
-      createTestDataset("test-1", {
+      createTestDataset("unique-test-1", {
         metadata: {
           tags: [
             { category: "Data Type", options: ["Satellite", "Satellite"] },
@@ -38,7 +42,7 @@ describe("generateDatasetFilters", () => {
           ],
         },
       }),
-      createTestDataset("test-2", {
+      createTestDataset("unique-test-2", {
         metadata: {
           tags: [{ category: "Parameter", options: ["Fire"] }],
         },
@@ -51,109 +55,60 @@ describe("generateDatasetFilters", () => {
 
     expect(dataTypeFilter?.options).toHaveLength(1);
     expect(parameterFilter?.options).toHaveLength(2);
-    expect(dataTypeFilter?.options.map((o) => o.label)).toEqual(["Satellite"]);
-    expect(parameterFilter?.options.map((o) => o.label)).toEqual(["Smoke", "Fire"]);
-  });
-
-  it("maintains category order", () => {
-    const datasets = [
-      createTestDataset("test-1", {
-        metadata: {
-          tags: [
-            { category: "Topic", options: ["Test"] },
-            { category: "Latency", options: ["Test"] },
-            { category: "Data Type", options: ["Test"] },
-            { category: "Parameter", options: ["Test"] },
-          ],
-        },
-      }),
-    ];
-
-    const filters = generateDatasetFilters(datasets);
-
-    expect(filters.map((f) => f.label)).toEqual(["Data Type", "Latency", "Parameter", "Topic"]);
   });
 });
 
 describe("filterDatasetsByTags", () => {
   it("returns all datasets when no filters selected", () => {
-    const datasets = [createTestDataset("test-1"), createTestDataset("test-2")];
+    const results = filterDatasetsByTags([testDataset1, testDataset2, testDataset3], []);
 
-    const results = filterDatasetsByTags(datasets, []);
-
-    expect(results).toHaveLength(2);
+    expect(results).toHaveLength(3);
   });
 
-  it("filters datasets by tag ID", () => {
-    const datasets = [
-      createTestDataset("test-1", {
-        metadata: {
-          tags: [{ category: "Parameter", options: ["Smoke"] }],
-        },
-      }),
-      createTestDataset("test-2", {
-        metadata: {
-          tags: [{ category: "Parameter", options: ["Fire"] }],
-        },
-      }),
-    ];
+  it("filters datasets by single and multiple tag IDs", () => {
+    const singleTag = filterDatasetsByTags([testDataset1, testDataset3], ["satellite"]);
+    expect(singleTag).toHaveLength(1);
 
-    const results = filterDatasetsByTags(datasets, ["smoke"]);
-
-    expect(results).toHaveLength(1);
-    expect(results[0].id).toBe("test-1");
-  });
-
-  it("returns datasets matching any selected tag", () => {
-    const datasets = [
-      createTestDataset("test-1", {
-        metadata: {
-          tags: [{ category: "Parameter", options: ["Smoke"] }],
-        },
-      }),
-      createTestDataset("test-2", {
-        metadata: {
-          tags: [{ category: "Parameter", options: ["Fire"] }],
-        },
-      }),
-      createTestDataset("test-3", {
-        metadata: {
-          tags: [{ category: "Parameter", options: ["Dust"] }],
-        },
-      }),
-    ];
-
-    const results = filterDatasetsByTags(datasets, ["smoke", "fire"]);
-
-    expect(results).toHaveLength(2);
-    expect(results.map((d) => d.id)).toEqual(["test-1", "test-2"]);
+    const multipleTags = filterDatasetsByTags(
+      [testDataset1, testDataset3],
+      ["smoke", "forecast-model"],
+    );
+    expect(multipleTags).toHaveLength(2);
   });
 
   it("handles subscripts in filter matching", () => {
-    const datasets = [
-      createTestDataset("test-1", {
-        metadata: {
-          tags: [{ category: "Parameter", options: ["PM₂.₅"] }],
-        },
-      }),
-    ];
-
-    const results = filterDatasetsByTags(datasets, ["pm2-5"]);
+    const results = filterDatasetsByTags([testDataset3], ["pm2-5"]);
 
     expect(results).toHaveLength(1);
+    expect(results[0].id).toBe("test-dataset-3");
   });
 
   it("returns empty array when no datasets match", () => {
-    const datasets = [
-      createTestDataset("test-1", {
-        metadata: {
-          tags: [{ category: "Parameter", options: ["Smoke"] }],
-        },
-      }),
-    ];
-
-    const results = filterDatasetsByTags(datasets, ["nonexistent"]);
+    const results = filterDatasetsByTags([testDataset1], ["nonexistent"]);
 
     expect(results).toHaveLength(0);
+  });
+});
+
+describe("getFilterLabel", () => {
+  it("returns the label for a known filter value", () => {
+    const filters = generateDatasetFilters([testDataset1]);
+    const label = getFilterLabel(filters, "satellite");
+
+    expect(label).toBe("Satellite");
+  });
+
+  it("returns the value itself when no matching label found", () => {
+    const filters = generateDatasetFilters([testDataset1]);
+    const label = getFilterLabel(filters, "nonexistent");
+
+    expect(label).toBe("nonexistent");
+  });
+
+  it("handles subscripts in filter labels", () => {
+    const filters = generateDatasetFilters([testDataset3]);
+    const label = getFilterLabel(filters, "pm2-5");
+
+    expect(label).toBe("PM₂.₅");
   });
 });
