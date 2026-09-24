@@ -98,8 +98,8 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
         title:
           "Geostationary Remote Sensing of Aerosols for Air Quality Applications in North America",
         href: "https://www.earthdata.nasa.gov/learn/trainings/geostationary-remote-sensing-aerosols-air-quality-applications-north-america",
-        startsAt: "2026-10-20T15:00:00Z",
-        dateLabel: "October 20, 2026",
+        startDate: "2026-10-13T15:00:00Z",
+        endDate: "2026-10-15T16:30:00Z",
         description:
           "This training provides an overview of TEMPO capabilities and available NOAA aerosol products generated using synergistic TEMPO and ABI observations. Instructors demonstrate how to access and interpret near real-time and archived TEMPO aerosol products imagery on the NOAA AerosolWatch website. NOTE: THIS IS AN EXAMPLE OF HOW UPCOMING EVENTS MAY BE CROSS-LISTED TO AIR4US",
         tags: ["WEBINAR"],
@@ -111,21 +111,11 @@ export const RESOURCES_PAGE_BODY: ResourcesPageBody = {
         },
       },
       {
-        id: "workshop-air4us-fall-2026",
-        title: "AIR4US Fall Training Workshop 2026",
-        startsAt: "TBD",
-        dateLabel: "TBD",
-        description:
-          "Three-day intensive training covering how to use AIR4US to visualize and compare satellite data products, ground-based monitoring networks, and model outputs. Open to federal, state, local, and tribal air quality agency staff. NOTE: THIS IS AN EXAMPLE OF HOW A FUTURE AIR4US WORKSHOP MIGHT BE ADVERTISED",
-        tags: ["VIRTUAL WORKSHOP", "IN-PERSON WORKSHOP"],
-        callToActions: { registration: { label: "Register", href: "" } },
-      },
-      {
         id: "workshop-air4us-summer-2027",
         title: "AIR4US Summer Training Workshop 2027",
-        href: "#",
-        startsAt: "TBD",
-        dateLabel: "TBD",
+        href: "",
+        startDate: "2027-07-13T14:00:00Z",
+        endDate: "2027-07-15T21:00:00Z",
         description:
           "Three-day intensive training covering how to use AIR4US to visualize and compare satellite data products, ground-based monitoring networks, and model outputs. Open to federal, state, local, and tribal air quality agency staff. NOTE: THIS IS AN EXAMPLE OF HOW A FUTURE AIR4US WORKSHOP MIGHT BE ADVERTISED",
         tags: ["VIRTUAL WORKSHOP", "IN-PERSON WORKSHOP"],

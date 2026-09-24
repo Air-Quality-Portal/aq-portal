@@ -14,6 +14,7 @@ import {
   type TutorialLevel,
   type TutorialSection,
   type WorkshopItem,
+  type WorkshopPhase,
   type WorkshopSection,
   type WorkshopStatus,
 } from "@/app/site-config/types";
@@ -91,7 +92,6 @@ export const makeTaggedCardSection = ({
 });
 
 const EXACT_UTC_TIMESTAMP = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
-const TBD_TIMESTAMP = "TBD";
 
 const parseExactUtcTimestamp = (value: unknown): number | undefined => {
   if (typeof value !== "string" || !EXACT_UTC_TIMESTAMP.test(value)) return undefined;
@@ -102,22 +102,36 @@ const parseExactUtcTimestamp = (value: unknown): number | undefined => {
   return new Date(instant).toISOString() === value.replace("Z", ".000Z") ? instant : undefined;
 };
 
-const makeWorkshopDateTag = (dateLabel: string) => ({
-  label: dateLabel,
-  variant: "text" as const,
+const WORKSHOP_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  timeZone: "UTC",
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
+
+const makeWorkshopDateTag = (startDate: string, endDate = startDate): CardTag => ({
+  label: WORKSHOP_DATE_FORMATTER.formatRange(new Date(startDate), new Date(endDate)),
+  variant: "text",
   color: "base-dark",
 });
 
-const makeWorkshopFormatTag = (tag: string) => ({
+const makeWorkshopFormatTag = (tag: string): CardTag => ({
   label: tag,
-  variant: "solid" as const,
+  variant: "solid",
   color: "primary-lightest",
   textColor: "primary-darker",
 });
 
-const PAST_EVENT_TAG = {
+const CURRENT_EVENT_TAG: CardTag = {
+  label: "CURRENT",
+  variant: "solid",
+  color: "success-lighter",
+  textColor: "success-darker",
+};
+
+const PAST_EVENT_TAG: CardTag = {
   label: "PAST",
-  variant: "solid" as const,
+  variant: "solid",
   color: "base-lighter",
   textColor: "base-dark",
 };
@@ -126,101 +140,112 @@ type DatedWorkshop = {
   workshop: WorkshopItem;
   sourceIndex: number;
   startsAtInstant: number;
+  endsAtInstant: number;
 };
 
+type OrganizedWorkshop = WorkshopItem & { phase: WorkshopPhase };
+
 type OrganizedWorkshops = {
-  future: WorkshopItem[];
-  past: WorkshopItem[];
+  future: OrganizedWorkshop[];
+  past: OrganizedWorkshop[];
 };
 
 const bySourceIndex = (first: DatedWorkshop, second: DatedWorkshop) =>
   first.sourceIndex - second.sourceIndex;
 
-const getFutureWorkshops = (workshops: DatedWorkshop[], nowInstant: number): WorkshopItem[] =>
+const getFutureWorkshops = (workshops: DatedWorkshop[], nowInstant: number): OrganizedWorkshop[] =>
   workshops
-    .filter(({ startsAtInstant }) => startsAtInstant > nowInstant)
+    .filter(({ endsAtInstant }) => endsAtInstant >= nowInstant)
     .sort(
       (first, second) =>
         first.startsAtInstant - second.startsAtInstant || bySourceIndex(first, second),
     )
-    .map(({ workshop }) => workshop);
+    .map(({ workshop, startsAtInstant }) => ({
+      ...workshop,
+      phase: startsAtInstant <= nowInstant ? "current" : "upcoming",
+    }));
 
-const getPastWorkshops = (workshops: DatedWorkshop[], nowInstant: number): WorkshopItem[] =>
+const getPastWorkshops = (workshops: DatedWorkshop[], nowInstant: number): OrganizedWorkshop[] =>
   workshops
-    .filter(({ startsAtInstant }) => startsAtInstant <= nowInstant)
+    .filter(({ endsAtInstant }) => endsAtInstant < nowInstant)
     .sort(
-      (first, second) =>
-        second.startsAtInstant - first.startsAtInstant || bySourceIndex(first, second),
+      (first, second) => second.endsAtInstant - first.endsAtInstant || bySourceIndex(first, second),
     )
-    .map(({ workshop }) => workshop);
+    .map(({ workshop }) => ({ ...workshop, phase: "past" }));
 
-export const organizeWorkshops = (
+const organizeWorkshops = (
   workshops: WorkshopItem[],
   now: Date = new Date(),
 ): OrganizedWorkshops => {
   const datedWorkshops = workshops.flatMap((workshop, sourceIndex) => {
-    const startsAtInstant = parseExactUtcTimestamp(workshop.startsAt);
-    return startsAtInstant === undefined ? [] : [{ workshop, sourceIndex, startsAtInstant }];
+    const startsAtInstant = parseExactUtcTimestamp(workshop.startDate);
+    const endsAtInstant =
+      workshop.endDate === undefined ? startsAtInstant : parseExactUtcTimestamp(workshop.endDate);
+
+    if (
+      startsAtInstant === undefined ||
+      endsAtInstant === undefined ||
+      endsAtInstant < startsAtInstant
+    ) {
+      return [];
+    }
+
+    return [{ workshop, sourceIndex, startsAtInstant, endsAtInstant }];
   });
-  const tbdWorkshops = workshops.filter(({ startsAt }) => startsAt === TBD_TIMESTAMP);
   const nowInstant = now.getTime();
 
   return {
-    future: [...getFutureWorkshops(datedWorkshops, nowInstant), ...tbdWorkshops],
+    future: getFutureWorkshops(datedWorkshops, nowInstant),
     past: getPastWorkshops(datedWorkshops, nowInstant),
   };
 };
 
 const makeWorkshopCardSection = (
   section: Omit<WorkshopSection, "workshops">,
-  workshops: WorkshopItem[],
-  status: WorkshopStatus,
-): CardTextOnlySection => {
-  const isPast = status === "past";
+  workshops: OrganizedWorkshop[],
+): CardTextOnlySection => ({
+  ...section,
+  items: workshops.map((workshop) => {
+    const isPast = workshop.phase === "past";
+    const callToAction = isPast
+      ? workshop.callToActions.recording
+      : workshop.callToActions.registration;
+    const callToActionHref = callToAction?.href?.trim();
+    const workshopHref = workshop.href?.trim() || undefined;
 
-  return {
-    ...section,
-    items: workshops.map((workshop) => {
-      // A past workshop offers its recording, an upcoming one its registration.
-      const callToAction = isPast
-        ? workshop.callToActions.recording
-        : workshop.callToActions.registration;
-      const callToActionHref = callToAction?.href?.trim();
-      const workshopHref = workshop.href?.trim() || undefined;
-
-      return {
-        id: workshop.id,
-        title: workshop.title,
-        href: workshopHref,
-        isExternal: isExternalHref(workshopHref ?? ""),
-        description: workshop.description,
-        tags: [
-          makeWorkshopDateTag(workshop.dateLabel),
-          ...(workshop.tags?.map(makeWorkshopFormatTag) ?? []),
-          ...(isPast ? [PAST_EVENT_TAG] : []),
-        ],
-        callToAction:
-          callToAction && callToActionHref
-            ? {
-                label: callToAction.label,
-                href: callToActionHref,
-                isExternal: isExternalHref(callToActionHref),
-              }
-            : undefined,
-      };
-    }),
-  };
-};
+    return {
+      id: workshop.id,
+      title: workshop.title,
+      href: workshopHref,
+      isExternal: isExternalHref(workshopHref ?? ""),
+      description: workshop.description,
+      tagPrimary:
+        workshop.phase === "current" ? CURRENT_EVENT_TAG : isPast ? PAST_EVENT_TAG : undefined,
+      tags: [
+        makeWorkshopDateTag(workshop.startDate, workshop.endDate),
+        ...(workshop.tags?.map(makeWorkshopFormatTag) ?? []),
+      ],
+      callToAction:
+        callToAction && callToActionHref
+          ? {
+              label: callToAction.label,
+              href: callToActionHref,
+              isExternal: isExternalHref(callToActionHref),
+            }
+          : undefined,
+    };
+  }),
+});
 
 export const makeWorkshopCardSections = (
   { workshops, ...section }: WorkshopSection,
   { now = new Date() }: { now?: Date } = {},
-) => {
+): Record<WorkshopStatus, CardTextOnlySection> => {
   const { future, past } = organizeWorkshops(workshops, now);
 
   return {
-    upcoming: makeWorkshopCardSection(section, future, "upcoming"),
-    past: makeWorkshopCardSection(section, past, "past"),
+    upcoming: makeWorkshopCardSection(section, future),
+    past: makeWorkshopCardSection(section, past),
   };
 };
 
@@ -329,7 +354,7 @@ export const makeCardDetailedImageLeftProps = ({
 
 export type CardDetailedTextOnlyPropsArgs = Omit<
   CardDetailedProps,
-  "image" | "imagePosition" | "tagPrimary" | "title" | "callToAction" | "callToActionSecondary"
+  "imagePosition" | "title" | "callToAction" | "callToActionSecondary"
 > & {
   id: string;
   title: string;
