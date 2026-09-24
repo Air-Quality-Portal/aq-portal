@@ -1,3 +1,11 @@
 .blocks-card--homepage .blocks-card__description {
   color: #d9e8f6;
 }
+
+.usa-nav__primary a:not(.usa-button):not(.usa-current) {
+  color: #71767a !important;
+}
+
+.usa-nav__primary .usa-current {
+  color: #11181d !important;
+}

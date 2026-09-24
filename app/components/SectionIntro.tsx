@@ -29,7 +29,7 @@ export const SectionIntro = ({
         {eyebrow}
       </p>
       <h2
-        className={`font-heading-${headingSize} line-height-serif-3 text-light text-ink margin-0`}
+        className={`font-heading-${headingSize} line-height-serif-3 text-normal text-ink margin-0`}
       >
         {heading}
       </h2>
