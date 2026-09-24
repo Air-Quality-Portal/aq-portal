@@ -24,7 +24,7 @@ describe("generateDatasetFilters", () => {
     const datasets = [createTestDataset("test-1")];
     const filters = generateDatasetFilters(datasets);
 
-    expect(filters).toHaveLength(3);
+    expect(filters).toHaveLength(4);
     expect(filters.map((f) => f.label)).toEqual(["Data Type", "Latency", "Parameter", "Topic"]);
   });
 

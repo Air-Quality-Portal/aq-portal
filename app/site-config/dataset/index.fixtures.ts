@@ -14,6 +14,7 @@ export function createTestDataset(
     metadata: {
       tags: [
         { category: "Data Type", options: ["Satellite"] },
+        { category: "Latency", options: ["Retrospective (15+ days)"] },
         { category: "Parameter", options: ["Smoke"] },
         { category: "Topic", options: ["Wildfire Smoke", "High Ozone"] },
       ],
