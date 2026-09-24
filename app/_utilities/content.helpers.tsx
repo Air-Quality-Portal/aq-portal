@@ -102,15 +102,20 @@ const parseExactUtcTimestamp = (value: unknown): number | undefined => {
   return new Date(instant).toISOString() === value.replace("Z", ".000Z") ? instant : undefined;
 };
 
-const WORKSHOP_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  timeZone: "UTC",
-  month: "long",
-  day: "numeric",
-  year: "numeric",
-});
+/**
+ * Workshop content stores UTC instants; visitors see the dates in their own
+ * time zone. `timeZone` is undefined in the browser, which selects the
+ * runtime's local zone, and is set explicitly in tests.
+ */
+const makeWorkshopDateFormatter = (timeZone?: string) =>
+  new Intl.DateTimeFormat("en-US", { timeZone, month: "long", day: "numeric", year: "numeric" });
 
-const makeWorkshopDateTag = (startDate: string, endDate = startDate): CardTag => ({
-  label: WORKSHOP_DATE_FORMATTER.formatRange(new Date(startDate), new Date(endDate)),
+const makeWorkshopDateTag = (
+  formatter: Intl.DateTimeFormat,
+  startDate: string,
+  endDate = startDate,
+): CardTag => ({
+  label: formatter.formatRange(new Date(startDate), new Date(endDate)),
   variant: "text",
   color: "base-dark",
 });
@@ -203,6 +208,7 @@ const organizeWorkshops = (
 const makeWorkshopCardSection = (
   section: Omit<WorkshopSection, "workshops">,
   workshops: OrganizedWorkshop[],
+  dateFormatter: Intl.DateTimeFormat,
 ): CardTextOnlySection => ({
   ...section,
   items: workshops.map((workshop) => {
@@ -222,7 +228,7 @@ const makeWorkshopCardSection = (
       tagPrimary:
         workshop.phase === "current" ? CURRENT_EVENT_TAG : isPast ? PAST_EVENT_TAG : undefined,
       tags: [
-        makeWorkshopDateTag(workshop.startDate, workshop.endDate),
+        makeWorkshopDateTag(dateFormatter, workshop.startDate, workshop.endDate),
         ...(workshop.tags?.map(makeWorkshopFormatTag) ?? []),
       ],
       callToAction:
@@ -239,13 +245,14 @@ const makeWorkshopCardSection = (
 
 export const makeWorkshopCardSections = (
   { workshops, ...section }: WorkshopSection,
-  { now = new Date() }: { now?: Date } = {},
+  { now = new Date(), timeZone }: { now?: Date; timeZone?: string } = {},
 ): Record<WorkshopStatus, CardTextOnlySection> => {
   const { future, past } = organizeWorkshops(workshops, now);
+  const dateFormatter = makeWorkshopDateFormatter(timeZone);
 
   return {
-    upcoming: makeWorkshopCardSection(section, future),
-    past: makeWorkshopCardSection(section, past),
+    upcoming: makeWorkshopCardSection(section, future, dateFormatter),
+    past: makeWorkshopCardSection(section, past, dateFormatter),
   };
 };
 

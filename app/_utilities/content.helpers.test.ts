@@ -155,7 +155,7 @@ describe("Workshop helpers", () => {
   const now = new Date("2026-06-15T12:00:00Z");
 
   const sectionsFor = (workshops: WorkshopItem[], section: Partial<WorkshopSection> = {}) =>
-    makeWorkshopCardSections({ ...section, workshops }, { now });
+    makeWorkshopCardSections({ ...section, workshops }, { now, timeZone: "UTC" });
 
   const idsOf = ({ items }: CardTextOnlySection) => items.map(({ id }) => id);
 
@@ -284,7 +284,7 @@ describe("Workshop helpers", () => {
         ],
       };
 
-      const result = makeWorkshopCardSections(section, { now });
+      const result = makeWorkshopCardSections(section, { now, timeZone: "UTC" });
 
       expect(result.upcoming.items[0]).toMatchObject({
         id: "future",
@@ -323,7 +323,7 @@ describe("Workshop helpers", () => {
         ],
       };
 
-      const result = makeWorkshopCardSections(section, { now });
+      const result = makeWorkshopCardSections(section, { now, timeZone: "UTC" });
 
       // Intl separates a range with thin spaces around an en dash.
       expect(result.upcoming.items.map(({ tags }) => tags?.[0].label)).toEqual([
@@ -331,6 +331,21 @@ describe("Workshop helpers", () => {
         "July 6\u2009\u2013\u20098, 2026",
         "July 30\u2009\u2013\u2009August 2, 2026",
       ]);
+    });
+
+    it("labels dates in the visitor's time zone", () => {
+      const section: WorkshopSection = {
+        workshops: [
+          // 9 PM on June 30 in New York, already July 1 in UTC.
+          makeWorkshop("evening-us", "2026-07-01T01:00:00Z", { endDate: "2026-07-01T03:00:00Z" }),
+        ],
+      };
+
+      const labelIn = (timeZone: string) =>
+        makeWorkshopCardSections(section, { now, timeZone }).upcoming.items[0].tags?.[0].label;
+
+      expect(labelIn("UTC")).toBe("July 1, 2026");
+      expect(labelIn("America/New_York")).toBe("June 30, 2026");
     });
 
     it("marks a running workshop CURRENT and keeps its registration action", () => {
@@ -346,7 +361,7 @@ describe("Workshop helpers", () => {
         ],
       };
 
-      const result = makeWorkshopCardSections(section, { now });
+      const result = makeWorkshopCardSections(section, { now, timeZone: "UTC" });
       const [item] = result.upcoming.items;
 
       expect(item.tags?.map(({ label }) => label)).toEqual([
@@ -367,7 +382,7 @@ describe("Workshop helpers", () => {
         ],
       };
 
-      const result = makeWorkshopCardSections(section, { now });
+      const result = makeWorkshopCardSections(section, { now, timeZone: "UTC" });
 
       expect(result.upcoming.items[0]).toMatchObject({
         href: "https://example.com/workshop",
@@ -385,7 +400,7 @@ describe("Workshop helpers", () => {
         ],
       };
 
-      const result = makeWorkshopCardSections(section, { now });
+      const result = makeWorkshopCardSections(section, { now, timeZone: "UTC" });
 
       expect(result.past.items[0].callToAction).toBeUndefined();
     });
@@ -401,7 +416,7 @@ describe("Workshop helpers", () => {
         ],
       };
 
-      const result = makeWorkshopCardSections(section, { now });
+      const result = makeWorkshopCardSections(section, { now, timeZone: "UTC" });
 
       expect(result.upcoming.items[0]).toMatchObject({ href: undefined, isExternal: false });
       expect(result.upcoming.items[0].callToAction).toBeUndefined();
