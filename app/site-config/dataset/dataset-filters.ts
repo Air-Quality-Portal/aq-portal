@@ -23,21 +23,19 @@ export const generateDatasetFilters = (datasets: DatasetContent[]): DatasetFilte
     }
   }
 
-  return TAG_FILTER_CATEGORIES
-    .map((category) => {
-      const options = optionsByCategory.get(category);
-      return options
-        ? {
-            id: getIdFromValue(category),
-            label: category,
-            options: Array.from(options).map((opt) => ({
-              label: opt,
-              value: getIdFromValue(opt),
-            })),
-          }
-        : null;
-    })
-    .filter((filter): filter is DatasetFilter => Boolean(filter));
+  return TAG_FILTER_CATEGORIES.map((category) => {
+    const options = optionsByCategory.get(category);
+    return options
+      ? {
+          id: getIdFromValue(category),
+          label: category,
+          options: Array.from(options).map((opt) => ({
+            label: opt,
+            value: getIdFromValue(opt),
+          })),
+        }
+      : null;
+  }).filter((filter): filter is DatasetFilter => Boolean(filter));
 };
 
 /**
@@ -59,3 +57,6 @@ export const filterDatasetsByTags = (
     return selectedTags.some((tag) => datasetTagIds.includes(tag));
   });
 };
+
+export const getFilterLabel = (filters: DatasetFilter[], value: string): string =>
+  filters.flatMap((f) => f.options).find((o) => o.value === value)?.label ?? value;

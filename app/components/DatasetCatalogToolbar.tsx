@@ -1,7 +1,7 @@
 "use client";
 
 import { Link, SvgFilterList, Tag } from "@teamimpact/veda-ui-blocks";
-import { DATASET_FILTERS } from "@/app/site-config/dataset/";
+import { DATASET_FILTERS, getFilterLabel } from "@/app/site-config/dataset";
 import { CatalogFilterDrawer } from "./CatalogFilterDrawer";
 import { CatalogSearchInput } from "./CatalogSearchInput";
 import { useCatalogTagFilter } from "./useCatalogTagFilter";
@@ -53,7 +53,7 @@ export const DatasetCatalogToolbar = ({
                 className="margin-right-1 margin-y-1"
                 onClose={() => removeTagFilter(filterValue)}
               >
-                {filterValue}
+                {getFilterLabel(DATASET_FILTERS, filterValue)}
               </Tag>
             ))}
             {selectedTags.length > 0 && (
