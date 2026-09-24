@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import styles from "./Tabs.module.css";
+import "../styles/tabs.css";
 
 export type TabOption<Value extends string> = {
   value: Value;
@@ -49,7 +49,7 @@ export function Tabs<Value extends string>({
   };
 
   return (
-    <div className={styles.tabs} role="tablist" aria-label={ariaLabel}>
+    <div className="aq-tabs" role="tablist" aria-label={ariaLabel}>
       {options.map(({ value, label, count }, index) => {
         const isActive = activeTab === value;
 
@@ -65,12 +65,12 @@ export function Tabs<Value extends string>({
             aria-selected={isActive}
             aria-controls={panelId}
             tabIndex={isActive ? 0 : -1}
-            className={`${styles.tab} ${isActive ? styles.tabActive : ""}`}
+            className={`aq-tabs__tab ${isActive ? "aq-tabs__tab--active" : ""}`}
             onClick={() => onTabChange(value)}
             onKeyDown={handleKeyDown}
           >
             <span>{label}</span>
-            {count !== undefined && <span className={styles.count}>{count}</span>}
+            {count !== undefined && <span className="aq-tabs__count">{count}</span>}
           </button>
         );
       })}

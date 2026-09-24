@@ -1,6 +1,0 @@
-/* LAYOUT */
-.showAll {
-  display: flex;
-  justify-content: center;
-  margin-top: var(--unit-3);
-}

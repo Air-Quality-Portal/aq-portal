@@ -6,7 +6,6 @@ import type { CardTextOnlySection, WorkshopSection, WorkshopStatus } from "@/app
 import { ContentHeading } from "./ContentHeading";
 import { Section } from "./Section";
 import { SectionCardTextOnly } from "./SectionCardTextOnly";
-import styles from "./SectionWorkshopCards.module.css";
 import { type TabOption, Tabs } from "./Tabs";
 
 const INITIAL_VISIBLE_CARD_COUNT = 3;
@@ -90,7 +89,7 @@ export function SectionWorkshopCards({ section }: { section: WorkshopSection }) 
       }
     >
       {activeSection.items.length > INITIAL_VISIBLE_CARD_COUNT && (
-        <div className={styles.showAll}>
+        <div className="display-flex flex-justify-center margin-top-3">
           <button
             type="button"
             className="usa-button usa-button--outline"
