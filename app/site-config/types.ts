@@ -161,9 +161,11 @@ export type CardTag = NonNullable<CardDetailedProps["tags"]>[number];
 export type CardTextOnlyItem = {
   id: string;
   title: string;
-  href: string;
+  href?: string;
   isExternal?: boolean;
   description?: string;
+  /** Rendered above the title, since these cards carry no image to lay it over. */
+  tagPrimary?: CardTag;
   tags?: CardTag[];
   callToAction?: { label: string; href: string; isExternal?: boolean };
 };
@@ -219,6 +221,50 @@ export type TaggedCardSection = {
   headingLevel?: ContentHeadingLevel;
   lead?: string;
   items: TaggedCardItem[];
+};
+
+/**
+ * Where a workshop sits relative to now: still to come, under way, or over.
+ * A `current` workshop lists under the upcoming tab and keeps its registration.
+ */
+export type WorkshopPhase = "upcoming" | "current" | "past";
+
+/** The tab that lists a workshop. `upcoming` holds both upcoming and current ones. */
+export type WorkshopStatus = "upcoming" | "past";
+
+export type WorkshopItem = {
+  id: string;
+  title: string;
+  href?: string;
+  /**
+   * Exact UTC instant the workshop starts, e.g. "2026-10-20T15:00:00Z".
+   * Required: a workshop whose start date is missing or malformed is not
+   * listed at all.
+   */
+  startDate: string;
+  /**
+   * Exact UTC instant the workshop ends, for events that run over time.
+   */
+  endDate?: string;
+  description?: string;
+  tags?: string[];
+  /**
+   * Keep these actions separate so a past workshop's "View recording" button
+   * cannot accidentally use its registration URL. The card adapter shows the
+   * registration action until the workshop ends and the recording action
+   * afterward.
+   */
+  callToActions: {
+    registration?: { label: string; href?: string | null };
+    recording?: { label: string; href?: string | null };
+  };
+};
+
+export type WorkshopSection = {
+  heading?: string;
+  headingLevel?: ContentHeadingLevel;
+  lead?: string;
+  workshops: WorkshopItem[];
 };
 
 export type ContactItem = {
