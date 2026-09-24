@@ -23,18 +23,21 @@ export const generateDatasetFilters = (datasets: DatasetContent[]): DatasetFilte
     }
   }
 
-  return Array.from(optionsByCategory, ([category, options]) => ({
-    id: getIdFromValue(category),
-    label: category,
-    options: Array.from(options).map((opt) => ({
-      label: opt,
-      value: getIdFromValue(opt),
-    })),
-  })).sort(
-    (a, b) =>
-      TAG_FILTER_CATEGORIES.indexOf(a.label as TagFilterCategory) -
-      TAG_FILTER_CATEGORIES.indexOf(b.label as TagFilterCategory),
-  );
+  return TAG_FILTER_CATEGORIES
+    .map((category) => {
+      const options = optionsByCategory.get(category);
+      return options
+        ? {
+            id: getIdFromValue(category),
+            label: category,
+            options: Array.from(options).map((opt) => ({
+              label: opt,
+              value: getIdFromValue(opt),
+            })),
+          }
+        : null;
+    })
+    .filter((filter): filter is DatasetFilter => Boolean(filter));
 };
 
 /**
