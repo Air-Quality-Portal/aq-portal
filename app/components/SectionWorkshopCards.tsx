@@ -1,5 +1,6 @@
 "use client";
 
+import { Link } from "@teamimpact/veda-ui-blocks";
 import { useEffect, useId, useState } from "react";
 import { makeWorkshopCardSections } from "@/app/_utilities/content.helpers";
 import type { CardTextOnlySection, WorkshopSection, WorkshopStatus } from "@/app/site-config/types";
@@ -90,14 +91,15 @@ export function SectionWorkshopCards({ section }: { section: WorkshopSection }) 
     >
       {activeSection.items.length > INITIAL_VISIBLE_CARD_COUNT && (
         <div className="display-flex flex-justify-center margin-top-3">
-          <button
+          <Link
+            as="button"
             type="button"
-            className="usa-button usa-button--outline"
+            variant="button-outline"
             aria-expanded={showAll}
             onClick={() => setShowAll((isShowingAll) => !isShowingAll)}
           >
             {showAll ? "Show less" : `Show all ${activeSection.items.length} ${activeTab}`}
-          </button>
+          </Link>
         </div>
       )}
       {activeSection.items.length === 0 && (
