@@ -9,6 +9,7 @@ import {
   type ContentType,
   type DatasetMetadata,
   type DatasetMetadataEntry,
+  type DatasetTagGroup,
   type IterableItemWithId,
   type TaggedCardSection,
   type TutorialLevel,
@@ -274,6 +275,9 @@ export const getMetadataValueLines = (entry: DatasetMetadataEntry): React.ReactN
 export const getMetadataFields = (metadata: DatasetMetadata): [string, DatasetMetadataEntry][] =>
   Object.entries(metadata.fields ?? {});
 
+export const getTagsAsList = (tags: DatasetTagGroup[]) => {
+  return tags.flatMap((tag) => tag.values);
+};
 export const getMetadataFieldTag = (metadata: DatasetMetadata, key: string): string | undefined => {
   const entry = metadata.fields?.[key];
   return entry && getMetadataValueLines(entry).join(" ");
@@ -321,7 +325,7 @@ export type CardDetailedPropsArgs = Omit<
     alt: string;
     src: string;
   };
-  tags?: string[];
+  tags?: DatasetTagGroup[];
   tagPrimary?: string;
   url?: string;
 };
@@ -337,7 +341,7 @@ export const makeCardDetailedImageLeftProps = ({
   ...rest
 }: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => {
   const href = url ? url : `${CONTENT_TYPES[contentType].route}/${id}`;
-
+  const tagsList = tags ? getTagsAsList(tags) : [];
   return {
     id,
     className: "height-card-md bg-base-lightest",
@@ -353,7 +357,7 @@ export const makeCardDetailedImageLeftProps = ({
         {title}
       </AppLinkStyled>
     ),
-    tags: (tags ?? []).map((tag) => makeSimpleTag(tag)),
+    tags: tagsList.map((tag) => makeSimpleTag(tag)),
     tagPrimary: tagPrimary ? { ...makePrimaryTag(tagPrimary) } : undefined,
     ...rest,
   };
