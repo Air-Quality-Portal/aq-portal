@@ -18,7 +18,7 @@ export const TEMPO_HCHO_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
     tags: [
       {
         category: "Topic",
-        options: [
+        values: [
           "Wildfire smoke",
           "High ozone",
           "Industrial emissions",
@@ -28,15 +28,15 @@ export const TEMPO_HCHO_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
       },
       {
         category: "Parameter",
-        options: ["HCHO"],
+        values: ["HCHO"],
       },
       {
         category: "Data Type",
-        options: ["Satellite"],
+        values: ["Satellite"],
       },
       {
         category: "Latency",
-        options: ["Short latency (3 - 24 hours)"],
+        values: ["Short latency (3 - 24 hours)"],
       },
     ],
     fields: {

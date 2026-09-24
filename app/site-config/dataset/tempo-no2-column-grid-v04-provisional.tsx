@@ -18,7 +18,7 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
     tags: [
       {
         category: "Topic",
-        options: [
+        values: [
           "Wildfire smoke",
           "Criteria pollutant monitoring",
           "Industrial emissions",
@@ -29,15 +29,15 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
       },
       {
         category: "Parameter",
-        options: ["NO₂"],
+        values: ["NO₂"],
       },
       {
         category: "Data Type",
-        options: ["Satellite"],
+        values: ["Satellite"],
       },
       {
         category: "Latency",
-        options: ["Short latency (3 - 24 hours)"],
+        values: ["Short latency (3 - 24 hours)"],
       },
     ],
     fields: {

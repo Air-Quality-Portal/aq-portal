@@ -37,14 +37,14 @@ describe("generateDatasetFilters", () => {
       createTestDataset("unique-test-1", {
         metadata: {
           tags: [
-            { category: "Data Type", options: ["Satellite", "Satellite"] },
-            { category: "Parameter", options: ["Smoke", "Fire"] },
+            { category: "Data Type", values: ["Satellite", "Satellite"] },
+            { category: "Parameter", values: ["Smoke", "Fire"] },
           ],
         },
       }),
       createTestDataset("unique-test-2", {
         metadata: {
-          tags: [{ category: "Parameter", options: ["Fire"] }],
+          tags: [{ category: "Parameter", values: ["Fire"] }],
         },
       }),
     ];

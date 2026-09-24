@@ -12,11 +12,11 @@ export const generateDatasetFilters = (datasets: DatasetContent[]): DatasetFilte
   const optionsByCategory = new Map<TagFilterCategory, Set<string>>();
 
   for (const dataset of datasets) {
-    for (const { category, options } of dataset.metadata.tags ?? []) {
+    for (const { category, values } of dataset.metadata.tags ?? []) {
       const existingOptions = optionsByCategory.get(category) ?? new Set<string>();
 
-      for (const option of options) {
-        existingOptions.add(option);
+      for (const value of values) {
+        existingOptions.add(value);
       }
 
       optionsByCategory.set(category, existingOptions);
@@ -51,8 +51,8 @@ export const filterDatasetsByTags = (
   if (selectedTags.length === 0) return datasets;
 
   return datasets.filter((dataset) => {
-    const datasetTagIds = (dataset.metadata.tags ?? []).flatMap(({ options }) =>
-      options.map(getIdFromValue),
+    const datasetTagIds = (dataset.metadata.tags ?? []).flatMap(({ values }) =>
+      values.map(getIdFromValue),
     );
     return selectedTags.some((tag) => datasetTagIds.includes(tag));
   });

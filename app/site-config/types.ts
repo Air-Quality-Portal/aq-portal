@@ -28,7 +28,7 @@ export type DatasetMetadataEntry = {
 
 export const TAG_FILTER_CATEGORIES = ["Data Type", "Latency", "Parameter", "Topic"] as const;
 export type TagFilterCategory = (typeof TAG_FILTER_CATEGORIES)[number];
-export type DatasetTagGroup = { category: TagFilterCategory; options: string[] };
+export type DatasetTagGroup = { category: TagFilterCategory; values: string[] };
 export type DatasetMetadata = {
   /** Topic tags used to generate dataset filters and shown on catalog and related-dataset cards. Not rendered in the sidebar. */
   tags?: DatasetTagGroup[];

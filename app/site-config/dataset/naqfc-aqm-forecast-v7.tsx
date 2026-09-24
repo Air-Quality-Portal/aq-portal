@@ -18,7 +18,7 @@ export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
     tags: [
       {
         category: "Topic",
-        options: [
+        values: [
           "Wildfire smoke",
           "High ozone",
           "Criteria pollutant monitoring",
@@ -28,15 +28,15 @@ export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
       },
       {
         category: "Data Type",
-        options: ["Forecast model"],
+        values: ["Forecast model"],
       },
       {
         category: "Latency",
-        options: ["Forecast (0 - 3 days)"],
+        values: ["Forecast (0 - 3 days)"],
       },
       {
         category: "Parameter",
-        options: ["O₃", "PM₂.₅"],
+        values: ["O₃", "PM₂.₅"],
       },
     ],
     fields: {

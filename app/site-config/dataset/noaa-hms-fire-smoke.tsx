@@ -19,19 +19,19 @@ export const NOAA_HMS_FIRE_SMOKE: DatasetContent = {
     tags: [
       {
         category: "Parameter",
-        options: ["Fire", "Smoke"],
+        values: ["Fire", "Smoke"],
       },
       {
         category: "Topic",
-        options: ["Wildfire smoke", "Transboundary pollution"],
+        values: ["Wildfire smoke", "Transboundary pollution"],
       },
       {
         category: "Data Type",
-        options: ["Satellite"],
+        values: ["Satellite"],
       },
       {
         category: "Latency",
-        options: ["Short latency (3 - 24 hours)"],
+        values: ["Short latency (3 - 24 hours)"],
       },
     ],
     fields: {

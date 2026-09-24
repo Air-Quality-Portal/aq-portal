@@ -276,7 +276,7 @@ export const getMetadataFields = (metadata: DatasetMetadata): [string, DatasetMe
   Object.entries(metadata.fields ?? {});
 
 export const getTagsAsList = (tags: DatasetTagGroup[]) => {
-  return tags.flatMap((tag) => tag.options);
+  return tags.flatMap((tag) => tag.values);
 };
 export const getMetadataFieldTag = (metadata: DatasetMetadata, key: string): string | undefined => {
   const entry = metadata.fields?.[key];
