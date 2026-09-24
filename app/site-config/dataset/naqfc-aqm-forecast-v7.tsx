@@ -17,7 +17,7 @@ export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
   metadata: {
     tags: [
       {
-        category: "Use Case",
+        category: "Topic",
         options: [
           "Wildfire smoke",
           "High ozone",
@@ -28,7 +28,11 @@ export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
       },
       {
         category: "Data Type",
-        options: ["Forecast model", "Forecast (0 - 3 days)"],
+        options: ["Forecast model"],
+      },
+      {
+        category: "Latency",
+        options: ["Forecast (0 - 3 days)"],
       },
       {
         category: "Parameter",

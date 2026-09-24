@@ -26,7 +26,7 @@ export type DatasetMetadataEntry = {
   delimiter?: string;
 };
 
-export const TAG_FILTER_CATEGORIES = ["Data Type", "Parameter", "Use Case"] as const;
+export const TAG_FILTER_CATEGORIES = ["Data Type", "Latency", "Parameter", "Topic"] as const;
 export type TagFilterCategory = (typeof TAG_FILTER_CATEGORIES)[number];
 export type DatasetTagGroup = { category: TagFilterCategory; options: string[] };
 export type DatasetMetadata = {

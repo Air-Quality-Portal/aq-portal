@@ -25,7 +25,7 @@ describe("generateDatasetFilters", () => {
     const filters = generateDatasetFilters(datasets);
 
     expect(filters).toHaveLength(3);
-    expect(filters.map((f) => f.label)).toEqual(["Data Type", "Parameter", "Use Case"]);
+    expect(filters.map((f) => f.label)).toEqual(["Data Type", "Latency", "Parameter", "Topic"]);
   });
 
   it("extracts unique options per category", () => {
@@ -60,7 +60,8 @@ describe("generateDatasetFilters", () => {
       createTestDataset("test-1", {
         metadata: {
           tags: [
-            { category: "Use Case", options: ["Test"] },
+            { category: "Topic", options: ["Test"] },
+            { category: "Latency", options: ["Test"] },
             { category: "Data Type", options: ["Test"] },
             { category: "Parameter", options: ["Test"] },
           ],
@@ -70,7 +71,7 @@ describe("generateDatasetFilters", () => {
 
     const filters = generateDatasetFilters(datasets);
 
-    expect(filters.map((f) => f.label)).toEqual(["Data Type", "Parameter", "Use Case"]);
+    expect(filters.map((f) => f.label)).toEqual(["Data Type", "Latency", "Parameter", "Topic"]);
   });
 });
 

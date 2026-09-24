@@ -13,7 +13,7 @@ const providerMatch = createTestDataset("provider-match", {
   },
 });
 const tagMatch = createTestDataset("tag-match", {
-  metadata: { tags: [{ category: "Use Case", options: ["signal"] }] },
+  metadata: { tags: [{ category: "Topic", options: ["signal"] }] },
 });
 const spatialCoverageMatch = createTestDataset("spatial-match", {
   metadata: {

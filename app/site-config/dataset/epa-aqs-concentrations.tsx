@@ -17,7 +17,7 @@ export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
   metadata: {
     tags: [
       {
-        category: "Use Case",
+        category: "Topic",
         options: [
           "Criteria pollutant monitoring",
           "Wildfire smoke",
