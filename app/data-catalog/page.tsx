@@ -15,6 +15,7 @@ import { DATASETS, filterDatasetsByTags, searchDatasets } from "@/app/site-confi
 import { DATA_CATALOG_CARD_MASTHEAD } from "@/app/site-config/dataset/toplevel-page__card-masthead";
 import { normalizeCatalogSearchParams } from "../_utilities/catalog-search.helpers";
 import {
+  CARD_DETAILED_IMAGE_SIZES,
   getMetadataFieldTag,
   getTagsAsList,
   makePrimaryTag,
@@ -66,7 +67,7 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
                 <CardDetailed
                   className="height-card-md bg-base-lightest"
                   imagePosition="left"
-                  image={<AppImage {...thumbnailImage} fill sizes="194px" />}
+                  image={<AppImage {...thumbnailImage} fill sizes={CARD_DETAILED_IMAGE_SIZES} />}
                   tagPrimary={tagPrimary ? makePrimaryTag(tagPrimary) : undefined}
                   title={
                     <AppLinkStyled
