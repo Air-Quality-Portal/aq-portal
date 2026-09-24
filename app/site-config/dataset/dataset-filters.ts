@@ -23,6 +23,7 @@ export const getIdFromValue = (value: string): string =>
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
+
 export const generateDatasetFilters = (datasets: DatasetContent[]): DatasetFilter[] => {
   const optionsByCategory = new Map<TagFilterCategory, Set<string>>();
 
