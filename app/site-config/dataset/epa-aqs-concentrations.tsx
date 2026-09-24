@@ -33,6 +33,10 @@ export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
         category: "Parameter",
         options: ["PM₂.₅", "O₃", "NO₂", "PM10", "SO₂", "CO"],
       },
+      {
+        category: "Latency",
+        options: ["Retrospective (15+ days)"],
+      },
     ],
     fields: {
       provider: { label: "Data Provider", value: "EPA" },
