@@ -1,24 +1,8 @@
 import type { DatasetContent, DatasetFilter, TagFilterCategory } from "@/app/site-config/types";
 import { TAG_FILTER_CATEGORIES } from "@/app/site-config/types";
 
-const SUBSCRIPT_DIGITS: Record<string, string> = {
-  "₀": "0",
-  "₁": "1",
-  "₂": "2",
-  "₃": "3",
-  "₄": "4",
-  "₅": "5",
-  "₆": "6",
-  "₇": "7",
-  "₈": "8",
-  "₉": "9",
-};
-
-const normalizeSubscripts = (value: string): string =>
-  [...value].map((char) => SUBSCRIPT_DIGITS[char] ?? char).join("");
-
 export const getIdFromValue = (value: string): string =>
-  normalizeSubscripts(value)
+  value
     .normalize("NFKD")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
