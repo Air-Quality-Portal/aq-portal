@@ -16,9 +16,7 @@ export const VisualizationToolIntro = ({
 }: VisualizationToolIntroProps) => (
   <div className="display-flex flex-align-start flex-justify">
     <div>
-      <h3 className="text-primary font-body-lg text-normal margin-0">
-        {heading}
-      </h3>
+      <h3 className="text-primary font-body-lg text-normal margin-0">{heading}</h3>
       <p className="font-sans-xs line-height-sans-5 text-normal text-base-dark margin-top-1 margin-bottom-0">
         {description}
       </p>
