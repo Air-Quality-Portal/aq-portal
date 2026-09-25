@@ -3,16 +3,16 @@ import type { DatasetContent } from "@/app/site-config/types";
 export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
   id: "tempo-no2-column-grid-v04-provisional",
   contentType: "dataset",
-  title: "TEMPO Gridded NO₂ Tropospheric Column V04",
+  title: "TEMPO Gridded NO2 Tropospheric Column V04",
   description:
-    "Hourly daytime observations of tropospheric nitrogen dioxide (NO₂) across North America measured by TEMPO",
+    "Hourly daytime observations of tropospheric nitrogen dioxide (NO2) across North America measured by TEMPO",
   thumbnailImage: {
     src: "/images/datasets/tempo-no2-card.webp",
-    alt: "TEMPO satellite map showing tropospheric NO₂ air pollution levels over the Washington, D.C., to New York City metro corridor",
+    alt: "TEMPO satellite map showing tropospheric NO2 air pollution levels over the Washington, D.C., to New York City metro corridor",
   },
   mastheadImage: {
     src: "/images/datasets/tempo-no2-banner.webp",
-    alt: "TEMPO satellite map showing tropospheric NO₂ air pollution levels over the Washington, D.C., to New York City metro corridor",
+    alt: "TEMPO satellite map showing tropospheric NO2 air pollution levels over the Washington, D.C., to New York City metro corridor",
   },
   metadata: {
     tags: [
@@ -29,7 +29,7 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
       },
       {
         category: "Parameter",
-        values: ["NO₂"],
+        values: ["NO2"],
       },
       {
         category: "Data Type",
@@ -49,7 +49,7 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
       parameters: {
         label: "Parameters & Units",
         value: [
-          "Tropospheric Column Nitrogen Dioxide (NO₂) Density, molecules per square centimeter (molec/cm²)",
+          "Tropospheric Column Nitrogen Dioxide (NO2) Density, molecules per square centimeter (molec/cm²)",
         ],
         delimiter: "\n",
       },
@@ -81,7 +81,7 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
     {
       type: "text",
       paragraphs: [
-        "The TEMPO (Tropospheric Emissions: Monitoring of Pollution) mission is a geostationary satellite mission that measures air-quality over North America during daylight hours at a high spatial resolution and with a temporal resolution of one hour or less. The nitrogen dioxide (NO₂) Level 3 (PROVISIONAL) dataset in AIR4US provides information on tropospheric NO₂ vertical columns measured in molecules per square centimeter (molecules/cm³). In the AIR4US tool low quality pixels have been filtered out using the following threshold: effective cloud fraction > 0.5, solar zenith angle > 80, quality flag > 1. TEMPO Level 3 products have a spatial resolution of 0.02° and are generated using an area-weighted regridding algorithm, combining information from all Level 2 files in a TEMPO East-West scan cycle. This dataset reached provisional validation on December 9, 2024. The TEMPO gridded NO₂ product contains hourly daytime scans across North America, with more frequent scans in the morning over the eastern portion of the field of regard and in the evenings over the western portion. Data are available from August 2, 2023, to the present.",
+        "The TEMPO (Tropospheric Emissions: Monitoring of Pollution) mission is a geostationary satellite mission that measures air-quality over North America during daylight hours at a high spatial resolution and with a temporal resolution of one hour or less. The nitrogen dioxide (NO2) Level 3 (PROVISIONAL) dataset in AIR4US provides information on tropospheric NO2 vertical columns measured in molecules per square centimeter (molecules/cm³). In the AIR4US tool low quality pixels have been filtered out using the following threshold: effective cloud fraction > 0.5, solar zenith angle > 80, quality flag > 1. TEMPO Level 3 products have a spatial resolution of 0.02° and are generated using an area-weighted regridding algorithm, combining information from all Level 2 files in a TEMPO East-West scan cycle. This dataset reached provisional validation on December 9, 2024. The TEMPO gridded NO2 product contains hourly daytime scans across North America, with more frequent scans in the morning over the eastern portion of the field of regard and in the evenings over the western portion. Data are available from August 2, 2023, to the present.",
       ],
     },
     {
@@ -117,7 +117,7 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
       headingLevel: "h3",
       links: [
         {
-          label: "TEMPO NO₂ Level 3 (PROVISIONAL) V04 Data Access",
+          label: "TEMPO NO2 Level 3 (PROVISIONAL) V04 Data Access",
           href: "https://doi.org/10.5067/IS-40e/TEMPO/NO2_L3.004",
           isExternal: true,
         },
@@ -142,7 +142,7 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
     heading: "Cite this dataset",
     text: (
       <>
-        Liu, X. (2026). TEMPO gridded NO₂ tropospheric and stratospheric columns V04 (PROVISIONAL)
+        Liu, X. (2026). TEMPO gridded NO2 tropospheric and stratospheric columns V04 (PROVISIONAL)
         [Dataset]. NASA Langley Atmospheric Science Data Center Distributed Active Archive Center.{" "}
         <a
           href="https://doi.org/10.5067/IS-40E/TEMPO/NO2_L3.004"

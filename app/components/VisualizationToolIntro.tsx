@@ -1,4 +1,5 @@
 import { Link } from "@teamimpact/veda-ui-blocks";
+import { subscriptPollutantSymbols } from "@/app/_utilities/pollutants.helpers";
 
 export type VisualizationToolIntroProps = {
   heading: string;
@@ -16,9 +17,11 @@ export const VisualizationToolIntro = ({
 }: VisualizationToolIntroProps) => (
   <div className="display-flex flex-align-start flex-justify">
     <div>
-      <h3 className="text-primary font-body-lg text-normal margin-0">{heading}</h3>
+      <h3 className="text-primary font-body-lg text-normal margin-0">
+        {subscriptPollutantSymbols(heading)}
+      </h3>
       <p className="font-sans-xs line-height-sans-5 text-normal text-base-dark margin-top-1 margin-bottom-0">
-        {description}
+        {subscriptPollutantSymbols(description)}
       </p>
     </div>
     <Link className="text-no-wrap" variant="button" isExternal href={callToAction.href}>

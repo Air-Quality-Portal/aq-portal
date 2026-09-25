@@ -3,16 +3,16 @@ import type { DatasetContent } from "@/app/site-config/types";
 export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
   id: "naqfc-aqm-forecast-v7",
   contentType: "dataset",
-  title: "NAQFC Regional Model Guidance: AQM O₃ and PM₂.₅ Forecasts",
+  title: "NAQFC Regional Model Guidance: AQM O3 and PM2.5 Forecasts",
   description:
-    "Model-generated 72-hour forecast guidance for surface ozone (O₃) and PM₂.₅ across the United States",
+    "Model-generated 72-hour forecast guidance for surface ozone (O3) and PM2.5 across the United States",
   thumbnailImage: {
     src: "/images/datasets/naqfc-aqm-card.webp",
-    alt: "Map of forecasted continental U.S. PM₂.₅ levels with low values in green and higher concentrations in orange and red. The color transitions align with the EPA's PM₂.₅ concentration breakpoints for each AQI category.",
+    alt: "Map of forecasted continental U.S. PM2.5 levels with low values in green and higher concentrations in orange and red. The color transitions align with the EPA's PM2.5 concentration breakpoints for each AQI category.",
   },
   mastheadImage: {
     src: "/images/datasets/naqfc-aqm-banner.webp",
-    alt: "Map of forecasted continental U.S. PM₂.₅ levels with low values in green and higher concentrations in orange and red. The color transitions align with the EPA's PM₂.₅ concentration breakpoints for each AQI category.",
+    alt: "Map of forecasted continental U.S. PM2.5 levels with low values in green and higher concentrations in orange and red. The color transitions align with the EPA's PM2.5 concentration breakpoints for each AQI category.",
   },
   metadata: {
     tags: [
@@ -36,7 +36,7 @@ export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
       },
       {
         category: "Parameter",
-        values: ["O₃", "PM₂.₅"],
+        values: ["O3", "PM2.5"],
       },
     ],
     fields: {
@@ -44,10 +44,10 @@ export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
       parameters: {
         label: "Parameters & Units",
         value: [
-          "Surface Ozone (O₃) Concentration, parts per billion (ppb)",
-          "Bias-corrected Surface Ozone (O₃) Concentration, parts per billion (ppb)",
-          "Surface Particulate Matter 2.5 (PM₂.₅) Concentration, micrograms per cubic meter (µg/m³)",
-          "Bias-corrected Surface Particulate Matter 2.5 (PM₂.₅) Concentration, micrograms per cubic meter (µg/m³)",
+          "Surface Ozone (O3) Concentration, parts per billion (ppb)",
+          "Bias-corrected Surface Ozone (O3) Concentration, parts per billion (ppb)",
+          "Surface Particulate Matter 2.5 (PM2.5) Concentration, micrograms per cubic meter (µg/m³)",
+          "Bias-corrected Surface Particulate Matter 2.5 (PM2.5) Concentration, micrograms per cubic meter (µg/m³)",
         ],
         delimiter: "\n",
       },
@@ -77,7 +77,7 @@ export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
       versionHistory: {
         label: "Version History",
         value:
-          "NAQFC AQM v7 O₃ and PM₂.₅ forecasts (hourly averages only) were incorporated into AIR4US in September 2026.",
+          "NAQFC AQM v7 O3 and PM2.5 forecasts (hourly averages only) were incorporated into AIR4US in September 2026.",
       },
     },
   },
@@ -92,7 +92,7 @@ export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
     {
       type: "text",
       paragraphs: [
-        "The National air-quality Forecasting Capability (NAQFC) provides model-generated air-quality forecast guidance from three prediction systems: the Air Quality Model (AQM), Hybrid Single-Particle Lagrangian Integrated Trajectory model (HYSPLIT), and Rapid Refresh (RAP) model. This dataset includes 72-hour forecast guidance from the AQM for hourly ozone (O₃) and PM₂.₅ across three domains: the continental United States (CONUS), Alaska, and Hawaii. These data are horizontally gridded at 5 km over CONUS, 6 km over Alaska, and 2.5 km over Hawaii. O₃ concentrations are reported in parts per billion (ppb), and PM₂.₅ is reported in micrograms per cubic meter (µg/m³). The model forecast is updated twice daily at 0600 and 1200 UTC.",
+        "The National air-quality Forecasting Capability (NAQFC) provides model-generated air-quality forecast guidance from three prediction systems: the Air Quality Model (AQM), Hybrid Single-Particle Lagrangian Integrated Trajectory model (HYSPLIT), and Rapid Refresh (RAP) model. This dataset includes 72-hour forecast guidance from the AQM for hourly ozone (O3) and PM2.5 across three domains: the continental United States (CONUS), Alaska, and Hawaii. These data are horizontally gridded at 5 km over CONUS, 6 km over Alaska, and 2.5 km over Hawaii. O3 concentrations are reported in parts per billion (ppb), and PM2.5 is reported in micrograms per cubic meter (µg/m³). The model forecast is updated twice daily at 0600 and 1200 UTC.",
       ],
     },
     {

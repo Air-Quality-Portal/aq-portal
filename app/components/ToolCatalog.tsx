@@ -2,6 +2,7 @@ import { CardDetailed } from "@teamimpact/veda-ui-blocks";
 import type { Route } from "next";
 import "../styles/tool-catalog.css";
 import { makePrimaryTag } from "@/app/_utilities/content.helpers";
+import { subscriptPollutantSymbols } from "@/app/_utilities/pollutants.helpers";
 import { AppImage } from "@/app/components/AppImage";
 import { AppLinkStyled } from "@/app/components/AppLink";
 import type { ToolContent } from "@/app/site-config/types";
@@ -56,15 +57,20 @@ export const ToolCatalog = ({ tools, layout = "thirds" }: ToolCatalogProps) => {
             tagPrimary={tool.tagPrimary ? makePrimaryTag(tool.tagPrimary) : undefined}
             intro={tool.fullname}
             title={
+              /*
+               * CardDetailed drops a non-string title straight into its children
+               * array, so the element needs a key of its own.
+               */
               <AppLinkStyled
+                key={tool.id}
                 className="font-body-lg text-normal"
                 href={tool.href as Route}
                 isExternal
               >
-                {tool.title}
+                {subscriptPollutantSymbols(tool.title)}
               </AppLinkStyled>
             }
-            description={tool.description}
+            description={tool.description && subscriptPollutantSymbols(tool.description)}
             tags={
               tool.additionalTags
                 ? tool.additionalTags.map((label) => ({

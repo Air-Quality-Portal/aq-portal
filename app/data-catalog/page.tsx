@@ -3,6 +3,7 @@ import {
   CATALOG_PAGE_PARAM,
   paginateCatalogItems,
 } from "@/app/_utilities/catalog-pagination.helpers";
+import { subscriptPollutantSymbols } from "@/app/_utilities/pollutants.helpers";
 import {
   CatalogEmptyState,
   CatalogPagination,
@@ -83,10 +84,10 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
                       href={`${CONTENT_TYPES.dataset.route}/${id}`}
                       variant="text"
                     >
-                      {title}
+                      {subscriptPollutantSymbols(title)}
                     </AppLinkStyled>
                   }
-                  description={description}
+                  description={description && subscriptPollutantSymbols(description)}
                   tags={tags.map((tag) => makeSimpleTag(tag))}
                 />
               </div>
