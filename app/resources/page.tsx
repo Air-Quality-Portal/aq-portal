@@ -1,4 +1,5 @@
 import { Card, InPageNavigation } from "@teamimpact/veda-ui-blocks";
+import "../styles/in-page-navigation.css";
 import { ContentBlockRenderer, Section, SectionWorkshopCards } from "@/app/components";
 import { RESOURCES_PAGE_BODY, RESOURCES_PAGE_MASTHEAD } from "@/app/site-config/resources";
 

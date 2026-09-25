@@ -39,8 +39,11 @@ export const ContentBlockRenderer = ({
             <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
           )}
           {block.paragraphs.map((p, i) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-            <p key={i} className={i === 0 && !block.heading ? "margin-top-0" : ""}>
+            <p
+              // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
+              key={i}
+              className={`line-height-sans-5${i === 0 && !block.heading ? " margin-top-0" : ""}`}
+            >
               {subscriptPollutantSymbolsIn(p)}
             </p>
           ))}
