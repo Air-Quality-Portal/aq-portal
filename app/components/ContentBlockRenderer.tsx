@@ -1,5 +1,8 @@
 import { makeCardSimpleProps } from "@/app/_utilities/content.helpers";
-import { formatPollutants, formatPollutantsIn } from "@/app/_utilities/pollutants.helpers";
+import {
+  subscriptPollutantSymbols,
+  subscriptPollutantSymbolsIn,
+} from "@/app/_utilities/pollutants.helpers";
 import { typedMap } from "@/app/_utilities/typed.helpers";
 import {
   ContentHeading,
@@ -38,7 +41,7 @@ export const ContentBlockRenderer = ({
           {block.paragraphs.map((p, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
             <p key={i} className={i === 0 && !block.heading ? "margin-top-0" : ""}>
-              {formatPollutantsIn(p)}
+              {subscriptPollutantSymbolsIn(p)}
             </p>
           ))}
         </Section>
@@ -54,10 +57,12 @@ export const ContentBlockRenderer = ({
             {block.items.map((item, i) =>
               typeof item === "string" ? (
                 // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-                <li key={i}>{formatPollutants(item)}</li>
+                <li key={i}>{subscriptPollutantSymbols(item)}</li>
               ) : (
                 <li key={item.href}>
-                  <AppLinkStyled href={item.href}>{formatPollutants(item.label)}</AppLinkStyled>
+                  <AppLinkStyled href={item.href}>
+                    {subscriptPollutantSymbols(item.label)}
+                  </AppLinkStyled>
                 </li>
               ),
             )}
@@ -78,7 +83,7 @@ export const ContentBlockRenderer = ({
               </p>
             )}
             <p className="text-base-darkest line-height-sans-5 margin-0">
-              {formatPollutants(block.text)}
+              {subscriptPollutantSymbols(block.text)}
             </p>
           </div>
         </Section>
@@ -111,7 +116,9 @@ export const ContentBlockRenderer = ({
             </div>
           )}
           {block.caption && (
-            <p className="font-body-sm text-base margin-top-1">{formatPollutants(block.caption)}</p>
+            <p className="font-body-sm text-base margin-top-1">
+              {subscriptPollutantSymbols(block.caption)}
+            </p>
           )}
         </Section>
       );
@@ -130,7 +137,7 @@ export const ContentBlockRenderer = ({
             />
             {(block.caption || block.attribution) && (
               <figcaption className="font-body-sm text-base margin-top-1">
-                {block.caption && formatPollutants(block.caption)}
+                {block.caption && subscriptPollutantSymbols(block.caption)}
                 {block.attribution && (
                   <span className="display-block text-base-dark">
                     {block.attribution.label && `${block.attribution.label} `}
@@ -176,7 +183,7 @@ export const ContentBlockRenderer = ({
           sectionHeading={
             block.heading && (
               <SectionHeading {...(block.href ? { href: block.href } : {})}>
-                {formatPollutants(block.heading)}
+                {subscriptPollutantSymbols(block.heading)}
               </SectionHeading>
             )
           }

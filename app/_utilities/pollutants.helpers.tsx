@@ -32,11 +32,11 @@ const toAsciiFigures = (text: string) =>
  * do this: neither Public Sans nor Merriweather carries a U+2080-U+2089 glyph, so
  * those characters come from a fallback face, and no subscript period exists at all.
  *
- * Returns the input unchanged when it holds no pollutant, keeping plain strings
+ * Returns the input unchanged when it holds no symbol, keeping plain strings
  * plain. The `string | ReactElement` return is what the card props accept, so a
- * formatted description can go straight into one.
+ * subscripted description can go straight into one.
  */
-export function formatPollutants(source: string): string | ReactElement {
+export function subscriptPollutantSymbols(source: string): string | ReactElement {
   const text = toAsciiFigures(source);
   const parts: ReactNode[] = [];
   let cursor = 0;
@@ -72,10 +72,10 @@ export function formatPollutants(source: string): string | ReactElement {
 }
 
 /**
- * Formats content typed as `ReactNode`, where an author may supply either a
- * plain string or JSX. Only a string can be scanned for symbols; anything
+ * Subscripts the symbols in content typed as `ReactNode`, where an author may
+ * supply either a plain string or JSX. Only a string can be scanned; anything
  * already built as nodes passes through with its markup intact.
  */
-export function formatPollutantsIn(content: ReactNode): ReactNode {
-  return typeof content === "string" ? formatPollutants(content) : content;
+export function subscriptPollutantSymbolsIn(content: ReactNode): ReactNode {
+  return typeof content === "string" ? subscriptPollutantSymbols(content) : content;
 }

@@ -20,7 +20,7 @@ import {
   type WorkshopSection,
   type WorkshopStatus,
 } from "@/app/site-config/types";
-import { formatPollutants, formatPollutantsIn } from "./pollutants.helpers";
+import { subscriptPollutantSymbols, subscriptPollutantSymbolsIn } from "./pollutants.helpers";
 
 /**
  * True for hrefs that leave the site: absolute URLs with a scheme and
@@ -309,7 +309,7 @@ export const makeCardMastHeadProps = ({
    */
   title: title && (
     <h2 key="title" className="blocks-card__title">
-      {formatPollutants(title)}
+      {subscriptPollutantSymbols(title)}
     </h2>
   ),
   tag: tagPrimary
@@ -320,7 +320,8 @@ export const makeCardMastHeadProps = ({
         textColor: "primary-dark",
       }
     : undefined,
-  description: typeof description === "string" ? formatPollutants(description) : description,
+  description:
+    typeof description === "string" ? subscriptPollutantSymbols(description) : description,
   ...rest,
 });
 
@@ -369,10 +370,11 @@ export const makeCardDetailedImageLeftProps = ({
         isExternal={!!url}
         variant="text"
       >
-        {formatPollutantsIn(title)}
+        {subscriptPollutantSymbolsIn(title)}
       </AppLinkStyled>
     ),
-    description: typeof description === "string" ? formatPollutants(description) : description,
+    description:
+      typeof description === "string" ? subscriptPollutantSymbols(description) : description,
     tags: tagsList.map((tag) => makeSimpleTag(tag)),
     tagPrimary: tagPrimary ? { ...makePrimaryTag(tagPrimary) } : undefined,
     ...rest,
@@ -410,14 +412,14 @@ export const makeCardDetailedTextOnlyProps = ({
           isExternal={isExternal}
           variant="text"
         >
-          {formatPollutants(title)}
+          {subscriptPollutantSymbols(title)}
         </AppLinkStyled>
       ) : (
-        <span className="font-body-lg text-light">{formatPollutants(title)}</span>
+        <span className="font-body-lg text-light">{subscriptPollutantSymbols(title)}</span>
       )}
       {description && (
         <p className="font-body-xs text-base-dark text-light margin-0">
-          {formatPollutantsIn(description)}
+          {subscriptPollutantSymbolsIn(description)}
         </p>
       )}
     </Fragment>
@@ -453,6 +455,7 @@ export const makeCardSimpleProps = ({
     : makeContentTypeTag(contentType),
   href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
   isExternal: !!url,
-  description: typeof description === "string" ? formatPollutants(description) : description,
+  description:
+    typeof description === "string" ? subscriptPollutantSymbols(description) : description,
   ...rest,
 });

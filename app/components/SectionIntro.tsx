@@ -1,5 +1,8 @@
 import type { ReactNode } from "react";
-import { formatPollutants, formatPollutantsIn } from "@/app/_utilities/pollutants.helpers";
+import {
+  subscriptPollutantSymbols,
+  subscriptPollutantSymbolsIn,
+} from "@/app/_utilities/pollutants.helpers";
 import { AppLinkStyled } from "@/app/components/AppLink";
 
 export type SectionIntroProps = {
@@ -32,11 +35,11 @@ export const SectionIntro = ({
       <h2
         className={`font-heading-${headingSize} line-height-serif-3 text-light text-ink margin-0`}
       >
-        {formatPollutantsIn(heading)}
+        {subscriptPollutantSymbolsIn(heading)}
       </h2>
       {description && (
         <p className="font-sans-sm line-height-sans-5 text-normal text-base margin-top-1 margin-bottom-0 tablet:grid-col-6">
-          {formatPollutants(description)}
+          {subscriptPollutantSymbols(description)}
         </p>
       )}
     </div>

@@ -1,4 +1,4 @@
-import { formatPollutants } from "@/app/_utilities/pollutants.helpers";
+import { subscriptPollutantSymbols } from "@/app/_utilities/pollutants.helpers";
 import { SectionHeading } from "@/app/components";
 import type { ContentHeadingLevel } from "../site-config/types";
 
@@ -9,7 +9,7 @@ export function ContentHeading({
   heading: string;
   headingLevel?: ContentHeadingLevel;
 }) {
-  const text = formatPollutants(heading);
+  const text = subscriptPollutantSymbols(heading);
 
   if (headingLevel === "h4")
     return <h4 className="font-heading-md margin-bottom-2 text-light">{text}</h4>;
