@@ -57,7 +57,7 @@ export const ToolCatalog = ({ tools, layout = "thirds" }: ToolCatalogProps) => {
             intro={tool.fullname}
             title={
               <AppLinkStyled
-                className="font-body-lg text-light"
+                className="font-body-lg text-normal"
                 href={tool.href as Route}
                 isExternal
               >

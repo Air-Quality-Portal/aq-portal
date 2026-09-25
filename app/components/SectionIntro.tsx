@@ -9,6 +9,8 @@ export type SectionIntroProps = {
   description?: string;
   /** Heading font size utility suffix. Defaults to "lg". */
   headingSize?: "lg" | "xl";
+  /** Heading font weight utility suffix. Defaults to "normal". */
+  headingWeight?: "light" | "normal";
   /** Optional outline button aligned to the right of the heading block. */
   callToAction?: {
     label: string;
@@ -21,6 +23,7 @@ export const SectionIntro = ({
   heading,
   description,
   headingSize = "lg",
+  headingWeight = "normal",
   callToAction,
 }: SectionIntroProps) => (
   <div className="display-flex flex-justify flex-align-start flex-wrap margin-bottom-3">
@@ -29,12 +32,12 @@ export const SectionIntro = ({
         {eyebrow}
       </p>
       <h2
-        className={`font-heading-${headingSize} line-height-serif-3 text-normal text-ink margin-0`}
+        className={`font-heading-${headingSize} line-height-serif-3 text-${headingWeight} text-ink margin-0`}
       >
         {heading}
       </h2>
       {description && (
-        <p className="font-sans-sm line-height-sans-5 text-normal text-base margin-top-1 margin-bottom-0 tablet:grid-col-6">
+        <p className="font-body-md line-height-body-5 text-normal text-base-dark margin-top-1 margin-bottom-0 tablet:grid-col-6">
           {description}
         </p>
       )}

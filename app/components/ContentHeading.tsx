@@ -1,3 +1,4 @@
+import { SectionHeading } from "@/app/components";
 import type { ContentHeadingLevel } from "../site-config/types";
 
 export function ContentHeading({
@@ -13,5 +14,5 @@ export function ContentHeading({
   if (headingLevel === "h3")
     return <h3 className="font-heading-lg margin-bottom-2 text-light">{heading}</h3>;
 
-  return <h2 className="text-normal font-sans-xl padding-bottom-2 margin-0">{heading}</h2>;
+  return <SectionHeading>{heading}</SectionHeading>;
 }
