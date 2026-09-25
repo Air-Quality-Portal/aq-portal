@@ -1,5 +1,6 @@
 import type { CardDetailedProps, CardProps, CardSimpleProps } from "@teamimpact/veda-ui-blocks";
 import type React from "react";
+import { Fragment } from "react";
 import { AppImage } from "@/app/components/AppImage";
 import { AppLinkStyled } from "@/app/components/AppLink";
 import {
@@ -306,7 +307,11 @@ export const makeCardMastHeadProps = ({
    * as nodes and would otherwise land straight in the card's flex column, one
    * line per node. Supplying the heading keeps the title on a single line.
    */
-  title: title && <h2 className="blocks-card__title">{formatPollutants(title)}</h2>,
+  title: title && (
+    <h2 key="title" className="blocks-card__title">
+      {formatPollutants(title)}
+    </h2>
+  ),
   tag: tagPrimary
     ? {
         label: tagPrimary,
@@ -358,6 +363,7 @@ export const makeCardDetailedImageLeftProps = ({
     imagePosition: "left",
     title: (
       <AppLinkStyled
+        key={id}
         className="font-body-lg text-light"
         href={href}
         isExternal={!!url}
@@ -396,7 +402,7 @@ export const makeCardDetailedTextOnlyProps = ({
   id,
   className,
   title: (
-    <>
+    <Fragment key={id}>
       {href ? (
         <AppLinkStyled
           className="font-body-lg text-light"
@@ -414,7 +420,7 @@ export const makeCardDetailedTextOnlyProps = ({
           {formatPollutantsIn(description)}
         </p>
       )}
-    </>
+    </Fragment>
   ),
   tags,
   ...rest,

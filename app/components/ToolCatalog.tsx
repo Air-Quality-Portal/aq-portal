@@ -57,7 +57,12 @@ export const ToolCatalog = ({ tools, layout = "thirds" }: ToolCatalogProps) => {
             tagPrimary={tool.tagPrimary ? makePrimaryTag(tool.tagPrimary) : undefined}
             intro={tool.fullname}
             title={
+              /*
+               * CardDetailed drops a non-string title straight into its children
+               * array, so the element needs a key of its own.
+               */
               <AppLinkStyled
+                key={tool.id}
                 className="font-body-lg text-light"
                 href={tool.href as Route}
                 isExternal
