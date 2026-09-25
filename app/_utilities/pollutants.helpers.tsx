@@ -1,4 +1,4 @@
-import { Fragment, type ReactNode } from "react";
+import { Fragment, type ReactElement, type ReactNode } from "react";
 
 /**
  * Pollutant symbols written in plain ASCII, the form stored in site config so
@@ -32,9 +32,11 @@ const toAsciiFigures = (text: string) =>
  * do this: neither Public Sans nor Merriweather carries a U+2080-U+2089 glyph, so
  * those characters come from a fallback face, and no subscript period exists at all.
  *
- * Returns the input unchanged when it holds no pollutant, keeping plain strings plain.
+ * Returns the input unchanged when it holds no pollutant, keeping plain strings
+ * plain. The `string | ReactElement` return is what the card props accept, so a
+ * formatted description can go straight into one.
  */
-export function formatPollutants(source: string): ReactNode {
+export function formatPollutants(source: string): string | ReactElement {
   const text = toAsciiFigures(source);
   const parts: ReactNode[] = [];
   let cursor = 0;

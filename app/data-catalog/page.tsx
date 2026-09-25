@@ -87,7 +87,7 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
                       {formatPollutants(title)}
                     </AppLinkStyled>
                   }
-                  description={description}
+                  description={description && formatPollutants(description)}
                   tags={tags.map((tag) => makeSimpleTag(tag))}
                 />
               </div>

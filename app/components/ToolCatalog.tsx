@@ -65,7 +65,7 @@ export const ToolCatalog = ({ tools, layout = "thirds" }: ToolCatalogProps) => {
                 {formatPollutants(tool.title)}
               </AppLinkStyled>
             }
-            description={tool.description}
+            description={tool.description && formatPollutants(tool.description)}
             tags={
               tool.additionalTags
                 ? tool.additionalTags.map((label) => ({

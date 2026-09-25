@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import { AppLinkStyled } from "@/app/components/AppLink";
 import type { CardTextOnlySection, WorkshopItem, WorkshopSection } from "@/app/site-config/types";
 import {
+  makeCardDetailedImageLeftProps,
   makeCardDetailedTextOnlyProps,
   makeCardMastHeadProps,
   makeContentTypeTag,
@@ -444,5 +445,36 @@ describe("makeCardMastHeadProps", () => {
     const heading = title as ReactElement<{ className?: string }>;
     expect(heading.type).toBe("h2");
     expect(heading.props.className).toBe("blocks-card__title");
+  });
+});
+
+describe("card descriptions", () => {
+  /*
+   * veda-ui-blocks 0.1.0-beta.20 widened the card `description` prop to
+   * `string | ReactElement`, so descriptions can carry subscript markup
+   * rather than printing their pollutant symbols flat.
+   */
+  it("formats pollutant symbols in a detailed card description", () => {
+    const { description } = makeCardDetailedImageLeftProps({
+      id: "naqfc",
+      contentType: "dataset",
+      title: "NAQFC",
+      description: "Forecast guidance for surface ozone (O3) and PM2.5",
+      thumbnailImage: { src: "/img/card.webp", alt: "A map" },
+    });
+
+    expect(isValidElement(description)).toBe(true);
+  });
+
+  it("leaves a description without pollutants as a plain string", () => {
+    const { description } = makeCardDetailedImageLeftProps({
+      id: "aqs",
+      contentType: "dataset",
+      title: "AQS",
+      description: "Validated hourly average pollutant data",
+      thumbnailImage: { src: "/img/card.webp", alt: "A map" },
+    });
+
+    expect(description).toBe("Validated hourly average pollutant data");
   });
 });

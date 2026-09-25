@@ -297,6 +297,7 @@ export const makeCardMastHeadProps = ({
   mastheadImage,
   title,
   tagPrimary,
+  description,
   ...rest
 }: CardMastheadPropsArgs): CardProps => ({
   image: <AppImage {...mastheadImage} sizes="100vw" fill />,
@@ -314,6 +315,7 @@ export const makeCardMastHeadProps = ({
         textColor: "primary-dark",
       }
     : undefined,
+  description: typeof description === "string" ? formatPollutants(description) : description,
   ...rest,
 });
 
@@ -344,6 +346,7 @@ export const makeCardDetailedImageLeftProps = ({
   tags,
   url,
   title,
+  description,
   ...rest
 }: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => {
   const href = url ? url : `${CONTENT_TYPES[contentType].route}/${id}`;
@@ -363,6 +366,7 @@ export const makeCardDetailedImageLeftProps = ({
         {formatPollutantsIn(title)}
       </AppLinkStyled>
     ),
+    description: typeof description === "string" ? formatPollutants(description) : description,
     tags: tagsList.map((tag) => makeSimpleTag(tag)),
     tagPrimary: tagPrimary ? { ...makePrimaryTag(tagPrimary) } : undefined,
     ...rest,
@@ -407,7 +411,7 @@ export const makeCardDetailedTextOnlyProps = ({
       )}
       {description && (
         <p className="font-body-xs text-base-dark text-light margin-0">
-          {formatPollutants(description)}
+          {formatPollutantsIn(description)}
         </p>
       )}
     </>
@@ -433,6 +437,7 @@ export const makeCardSimpleProps = ({
   thumbnailImage,
   tag,
   url,
+  description,
   ...rest
 }: CardSimplePropsArgs): IterableItemWithId<CardSimpleProps> => ({
   id,
@@ -442,5 +447,6 @@ export const makeCardSimpleProps = ({
     : makeContentTypeTag(contentType),
   href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
   isExternal: !!url,
+  description: typeof description === "string" ? formatPollutants(description) : description,
   ...rest,
 });
