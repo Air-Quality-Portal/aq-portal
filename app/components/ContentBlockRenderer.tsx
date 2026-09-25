@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { makeCardSimpleProps } from "@/app/_utilities/content.helpers";
 import { typedMap } from "@/app/_utilities/typed.helpers";
 import {
@@ -36,14 +35,13 @@ export const ContentBlockRenderer = ({
             <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
           )}
           {block.paragraphs.map((p, i) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
-            <Fragment key={i}>
-              <p
-                className={`line-height-sans-5${i === 0 && !block.heading ? " margin-top-0" : ""}`}
-              >
-                {p}
-              </p>
-            </Fragment>
+            <p
+              // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
+              key={i}
+              className={`line-height-sans-5${i === 0 && !block.heading ? " margin-top-0" : ""}`}
+            >
+              {p}
+            </p>
           ))}
         </Section>
       );
