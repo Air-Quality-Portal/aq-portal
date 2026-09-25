@@ -12,7 +12,7 @@ export function ContentHeading({
     return <h4 className="font-heading-md margin-bottom-2 text-light">{heading}</h4>;
 
   if (headingLevel === "h3")
-    return <h3 className=" font-heading-lg margin-bottom-2 text-light">{heading}</h3>;
+    return <h3 className="font-heading-lg margin-bottom-2 text-light">{heading}</h3>;
 
-  return <SectionHeading className="text-normal">{heading}</SectionHeading>;
+  return <SectionHeading>{heading}</SectionHeading>;
 }

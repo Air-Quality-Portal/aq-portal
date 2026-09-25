@@ -11,7 +11,7 @@ export function PageSidebar({ metadata = {} }: { metadata?: DatasetMetadata }) {
           </p>
           {getMetadataValueLines(entry).map((item, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: items are static and never reorder
-            <p key={i} className="font-body-sm text-medium margin-y-05">
+            <p key={i} className="font-body-sm line-height-sans-5 margin-y-05">
               {item}
             </p>
           ))}

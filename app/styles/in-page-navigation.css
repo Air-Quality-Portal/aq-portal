@@ -1,0 +1,4 @@
+/* Lines the "On this page" label up with the top of the first content heading beside it. */
+.blocks-in-page-navigation.usa-in-page-nav .usa-in-page-nav__nav {
+  padding-top: var(--unit-05);
+}
