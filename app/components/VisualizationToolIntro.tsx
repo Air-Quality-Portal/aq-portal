@@ -24,7 +24,7 @@ export const VisualizationToolIntro = ({
         {formatPollutants(description)}
       </p>
     </div>
-    <Link variant="button" isExternal href={callToAction.href}>
+    <Link className="text-no-wrap" variant="button" isExternal href={callToAction.href}>
       {callToAction.label}
     </Link>
   </div>

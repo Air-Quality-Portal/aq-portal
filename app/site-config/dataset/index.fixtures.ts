@@ -11,7 +11,14 @@ export function createTestDataset(
     description: "A test dataset for unit testing",
     thumbnailImage: { src: "", alt: "" },
     mastheadImage: { src: "", alt: "" },
-    metadata: { tags: [] },
+    metadata: {
+      tags: [
+        { category: "Data Type", values: ["Satellite"] },
+        { category: "Latency", values: ["Retrospective (15+ days)"] },
+        { category: "Parameter", values: ["Smoke", "PM₂.₅"] },
+        { category: "Topic", values: ["Wildfire Smoke", "High Ozone"] },
+      ],
+    },
     ...overrides,
   };
 }
@@ -23,5 +30,11 @@ export const testDataset2 = createTestDataset("test-dataset-2", {
 });
 
 export const testDataset3 = createTestDataset("test-dataset-3", {
-  metadata: { tags: ["sample", "test"] },
+  metadata: {
+    tags: [
+      { category: "Data Type", values: ["Forecast model"] },
+      { category: "Parameter", values: ["Smoke", "PM₂.₅", "PM10"] },
+      { category: "Topic", values: ["sample", "test"] },
+    ],
+  },
 });

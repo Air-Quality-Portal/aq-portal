@@ -23,8 +23,9 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
         text: "Blue Marble 2012 (NASA/NOAA)",
         url: "https://www.nasa.gov/image-article/blue-marble-2012/",
       },
-      width: 880,
-      height: 880,
+      width: 700,
+      height: 700,
+      maxWidth: "700px",
     },
 
     {
@@ -41,7 +42,24 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
       heading: "Technical Support and Stakeholder Network",
       headingLevel: "h3",
       paragraphs: [
-        "Beyond these central agencies, the partnership draws vital technical integration and testing support from NASA’s Health and Air Quality Applied Sciences Team (HAQAST), specifically through a dedicated Tiger Team. The initiative connects AIR4US to a broad network of end-user stakeholders from the U.S. air-quality management community through its user engagement group.",
+        <>
+          Beyond these central agencies, the partnership draws vital technical integration and
+          testing support from{" "}
+          <a href="https://haqast.wisc.edu/" target="_blank" rel="noopener noreferrer">
+            NASA&apos;s Health and Air-Quality Applied Sciences Team (HAQAST)
+          </a>
+          , specifically through a dedicated Tiger Team. The initiative connects AIR4US to a broad
+          network of end-user stakeholders from the U.S. air-quality management community through
+          its user engagement group (
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfP2xHHgoaLJDAs9TIAh_xHdl6uYa8RpD7G-GD4HLXRirYXDg/viewform?usp=header"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            click to join
+          </a>
+          ).
+        </>,
       ],
     },
     {
@@ -49,7 +67,7 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
       heading: "Feedback",
       headingLevel: "h2",
       paragraphs: [
-        "Your input is essential to helping us continuously improve the AIR4US platform. As we expand our services, data visualization tools, and capacity-building efforts, we welcome your suggestions, bug reports, and feature requests. Please reach out to {placeholder} to share your thoughts and ensure the platform meets your community’s needs.",
+        "Your input is essential to helping us continuously improve the AIR4US Portal. As we expand our services, data visualization tools, and capacity-building efforts, we welcome your suggestions, bug reports, and feature requests. Please reach out to {placeholder} to share your thoughts and ensure the platform meets your community’s needs.",
       ],
     },
 
@@ -61,7 +79,7 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
       contacts: [
         {
           title: "Responsible Official",
-          label: "Katherine Knowland - katherine.knowland@nasa.gov",
+          label: "K. Emma Knowland",
           email: "katherine.knowland@nasa.gov",
         },
         {

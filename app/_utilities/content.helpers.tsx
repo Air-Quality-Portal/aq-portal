@@ -1,18 +1,25 @@
 import type { CardDetailedProps, CardProps, CardSimpleProps } from "@teamimpact/veda-ui-blocks";
+import type React from "react";
 import { AppImage } from "@/app/components/AppImage";
 import { AppLinkStyled } from "@/app/components/AppLink";
 import {
+  type CardTag,
   type CardTextOnlySection,
   CONTENT_TYPES,
   type ContentType,
   type DatasetMetadata,
   type DatasetMetadataEntry,
+  type DatasetTagGroup,
   type IterableItemWithId,
   type TaggedCardSection,
   type TutorialLevel,
   type TutorialSection,
+  type WorkshopItem,
+  type WorkshopPhase,
+  type WorkshopSection,
+  type WorkshopStatus,
 } from "@/app/site-config/types";
-import { formatPollutants } from "./pollutants.helpers";
+import { formatPollutants, formatPollutantsIn } from "./pollutants.helpers";
 
 /**
  * True for hrefs that leave the site: absolute URLs with a scheme and
@@ -22,33 +29,33 @@ import { formatPollutants } from "./pollutants.helpers";
  */
 export const isExternalHref = (href: string): boolean => /^([a-z][a-z0-9+.-]*:)?\/\//i.test(href);
 
-export const makePrimaryTag = (tag: string) => ({
+export const makePrimaryTag = (tag: string): CardTag => ({
   label: tag,
-  variant: "solid" as const,
-  color: "white",
+  variant: "solid",
+  bgColor: "base-lightest",
   textColor: "primary-dark",
 });
 
-export const makeSimpleTag = (tag: string) => ({
+export const makeSimpleTag = (tag: string): CardTag => ({
   label: tag,
-  variant: "outline" as const,
+  variant: "outline",
   color: "base-light",
 });
 
-export const makeContentTypeTag = (tag: ContentType) => ({
+export const makeContentTypeTag = (tag: ContentType): CardTag => ({
   ...makeSimpleTag(CONTENT_TYPES[tag].label),
-  variant: "solid" as const,
+  variant: "solid",
 });
 
-const TUTORIAL_LEVEL_COLOR: Record<TutorialLevel, string> = {
+const TUTORIAL_LEVEL_COLOR = {
   beginner: "success",
   intermediate: "info",
   advanced: "secondary",
-};
+} as const satisfies Record<TutorialLevel, string>;
 
-export const makeTutorialLevelTag = (level: TutorialLevel) => ({
+export const makeTutorialLevelTag = (level: TutorialLevel): CardTag => ({
   ...makeSimpleTag(level.toUpperCase()),
-  variant: "solid" as const,
+  variant: "solid",
   color: `${TUTORIAL_LEVEL_COLOR[level]}-lighter`,
   textColor: `${TUTORIAL_LEVEL_COLOR[level]}-darker`,
 });
@@ -86,6 +93,171 @@ export const makeTaggedCardSection = ({
   })),
 });
 
+const EXACT_UTC_TIMESTAMP = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
+
+const parseExactUtcTimestamp = (value: unknown): number | undefined => {
+  if (typeof value !== "string" || !EXACT_UTC_TIMESTAMP.test(value)) return undefined;
+
+  const instant = Date.parse(value);
+  if (!Number.isFinite(instant)) return undefined;
+
+  return new Date(instant).toISOString() === value.replace("Z", ".000Z") ? instant : undefined;
+};
+
+/**
+ * Workshop content stores UTC instants; visitors see the dates in their own
+ * time zone. `timeZone` is undefined in the browser, which selects the
+ * runtime's local zone, and is set explicitly in tests.
+ */
+const makeWorkshopDateFormatter = (timeZone?: string) =>
+  new Intl.DateTimeFormat("en-US", { timeZone, month: "long", day: "numeric", year: "numeric" });
+
+const makeWorkshopDateTag = (
+  formatter: Intl.DateTimeFormat,
+  startDate: string,
+  endDate = startDate,
+): CardTag => ({
+  label: formatter.formatRange(new Date(startDate), new Date(endDate)),
+  variant: "text",
+  color: "base-dark",
+});
+
+const makeWorkshopFormatTag = (tag: string): CardTag => ({
+  label: tag,
+  variant: "solid",
+  color: "primary-lightest",
+  textColor: "primary-darker",
+});
+
+const CURRENT_EVENT_TAG: CardTag = {
+  label: "CURRENT",
+  variant: "solid",
+  color: "success-lighter",
+  textColor: "success-darker",
+};
+
+const PAST_EVENT_TAG: CardTag = {
+  label: "PAST",
+  variant: "solid",
+  color: "base-lighter",
+  textColor: "base-dark",
+};
+
+type DatedWorkshop = {
+  workshop: WorkshopItem;
+  sourceIndex: number;
+  startsAtInstant: number;
+  endsAtInstant: number;
+};
+
+type OrganizedWorkshop = WorkshopItem & { phase: WorkshopPhase };
+
+type OrganizedWorkshops = {
+  future: OrganizedWorkshop[];
+  past: OrganizedWorkshop[];
+};
+
+const bySourceIndex = (first: DatedWorkshop, second: DatedWorkshop) =>
+  first.sourceIndex - second.sourceIndex;
+
+const getFutureWorkshops = (workshops: DatedWorkshop[], nowInstant: number): OrganizedWorkshop[] =>
+  workshops
+    .filter(({ endsAtInstant }) => endsAtInstant >= nowInstant)
+    .sort(
+      (first, second) =>
+        first.startsAtInstant - second.startsAtInstant || bySourceIndex(first, second),
+    )
+    .map(({ workshop, startsAtInstant }) => ({
+      ...workshop,
+      phase: startsAtInstant <= nowInstant ? "current" : "upcoming",
+    }));
+
+const getPastWorkshops = (workshops: DatedWorkshop[], nowInstant: number): OrganizedWorkshop[] =>
+  workshops
+    .filter(({ endsAtInstant }) => endsAtInstant < nowInstant)
+    .sort(
+      (first, second) => second.endsAtInstant - first.endsAtInstant || bySourceIndex(first, second),
+    )
+    .map(({ workshop }) => ({ ...workshop, phase: "past" }));
+
+const organizeWorkshops = (
+  workshops: WorkshopItem[],
+  now: Date = new Date(),
+): OrganizedWorkshops => {
+  const datedWorkshops = workshops.flatMap((workshop, sourceIndex) => {
+    const startsAtInstant = parseExactUtcTimestamp(workshop.startDate);
+    const endsAtInstant =
+      workshop.endDate === undefined ? startsAtInstant : parseExactUtcTimestamp(workshop.endDate);
+
+    if (
+      startsAtInstant === undefined ||
+      endsAtInstant === undefined ||
+      endsAtInstant < startsAtInstant
+    ) {
+      return [];
+    }
+
+    return [{ workshop, sourceIndex, startsAtInstant, endsAtInstant }];
+  });
+  const nowInstant = now.getTime();
+
+  return {
+    future: getFutureWorkshops(datedWorkshops, nowInstant),
+    past: getPastWorkshops(datedWorkshops, nowInstant),
+  };
+};
+
+const makeWorkshopCardSection = (
+  section: Omit<WorkshopSection, "workshops">,
+  workshops: OrganizedWorkshop[],
+  dateFormatter: Intl.DateTimeFormat,
+): CardTextOnlySection => ({
+  ...section,
+  items: workshops.map((workshop) => {
+    const isPast = workshop.phase === "past";
+    const callToAction = isPast
+      ? workshop.callToActions.recording
+      : workshop.callToActions.registration;
+    const callToActionHref = callToAction?.href?.trim();
+    const workshopHref = workshop.href?.trim() || undefined;
+
+    return {
+      id: workshop.id,
+      title: workshop.title,
+      href: workshopHref,
+      isExternal: isExternalHref(workshopHref ?? ""),
+      description: workshop.description,
+      tagPrimary:
+        workshop.phase === "current" ? CURRENT_EVENT_TAG : isPast ? PAST_EVENT_TAG : undefined,
+      tags: [
+        makeWorkshopDateTag(dateFormatter, workshop.startDate, workshop.endDate),
+        ...(workshop.tags?.map(makeWorkshopFormatTag) ?? []),
+      ],
+      callToAction:
+        callToAction && callToActionHref
+          ? {
+              label: callToAction.label,
+              href: callToActionHref,
+              isExternal: isExternalHref(callToActionHref),
+            }
+          : undefined,
+    };
+  }),
+});
+
+export const makeWorkshopCardSections = (
+  { workshops, ...section }: WorkshopSection,
+  { now = new Date(), timeZone }: { now?: Date; timeZone?: string } = {},
+): Record<WorkshopStatus, CardTextOnlySection> => {
+  const { future, past } = organizeWorkshops(workshops, now);
+  const dateFormatter = makeWorkshopDateFormatter(timeZone);
+
+  return {
+    upcoming: makeWorkshopCardSection(section, future, dateFormatter),
+    past: makeWorkshopCardSection(section, past, dateFormatter),
+  };
+};
+
 export const makeButtonOutlineLink = (href: string, isExternal = true) => ({
   href,
   isExternal,
@@ -95,18 +267,18 @@ export const makeButtonOutlineLink = (href: string, isExternal = true) => ({
 });
 
 /** The lines to render for a metadata entry : the sidebar prints one per line. */
-export const getMetadataValueLines = (entry: DatasetMetadataEntry): string[] => {
+export const getMetadataValueLines = (entry: DatasetMetadataEntry): React.ReactNode[] => {
   if (!Array.isArray(entry.value)) return [entry.value];
-  if (entry.delimiter === "\n")
-    // "\n" gives each value its own line.
-    return entry.value;
-  // Any other delimiter joins the values onto one line.
+  if (entry.delimiter === "\n") return entry.value;
   return [entry.value.join(entry.delimiter ?? " ")];
 };
 
 export const getMetadataFields = (metadata: DatasetMetadata): [string, DatasetMetadataEntry][] =>
   Object.entries(metadata.fields ?? {});
 
+export const getTagsAsList = (tags: DatasetTagGroup[]) => {
+  return tags.flatMap((tag) => tag.values);
+};
 export const getMetadataFieldTag = (metadata: DatasetMetadata, key: string): string | undefined => {
   const entry = metadata.fields?.[key];
   return entry && getMetadataValueLines(entry).join(" ");
@@ -138,12 +310,16 @@ export const makeCardMastHeadProps = ({
     ? {
         label: tagPrimary,
         variant: "solid" as const,
-        bgColor: "white",
+        bgColor: "base-lightest",
         textColor: "primary-dark",
       }
     : undefined,
   ...rest,
 });
+
+// CardDetailed renders a 200 × 400 px image region. Request enough source width
+// for object-fit: cover when a thumbnail has not already been cropped to 1:2.
+export const CARD_DETAILED_IMAGE_SIZES = "384px";
 
 export type CardDetailedPropsArgs = Omit<
   CardDetailedProps,
@@ -155,7 +331,7 @@ export type CardDetailedPropsArgs = Omit<
     alt: string;
     src: string;
   };
-  tags?: string[];
+  tags?: DatasetTagGroup[];
   tagPrimary?: string;
   url?: string;
 };
@@ -171,11 +347,11 @@ export const makeCardDetailedImageLeftProps = ({
   ...rest
 }: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => {
   const href = url ? url : `${CONTENT_TYPES[contentType].route}/${id}`;
-
+  const tagsList = tags ? getTagsAsList(tags) : [];
   return {
     id,
     className: "height-card-md bg-base-lightest",
-    image: <AppImage {...thumbnailImage} fill sizes="194px" />,
+    image: <AppImage {...thumbnailImage} fill sizes={CARD_DETAILED_IMAGE_SIZES} />,
     imagePosition: "left",
     title: (
       <AppLinkStyled
@@ -184,10 +360,10 @@ export const makeCardDetailedImageLeftProps = ({
         isExternal={!!url}
         variant="text"
       >
-        {typeof title === "string" ? formatPollutants(title) : title}
+        {formatPollutantsIn(title)}
       </AppLinkStyled>
     ),
-    tags: (tags ?? []).map((tag) => makeSimpleTag(tag)),
+    tags: tagsList.map((tag) => makeSimpleTag(tag)),
     tagPrimary: tagPrimary ? { ...makePrimaryTag(tagPrimary) } : undefined,
     ...rest,
   };
@@ -195,11 +371,11 @@ export const makeCardDetailedImageLeftProps = ({
 
 export type CardDetailedTextOnlyPropsArgs = Omit<
   CardDetailedProps,
-  "image" | "imagePosition" | "tagPrimary" | "title" | "callToAction" | "callToActionSecondary"
+  "imagePosition" | "title" | "callToAction" | "callToActionSecondary"
 > & {
   id: string;
   title: string;
-  href: string;
+  href?: string;
   isExternal?: boolean;
 };
 
@@ -214,18 +390,21 @@ export const makeCardDetailedTextOnlyProps = ({
   ...rest
 }: CardDetailedTextOnlyPropsArgs): IterableItemWithId<CardDetailedProps> => ({
   id,
-  className: className ? `display-block ${className}` : "display-block",
-  image: <svg key={id} aria-hidden="true" focusable="false" />,
+  className,
   title: (
     <>
-      <AppLinkStyled
-        className="font-body-lg text-light"
-        href={href}
-        isExternal={isExternal}
-        variant="text"
-      >
-        {formatPollutants(title)}
-      </AppLinkStyled>
+      {href ? (
+        <AppLinkStyled
+          className="font-body-lg text-light"
+          href={href}
+          isExternal={isExternal}
+          variant="text"
+        >
+          {formatPollutants(title)}
+        </AppLinkStyled>
+      ) : (
+        <span className="font-body-lg text-light">{formatPollutants(title)}</span>
+      )}
       {description && (
         <p className="font-body-xs text-base-dark text-light margin-0">
           {formatPollutants(description)}

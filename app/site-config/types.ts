@@ -17,8 +17,8 @@ export type IterableItemWithId<T> = T & { id: string };
 
 export type DatasetMetadataEntry = {
   label: string;
-  /** A single value, or several values that belong to the same field. */
-  value: string | string[];
+  /** A single value, or several values that belong to the same field. Accepts ReactNode for rich content (e.g. links). */
+  value: string | string[] | ReactNode;
   /**
    * How to join a multi-value `value`, e.g. `", "` or `" / "`. Defaults to a
    * space. Use `"\n"` to render each value on its own line.
@@ -26,14 +26,22 @@ export type DatasetMetadataEntry = {
   delimiter?: string;
 };
 
+export const TAG_FILTER_CATEGORIES = ["Data Type", "Latency", "Parameter", "Topic"] as const;
+export type TagFilterCategory = (typeof TAG_FILTER_CATEGORIES)[number];
+export type DatasetTagGroup = { category: TagFilterCategory; values: string[] };
 export type DatasetMetadata = {
-  /** Topic tags shown on catalog and related-dataset cards. Not rendered in the sidebar. */
-  tags?: string[];
+  /** Topic tags used to generate dataset filters and shown on catalog and related-dataset cards. Not rendered in the sidebar. */
+  tags?: DatasetTagGroup[];
   /** Labeled properties of the dataset, rendered in the detail page sidebar. */
   fields?: Record<string, DatasetMetadataEntry>;
 };
 
 export type CatalogRoute = string;
+
+export type CatalogSearchParams = {
+  query: string;
+  selectedTags: string[];
+};
 
 type GeoConfig = Omit<GeoConfigProviderProps, "children">;
 
@@ -81,14 +89,12 @@ export type ContentBlock =
         type: "stacSingleLayer";
         heading?: string;
         headingLevel?: "h2" | "h3" | "h4";
-        caption?: string;
       })
   | (StacCompareMapProps &
       GeoConfig & {
         type: "stacCompare";
         heading?: string;
         headingLevel?: "h2" | "h3" | "h4";
-        caption?: string;
       })
   | {
       type: "sectionCardSimple";
@@ -103,10 +109,14 @@ export type ContentBlock =
 
 export type ContentType = DatasetContent["contentType"];
 
+export type DatasetFilterOption = {
+  label: string;
+  value: string;
+};
 export type DatasetFilter = {
   id: string;
-  label: string;
-  options: Array<{ label: string; value: string }>;
+  label: TagFilterCategory;
+  options: DatasetFilterOption[];
 };
 
 export type DatasetContent = {
@@ -134,7 +144,7 @@ export type DatasetContent = {
 export type DatasetCitationSection = {
   /** @default "Cite this dataset" */
   heading?: string;
-  text: string;
+  text: string | ReactNode;
 };
 
 export type RelatedDatasetsSection = {
@@ -151,9 +161,11 @@ export type CardTag = NonNullable<CardDetailedProps["tags"]>[number];
 export type CardTextOnlyItem = {
   id: string;
   title: string;
-  href: string;
+  href?: string;
   isExternal?: boolean;
   description?: string;
+  /** Rendered above the title, since these cards carry no image to lay it over. */
+  tagPrimary?: CardTag;
   tags?: CardTag[];
   callToAction?: { label: string; href: string; isExternal?: boolean };
 };
@@ -209,6 +221,50 @@ export type TaggedCardSection = {
   headingLevel?: ContentHeadingLevel;
   lead?: string;
   items: TaggedCardItem[];
+};
+
+/**
+ * Where a workshop sits relative to now: still to come, under way, or over.
+ * A `current` workshop lists under the upcoming tab and keeps its registration.
+ */
+export type WorkshopPhase = "upcoming" | "current" | "past";
+
+/** The tab that lists a workshop. `upcoming` holds both upcoming and current ones. */
+export type WorkshopStatus = "upcoming" | "past";
+
+export type WorkshopItem = {
+  id: string;
+  title: string;
+  href?: string;
+  /**
+   * Exact UTC instant the workshop starts, e.g. "2026-10-20T15:00:00Z".
+   * Required: a workshop whose start date is missing or malformed is not
+   * listed at all.
+   */
+  startDate: string;
+  /**
+   * Exact UTC instant the workshop ends, for events that run over time.
+   */
+  endDate?: string;
+  description?: string;
+  tags?: string[];
+  /**
+   * Keep these actions separate so a past workshop's "View recording" button
+   * cannot accidentally use its registration URL. The card adapter shows the
+   * registration action until the workshop ends and the recording action
+   * afterward.
+   */
+  callToActions: {
+    registration?: { label: string; href?: string | null };
+    recording?: { label: string; href?: string | null };
+  };
+};
+
+export type WorkshopSection = {
+  heading?: string;
+  headingLevel?: ContentHeadingLevel;
+  lead?: string;
+  workshops: WorkshopItem[];
 };
 
 export type ContactItem = {

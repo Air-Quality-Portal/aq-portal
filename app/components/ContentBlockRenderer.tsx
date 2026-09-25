@@ -1,5 +1,5 @@
 import { makeCardSimpleProps } from "@/app/_utilities/content.helpers";
-import { formatPollutants } from "@/app/_utilities/pollutants.helpers";
+import { formatPollutants, formatPollutantsIn } from "@/app/_utilities/pollutants.helpers";
 import { typedMap } from "@/app/_utilities/typed.helpers";
 import {
   ContentHeading,
@@ -38,7 +38,7 @@ export const ContentBlockRenderer = ({
           {block.paragraphs.map((p, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: static content, never reorders
             <p key={i} className={i === 0 && !block.heading ? "margin-top-0" : ""}>
-              {typeof p === "string" ? formatPollutants(p) : p}
+              {formatPollutantsIn(p)}
             </p>
           ))}
         </Section>
@@ -154,14 +154,7 @@ export const ContentBlockRenderer = ({
           {block.heading && (
             <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
           )}
-          <figure className="margin-0">
-            <StacSingleLayerBlock block={block} />
-            {block.caption && (
-              <figcaption className="font-body-sm text-base margin-top-1">
-                {formatPollutants(block.caption)}
-              </figcaption>
-            )}
-          </figure>
+          <StacSingleLayerBlock block={block} />
         </Section>
       );
 
@@ -171,14 +164,7 @@ export const ContentBlockRenderer = ({
           {block.heading && (
             <ContentHeading heading={block.heading} headingLevel={block.headingLevel} />
           )}
-          <figure className="margin-0">
-            <StacCompareBlock block={block} />
-            {block.caption && (
-              <figcaption className="font-body-sm text-base margin-top-1">
-                {formatPollutants(block.caption)}
-              </figcaption>
-            )}
-          </figure>
+          <StacCompareBlock block={block} />
         </Section>
       );
 

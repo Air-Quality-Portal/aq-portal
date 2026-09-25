@@ -16,21 +16,27 @@ export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
   },
   metadata: {
     tags: [
-      "Criteria pollutant monitoring",
-      "Wildfire smoke",
-      "Industrial emissions",
-      "On-road emissions",
-      "Agricultural emissions",
-      "High ozone",
-      "Dust storm",
-      "Transboundary pollution",
-      "PM2.5",
-      "O3",
-      "NO2",
-      "PM10",
-      "SO2",
-      "CO",
-      "Retrospective(>15 days)",
+      {
+        category: "Topic",
+        values: [
+          "Criteria pollutant monitoring",
+          "Wildfire smoke",
+          "Industrial emissions",
+          "On-road emissions",
+          "Agricultural emissions",
+          "High ozone",
+          "Dust storm",
+          "Transboundary pollution",
+        ],
+      },
+      {
+        category: "Parameter",
+        values: ["PM2.5", "O3", "NO2", "PM10", "SO2", "CO"],
+      },
+      {
+        category: "Latency",
+        values: ["Retrospective (15+ days)"],
+      },
     ],
     fields: {
       provider: { label: "Data Provider", value: "EPA" },
@@ -60,7 +66,6 @@ export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
         value:
           "AQS hourly concentrations of PM10, PM2.5, O3, CO, NO2, and SO2 were incorporated into AIR4US in September 2026.",
       },
-      fileFormat: { label: "File Format", value: "json" },
     },
   },
   actions: {
@@ -74,7 +79,22 @@ export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
     {
       type: "text",
       paragraphs: [
-        "The Air Quality System (AQS) contains ambient air sample data collected by the EPA, state, local, and tribal air pollution control agencies from thousands of monitors across the United States. This dataset in AIR4US includes hourly averages from 1999 to the present for the criteria pollutants: ozone (O3), carbon monoxide (CO), sulfur dioxide (SO2), nitrogen dioxide (NO2), and particulate matter (PM2.5 and PM10). Concentration measurements for O3 and CO are reported in parts per million (ppm), and for NO2 and SO2 in parts per billion (ppb). PM2.5 and PM10 concentration measurements are in micrograms per cubic meter (µg/m³). Real-time air-quality data are not available from AQS. It can take six months or more from the time data are collected until they are validated and added to the AQS. Near real-time air-quality monitor data are available via AirNow.",
+        <>
+          The Air Quality System (AQS) contains ambient air sample data collected by the EPA, state,
+          local, and tribal air pollution control agencies from thousands of monitors across the
+          United States. This dataset in AIR4US includes hourly averages from 1999 to the present
+          for the criteria pollutants: ozone (O3), carbon monoxide (CO), sulfur dioxide (SO2),
+          nitrogen dioxide (NO2), and particulate matter (PM2.5 and PM10). Concentration
+          measurements for O3 and CO are reported in parts per million (ppm), and for NO2 and SO2 in
+          parts per billion (ppb). PM2.5 and PM10 concentration measurements are in micrograms per
+          cubic meter (µg/m³). Real-time air-quality data are not available from AQS. It can take
+          six months or more from the time data are collected until they are validated and added to
+          the AQS. Near real-time air-quality monitor data are available via{" "}
+          <a href="https://www.airnow.gov" target="_blank" rel="noopener noreferrer">
+            AirNow
+          </a>
+          .
+        </>,
       ],
     },
     {
@@ -139,7 +159,20 @@ export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
   },
   citation: {
     heading: "Cite this dataset",
-    text: "US Environmental Protection Agency. Air Quality System Data Mart [internet database] available via https://www.epa.gov/outdoor-air-quality-data. Accessed Month DD, YYYY.",
+    text: (
+      <>
+        US Environmental Protection Agency. Air Quality System Data Mart [internet database]
+        available via{" "}
+        <a
+          href="https://www.epa.gov/outdoor-air-quality-data"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://www.epa.gov/outdoor-air-quality-data
+        </a>
+        . Accessed Month DD, YYYY.
+      </>
+    ),
   },
   relatedDatasets: {
     heading: "Related datasets",

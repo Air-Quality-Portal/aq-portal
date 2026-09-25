@@ -6,7 +6,7 @@ import {
   makeCardMastHeadProps,
   makeTutorialCardSection,
 } from "@/app/_utilities/content.helpers";
-import { formatPollutants } from "@/app/_utilities/pollutants.helpers";
+import { formatPollutantsIn } from "@/app/_utilities/pollutants.helpers";
 import {
   BackToCatalogLink,
   ContentBlockRenderer,
@@ -36,7 +36,7 @@ function DatasetCitation({ section }: { section: DatasetCitationSection }) {
       <p className="font-mono-3xs text-base text-uppercase margin-top-0 margin-bottom-2">
         {section.heading ?? "Cite this dataset"}
       </p>
-      <p className="font-body-3xs margin-0 text-base">{formatPollutants(section.text)}</p>
+      <p className="font-body-3xs margin-0 text-base">{formatPollutantsIn(section.text)}</p>
     </Section>
   );
 }

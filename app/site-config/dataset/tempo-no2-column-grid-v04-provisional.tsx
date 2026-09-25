@@ -16,15 +16,29 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
   },
   metadata: {
     tags: [
-      "Wildfire smoke",
-      "Criteria pollutant monitoring",
-      "Industrial emissions",
-      "On-road emissions",
-      "Hazardous air pollutants",
-      "High ozone",
-      "NO2",
-      "Satellite",
-      "Short latency (3 - 24 hours)",
+      {
+        category: "Topic",
+        values: [
+          "Wildfire smoke",
+          "Criteria pollutant monitoring",
+          "Industrial emissions",
+          "On-road emissions",
+          "Hazardous air pollutants",
+          "High ozone",
+        ],
+      },
+      {
+        category: "Parameter",
+        values: ["NO2"],
+      },
+      {
+        category: "Data Type",
+        values: ["Satellite"],
+      },
+      {
+        category: "Latency",
+        values: ["Short latency (3 - 24 hours)"],
+      },
     ],
     fields: {
       provider: {
@@ -54,7 +68,6 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
         value:
           "V04 provisional data was added to AIR4US in September 2026 with QA filtering applied.",
       },
-      fileFormat: { label: "File Format", value: "NetCDF-4" },
     },
   },
   actions: {
@@ -68,7 +81,7 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
     {
       type: "text",
       paragraphs: [
-        "The TEMPO (Tropospheric Emissions: Monitoring of Pollution) mission is a geostationary satellite mission that measures air quality over North America during daylight hours at a high spatial resolution and with a temporal resolution of one hour or less. The nitrogen dioxide (NO2) Level 3 (PROVISIONAL) dataset in AIR4US provides information on tropospheric NO2 vertical columns measured in molecules per square centimeter (molecules/cm³). In the AIR4US tool low quality pixels have been filtered out using the following threshold: effective cloud fraction > 0.5, solar zenith angle > 80, quality flag > 1. TEMPO Level 3 products have a spatial resolution of 0.02° and are generated using an area-weighted regridding algorithm, combining information from all Level 2 files in a TEMPO East-West scan cycle. This dataset reached provisional validation on December 9, 2024. The TEMPO gridded NO product contains hourly daytime scans across North America, with more frequent scans in the morning over the eastern portion of the field of regard and in the evenings over the western portion. Data are available from August 2, 2023, to the present.",
+        "The TEMPO (Tropospheric Emissions: Monitoring of Pollution) mission is a geostationary satellite mission that measures air-quality over North America during daylight hours at a high spatial resolution and with a temporal resolution of one hour or less. The nitrogen dioxide (NO2) Level 3 (PROVISIONAL) dataset in AIR4US provides information on tropospheric NO2 vertical columns measured in molecules per square centimeter (molecules/cm³). In the AIR4US tool low quality pixels have been filtered out using the following threshold: effective cloud fraction > 0.5, solar zenith angle > 80, quality flag > 1. TEMPO Level 3 products have a spatial resolution of 0.02° and are generated using an area-weighted regridding algorithm, combining information from all Level 2 files in a TEMPO East-West scan cycle. This dataset reached provisional validation on December 9, 2024. The TEMPO gridded NO2 product contains hourly daytime scans across North America, with more frequent scans in the morning over the eastern portion of the field of regard and in the evenings over the western portion. Data are available from August 2, 2023, to the present.",
       ],
     },
     {
@@ -93,7 +106,7 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
           isExternal: true,
         },
         {
-          label: "NASA’s TEMPO Mission Page",
+          label: "NASA's TEMPO Mission Page",
           href: "https://science.nasa.gov/mission/tempo/",
           isExternal: true,
         },
@@ -127,7 +140,20 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
   },
   citation: {
     heading: "Cite this dataset",
-    text: "Liu, X. (2026). TEMPO gridded NO2 tropospheric and stratospheric columns V04 (PROVISIONAL) [Dataset]. NASA Langley Atmospheric Science Data Center Distributed Active Archive Center. https://doi.org/10.5067/IS-40E/TEMPO/NO2_L3.004 Date Accessed: YYYY-MM-DD",
+    text: (
+      <>
+        Liu, X. (2026). TEMPO gridded NO2 tropospheric and stratospheric columns V04 (PROVISIONAL)
+        [Dataset]. NASA Langley Atmospheric Science Data Center Distributed Active Archive Center.{" "}
+        <a
+          href="https://doi.org/10.5067/IS-40E/TEMPO/NO2_L3.004"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://doi.org/10.5067/IS-40E/TEMPO/NO2_L3.004
+        </a>{" "}
+        Date Accessed: YYYY-MM-DD
+      </>
+    ),
   },
   relatedDatasets: {
     heading: "Related datasets",

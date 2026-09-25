@@ -1,7 +1,7 @@
 import { isValidElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import { formatPollutants } from "./pollutants.helpers";
+import { formatPollutants, formatPollutantsIn } from "./pollutants.helpers";
 
 /** Renders the formatter's output so assertions read as the markup users get. */
 const markup = (text: string) => renderToStaticMarkup(formatPollutants(text));
@@ -100,5 +100,27 @@ describe("layout safety", () => {
 
   it("still returns a bare string when there is nothing to format", () => {
     expect(formatPollutants("Air Quality System")).toBe("Air Quality System");
+  });
+});
+
+describe("formatPollutantsIn", () => {
+  /*
+   * Several content fields are typed `ReactNode` so an author can reach for JSX.
+   * Only the plain-string case can be formatted; anything already built as nodes
+   * passes through so its markup survives.
+   */
+  it("formats a plain string child", () => {
+    expect(renderToStaticMarkup(formatPollutantsIn("Surface NO2"))).toBe(
+      "<span>Surface NO<sub>2</sub></span>",
+    );
+  });
+
+  it("passes an authored node through untouched", () => {
+    const authored = <em>Surface NO2</em>;
+    expect(formatPollutantsIn(authored)).toBe(authored);
+  });
+
+  it("leaves nullish content alone", () => {
+    expect(formatPollutantsIn(undefined)).toBeUndefined();
   });
 });

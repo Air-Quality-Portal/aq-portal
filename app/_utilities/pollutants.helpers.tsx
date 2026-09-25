@@ -68,3 +68,12 @@ export function formatPollutants(source: string): ReactNode {
    */
   return <span>{parts}</span>;
 }
+
+/**
+ * Formats content typed as `ReactNode`, where an author may supply either a
+ * plain string or JSX. Only a string can be scanned for symbols; anything
+ * already built as nodes passes through with its markup intact.
+ */
+export function formatPollutantsIn(content: ReactNode): ReactNode {
+  return typeof content === "string" ? formatPollutants(content) : content;
+}
