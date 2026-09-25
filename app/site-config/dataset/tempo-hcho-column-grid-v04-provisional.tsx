@@ -16,14 +16,28 @@ export const TEMPO_HCHO_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
   },
   metadata: {
     tags: [
-      "Wildfire smoke",
-      "High ozone",
-      "Industrial emissions",
-      "Hazardous air pollutants",
-      "Agricultural emissions",
-      "HCHO",
-      "Satellite",
-      "Short latency (3 - 24 hours)",
+      {
+        category: "Topic",
+        values: [
+          "Wildfire smoke",
+          "High ozone",
+          "Industrial emissions",
+          "Hazardous air pollutants",
+          "Agricultural emissions",
+        ],
+      },
+      {
+        category: "Parameter",
+        values: ["HCHO"],
+      },
+      {
+        category: "Data Type",
+        values: ["Satellite"],
+      },
+      {
+        category: "Latency",
+        values: ["Short latency (3 - 24 hours)"],
+      },
     ],
     fields: {
       provider: {
