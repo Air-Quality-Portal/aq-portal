@@ -9,10 +9,16 @@ export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
   thumbnailImage: {
     src: "/images/datasets/epa-aqs-card.webp",
     alt: "EPA AQS CO, NO2, O3, PM and SO2 monitor locations pinned on a map of the Eastern United States with a grey background",
+    attribution: "EPA",
+    attributionLink:
+      "https://epa.maps.arcgis.com/apps/webappviewer/index.html?id=5f239fd3e72f424f98ef3d5def547eb5",
   },
   mastheadImage: {
     src: "/images/datasets/epa-aqs-banner.webp",
     alt: "EPA AQS CO, NO2, O3, PM and SO2 monitor locations pinned on a map of the Eastern United States with a grey background",
+    attribution: "EPA",
+    attributionLink:
+      "https://epa.maps.arcgis.com/apps/webappviewer/index.html?id=5f239fd3e72f424f98ef3d5def547eb5",
   },
   metadata: {
     tags: [

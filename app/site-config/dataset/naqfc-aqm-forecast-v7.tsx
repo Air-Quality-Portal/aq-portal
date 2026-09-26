@@ -9,10 +9,14 @@ export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
   thumbnailImage: {
     src: "/images/datasets/naqfc-aqm-card.webp",
     alt: "Map of forecasted continental U.S. PM₂.₅ levels with low values in green and higher concentrations in orange and red. The color transitions align with the EPA's PM₂.₅ concentration breakpoints for each AQI category.",
+    attribution: "NOAA",
+    attributionLink: "https://airquality.weather.gov",
   },
   mastheadImage: {
     src: "/images/datasets/naqfc-aqm-banner.webp",
     alt: "Map of forecasted continental U.S. PM₂.₅ levels with low values in green and higher concentrations in orange and red. The color transitions align with the EPA's PM₂.₅ concentration breakpoints for each AQI category.",
+    attribution: "NOAA",
+    attributionLink: "https://airquality.weather.gov",
   },
   metadata: {
     tags: [

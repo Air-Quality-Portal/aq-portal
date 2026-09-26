@@ -1,4 +1,9 @@
-import type { CardDetailedProps, CardProps, CardSimpleProps } from "@teamimpact/veda-ui-blocks";
+import type {
+  CardDetailedProps,
+  CardProps,
+  CardSimpleProps,
+  MediaAttributionOptions,
+} from "@teamimpact/veda-ui-blocks";
 import type React from "react";
 import { AppImage } from "@/app/components/AppImage";
 import { AppLinkStyled } from "@/app/components/AppLink";
@@ -283,10 +288,17 @@ export const getMetadataFieldTag = (metadata: DatasetMetadata, key: string): str
   return entry && getMetadataValueLines(entry).join(" ");
 };
 
+export const makeMediaAttribution = (
+  author?: string,
+  sourceUrl?: string,
+): MediaAttributionOptions | undefined => (author ? { author, sourceUrl } : undefined);
+
 export type CardMastheadPropsArgs = Omit<CardProps, "title" | "image"> & {
   mastheadImage: {
     alt: string;
     src: string;
+    attribution?: string;
+    attributionLink?: string;
   };
   title?: string;
   tagPrimary?: string;
@@ -298,7 +310,8 @@ export const makeCardMastHeadProps = ({
   tagPrimary,
   ...rest
 }: CardMastheadPropsArgs): CardProps => ({
-  image: <AppImage {...mastheadImage} sizes="100vw" fill />,
+  image: <AppImage src={mastheadImage.src} alt={mastheadImage.alt} sizes="100vw" fill />,
+  mediaAttribution: makeMediaAttribution(mastheadImage.attribution, mastheadImage.attributionLink),
   title: title,
   tag: tagPrimary
     ? {
@@ -324,6 +337,8 @@ export type CardDetailedPropsArgs = Omit<
   thumbnailImage: {
     alt: string;
     src: string;
+    attribution?: string;
+    attributionLink?: string;
   };
   tags?: DatasetTagGroup[];
   tagPrimary?: string;
@@ -345,7 +360,18 @@ export const makeCardDetailedImageLeftProps = ({
   return {
     id,
     className: "height-card-md bg-base-lightest",
-    image: <AppImage {...thumbnailImage} fill sizes={CARD_DETAILED_IMAGE_SIZES} />,
+    image: (
+      <AppImage
+        src={thumbnailImage.src}
+        alt={thumbnailImage.alt}
+        fill
+        sizes={CARD_DETAILED_IMAGE_SIZES}
+      />
+    ),
+    mediaAttribution: makeMediaAttribution(
+      thumbnailImage.attribution,
+      thumbnailImage.attributionLink,
+    ),
     imagePosition: "left",
     title: (
       <AppLinkStyled

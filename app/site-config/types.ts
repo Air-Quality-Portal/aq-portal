@@ -126,6 +126,8 @@ export type DatasetContent = {
   thumbnailImage: {
     src: string;
     alt: string;
+    attribution?: string;
+    attributionLink?: string;
   };
   description?: string;
   metadata: DatasetMetadata;
@@ -311,4 +313,5 @@ type MastheadImage = {
   alt: string;
   caption?: string;
   attribution?: string;
+  attributionLink?: string;
 };
