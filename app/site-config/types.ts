@@ -270,7 +270,7 @@ export type WorkshopSection = {
 export type ContactItem = {
   title: string;
   label: string;
-  email: string;
+  email?: string;
 };
 
 export type ContactSection = {

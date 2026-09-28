@@ -80,7 +80,6 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
         {
           title: "Responsible Official",
           label: "K. Emma Knowland",
-          email: "katherine.knowland@nasa.gov",
         },
         {
           title: "General Inquiries",
