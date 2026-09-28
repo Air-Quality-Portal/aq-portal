@@ -44,6 +44,7 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
     searchParams[CATALOG_PAGE_PARAM],
     PER_PAGE,
   );
+
   return (
     <>
       <Section>
@@ -69,12 +70,10 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
           {pageItems.map(({ id, title, description, thumbnailImage, metadata }: DatasetContent) => {
             const tagPrimary = getMetadataFieldTag(metadata, "provider");
             const tags = metadata.tags ? getTagsAsList(metadata.tags) : [];
-            console.log(thumbnailImage);
             const attributionOptions = makeMediaAttribution(
               thumbnailImage.attribution,
               thumbnailImage.attributionLink,
             );
-            console.log(attributionOptions);
             return (
               <div key={id} className="grid-col-12 tablet:grid-col-6 margin-y-1 desktop:margin-y-4">
                 <CardDetailed

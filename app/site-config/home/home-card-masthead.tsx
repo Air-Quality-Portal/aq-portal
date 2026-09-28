@@ -5,6 +5,7 @@ import { AppVideo } from "@/app/components/AppVideo";
 const MEDIA_ATTRIBUTION: MediaAttributionOptions = {
   author:
     "NASA's Global Modeling Assimilation Office (GMAO) and Scientific Visualization Studio (SVS)",
+  mediaKind: "video",
   position: "top-right",
   sourceUrl:
     "https://svs.gsfc.nasa.gov/vis/a000000/a005500/a005572/Aerosols_AnnotationsLabel_1920x1080_30p.mp4",

@@ -291,7 +291,8 @@ export const getMetadataFieldTag = (metadata: DatasetMetadata, key: string): str
 export const makeMediaAttribution = (
   author?: string,
   sourceUrl?: string,
-): MediaAttributionOptions | undefined => (author ? { author, sourceUrl } : undefined);
+): MediaAttributionOptions | undefined =>
+  author ? { author, sourceUrl, mediaKind: "image" } : undefined;
 
 export type CardMastheadPropsArgs = Omit<CardProps, "title" | "image"> & {
   mastheadImage: {
