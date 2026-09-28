@@ -34,7 +34,7 @@ export function SectionContacts({ section }: { section: ContactSection }) {
                 as: "span",
                 label: contact.label,
                 variant: "text",
-                style: { pointerEvents: "none", cursor: "default" },
+                style: { pointerEvents: "none", cursor: "default", textDecoration: "none" },
               }}
             />
           );
