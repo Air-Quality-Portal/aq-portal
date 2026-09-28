@@ -1,4 +1,5 @@
 import { Card, InPageNavigation } from "@teamimpact/veda-ui-blocks";
+import "../styles/in-page-navigation.css";
 import { ContentBlockRenderer, Section } from "@/app/components";
 import { ABOUT_PAGE_BODY } from "@/app/site-config/about/about__page";
 

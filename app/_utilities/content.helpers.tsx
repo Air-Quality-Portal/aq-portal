@@ -5,6 +5,7 @@ import type {
   MediaAttributionOptions,
 } from "@teamimpact/veda-ui-blocks";
 import type React from "react";
+import { Fragment } from "react";
 import { AppImage } from "@/app/components/AppImage";
 import { AppLinkStyled } from "@/app/components/AppLink";
 import {
@@ -24,6 +25,7 @@ import {
   type WorkshopSection,
   type WorkshopStatus,
 } from "@/app/site-config/types";
+import { subscriptPollutantSymbols, subscriptPollutantSymbolsIn } from "./pollutants.helpers";
 
 /**
  * True for hrefs that leave the site: absolute URLs with a scheme and
@@ -309,11 +311,22 @@ export const makeCardMastHeadProps = ({
   mastheadImage,
   title,
   tagPrimary,
+  description,
   ...rest
 }: CardMastheadPropsArgs): CardProps => ({
   image: <AppImage src={mastheadImage.src} alt={mastheadImage.alt} sizes="100vw" fill />,
   mediaAttribution: makeMediaAttribution(mastheadImage.attribution, mastheadImage.attributionLink),
-  title: title,
+  image: <AppImage {...mastheadImage} sizes="100vw" fill />,
+  /*
+   * Card only wraps a string title in its own heading; a formatted one arrives
+   * as nodes and would otherwise land straight in the card's flex column, one
+   * line per node. Supplying the heading keeps the title on a single line.
+   */
+  title: title && (
+    <h2 key="title" className="blocks-card__title">
+      {subscriptPollutantSymbols(title)}
+    </h2>
+  ),
   tag: tagPrimary
     ? {
         label: tagPrimary,
@@ -322,6 +335,8 @@ export const makeCardMastHeadProps = ({
         textColor: "primary-dark",
       }
     : undefined,
+  description:
+    typeof description === "string" ? subscriptPollutantSymbols(description) : description,
   ...rest,
 });
 
@@ -354,6 +369,7 @@ export const makeCardDetailedImageLeftProps = ({
   tags,
   url,
   title,
+  description,
   ...rest
 }: CardDetailedPropsArgs): IterableItemWithId<CardDetailedProps> => {
   const href = url ? url : `${CONTENT_TYPES[contentType].route}/${id}`;
@@ -376,14 +392,17 @@ export const makeCardDetailedImageLeftProps = ({
     imagePosition: "left",
     title: (
       <AppLinkStyled
+        key={id}
         className="font-body-lg text-light"
         href={href}
         isExternal={!!url}
         variant="text"
       >
-        {title}
+        {subscriptPollutantSymbolsIn(title)}
       </AppLinkStyled>
     ),
+    description:
+      typeof description === "string" ? subscriptPollutantSymbols(description) : description,
     tags: tagsList.map((tag) => makeSimpleTag(tag)),
     tagPrimary: tagPrimary ? { ...makePrimaryTag(tagPrimary) } : undefined,
     ...rest,
@@ -413,7 +432,7 @@ export const makeCardDetailedTextOnlyProps = ({
   id,
   className,
   title: (
-    <>
+    <Fragment key={id}>
       {href ? (
         <AppLinkStyled
           className="font-body-lg text-light"
@@ -421,15 +440,17 @@ export const makeCardDetailedTextOnlyProps = ({
           isExternal={isExternal}
           variant="text"
         >
-          {title}
+          {subscriptPollutantSymbols(title)}
         </AppLinkStyled>
       ) : (
-        <span className="font-body-lg text-light">{title}</span>
+        <span className="font-body-lg text-light">{subscriptPollutantSymbols(title)}</span>
       )}
       {description && (
-        <p className="font-body-xs text-base-dark text-light margin-0">{description}</p>
+        <p className="font-body-xs text-base-dark text-light margin-0">
+          {subscriptPollutantSymbolsIn(description)}
+        </p>
       )}
-    </>
+    </Fragment>
   ),
   tags,
   ...rest,
@@ -452,6 +473,7 @@ export const makeCardSimpleProps = ({
   thumbnailImage,
   tag,
   url,
+  description,
   ...rest
 }: CardSimplePropsArgs): IterableItemWithId<CardSimpleProps> => ({
   id,
@@ -461,5 +483,7 @@ export const makeCardSimpleProps = ({
     : makeContentTypeTag(contentType),
   href: url ? url : `${CONTENT_TYPES[contentType].route}/${id}`,
   isExternal: !!url,
+  description:
+    typeof description === "string" ? subscriptPollutantSymbols(description) : description,
   ...rest,
 });

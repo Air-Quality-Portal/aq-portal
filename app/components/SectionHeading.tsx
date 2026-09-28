@@ -17,7 +17,10 @@ export const SectionHeading = ({
 }: SectionHeadingProps) => {
   return (
     <div className="display-flex flex-justify flex-align-center">
-      <h2 className={`${className ?? ""} font-sans-2xl padding-bottom-2 margin-0`} {...props}>
+      <h2
+        className={`${className ?? ""} font-body-xl line-height-body-2 text-ls-neg-2 text-normal text-ink padding-bottom-2 margin-0`}
+        {...props}
+      >
         {children}
       </h2>
       {href && (

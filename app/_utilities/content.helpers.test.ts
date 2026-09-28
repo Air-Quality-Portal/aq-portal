@@ -1,9 +1,11 @@
-import { Children, isValidElement, type ReactNode } from "react";
+import { Children, isValidElement, type ReactElement, type ReactNode } from "react";
 import { describe, expect, it } from "vitest";
 import { AppLinkStyled } from "@/app/components/AppLink";
 import type { CardTextOnlySection, WorkshopItem, WorkshopSection } from "@/app/site-config/types";
 import {
+  makeCardDetailedImageLeftProps,
   makeCardDetailedTextOnlyProps,
+  makeCardMastHeadProps,
   makeContentTypeTag,
   makePrimaryTag,
   makeSimpleTag,
@@ -422,5 +424,57 @@ describe("Workshop helpers", () => {
       expect(result.upcoming.items[0].callToAction).toBeUndefined();
       expect(result.past.items[0].callToAction).toBeUndefined();
     });
+  });
+});
+
+describe("makeCardMastHeadProps", () => {
+  const mastheadImage = { src: "/img/masthead.webp", alt: "A map" };
+
+  /*
+   * CardDetailed only supplies the `h2.blocks-card__title` wrapper when `title`
+   * is a string; anything else it renders raw into the flex column, so a
+   * formatted title has to carry that heading itself or its pieces stack.
+   */
+  it("keeps a formatted title inside a single card heading element", () => {
+    const { title } = makeCardMastHeadProps({
+      mastheadImage,
+      title: "AQM O3 and PM2.5 Forecasts",
+    });
+
+    expect(isValidElement(title)).toBe(true);
+    const heading = title as ReactElement<{ className?: string }>;
+    expect(heading.type).toBe("h2");
+    expect(heading.props.className).toBe("blocks-card__title");
+  });
+});
+
+describe("card descriptions", () => {
+  /*
+   * veda-ui-blocks 0.1.0-beta.20 widened the card `description` prop to
+   * `string | ReactElement`, so descriptions can carry subscript markup
+   * rather than printing their pollutant symbols flat.
+   */
+  it("formats pollutant symbols in a detailed card description", () => {
+    const { description } = makeCardDetailedImageLeftProps({
+      id: "naqfc",
+      contentType: "dataset",
+      title: "NAQFC",
+      description: "Forecast guidance for surface ozone (O3) and PM2.5",
+      thumbnailImage: { src: "/img/card.webp", alt: "A map" },
+    });
+
+    expect(isValidElement(description)).toBe(true);
+  });
+
+  it("leaves a description without pollutants as a plain string", () => {
+    const { description } = makeCardDetailedImageLeftProps({
+      id: "aqs",
+      contentType: "dataset",
+      title: "AQS",
+      description: "Validated hourly average pollutant data",
+      thumbnailImage: { src: "/img/card.webp", alt: "A map" },
+    });
+
+    expect(description).toBe("Validated hourly average pollutant data");
   });
 });

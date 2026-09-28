@@ -8,6 +8,7 @@ export const HOMEPAGE_VISUALIZE_INTRO: SectionIntroProps = {
     </>
   ),
   headingSize: "xl",
+  headingWeight: "light",
   callToAction: {
     label: "View all data",
     href: "/data-catalog",
@@ -22,6 +23,7 @@ export const HOMEPAGE_EXPLORE_INTRO: SectionIntroProps = {
     </>
   ),
   headingSize: "xl",
+  headingWeight: "light",
   callToAction: {
     label: "View all tools",
     href: "/tools",

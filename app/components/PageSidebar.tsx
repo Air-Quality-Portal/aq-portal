@@ -1,4 +1,5 @@
 import { getMetadataFields, getMetadataValueLines } from "@/app/_utilities/content.helpers";
+import { subscriptPollutantSymbolsIn } from "@/app/_utilities/pollutants.helpers";
 import type { DatasetMetadata } from "@/app/site-config/types";
 
 export function PageSidebar({ metadata = {} }: { metadata?: DatasetMetadata }) {
@@ -11,8 +12,8 @@ export function PageSidebar({ metadata = {} }: { metadata?: DatasetMetadata }) {
           </p>
           {getMetadataValueLines(entry).map((item, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: items are static and never reorder
-            <p key={i} className="font-body-sm text-medium margin-y-05">
-              {item}
+            <p key={i} className="font-body-sm line-height-sans-5 margin-y-05">
+              {subscriptPollutantSymbolsIn(item)}
             </p>
           ))}
         </div>

@@ -90,7 +90,7 @@ export const TOOLS: ToolContent[] = [
       "Interactive map of air quality from AirNow, including current conditions, forecast, time-series loop animation, and historical data archive",
     href: "https://gispub.epa.gov/airnow/?monitors=ozonepm",
     tagPrimary: "EPA",
-    additionalTags: ["Regulatory monitor", "Forecast (0 - 3 days)", "PM2.5", "O₃", "PM10"],
+    additionalTags: ["Regulatory monitor", "Forecast (0 - 3 days)", "PM2.5", "O3", "PM10"],
     thumbnailImage: {
       src: "/img/tools_images/airnow_aq_map_tool_catalog_card.webp",
       alt: "Map of the United States showing points and contours of surface ozone and particulate matter concentrations",
@@ -192,7 +192,7 @@ export const TOOLS: ToolContent[] = [
       'Modeling tool that uses "what-if" scenarios to evaluate the effects of changes to energy policies and programs on human health at different jurisdictional levels',
     href: "https://www.epa.gov/cobra/what-cobra",
     tagPrimary: "EPA",
-    additionalTags: ["Counterfactual model simulation", "PM2.5", "SO₂", "Hazardous air pollutants"],
+    additionalTags: ["Counterfactual model simulation", "PM2.5", "SO2", "Hazardous air pollutants"],
     thumbnailImage: {
       src: "/img/tools_images/cobra_tool_catalog_card.webp",
       alt: "An interactive map of the United States displaying surface ozone concentration levels in micrograms per cubic meter by county",
@@ -211,7 +211,7 @@ export const TOOLS: ToolContent[] = [
     additionalTags: [
       "Retrospective (>15 days)",
       "Counterfactual model simulation",
-      "O₃",
+      "O3",
       "PM2.5",
       "High ozone",
     ],
@@ -280,7 +280,7 @@ export const TOOLS: ToolContent[] = [
       "Visualize and plot selected geophysical parameters from NASA datasets, including model, observational, and reanalysis data, without downloading any data",
     href: "https://giovanni.gsfc.nasa.gov/giovanni/",
     tagPrimary: "NASA",
-    additionalTags: ["PM2.5", "Retrospective model", "Satellite", "AOD", "NO₂"],
+    additionalTags: ["PM2.5", "Retrospective model", "Satellite", "AOD", "NO2"],
     thumbnailImage: {
       src: "/img/tools_images/giovanni_tool_catalog_card.webp",
       alt: "Time-averaged map of MODIS Aerosol Optical Depth across the United States",
@@ -439,7 +439,7 @@ export const TOOLS: ToolContent[] = [
       "Visualize any layer from the National Oceanic and Atmospheric Administration's (NOAA's) National Air Quality Forecast Capability (NAQFC) Regional Model Guidance generated within the past 7 days",
     href: "https://airquality.weather.gov/?element=ozone01_bc&mapcenter=-100.02%2C39.93&mapzoom=5&subregion=CONUS&region=CONUS",
     tagPrimary: "NOAA",
-    additionalTags: ["Forecast (0 - 3 days)", "Forecast model", "PM2.5", "O₃"],
+    additionalTags: ["Forecast (0 - 3 days)", "Forecast model", "PM2.5", "O3"],
     thumbnailImage: {
       src: "/img/tools_images/noaa_aq_viewer_tool_catalog_card.webp",
       alt: "Map of the United States with forecasted surface PM2.5 concentrations",
@@ -495,7 +495,7 @@ export const TOOLS: ToolContent[] = [
       "Interactive map displaying Tropospheric Emissions: Monitoring of Pollution (TEMPO) NO2 data with case studies, such as wildfires, traffic patterns, and agriculture",
     href: "https://tempo.si.edu/data_for_public.html",
     tagPrimary: "NASA",
-    additionalTags: ["NO₂", "Satellite", "Short latency (3 - 24 hours)"],
+    additionalTags: ["NO2", "Satellite", "Short latency (3 - 24 hours)"],
     thumbnailImage: {
       src: "/img/tools_images/tempo_no2_map_tool_catalog_card.webp",
       alt: "Map of Los Angeles showing TEMPO satellite observations of NO2 column density from the Los Angeles wildfires in January 2025",

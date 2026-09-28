@@ -1,4 +1,5 @@
 import { Card } from "@teamimpact/veda-ui-blocks";
+import "./styles/home.css";
 import {
   Section,
   SectionIntro,
