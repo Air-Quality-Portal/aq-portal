@@ -1,6 +1,15 @@
-import type { CardProps } from "@teamimpact/veda-ui-blocks";
+import type { CardProps, MediaAttributionProps } from "@teamimpact/veda-ui-blocks";
 import { AppLink } from "@/app/components/AppLink";
 import { AppVideo } from "@/app/components/AppVideo";
+
+const IMAGE_ATTRIBUTION: MediaAttributionProps = {
+  author:
+    "NASA's Global Modeling Assimilation Office (GMAO) and Scientific Visualization Studio (SVS)",
+  mediaType: "video",
+  position: "top-right",
+  sourceUrl:
+    "https://svs.gsfc.nasa.gov/vis/a000000/a005500/a005572/Aerosols_AnnotationsLabel_1920x1080_30p.mp4",
+} as const;
 
 export const MOCK_CARD_MASTHEAD: CardProps<typeof AppLink> = {
   callToAction: {
@@ -23,6 +32,7 @@ export const MOCK_CARD_MASTHEAD: CardProps<typeof AppLink> = {
       style={{ transform: "scale(1.5)" }}
     />
   ),
+  imageAttribution: IMAGE_ATTRIBUTION,
   isMastHead: true,
   children: null,
   title: (

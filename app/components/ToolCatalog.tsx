@@ -1,7 +1,7 @@
 import { CardDetailed } from "@teamimpact/veda-ui-blocks";
 import type { Route } from "next";
 import "../styles/tool-catalog.css";
-import { makePrimaryTag } from "@/app/_utilities/content.helpers";
+import { makeMediaAttribution, makePrimaryTag } from "@/app/_utilities/content.helpers";
 import { subscriptPollutantSymbols } from "@/app/_utilities/pollutants.helpers";
 import { AppImage } from "@/app/components/AppImage";
 import { AppLinkStyled } from "@/app/components/AppLink";
@@ -53,7 +53,18 @@ export const ToolCatalog = ({ tools, layout = "thirds" }: ToolCatalogProps) => {
           <CardDetailed
             className="height-full border-1px border-base-lighter tool-catalog-card"
             imagePosition="top"
-            image={<AppImage {...tool.thumbnailImage} fill sizes={sizes} />}
+            image={
+              <AppImage
+                src={tool.thumbnailImage.src}
+                alt={tool.thumbnailImage.alt}
+                fill
+                sizes={sizes}
+              />
+            }
+            imageAttribution={makeMediaAttribution(
+              tool.thumbnailImage.attribution,
+              tool.thumbnailImage.attributionLink,
+            )}
             tagPrimary={tool.tagPrimary ? makePrimaryTag(tool.tagPrimary) : undefined}
             intro={tool.fullname}
             title={

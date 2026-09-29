@@ -8,11 +8,15 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
     "Hourly daytime observations of tropospheric nitrogen dioxide (NO2) across North America measured by TEMPO",
   thumbnailImage: {
     src: "/images/datasets/tempo-no2-card.webp",
-    alt: "TEMPO satellite map showing tropospheric NO2 air pollution levels over the Washington, D.C., to New York City metro corridor",
+    alt: "TEMPO satellite map showing tropospheric NO₂ air pollution levels over the Washington, D.C., to New York City metro corridor",
+    attribution: "NASA's SVS",
+    attributionLink: "https://svs.gsfc.nasa.gov/5142/",
   },
   mastheadImage: {
     src: "/images/datasets/tempo-no2-banner.webp",
-    alt: "TEMPO satellite map showing tropospheric NO2 air pollution levels over the Washington, D.C., to New York City metro corridor",
+    alt: "TEMPO satellite map showing tropospheric NO₂ air pollution levels over the Washington, D.C., to New York City metro corridor",
+    attribution: "NASA's Scientific Visualization Studio",
+    attributionLink: "https://svs.gsfc.nasa.gov/5142/",
   },
   metadata: {
     tags: [

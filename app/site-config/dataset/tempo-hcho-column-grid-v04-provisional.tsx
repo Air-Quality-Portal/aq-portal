@@ -9,10 +9,16 @@ export const TEMPO_HCHO_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
   thumbnailImage: {
     src: "/images/datasets/tempo-hcho-card.webp",
     alt: "TEMPO formaldehyde data in a blue to yellow scale collected July 29, 2026, on a map over the southeastern United States",
+    attribution: "NASA WorldView",
+    attributionLink:
+      "https://worldview.earthdata.nasa.gov/?v=-146.14323738244823,9.466883019764595,-48.87072685948661,57.34319679278477&z=4&ias=true&l=Reference_Features_15m(hidden),Coastlines_15m,TEMPO_L3_Formaldehyde_Vertical_Column(opacity=0.75),MODIS_Terra_CorrectedReflectance_TrueColor&lg=true&t=2026-07-29-T15%3A21%3A59Z",
   },
   mastheadImage: {
     src: "/images/datasets/tempo-hcho-banner.webp",
     alt: "TEMPO formaldehyde data in a blue to yellow scale collected July 29, 2026, on a map over the southeastern United States",
+    attribution: "NASA WorldView",
+    attributionLink:
+      "https://worldview.earthdata.nasa.gov/?v=-146.14323738244823,9.466883019764595,-48.87072685948661,57.34319679278477&z=4&ias=true&l=Reference_Features_15m(hidden),Coastlines_15m,TEMPO_L3_Formaldehyde_Vertical_Column(opacity=0.75),MODIS_Terra_CorrectedReflectance_TrueColor&lg=true&t=2026-07-29-T15%3A21%3A59Z",
   },
   metadata: {
     tags: [

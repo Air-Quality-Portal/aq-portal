@@ -9,11 +9,14 @@ export const NOAA_HMS_FIRE_SMOKE: DatasetContent = {
   thumbnailImage: {
     src: "/images/datasets/noaa_hms_card_image.webp",
     alt: "HMS fire and smoke analysis from July 16, 2026, mapped over the U.S. and Canada, with light smoke in green, heavier smoke in red, and red dots for fires",
+    attribution: "NOAA OSPO",
+    attributionLink: "https://www.ospo.noaa.gov/products/land/hms.html#maps",
   },
   mastheadImage: {
     src: "/images/datasets/noaa_hms_banner_image.webp",
     alt: "HMS fire and smoke analysis from July 16, 2026, mapped over the U.S. and Canada, with light smoke in green, heavier smoke in red, and red dots for fires",
     attribution: "NOAA OSPO",
+    attributionLink: "https://www.ospo.noaa.gov/products/land/hms.html#maps",
   },
   metadata: {
     tags: [

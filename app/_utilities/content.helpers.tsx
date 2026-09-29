@@ -1,4 +1,9 @@
-import type { CardDetailedProps, CardProps, CardSimpleProps } from "@teamimpact/veda-ui-blocks";
+import type {
+  CardDetailedProps,
+  CardProps,
+  CardSimpleProps,
+  MediaAttributionProps,
+} from "@teamimpact/veda-ui-blocks";
 import type React from "react";
 import { Fragment } from "react";
 import { AppImage } from "@/app/components/AppImage";
@@ -285,10 +290,18 @@ export const getMetadataFieldTag = (metadata: DatasetMetadata, key: string): str
   return entry && getMetadataValueLines(entry).join(" ");
 };
 
+export const makeMediaAttribution = (
+  author?: string,
+  sourceUrl?: string,
+): MediaAttributionProps | undefined =>
+  author ? { author, sourceUrl, mediaType: "image" } : undefined;
+
 export type CardMastheadPropsArgs = Omit<CardProps, "title" | "image"> & {
   mastheadImage: {
     alt: string;
     src: string;
+    attribution?: string;
+    attributionLink?: string;
   };
   title?: string;
   tagPrimary?: string;
@@ -301,7 +314,8 @@ export const makeCardMastHeadProps = ({
   description,
   ...rest
 }: CardMastheadPropsArgs): CardProps => ({
-  image: <AppImage {...mastheadImage} sizes="100vw" fill />,
+  image: <AppImage src={mastheadImage.src} alt={mastheadImage.alt} sizes="100vw" fill />,
+  imageAttribution: makeMediaAttribution(mastheadImage.attribution, mastheadImage.attributionLink),
   /*
    * Card only wraps a string title in its own heading; a formatted one arrives
    * as nodes and would otherwise land straight in the card's flex column, one
@@ -338,6 +352,8 @@ export type CardDetailedPropsArgs = Omit<
   thumbnailImage: {
     alt: string;
     src: string;
+    attribution?: string;
+    attributionLink?: string;
   };
   tags?: DatasetTagGroup[];
   tagPrimary?: string;
@@ -360,7 +376,18 @@ export const makeCardDetailedImageLeftProps = ({
   return {
     id,
     className: "height-card-md bg-base-lightest",
-    image: <AppImage {...thumbnailImage} fill sizes={CARD_DETAILED_IMAGE_SIZES} />,
+    image: (
+      <AppImage
+        src={thumbnailImage.src}
+        alt={thumbnailImage.alt}
+        fill
+        sizes={CARD_DETAILED_IMAGE_SIZES}
+      />
+    ),
+    imageAttribution: makeMediaAttribution(
+      thumbnailImage.attribution,
+      thumbnailImage.attributionLink,
+    ),
     imagePosition: "left",
     title: (
       <AppLinkStyled

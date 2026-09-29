@@ -19,9 +19,8 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
       src: "/img/about/about-earth.webp",
       alt: "A high-resolution image of Earth from space, showing North America, Central America, the Gulf of America, and surrounding oceans with visible cloud formations.",
       attribution: {
-        label: "Credits:",
-        text: "Blue Marble 2012 (NASA/NOAA)",
-        url: "https://www.nasa.gov/image-article/blue-marble-2012/",
+        author: "Blue Marble 2012 (NASA/NOAA)",
+        sourceUrl: "https://www.nasa.gov/image-article/blue-marble-2012/",
       },
       width: 700,
       height: 700,
