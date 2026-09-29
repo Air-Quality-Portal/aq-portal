@@ -1,3 +1,4 @@
+import { MediaAttribution } from "@teamimpact/veda-ui-blocks";
 import { makeCardSimpleProps } from "@/app/_utilities/content.helpers";
 import {
   subscriptPollutantSymbols,
@@ -130,29 +131,20 @@ export const ContentBlockRenderer = ({
       return (
         <Section {...sectionProps}>
           <figure className="margin-0">
-            <AppImage
-              src={block.src}
-              alt={block.alt}
-              width={block.width}
-              height={block.height}
-              unoptimized={block.unoptimized}
-              style={{ width: block.maxWidth ?? "100%", height: "auto" }}
-            />
-            {(block.caption || block.attribution) && (
+            <div className="position-relative" style={{ width: block.maxWidth ?? "100%" }}>
+              <AppImage
+                src={block.src}
+                alt={block.alt}
+                width={block.width}
+                height={block.height}
+                unoptimized={block.unoptimized}
+                style={{ width: "100%", height: "auto" }}
+              />
+              {block.attribution && <MediaAttribution {...block.attribution} />}
+            </div>
+            {block.caption && (
               <figcaption className="font-body-sm text-base margin-top-1">
-                {block.caption && subscriptPollutantSymbols(block.caption)}
-                {block.attribution && (
-                  <span className="display-block text-base-dark">
-                    {block.attribution.label && `${block.attribution.label} `}
-                    {block.attribution.url ? (
-                      <AppLinkStyled href={block.attribution.url} isExternal variant="text">
-                        {block.attribution.text}
-                      </AppLinkStyled>
-                    ) : (
-                      block.attribution.text
-                    )}
-                  </span>
-                )}
+                {subscriptPollutantSymbols(block.caption)}
               </figcaption>
             )}
           </figure>

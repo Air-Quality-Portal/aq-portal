@@ -1,6 +1,7 @@
 import type {
   CardDetailedProps,
   GeoConfigProviderProps,
+  MediaAttributionProps,
   StacCompareMapProps,
   StacSingleLayerMapProps,
 } from "@teamimpact/veda-ui-blocks";
@@ -75,12 +76,8 @@ export type ContentBlock =
       height: number;
       maxWidth?: string;
       caption?: string;
-      /**
-       * Image credit, rendered on its own line below the caption. `label`
-       * prefixes the credit as plain text (e.g. "Credits:"); only `text`
-       * becomes the link when a `url` is given.
-       */
-      attribution?: { label?: string; text: string; url?: string };
+      /** Image credit, rendered as a badge overlaid on the image. */
+      attribution?: MediaAttributionProps;
       /** Skip the Next.js image optimizer (e.g. remote placeholder services that serve SVG). */
       unoptimized?: boolean;
     }
