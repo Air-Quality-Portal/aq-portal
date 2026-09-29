@@ -88,7 +88,7 @@ export default async function DataCatalogPage(props: PageProps<"/data-catalog">)
                       sizes={CARD_DETAILED_IMAGE_SIZES}
                     />
                   }
-                  mediaAttribution={attributionOptions}
+                  imageAttribution={attributionOptions}
                   tagPrimary={tagPrimary ? makePrimaryTag(tagPrimary) : undefined}
                   title={
                     <AppLinkStyled

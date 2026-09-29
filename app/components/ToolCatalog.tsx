@@ -61,7 +61,7 @@ export const ToolCatalog = ({ tools, layout = "thirds" }: ToolCatalogProps) => {
                 sizes={sizes}
               />
             }
-            mediaAttribution={makeMediaAttribution(
+            imageAttribution={makeMediaAttribution(
               tool.thumbnailImage.attribution,
               tool.thumbnailImage.attributionLink,
             )}

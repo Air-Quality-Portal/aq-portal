@@ -2,7 +2,7 @@ import type {
   CardDetailedProps,
   CardProps,
   CardSimpleProps,
-  MediaAttributionOptions,
+  MediaAttributionProps,
 } from "@teamimpact/veda-ui-blocks";
 import type React from "react";
 import { Fragment } from "react";
@@ -293,8 +293,8 @@ export const getMetadataFieldTag = (metadata: DatasetMetadata, key: string): str
 export const makeMediaAttribution = (
   author?: string,
   sourceUrl?: string,
-): MediaAttributionOptions | undefined =>
-  author ? { author, sourceUrl, mediaKind: "image" } : undefined;
+): MediaAttributionProps | undefined =>
+  author ? { author, sourceUrl, mediaType: "image" } : undefined;
 
 export type CardMastheadPropsArgs = Omit<CardProps, "title" | "image"> & {
   mastheadImage: {
@@ -315,8 +315,7 @@ export const makeCardMastHeadProps = ({
   ...rest
 }: CardMastheadPropsArgs): CardProps => ({
   image: <AppImage src={mastheadImage.src} alt={mastheadImage.alt} sizes="100vw" fill />,
-  mediaAttribution: makeMediaAttribution(mastheadImage.attribution, mastheadImage.attributionLink),
-  image: <AppImage {...mastheadImage} sizes="100vw" fill />,
+  imageAttribution: makeMediaAttribution(mastheadImage.attribution, mastheadImage.attributionLink),
   /*
    * Card only wraps a string title in its own heading; a formatted one arrives
    * as nodes and would otherwise land straight in the card's flex column, one
@@ -385,7 +384,7 @@ export const makeCardDetailedImageLeftProps = ({
         sizes={CARD_DETAILED_IMAGE_SIZES}
       />
     ),
-    mediaAttribution: makeMediaAttribution(
+    imageAttribution: makeMediaAttribution(
       thumbnailImage.attribution,
       thumbnailImage.attributionLink,
     ),
