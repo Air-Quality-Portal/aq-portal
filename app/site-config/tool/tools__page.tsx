@@ -1,5 +1,7 @@
 import type { SectionIntroProps, VisualizationToolIntroProps } from "@/app/components";
 
+export const VIZ_TOOL_URL = "#";
+
 export const PARTNER_TOOLS_INTRO: SectionIntroProps = {
   eyebrow: "Partner Agency Tools",
   heading: (
@@ -32,6 +34,6 @@ export const VISUALIZATION_TOOL_INTRO: VisualizationToolIntroProps = {
     "Interact with authoritative air-quality data from monitors, satellites, and models in a single application.",
   callToAction: {
     label: "Open Visualization Tool",
-    href: "#",
+    href: VIZ_TOOL_URL,
   },
 };
