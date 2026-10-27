@@ -506,7 +506,7 @@ export const TOOLS: ToolContent[] = [
   },
   {
     id: "worldview",
-    title: "WorldView",
+    title: "Worldview",
     fullname: "Online Visualization",
     description: "Visualize a large catalog of NASA datasets, including satellite and model data",
     href: "https://worldview.earthdata.nasa.gov/",
@@ -514,7 +514,7 @@ export const TOOLS: ToolContent[] = [
     additionalTags: ["Satellite", "True-Color Imagery", "AOD", "Short latency (3 - 24 hours)"],
     thumbnailImage: {
       src: "/img/tools_images/worldview_map_tool_catalog_card.webp",
-      alt: "Satellite image of the United States with clouds from NASA WorldView",
+      alt: "Satellite image of the United States with clouds from NASA Worldview",
       attribution: "NASA",
       attributionLink: "https://worldview.earthdata.nasa.gov/?t=2026-08-27-T21%3A09%3A49Z",
     },
