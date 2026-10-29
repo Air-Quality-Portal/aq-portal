@@ -1,6 +1,6 @@
 import type { SectionIntroProps, VisualizationToolIntroProps } from "@/app/components";
 
-export const VISUALIZATION_TOOL_URL = "https://earth.gov/air4us/data-visualization";
+const VISUALIZATION_TOOL_URL = "https://earth.gov/air4us/data-visualization";
 
 export const VISUALIZATION_TOOL_ACTION = {
   label: "Open Visualization Tool",

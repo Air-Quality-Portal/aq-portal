@@ -1,4 +1,4 @@
-import { VISUALIZATION_TOOL_ACTION } from "@/app/site-config/tool";
+import { VISUALIZATION_TOOL_ACTION } from "@/app/site-config/tool/tools__page";
 import type { DatasetContent } from "@/app/site-config/types";
 
 export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
