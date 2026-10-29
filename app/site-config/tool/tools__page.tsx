@@ -1,6 +1,12 @@
 import type { SectionIntroProps, VisualizationToolIntroProps } from "@/app/components";
 
-export const VIZ_TOOL_URL = "#";
+export const VISUALIZATION_TOOL_URL = "https://earth.gov/air4us/data-visualization";
+
+export const VISUALIZATION_TOOL_ACTION = {
+  label: "Open Visualization Tool",
+  href: VISUALIZATION_TOOL_URL,
+  isExternal: true,
+} as const;
 
 export const PARTNER_TOOLS_INTRO: SectionIntroProps = {
   eyebrow: "Partner Agency Tools",
@@ -33,6 +39,6 @@ export const VISUALIZATION_TOOL_INTRO: VisualizationToolIntroProps = {
   description: "Interact with authoritative air-quality data from the AIR4US data catalog.",
   callToAction: {
     label: "Open Visualization Tool",
-    href: VIZ_TOOL_URL,
+    href: VISUALIZATION_TOOL_URL,
   },
 };

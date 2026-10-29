@@ -4,8 +4,9 @@ export { TOOLS } from "./tools__content";
 export {
   AIR4US_TOOL_INTRO,
   PARTNER_TOOLS_INTRO,
+  VISUALIZATION_TOOL_ACTION,
   VISUALIZATION_TOOL_INTRO,
-  VIZ_TOOL_URL,
+  VISUALIZATION_TOOL_URL,
 } from "./tools__page";
 export { searchTools } from "./tools__search";
 
