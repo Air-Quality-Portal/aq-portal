@@ -7,6 +7,7 @@ export type VisualizationToolIntroProps = {
   callToAction: {
     label: string;
     href: string;
+    isExternal?: boolean;
   };
 };
 
@@ -24,7 +25,12 @@ export const VisualizationToolIntro = ({
         {subscriptPollutantSymbols(description)}
       </p>
     </div>
-    <Link className="text-no-wrap" variant="button" isExternal href={callToAction.href}>
+    <Link
+      className="text-no-wrap"
+      variant="button"
+      isExternal={callToAction.isExternal}
+      href={callToAction.href}
+    >
       {callToAction.label}
     </Link>
   </div>
