@@ -55,8 +55,7 @@ export const NOAA_HMS_FIRE_SMOKE: DatasetContent = {
       spatialCoverage: { label: "Spatial Coverage", value: "North America" },
       temporalCoverage: {
         label: "Temporal Coverage",
-        value:
-          "Fire — KML: December 13, 2017 - Present; Shapefile: June 16, 2003 - Present; Text: June 16, 2003 - Present\nSmoke — KML: December 13, 2017 - Present; Shapefile: August 5, 2005 - Present",
+        value: "January 1, 2020 - Present",
       },
       temporalResolution: {
         label: "Temporal Resolution",
