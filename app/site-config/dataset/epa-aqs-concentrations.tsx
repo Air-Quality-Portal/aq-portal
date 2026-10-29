@@ -60,7 +60,7 @@ export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
       spatialCoverage: { label: "Spatial Coverage", value: "United States" },
       temporalCoverage: {
         label: "Temporal Coverage",
-        value: "January 1, 1999 - Present (varies per station)",
+        value: "January 1, 2000 - Present (varies per station)",
       },
       temporalResolution: { label: "Temporal Resolution", value: "Hourly averages" },
       updateFrequency: { label: "Update Frequency", value: "Quarterly" },
