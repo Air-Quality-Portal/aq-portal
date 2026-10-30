@@ -85,7 +85,7 @@ export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
         <>
           The Air Quality System (AQS) contains ambient air sample data collected by the EPA, state,
           local, and tribal air pollution control agencies from thousands of monitors across the
-          United States. This dataset in AIR4US includes hourly averages from 1999 to the present
+          United States. This dataset in AIR4US includes hourly averages from 2000 to the present
           for the criteria pollutants: ozone (O3), carbon monoxide (CO), sulfur dioxide (SO2),
           nitrogen dioxide (NO2), and particulate matter (PM2.5 and PM10). Concentration
           measurements for O3 and CO are reported in parts per million (ppm), and for NO2 and SO2 in
