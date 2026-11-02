@@ -47,8 +47,12 @@ export const NOAA_HMS_FIRE_SMOKE: DatasetContent = {
       parameters: {
         label: "Parameters & Units",
         value: [
-          "Fire: Fire Radiative Power (FRP), megawatts (MW)",
-          "Smoke plume density (light, medium, heavy):\nLight - 0-10 micrograms per cubic meter (μg/m³)\nMedium - 10-21 micrograms per cubic meter (μg/m³)\nHeavy - 21-32 micrograms per cubic meter (μg/m³)",
+          "Fire:",
+          "Fire Radiative Power (FRP), megawatts (MW)",
+          "Smoke plume density:",
+          "Light smoke",
+          "Medium smoke",
+          "Heavy smoke",
         ],
         delimiter: "\n",
       },
@@ -59,21 +63,25 @@ export const NOAA_HMS_FIRE_SMOKE: DatasetContent = {
       },
       temporalResolution: {
         label: "Temporal Resolution",
-
-        value: "Fire: ~2 hours\nSmoke: Twice per day",
+        value: "Daily",
       },
       updateFrequency: {
         label: "Update Frequency",
-        value:
-          "Fire: Typically every 2 daylight hours beginning 8am ET daily\nSmoke: Twice per day (~11am - 12pm ET & 7pm - 8pm ET)",
+        value: [
+          "Fire: Typically every 2 daylight hours beginning 8am ET daily",
+          "Smoke: Twice per day (~11am - 12pm ET & 7pm - 8pm ET)",
+        ],
+        delimiter: "\n",
       },
       latency: {
         label: "Latency",
-        value: "Fire: ~30 min - 2 hours\nSmoke: ~4 - 8 hours",
+        value: ["Fire: ~30 min - 2 hours", "Smoke: ~4 - 8 hours"],
+        delimiter: "\n",
       },
       spatialResolution: {
         label: "Spatial Resolution",
-        value: "Active-fire detection - Point / Smoke product - Polygon",
+        value: ["Fire: Point", "Smoke: Polygon"],
+        delimiter: "\n",
       },
       dataFormat: { label: "Data Format", value: "WFS, KML, Shapefile, Text" },
       versionHistory: {
@@ -104,7 +112,7 @@ export const NOAA_HMS_FIRE_SMOKE: DatasetContent = {
     {
       type: "text",
       paragraphs: [
-        "NOAA's Hazard Mapping System (HMS) provides active fire and smoke data products using 2km-resolution Advanced Baseline Imager (ABI) data from the GOES-19 (East) and GOES-18 (West) geostationary satellites, and 375m-resolution VIIRS data from the S-NPP, NOAA-20, and NOAA-21 polar satellites. The HMS system operates daily across North America, with fire and smoke observations beginning around 6 UTC (9 UTC) on the East Coast and around 9 UTC (12 UTC) on the West Coast. Fire detection information is typically updated every two hours, and smoke analysis information is updated throughout the day until sunset. Fire products are reported using Fire Radiative Power (FRP) values measured in megawatts (MW). Smoke products are described in terms of three plume density levels: light (0-10 micrograms per cubic meter (μg/m³)), medium (10-21 μg/m³), and heavy (21-32 μg/m³).",
+        "NOAA's Hazard Mapping System (HMS) provides active fire and smoke data products using 2km-resolution Advanced Baseline Imager (ABI) data from the GOES-19 (East) and GOES-18 (West) geostationary satellites, and 375m-resolution VIIRS data from the S-NPP, NOAA-20, and NOAA-21 polar satellites. The HMS system operates daily across North America, with fire and smoke observations beginning around 6 UTC (9 UTC) on the East Coast and around 9 UTC (12 UTC) on the West Coast. Fire detection information is typically updated every two hours, and smoke analysis information is updated throughout the day until sunset. Fire products are reported using Fire Radiative Power (FRP) values measured in megawatts (MW). Smoke products are described in terms of three plume density levels: light smoke, medium smoke, and heavy smoke.",
       ],
     },
     {
