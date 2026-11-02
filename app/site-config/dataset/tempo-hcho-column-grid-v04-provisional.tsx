@@ -1,3 +1,4 @@
+import { VISUALIZATION_TOOL_ACTION } from "@/app/site-config/tool/tools__page";
 import type { DatasetContent } from "@/app/site-config/types";
 
 export const TEMPO_HCHO_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
@@ -76,11 +77,7 @@ export const TEMPO_HCHO_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
     },
   },
   actions: {
-    primary: {
-      label: "Open Visualization Tool",
-      href: "https://example.com/visualization",
-      isExternal: true,
-    },
+    primary: VISUALIZATION_TOOL_ACTION,
   },
   body: [
     {

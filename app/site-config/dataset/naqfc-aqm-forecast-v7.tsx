@@ -1,3 +1,4 @@
+import { VISUALIZATION_TOOL_ACTION } from "@/app/site-config/tool/tools__page";
 import type { DatasetContent } from "@/app/site-config/types";
 
 export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
@@ -86,11 +87,7 @@ export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
     },
   },
   actions: {
-    primary: {
-      label: "Open Visualization Tool",
-      href: "https://example.com/visualization",
-      isExternal: true,
-    },
+    primary: VISUALIZATION_TOOL_ACTION,
   },
   body: [
     {
