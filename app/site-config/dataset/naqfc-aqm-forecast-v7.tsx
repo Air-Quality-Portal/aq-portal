@@ -59,13 +59,17 @@ export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
       spatialCoverage: { label: "Spatial Coverage", value: "CONUS, Alaska, Hawaii" },
       temporalCoverage: {
         label: "Temporal Coverage",
-        value: [
-          "The six most recent 72-hour forecasts are available in AIR4US",
-          "Version 7: May 14, 2024 - Present",
-          "Version 6 (CONUS only): July 20, 2021 - May 13, 2024",
-          "Version 5 (CONUS only): January 1, 2020 - July 19, 2021",
-        ],
-        delimiter: "\n",
+        value: (
+          <>
+            <em>The six most recent 72-hour forecasts are available in AIR4US</em>
+            <br />
+            Version 7: May 14, 2024 - Present
+            <br />
+            Version 6 (CONUS only): July 20, 2021 - May 13, 2024
+            <br />
+            Version 5 (CONUS only): January 1, 2020 - July 19, 2021
+          </>
+        ),
       },
       temporalResolution: {
         label: "Temporal Resolution",
