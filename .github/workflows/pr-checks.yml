@@ -24,7 +24,7 @@ jobs:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.1.0
+      - uses: actions/checkout@v7.0.1
       - uses: pnpm/action-setup@v6.1.1
       - uses: actions/setup-node@v6.5.0
         with:
@@ -37,7 +37,7 @@ jobs:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.1.0
+      - uses: actions/checkout@v7.0.1
       - uses: pnpm/action-setup@v6.1.1
       - uses: actions/setup-node@v6.5.0
         with:
@@ -50,7 +50,7 @@ jobs:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.1.0
+      - uses: actions/checkout@v7.0.1
       - uses: pnpm/action-setup@v6.1.1
       - uses: actions/setup-node@v6.5.0
         with:
@@ -64,7 +64,7 @@ jobs:
     needs: [lint, typecheck, test]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.1.0
+      - uses: actions/checkout@v7.0.1
       - uses: pnpm/action-setup@v6.1.1
       - uses: actions/setup-node@v6.5.0
         with:
