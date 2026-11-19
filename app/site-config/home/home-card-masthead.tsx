@@ -31,7 +31,7 @@ export const MOCK_CARD_MASTHEAD: CardProps<typeof AppLink> = {
       playsInline
       style={{
         transform: "scale(1.25)",
-        transformOrigin: "left top",
+        transformOrigin: "left center",
         objectPosition: "left center",
       }}
     />
