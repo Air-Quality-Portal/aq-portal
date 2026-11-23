@@ -88,7 +88,7 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
     {
       type: "note",
       label: "Recommended use",
-      text: "The \"Standard Quality\" dataset is best suited for air-quality forecasting, pollutant monitoring, and satellite-based estimations of surface-level pollutant concentrations. For use under wildfire conditions, the \"Fire Applications Quality\" dataset is recommended.",
+      text: 'The "Standard Quality" dataset is best suited for air-quality forecasting, pollutant monitoring, and satellite-based estimations of surface-level pollutant concentrations. For use under wildfire conditions, the "Fire Applications Quality" dataset is recommended.',
     },
   ],
   linkSections: [
