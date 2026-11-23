@@ -1,5 +1,7 @@
 import type { ContentBlock } from "@/app/site-config/types";
 
+const FEEDBACK_FORM_URL = "https://forms.gle/SY7BcoziPn3MrXBH8";
+
 export type AboutPageBody = {
   body: ContentBlock[];
 };
@@ -66,26 +68,30 @@ export const ABOUT_PAGE_BODY: AboutPageBody = {
       heading: "Feedback",
       headingLevel: "h2",
       paragraphs: [
-        "Your input is essential to helping us continuously improve the AIR4US Portal. As we expand our services, data visualization tools, and capacity-building efforts, we welcome your suggestions, bug reports, and feature requests. Please reach out to {placeholder} to share your thoughts and ensure the platform meets your community’s needs.",
+        <>
+          Your input is essential to helping us continuously improve the AIR4US Portal. As we expand
+          our services, data visualization tools, and capacity-building efforts, we welcome your
+          suggestions, bug reports, and feature requests. Please reach out to{" "}
+          <a href={FEEDBACK_FORM_URL} target="_blank" rel="noopener noreferrer">
+            our team
+          </a>{" "}
+          to share your thoughts and ensure the platform meets your community&apos;s needs.
+        </>,
       ],
     },
 
     {
-      type: "contact",
+      type: "text",
       heading: "Contact",
       headingLevel: "h2",
-      lead: "Have questions about the AIR4US Portal, its datasets, or how to get involved? Reach out to the team below.",
-      contacts: [
-        {
-          title: "Responsible Official",
-          label: "K. Emma Knowland",
-        },
-        {
-          title: "General Inquiries",
-          label: "air4us@example.gov",
-          email: "air4us@example.gov",
-        },
+      paragraphs: [
+        "Have questions about the AIR4US Portal, its datasets, or how to get involved? Reach out to the team below.",
       ],
+      callToAction: {
+        label: "Contact Us",
+        href: FEEDBACK_FORM_URL,
+        isExternal: true,
+      },
     },
   ],
 };
