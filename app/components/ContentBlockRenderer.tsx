@@ -11,7 +11,6 @@ import {
   Section,
   SectionCardSimple,
   SectionCardTextOnly,
-  SectionContacts,
   SectionHeading,
   SectionLinks,
 } from "@/app/components";
@@ -48,6 +47,15 @@ export const ContentBlockRenderer = ({
               {subscriptPollutantSymbolsIn(p)}
             </p>
           ))}
+          {block.callToAction && (
+            <AppLinkStyled
+              href={block.callToAction.href}
+              isExternal={block.callToAction.isExternal}
+              variant="button"
+            >
+              {block.callToAction.label}
+            </AppLinkStyled>
+          )}
         </Section>
       );
 
@@ -191,8 +199,5 @@ export const ContentBlockRenderer = ({
 
     case "links":
       return <SectionLinks section={block} />;
-
-    case "contact":
-      return <SectionContacts section={block} />;
   }
 };
