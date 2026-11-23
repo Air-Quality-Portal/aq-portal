@@ -27,8 +27,8 @@ export const NAQFC_AQM_FORECAST_V7: DatasetContent = {
           "Wildfire smoke",
           "High ozone",
           "Criteria pollutant monitoring",
-          "Transboundary pollution",
           "Dust storm",
+          "Agricultural emissions",
         ],
       },
       {
