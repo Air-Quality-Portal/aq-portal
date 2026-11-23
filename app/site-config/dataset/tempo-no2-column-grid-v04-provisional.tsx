@@ -28,7 +28,6 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
           "Criteria pollutant monitoring",
           "Industrial emissions",
           "On-road emissions",
-          "Hazardous air pollutants",
           "High ozone",
         ],
       },
