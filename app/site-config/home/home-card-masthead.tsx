@@ -29,7 +29,11 @@ export const MOCK_CARD_MASTHEAD: CardProps<typeof AppLink> = {
       loop
       muted
       playsInline
-      style={{ transform: "scale(1.5)" }}
+      style={{
+        transform: "scale(1.25)",
+        transformOrigin: "left center",
+        objectPosition: "left center",
+      }}
     />
   ),
   imageAttribution: IMAGE_ATTRIBUTION,

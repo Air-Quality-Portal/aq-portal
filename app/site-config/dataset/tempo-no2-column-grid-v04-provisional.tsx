@@ -28,7 +28,6 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
           "Criteria pollutant monitoring",
           "Industrial emissions",
           "On-road emissions",
-          "Hazardous air pollutants",
           "High ozone",
         ],
       },
@@ -71,7 +70,7 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
       versionHistory: {
         label: "Version History",
         value:
-          "V04 provisional data was added to AIR4US in September 2026 with QA filtering applied.",
+          "V04 provisional data was added to AIR4US in September 2026 with two QA filtering options applied (standard quality and fire applications quality).",
       },
     },
   },
@@ -82,13 +81,13 @@ export const TEMPO_NO2_COLUMN_GRID_V04_PROVISIONAL: DatasetContent = {
     {
       type: "text",
       paragraphs: [
-        "The TEMPO (Tropospheric Emissions: Monitoring of Pollution) mission is a geostationary satellite mission that measures air-quality over North America during daylight hours at a high spatial resolution and with a temporal resolution of one hour or less. The nitrogen dioxide (NO2) Level 3 (PROVISIONAL) dataset in AIR4US provides information on tropospheric NO2 vertical columns measured in molecules per square centimeter (molecules/cm³). In the AIR4US tool low quality pixels have been filtered out using the following threshold: effective cloud fraction > 0.5, solar zenith angle > 80, quality flag > 1. TEMPO Level 3 products have a spatial resolution of 0.02° and are generated using an area-weighted regridding algorithm, combining information from all Level 2 files in a TEMPO East-West scan cycle. This dataset reached provisional validation on December 9, 2024. The TEMPO gridded NO2 product contains hourly daytime scans across North America, with more frequent scans in the morning over the eastern portion of the field of regard and in the evenings over the western portion. Data are available from August 2, 2023, to the present.",
+        "The TEMPO (Tropospheric Emissions: Monitoring of Pollution) mission is a geostationary satellite mission that measures air-quality over North America during daylight hours at a high spatial resolution and with a temporal resolution of one hour or less. The nitrogen dioxide (NO2) Level 3 (PROVISIONAL) dataset in AIR4US provides information on tropospheric NO2 vertical columns measured in molecules per square centimeter (molecules/cm³). In the AIR4US tool low quality pixels have been filtered out where solar zenith angle > 80 or quality flag > 1. For most applications, pixels with cloud fraction > 0.1 are also filtered out. For applications under smoke-impacted conditions, a less restrictive filter (cloud fraction > 0.5) is used, to account for dense smoke being mis-identified as clouds. TEMPO Level 3 products have a spatial resolution of 0.02° and are generated using an area-weighted regridding algorithm, combining information from all Level 2 files in a TEMPO East-West scan cycle. This dataset reached provisional validation on December 9, 2024. The TEMPO gridded NO2 product contains hourly daytime scans across North America, with more frequent scans in the morning over the eastern portion of the field of regard and in the evenings over the western portion. Data are available from August 2, 2023, to the present.",
       ],
     },
     {
       type: "note",
       label: "Recommended use",
-      text: "This dataset is best suited for air-quality forecasting, pollutant monitoring, and satellite-based estimations of surface-level pollutant concentrations.",
+      text: 'The "Standard Quality" dataset is best suited for air-quality forecasting, pollutant monitoring, and satellite-based estimations of surface-level pollutant concentrations. For use under wildfire conditions, the "Fire Applications Quality" dataset is recommended.',
     },
   ],
   linkSections: [

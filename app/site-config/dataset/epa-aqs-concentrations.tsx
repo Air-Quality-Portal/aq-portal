@@ -33,7 +33,6 @@ export const EPA_AQS_CONCENTRATIONS: DatasetContent = {
           "Agricultural emissions",
           "High ozone",
           "Dust storm",
-          "Transboundary pollution",
         ],
       },
       {
